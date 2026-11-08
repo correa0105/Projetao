@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2723,
-    "pending_artworks": 1764,
+    "approved_artworks": 2753,
+    "pending_artworks": 1734,
     "catalog_references": 4643,
-    "approved_references": 2879,
+    "approved_references": 2909,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -17779,7 +17779,7 @@
     },
     {
       "family": "Fool's Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "fool-s-double-bladed-scimitar",
@@ -17788,8 +17788,10 @@
           "artwork_ids": [
             "fool-s-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fool-s-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "fool-s-greatsword",
@@ -17798,8 +17800,10 @@
           "artwork_ids": [
             "fool-s-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fool-s-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "fool-s-longsword",
@@ -17808,8 +17812,10 @@
           "artwork_ids": [
             "fool-s-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fool-s-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "fool-s-rapier",
@@ -17818,8 +17824,10 @@
           "artwork_ids": [
             "fool-s-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fool-s-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "fool-s-scimitar",
@@ -17828,8 +17836,10 @@
           "artwork_ids": [
             "fool-s-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fool-s-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "fool-s-shortsword",
@@ -17838,8 +17848,10 @@
           "artwork_ids": [
             "fool-s-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "fool-s-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -18051,7 +18063,7 @@
     },
     {
       "family": "Gambler's Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gambler-s-blade-double-bladed-scimitar",
@@ -18060,8 +18072,10 @@
           "artwork_ids": [
             "gambler-s-blade-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gambler-s-blade-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "gambler-s-blade-greatsword",
@@ -18070,8 +18084,10 @@
           "artwork_ids": [
             "gambler-s-blade-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gambler-s-blade-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "gambler-s-blade-longsword",
@@ -18080,8 +18096,10 @@
           "artwork_ids": [
             "gambler-s-blade-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gambler-s-blade-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "gambler-s-blade-rapier",
@@ -18090,8 +18108,10 @@
           "artwork_ids": [
             "gambler-s-blade-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gambler-s-blade-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "gambler-s-blade-scimitar",
@@ -18100,8 +18120,10 @@
           "artwork_ids": [
             "gambler-s-blade-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gambler-s-blade-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "gambler-s-blade-shortsword",
@@ -18110,8 +18132,10 @@
           "artwork_ids": [
             "gambler-s-blade-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gambler-s-blade-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -19069,7 +19093,7 @@
     },
     {
       "family": "Hammer of Thunderbolts",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "hammer-of-thunderbolts",
@@ -19078,8 +19102,10 @@
           "artwork_ids": [
             "hammer-of-thunderbolts"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hammer-of-thunderbolts"
+          ],
+          "status": "approved"
         },
         {
           "id": "hammer-of-thunderbolts-warhammer",
@@ -19088,8 +19114,10 @@
           "artwork_ids": [
             "hammer-of-thunderbolts-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hammer-of-thunderbolts-warhammer"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -20901,7 +20929,7 @@
     },
     {
       "family": "Javelin of Lightning",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "javelin-of-lightning",
@@ -20910,8 +20938,10 @@
           "artwork_ids": [
             "javelin-of-lightning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "javelin-of-lightning"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -21563,7 +21593,7 @@
     },
     {
       "family": "Luck Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "luck-blade",
@@ -21572,8 +21602,10 @@
           "artwork_ids": [
             "luck-blade"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade"
+          ],
+          "status": "approved"
         },
         {
           "id": "luck-blade-double-bladed-scimitar",
@@ -21582,8 +21614,10 @@
           "artwork_ids": [
             "luck-blade-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "luck-blade-glaive",
@@ -21592,8 +21626,10 @@
           "artwork_ids": [
             "luck-blade-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "luck-blade-greatsword",
@@ -21602,8 +21638,10 @@
           "artwork_ids": [
             "luck-blade-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "luck-blade-rapier",
@@ -21612,8 +21650,10 @@
           "artwork_ids": [
             "luck-blade-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "luck-blade-scimitar",
@@ -21622,8 +21662,10 @@
           "artwork_ids": [
             "luck-blade-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "luck-blade-shortsword",
@@ -21632,8 +21674,10 @@
           "artwork_ids": [
             "luck-blade-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "luck-blade-sickle",
@@ -21642,14 +21686,16 @@
           "artwork_ids": [
             "luck-blade-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "luck-blade-sickle"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Mace of Disruption",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mace-of-disruption",
@@ -21658,14 +21704,16 @@
           "artwork_ids": [
             "mace-of-disruption"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mace-of-disruption"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Mace of Smiting",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mace-of-smiting",
@@ -21674,14 +21722,16 @@
           "artwork_ids": [
             "mace-of-smiting"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mace-of-smiting"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Mace of Terror",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mace-of-terror",
@@ -21690,8 +21740,10 @@
           "artwork_ids": [
             "mace-of-terror"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mace-of-terror"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24255,7 +24307,7 @@
     },
     {
       "family": "Quarterstaff of the Acrobat",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "quarterstaff-of-the-acrobat",
@@ -24264,8 +24316,10 @@
           "artwork_ids": [
             "quarterstaff-of-the-acrobat"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "quarterstaff-of-the-acrobat"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -25863,7 +25917,7 @@
     },
     {
       "family": "Scimitar of Speed",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "scimitar-of-speed",
@@ -25872,8 +25926,10 @@
           "artwork_ids": [
             "scimitar-of-speed"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-speed"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28039,7 +28095,7 @@
     },
     {
       "family": "Thunderous Greatclub",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "thunderous-greatclub",
@@ -28048,8 +28104,10 @@
           "artwork_ids": [
             "thunderous-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "thunderous-greatclub"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28285,7 +28343,7 @@
     },
     {
       "family": "Trident of Fish Command",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "trident-of-fish-command",
@@ -28294,8 +28352,10 @@
           "artwork_ids": [
             "trident-of-fish-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "trident-of-fish-command"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -78032,8 +78092,10 @@
           "name": "Lâmina do tolo (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fool-s-double-bladed-scimitar"
+      ]
     },
     {
       "id": "8c3d0ebba5d24011",
@@ -78047,8 +78109,10 @@
           "name": "Lâmina do tolo (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fool-s-greatsword"
+      ]
     },
     {
       "id": "d1ee4226f5b18ec3",
@@ -78062,8 +78126,10 @@
           "name": "Lâmina do tolo (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fool-s-longsword"
+      ]
     },
     {
       "id": "3aa0726ba198dde9",
@@ -78077,8 +78143,10 @@
           "name": "Lâmina do tolo (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fool-s-rapier"
+      ]
     },
     {
       "id": "8f32ab0181a59d9d",
@@ -78092,8 +78160,10 @@
           "name": "Lâmina do tolo (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fool-s-scimitar"
+      ]
     },
     {
       "id": "ecc895fed8b06757",
@@ -78107,8 +78177,10 @@
           "name": "Lâmina do tolo (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "fool-s-shortsword"
+      ]
     },
     {
       "id": "c17629edf6d18824",
@@ -78406,8 +78478,10 @@
           "name": "Lâmina do apostador (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gambler-s-blade-double-bladed-scimitar"
+      ]
     },
     {
       "id": "74cd9564dff90df5",
@@ -78421,8 +78495,10 @@
           "name": "Lâmina do apostador (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gambler-s-blade-greatsword"
+      ]
     },
     {
       "id": "e49f3b1f03c32654",
@@ -78436,8 +78512,10 @@
           "name": "Lâmina do apostador (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gambler-s-blade-longsword"
+      ]
     },
     {
       "id": "4b806e21f5d3f9a2",
@@ -78451,8 +78529,10 @@
           "name": "Lâmina do apostador (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gambler-s-blade-rapier"
+      ]
     },
     {
       "id": "bdb0756cdb8d7221",
@@ -78466,8 +78546,10 @@
           "name": "Lâmina do apostador (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gambler-s-blade-scimitar"
+      ]
     },
     {
       "id": "b6e7e8da7cc354a6",
@@ -78481,8 +78563,10 @@
           "name": "Lâmina do apostador (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gambler-s-blade-shortsword"
+      ]
     },
     {
       "id": "044910004e62cbba",
@@ -80809,8 +80893,10 @@
           "name": "Martelo dos trovões (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hammer-of-thunderbolts"
+      ]
     },
     {
       "id": "7b222dea33f11873",
@@ -80824,8 +80910,10 @@
           "name": "Martelo dos trovões (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hammer-of-thunderbolts-warhammer"
+      ]
     },
     {
       "id": "9de3c898b521f4d2",
@@ -83289,8 +83377,10 @@
           "name": "Azagaia do relâmpago (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "javelin-of-lightning"
+      ]
     },
     {
       "id": "690c627dbb3940f7",
@@ -86031,8 +86121,10 @@
           "name": "Lâmina da sorte (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade-double-bladed-scimitar"
+      ]
     },
     {
       "id": "902b953bebd82b44",
@@ -86046,8 +86138,10 @@
           "name": "Lâmina da sorte (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade-glaive"
+      ]
     },
     {
       "id": "046b5cae21e3872a",
@@ -86061,8 +86155,10 @@
           "name": "Lâmina da sorte (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade-greatsword"
+      ]
     },
     {
       "id": "7022ef0b067457d8",
@@ -86076,8 +86172,10 @@
           "name": "Lâmina da sorte (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade"
+      ]
     },
     {
       "id": "cc02de2532e1b7c0",
@@ -86091,8 +86189,10 @@
           "name": "Lâmina da sorte (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade-rapier"
+      ]
     },
     {
       "id": "fcd074c7cb884aac",
@@ -86106,8 +86206,10 @@
           "name": "Lâmina da sorte (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade-scimitar"
+      ]
     },
     {
       "id": "e464a688252883fa",
@@ -86121,8 +86223,10 @@
           "name": "Lâmina da sorte (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade-shortsword"
+      ]
     },
     {
       "id": "c9a60bd18736bfe5",
@@ -86136,8 +86240,10 @@
           "name": "Lâmina da sorte (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "luck-blade-sickle"
+      ]
     },
     {
       "id": "0cdf3532b0c80257",
@@ -86151,8 +86257,10 @@
           "name": "Maça da destruição (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mace-of-disruption"
+      ]
     },
     {
       "id": "20dee586ed97d786",
@@ -86166,8 +86274,10 @@
           "name": "Maça do esmagamento (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mace-of-smiting"
+      ]
     },
     {
       "id": "5bd57267f145756f",
@@ -86181,8 +86291,10 @@
           "name": "Maça do terror (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mace-of-terror"
+      ]
     },
     {
       "id": "46ebea48446842c5",
@@ -91794,8 +91906,10 @@
           "name": "Bordão do acrobata (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "quarterstaff-of-the-acrobat"
+      ]
     },
     {
       "id": "4abc11ed5848f8a7",
@@ -94469,8 +94583,10 @@
           "name": "Cimitarra da velocidade (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-speed"
+      ]
     },
     {
       "id": "0a9e7a62ad197729",
@@ -99088,8 +99204,10 @@
           "name": "Clava trovejante (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "thunderous-greatclub"
+      ]
     },
     {
       "id": "62a05ad36bb7cc68",
@@ -99964,8 +100082,10 @@
           "name": "Tridente de comandar peixes (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "trident-of-fish-command"
+      ]
     },
     {
       "id": "b0c07361132e1168",

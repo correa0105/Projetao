@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2723,
-    "pending_artworks": 1764,
+    "approved_artworks": 2753,
+    "pending_artworks": 1734,
     "catalog_references": 4643,
-    "approved_references": 2879,
+    "approved_references": 2909,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -242,9 +242,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Lâmina de cristal",
@@ -386,9 +386,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Machado do carrasco",
@@ -422,9 +422,9 @@
       ],
       "models": 8,
       "artworks": 8,
-      "approved": 0,
-      "pending": 8,
-      "status": "pending"
+      "approved": 8,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Espada dos planos",
