@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 3462,
-    "pending_artworks": 1025,
+    "approved_artworks": 3721,
+    "pending_artworks": 766,
     "catalog_references": 4643,
-    "approved_references": 3618,
+    "approved_references": 3877,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -12389,7 +12389,7 @@
     },
     {
       "family": "Enspelled Weapon (Cantrip)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "enspelled-cantrip-antimatter-rifle",
@@ -12398,8 +12398,10 @@
           "artwork_ids": [
             "enspelled-cantrip-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-automatic-rifle",
@@ -12408,8 +12410,10 @@
           "artwork_ids": [
             "enspelled-cantrip-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-battleaxe",
@@ -12418,8 +12422,10 @@
           "artwork_ids": [
             "enspelled-cantrip-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-blowgun",
@@ -12428,8 +12434,10 @@
           "artwork_ids": [
             "enspelled-cantrip-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-club",
@@ -12438,8 +12446,10 @@
           "artwork_ids": [
             "enspelled-cantrip-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-dagger",
@@ -12448,8 +12458,10 @@
           "artwork_ids": [
             "enspelled-cantrip-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-dart",
@@ -12458,8 +12470,10 @@
           "artwork_ids": [
             "enspelled-cantrip-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-double-bladed-scimitar",
@@ -12468,8 +12482,10 @@
           "artwork_ids": [
             "enspelled-cantrip-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-flail",
@@ -12478,8 +12494,10 @@
           "artwork_ids": [
             "enspelled-cantrip-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-glaive",
@@ -12488,8 +12506,10 @@
           "artwork_ids": [
             "enspelled-cantrip-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-greataxe",
@@ -12498,8 +12518,10 @@
           "artwork_ids": [
             "enspelled-cantrip-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-greatclub",
@@ -12508,8 +12530,10 @@
           "artwork_ids": [
             "enspelled-cantrip-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-greatsword",
@@ -12518,8 +12542,10 @@
           "artwork_ids": [
             "enspelled-cantrip-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-halberd",
@@ -12528,8 +12554,10 @@
           "artwork_ids": [
             "enspelled-cantrip-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-hand-crossbow",
@@ -12538,8 +12566,10 @@
           "artwork_ids": [
             "enspelled-cantrip-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-handaxe",
@@ -12548,8 +12578,10 @@
           "artwork_ids": [
             "enspelled-cantrip-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-heavy-crossbow",
@@ -12558,8 +12590,10 @@
           "artwork_ids": [
             "enspelled-cantrip-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-hooked-shortspear",
@@ -12568,8 +12602,10 @@
           "artwork_ids": [
             "enspelled-cantrip-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-hoopak",
@@ -12578,8 +12614,10 @@
           "artwork_ids": [
             "enspelled-cantrip-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-hunting-rifle",
@@ -12588,8 +12626,10 @@
           "artwork_ids": [
             "enspelled-cantrip-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-javelin",
@@ -12598,8 +12638,10 @@
           "artwork_ids": [
             "enspelled-cantrip-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-lance",
@@ -12608,8 +12650,10 @@
           "artwork_ids": [
             "enspelled-cantrip-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-laser-pistol",
@@ -12618,8 +12662,10 @@
           "artwork_ids": [
             "enspelled-cantrip-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-laser-rifle",
@@ -12628,8 +12674,10 @@
           "artwork_ids": [
             "enspelled-cantrip-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-light-crossbow",
@@ -12638,8 +12686,10 @@
           "artwork_ids": [
             "enspelled-cantrip-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-light-hammer",
@@ -12648,8 +12698,10 @@
           "artwork_ids": [
             "enspelled-cantrip-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-light-repeating-crossbow",
@@ -12658,8 +12710,10 @@
           "artwork_ids": [
             "enspelled-cantrip-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-longbow",
@@ -12668,8 +12722,10 @@
           "artwork_ids": [
             "enspelled-cantrip-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-longsword",
@@ -12678,8 +12734,10 @@
           "artwork_ids": [
             "enspelled-cantrip-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-mace",
@@ -12688,8 +12746,10 @@
           "artwork_ids": [
             "enspelled-cantrip-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-maul",
@@ -12698,8 +12758,10 @@
           "artwork_ids": [
             "enspelled-cantrip-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-morningstar",
@@ -12708,8 +12770,10 @@
           "artwork_ids": [
             "enspelled-cantrip-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-musket",
@@ -12718,8 +12782,10 @@
           "artwork_ids": [
             "enspelled-cantrip-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-pike",
@@ -12728,8 +12794,10 @@
           "artwork_ids": [
             "enspelled-cantrip-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-pistol",
@@ -12738,8 +12806,10 @@
           "artwork_ids": [
             "enspelled-cantrip-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-quarterstaff",
@@ -12748,8 +12818,10 @@
           "artwork_ids": [
             "enspelled-cantrip-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-rapier",
@@ -12758,8 +12830,10 @@
           "artwork_ids": [
             "enspelled-cantrip-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-revolver",
@@ -12768,8 +12842,10 @@
           "artwork_ids": [
             "enspelled-cantrip-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-scimitar",
@@ -12778,8 +12854,10 @@
           "artwork_ids": [
             "enspelled-cantrip-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-semiautomatic-pistol",
@@ -12788,8 +12866,10 @@
           "artwork_ids": [
             "enspelled-cantrip-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-shortbow",
@@ -12798,8 +12878,10 @@
           "artwork_ids": [
             "enspelled-cantrip-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-shortsword",
@@ -12808,8 +12890,10 @@
           "artwork_ids": [
             "enspelled-cantrip-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-shotgun",
@@ -12818,8 +12902,10 @@
           "artwork_ids": [
             "enspelled-cantrip-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-sickle",
@@ -12828,8 +12914,10 @@
           "artwork_ids": [
             "enspelled-cantrip-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-sling",
@@ -12838,8 +12926,10 @@
           "artwork_ids": [
             "enspelled-cantrip-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-spear",
@@ -12848,8 +12938,10 @@
           "artwork_ids": [
             "enspelled-cantrip-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-trident",
@@ -12858,8 +12950,10 @@
           "artwork_ids": [
             "enspelled-cantrip-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-war-pick",
@@ -12868,8 +12962,10 @@
           "artwork_ids": [
             "enspelled-cantrip-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-warhammer",
@@ -12878,8 +12974,10 @@
           "artwork_ids": [
             "enspelled-cantrip-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-whip",
@@ -12888,8 +12986,10 @@
           "artwork_ids": [
             "enspelled-cantrip-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-wooden-staff",
@@ -12898,8 +12998,10 @@
           "artwork_ids": [
             "enspelled-cantrip-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-cantrip-yklwa",
@@ -12908,14 +13010,16 @@
           "artwork_ids": [
             "enspelled-cantrip-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-cantrip-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Enspelled Weapon (Level 1)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "enspelled-level-1-antimatter-rifle",
@@ -12924,8 +13028,10 @@
           "artwork_ids": [
             "enspelled-level-1-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-automatic-rifle",
@@ -12934,8 +13040,10 @@
           "artwork_ids": [
             "enspelled-level-1-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-battleaxe",
@@ -12944,8 +13052,10 @@
           "artwork_ids": [
             "enspelled-level-1-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-blowgun",
@@ -12954,8 +13064,10 @@
           "artwork_ids": [
             "enspelled-level-1-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-club",
@@ -12964,8 +13076,10 @@
           "artwork_ids": [
             "enspelled-level-1-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-dagger",
@@ -12974,8 +13088,10 @@
           "artwork_ids": [
             "enspelled-level-1-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-dart",
@@ -12984,8 +13100,10 @@
           "artwork_ids": [
             "enspelled-level-1-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-double-bladed-scimitar",
@@ -12994,8 +13112,10 @@
           "artwork_ids": [
             "enspelled-level-1-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-flail",
@@ -13004,8 +13124,10 @@
           "artwork_ids": [
             "enspelled-level-1-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-glaive",
@@ -13014,8 +13136,10 @@
           "artwork_ids": [
             "enspelled-level-1-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-greataxe",
@@ -13024,8 +13148,10 @@
           "artwork_ids": [
             "enspelled-level-1-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-greatclub",
@@ -13034,8 +13160,10 @@
           "artwork_ids": [
             "enspelled-level-1-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-greatsword",
@@ -13044,8 +13172,10 @@
           "artwork_ids": [
             "enspelled-level-1-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-halberd",
@@ -13054,8 +13184,10 @@
           "artwork_ids": [
             "enspelled-level-1-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-hand-crossbow",
@@ -13064,8 +13196,10 @@
           "artwork_ids": [
             "enspelled-level-1-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-handaxe",
@@ -13074,8 +13208,10 @@
           "artwork_ids": [
             "enspelled-level-1-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-heavy-crossbow",
@@ -13084,8 +13220,10 @@
           "artwork_ids": [
             "enspelled-level-1-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-hooked-shortspear",
@@ -13094,8 +13232,10 @@
           "artwork_ids": [
             "enspelled-level-1-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-hoopak",
@@ -13104,8 +13244,10 @@
           "artwork_ids": [
             "enspelled-level-1-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-hunting-rifle",
@@ -13114,8 +13256,10 @@
           "artwork_ids": [
             "enspelled-level-1-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-javelin",
@@ -13124,8 +13268,10 @@
           "artwork_ids": [
             "enspelled-level-1-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-lance",
@@ -13134,8 +13280,10 @@
           "artwork_ids": [
             "enspelled-level-1-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-laser-pistol",
@@ -13144,8 +13292,10 @@
           "artwork_ids": [
             "enspelled-level-1-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-laser-rifle",
@@ -13154,8 +13304,10 @@
           "artwork_ids": [
             "enspelled-level-1-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-light-crossbow",
@@ -13164,8 +13316,10 @@
           "artwork_ids": [
             "enspelled-level-1-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-light-hammer",
@@ -13174,8 +13328,10 @@
           "artwork_ids": [
             "enspelled-level-1-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-light-repeating-crossbow",
@@ -13184,8 +13340,10 @@
           "artwork_ids": [
             "enspelled-level-1-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-longbow",
@@ -13194,8 +13352,10 @@
           "artwork_ids": [
             "enspelled-level-1-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-longsword",
@@ -13204,8 +13364,10 @@
           "artwork_ids": [
             "enspelled-level-1-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-mace",
@@ -13214,8 +13376,10 @@
           "artwork_ids": [
             "enspelled-level-1-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-maul",
@@ -13224,8 +13388,10 @@
           "artwork_ids": [
             "enspelled-level-1-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-morningstar",
@@ -13234,8 +13400,10 @@
           "artwork_ids": [
             "enspelled-level-1-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-musket",
@@ -13244,8 +13412,10 @@
           "artwork_ids": [
             "enspelled-level-1-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-pike",
@@ -13254,8 +13424,10 @@
           "artwork_ids": [
             "enspelled-level-1-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-pistol",
@@ -13264,8 +13436,10 @@
           "artwork_ids": [
             "enspelled-level-1-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-quarterstaff",
@@ -13274,8 +13448,10 @@
           "artwork_ids": [
             "enspelled-level-1-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-rapier",
@@ -13284,8 +13460,10 @@
           "artwork_ids": [
             "enspelled-level-1-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-revolver",
@@ -13294,8 +13472,10 @@
           "artwork_ids": [
             "enspelled-level-1-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-scimitar",
@@ -13304,8 +13484,10 @@
           "artwork_ids": [
             "enspelled-level-1-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-semiautomatic-pistol",
@@ -13314,8 +13496,10 @@
           "artwork_ids": [
             "enspelled-level-1-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-shortbow",
@@ -13324,8 +13508,10 @@
           "artwork_ids": [
             "enspelled-level-1-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-shortsword",
@@ -13334,8 +13520,10 @@
           "artwork_ids": [
             "enspelled-level-1-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-shotgun",
@@ -13344,8 +13532,10 @@
           "artwork_ids": [
             "enspelled-level-1-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-sickle",
@@ -13354,8 +13544,10 @@
           "artwork_ids": [
             "enspelled-level-1-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-sling",
@@ -13364,8 +13556,10 @@
           "artwork_ids": [
             "enspelled-level-1-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-spear",
@@ -13374,8 +13568,10 @@
           "artwork_ids": [
             "enspelled-level-1-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-trident",
@@ -13384,8 +13580,10 @@
           "artwork_ids": [
             "enspelled-level-1-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-war-pick",
@@ -13394,8 +13592,10 @@
           "artwork_ids": [
             "enspelled-level-1-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-warhammer",
@@ -13404,8 +13604,10 @@
           "artwork_ids": [
             "enspelled-level-1-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-whip",
@@ -13414,8 +13616,10 @@
           "artwork_ids": [
             "enspelled-level-1-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-wooden-staff",
@@ -13424,8 +13628,10 @@
           "artwork_ids": [
             "enspelled-level-1-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-1-yklwa",
@@ -13434,8 +13640,10 @@
           "artwork_ids": [
             "enspelled-level-1-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-1-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -13450,8 +13658,10 @@
           "artwork_ids": [
             "enspelled-level-2-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-automatic-rifle",
@@ -13460,8 +13670,10 @@
           "artwork_ids": [
             "enspelled-level-2-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-battleaxe",
@@ -13470,8 +13682,10 @@
           "artwork_ids": [
             "enspelled-level-2-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-blowgun",
@@ -13480,8 +13694,10 @@
           "artwork_ids": [
             "enspelled-level-2-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-club",
@@ -13490,8 +13706,10 @@
           "artwork_ids": [
             "enspelled-level-2-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-dagger",
@@ -13500,8 +13718,10 @@
           "artwork_ids": [
             "enspelled-level-2-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-dart",
@@ -13510,8 +13730,10 @@
           "artwork_ids": [
             "enspelled-level-2-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-double-bladed-scimitar",
@@ -13520,8 +13742,10 @@
           "artwork_ids": [
             "enspelled-level-2-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-flail",
@@ -13530,8 +13754,10 @@
           "artwork_ids": [
             "enspelled-level-2-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-glaive",
@@ -13540,8 +13766,10 @@
           "artwork_ids": [
             "enspelled-level-2-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-greataxe",
@@ -13550,8 +13778,10 @@
           "artwork_ids": [
             "enspelled-level-2-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-greatclub",
@@ -13560,8 +13790,10 @@
           "artwork_ids": [
             "enspelled-level-2-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-greatsword",
@@ -13570,8 +13802,10 @@
           "artwork_ids": [
             "enspelled-level-2-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-halberd",
@@ -13580,8 +13814,10 @@
           "artwork_ids": [
             "enspelled-level-2-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-hand-crossbow",
@@ -13590,8 +13826,10 @@
           "artwork_ids": [
             "enspelled-level-2-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-handaxe",
@@ -13600,8 +13838,10 @@
           "artwork_ids": [
             "enspelled-level-2-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-heavy-crossbow",
@@ -13610,8 +13850,10 @@
           "artwork_ids": [
             "enspelled-level-2-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-hooked-shortspear",
@@ -13620,8 +13862,10 @@
           "artwork_ids": [
             "enspelled-level-2-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-hoopak",
@@ -13630,8 +13874,10 @@
           "artwork_ids": [
             "enspelled-level-2-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-hunting-rifle",
@@ -13640,8 +13886,10 @@
           "artwork_ids": [
             "enspelled-level-2-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-javelin",
@@ -13650,8 +13898,10 @@
           "artwork_ids": [
             "enspelled-level-2-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-lance",
@@ -13660,8 +13910,10 @@
           "artwork_ids": [
             "enspelled-level-2-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-laser-pistol",
@@ -13670,8 +13922,10 @@
           "artwork_ids": [
             "enspelled-level-2-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-laser-rifle",
@@ -13680,8 +13934,10 @@
           "artwork_ids": [
             "enspelled-level-2-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-light-crossbow",
@@ -13700,8 +13956,10 @@
           "artwork_ids": [
             "enspelled-level-2-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-light-repeating-crossbow",
@@ -13710,8 +13968,10 @@
           "artwork_ids": [
             "enspelled-level-2-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-longbow",
@@ -13720,8 +13980,10 @@
           "artwork_ids": [
             "enspelled-level-2-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-longsword",
@@ -13730,8 +13992,10 @@
           "artwork_ids": [
             "enspelled-level-2-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-mace",
@@ -13740,8 +14004,10 @@
           "artwork_ids": [
             "enspelled-level-2-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-maul",
@@ -13750,8 +14016,10 @@
           "artwork_ids": [
             "enspelled-level-2-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-morningstar",
@@ -13760,8 +14028,10 @@
           "artwork_ids": [
             "enspelled-level-2-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-musket",
@@ -13770,8 +14040,10 @@
           "artwork_ids": [
             "enspelled-level-2-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-pike",
@@ -13780,8 +14052,10 @@
           "artwork_ids": [
             "enspelled-level-2-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-pistol",
@@ -13790,8 +14064,10 @@
           "artwork_ids": [
             "enspelled-level-2-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-quarterstaff",
@@ -13800,8 +14076,10 @@
           "artwork_ids": [
             "enspelled-level-2-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-rapier",
@@ -13810,8 +14088,10 @@
           "artwork_ids": [
             "enspelled-level-2-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-revolver",
@@ -13820,8 +14100,10 @@
           "artwork_ids": [
             "enspelled-level-2-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-scimitar",
@@ -13830,8 +14112,10 @@
           "artwork_ids": [
             "enspelled-level-2-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-semiautomatic-pistol",
@@ -13840,8 +14124,10 @@
           "artwork_ids": [
             "enspelled-level-2-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-shortbow",
@@ -13850,8 +14136,10 @@
           "artwork_ids": [
             "enspelled-level-2-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-shortsword",
@@ -13860,8 +14148,10 @@
           "artwork_ids": [
             "enspelled-level-2-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-shotgun",
@@ -13870,8 +14160,10 @@
           "artwork_ids": [
             "enspelled-level-2-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-sickle",
@@ -13880,8 +14172,10 @@
           "artwork_ids": [
             "enspelled-level-2-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-sling",
@@ -13890,8 +14184,10 @@
           "artwork_ids": [
             "enspelled-level-2-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-spear",
@@ -13900,8 +14196,10 @@
           "artwork_ids": [
             "enspelled-level-2-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-trident",
@@ -13910,8 +14208,10 @@
           "artwork_ids": [
             "enspelled-level-2-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-war-pick",
@@ -13920,8 +14220,10 @@
           "artwork_ids": [
             "enspelled-level-2-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-warhammer",
@@ -13930,8 +14232,10 @@
           "artwork_ids": [
             "enspelled-level-2-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-whip",
@@ -13940,8 +14244,10 @@
           "artwork_ids": [
             "enspelled-level-2-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-wooden-staff",
@@ -13950,8 +14256,10 @@
           "artwork_ids": [
             "enspelled-level-2-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-yklwa",
@@ -13960,14 +14268,16 @@
           "artwork_ids": [
             "enspelled-level-2-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Enspelled Weapon (Level 3)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "enspelled-level-3-antimatter-rifle",
@@ -13976,8 +14286,10 @@
           "artwork_ids": [
             "enspelled-level-3-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-automatic-rifle",
@@ -13986,8 +14298,10 @@
           "artwork_ids": [
             "enspelled-level-3-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-battleaxe",
@@ -13996,8 +14310,10 @@
           "artwork_ids": [
             "enspelled-level-3-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-blowgun",
@@ -14006,8 +14322,10 @@
           "artwork_ids": [
             "enspelled-level-3-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-club",
@@ -14016,8 +14334,10 @@
           "artwork_ids": [
             "enspelled-level-3-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-dagger",
@@ -14026,8 +14346,10 @@
           "artwork_ids": [
             "enspelled-level-3-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-dart",
@@ -14036,8 +14358,10 @@
           "artwork_ids": [
             "enspelled-level-3-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-double-bladed-scimitar",
@@ -14046,8 +14370,10 @@
           "artwork_ids": [
             "enspelled-level-3-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-flail",
@@ -14056,8 +14382,10 @@
           "artwork_ids": [
             "enspelled-level-3-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-glaive",
@@ -14066,8 +14394,10 @@
           "artwork_ids": [
             "enspelled-level-3-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-greataxe",
@@ -14076,8 +14406,10 @@
           "artwork_ids": [
             "enspelled-level-3-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-greatclub",
@@ -14086,8 +14418,10 @@
           "artwork_ids": [
             "enspelled-level-3-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-greatsword",
@@ -14096,8 +14430,10 @@
           "artwork_ids": [
             "enspelled-level-3-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-halberd",
@@ -14106,8 +14442,10 @@
           "artwork_ids": [
             "enspelled-level-3-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-hand-crossbow",
@@ -14116,8 +14454,10 @@
           "artwork_ids": [
             "enspelled-level-3-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-handaxe",
@@ -14126,8 +14466,10 @@
           "artwork_ids": [
             "enspelled-level-3-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-heavy-crossbow",
@@ -14136,8 +14478,10 @@
           "artwork_ids": [
             "enspelled-level-3-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-hooked-shortspear",
@@ -14146,8 +14490,10 @@
           "artwork_ids": [
             "enspelled-level-3-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-hoopak",
@@ -14156,8 +14502,10 @@
           "artwork_ids": [
             "enspelled-level-3-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-hunting-rifle",
@@ -14166,8 +14514,10 @@
           "artwork_ids": [
             "enspelled-level-3-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-javelin",
@@ -14176,8 +14526,10 @@
           "artwork_ids": [
             "enspelled-level-3-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-lance",
@@ -14186,8 +14538,10 @@
           "artwork_ids": [
             "enspelled-level-3-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-laser-pistol",
@@ -14196,8 +14550,10 @@
           "artwork_ids": [
             "enspelled-level-3-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-laser-rifle",
@@ -14206,8 +14562,10 @@
           "artwork_ids": [
             "enspelled-level-3-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-light-crossbow",
@@ -14216,8 +14574,10 @@
           "artwork_ids": [
             "enspelled-level-3-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-light-hammer",
@@ -14226,8 +14586,10 @@
           "artwork_ids": [
             "enspelled-level-3-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-light-repeating-crossbow",
@@ -14236,8 +14598,10 @@
           "artwork_ids": [
             "enspelled-level-3-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-longbow",
@@ -14246,8 +14610,10 @@
           "artwork_ids": [
             "enspelled-level-3-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-longsword",
@@ -14256,8 +14622,10 @@
           "artwork_ids": [
             "enspelled-level-3-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-mace",
@@ -14266,8 +14634,10 @@
           "artwork_ids": [
             "enspelled-level-3-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-maul",
@@ -14276,8 +14646,10 @@
           "artwork_ids": [
             "enspelled-level-3-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-morningstar",
@@ -14286,8 +14658,10 @@
           "artwork_ids": [
             "enspelled-level-3-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-musket",
@@ -14296,8 +14670,10 @@
           "artwork_ids": [
             "enspelled-level-3-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-pike",
@@ -14306,8 +14682,10 @@
           "artwork_ids": [
             "enspelled-level-3-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-pistol",
@@ -14316,8 +14694,10 @@
           "artwork_ids": [
             "enspelled-level-3-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-quarterstaff",
@@ -14326,8 +14706,10 @@
           "artwork_ids": [
             "enspelled-level-3-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-rapier",
@@ -14336,8 +14718,10 @@
           "artwork_ids": [
             "enspelled-level-3-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-revolver",
@@ -14346,8 +14730,10 @@
           "artwork_ids": [
             "enspelled-level-3-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-scimitar",
@@ -14356,8 +14742,10 @@
           "artwork_ids": [
             "enspelled-level-3-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-semiautomatic-pistol",
@@ -14366,8 +14754,10 @@
           "artwork_ids": [
             "enspelled-level-3-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-shortbow",
@@ -14376,8 +14766,10 @@
           "artwork_ids": [
             "enspelled-level-3-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-shortsword",
@@ -14386,8 +14778,10 @@
           "artwork_ids": [
             "enspelled-level-3-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-shotgun",
@@ -14396,8 +14790,10 @@
           "artwork_ids": [
             "enspelled-level-3-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-sickle",
@@ -14406,8 +14802,10 @@
           "artwork_ids": [
             "enspelled-level-3-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-sling",
@@ -14416,8 +14814,10 @@
           "artwork_ids": [
             "enspelled-level-3-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-spear",
@@ -14426,8 +14826,10 @@
           "artwork_ids": [
             "enspelled-level-3-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-trident",
@@ -14436,8 +14838,10 @@
           "artwork_ids": [
             "enspelled-level-3-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-war-pick",
@@ -14446,8 +14850,10 @@
           "artwork_ids": [
             "enspelled-level-3-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-warhammer",
@@ -14456,8 +14862,10 @@
           "artwork_ids": [
             "enspelled-level-3-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-whip",
@@ -14466,8 +14874,10 @@
           "artwork_ids": [
             "enspelled-level-3-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-wooden-staff",
@@ -14476,8 +14886,10 @@
           "artwork_ids": [
             "enspelled-level-3-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-3-yklwa",
@@ -14486,14 +14898,16 @@
           "artwork_ids": [
             "enspelled-level-3-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-3-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Enspelled Weapon (Level 4)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "enspelled-level-4-antimatter-rifle",
@@ -14502,8 +14916,10 @@
           "artwork_ids": [
             "enspelled-level-4-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-automatic-rifle",
@@ -14512,8 +14928,10 @@
           "artwork_ids": [
             "enspelled-level-4-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-battleaxe",
@@ -14522,8 +14940,10 @@
           "artwork_ids": [
             "enspelled-level-4-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-blowgun",
@@ -14532,8 +14952,10 @@
           "artwork_ids": [
             "enspelled-level-4-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-club",
@@ -14542,8 +14964,10 @@
           "artwork_ids": [
             "enspelled-level-4-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-dagger",
@@ -14552,8 +14976,10 @@
           "artwork_ids": [
             "enspelled-level-4-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-dart",
@@ -14562,8 +14988,10 @@
           "artwork_ids": [
             "enspelled-level-4-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-double-bladed-scimitar",
@@ -14572,8 +15000,10 @@
           "artwork_ids": [
             "enspelled-level-4-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-flail",
@@ -14582,8 +15012,10 @@
           "artwork_ids": [
             "enspelled-level-4-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-glaive",
@@ -14592,8 +15024,10 @@
           "artwork_ids": [
             "enspelled-level-4-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-greataxe",
@@ -14602,8 +15036,10 @@
           "artwork_ids": [
             "enspelled-level-4-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-greatclub",
@@ -14612,8 +15048,10 @@
           "artwork_ids": [
             "enspelled-level-4-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-greatsword",
@@ -14622,8 +15060,10 @@
           "artwork_ids": [
             "enspelled-level-4-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-halberd",
@@ -14632,8 +15072,10 @@
           "artwork_ids": [
             "enspelled-level-4-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-hand-crossbow",
@@ -14642,8 +15084,10 @@
           "artwork_ids": [
             "enspelled-level-4-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-handaxe",
@@ -14652,8 +15096,10 @@
           "artwork_ids": [
             "enspelled-level-4-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-heavy-crossbow",
@@ -14662,8 +15108,10 @@
           "artwork_ids": [
             "enspelled-level-4-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-hooked-shortspear",
@@ -14672,8 +15120,10 @@
           "artwork_ids": [
             "enspelled-level-4-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-hoopak",
@@ -14682,8 +15132,10 @@
           "artwork_ids": [
             "enspelled-level-4-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-hunting-rifle",
@@ -14692,8 +15144,10 @@
           "artwork_ids": [
             "enspelled-level-4-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-javelin",
@@ -14702,8 +15156,10 @@
           "artwork_ids": [
             "enspelled-level-4-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-lance",
@@ -14712,8 +15168,10 @@
           "artwork_ids": [
             "enspelled-level-4-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-laser-pistol",
@@ -14722,8 +15180,10 @@
           "artwork_ids": [
             "enspelled-level-4-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-laser-rifle",
@@ -14732,8 +15192,10 @@
           "artwork_ids": [
             "enspelled-level-4-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-light-crossbow",
@@ -14742,8 +15204,10 @@
           "artwork_ids": [
             "enspelled-level-4-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-light-hammer",
@@ -14752,8 +15216,10 @@
           "artwork_ids": [
             "enspelled-level-4-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-light-repeating-crossbow",
@@ -14762,8 +15228,10 @@
           "artwork_ids": [
             "enspelled-level-4-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-longbow",
@@ -14772,8 +15240,10 @@
           "artwork_ids": [
             "enspelled-level-4-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-longsword",
@@ -14782,8 +15252,10 @@
           "artwork_ids": [
             "enspelled-level-4-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-mace",
@@ -14792,8 +15264,10 @@
           "artwork_ids": [
             "enspelled-level-4-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-maul",
@@ -14802,8 +15276,10 @@
           "artwork_ids": [
             "enspelled-level-4-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-morningstar",
@@ -14812,8 +15288,10 @@
           "artwork_ids": [
             "enspelled-level-4-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-musket",
@@ -14822,8 +15300,10 @@
           "artwork_ids": [
             "enspelled-level-4-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-pike",
@@ -14832,8 +15312,10 @@
           "artwork_ids": [
             "enspelled-level-4-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-pistol",
@@ -14842,8 +15324,10 @@
           "artwork_ids": [
             "enspelled-level-4-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-quarterstaff",
@@ -14852,8 +15336,10 @@
           "artwork_ids": [
             "enspelled-level-4-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-rapier",
@@ -14862,8 +15348,10 @@
           "artwork_ids": [
             "enspelled-level-4-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-revolver",
@@ -14872,8 +15360,10 @@
           "artwork_ids": [
             "enspelled-level-4-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-scimitar",
@@ -14882,8 +15372,10 @@
           "artwork_ids": [
             "enspelled-level-4-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-semiautomatic-pistol",
@@ -14892,8 +15384,10 @@
           "artwork_ids": [
             "enspelled-level-4-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-shortbow",
@@ -14902,8 +15396,10 @@
           "artwork_ids": [
             "enspelled-level-4-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-shortsword",
@@ -14912,8 +15408,10 @@
           "artwork_ids": [
             "enspelled-level-4-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-shotgun",
@@ -14922,8 +15420,10 @@
           "artwork_ids": [
             "enspelled-level-4-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-sickle",
@@ -14932,8 +15432,10 @@
           "artwork_ids": [
             "enspelled-level-4-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-sling",
@@ -14942,8 +15444,10 @@
           "artwork_ids": [
             "enspelled-level-4-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-spear",
@@ -14952,8 +15456,10 @@
           "artwork_ids": [
             "enspelled-level-4-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-trident",
@@ -14962,8 +15468,10 @@
           "artwork_ids": [
             "enspelled-level-4-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-war-pick",
@@ -14972,8 +15480,10 @@
           "artwork_ids": [
             "enspelled-level-4-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-warhammer",
@@ -14982,8 +15492,10 @@
           "artwork_ids": [
             "enspelled-level-4-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-whip",
@@ -14992,8 +15504,10 @@
           "artwork_ids": [
             "enspelled-level-4-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-wooden-staff",
@@ -15002,8 +15516,10 @@
           "artwork_ids": [
             "enspelled-level-4-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-4-yklwa",
@@ -15012,8 +15528,10 @@
           "artwork_ids": [
             "enspelled-level-4-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-4-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -70589,8 +71107,10 @@
           "name": "Arma com truque vinculado (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-antimatter-rifle"
+      ]
     },
     {
       "id": "e7c28e61acbc04b5",
@@ -70604,8 +71124,10 @@
           "name": "Arma com truque vinculado (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-automatic-rifle"
+      ]
     },
     {
       "id": "0745e5a75effc56c",
@@ -70619,8 +71141,10 @@
           "name": "Arma com truque vinculado (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-battleaxe"
+      ]
     },
     {
       "id": "16a58df53d94a364",
@@ -70634,8 +71158,10 @@
           "name": "Arma com truque vinculado (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-blowgun"
+      ]
     },
     {
       "id": "eb17ace134cfd432",
@@ -70649,8 +71175,10 @@
           "name": "Arma com truque vinculado (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-club"
+      ]
     },
     {
       "id": "38270e2106eb8772",
@@ -70664,8 +71192,10 @@
           "name": "Arma com truque vinculado (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-dagger"
+      ]
     },
     {
       "id": "d5b68da9bfc4a19f",
@@ -70679,8 +71209,10 @@
           "name": "Arma com truque vinculado (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-dart"
+      ]
     },
     {
       "id": "d1f50b3c3f4f9e31",
@@ -70694,8 +71226,10 @@
           "name": "Arma com truque vinculado (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-double-bladed-scimitar"
+      ]
     },
     {
       "id": "e6d2447fbd262a3b",
@@ -70709,8 +71243,10 @@
           "name": "Arma com truque vinculado (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-flail"
+      ]
     },
     {
       "id": "d4f7ef8d46618246",
@@ -70724,8 +71260,10 @@
           "name": "Arma com truque vinculado (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-glaive"
+      ]
     },
     {
       "id": "416df8961e2b2ff2",
@@ -70739,8 +71277,10 @@
           "name": "Arma com truque vinculado (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-greataxe"
+      ]
     },
     {
       "id": "2670b9160a401acc",
@@ -70754,8 +71294,10 @@
           "name": "Arma com truque vinculado (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-greatclub"
+      ]
     },
     {
       "id": "8c6137a214eaada4",
@@ -70769,8 +71311,10 @@
           "name": "Arma com truque vinculado (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-greatsword"
+      ]
     },
     {
       "id": "ff8110ab523625cc",
@@ -70784,8 +71328,10 @@
           "name": "Arma com truque vinculado (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-halberd"
+      ]
     },
     {
       "id": "72a174ef807dfcdf",
@@ -70799,8 +71345,10 @@
           "name": "Arma com truque vinculado (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-hand-crossbow"
+      ]
     },
     {
       "id": "db7a97c59f5e5a21",
@@ -70814,8 +71362,10 @@
           "name": "Arma com truque vinculado (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-handaxe"
+      ]
     },
     {
       "id": "eba7dd33e844b12f",
@@ -70829,8 +71379,10 @@
           "name": "Arma com truque vinculado (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-heavy-crossbow"
+      ]
     },
     {
       "id": "2f0ca216ca4fc76f",
@@ -70844,8 +71396,10 @@
           "name": "Arma com truque vinculado (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-hooked-shortspear"
+      ]
     },
     {
       "id": "7858444081b11db1",
@@ -70859,8 +71413,10 @@
           "name": "Arma com truque vinculado (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-hoopak"
+      ]
     },
     {
       "id": "d4f4e553be58715f",
@@ -70874,8 +71430,10 @@
           "name": "Arma com truque vinculado (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-hunting-rifle"
+      ]
     },
     {
       "id": "8ad5c8cf563bb804",
@@ -70889,8 +71447,10 @@
           "name": "Arma com truque vinculado (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-javelin"
+      ]
     },
     {
       "id": "36f0324a06a738c5",
@@ -70904,8 +71464,10 @@
           "name": "Arma com truque vinculado (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-lance"
+      ]
     },
     {
       "id": "8248a5705af37782",
@@ -70919,8 +71481,10 @@
           "name": "Arma com truque vinculado (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-laser-pistol"
+      ]
     },
     {
       "id": "2a5cc02896a8ed39",
@@ -70934,8 +71498,10 @@
           "name": "Arma com truque vinculado (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-laser-rifle"
+      ]
     },
     {
       "id": "845b1c30ee7704e8",
@@ -70949,8 +71515,10 @@
           "name": "Arma com truque vinculado (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-light-crossbow"
+      ]
     },
     {
       "id": "da396daecf232a58",
@@ -70964,8 +71532,10 @@
           "name": "Arma com truque vinculado (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-light-hammer"
+      ]
     },
     {
       "id": "37514bb7ceb83e41",
@@ -70979,8 +71549,10 @@
           "name": "Arma com truque vinculado (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-light-repeating-crossbow"
+      ]
     },
     {
       "id": "0409bededd0e6073",
@@ -70994,8 +71566,10 @@
           "name": "Arma com truque vinculado (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-longbow"
+      ]
     },
     {
       "id": "89e38b65363b17a0",
@@ -71009,8 +71583,10 @@
           "name": "Arma com truque vinculado (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-longsword"
+      ]
     },
     {
       "id": "dbb06d410426b216",
@@ -71024,8 +71600,10 @@
           "name": "Arma com truque vinculado (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-mace"
+      ]
     },
     {
       "id": "5c5d3b809130d7a2",
@@ -71039,8 +71617,10 @@
           "name": "Arma com truque vinculado (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-maul"
+      ]
     },
     {
       "id": "d7bcfa7062b24f85",
@@ -71054,8 +71634,10 @@
           "name": "Arma com truque vinculado (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-morningstar"
+      ]
     },
     {
       "id": "8359c7e312bcff4c",
@@ -71069,8 +71651,10 @@
           "name": "Arma com truque vinculado (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-musket"
+      ]
     },
     {
       "id": "31a0a681b0a13b0e",
@@ -71084,8 +71668,10 @@
           "name": "Arma com truque vinculado (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-pike"
+      ]
     },
     {
       "id": "91ef2273e4f3013a",
@@ -71099,8 +71685,10 @@
           "name": "Arma com truque vinculado (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-pistol"
+      ]
     },
     {
       "id": "7bd3c81af5d4b325",
@@ -71114,8 +71702,10 @@
           "name": "Arma com truque vinculado (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-quarterstaff"
+      ]
     },
     {
       "id": "e0424dcfdc9ecf86",
@@ -71129,8 +71719,10 @@
           "name": "Arma com truque vinculado (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-rapier"
+      ]
     },
     {
       "id": "dd4456f08ef30cff",
@@ -71144,8 +71736,10 @@
           "name": "Arma com truque vinculado (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-revolver"
+      ]
     },
     {
       "id": "f5cbd3c37e2e0756",
@@ -71159,8 +71753,10 @@
           "name": "Arma com truque vinculado (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-scimitar"
+      ]
     },
     {
       "id": "6f8de63707eb4d0f",
@@ -71174,8 +71770,10 @@
           "name": "Arma com truque vinculado (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-semiautomatic-pistol"
+      ]
     },
     {
       "id": "39bdd3d379a0a311",
@@ -71189,8 +71787,10 @@
           "name": "Arma com truque vinculado (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-shortbow"
+      ]
     },
     {
       "id": "2343ef59016a8af4",
@@ -71204,8 +71804,10 @@
           "name": "Arma com truque vinculado (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-shortsword"
+      ]
     },
     {
       "id": "a600755e9940c0a2",
@@ -71219,8 +71821,10 @@
           "name": "Arma com truque vinculado (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-shotgun"
+      ]
     },
     {
       "id": "5688d4b8285a8460",
@@ -71234,8 +71838,10 @@
           "name": "Arma com truque vinculado (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-sickle"
+      ]
     },
     {
       "id": "df1f5d37fb2898f1",
@@ -71249,8 +71855,10 @@
           "name": "Arma com truque vinculado (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-sling"
+      ]
     },
     {
       "id": "b4fd105686cdb945",
@@ -71264,8 +71872,10 @@
           "name": "Arma com truque vinculado (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-spear"
+      ]
     },
     {
       "id": "d419abaab6e9e99b",
@@ -71279,8 +71889,10 @@
           "name": "Arma com truque vinculado (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-trident"
+      ]
     },
     {
       "id": "b95f2b3ce8f22e1c",
@@ -71294,8 +71906,10 @@
           "name": "Arma com truque vinculado (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-war-pick"
+      ]
     },
     {
       "id": "009b735460393dd0",
@@ -71309,8 +71923,10 @@
           "name": "Arma com truque vinculado (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-warhammer"
+      ]
     },
     {
       "id": "c23b007b480b8e32",
@@ -71324,8 +71940,10 @@
           "name": "Arma com truque vinculado (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-whip"
+      ]
     },
     {
       "id": "e81b73c93e6d795f",
@@ -71339,8 +71957,10 @@
           "name": "Arma com truque vinculado (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-wooden-staff"
+      ]
     },
     {
       "id": "8cc7131b6cb34508",
@@ -71354,8 +71974,10 @@
           "name": "Arma com truque vinculado (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-cantrip-yklwa"
+      ]
     },
     {
       "id": "cf82dcdcdea1426a",
@@ -71369,8 +71991,10 @@
           "name": "Arma com magia vinculada de nível 1 (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-antimatter-rifle"
+      ]
     },
     {
       "id": "75ef8b5c5b560ab6",
@@ -71384,8 +72008,10 @@
           "name": "Arma com magia vinculada de nível 1 (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-automatic-rifle"
+      ]
     },
     {
       "id": "4ca6fb0c452999ea",
@@ -71399,8 +72025,10 @@
           "name": "Arma com magia vinculada de nível 1 (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-battleaxe"
+      ]
     },
     {
       "id": "f30947519f8cbc40",
@@ -71414,8 +72042,10 @@
           "name": "Arma com magia vinculada de nível 1 (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-blowgun"
+      ]
     },
     {
       "id": "529fe3e62375cbd5",
@@ -71429,8 +72059,10 @@
           "name": "Arma com magia vinculada de nível 1 (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-club"
+      ]
     },
     {
       "id": "dd39b2130b251b9b",
@@ -71444,8 +72076,10 @@
           "name": "Arma com magia vinculada de nível 1 (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-dagger"
+      ]
     },
     {
       "id": "c90864a15d58217c",
@@ -71459,8 +72093,10 @@
           "name": "Arma com magia vinculada de nível 1 (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-dart"
+      ]
     },
     {
       "id": "fdfcf9939c8b41b8",
@@ -71474,8 +72110,10 @@
           "name": "Arma com magia vinculada de nível 1 (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-double-bladed-scimitar"
+      ]
     },
     {
       "id": "5b11570e0403ddda",
@@ -71489,8 +72127,10 @@
           "name": "Arma com magia vinculada de nível 1 (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-flail"
+      ]
     },
     {
       "id": "6e3ce3c15e56442b",
@@ -71504,8 +72144,10 @@
           "name": "Arma com magia vinculada de nível 1 (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-glaive"
+      ]
     },
     {
       "id": "3f8abea5153f452e",
@@ -71519,8 +72161,10 @@
           "name": "Arma com magia vinculada de nível 1 (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-greataxe"
+      ]
     },
     {
       "id": "1b0c2fe375db6f77",
@@ -71534,8 +72178,10 @@
           "name": "Arma com magia vinculada de nível 1 (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-greatclub"
+      ]
     },
     {
       "id": "a46bd2e444e51424",
@@ -71549,8 +72195,10 @@
           "name": "Arma com magia vinculada de nível 1 (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-greatsword"
+      ]
     },
     {
       "id": "ef895b633c22c05c",
@@ -71564,8 +72212,10 @@
           "name": "Arma com magia vinculada de nível 1 (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-halberd"
+      ]
     },
     {
       "id": "a3daccc805017d4e",
@@ -71579,8 +72229,10 @@
           "name": "Arma com magia vinculada de nível 1 (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-hand-crossbow"
+      ]
     },
     {
       "id": "161fb22b372c7029",
@@ -71594,8 +72246,10 @@
           "name": "Arma com magia vinculada de nível 1 (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-handaxe"
+      ]
     },
     {
       "id": "9f79ee3466e11cac",
@@ -71609,8 +72263,10 @@
           "name": "Arma com magia vinculada de nível 1 (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-heavy-crossbow"
+      ]
     },
     {
       "id": "19d8e0b1b7d82bd1",
@@ -71624,8 +72280,10 @@
           "name": "Arma com magia vinculada de nível 1 (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-hooked-shortspear"
+      ]
     },
     {
       "id": "cc70c3d79fed7554",
@@ -71639,8 +72297,10 @@
           "name": "Arma com magia vinculada de nível 1 (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-hoopak"
+      ]
     },
     {
       "id": "2ae88acef37bd4a4",
@@ -71654,8 +72314,10 @@
           "name": "Arma com magia vinculada de nível 1 (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-hunting-rifle"
+      ]
     },
     {
       "id": "63fe76f18f36c2ed",
@@ -71669,8 +72331,10 @@
           "name": "Arma com magia vinculada de nível 1 (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-javelin"
+      ]
     },
     {
       "id": "1425bc75e4a20d24",
@@ -71684,8 +72348,10 @@
           "name": "Arma com magia vinculada de nível 1 (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-lance"
+      ]
     },
     {
       "id": "a50032cef58319fd",
@@ -71699,8 +72365,10 @@
           "name": "Arma com magia vinculada de nível 1 (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-laser-pistol"
+      ]
     },
     {
       "id": "af4d0e39477281d0",
@@ -71714,8 +72382,10 @@
           "name": "Arma com magia vinculada de nível 1 (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-laser-rifle"
+      ]
     },
     {
       "id": "fc4d7090deea4ddd",
@@ -71729,8 +72399,10 @@
           "name": "Arma com magia vinculada de nível 1 (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-light-crossbow"
+      ]
     },
     {
       "id": "5b1d6322cc9e3917",
@@ -71744,8 +72416,10 @@
           "name": "Arma com magia vinculada de nível 1 (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-light-hammer"
+      ]
     },
     {
       "id": "6a5ab90f8c2bf454",
@@ -71759,8 +72433,10 @@
           "name": "Arma com magia vinculada de nível 1 (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-light-repeating-crossbow"
+      ]
     },
     {
       "id": "43252b5d28593a04",
@@ -71774,8 +72450,10 @@
           "name": "Arma com magia vinculada de nível 1 (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-longbow"
+      ]
     },
     {
       "id": "e891f1dc260a71f2",
@@ -71789,8 +72467,10 @@
           "name": "Arma com magia vinculada de nível 1 (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-longsword"
+      ]
     },
     {
       "id": "a0d2ee06d1a0fe02",
@@ -71804,8 +72484,10 @@
           "name": "Arma com magia vinculada de nível 1 (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-mace"
+      ]
     },
     {
       "id": "275a52067f252d39",
@@ -71819,8 +72501,10 @@
           "name": "Arma com magia vinculada de nível 1 (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-maul"
+      ]
     },
     {
       "id": "220bb8baae281810",
@@ -71834,8 +72518,10 @@
           "name": "Arma com magia vinculada de nível 1 (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-morningstar"
+      ]
     },
     {
       "id": "a60020523ef11444",
@@ -71849,8 +72535,10 @@
           "name": "Arma com magia vinculada de nível 1 (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-musket"
+      ]
     },
     {
       "id": "1f3439f2a58711dc",
@@ -71864,8 +72552,10 @@
           "name": "Arma com magia vinculada de nível 1 (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-pike"
+      ]
     },
     {
       "id": "cae12a13d6175436",
@@ -71879,8 +72569,10 @@
           "name": "Arma com magia vinculada de nível 1 (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-pistol"
+      ]
     },
     {
       "id": "c9f6ee0a1a1cdcbf",
@@ -71894,8 +72586,10 @@
           "name": "Arma com magia vinculada de nível 1 (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-quarterstaff"
+      ]
     },
     {
       "id": "f485ac3887708ec0",
@@ -71909,8 +72603,10 @@
           "name": "Arma com magia vinculada de nível 1 (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-rapier"
+      ]
     },
     {
       "id": "816933237ae810ac",
@@ -71924,8 +72620,10 @@
           "name": "Arma com magia vinculada de nível 1 (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-revolver"
+      ]
     },
     {
       "id": "7c51982ae0e7a304",
@@ -71939,8 +72637,10 @@
           "name": "Arma com magia vinculada de nível 1 (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-scimitar"
+      ]
     },
     {
       "id": "bc30e0a2fe0bbb87",
@@ -71954,8 +72654,10 @@
           "name": "Arma com magia vinculada de nível 1 (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-semiautomatic-pistol"
+      ]
     },
     {
       "id": "f154293dc42f2762",
@@ -71969,8 +72671,10 @@
           "name": "Arma com magia vinculada de nível 1 (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-shortbow"
+      ]
     },
     {
       "id": "35dd742274163448",
@@ -71984,8 +72688,10 @@
           "name": "Arma com magia vinculada de nível 1 (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-shortsword"
+      ]
     },
     {
       "id": "bdc0c8e164d2cdc8",
@@ -71999,8 +72705,10 @@
           "name": "Arma com magia vinculada de nível 1 (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-shotgun"
+      ]
     },
     {
       "id": "986b321a06ae30c7",
@@ -72014,8 +72722,10 @@
           "name": "Arma com magia vinculada de nível 1 (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-sickle"
+      ]
     },
     {
       "id": "b4af4ac9f5158654",
@@ -72029,8 +72739,10 @@
           "name": "Arma com magia vinculada de nível 1 (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-sling"
+      ]
     },
     {
       "id": "505066d9bdec82e7",
@@ -72044,8 +72756,10 @@
           "name": "Arma com magia vinculada de nível 1 (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-spear"
+      ]
     },
     {
       "id": "6dafe0192ef69c86",
@@ -72059,8 +72773,10 @@
           "name": "Arma com magia vinculada de nível 1 (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-trident"
+      ]
     },
     {
       "id": "6b3bca7368baf79d",
@@ -72074,8 +72790,10 @@
           "name": "Arma com magia vinculada de nível 1 (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-war-pick"
+      ]
     },
     {
       "id": "1a149ac541ebfbf4",
@@ -72089,8 +72807,10 @@
           "name": "Arma com magia vinculada de nível 1 (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-warhammer"
+      ]
     },
     {
       "id": "fcee6f49670fd2b9",
@@ -72104,8 +72824,10 @@
           "name": "Arma com magia vinculada de nível 1 (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-whip"
+      ]
     },
     {
       "id": "3cdbf0eb78a9461d",
@@ -72119,8 +72841,10 @@
           "name": "Arma com magia vinculada de nível 1 (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-wooden-staff"
+      ]
     },
     {
       "id": "59f94f8a26a71ac7",
@@ -72134,8 +72858,10 @@
           "name": "Arma com magia vinculada de nível 1 (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-1-yklwa"
+      ]
     },
     {
       "id": "b0b498a382e6c4e2",
@@ -72149,8 +72875,10 @@
           "name": "Arma com magia vinculada de nível 2 (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-antimatter-rifle"
+      ]
     },
     {
       "id": "2a3d592726072a5d",
@@ -72164,8 +72892,10 @@
           "name": "Arma com magia vinculada de nível 2 (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-automatic-rifle"
+      ]
     },
     {
       "id": "7bd98fca81c379bd",
@@ -72179,8 +72909,10 @@
           "name": "Arma com magia vinculada de nível 2 (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-battleaxe"
+      ]
     },
     {
       "id": "542a540c2973dcab",
@@ -72194,8 +72926,10 @@
           "name": "Arma com magia vinculada de nível 2 (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-blowgun"
+      ]
     },
     {
       "id": "7e1a1f76677c3fdb",
@@ -72209,8 +72943,10 @@
           "name": "Arma com magia vinculada de nível 2 (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-club"
+      ]
     },
     {
       "id": "871aa2c0974f456b",
@@ -72224,8 +72960,10 @@
           "name": "Arma com magia vinculada de nível 2 (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-dagger"
+      ]
     },
     {
       "id": "bde28a498985cef6",
@@ -72239,8 +72977,10 @@
           "name": "Arma com magia vinculada de nível 2 (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-dart"
+      ]
     },
     {
       "id": "51b13ae0e3d5a775",
@@ -72254,8 +72994,10 @@
           "name": "Arma com magia vinculada de nível 2 (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-double-bladed-scimitar"
+      ]
     },
     {
       "id": "f522b004d4fd7c79",
@@ -72269,8 +73011,10 @@
           "name": "Arma com magia vinculada de nível 2 (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-flail"
+      ]
     },
     {
       "id": "d296c81a789c8ba8",
@@ -72284,8 +73028,10 @@
           "name": "Arma com magia vinculada de nível 2 (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-glaive"
+      ]
     },
     {
       "id": "3eba74db8505f887",
@@ -72299,8 +73045,10 @@
           "name": "Arma com magia vinculada de nível 2 (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-greataxe"
+      ]
     },
     {
       "id": "78d64268892c22a1",
@@ -72314,8 +73062,10 @@
           "name": "Arma com magia vinculada de nível 2 (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-greatclub"
+      ]
     },
     {
       "id": "fac880f930c21838",
@@ -72329,8 +73079,10 @@
           "name": "Arma com magia vinculada de nível 2 (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-greatsword"
+      ]
     },
     {
       "id": "67a6b96df18ace7f",
@@ -72344,8 +73096,10 @@
           "name": "Arma com magia vinculada de nível 2 (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-halberd"
+      ]
     },
     {
       "id": "aa01041e299695e7",
@@ -72359,8 +73113,10 @@
           "name": "Arma com magia vinculada de nível 2 (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-hand-crossbow"
+      ]
     },
     {
       "id": "3d82ae070d3a8db2",
@@ -72374,8 +73130,10 @@
           "name": "Arma com magia vinculada de nível 2 (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-handaxe"
+      ]
     },
     {
       "id": "9b1d604cd01fd86f",
@@ -72389,8 +73147,10 @@
           "name": "Arma com magia vinculada de nível 2 (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-heavy-crossbow"
+      ]
     },
     {
       "id": "1127d15d61071eb0",
@@ -72404,8 +73164,10 @@
           "name": "Arma com magia vinculada de nível 2 (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-hooked-shortspear"
+      ]
     },
     {
       "id": "681d88f45fdac5c3",
@@ -72419,8 +73181,10 @@
           "name": "Arma com magia vinculada de nível 2 (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-hoopak"
+      ]
     },
     {
       "id": "e6e9d4277faacd85",
@@ -72434,8 +73198,10 @@
           "name": "Arma com magia vinculada de nível 2 (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-hunting-rifle"
+      ]
     },
     {
       "id": "de064ca6e2f4535a",
@@ -72449,8 +73215,10 @@
           "name": "Arma com magia vinculada de nível 2 (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-javelin"
+      ]
     },
     {
       "id": "a775ab7e5390d1c4",
@@ -72464,8 +73232,10 @@
           "name": "Arma com magia vinculada de nível 2 (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-lance"
+      ]
     },
     {
       "id": "c21676a93a1f4591",
@@ -72479,8 +73249,10 @@
           "name": "Arma com magia vinculada de nível 2 (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-laser-pistol"
+      ]
     },
     {
       "id": "5a50f71c498a5e30",
@@ -72494,8 +73266,10 @@
           "name": "Arma com magia vinculada de nível 2 (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-laser-rifle"
+      ]
     },
     {
       "id": "9ab709af91aa74c7",
@@ -72524,8 +73298,10 @@
           "name": "Arma com magia vinculada de nível 2 (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-light-hammer"
+      ]
     },
     {
       "id": "c26de3de36bf29bb",
@@ -72539,8 +73315,10 @@
           "name": "Arma com magia vinculada de nível 2 (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-light-repeating-crossbow"
+      ]
     },
     {
       "id": "3e7f1224460c17e6",
@@ -72554,8 +73332,10 @@
           "name": "Arma com magia vinculada de nível 2 (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-longbow"
+      ]
     },
     {
       "id": "7909a92ab0cb69ec",
@@ -72569,8 +73349,10 @@
           "name": "Arma com magia vinculada de nível 2 (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-longsword"
+      ]
     },
     {
       "id": "b7dc96cb95cb4375",
@@ -72584,8 +73366,10 @@
           "name": "Arma com magia vinculada de nível 2 (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-mace"
+      ]
     },
     {
       "id": "6b24ca24ca29508d",
@@ -72599,8 +73383,10 @@
           "name": "Arma com magia vinculada de nível 2 (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-maul"
+      ]
     },
     {
       "id": "e9e8577078ab0fa7",
@@ -72614,8 +73400,10 @@
           "name": "Arma com magia vinculada de nível 2 (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-morningstar"
+      ]
     },
     {
       "id": "7244db95b89d5773",
@@ -72629,8 +73417,10 @@
           "name": "Arma com magia vinculada de nível 2 (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-musket"
+      ]
     },
     {
       "id": "8d08f751ab74892e",
@@ -72644,8 +73434,10 @@
           "name": "Arma com magia vinculada de nível 2 (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-pike"
+      ]
     },
     {
       "id": "0f07e428be9ed88f",
@@ -72659,8 +73451,10 @@
           "name": "Arma com magia vinculada de nível 2 (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-pistol"
+      ]
     },
     {
       "id": "863f8bf2f1ba950f",
@@ -72674,8 +73468,10 @@
           "name": "Arma com magia vinculada de nível 2 (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-quarterstaff"
+      ]
     },
     {
       "id": "839e52ff11d4a258",
@@ -72689,8 +73485,10 @@
           "name": "Arma com magia vinculada de nível 2 (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-rapier"
+      ]
     },
     {
       "id": "884f74a99391bd7a",
@@ -72704,8 +73502,10 @@
           "name": "Arma com magia vinculada de nível 2 (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-revolver"
+      ]
     },
     {
       "id": "6a5840328c98f83c",
@@ -72719,8 +73519,10 @@
           "name": "Arma com magia vinculada de nível 2 (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-scimitar"
+      ]
     },
     {
       "id": "adecb4087acd68e3",
@@ -72734,8 +73536,10 @@
           "name": "Arma com magia vinculada de nível 2 (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-semiautomatic-pistol"
+      ]
     },
     {
       "id": "b6b43d8c1b6eef11",
@@ -72749,8 +73553,10 @@
           "name": "Arma com magia vinculada de nível 2 (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-shortbow"
+      ]
     },
     {
       "id": "5a153ac04b6c8f5e",
@@ -72764,8 +73570,10 @@
           "name": "Arma com magia vinculada de nível 2 (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-shortsword"
+      ]
     },
     {
       "id": "19557b18473ed87f",
@@ -72779,8 +73587,10 @@
           "name": "Arma com magia vinculada de nível 2 (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-shotgun"
+      ]
     },
     {
       "id": "ad0731d7d3bfcaf2",
@@ -72794,8 +73604,10 @@
           "name": "Arma com magia vinculada de nível 2 (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-sickle"
+      ]
     },
     {
       "id": "442e4f71c65deb80",
@@ -72809,8 +73621,10 @@
           "name": "Arma com magia vinculada de nível 2 (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-sling"
+      ]
     },
     {
       "id": "cd784cb64db22472",
@@ -72824,8 +73638,10 @@
           "name": "Arma com magia vinculada de nível 2 (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-spear"
+      ]
     },
     {
       "id": "d63d49a2a4eb2183",
@@ -72839,8 +73655,10 @@
           "name": "Arma com magia vinculada de nível 2 (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-trident"
+      ]
     },
     {
       "id": "6f12f0b93e8c5209",
@@ -72854,8 +73672,10 @@
           "name": "Arma com magia vinculada de nível 2 (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-war-pick"
+      ]
     },
     {
       "id": "5ddfccb962f9b645",
@@ -72869,8 +73689,10 @@
           "name": "Arma com magia vinculada de nível 2 (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-warhammer"
+      ]
     },
     {
       "id": "aebc173c03f95ecc",
@@ -72884,8 +73706,10 @@
           "name": "Arma com magia vinculada de nível 2 (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-whip"
+      ]
     },
     {
       "id": "785133674c95a506",
@@ -72899,8 +73723,10 @@
           "name": "Arma com magia vinculada de nível 2 (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-wooden-staff"
+      ]
     },
     {
       "id": "9937044736660fb8",
@@ -72914,8 +73740,10 @@
           "name": "Arma com magia vinculada de nível 2 (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-yklwa"
+      ]
     },
     {
       "id": "5973502fdaef109b",
@@ -72929,8 +73757,10 @@
           "name": "Arma com magia vinculada de nível 3 (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-antimatter-rifle"
+      ]
     },
     {
       "id": "d803597bfdd09b6d",
@@ -72944,8 +73774,10 @@
           "name": "Arma com magia vinculada de nível 3 (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-automatic-rifle"
+      ]
     },
     {
       "id": "83c51c22a75f47da",
@@ -72959,8 +73791,10 @@
           "name": "Arma com magia vinculada de nível 3 (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-battleaxe"
+      ]
     },
     {
       "id": "847d9820eb3a59bd",
@@ -72974,8 +73808,10 @@
           "name": "Arma com magia vinculada de nível 3 (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-blowgun"
+      ]
     },
     {
       "id": "e750bc2a7f1e4f7d",
@@ -72989,8 +73825,10 @@
           "name": "Arma com magia vinculada de nível 3 (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-club"
+      ]
     },
     {
       "id": "cd8fc1f3008d9b7c",
@@ -73004,8 +73842,10 @@
           "name": "Arma com magia vinculada de nível 3 (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-dagger"
+      ]
     },
     {
       "id": "20ef70573efd0c10",
@@ -73019,8 +73859,10 @@
           "name": "Arma com magia vinculada de nível 3 (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-dart"
+      ]
     },
     {
       "id": "65a1ea582eeefb64",
@@ -73034,8 +73876,10 @@
           "name": "Arma com magia vinculada de nível 3 (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-double-bladed-scimitar"
+      ]
     },
     {
       "id": "509946f38f3b7e24",
@@ -73049,8 +73893,10 @@
           "name": "Arma com magia vinculada de nível 3 (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-flail"
+      ]
     },
     {
       "id": "ad1533bfa8123104",
@@ -73064,8 +73910,10 @@
           "name": "Arma com magia vinculada de nível 3 (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-glaive"
+      ]
     },
     {
       "id": "0224d5aac7f14196",
@@ -73079,8 +73927,10 @@
           "name": "Arma com magia vinculada de nível 3 (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-greataxe"
+      ]
     },
     {
       "id": "118bfe529c1acd16",
@@ -73094,8 +73944,10 @@
           "name": "Arma com magia vinculada de nível 3 (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-greatclub"
+      ]
     },
     {
       "id": "3391fc1b0760f4b3",
@@ -73109,8 +73961,10 @@
           "name": "Arma com magia vinculada de nível 3 (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-greatsword"
+      ]
     },
     {
       "id": "ce0a597076652b28",
@@ -73124,8 +73978,10 @@
           "name": "Arma com magia vinculada de nível 3 (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-halberd"
+      ]
     },
     {
       "id": "78985639502620c9",
@@ -73139,8 +73995,10 @@
           "name": "Arma com magia vinculada de nível 3 (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-hand-crossbow"
+      ]
     },
     {
       "id": "3d7634764a9e8b2b",
@@ -73154,8 +74012,10 @@
           "name": "Arma com magia vinculada de nível 3 (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-handaxe"
+      ]
     },
     {
       "id": "ed3ed2dcbb950067",
@@ -73169,8 +74029,10 @@
           "name": "Arma com magia vinculada de nível 3 (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-heavy-crossbow"
+      ]
     },
     {
       "id": "9964421bbfc24e88",
@@ -73184,8 +74046,10 @@
           "name": "Arma com magia vinculada de nível 3 (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-hooked-shortspear"
+      ]
     },
     {
       "id": "f01cd09edddc5495",
@@ -73199,8 +74063,10 @@
           "name": "Arma com magia vinculada de nível 3 (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-hoopak"
+      ]
     },
     {
       "id": "902cc01e970026b0",
@@ -73214,8 +74080,10 @@
           "name": "Arma com magia vinculada de nível 3 (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-hunting-rifle"
+      ]
     },
     {
       "id": "10f3c67a31575c93",
@@ -73229,8 +74097,10 @@
           "name": "Arma com magia vinculada de nível 3 (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-javelin"
+      ]
     },
     {
       "id": "dc8fde0066274ada",
@@ -73244,8 +74114,10 @@
           "name": "Arma com magia vinculada de nível 3 (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-lance"
+      ]
     },
     {
       "id": "f5a717fb02a1d264",
@@ -73259,8 +74131,10 @@
           "name": "Arma com magia vinculada de nível 3 (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-laser-pistol"
+      ]
     },
     {
       "id": "4ad71243037e9624",
@@ -73274,8 +74148,10 @@
           "name": "Arma com magia vinculada de nível 3 (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-laser-rifle"
+      ]
     },
     {
       "id": "148a86fa7f3f89bb",
@@ -73289,8 +74165,10 @@
           "name": "Arma com magia vinculada de nível 3 (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-light-crossbow"
+      ]
     },
     {
       "id": "f10731ec1295c9bb",
@@ -73304,8 +74182,10 @@
           "name": "Arma com magia vinculada de nível 3 (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-light-hammer"
+      ]
     },
     {
       "id": "c4fd76a65045d525",
@@ -73319,8 +74199,10 @@
           "name": "Arma com magia vinculada de nível 3 (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-light-repeating-crossbow"
+      ]
     },
     {
       "id": "75bcb3438ae1af40",
@@ -73334,8 +74216,10 @@
           "name": "Arma com magia vinculada de nível 3 (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-longbow"
+      ]
     },
     {
       "id": "8cd7a5e04a804fcb",
@@ -73349,8 +74233,10 @@
           "name": "Arma com magia vinculada de nível 3 (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-longsword"
+      ]
     },
     {
       "id": "be4b91f5c3ef66df",
@@ -73364,8 +74250,10 @@
           "name": "Arma com magia vinculada de nível 3 (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-mace"
+      ]
     },
     {
       "id": "c023002cab0a2c0a",
@@ -73379,8 +74267,10 @@
           "name": "Arma com magia vinculada de nível 3 (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-maul"
+      ]
     },
     {
       "id": "b389f2e4a4b43797",
@@ -73394,8 +74284,10 @@
           "name": "Arma com magia vinculada de nível 3 (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-morningstar"
+      ]
     },
     {
       "id": "7678e26649f5594a",
@@ -73409,8 +74301,10 @@
           "name": "Arma com magia vinculada de nível 3 (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-musket"
+      ]
     },
     {
       "id": "cc75dafa1989b977",
@@ -73424,8 +74318,10 @@
           "name": "Arma com magia vinculada de nível 3 (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-pike"
+      ]
     },
     {
       "id": "2f8899dccb792c32",
@@ -73439,8 +74335,10 @@
           "name": "Arma com magia vinculada de nível 3 (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-pistol"
+      ]
     },
     {
       "id": "597eef81619f3280",
@@ -73454,8 +74352,10 @@
           "name": "Arma com magia vinculada de nível 3 (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-quarterstaff"
+      ]
     },
     {
       "id": "2a4b7c9c1ed19850",
@@ -73469,8 +74369,10 @@
           "name": "Arma com magia vinculada de nível 3 (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-rapier"
+      ]
     },
     {
       "id": "b6a5fc52f30dd9f3",
@@ -73484,8 +74386,10 @@
           "name": "Arma com magia vinculada de nível 3 (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-revolver"
+      ]
     },
     {
       "id": "79335131251f2e6f",
@@ -73499,8 +74403,10 @@
           "name": "Arma com magia vinculada de nível 3 (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-scimitar"
+      ]
     },
     {
       "id": "3cdaceffcec2addd",
@@ -73514,8 +74420,10 @@
           "name": "Arma com magia vinculada de nível 3 (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-semiautomatic-pistol"
+      ]
     },
     {
       "id": "46fe73dea01c1f53",
@@ -73529,8 +74437,10 @@
           "name": "Arma com magia vinculada de nível 3 (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-shortbow"
+      ]
     },
     {
       "id": "f2212f7aea9ea8da",
@@ -73544,8 +74454,10 @@
           "name": "Arma com magia vinculada de nível 3 (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-shortsword"
+      ]
     },
     {
       "id": "34309f14d0fa9b0e",
@@ -73559,8 +74471,10 @@
           "name": "Arma com magia vinculada de nível 3 (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-shotgun"
+      ]
     },
     {
       "id": "4802103b5f03b128",
@@ -73574,8 +74488,10 @@
           "name": "Arma com magia vinculada de nível 3 (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-sickle"
+      ]
     },
     {
       "id": "aed04f0de00f052b",
@@ -73589,8 +74505,10 @@
           "name": "Arma com magia vinculada de nível 3 (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-sling"
+      ]
     },
     {
       "id": "895e4d3d38c43103",
@@ -73604,8 +74522,10 @@
           "name": "Arma com magia vinculada de nível 3 (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-spear"
+      ]
     },
     {
       "id": "51d5473b8cb9e603",
@@ -73619,8 +74539,10 @@
           "name": "Arma com magia vinculada de nível 3 (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-trident"
+      ]
     },
     {
       "id": "5cf995e978b85baa",
@@ -73634,8 +74556,10 @@
           "name": "Arma com magia vinculada de nível 3 (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-war-pick"
+      ]
     },
     {
       "id": "6dbe2ebaca5d161e",
@@ -73649,8 +74573,10 @@
           "name": "Arma com magia vinculada de nível 3 (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-warhammer"
+      ]
     },
     {
       "id": "e19b1ba3f1b158ed",
@@ -73664,8 +74590,10 @@
           "name": "Arma com magia vinculada de nível 3 (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-whip"
+      ]
     },
     {
       "id": "907f973fe0b0ef78",
@@ -73679,8 +74607,10 @@
           "name": "Arma com magia vinculada de nível 3 (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-wooden-staff"
+      ]
     },
     {
       "id": "2208f9ca273f8602",
@@ -73694,8 +74624,10 @@
           "name": "Arma com magia vinculada de nível 3 (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-3-yklwa"
+      ]
     },
     {
       "id": "f3f6987648fc67e3",
@@ -73709,8 +74641,10 @@
           "name": "Arma com magia vinculada de nível 4 (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-antimatter-rifle"
+      ]
     },
     {
       "id": "345487b1937923d3",
@@ -73724,8 +74658,10 @@
           "name": "Arma com magia vinculada de nível 4 (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-automatic-rifle"
+      ]
     },
     {
       "id": "534dfefb8613cff1",
@@ -73739,8 +74675,10 @@
           "name": "Arma com magia vinculada de nível 4 (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-battleaxe"
+      ]
     },
     {
       "id": "093b497bd165236c",
@@ -73754,8 +74692,10 @@
           "name": "Arma com magia vinculada de nível 4 (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-blowgun"
+      ]
     },
     {
       "id": "be8c104442012421",
@@ -73769,8 +74709,10 @@
           "name": "Arma com magia vinculada de nível 4 (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-club"
+      ]
     },
     {
       "id": "d4979ea4ea78cc6c",
@@ -73784,8 +74726,10 @@
           "name": "Arma com magia vinculada de nível 4 (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-dagger"
+      ]
     },
     {
       "id": "dc52b612442552e2",
@@ -73799,8 +74743,10 @@
           "name": "Arma com magia vinculada de nível 4 (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-dart"
+      ]
     },
     {
       "id": "499def8fb4b96e57",
@@ -73814,8 +74760,10 @@
           "name": "Arma com magia vinculada de nível 4 (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-double-bladed-scimitar"
+      ]
     },
     {
       "id": "acf43cf760cc8564",
@@ -73829,8 +74777,10 @@
           "name": "Arma com magia vinculada de nível 4 (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-flail"
+      ]
     },
     {
       "id": "8f9f52a567bf4c39",
@@ -73844,8 +74794,10 @@
           "name": "Arma com magia vinculada de nível 4 (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-glaive"
+      ]
     },
     {
       "id": "8113b8400752163c",
@@ -73859,8 +74811,10 @@
           "name": "Arma com magia vinculada de nível 4 (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-greataxe"
+      ]
     },
     {
       "id": "d9945ee0700b1f73",
@@ -73874,8 +74828,10 @@
           "name": "Arma com magia vinculada de nível 4 (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-greatclub"
+      ]
     },
     {
       "id": "10f7579b90ff40e2",
@@ -73889,8 +74845,10 @@
           "name": "Arma com magia vinculada de nível 4 (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-greatsword"
+      ]
     },
     {
       "id": "5399f1d77a57e2fb",
@@ -73904,8 +74862,10 @@
           "name": "Arma com magia vinculada de nível 4 (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-halberd"
+      ]
     },
     {
       "id": "381a37ce68416181",
@@ -73919,8 +74879,10 @@
           "name": "Arma com magia vinculada de nível 4 (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-hand-crossbow"
+      ]
     },
     {
       "id": "59e2221ce92fed15",
@@ -73934,8 +74896,10 @@
           "name": "Arma com magia vinculada de nível 4 (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-handaxe"
+      ]
     },
     {
       "id": "1feb4fe87a007626",
@@ -73949,8 +74913,10 @@
           "name": "Arma com magia vinculada de nível 4 (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-heavy-crossbow"
+      ]
     },
     {
       "id": "ebee8c46f689d644",
@@ -73964,8 +74930,10 @@
           "name": "Arma com magia vinculada de nível 4 (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-hooked-shortspear"
+      ]
     },
     {
       "id": "636a7e8d604e2bbd",
@@ -73979,8 +74947,10 @@
           "name": "Arma com magia vinculada de nível 4 (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-hoopak"
+      ]
     },
     {
       "id": "5581a213f28f7454",
@@ -73994,8 +74964,10 @@
           "name": "Arma com magia vinculada de nível 4 (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-hunting-rifle"
+      ]
     },
     {
       "id": "9e80dd0327ffb297",
@@ -74009,8 +74981,10 @@
           "name": "Arma com magia vinculada de nível 4 (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-javelin"
+      ]
     },
     {
       "id": "5e29acd9fd762deb",
@@ -74024,8 +74998,10 @@
           "name": "Arma com magia vinculada de nível 4 (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-lance"
+      ]
     },
     {
       "id": "9f5b040d7427e19a",
@@ -74039,8 +75015,10 @@
           "name": "Arma com magia vinculada de nível 4 (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-laser-pistol"
+      ]
     },
     {
       "id": "10f8d84728232d85",
@@ -74054,8 +75032,10 @@
           "name": "Arma com magia vinculada de nível 4 (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-laser-rifle"
+      ]
     },
     {
       "id": "80bef9f72e8eabf8",
@@ -74069,8 +75049,10 @@
           "name": "Arma com magia vinculada de nível 4 (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-light-crossbow"
+      ]
     },
     {
       "id": "a25d16e672bf8815",
@@ -74084,8 +75066,10 @@
           "name": "Arma com magia vinculada de nível 4 (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-light-hammer"
+      ]
     },
     {
       "id": "b1daa6452fb3f17b",
@@ -74099,8 +75083,10 @@
           "name": "Arma com magia vinculada de nível 4 (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-light-repeating-crossbow"
+      ]
     },
     {
       "id": "8798a1398bc1d925",
@@ -74114,8 +75100,10 @@
           "name": "Arma com magia vinculada de nível 4 (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-longbow"
+      ]
     },
     {
       "id": "5fdb454054b4f84b",
@@ -74129,8 +75117,10 @@
           "name": "Arma com magia vinculada de nível 4 (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-longsword"
+      ]
     },
     {
       "id": "06d9bd9c11a29e74",
@@ -74144,8 +75134,10 @@
           "name": "Arma com magia vinculada de nível 4 (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-mace"
+      ]
     },
     {
       "id": "45b647748747104a",
@@ -74159,8 +75151,10 @@
           "name": "Arma com magia vinculada de nível 4 (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-maul"
+      ]
     },
     {
       "id": "82e2bd8157ff6633",
@@ -74174,8 +75168,10 @@
           "name": "Arma com magia vinculada de nível 4 (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-morningstar"
+      ]
     },
     {
       "id": "e64095d425a84623",
@@ -74189,8 +75185,10 @@
           "name": "Arma com magia vinculada de nível 4 (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-musket"
+      ]
     },
     {
       "id": "1e395c05e484554b",
@@ -74204,8 +75202,10 @@
           "name": "Arma com magia vinculada de nível 4 (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-pike"
+      ]
     },
     {
       "id": "a0f3e2e0e307ab69",
@@ -74219,8 +75219,10 @@
           "name": "Arma com magia vinculada de nível 4 (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-pistol"
+      ]
     },
     {
       "id": "61a3cc7df3abd150",
@@ -74234,8 +75236,10 @@
           "name": "Arma com magia vinculada de nível 4 (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-quarterstaff"
+      ]
     },
     {
       "id": "3cbb0d754d88f200",
@@ -74249,8 +75253,10 @@
           "name": "Arma com magia vinculada de nível 4 (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-rapier"
+      ]
     },
     {
       "id": "99557ba59e4729eb",
@@ -74264,8 +75270,10 @@
           "name": "Arma com magia vinculada de nível 4 (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-revolver"
+      ]
     },
     {
       "id": "0c07634876f0b53c",
@@ -74279,8 +75287,10 @@
           "name": "Arma com magia vinculada de nível 4 (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-scimitar"
+      ]
     },
     {
       "id": "c01e653915488d5b",
@@ -74294,8 +75304,10 @@
           "name": "Arma com magia vinculada de nível 4 (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-semiautomatic-pistol"
+      ]
     },
     {
       "id": "673c4c5474cbd34e",
@@ -74309,8 +75321,10 @@
           "name": "Arma com magia vinculada de nível 4 (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-shortbow"
+      ]
     },
     {
       "id": "db0432fb7429dee9",
@@ -74324,8 +75338,10 @@
           "name": "Arma com magia vinculada de nível 4 (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-shortsword"
+      ]
     },
     {
       "id": "62d3d50e06e1cfa7",
@@ -74339,8 +75355,10 @@
           "name": "Arma com magia vinculada de nível 4 (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-shotgun"
+      ]
     },
     {
       "id": "def5b93c0a078058",
@@ -74354,8 +75372,10 @@
           "name": "Arma com magia vinculada de nível 4 (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-sickle"
+      ]
     },
     {
       "id": "29bedf542cb04087",
@@ -74369,8 +75389,10 @@
           "name": "Arma com magia vinculada de nível 4 (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-sling"
+      ]
     },
     {
       "id": "baa619ec31330b8b",
@@ -74384,8 +75406,10 @@
           "name": "Arma com magia vinculada de nível 4 (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-spear"
+      ]
     },
     {
       "id": "0565c9e3a108692b",
@@ -74399,8 +75423,10 @@
           "name": "Arma com magia vinculada de nível 4 (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-trident"
+      ]
     },
     {
       "id": "acf1daa8bcc50876",
@@ -74414,8 +75440,10 @@
           "name": "Arma com magia vinculada de nível 4 (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-war-pick"
+      ]
     },
     {
       "id": "76210f2fa4be6a56",
@@ -74429,8 +75457,10 @@
           "name": "Arma com magia vinculada de nível 4 (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-warhammer"
+      ]
     },
     {
       "id": "573b3dda37a611e1",
@@ -74444,8 +75474,10 @@
           "name": "Arma com magia vinculada de nível 4 (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-whip"
+      ]
     },
     {
       "id": "0d73d37e95c983c1",
@@ -74459,8 +75491,10 @@
           "name": "Arma com magia vinculada de nível 4 (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-wooden-staff"
+      ]
     },
     {
       "id": "de0f99a1b8323f06",
@@ -74474,8 +75508,10 @@
           "name": "Arma com magia vinculada de nível 4 (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-4-yklwa"
+      ]
     },
     {
       "id": "e83bd14197253e27",
