@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2753,
-    "pending_artworks": 1734,
+    "approved_artworks": 2780,
+    "pending_artworks": 1707,
     "catalog_references": 4643,
-    "approved_references": 2909,
+    "approved_references": 2936,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -16829,7 +16829,7 @@
     },
     {
       "family": "Executioner's Axe",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "executioner-s-battleaxe",
@@ -16838,8 +16838,10 @@
           "artwork_ids": [
             "executioner-s-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "executioner-s-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "executioner-s-greataxe",
@@ -16848,8 +16850,10 @@
           "artwork_ids": [
             "executioner-s-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "executioner-s-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "executioner-s-halberd",
@@ -16858,8 +16862,10 @@
           "artwork_ids": [
             "executioner-s-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "executioner-s-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "executioner-s-handaxe",
@@ -16868,8 +16874,10 @@
           "artwork_ids": [
             "executioner-s-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "executioner-s-handaxe"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -21255,7 +21263,7 @@
     },
     {
       "family": "Life-Sapping Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "life-sapping-rapier",
@@ -21264,8 +21272,10 @@
           "artwork_ids": [
             "life-sapping-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "life-sapping-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "life-sapping-scimitar",
@@ -21274,8 +21284,10 @@
           "artwork_ids": [
             "life-sapping-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "life-sapping-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "life-sapping-shortsword",
@@ -21284,8 +21296,10 @@
           "artwork_ids": [
             "life-sapping-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "life-sapping-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "life-sapping-whip",
@@ -21294,8 +21308,10 @@
           "artwork_ids": [
             "life-sapping-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "life-sapping-whip"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -22185,7 +22201,7 @@
     },
     {
       "family": "Mind Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mind-blade-double-bladed-scimitar",
@@ -22194,8 +22210,10 @@
           "artwork_ids": [
             "mind-blade-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mind-blade-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "mind-blade-greatsword",
@@ -22204,8 +22222,10 @@
           "artwork_ids": [
             "mind-blade-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mind-blade-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "mind-blade-longsword",
@@ -22214,8 +22234,10 @@
           "artwork_ids": [
             "mind-blade-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mind-blade-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "mind-blade-rapier",
@@ -22224,8 +22246,10 @@
           "artwork_ids": [
             "mind-blade-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mind-blade-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "mind-blade-scimitar",
@@ -22234,8 +22258,10 @@
           "artwork_ids": [
             "mind-blade-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mind-blade-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "mind-blade-shortsword",
@@ -22244,8 +22270,10 @@
           "artwork_ids": [
             "mind-blade-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mind-blade-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -23835,7 +23863,7 @@
     },
     {
       "family": "Polymorph Blade",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "polymorph-blade-double-bladed-scimitar",
@@ -23844,8 +23872,10 @@
           "artwork_ids": [
             "polymorph-blade-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "polymorph-blade-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "polymorph-blade-greatsword",
@@ -23854,8 +23884,10 @@
           "artwork_ids": [
             "polymorph-blade-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "polymorph-blade-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "polymorph-blade-longsword",
@@ -23864,8 +23896,10 @@
           "artwork_ids": [
             "polymorph-blade-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "polymorph-blade-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "polymorph-blade-rapier",
@@ -23874,8 +23908,10 @@
           "artwork_ids": [
             "polymorph-blade-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "polymorph-blade-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "polymorph-blade-scimitar",
@@ -23884,8 +23920,10 @@
           "artwork_ids": [
             "polymorph-blade-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "polymorph-blade-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "polymorph-blade-shortsword",
@@ -23894,8 +23932,10 @@
           "artwork_ids": [
             "polymorph-blade-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "polymorph-blade-shortsword"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24439,7 +24479,7 @@
     },
     {
       "family": "Returning Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "returning-dagger",
@@ -24448,8 +24488,10 @@
           "artwork_ids": [
             "returning-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "returning-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "returning-dart",
@@ -24458,8 +24500,10 @@
           "artwork_ids": [
             "returning-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "returning-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "returning-handaxe",
@@ -24468,8 +24512,10 @@
           "artwork_ids": [
             "returning-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "returning-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "returning-javelin",
@@ -24478,8 +24524,10 @@
           "artwork_ids": [
             "returning-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "returning-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "returning-light-hammer",
@@ -24488,8 +24536,10 @@
           "artwork_ids": [
             "returning-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "returning-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "returning-spear",
@@ -24498,8 +24548,10 @@
           "artwork_ids": [
             "returning-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "returning-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "returning-trident",
@@ -24508,8 +24560,10 @@
           "artwork_ids": [
             "returning-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "returning-trident"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -75896,8 +75950,10 @@
           "name": "Machado do carrasco (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "executioner-s-battleaxe"
+      ]
     },
     {
       "id": "70768ff0d041ccc0",
@@ -75911,8 +75967,10 @@
           "name": "Machado do carrasco (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "executioner-s-greataxe"
+      ]
     },
     {
       "id": "e6e0d1801e2da3f2",
@@ -75926,8 +75984,10 @@
           "name": "Machado do carrasco (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "executioner-s-halberd"
+      ]
     },
     {
       "id": "938ba6d6eb4a4b41",
@@ -75941,8 +76001,10 @@
           "name": "Machado do carrasco (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "executioner-s-handaxe"
+      ]
     },
     {
       "id": "f7960e3cde487275",
@@ -84735,8 +84797,10 @@
           "name": "Lâmina sorve-vida (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "life-sapping-rapier"
+      ]
     },
     {
       "id": "41cf9ee08ccf2f18",
@@ -84750,8 +84814,10 @@
           "name": "Lâmina sorve-vida (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "life-sapping-scimitar"
+      ]
     },
     {
       "id": "69a8e27c27436b85",
@@ -84765,8 +84831,10 @@
           "name": "Lâmina sorve-vida (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "life-sapping-shortsword"
+      ]
     },
     {
       "id": "5b04bbae1bcaf1c9",
@@ -84780,8 +84848,10 @@
           "name": "Lâmina sorve-vida (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "life-sapping-whip"
+      ]
     },
     {
       "id": "e429b110d6b2b720",
@@ -87786,8 +87856,10 @@
           "name": "Lâmina mental (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mind-blade-double-bladed-scimitar"
+      ]
     },
     {
       "id": "518af22d4a34ca60",
@@ -87801,8 +87873,10 @@
           "name": "Lâmina mental (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mind-blade-greatsword"
+      ]
     },
     {
       "id": "5652739349d21dc0",
@@ -87816,8 +87890,10 @@
           "name": "Lâmina mental (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mind-blade-longsword"
+      ]
     },
     {
       "id": "a56aec86e90821e8",
@@ -87831,8 +87907,10 @@
           "name": "Lâmina mental (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mind-blade-rapier"
+      ]
     },
     {
       "id": "2d145658c9e0b69f",
@@ -87846,8 +87924,10 @@
           "name": "Lâmina mental (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mind-blade-scimitar"
+      ]
     },
     {
       "id": "2f1f68ab71d647e3",
@@ -87861,8 +87941,10 @@
           "name": "Lâmina mental (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mind-blade-shortsword"
+      ]
     },
     {
       "id": "4f0f8f22c073b72b",
@@ -91351,8 +91433,10 @@
           "name": "Lâmina de metamorfose (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "polymorph-blade-double-bladed-scimitar"
+      ]
     },
     {
       "id": "f80ef8d680d63a31",
@@ -91366,8 +91450,10 @@
           "name": "Lâmina de metamorfose (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "polymorph-blade-greatsword"
+      ]
     },
     {
       "id": "ae4b2c43316bbd90",
@@ -91381,8 +91467,10 @@
           "name": "Lâmina de metamorfose (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "polymorph-blade-longsword"
+      ]
     },
     {
       "id": "865a6e680e607763",
@@ -91396,8 +91484,10 @@
           "name": "Lâmina de metamorfose (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "polymorph-blade-rapier"
+      ]
     },
     {
       "id": "b8ea2acbe6d02ff8",
@@ -91411,8 +91501,10 @@
           "name": "Lâmina de metamorfose (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "polymorph-blade-scimitar"
+      ]
     },
     {
       "id": "8279b3c04f7ae0e9",
@@ -91426,8 +91518,10 @@
           "name": "Lâmina de metamorfose (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "polymorph-blade-shortsword"
+      ]
     },
     {
       "id": "13a38769aad10ecb",
@@ -92076,8 +92170,10 @@
           "name": "Arma de retorno (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "returning-dagger"
+      ]
     },
     {
       "id": "117897505b308335",
@@ -92091,8 +92187,10 @@
           "name": "Arma de retorno (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "returning-dart"
+      ]
     },
     {
       "id": "fc5a44afb3f772db",
@@ -92106,8 +92204,10 @@
           "name": "Arma de retorno (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "returning-handaxe"
+      ]
     },
     {
       "id": "d44737c502917a9b",
@@ -92121,8 +92221,10 @@
           "name": "Arma de retorno (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "returning-javelin"
+      ]
     },
     {
       "id": "0126ec10e39fc348",
@@ -92136,8 +92238,10 @@
           "name": "Arma de retorno (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "returning-light-hammer"
+      ]
     },
     {
       "id": "b34ff8540f0fb43b",
@@ -92151,8 +92255,10 @@
           "name": "Arma de retorno (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "returning-spear"
+      ]
     },
     {
       "id": "0bf0985db66c192a",
@@ -92166,8 +92272,10 @@
           "name": "Arma de retorno (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "returning-trident"
+      ]
     },
     {
       "id": "54337ddd53e99600",

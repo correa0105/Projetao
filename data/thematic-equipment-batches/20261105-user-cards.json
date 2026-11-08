@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2753,
-    "pending_artworks": 1734,
+    "approved_artworks": 2780,
+    "pending_artworks": 1707,
     "catalog_references": 4643,
-    "approved_references": 2909,
+    "approved_references": 2936,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -66,9 +66,9 @@
       ],
       "models": 7,
       "artworks": 7,
-      "approved": 0,
-      "pending": 7,
-      "status": "pending"
+      "approved": 7,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma da vigilância",
@@ -266,9 +266,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arco do juramento",
@@ -374,9 +374,9 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
-      "status": "pending"
+      "approved": 6,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Lâmina do tolo",
@@ -398,9 +398,9 @@
       ],
       "models": 4,
       "artworks": 4,
-      "approved": 0,
-      "pending": 4,
-      "status": "pending"
+      "approved": 4,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Vingadora sagrada",
