@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 2929,
-    "pending_artworks": 1558,
+    "approved_artworks": 3188,
+    "pending_artworks": 1299,
     "catalog_references": 4643,
-    "approved_references": 3085,
+    "approved_references": 3344,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -146,9 +146,9 @@
       ],
       "models": 51,
       "artworks": 51,
-      "approved": 0,
-      "pending": 51,
-      "status": "pending"
+      "approved": 51,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma cruel",
@@ -362,9 +362,9 @@
       ],
       "models": 53,
       "artworks": 53,
-      "approved": 0,
-      "pending": 53,
-      "status": "pending"
+      "approved": 53,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Lâmina de metamorfose",
@@ -410,9 +410,9 @@
       ],
       "models": 53,
       "artworks": 53,
-      "approved": 0,
-      "pending": 53,
-      "status": "pending"
+      "approved": 53,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Lâmina da sorte",
