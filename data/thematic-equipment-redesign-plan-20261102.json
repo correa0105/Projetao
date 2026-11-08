@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 4416,
-    "pending_artworks": 71,
+    "approved_artworks": 4485,
+    "pending_artworks": 2,
     "catalog_references": 4643,
-    "approved_references": 4572,
+    "approved_references": 4641,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -9059,7 +9059,7 @@
     },
     {
       "family": "Deck of Illusions",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "deck-of-illusions",
@@ -9068,8 +9068,10 @@
           "artwork_ids": [
             "deck-of-illusions"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "deck-of-illusions"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -22277,7 +22279,7 @@
     },
     {
       "family": "Horn of Blasting",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "horn-of-blasting",
@@ -22286,8 +22288,10 @@
           "artwork_ids": [
             "horn-of-blasting"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "horn-of-blasting"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -25587,7 +25591,7 @@
     },
     {
       "family": "Oil of Sharpness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "oil-of-sharpness",
@@ -25596,14 +25600,16 @@
           "artwork_ids": [
             "oil-of-sharpness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "oil-of-sharpness"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Oil of Slipperiness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "oil-of-slipperiness",
@@ -25612,8 +25618,10 @@
           "artwork_ids": [
             "oil-of-slipperiness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "oil-of-slipperiness"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -25859,7 +25867,7 @@
     },
     {
       "family": "Pearl of Power",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "pearl-of-power",
@@ -25868,14 +25876,16 @@
           "artwork_ids": [
             "pearl-of-power"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pearl-of-power"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Periapt of Health",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "periapt-of-health",
@@ -25884,14 +25894,16 @@
           "artwork_ids": [
             "periapt-of-health"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "periapt-of-health"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Periapt of Proof against Poison",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "periapt-of-proof-against-poison",
@@ -25900,14 +25912,16 @@
           "artwork_ids": [
             "periapt-of-proof-against-poison"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "periapt-of-proof-against-poison"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Periapt of Wound Closure",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "periapt-of-wound-closure",
@@ -25916,14 +25930,16 @@
           "artwork_ids": [
             "periapt-of-wound-closure"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "periapt-of-wound-closure"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Philter of Love",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "philter-of-love",
@@ -25932,14 +25948,16 @@
           "artwork_ids": [
             "philter-of-love"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "philter-of-love"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Pipes of Haunting",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "pipes-of-haunting",
@@ -25948,14 +25966,16 @@
           "artwork_ids": [
             "pipes-of-haunting"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pipes-of-haunting"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Pipes of the Sewers",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "pipes-of-the-sewers",
@@ -25964,8 +25984,10 @@
           "artwork_ids": [
             "pipes-of-the-sewers"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pipes-of-the-sewers"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -26099,7 +26121,7 @@
     },
     {
       "family": "Portable Hole",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "portable-hole",
@@ -26108,14 +26130,16 @@
           "artwork_ids": [
             "portable-hole"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "portable-hole"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Animal Friendship",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-animal-friendship",
@@ -26124,14 +26148,16 @@
           "artwork_ids": [
             "potion-of-animal-friendship"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-animal-friendship"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Clairvoyance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-clairvoyance",
@@ -26140,14 +26166,16 @@
           "artwork_ids": [
             "potion-of-clairvoyance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-clairvoyance"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Diminution",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-diminution",
@@ -26156,14 +26184,16 @@
           "artwork_ids": [
             "potion-of-diminution"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-diminution"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Gaseous Form",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-gaseous-form",
@@ -26172,14 +26202,16 @@
           "artwork_ids": [
             "potion-of-gaseous-form"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-gaseous-form"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Giant Strength",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-giant-strength",
@@ -26188,8 +26220,10 @@
           "artwork_ids": [
             "potion-of-giant-strength"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-giant-strength"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-giant-strength-cloud",
@@ -26198,8 +26232,10 @@
           "artwork_ids": [
             "potion-of-giant-strength-cloud"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-giant-strength-cloud"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-giant-strength-fire",
@@ -26208,8 +26244,10 @@
           "artwork_ids": [
             "potion-of-giant-strength-fire"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-giant-strength-fire"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-giant-strength-frost-stone",
@@ -26218,8 +26256,10 @@
           "artwork_ids": [
             "potion-of-giant-strength-frost-stone"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-giant-strength-frost-stone"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-giant-strength-storm",
@@ -26228,14 +26268,16 @@
           "artwork_ids": [
             "potion-of-giant-strength-storm"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-giant-strength-storm"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Invisibility",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-invisibility",
@@ -26244,14 +26286,16 @@
           "artwork_ids": [
             "potion-of-invisibility"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-invisibility"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Invulnerability",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-invulnerability",
@@ -26260,14 +26304,16 @@
           "artwork_ids": [
             "potion-of-invulnerability"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-invulnerability"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Longevity",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-longevity",
@@ -26276,14 +26322,16 @@
           "artwork_ids": [
             "potion-of-longevity"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-longevity"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Mind Reading",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-mind-reading",
@@ -26292,14 +26340,16 @@
           "artwork_ids": [
             "potion-of-mind-reading"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-mind-reading"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Poison",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-poison",
@@ -26308,14 +26358,16 @@
           "artwork_ids": [
             "potion-of-poison"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-poison"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Resistance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-resistance",
@@ -26324,8 +26376,10 @@
           "artwork_ids": [
             "potion-of-resistance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-cold",
@@ -26334,8 +26388,10 @@
           "artwork_ids": [
             "potion-of-resistance-cold"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-cold"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-fire",
@@ -26344,8 +26400,10 @@
           "artwork_ids": [
             "potion-of-resistance-fire"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-fire"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-force",
@@ -26354,8 +26412,10 @@
           "artwork_ids": [
             "potion-of-resistance-force"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-force"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-lightning",
@@ -26364,8 +26424,10 @@
           "artwork_ids": [
             "potion-of-resistance-lightning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-lightning"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-necrotic",
@@ -26374,8 +26436,10 @@
           "artwork_ids": [
             "potion-of-resistance-necrotic"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-necrotic"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-poison",
@@ -26384,8 +26448,10 @@
           "artwork_ids": [
             "potion-of-resistance-poison"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-poison"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-psychic",
@@ -26394,8 +26460,10 @@
           "artwork_ids": [
             "potion-of-resistance-psychic"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-psychic"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-radiant",
@@ -26404,8 +26472,10 @@
           "artwork_ids": [
             "potion-of-resistance-radiant"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-radiant"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-resistance-thunder",
@@ -26414,14 +26484,16 @@
           "artwork_ids": [
             "potion-of-resistance-thunder"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-resistance-thunder"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Speed",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-speed",
@@ -26430,14 +26502,16 @@
           "artwork_ids": [
             "potion-of-speed"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-speed"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Vitality",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-vitality",
@@ -26446,14 +26520,16 @@
           "artwork_ids": [
             "potion-of-vitality"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-vitality"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potion of Water Breathing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-water-breathing",
@@ -26462,14 +26538,16 @@
           "artwork_ids": [
             "potion-of-water-breathing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-water-breathing"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Potions of Healing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "potion-of-healing-greater",
@@ -26478,8 +26556,10 @@
           "artwork_ids": [
             "potion-of-healing-greater"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-healing-greater"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-healing-superior",
@@ -26488,8 +26568,10 @@
           "artwork_ids": [
             "potion-of-healing-superior"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-healing-superior"
+          ],
+          "status": "approved"
         },
         {
           "id": "potion-of-healing-supreme",
@@ -26498,8 +26580,10 @@
           "artwork_ids": [
             "potion-of-healing-supreme"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "potion-of-healing-supreme"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27435,7 +27519,7 @@
     },
     {
       "family": "Rope of Climbing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rope-of-climbing",
@@ -27444,14 +27528,16 @@
           "artwork_ids": [
             "rope-of-climbing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rope-of-climbing"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Rope of Entanglement",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rope-of-entanglement",
@@ -27460,8 +27546,10 @@
           "artwork_ids": [
             "rope-of-entanglement"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rope-of-entanglement"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28289,7 +28377,7 @@
     },
     {
       "family": "Scarab of Protection",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "scarab-of-protection",
@@ -28298,8 +28386,10 @@
           "artwork_ids": [
             "scarab-of-protection"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scarab-of-protection"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28323,7 +28413,7 @@
     },
     {
       "family": "Sending Stones",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "sending-stones",
@@ -28332,8 +28422,10 @@
           "artwork_ids": [
             "sending-stones"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sending-stones"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29387,7 +29479,7 @@
     },
     {
       "family": "Spell Scroll",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "spell-scroll-level-2",
@@ -29396,8 +29488,10 @@
           "artwork_ids": [
             "spell-scroll-level-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-scroll-level-3",
@@ -29406,8 +29500,10 @@
           "artwork_ids": [
             "spell-scroll-level-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-scroll-level-4",
@@ -29416,8 +29512,10 @@
           "artwork_ids": [
             "spell-scroll-level-4"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-4"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-scroll-level-5",
@@ -29426,8 +29524,10 @@
           "artwork_ids": [
             "spell-scroll-level-5"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-5"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-scroll-level-6",
@@ -29436,8 +29536,10 @@
           "artwork_ids": [
             "spell-scroll-level-6"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-6"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-scroll-level-7",
@@ -29446,8 +29548,10 @@
           "artwork_ids": [
             "spell-scroll-level-7"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-7"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-scroll-level-8",
@@ -29456,8 +29560,10 @@
           "artwork_ids": [
             "spell-scroll-level-8"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-8"
+          ],
+          "status": "approved"
         },
         {
           "id": "spell-scroll-level-9",
@@ -29466,8 +29572,10 @@
           "artwork_ids": [
             "spell-scroll-level-9"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spell-scroll-level-9"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29761,7 +29869,7 @@
     },
     {
       "family": "Sphere of Annihilation",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "sphere-of-annihilation",
@@ -29770,14 +29878,16 @@
           "artwork_ids": [
             "sphere-of-annihilation"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sphere-of-annihilation"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of Charming",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-charming",
@@ -29786,8 +29896,10 @@
           "artwork_ids": [
             "staff-of-charming"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-charming"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29829,7 +29941,7 @@
     },
     {
       "family": "Staff of Healing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-healing",
@@ -29838,8 +29950,10 @@
           "artwork_ids": [
             "staff-of-healing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-healing"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29989,7 +30103,7 @@
     },
     {
       "family": "Stone of Good Luck (Luckstone)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "stone-of-good-luck-luckstone",
@@ -29998,8 +30112,10 @@
           "artwork_ids": [
             "stone-of-good-luck-luckstone"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "stone-of-good-luck-luckstone"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -30593,7 +30709,7 @@
     },
     {
       "family": "Talisman of Pure Good",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "talisman-of-pure-good",
@@ -30602,14 +30718,16 @@
           "artwork_ids": [
             "talisman-of-pure-good"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "talisman-of-pure-good"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Talisman of the Sphere",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "talisman-of-the-sphere",
@@ -30618,14 +30736,16 @@
           "artwork_ids": [
             "talisman-of-the-sphere"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "talisman-of-the-sphere"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Talisman of Ultimate Evil",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "talisman-of-ultimate-evil",
@@ -30634,8 +30754,10 @@
           "artwork_ids": [
             "talisman-of-ultimate-evil"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "talisman-of-ultimate-evil"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -30659,7 +30781,7 @@
     },
     {
       "family": "Tome of Clear Thought",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "tome-of-clear-thought",
@@ -30668,14 +30790,16 @@
           "artwork_ids": [
             "tome-of-clear-thought"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tome-of-clear-thought"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Tome of Leadership and Influence",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "tome-of-leadership-and-influence",
@@ -30684,14 +30808,16 @@
           "artwork_ids": [
             "tome-of-leadership-and-influence"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tome-of-leadership-and-influence"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Tome of Understanding",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "tome-of-understanding",
@@ -30700,8 +30826,10 @@
           "artwork_ids": [
             "tome-of-understanding"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "tome-of-understanding"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -31873,7 +32001,7 @@
     },
     {
       "family": "Wand of Wonder",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-wonder",
@@ -31882,8 +32010,10 @@
           "artwork_ids": [
             "wand-of-wonder"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-wonder"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -35815,7 +35945,7 @@
     },
     {
       "family": "Well of Many Worlds",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "well-of-many-worlds",
@@ -35824,14 +35954,16 @@
           "artwork_ids": [
             "well-of-many-worlds"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "well-of-many-worlds"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wind Fan",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wind-fan",
@@ -35840,14 +35972,16 @@
           "artwork_ids": [
             "wind-fan"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wind-fan"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Winged Boots",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "winged-boots",
@@ -35856,14 +35990,16 @@
           "artwork_ids": [
             "winged-boots"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "winged-boots"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wings of Flying",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wings-of-flying",
@@ -35872,8 +36008,10 @@
           "artwork_ids": [
             "wings-of-flying"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wings-of-flying"
+          ],
+          "status": "approved"
         }
       ]
     }
@@ -65945,8 +66083,10 @@
           "name": "Baralho de ilusões"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "deck-of-illusions"
+      ]
     },
     {
       "id": "ffe58c78b0f95a82",
@@ -87907,8 +88047,10 @@
           "name": "Trombeta de destruição"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "horn-of-blasting"
+      ]
     },
     {
       "id": "56b28f68561c3ccb",
@@ -96252,8 +96394,10 @@
           "name": "Óleo de afiação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "oil-of-sharpness"
+      ]
     },
     {
       "id": "041735daed11c9d9",
@@ -96267,8 +96411,10 @@
           "name": "Óleo escorregadio"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "oil-of-slipperiness"
+      ]
     },
     {
       "id": "d56c9c1411d18da6",
@@ -96554,8 +96700,10 @@
           "name": "Pérola do poder"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pearl-of-power"
+      ]
     },
     {
       "id": "ed146938d592b6aa",
@@ -96569,8 +96717,10 @@
           "name": "Periapto da saúde"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "periapt-of-health"
+      ]
     },
     {
       "id": "6b53c01d6844c0d9",
@@ -96584,8 +96734,10 @@
           "name": "Periapto contra veneno"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "periapt-of-proof-against-poison"
+      ]
     },
     {
       "id": "73a89680e0edc3fb",
@@ -96599,8 +96751,10 @@
           "name": "Periapto de fechar feridas"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "periapt-of-wound-closure"
+      ]
     },
     {
       "id": "4b1c3fc227a3e7b8",
@@ -96614,8 +96768,10 @@
           "name": "Filtro do amor"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "philter-of-love"
+      ]
     },
     {
       "id": "723da49afd3fdc4b",
@@ -96629,8 +96785,10 @@
           "name": "Flautas do assombro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pipes-of-haunting"
+      ]
     },
     {
       "id": "b2b3f99bb08f96b1",
@@ -96644,8 +96802,10 @@
           "name": "Flautas dos esgotos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pipes-of-the-sewers"
+      ]
     },
     {
       "id": "5bfbe16744b37347",
@@ -96965,8 +97125,10 @@
           "name": "Buraco portátil"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "portable-hole"
+      ]
     },
     {
       "id": "f038fcdaafa867f3",
@@ -96980,8 +97142,10 @@
           "name": "Poção da amizade animal"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-animal-friendship"
+      ]
     },
     {
       "id": "c7944ab9b6c22556",
@@ -96995,8 +97159,10 @@
           "name": "Poção da clarividência"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-clairvoyance"
+      ]
     },
     {
       "id": "abdb4bf868c576ec",
@@ -97010,8 +97176,10 @@
           "name": "Poção da diminuição"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-diminution"
+      ]
     },
     {
       "id": "63843f413b3b863f",
@@ -97025,8 +97193,10 @@
           "name": "Poção da forma gasosa"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-gaseous-form"
+      ]
     },
     {
       "id": "292593518b7c63e4",
@@ -97040,8 +97210,10 @@
           "name": "Poção de força de gigante (Gigante da colina)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-giant-strength"
+      ]
     },
     {
       "id": "b87faeddf6921b65",
@@ -97055,8 +97227,10 @@
           "name": "Poção de força de gigante (Gigante das nuvens)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-giant-strength-cloud"
+      ]
     },
     {
       "id": "e7a45537d16ade06",
@@ -97070,8 +97244,10 @@
           "name": "Poção de força de gigante (Gigante do fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-giant-strength-fire"
+      ]
     },
     {
       "id": "2c722082e2fccbb6",
@@ -97085,8 +97261,10 @@
           "name": "Poção de força de gigante (Gigante do gelo ou da pedra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-giant-strength-frost-stone"
+      ]
     },
     {
       "id": "a80e6b4155d15f6f",
@@ -97100,8 +97278,10 @@
           "name": "Poção de força de gigante (Gigante da tempestade)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-giant-strength-storm"
+      ]
     },
     {
       "id": "67e6094fc5c3a75e",
@@ -97115,8 +97295,10 @@
           "name": "Poção da invisibilidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-invisibility"
+      ]
     },
     {
       "id": "5d188289a0c7e06b",
@@ -97130,8 +97312,10 @@
           "name": "Poção da invulnerabilidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-invulnerability"
+      ]
     },
     {
       "id": "3cc1d7e7dd331111",
@@ -97145,8 +97329,10 @@
           "name": "Poção da longevidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-longevity"
+      ]
     },
     {
       "id": "5950d3fc215a3d50",
@@ -97160,8 +97346,10 @@
           "name": "Poção da leitura mental"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-mind-reading"
+      ]
     },
     {
       "id": "34ae7e1e21399ef3",
@@ -97175,8 +97363,10 @@
           "name": "Poção de veneno"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-poison"
+      ]
     },
     {
       "id": "58ac307e15903751",
@@ -97190,8 +97380,10 @@
           "name": "Poção de resistência (Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance"
+      ]
     },
     {
       "id": "cc4162b7a03f5ec8",
@@ -97205,8 +97397,10 @@
           "name": "Poção de resistência (Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-cold"
+      ]
     },
     {
       "id": "15919b47afa79add",
@@ -97220,8 +97414,10 @@
           "name": "Poção de resistência (Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-fire"
+      ]
     },
     {
       "id": "e8215656e3663268",
@@ -97235,8 +97431,10 @@
           "name": "Poção de resistência (Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-force"
+      ]
     },
     {
       "id": "555d13703eb1751e",
@@ -97250,8 +97448,10 @@
           "name": "Poção de resistência (Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-lightning"
+      ]
     },
     {
       "id": "d25871a9f1400fc2",
@@ -97265,8 +97465,10 @@
           "name": "Poção de resistência (Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-necrotic"
+      ]
     },
     {
       "id": "e23eb0d82c2ca0e9",
@@ -97280,8 +97482,10 @@
           "name": "Poção de resistência (Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-poison"
+      ]
     },
     {
       "id": "756249dca1f4ca86",
@@ -97295,8 +97499,10 @@
           "name": "Poção de resistência (Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-psychic"
+      ]
     },
     {
       "id": "48f5365893c8abe4",
@@ -97310,8 +97516,10 @@
           "name": "Poção de resistência (Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-radiant"
+      ]
     },
     {
       "id": "bde9ddb5bfa3afd6",
@@ -97325,8 +97533,10 @@
           "name": "Poção de resistência (Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-resistance-thunder"
+      ]
     },
     {
       "id": "c805b22d25fe9779",
@@ -97340,8 +97550,10 @@
           "name": "Poção de velocidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-speed"
+      ]
     },
     {
       "id": "4394c0d1d0bca9ee",
@@ -97355,8 +97567,10 @@
           "name": "Poção de vitalidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-vitality"
+      ]
     },
     {
       "id": "336cc6fa38e185e1",
@@ -97370,8 +97584,10 @@
           "name": "Poção de respirar na água"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-water-breathing"
+      ]
     },
     {
       "id": "4b132d5a1c0ed83e",
@@ -97385,8 +97601,10 @@
           "name": "Poções de cura (Cura maior)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-healing-greater"
+      ]
     },
     {
       "id": "82233f636e372cf6",
@@ -97400,8 +97618,10 @@
           "name": "Poções de cura (Cura superior)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-healing-superior"
+      ]
     },
     {
       "id": "7daf0deb3a09abee",
@@ -97415,8 +97635,10 @@
           "name": "Poções de cura (Cura suprema)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "potion-of-healing-supreme"
+      ]
     },
     {
       "id": "3c815db8ad73c0ae",
@@ -98467,8 +98689,10 @@
           "name": "Corda de escalada"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rope-of-climbing"
+      ]
     },
     {
       "id": "db07f346acc05c15",
@@ -98482,8 +98706,10 @@
           "name": "Corda de enredar"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rope-of-entanglement"
+      ]
     },
     {
       "id": "0534524d69f2a35d",
@@ -100282,8 +100508,10 @@
           "name": "Escaravelho de proteção"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scarab-of-protection"
+      ]
     },
     {
       "id": "8a3bdd83b76e5bc0",
@@ -100314,8 +100542,10 @@
           "name": "Pedras de mensagem"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sending-stones"
+      ]
     },
     {
       "id": "f52fcaa065145d41",
@@ -102675,8 +102905,10 @@
           "name": "Pergaminho de magia (Nível 2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-2"
+      ]
     },
     {
       "id": "34f7ace0c588fe79",
@@ -102690,8 +102922,10 @@
           "name": "Pergaminho de magia (Nível 3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-3"
+      ]
     },
     {
       "id": "9342ca3c51ccaed0",
@@ -102705,8 +102939,10 @@
           "name": "Pergaminho de magia (Nível 4)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-4"
+      ]
     },
     {
       "id": "98e8e6e8617c6a84",
@@ -102720,8 +102956,10 @@
           "name": "Pergaminho de magia (Nível 5)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-5"
+      ]
     },
     {
       "id": "0125790c39b89025",
@@ -102735,8 +102973,10 @@
           "name": "Pergaminho de magia (Nível 6)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-6"
+      ]
     },
     {
       "id": "c43e11c34c9e83a3",
@@ -102750,8 +102990,10 @@
           "name": "Pergaminho de magia (Nível 7)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-7"
+      ]
     },
     {
       "id": "cf34d4c7533ba019",
@@ -102765,8 +103007,10 @@
           "name": "Pergaminho de magia (Nível 8)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-8"
+      ]
     },
     {
       "id": "ca44b835c9d9b6af",
@@ -102780,8 +103024,10 @@
           "name": "Pergaminho de magia (Nível 9)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spell-scroll-level-9"
+      ]
     },
     {
       "id": "b4747f6a654b0811",
@@ -104036,8 +104282,10 @@
           "name": "Esfera da aniquilação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sphere-of-annihilation"
+      ]
     },
     {
       "id": "3dc48157cf6c6a61",
@@ -104051,8 +104299,10 @@
           "name": "Cajado do encantamento"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-charming"
+      ]
     },
     {
       "id": "f53d5dd1fcfd4eef",
@@ -104100,8 +104350,10 @@
           "name": "Cajado da cura"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-healing"
+      ]
     },
     {
       "id": "278c6aa28b9be004",
@@ -104251,8 +104503,10 @@
           "name": "Pedra da boa sorte"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "stone-of-good-luck-luckstone"
+      ]
     },
     {
       "id": "dfa1ed27f49c46f4",
@@ -105031,8 +105285,10 @@
           "name": "Talismã do bem puro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "talisman-of-pure-good"
+      ]
     },
     {
       "id": "5f9d55082d32128a",
@@ -105046,8 +105302,10 @@
           "name": "Talismã da esfera"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "talisman-of-the-sphere"
+      ]
     },
     {
       "id": "252013a9155a504e",
@@ -105061,8 +105319,10 @@
           "name": "Talismã do mal supremo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "talisman-of-ultimate-evil"
+      ]
     },
     {
       "id": "fdcb730a90a52be2",
@@ -105093,8 +105353,10 @@
           "name": "Tomo do pensamento claro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tome-of-clear-thought"
+      ]
     },
     {
       "id": "383252fa6dd7af20",
@@ -105108,8 +105370,10 @@
           "name": "Tomo da liderança e influência"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tome-of-leadership-and-influence"
+      ]
     },
     {
       "id": "a8c7e938a8ed3f57",
@@ -105123,8 +105387,10 @@
           "name": "Tomo da compreensão"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "tome-of-understanding"
+      ]
     },
     {
       "id": "e4a411be0785842c",
@@ -107212,8 +107478,10 @@
           "name": "Varinha das maravilhas"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-wonder"
+      ]
     },
     {
       "id": "efad402fc994488c",
@@ -112748,8 +113016,10 @@
           "name": "Poço de muitos mundos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "well-of-many-worlds"
+      ]
     },
     {
       "id": "689c7a4628d74b9e",
@@ -112763,8 +113033,10 @@
           "name": "Leque do vento"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wind-fan"
+      ]
     },
     {
       "id": "3b103e01e7fc2507",
@@ -112778,8 +113050,10 @@
           "name": "Botas aladas"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "winged-boots"
+      ]
     },
     {
       "id": "3b17c270cf79bed4",
@@ -112793,8 +113067,10 @@
           "name": "Asas do voo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wings-of-flying"
+      ]
     }
   ],
   "excluded_jobs": [

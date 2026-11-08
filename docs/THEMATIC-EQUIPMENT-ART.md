@@ -216,4 +216,6 @@ O pacote `weapon-collections-b11-20261107` completa as 12 variantes da fila de a
 
 ## Acessórios e outros itens mágicos
 
-Após o fechamento da fila de armas em escopo, a conferência das ofertas ativas identificou 211 trabalhos em outros itens mágicos. O pacote `accessory-collections-b01-20261108` reúne as primeiras 142 artes aprovadas. Inclui anéis, escudos, bastões, cajados, varinhas, pedras ioun, tapetes, manuais e outros acessórios. As variantes receberam desenhos individuais e foram conferidas em fundos claro e escuro. Os PNGs originais estão arquivados e o Empório usa cópias WebP transparentes.
+Após o fechamento da fila de armas em escopo, a conferência das ofertas ativas identificou 211 trabalhos em outros itens mágicos. A publicação `accessory-collections-b01-20261108` colocou no Empório as primeiras 142 artes aprovadas. Inclui anéis, escudos, bastões, cajados, varinhas, pedras ioun, tapetes, manuais e outros acessórios. A conferência em produção confirmou 4.578 referências no catálogo, os 142 arquivos novos por HTTPS, nove tabelas protegidas preservadas e ilustrador ativo. O backup prévio foi validado em uma cópia local.
+
+O pacote `accessory-collections-b02-20261108` reúne as 69 artes restantes, incluindo poções, pergaminhos, talismãs e acessórios. Cinco recortes foram refeitos com transparência nas bordas e nas aberturas. Cada variante em escopo recebeu desenho próprio e conferência em fundos claro e escuro. Os originais em PNG estão arquivados e o Empório usa cópias WebP transparentes.
