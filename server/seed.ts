@@ -9,11 +9,7 @@ import { seedArmorPieces } from './armor-catalog.js';
 import { seedClothingPieces } from './clothing-catalog.js';
 import { applyEconomyPrices, applyEconomyRulebook } from './economy-prices.js';
 import { thematicEquipmentImage, approvedThematicEquipmentImages } from '../shared/thematic-equipment-art.js';
-import {
-  withdrawnWeaponModels,
-  withdrawnWeaponOffer,
-  withdrawnBookOffer,
-} from '../shared/shop-availability.js';
+import { withdrawnWeaponOffer, withdrawnBookOffer } from '../shared/shop-availability.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -37,16 +33,17 @@ export async function seed() {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
   expansion.push(...animals);
+  const shopItems = [...catalog.items, ...equipmentCatalog, ...expansion];
   // Apply reviewed designs after loading legacy sources. Change artwork only;
   // keep IDs, prices, rules, ownership and existing purchases.
-  for (const item of [...catalog.items, ...equipmentCatalog, ...expansion]) {
+  for (const item of shopItems) {
     const image = thematicEquipmentImage(item.id);
     if (image) item.image_path = image;
   }
   await transaction(async (client) => {
     await lockCatalogPrices(client);
     await client.query('UPDATE catalog_items SET active=false WHERE NOT(id=ANY($1::text[]))', [
-      [...catalog.items, ...equipmentCatalog, ...expansion].map((item: { id: string }) => item.id),
+      shopItems.map((item) => item.id),
     ]);
     for (const item of catalog.items) {
       await client.query(
@@ -126,15 +123,13 @@ export async function seed() {
           item.weight_estimated,
           item.audio_path,
           // Withdraw this offer without removing existing equipment or purchase history.
-          item.raw_data?.magic_family !== 'Drow Weapon' &&
-            !withdrawnWeaponOffer(item) &&
-            !withdrawnBookOffer(item),
+          item.raw_data?.magic_family !== 'Drow Weapon' && !withdrawnBookOffer(item),
         ],
       );
     }
     await client.query(
-      "UPDATE catalog_items SET active=false WHERE id=ANY($1::text[]) OR raw_data->>'base_item'=ANY($1::text[])",
-      [withdrawnWeaponModels],
+      'UPDATE catalog_items SET active=false WHERE active AND id=ANY($1::text[])',
+      [shopItems.filter(withdrawnWeaponOffer).map((item) => item.id)],
     );
     await client.query(
       "UPDATE catalog_items SET audio_path='/audio/emporium/' || id || '.wav' WHERE id=ANY($1::text[])",

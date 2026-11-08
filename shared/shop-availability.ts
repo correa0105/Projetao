@@ -10,9 +10,25 @@ export const withdrawnWeaponModels = [
   'laser-rifle',
 ] as const;
 
-export function withdrawnWeaponOffer(item: { id: string; raw_data?: { base_item?: string } }) {
-  return withdrawnWeaponModels.some(
-    (model) => model === item.id || model === item.raw_data?.base_item,
+const withdrawnAmmunitionModels = ['energy-cell', 'modern-bullet'] as const;
+
+export function withdrawnWeaponOffer(item: {
+  id: string;
+  raw_data?: {
+    base_item?: string;
+    ammunition_type?: string;
+    age?: string;
+    upstream_facts?: { age?: string };
+  } | null;
+}) {
+  const data = item.raw_data;
+  return (
+    withdrawnWeaponModels.some((model) => model === item.id || model === data?.base_item) ||
+    withdrawnAmmunitionModels.some(
+      (model) => model === item.id || model === data?.base_item || model === data?.ammunition_type,
+    ) ||
+    data?.age === 'futuristic' ||
+    data?.upstream_facts?.age === 'futuristic'
   );
 }
 

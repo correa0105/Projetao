@@ -10,6 +10,10 @@ família pode atravessar categorias de raridade; todas as opções continuam dis
 Busca inclui nomes das variantes. Mesa, carrinho, inventário, som, fala, preço e
 histórico continuam usando o item real escolhido, nunca o ID de uma família.
 
+Armas futuristas, células de energia e cartuchos modernos ficam fora das ofertas,
+incluindo suas variantes mágicas. O catálogo preserva os IDs e as referências
+dos exemplares já adquiridos para o inventário e o histórico de compras.
+
 Armadura de resistência oferece os 12 modelos do catálogo e 10 tipos de dano permitidos
 pelo [SRD 5.2.1, p. 210](https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf#page=210):
 ácido, frio, fogo, força, elétrico, necrótico, veneno, psíquico, radiante e trovão.

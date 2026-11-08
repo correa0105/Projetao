@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import type { Item } from '../src/types.js';
 import { houseCatalog } from '../shared/house.js';
+import { withdrawnWeaponOffer } from '../shared/shop-availability.js';
 import {
   groupShopItems,
   getVariantLabel,
@@ -18,6 +19,21 @@ type CatalogRow = Partial<Item> & {
   raw_data?: Record<string, unknown>;
   active?: boolean;
 };
+
+test('retira armas futuristas, células de energia e cartuchos modernos das ofertas', () => {
+  const cases = [
+    [{ id: 'laser-pistol' }, true],
+    [{ id: 'automatic-rifle-plus-3', raw_data: { base_item: 'automatic-rifle' } }, true],
+    [{ id: 'arma-experimental', raw_data: { upstream_facts: { age: 'futuristic' } } }, true],
+    [{ id: 'energy-cell' }, true],
+    [{ id: 'energy-cell-plus-1', raw_data: { base_item: 'energy-cell' } }, true],
+    [{ id: 'walloping-modern-bullet', raw_data: { ammunition_type: 'modern-bullet' } }, true],
+    [{ id: 'adamantine-firearm-bullet', raw_data: { ammunition_type: 'firearm-bullet' } }, false],
+    [{ id: 'magic-ammunition-firearm-bullets-plus-1', raw_data: { ammunition_type: 'firearm-bullets-10' } }, false],
+    [{ id: 'hunting-rifle-plus-2', raw_data: { base_item: 'hunting-rifle', age: 'modern' } }, false],
+  ] as const;
+  for (const [item, expected] of cases) assert.equal(withdrawnWeaponOffer(item), expected, item.id);
+});
 function load(path: string) {
   return JSON.parse(readFileSync(new URL(`../data/${path}`, import.meta.url), 'utf8'));
 }

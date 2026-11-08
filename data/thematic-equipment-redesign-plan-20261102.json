@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 4259,
-    "pending_artworks": 228,
+    "approved_artworks": 4262,
+    "pending_artworks": 225,
     "catalog_references": 4643,
-    "approved_references": 4415,
+    "approved_references": 4418,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -28348,8 +28348,10 @@
           "artwork_ids": [
             "silvered-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-halberd",
@@ -28358,8 +28360,10 @@
           "artwork_ids": [
             "silvered-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-hand-crossbow",
@@ -28380,8 +28384,10 @@
           "artwork_ids": [
             "silvered-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-heavy-crossbow",
@@ -100098,8 +100104,10 @@
           "name": "Arma de prata (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-greatsword"
+      ]
     },
     {
       "id": "1ba5f6847d5f0c30",
@@ -100113,8 +100121,10 @@
           "name": "Arma de prata (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-halberd"
+      ]
     },
     {
       "id": "6b778a4de95c4c15",
@@ -100145,8 +100155,10 @@
           "name": "Arma de prata (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-handaxe"
+      ]
     },
     {
       "id": "2c2d00981b16005f",
