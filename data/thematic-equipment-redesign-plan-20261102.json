@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 4274,
-    "pending_artworks": 213,
+    "approved_artworks": 4416,
+    "pending_artworks": 71,
     "catalog_references": 4643,
-    "approved_references": 4430,
+    "approved_references": 4572,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -1001,7 +1001,7 @@
     },
     {
       "family": "Apparatus of the Crab",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "apparatus-of-the-crab",
@@ -1010,8 +1010,10 @@
           "artwork_ids": [
             "apparatus-of-the-crab"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "apparatus-of-the-crab"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6479,7 +6481,7 @@
     },
     {
       "family": "Bead of Force",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bead-of-force",
@@ -6488,14 +6490,16 @@
           "artwork_ids": [
             "bead-of-force"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bead-of-force"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Bead of Nourishment",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bead-of-nourishment",
@@ -6504,8 +6508,10 @@
           "artwork_ids": [
             "bead-of-nourishment"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bead-of-nourishment"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6895,7 +6901,7 @@
     },
     {
       "family": "Bracers of Archery",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bracers-of-archery",
@@ -6904,14 +6910,16 @@
           "artwork_ids": [
             "bracers-of-archery"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bracers-of-archery"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Bracers of Defense",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "bracers-of-defense",
@@ -6920,8 +6928,10 @@
           "artwork_ids": [
             "bracers-of-defense"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "bracers-of-defense"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -6945,7 +6955,7 @@
     },
     {
       "family": "Brooch of Shielding",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "brooch-of-shielding",
@@ -6954,14 +6964,16 @@
           "artwork_ids": [
             "brooch-of-shielding"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "brooch-of-shielding"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Broom of Flying",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "broom-of-flying",
@@ -6970,14 +6982,16 @@
           "artwork_ids": [
             "broom-of-flying"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "broom-of-flying"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Candle of Invocation",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "candle-of-invocation",
@@ -6986,8 +7000,10 @@
           "artwork_ids": [
             "candle-of-invocation"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "candle-of-invocation"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -7011,7 +7027,7 @@
     },
     {
       "family": "Carpet of Flying",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "carpet-of-flying",
@@ -7020,8 +7036,10 @@
           "artwork_ids": [
             "carpet-of-flying"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "carpet-of-flying"
+          ],
+          "status": "approved"
         },
         {
           "id": "carpet-of-flying-4x6",
@@ -7030,8 +7048,10 @@
           "artwork_ids": [
             "carpet-of-flying-4x6"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "carpet-of-flying-4x6"
+          ],
+          "status": "approved"
         },
         {
           "id": "carpet-of-flying-5x7",
@@ -7040,8 +7060,10 @@
           "artwork_ids": [
             "carpet-of-flying-5x7"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "carpet-of-flying-5x7"
+          ],
+          "status": "approved"
         },
         {
           "id": "carpet-of-flying-6x9",
@@ -7050,8 +7072,10 @@
           "artwork_ids": [
             "carpet-of-flying-6x9"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "carpet-of-flying-6x9"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -7367,7 +7391,7 @@
     },
     {
       "family": "Chime of Opening",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "chime-of-opening",
@@ -7376,14 +7400,16 @@
           "artwork_ids": [
             "chime-of-opening"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "chime-of-opening"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Circlet of Blasting",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "circlet-of-blasting",
@@ -7392,8 +7418,10 @@
           "artwork_ids": [
             "circlet-of-blasting"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "circlet-of-blasting"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -8107,7 +8135,7 @@
     },
     {
       "family": "Crystal Ball of Mind Reading",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "crystal-ball-of-mind-reading",
@@ -8116,14 +8144,16 @@
           "artwork_ids": [
             "crystal-ball-of-mind-reading"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-ball-of-mind-reading"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Crystal Ball of Telepathy",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "crystal-ball-of-telepathy",
@@ -8132,14 +8162,16 @@
           "artwork_ids": [
             "crystal-ball-of-telepathy"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-ball-of-telepathy"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Crystal Ball of True Seeing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "crystal-ball-of-true-seeing",
@@ -8148,8 +8180,10 @@
           "artwork_ids": [
             "crystal-ball-of-true-seeing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "crystal-ball-of-true-seeing"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -8233,7 +8267,7 @@
     },
     {
       "family": "Cube of Force",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cube-of-force",
@@ -8242,14 +8276,16 @@
           "artwork_ids": [
             "cube-of-force"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cube-of-force"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Cubic Gate",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "cubic-gate",
@@ -8258,8 +8294,10 @@
           "artwork_ids": [
             "cubic-gate"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "cubic-gate"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -9661,7 +9699,7 @@
     },
     {
       "family": "Dimensional Shackles",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dimensional-shackles",
@@ -9670,8 +9708,10 @@
           "artwork_ids": [
             "dimensional-shackles"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dimensional-shackles"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -18439,7 +18479,7 @@
     },
     {
       "family": "Eyes of Charming",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "eyes-of-charming",
@@ -18448,14 +18488,16 @@
           "artwork_ids": [
             "eyes-of-charming"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "eyes-of-charming"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Eyes of Minute Seeing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "eyes-of-minute-seeing",
@@ -18464,14 +18506,16 @@
           "artwork_ids": [
             "eyes-of-minute-seeing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "eyes-of-minute-seeing"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Eyes of the Eagle",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "eyes-of-the-eagle",
@@ -18480,8 +18524,10 @@
           "artwork_ids": [
             "eyes-of-the-eagle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "eyes-of-the-eagle"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -19727,7 +19773,7 @@
     },
     {
       "family": "Gauntlets of Ogre Power",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gauntlets-of-ogre-power",
@@ -19736,14 +19782,16 @@
           "artwork_ids": [
             "gauntlets-of-ogre-power"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gauntlets-of-ogre-power"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Gem of Brightness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gem-of-brightness",
@@ -19752,14 +19800,16 @@
           "artwork_ids": [
             "gem-of-brightness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gem-of-brightness"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Gem of Seeing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gem-of-seeing",
@@ -19768,8 +19818,10 @@
           "artwork_ids": [
             "gem-of-seeing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gem-of-seeing"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -20737,7 +20789,7 @@
     },
     {
       "family": "Gloves of Missile Snaring",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gloves-of-missile-snaring",
@@ -20746,14 +20798,16 @@
           "artwork_ids": [
             "gloves-of-missile-snaring"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloves-of-missile-snaring"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Gloves of Swimming and Climbing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gloves-of-swimming-and-climbing",
@@ -20762,14 +20816,16 @@
           "artwork_ids": [
             "gloves-of-swimming-and-climbing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloves-of-swimming-and-climbing"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Gloves of Thievery",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "gloves-of-thievery",
@@ -20778,8 +20834,10 @@
           "artwork_ids": [
             "gloves-of-thievery"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "gloves-of-thievery"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -20833,7 +20891,7 @@
     },
     {
       "family": "Hat of Disguise",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "hat-of-disguise",
@@ -20842,14 +20900,16 @@
           "artwork_ids": [
             "hat-of-disguise"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hat-of-disguise"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Hat of Many Spells",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "hat-of-many-spells",
@@ -20858,14 +20918,16 @@
           "artwork_ids": [
             "hat-of-many-spells"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hat-of-many-spells"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Headband of Intellect",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "headband-of-intellect",
@@ -20874,8 +20936,10 @@
           "artwork_ids": [
             "headband-of-intellect"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "headband-of-intellect"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -21499,7 +21563,7 @@
     },
     {
       "family": "Helm of Brilliance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "helm-of-brilliance",
@@ -21508,14 +21572,16 @@
           "artwork_ids": [
             "helm-of-brilliance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "helm-of-brilliance"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Helm of Comprehending Languages",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "helm-of-comprehending-languages",
@@ -21524,14 +21590,16 @@
           "artwork_ids": [
             "helm-of-comprehending-languages"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "helm-of-comprehending-languages"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Helm of Telepathy",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "helm-of-telepathy",
@@ -21540,14 +21608,16 @@
           "artwork_ids": [
             "helm-of-telepathy"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "helm-of-telepathy"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Helm of Teleportation",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "helm-of-teleportation",
@@ -21556,8 +21626,10 @@
           "artwork_ids": [
             "helm-of-teleportation"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "helm-of-teleportation"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -22221,7 +22293,7 @@
     },
     {
       "family": "Horn of Valhalla",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "horn-of-valhalla",
@@ -22230,8 +22302,10 @@
           "artwork_ids": [
             "horn-of-valhalla"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "horn-of-valhalla"
+          ],
+          "status": "approved"
         },
         {
           "id": "horn-of-valhalla-brass",
@@ -22240,8 +22314,10 @@
           "artwork_ids": [
             "horn-of-valhalla-brass"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "horn-of-valhalla-brass"
+          ],
+          "status": "approved"
         },
         {
           "id": "horn-of-valhalla-bronze",
@@ -22250,8 +22326,10 @@
           "artwork_ids": [
             "horn-of-valhalla-bronze"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "horn-of-valhalla-bronze"
+          ],
+          "status": "approved"
         },
         {
           "id": "horn-of-valhalla-iron",
@@ -22260,14 +22338,16 @@
           "artwork_ids": [
             "horn-of-valhalla-iron"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "horn-of-valhalla-iron"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Horseshoes of a Zephyr",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "horseshoes-of-a-zephyr",
@@ -22276,14 +22356,16 @@
           "artwork_ids": [
             "horseshoes-of-a-zephyr"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "horseshoes-of-a-zephyr"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Horseshoes of Speed",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "horseshoes-of-speed",
@@ -22292,8 +22374,10 @@
           "artwork_ids": [
             "horseshoes-of-speed"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "horseshoes-of-speed"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -22635,7 +22719,7 @@
     },
     {
       "family": "Instant Fortress",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "instant-fortress",
@@ -22644,14 +22728,16 @@
           "artwork_ids": [
             "instant-fortress"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "instant-fortress"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ioun Stone",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ioun-stone",
@@ -22660,8 +22746,10 @@
           "artwork_ids": [
             "ioun-stone"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-absorption",
@@ -22670,8 +22758,10 @@
           "artwork_ids": [
             "ioun-stone-absorption"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-absorption"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-agility",
@@ -22680,8 +22770,10 @@
           "artwork_ids": [
             "ioun-stone-agility"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-agility"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-fortitude",
@@ -22690,8 +22782,10 @@
           "artwork_ids": [
             "ioun-stone-fortitude"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-fortitude"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-greater-absorption",
@@ -22700,8 +22794,10 @@
           "artwork_ids": [
             "ioun-stone-greater-absorption"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-greater-absorption"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-insight",
@@ -22710,8 +22806,10 @@
           "artwork_ids": [
             "ioun-stone-insight"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-insight"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-intellect",
@@ -22720,8 +22818,10 @@
           "artwork_ids": [
             "ioun-stone-intellect"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-intellect"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-leadership",
@@ -22730,8 +22830,10 @@
           "artwork_ids": [
             "ioun-stone-leadership"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-leadership"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-mastery",
@@ -22740,8 +22842,10 @@
           "artwork_ids": [
             "ioun-stone-mastery"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-mastery"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-protection",
@@ -22750,8 +22854,10 @@
           "artwork_ids": [
             "ioun-stone-protection"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-protection"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-regeneration",
@@ -22760,8 +22866,10 @@
           "artwork_ids": [
             "ioun-stone-regeneration"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-regeneration"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-reserve",
@@ -22770,8 +22878,10 @@
           "artwork_ids": [
             "ioun-stone-reserve"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-reserve"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-strength",
@@ -22780,8 +22890,10 @@
           "artwork_ids": [
             "ioun-stone-strength"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-strength"
+          ],
+          "status": "approved"
         },
         {
           "id": "ioun-stone-sustenance",
@@ -22790,14 +22902,16 @@
           "artwork_ids": [
             "ioun-stone-sustenance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ioun-stone-sustenance"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Iron Bands",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "iron-bands",
@@ -22806,14 +22920,16 @@
           "artwork_ids": [
             "iron-bands"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "iron-bands"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Iron Flask",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "iron-flask",
@@ -22822,8 +22938,10 @@
           "artwork_ids": [
             "iron-flask"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "iron-flask"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -22847,7 +22965,7 @@
     },
     {
       "family": "Lantern of Revealing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "lantern-of-revealing",
@@ -22856,8 +22974,10 @@
           "artwork_ids": [
             "lantern-of-revealing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lantern-of-revealing"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -23675,7 +23795,7 @@
     },
     {
       "family": "Manual of Bodily Health",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "manual-of-bodily-health",
@@ -23684,14 +23804,16 @@
           "artwork_ids": [
             "manual-of-bodily-health"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "manual-of-bodily-health"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Manual of Gainful Exercise",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "manual-of-gainful-exercise",
@@ -23700,14 +23822,16 @@
           "artwork_ids": [
             "manual-of-gainful-exercise"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "manual-of-gainful-exercise"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Manual of Golems",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "manual-of-golems",
@@ -23716,8 +23840,10 @@
           "artwork_ids": [
             "manual-of-golems"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "manual-of-golems"
+          ],
+          "status": "approved"
         },
         {
           "id": "manual-of-golems-flesh",
@@ -23726,8 +23852,10 @@
           "artwork_ids": [
             "manual-of-golems-flesh"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "manual-of-golems-flesh"
+          ],
+          "status": "approved"
         },
         {
           "id": "manual-of-golems-iron",
@@ -23736,8 +23864,10 @@
           "artwork_ids": [
             "manual-of-golems-iron"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "manual-of-golems-iron"
+          ],
+          "status": "approved"
         },
         {
           "id": "manual-of-golems-stone",
@@ -23746,14 +23876,16 @@
           "artwork_ids": [
             "manual-of-golems-stone"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "manual-of-golems-stone"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Manual of Quickness of Action",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "manual-of-quickness-of-action",
@@ -23762,8 +23894,10 @@
           "artwork_ids": [
             "manual-of-quickness-of-action"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "manual-of-quickness-of-action"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24061,7 +24195,7 @@
     },
     {
       "family": "Marvelous Pigments",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "marvelous-pigments",
@@ -24070,14 +24204,16 @@
           "artwork_ids": [
             "marvelous-pigments"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "marvelous-pigments"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Medallion of Thoughts",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "medallion-of-thoughts",
@@ -24086,8 +24222,10 @@
           "artwork_ids": [
             "medallion-of-thoughts"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "medallion-of-thoughts"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24171,7 +24309,7 @@
     },
     {
       "family": "Mirror of Life Trapping",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mirror-of-life-trapping",
@@ -24180,8 +24318,10 @@
           "artwork_ids": [
             "mirror-of-life-trapping"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mirror-of-life-trapping"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -24673,7 +24813,7 @@
     },
     {
       "family": "Mysterious Deck",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "mysterious-deck",
@@ -24682,8 +24822,10 @@
           "artwork_ids": [
             "mysterious-deck"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mysterious-deck"
+          ],
+          "status": "approved"
         },
         {
           "id": "mysterious-deck-22-cards",
@@ -24692,14 +24834,16 @@
           "artwork_ids": [
             "mysterious-deck-22-cards"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mysterious-deck-22-cards"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Necklace of Adaptation",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "necklace-of-adaptation",
@@ -24708,14 +24852,16 @@
           "artwork_ids": [
             "necklace-of-adaptation"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "necklace-of-adaptation"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Necklace of Fireballs",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "necklace-of-fireballs",
@@ -24724,14 +24870,16 @@
           "artwork_ids": [
             "necklace-of-fireballs"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "necklace-of-fireballs"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Necklace of Prayer Beads",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "necklace-of-prayer-beads",
@@ -24740,8 +24888,10 @@
           "artwork_ids": [
             "necklace-of-prayer-beads"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "necklace-of-prayer-beads"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -26577,7 +26727,7 @@
     },
     {
       "family": "Ring of Animal Influence",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-animal-influence",
@@ -26586,14 +26736,16 @@
           "artwork_ids": [
             "ring-of-animal-influence"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-animal-influence"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Djinni Summoning",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-djinni-summoning",
@@ -26602,14 +26754,16 @@
           "artwork_ids": [
             "ring-of-djinni-summoning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-djinni-summoning"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Elemental Command",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-elemental-command",
@@ -26618,8 +26772,10 @@
           "artwork_ids": [
             "ring-of-elemental-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-elemental-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-elemental-command-earth",
@@ -26628,8 +26784,10 @@
           "artwork_ids": [
             "ring-of-elemental-command-earth"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-elemental-command-earth"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-elemental-command-fire",
@@ -26638,8 +26796,10 @@
           "artwork_ids": [
             "ring-of-elemental-command-fire"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-elemental-command-fire"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-elemental-command-water",
@@ -26648,14 +26808,16 @@
           "artwork_ids": [
             "ring-of-elemental-command-water"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-elemental-command-water"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Evasion",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-evasion",
@@ -26664,14 +26826,16 @@
           "artwork_ids": [
             "ring-of-evasion"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-evasion"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Feather Falling",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-feather-falling",
@@ -26680,14 +26844,16 @@
           "artwork_ids": [
             "ring-of-feather-falling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-feather-falling"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Free Action",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-free-action",
@@ -26696,14 +26862,16 @@
           "artwork_ids": [
             "ring-of-free-action"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-free-action"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Jumping",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-jumping",
@@ -26712,14 +26880,16 @@
           "artwork_ids": [
             "ring-of-jumping"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-jumping"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Mind Shielding",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-mind-shielding",
@@ -26728,14 +26898,16 @@
           "artwork_ids": [
             "ring-of-mind-shielding"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-mind-shielding"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Resistance",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-resistance",
@@ -26744,8 +26916,10 @@
           "artwork_ids": [
             "ring-of-resistance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-cold",
@@ -26754,8 +26928,10 @@
           "artwork_ids": [
             "ring-of-resistance-cold"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-cold"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-fire",
@@ -26764,8 +26940,10 @@
           "artwork_ids": [
             "ring-of-resistance-fire"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-fire"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-force",
@@ -26774,8 +26952,10 @@
           "artwork_ids": [
             "ring-of-resistance-force"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-force"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-lightning",
@@ -26784,8 +26964,10 @@
           "artwork_ids": [
             "ring-of-resistance-lightning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-lightning"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-necrotic",
@@ -26794,8 +26976,10 @@
           "artwork_ids": [
             "ring-of-resistance-necrotic"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-necrotic"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-poison",
@@ -26804,8 +26988,10 @@
           "artwork_ids": [
             "ring-of-resistance-poison"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-poison"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-psychic",
@@ -26814,8 +27000,10 @@
           "artwork_ids": [
             "ring-of-resistance-psychic"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-psychic"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-radiant",
@@ -26824,8 +27012,10 @@
           "artwork_ids": [
             "ring-of-resistance-radiant"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-radiant"
+          ],
+          "status": "approved"
         },
         {
           "id": "ring-of-resistance-thunder",
@@ -26834,14 +27024,16 @@
           "artwork_ids": [
             "ring-of-resistance-thunder"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-resistance-thunder"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Shooting Stars",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-shooting-stars",
@@ -26850,14 +27042,16 @@
           "artwork_ids": [
             "ring-of-shooting-stars"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-shooting-stars"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Spell Storing",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-spell-storing",
@@ -26866,14 +27060,16 @@
           "artwork_ids": [
             "ring-of-spell-storing"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-spell-storing"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Spell Turning",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-spell-turning",
@@ -26882,14 +27078,16 @@
           "artwork_ids": [
             "ring-of-spell-turning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-spell-turning"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Swimming",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-swimming",
@@ -26898,14 +27096,16 @@
           "artwork_ids": [
             "ring-of-swimming"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-swimming"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Telekinesis",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-telekinesis",
@@ -26914,14 +27114,16 @@
           "artwork_ids": [
             "ring-of-telekinesis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-telekinesis"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of the Ram",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-the-ram",
@@ -26930,14 +27132,16 @@
           "artwork_ids": [
             "ring-of-the-ram"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-the-ram"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Three Wishes",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-three-wishes",
@@ -26946,14 +27150,16 @@
           "artwork_ids": [
             "ring-of-three-wishes"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-three-wishes"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Warmth",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-warmth",
@@ -26962,14 +27168,16 @@
           "artwork_ids": [
             "ring-of-warmth"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-warmth"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of Water Walking",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-water-walking",
@@ -26978,14 +27186,16 @@
           "artwork_ids": [
             "ring-of-water-walking"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-water-walking"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Ring of X-ray Vision",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ring-of-x-ray-vision",
@@ -26994,8 +27204,10 @@
           "artwork_ids": [
             "ring-of-x-ray-vision"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ring-of-x-ray-vision"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -27115,7 +27327,7 @@
     },
     {
       "family": "Rod of Absorption",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rod-of-absorption",
@@ -27124,14 +27336,16 @@
           "artwork_ids": [
             "rod-of-absorption"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rod-of-absorption"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Rod of Alertness",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rod-of-alertness",
@@ -27140,14 +27354,16 @@
           "artwork_ids": [
             "rod-of-alertness"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rod-of-alertness"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Rod of Lordly Might",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rod-of-lordly-might",
@@ -27156,14 +27372,16 @@
           "artwork_ids": [
             "rod-of-lordly-might"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rod-of-lordly-might"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Rod of Resurrection",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rod-of-resurrection",
@@ -27172,14 +27390,16 @@
           "artwork_ids": [
             "rod-of-resurrection"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rod-of-resurrection"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Rod of Rulership",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rod-of-rulership",
@@ -27188,14 +27408,16 @@
           "artwork_ids": [
             "rod-of-rulership"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rod-of-rulership"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Rod of Security",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "rod-of-security",
@@ -27204,8 +27426,10 @@
           "artwork_ids": [
             "rod-of-security"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rod-of-security"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -28115,7 +28339,7 @@
     },
     {
       "family": "Sentinel Shield",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "sentinel-shield",
@@ -28124,14 +28348,16 @@
           "artwork_ids": [
             "sentinel-shield"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sentinel-shield"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Shield of Missile Attraction",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "shield-of-missile-attraction",
@@ -28140,14 +28366,16 @@
           "artwork_ids": [
             "shield-of-missile-attraction"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shield-of-missile-attraction"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Shield of the Cavalier",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "shield-of-the-cavalier",
@@ -28156,14 +28384,16 @@
           "artwork_ids": [
             "shield-of-the-cavalier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shield-of-the-cavalier"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Shield, +1, +2, or +3",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "magic-shield",
@@ -28172,8 +28402,10 @@
           "artwork_ids": [
             "magic-shield"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-shield"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-shield-shield-plus-2",
@@ -28182,8 +28414,10 @@
           "artwork_ids": [
             "magic-shield-shield-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-shield-shield-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-shield-shield-plus-3",
@@ -28192,8 +28426,10 @@
           "artwork_ids": [
             "magic-shield-shield-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-shield-shield-plus-3"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29507,7 +29743,7 @@
     },
     {
       "family": "Spellguard Shield",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "spellguard-shield",
@@ -29516,8 +29752,10 @@
           "artwork_ids": [
             "spellguard-shield"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spellguard-shield"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29555,7 +29793,7 @@
     },
     {
       "family": "Staff of Fire",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-fire",
@@ -29564,14 +29802,16 @@
           "artwork_ids": [
             "staff-of-fire"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-fire"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of Frost",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-frost",
@@ -29580,8 +29820,10 @@
           "artwork_ids": [
             "staff-of-frost"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-frost"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29603,7 +29845,7 @@
     },
     {
       "family": "Staff of Power",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-power",
@@ -29612,14 +29854,16 @@
           "artwork_ids": [
             "staff-of-power"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-power"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of Striking",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-striking",
@@ -29628,14 +29872,16 @@
           "artwork_ids": [
             "staff-of-striking"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-striking"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of Swarming Insects",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-swarming-insects",
@@ -29644,14 +29890,16 @@
           "artwork_ids": [
             "staff-of-swarming-insects"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-swarming-insects"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of the Python",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-the-python",
@@ -29660,14 +29908,16 @@
           "artwork_ids": [
             "staff-of-the-python"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-the-python"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of the Woodlands",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-the-woodlands",
@@ -29676,14 +29926,16 @@
           "artwork_ids": [
             "staff-of-the-woodlands"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-the-woodlands"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of Thunder and Lightning",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-thunder-and-lightning",
@@ -29692,14 +29944,16 @@
           "artwork_ids": [
             "staff-of-thunder-and-lightning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-thunder-and-lightning"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Staff of Withering",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "staff-of-withering",
@@ -29708,8 +29962,10 @@
           "artwork_ids": [
             "staff-of-withering"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-withering"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -31377,7 +31633,7 @@
     },
     {
       "family": "Wand of Binding",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-binding",
@@ -31386,14 +31642,16 @@
           "artwork_ids": [
             "wand-of-binding"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-binding"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Enemy Detection",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-enemy-detection",
@@ -31402,14 +31660,16 @@
           "artwork_ids": [
             "wand-of-enemy-detection"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-enemy-detection"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Fear",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-fear",
@@ -31418,14 +31678,16 @@
           "artwork_ids": [
             "wand-of-fear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-fear"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Fireballs",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-fireballs",
@@ -31434,14 +31696,16 @@
           "artwork_ids": [
             "wand-of-fireballs"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-fireballs"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Lightning Bolts",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-lightning-bolts",
@@ -31450,14 +31714,16 @@
           "artwork_ids": [
             "wand-of-lightning-bolts"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-lightning-bolts"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Magic Detection",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-magic-detection",
@@ -31466,14 +31732,16 @@
           "artwork_ids": [
             "wand-of-magic-detection"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-magic-detection"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Magic Missiles",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-magic-missiles",
@@ -31482,14 +31750,16 @@
           "artwork_ids": [
             "wand-of-magic-missiles"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-magic-missiles"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Paralysis",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-paralysis",
@@ -31498,14 +31768,16 @@
           "artwork_ids": [
             "wand-of-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-paralysis"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Polymorph",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-polymorph",
@@ -31514,14 +31786,16 @@
           "artwork_ids": [
             "wand-of-polymorph"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-polymorph"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Secrets",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-secrets",
@@ -31530,14 +31804,16 @@
           "artwork_ids": [
             "wand-of-secrets"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-secrets"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of the War Mage, +1, +2, or +3",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-the-war-mage",
@@ -31546,8 +31822,10 @@
           "artwork_ids": [
             "wand-of-the-war-mage"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-the-war-mage"
+          ],
+          "status": "approved"
         },
         {
           "id": "wand-of-the-war-mage-plus-2",
@@ -31556,8 +31834,10 @@
           "artwork_ids": [
             "wand-of-the-war-mage-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-the-war-mage-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "wand-of-the-war-mage-plus-3",
@@ -31566,14 +31846,16 @@
           "artwork_ids": [
             "wand-of-the-war-mage-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-the-war-mage-plus-3"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Wand of Web",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "wand-of-web",
@@ -31582,8 +31864,10 @@
           "artwork_ids": [
             "wand-of-web"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wand-of-web"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -38497,8 +38781,10 @@
           "name": "Aparato do caranguejo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "apparatus-of-the-crab"
+      ]
     },
     {
       "id": "5332f5655cc60b64",
@@ -61426,8 +61712,10 @@
           "name": "Conta de força"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bead-of-force"
+      ]
     },
     {
       "id": "6d9c3e19098b9d5f",
@@ -61441,8 +61729,10 @@
           "name": "Conta de nutrição"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bead-of-nourishment"
+      ]
     },
     {
       "id": "73527ca7c7cfd7b6",
@@ -61915,8 +62205,10 @@
           "name": "Braçadeiras do arqueiro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bracers-of-archery"
+      ]
     },
     {
       "id": "dec3dce772069a2f",
@@ -61930,8 +62222,10 @@
           "name": "Braçadeiras de defesa"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "bracers-of-defense"
+      ]
     },
     {
       "id": "be91a8b3a8996a83",
@@ -61962,8 +62256,10 @@
           "name": "Broche de proteção"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "brooch-of-shielding"
+      ]
     },
     {
       "id": "1fd035b965fc39d6",
@@ -61977,8 +62273,10 @@
           "name": "Vassoura voadora"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "broom-of-flying"
+      ]
     },
     {
       "id": "b6a6283a92221fd6",
@@ -61992,8 +62290,10 @@
           "name": "Vela de invocação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "candle-of-invocation"
+      ]
     },
     {
       "id": "5d82efee098d2688",
@@ -62024,8 +62324,10 @@
           "name": "Tapete voador (0,9 × 1,5 m)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "carpet-of-flying"
+      ]
     },
     {
       "id": "c732d6823a75a0ff",
@@ -62039,8 +62341,10 @@
           "name": "Tapete voador (1,2 × 1,8 m)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "carpet-of-flying-4x6"
+      ]
     },
     {
       "id": "161d79431af92676",
@@ -62054,8 +62358,10 @@
           "name": "Tapete voador (1,5 × 2,1 m)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "carpet-of-flying-5x7"
+      ]
     },
     {
       "id": "89d1a2eee3bc34fa",
@@ -62069,8 +62375,10 @@
           "name": "Tapete voador (1,8 × 2,7 m)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "carpet-of-flying-6x9"
+      ]
     },
     {
       "id": "93bd629f394b0eef",
@@ -63427,8 +63735,10 @@
           "name": "Carrilhão de abertura"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "chime-of-opening"
+      ]
     },
     {
       "id": "4f2a5936c1482cc8",
@@ -63442,8 +63752,10 @@
           "name": "Diadema de explosão"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "circlet-of-blasting"
+      ]
     },
     {
       "id": "7ccc914f13fab592",
@@ -64409,8 +64721,10 @@
           "name": "Bola de cristal da leitura mental"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-ball-of-mind-reading"
+      ]
     },
     {
       "id": "103ee7646532b89b",
@@ -64424,8 +64738,10 @@
           "name": "Bola de cristal da telepatia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-ball-of-telepathy"
+      ]
     },
     {
       "id": "471dc85417a72b23",
@@ -64439,8 +64755,10 @@
           "name": "Bola de cristal da visão verdadeira"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "crystal-ball-of-true-seeing"
+      ]
     },
     {
       "id": "9d99ecb1fca4c21e",
@@ -64556,8 +64874,10 @@
           "name": "Cubo de força"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cube-of-force"
+      ]
     },
     {
       "id": "af4b7da9c282f9f4",
@@ -64571,8 +64891,10 @@
           "name": "Portão cúbico"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "cubic-gate"
+      ]
     },
     {
       "id": "d98b3fb3832c927b",
@@ -67355,8 +67677,10 @@
           "name": "Algemas dimensionais"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dimensional-shackles"
+      ]
     },
     {
       "id": "636afda4466a4c11",
@@ -80562,8 +80886,10 @@
           "name": "Olhos do encantamento"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "eyes-of-charming"
+      ]
     },
     {
       "id": "dab90e5df3026948",
@@ -80577,8 +80903,10 @@
           "name": "Olhos da visão minuciosa"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "eyes-of-minute-seeing"
+      ]
     },
     {
       "id": "94397fd65842c126",
@@ -80592,8 +80920,10 @@
           "name": "Olhos da águia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "eyes-of-the-eagle"
+      ]
     },
     {
       "id": "bd141f6a28d61409",
@@ -83208,8 +83538,10 @@
           "name": "Manoplas de força do ogro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gauntlets-of-ogre-power"
+      ]
     },
     {
       "id": "0be2870f698cc0dd",
@@ -83223,8 +83555,10 @@
           "name": "Gema de brilho"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gem-of-brightness"
+      ]
     },
     {
       "id": "9f6a02b4ecb4c51c",
@@ -83238,8 +83572,10 @@
           "name": "Gema da visão"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gem-of-seeing"
+      ]
     },
     {
       "id": "96414ba47cdbe516",
@@ -85582,8 +85918,10 @@
           "name": "Luvas de apanhar projéteis"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloves-of-missile-snaring"
+      ]
     },
     {
       "id": "90c533becc8e194c",
@@ -85597,8 +85935,10 @@
           "name": "Luvas de nadar e escalar"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloves-of-swimming-and-climbing"
+      ]
     },
     {
       "id": "d7332cc1532802aa",
@@ -85612,8 +85952,10 @@
           "name": "Luvas de ladinagem"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "gloves-of-thievery"
+      ]
     },
     {
       "id": "24ee5f14902058e4",
@@ -85678,8 +86020,10 @@
           "name": "Chapéu do disfarce"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hat-of-disguise"
+      ]
     },
     {
       "id": "12dd707ba6f852d1",
@@ -85693,8 +86037,10 @@
           "name": "Chapéu de muitas magias"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hat-of-many-spells"
+      ]
     },
     {
       "id": "cf73c821a0f2236a",
@@ -85708,8 +86054,10 @@
           "name": "Faixa do intelecto"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "headband-of-intellect"
+      ]
     },
     {
       "id": "f90c221a6ae03c34",
@@ -86590,8 +86938,10 @@
           "name": "Elmo de brilho"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "helm-of-brilliance"
+      ]
     },
     {
       "id": "e0028fb5069770d9",
@@ -86605,8 +86955,10 @@
           "name": "Elmo de compreender idiomas"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "helm-of-comprehending-languages"
+      ]
     },
     {
       "id": "ad62ca31f0cf322a",
@@ -86620,8 +86972,10 @@
           "name": "Elmo da telepatia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "helm-of-telepathy"
+      ]
     },
     {
       "id": "1235461043821747",
@@ -86635,8 +86989,10 @@
           "name": "Elmo do teletransporte"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "helm-of-teleportation"
+      ]
     },
     {
       "id": "8a9353f0afec5495",
@@ -87566,8 +87922,10 @@
           "name": "Trombeta de Valhalla (Prata)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "horn-of-valhalla"
+      ]
     },
     {
       "id": "dacc95e7caf07934",
@@ -87581,8 +87939,10 @@
           "name": "Trombeta de Valhalla (Latão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "horn-of-valhalla-brass"
+      ]
     },
     {
       "id": "ddd6b8d9789f15f1",
@@ -87596,8 +87956,10 @@
           "name": "Trombeta de Valhalla (Bronze)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "horn-of-valhalla-bronze"
+      ]
     },
     {
       "id": "9b5a59e413997844",
@@ -87611,8 +87973,10 @@
           "name": "Trombeta de Valhalla (Ferro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "horn-of-valhalla-iron"
+      ]
     },
     {
       "id": "ad6a0d6d4ff75a72",
@@ -87626,8 +87990,10 @@
           "name": "Ferraduras de zéfiro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "horseshoes-of-a-zephyr"
+      ]
     },
     {
       "id": "83d4b7ae34c1ab28",
@@ -87641,8 +88007,10 @@
           "name": "Ferraduras de velocidade"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "horseshoes-of-speed"
+      ]
     },
     {
       "id": "a7c29bb291279dfa",
@@ -88064,8 +88432,10 @@
           "name": "Fortaleza instantânea"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "instant-fortress"
+      ]
     },
     {
       "id": "05fdaba387d04234",
@@ -88079,8 +88449,10 @@
           "name": "Pedra Ioun (Atenção)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone"
+      ]
     },
     {
       "id": "cc4e376faa347613",
@@ -88094,8 +88466,10 @@
           "name": "Pedra Ioun (Absorção)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-absorption"
+      ]
     },
     {
       "id": "ecaf701d3dccd384",
@@ -88109,8 +88483,10 @@
           "name": "Pedra Ioun (Agilidade)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-agility"
+      ]
     },
     {
       "id": "1e6783f6bbdb9733",
@@ -88124,8 +88500,10 @@
           "name": "Pedra Ioun (Fortitude)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-fortitude"
+      ]
     },
     {
       "id": "ef7fac582b563215",
@@ -88139,8 +88517,10 @@
           "name": "Pedra Ioun (Absorção maior)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-greater-absorption"
+      ]
     },
     {
       "id": "379664a7482b29fc",
@@ -88154,8 +88534,10 @@
           "name": "Pedra Ioun (Intuição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-insight"
+      ]
     },
     {
       "id": "68b569ce1395d240",
@@ -88169,8 +88551,10 @@
           "name": "Pedra Ioun (Intelecto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-intellect"
+      ]
     },
     {
       "id": "8e075b5b1412bd78",
@@ -88184,8 +88568,10 @@
           "name": "Pedra Ioun (Liderança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-leadership"
+      ]
     },
     {
       "id": "a74fa013a60a9363",
@@ -88199,8 +88585,10 @@
           "name": "Pedra Ioun (Maestria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-mastery"
+      ]
     },
     {
       "id": "7e41b45c2ec662be",
@@ -88214,8 +88602,10 @@
           "name": "Pedra Ioun (Proteção)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-protection"
+      ]
     },
     {
       "id": "10a6f21fad7385b5",
@@ -88229,8 +88619,10 @@
           "name": "Pedra Ioun (Regeneração)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-regeneration"
+      ]
     },
     {
       "id": "0f97d5ee45cc0e29",
@@ -88244,8 +88636,10 @@
           "name": "Pedra Ioun (Reserva)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-reserve"
+      ]
     },
     {
       "id": "23b3dde13a1fcf83",
@@ -88259,8 +88653,10 @@
           "name": "Pedra Ioun (Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-strength"
+      ]
     },
     {
       "id": "69b57ee3a82ada95",
@@ -88274,8 +88670,10 @@
           "name": "Pedra Ioun (Sustento)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ioun-stone-sustenance"
+      ]
     },
     {
       "id": "b6d7f01d26837ba7",
@@ -88289,8 +88687,10 @@
           "name": "Bandas de ferro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "iron-bands"
+      ]
     },
     {
       "id": "0fa9dbc9eddad6b2",
@@ -88304,8 +88704,10 @@
           "name": "Frasco de ferro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "iron-flask"
+      ]
     },
     {
       "id": "e0a67cc4d3927cee",
@@ -88336,8 +88738,10 @@
           "name": "Lanterna da revelação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lantern-of-revealing"
+      ]
     },
     {
       "id": "290d33bc8c573e2b",
@@ -91275,8 +91679,10 @@
           "name": "Manual da saúde corporal"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "manual-of-bodily-health"
+      ]
     },
     {
       "id": "d5d1bb4c5fe24f27",
@@ -91290,8 +91696,10 @@
           "name": "Manual do exercício proveitoso"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "manual-of-gainful-exercise"
+      ]
     },
     {
       "id": "2718cf35eae8ddde",
@@ -91305,8 +91713,10 @@
           "name": "Manual dos golens (Golem de barro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "manual-of-golems"
+      ]
     },
     {
       "id": "0498a229ba49c08e",
@@ -91320,8 +91730,10 @@
           "name": "Manual dos golens (Golem de carne)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "manual-of-golems-flesh"
+      ]
     },
     {
       "id": "d4f3a9b2a8a007ca",
@@ -91335,8 +91747,10 @@
           "name": "Manual dos golens (Golem de ferro)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "manual-of-golems-iron"
+      ]
     },
     {
       "id": "156fe8672dab14c7",
@@ -91350,8 +91764,10 @@
           "name": "Manual dos golens (Golem de pedra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "manual-of-golems-stone"
+      ]
     },
     {
       "id": "4aa78666613a33f8",
@@ -91365,8 +91781,10 @@
           "name": "Manual da rapidez de ação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "manual-of-quickness-of-action"
+      ]
     },
     {
       "id": "d3ae235103aa009d",
@@ -92706,8 +93124,10 @@
           "name": "Pigmentos maravilhosos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "marvelous-pigments"
+      ]
     },
     {
       "id": "35db987275d1c64c",
@@ -92721,8 +93141,10 @@
           "name": "Medalhão dos pensamentos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "medallion-of-thoughts"
+      ]
     },
     {
       "id": "c86f5d0495c064aa",
@@ -92838,8 +93260,10 @@
           "name": "Espelho de aprisionar vidas"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mirror-of-life-trapping"
+      ]
     },
     {
       "id": "d7dea1db9b7d520c",
@@ -94791,8 +95215,10 @@
           "name": "Baralho misterioso (13 cartas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mysterious-deck"
+      ]
     },
     {
       "id": "aa5ede7c9bbec6cd",
@@ -94806,8 +95232,10 @@
           "name": "Baralho misterioso (22 cartas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mysterious-deck-22-cards"
+      ]
     },
     {
       "id": "ef3b4258c51db923",
@@ -94821,8 +95249,10 @@
           "name": "Colar da adaptação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "necklace-of-adaptation"
+      ]
     },
     {
       "id": "de19c752762d6049",
@@ -94836,8 +95266,10 @@
           "name": "Colar de bolas de fogo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "necklace-of-fireballs"
+      ]
     },
     {
       "id": "cae7981f27768264",
@@ -94851,8 +95283,10 @@
           "name": "Colar de contas de oração"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "necklace-of-prayer-beads"
+      ]
     },
     {
       "id": "20aab876e0b3348d",
@@ -97285,8 +97719,10 @@
           "name": "Anel de influência animal"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-animal-influence"
+      ]
     },
     {
       "id": "a2cd53a953457be3",
@@ -97300,8 +97736,10 @@
           "name": "Anel de convocar djinni"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-djinni-summoning"
+      ]
     },
     {
       "id": "3fc59d8ca1e64ad4",
@@ -97315,8 +97753,10 @@
           "name": "Anel de comando elemental (Ar)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-elemental-command"
+      ]
     },
     {
       "id": "e03c9bb3039448be",
@@ -97330,8 +97770,10 @@
           "name": "Anel de comando elemental (Terra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-elemental-command-earth"
+      ]
     },
     {
       "id": "e107ec9dd0b5a887",
@@ -97345,8 +97787,10 @@
           "name": "Anel de comando elemental (Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-elemental-command-fire"
+      ]
     },
     {
       "id": "21beb9a7b74498ce",
@@ -97360,8 +97804,10 @@
           "name": "Anel de comando elemental (Água)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-elemental-command-water"
+      ]
     },
     {
       "id": "3ec97342d37e4da4",
@@ -97375,8 +97821,10 @@
           "name": "Anel de evasão"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-evasion"
+      ]
     },
     {
       "id": "f228f0030fb28e8f",
@@ -97390,8 +97838,10 @@
           "name": "Anel de queda suave"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-feather-falling"
+      ]
     },
     {
       "id": "61bbadeaa2ca4903",
@@ -97405,8 +97855,10 @@
           "name": "Anel de liberdade de ação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-free-action"
+      ]
     },
     {
       "id": "dc5c18cb2fc3e851",
@@ -97420,8 +97872,10 @@
           "name": "Anel do salto"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-jumping"
+      ]
     },
     {
       "id": "305380b3f98c3ed0",
@@ -97435,8 +97889,10 @@
           "name": "Anel de proteção mental"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-mind-shielding"
+      ]
     },
     {
       "id": "09aa174c869d0831",
@@ -97450,8 +97906,10 @@
           "name": "Anel de resistência (Ácido)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance"
+      ]
     },
     {
       "id": "564b94fa7ef2fce4",
@@ -97465,8 +97923,10 @@
           "name": "Anel de resistência (Frio)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-cold"
+      ]
     },
     {
       "id": "372b81ae7b5b4be9",
@@ -97480,8 +97940,10 @@
           "name": "Anel de resistência (Fogo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-fire"
+      ]
     },
     {
       "id": "63df88334ebe0c78",
@@ -97495,8 +97957,10 @@
           "name": "Anel de resistência (Força)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-force"
+      ]
     },
     {
       "id": "a65b91c567bc5620",
@@ -97510,8 +97974,10 @@
           "name": "Anel de resistência (Elétrico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-lightning"
+      ]
     },
     {
       "id": "236ff43458ec10ba",
@@ -97525,8 +97991,10 @@
           "name": "Anel de resistência (Necrótico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-necrotic"
+      ]
     },
     {
       "id": "fd2a836ddc693451",
@@ -97540,8 +98008,10 @@
           "name": "Anel de resistência (Veneno)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-poison"
+      ]
     },
     {
       "id": "cc5d5da22837aa6c",
@@ -97555,8 +98025,10 @@
           "name": "Anel de resistência (Psíquico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-psychic"
+      ]
     },
     {
       "id": "c187a6683b114e4d",
@@ -97570,8 +98042,10 @@
           "name": "Anel de resistência (Radiante)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-radiant"
+      ]
     },
     {
       "id": "3b4d6c2a09b377fb",
@@ -97585,8 +98059,10 @@
           "name": "Anel de resistência (Trovão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-resistance-thunder"
+      ]
     },
     {
       "id": "b847338308d7e56c",
@@ -97600,8 +98076,10 @@
           "name": "Anel de estrelas cadentes"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-shooting-stars"
+      ]
     },
     {
       "id": "5ab94e7fe18930c7",
@@ -97615,8 +98093,10 @@
           "name": "Anel de armazenar magias"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-spell-storing"
+      ]
     },
     {
       "id": "d62bfc6869f72118",
@@ -97630,8 +98110,10 @@
           "name": "Anel de refletir magias"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-spell-turning"
+      ]
     },
     {
       "id": "aa1dfe65c5defcc5",
@@ -97645,8 +98127,10 @@
           "name": "Anel de natação"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-swimming"
+      ]
     },
     {
       "id": "f42acc742e7c10e1",
@@ -97660,8 +98144,10 @@
           "name": "Anel da telecinese"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-telekinesis"
+      ]
     },
     {
       "id": "45a7ff54e0ab8cdb",
@@ -97675,8 +98161,10 @@
           "name": "Anel do carneiro"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-the-ram"
+      ]
     },
     {
       "id": "386d0c0de8bbd334",
@@ -97690,8 +98178,10 @@
           "name": "Anel dos três desejos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-three-wishes"
+      ]
     },
     {
       "id": "761f3635d319d990",
@@ -97705,8 +98195,10 @@
           "name": "Anel do calor"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-warmth"
+      ]
     },
     {
       "id": "5028bd65e7d90aed",
@@ -97720,8 +98212,10 @@
           "name": "Anel de andar na água"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-water-walking"
+      ]
     },
     {
       "id": "a70d17ae34055de5",
@@ -97735,8 +98229,10 @@
           "name": "Anel da visão de raio X"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ring-of-x-ray-vision"
+      ]
     },
     {
       "id": "731d60046c5fe11d",
@@ -97869,8 +98365,10 @@
           "name": "Bastão da absorção"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rod-of-absorption"
+      ]
     },
     {
       "id": "192983d88cd88ddc",
@@ -97884,8 +98382,10 @@
           "name": "Bastão da vigilância"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rod-of-alertness"
+      ]
     },
     {
       "id": "a3b5ce33a480d8ed",
@@ -97899,8 +98399,10 @@
           "name": "Bastão do poder senhorial"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rod-of-lordly-might"
+      ]
     },
     {
       "id": "64bf048ef04f4d40",
@@ -97914,8 +98416,10 @@
           "name": "Bastão da ressurreição"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rod-of-resurrection"
+      ]
     },
     {
       "id": "ac4b1b722a275105",
@@ -97929,8 +98433,10 @@
           "name": "Bastão do governo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rod-of-rulership"
+      ]
     },
     {
       "id": "8fdfe543b6cb7fd2",
@@ -97944,8 +98450,10 @@
           "name": "Bastão da segurança"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rod-of-security"
+      ]
     },
     {
       "id": "a469c0487cb144a7",
@@ -99821,8 +100329,10 @@
           "name": "Escudo sentinela (Escudo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sentinel-shield"
+      ]
     },
     {
       "id": "b7f804cfc2b2c2dd",
@@ -99836,8 +100346,10 @@
           "name": "Escudo da atração de projéteis (Escudo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shield-of-missile-attraction"
+      ]
     },
     {
       "id": "a9a3df40dd15d02d",
@@ -99851,8 +100363,10 @@
           "name": "Escudo do cavaleiro (Escudo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shield-of-the-cavalier"
+      ]
     },
     {
       "id": "c74f253316b7a1b5",
@@ -99866,8 +100380,10 @@
           "name": "Escudo mágico (Escudo +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-shield"
+      ]
     },
     {
       "id": "125c571adcf0b2d0",
@@ -99881,8 +100397,10 @@
           "name": "Escudo mágico (Escudo +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-shield-shield-plus-2"
+      ]
     },
     {
       "id": "725393f3815c64a9",
@@ -99896,8 +100414,10 @@
           "name": "Escudo mágico (Escudo +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-shield-shield-plus-3"
+      ]
     },
     {
       "id": "cd433e85ad31dd56",
@@ -103499,8 +104019,10 @@
           "name": "Escudo contra magias (Escudo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spellguard-shield"
+      ]
     },
     {
       "id": "a899546f8f9244d5",
@@ -103544,8 +104066,10 @@
           "name": "Cajado do fogo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-fire"
+      ]
     },
     {
       "id": "8fb84131ba07a333",
@@ -103559,8 +104083,10 @@
           "name": "Cajado do gelo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-frost"
+      ]
     },
     {
       "id": "89bf1639eeebd564",
@@ -103589,8 +104115,10 @@
           "name": "Cajado do poder"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-power"
+      ]
     },
     {
       "id": "b5a7c7cba531db7e",
@@ -103604,8 +104132,10 @@
           "name": "Cajado do ataque"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-striking"
+      ]
     },
     {
       "id": "1d5645da973ec4a5",
@@ -103619,8 +104149,10 @@
           "name": "Cajado dos enxames de insetos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-swarming-insects"
+      ]
     },
     {
       "id": "0a31f6e3a193d083",
@@ -103634,8 +104166,10 @@
           "name": "Cajado da píton"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-the-python"
+      ]
     },
     {
       "id": "b2e5b73f850d5e6e",
@@ -103649,8 +104183,10 @@
           "name": "Cajado dos bosques"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-the-woodlands"
+      ]
     },
     {
       "id": "525e0adddbd283d5",
@@ -103664,8 +104200,10 @@
           "name": "Cajado do trovão e relâmpago"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-thunder-and-lightning"
+      ]
     },
     {
       "id": "f561d17508f38cb4",
@@ -103679,8 +104217,10 @@
           "name": "Cajado do definhamento"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-withering"
+      ]
     },
     {
       "id": "e84071f3c30cffec",
@@ -106434,8 +106974,10 @@
           "name": "Varinha de imobilização"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-binding"
+      ]
     },
     {
       "id": "c85e1d80532f7be3",
@@ -106449,8 +106991,10 @@
           "name": "Varinha de detectar inimigos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-enemy-detection"
+      ]
     },
     {
       "id": "abe92b9e42d08791",
@@ -106464,8 +107008,10 @@
           "name": "Varinha do medo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-fear"
+      ]
     },
     {
       "id": "479995d1e3ef4bdc",
@@ -106479,8 +107025,10 @@
           "name": "Varinha de bolas de fogo"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-fireballs"
+      ]
     },
     {
       "id": "ad63c29f17d2a653",
@@ -106494,8 +107042,10 @@
           "name": "Varinha de relâmpagos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-lightning-bolts"
+      ]
     },
     {
       "id": "59080bdaf89c374c",
@@ -106509,8 +107059,10 @@
           "name": "Varinha de detectar magia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-magic-detection"
+      ]
     },
     {
       "id": "5203470904ecd2a5",
@@ -106524,8 +107076,10 @@
           "name": "Varinha de mísseis mágicos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-magic-missiles"
+      ]
     },
     {
       "id": "7367a9ecbc467b16",
@@ -106539,8 +107093,10 @@
           "name": "Varinha de paralisia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-paralysis"
+      ]
     },
     {
       "id": "7645242c73072016",
@@ -106554,8 +107110,10 @@
           "name": "Varinha de metamorfose"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-polymorph"
+      ]
     },
     {
       "id": "dbf40e446d0703b3",
@@ -106569,8 +107127,10 @@
           "name": "Varinha dos segredos"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-secrets"
+      ]
     },
     {
       "id": "e76384d90f7622fd",
@@ -106584,8 +107144,10 @@
           "name": "Varinha do mago de guerra (+1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-the-war-mage"
+      ]
     },
     {
       "id": "eae6debf63b100c3",
@@ -106599,8 +107161,10 @@
           "name": "Varinha do mago de guerra (+2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-the-war-mage-plus-2"
+      ]
     },
     {
       "id": "76d1bdc28fa24da9",
@@ -106614,8 +107178,10 @@
           "name": "Varinha do mago de guerra (+3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-the-war-mage-plus-3"
+      ]
     },
     {
       "id": "01bddd32c7eaf6e3",
@@ -106629,8 +107195,10 @@
           "name": "Varinha da teia"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wand-of-web"
+      ]
     },
     {
       "id": "84272f97ec746cfa",
