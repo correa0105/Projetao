@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 4237,
-    "pending_artworks": 250,
+    "approved_artworks": 4259,
+    "pending_artworks": 228,
     "catalog_references": 4643,
-    "approved_references": 4393,
+    "approved_references": 4415,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -18,8 +18,8 @@
       ],
       "models": 53,
       "artworks": 53,
-      "approved": 39,
-      "pending": 14,
+      "approved": 43,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -30,8 +30,8 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 1,
-      "pending": 5,
+      "approved": 5,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -42,8 +42,8 @@
       ],
       "models": 6,
       "artworks": 6,
-      "approved": 0,
-      "pending": 6,
+      "approved": 2,
+      "pending": 4,
       "status": "pending"
     },
     {
@@ -110,9 +110,9 @@
       ],
       "models": 468,
       "artworks": 468,
-      "approved": 467,
-      "pending": 1,
-      "status": "pending"
+      "approved": 468,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma mágica",
@@ -122,8 +122,8 @@
       ],
       "models": 153,
       "artworks": 153,
-      "approved": 145,
-      "pending": 8,
+      "approved": 151,
+      "pending": 2,
       "status": "pending"
     },
     {
@@ -158,9 +158,9 @@
       ],
       "models": 53,
       "artworks": 53,
-      "approved": 52,
-      "pending": 1,
-      "status": "pending"
+      "approved": 53,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma da morte certa",
@@ -170,9 +170,9 @@
       ],
       "models": 51,
       "artworks": 51,
-      "approved": 50,
-      "pending": 1,
-      "status": "pending"
+      "approved": 51,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma deslumbrante",

@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 4237,
-    "pending_artworks": 250,
+    "approved_artworks": 4259,
+    "pending_artworks": 228,
     "catalog_references": 4643,
-    "approved_references": 4393,
+    "approved_references": 4415,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -9903,7 +9903,7 @@
     },
     {
       "family": "Dragon Slayer",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "dragon-slayer",
@@ -10440,8 +10440,10 @@
           "artwork_ids": [
             "dragon-slayer-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dragon-slayer-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "dragon-slayer-spear",
@@ -13955,7 +13957,7 @@
     },
     {
       "family": "Enspelled Weapon (Level 2)",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "enspelled-level-2-antimatter-rifle",
@@ -14252,8 +14254,10 @@
           "artwork_ids": [
             "enspelled-level-2-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "enspelled-level-2-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "enspelled-level-2-light-hammer",
@@ -19771,7 +19775,7 @@
     },
     {
       "family": "Giant Slayer",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "giant-slayer",
@@ -19960,8 +19964,10 @@
           "artwork_ids": [
             "giant-slayer-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "giant-slayer-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "giant-slayer-handaxe",
@@ -20875,7 +20881,7 @@
     },
     {
       "family": "Hellfire Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "hellfire-antimatter-rifle",
@@ -21052,8 +21058,10 @@
           "artwork_ids": [
             "hellfire-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hellfire-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "hellfire-handaxe",
@@ -24608,8 +24616,10 @@
           "artwork_ids": [
             "moon-touched-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "moon-touched-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "moon-touched-longsword",
@@ -24618,8 +24628,10 @@
           "artwork_ids": [
             "moon-touched-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "moon-touched-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "moon-touched-rapier",
@@ -24628,8 +24640,10 @@
           "artwork_ids": [
             "moon-touched-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "moon-touched-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "moon-touched-scimitar",
@@ -24638,8 +24652,10 @@
           "artwork_ids": [
             "moon-touched-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "moon-touched-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "moon-touched-shortsword",
@@ -28272,8 +28288,10 @@
           "artwork_ids": [
             "silvered-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-flail",
@@ -28306,8 +28324,10 @@
           "artwork_ids": [
             "silvered-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-greatclub",
@@ -28462,8 +28482,10 @@
           "artwork_ids": [
             "silvered-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-light-hammer",
@@ -28696,8 +28718,10 @@
           "artwork_ids": [
             "silvered-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "silvered-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "silvered-spear",
@@ -30232,8 +30256,10 @@
           "artwork_ids": [
             "sylvan-talon-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sylvan-talon-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "sylvan-talon-scimitar",
@@ -30242,8 +30268,10 @@
           "artwork_ids": [
             "sylvan-talon-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sylvan-talon-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "sylvan-talon-shortsword",
@@ -30611,7 +30639,7 @@
     },
     {
       "family": "Vicious Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "vicious-antimatter-rifle",
@@ -31232,8 +31260,10 @@
           "artwork_ids": [
             "vicious-wooden-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-wooden-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-yklwa",
@@ -31935,7 +31965,7 @@
     },
     {
       "family": "Weapon of Certain Death",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "antimatter-rifle-of-certain-death",
@@ -32460,8 +32490,10 @@
           "artwork_ids": [
             "sickle-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sickle-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "sling-of-certain-death",
@@ -33996,8 +34028,10 @@
           "artwork_ids": [
             "magic-weapon-battleaxe-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-battleaxe-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-blowgun-plus-1",
@@ -34054,8 +34088,10 @@
           "artwork_ids": [
             "magic-weapon-club-plus-2"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-club-plus-2"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-club-plus-3",
@@ -34208,8 +34244,10 @@
           "artwork_ids": [
             "magic-weapon-glaive-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-glaive-plus-3"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-greataxe-plus-1",
@@ -34362,8 +34400,10 @@
           "artwork_ids": [
             "magic-weapon-hand-crossbow-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-hand-crossbow-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-hand-crossbow-plus-2",
@@ -35068,8 +35108,10 @@
           "artwork_ids": [
             "magic-weapon-sickle-plus-1"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "magic-weapon-sickle-plus-1"
+          ],
+          "status": "approved"
         },
         {
           "id": "magic-weapon-sickle-plus-2",
@@ -35450,8 +35492,10 @@
           "artwork_ids": [
             "yklwa-plus-3"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "yklwa-plus-3"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -69081,8 +69125,10 @@
           "name": "Matadora de dragões (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dragon-slayer-sling"
+      ]
     },
     {
       "id": "af4c95d1191a287b",
@@ -74621,8 +74667,10 @@
           "name": "Arma com magia vinculada de nível 2 (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "enspelled-level-2-light-crossbow"
+      ]
     },
     {
       "id": "adc808e49db2c274",
@@ -83430,8 +83478,10 @@
           "name": "Matadora de gigantes (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "giant-slayer-hand-crossbow"
+      ]
     },
     {
       "id": "2b5ea977286042c7",
@@ -85881,8 +85931,10 @@
           "name": "Arma infernal (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hellfire-hand-crossbow"
+      ]
     },
     {
       "id": "6a4f790cf49a1514",
@@ -94624,8 +94676,10 @@
           "name": "Espada tocada pela lua (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "moon-touched-greatsword"
+      ]
     },
     {
       "id": "7002b70251b6b792",
@@ -94639,8 +94693,10 @@
           "name": "Espada tocada pela lua (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "moon-touched-longsword"
+      ]
     },
     {
       "id": "a6510d270e0b9a3f",
@@ -94654,8 +94710,10 @@
           "name": "Espada tocada pela lua (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "moon-touched-rapier"
+      ]
     },
     {
       "id": "194242e32e46c626",
@@ -94669,8 +94727,10 @@
           "name": "Espada tocada pela lua (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "moon-touched-scimitar"
+      ]
     },
     {
       "id": "7074d775a231ee78",
@@ -99953,8 +100013,10 @@
           "name": "Arma de prata (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-double-bladed-scimitar"
+      ]
     },
     {
       "id": "7057e065883ab488",
@@ -100002,8 +100064,10 @@
           "name": "Arma de prata (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-greataxe"
+      ]
     },
     {
       "id": "39e54da7e6d320a4",
@@ -100228,8 +100292,10 @@
           "name": "Arma de prata (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-light-crossbow"
+      ]
     },
     {
       "id": "6b1bd45487693f8c",
@@ -100562,8 +100628,10 @@
           "name": "Arma de prata (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "silvered-sling"
+      ]
     },
     {
       "id": "4150aae50b80aa51",
@@ -104284,8 +104352,10 @@
           "name": "Garra silvestre (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sylvan-talon-rapier"
+      ]
     },
     {
       "id": "1958feedee82c134",
@@ -104299,8 +104369,10 @@
           "name": "Garra silvestre (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sylvan-talon-scimitar"
+      ]
     },
     {
       "id": "52b6c9c5642d63c3",
@@ -106183,8 +106255,10 @@
           "name": "Arma cruel (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-wooden-staff"
+      ]
     },
     {
       "id": "d606280317e80f4d",
@@ -107800,8 +107874,10 @@
           "name": "Arma da morte certa (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sickle-of-certain-death"
+      ]
     },
     {
       "id": "5326a4078d523107",
@@ -109581,8 +109657,10 @@
           "name": "Arma mágica (Machado de batalha +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-battleaxe-plus-3"
+      ]
     },
     {
       "id": "386895b7e29da6d9",
@@ -109664,8 +109742,10 @@
           "name": "Arma mágica (Clava +2)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-club-plus-2"
+      ]
     },
     {
       "id": "abb75197c5bc08e6",
@@ -109934,8 +110014,10 @@
           "name": "Arma mágica (Glaive +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-glaive-plus-3"
+      ]
     },
     {
       "id": "6ae66f326947faf4",
@@ -110153,8 +110235,10 @@
           "name": "Arma mágica (Besta de mão +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-hand-crossbow-plus-1"
+      ]
     },
     {
       "id": "c37c8a46ade53714",
@@ -111628,8 +111712,10 @@
           "name": "Arma mágica (Foice +1)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "magic-weapon-sickle-plus-1"
+      ]
     },
     {
       "id": "769cc9ed67687d76",
@@ -112017,8 +112103,10 @@
           "name": "Arma mágica (Yklwa +3)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "yklwa-plus-3"
+      ]
     },
     {
       "id": "f49a4d3aa9db2ddf",
