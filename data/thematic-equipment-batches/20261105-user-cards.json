@@ -3,10 +3,10 @@
   "uniqueCards": 36,
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 3188,
-    "pending_artworks": 1299,
+    "approved_artworks": 3462,
+    "pending_artworks": 1025,
     "catalog_references": 4643,
-    "approved_references": 3344,
+    "approved_references": 3618,
     "excluded_ammunition_artworks": 42
   },
   "rows": [
@@ -78,9 +78,9 @@
       ],
       "models": 54,
       "artworks": 54,
-      "approved": 0,
-      "pending": 54,
-      "status": "pending"
+      "approved": 54,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma da vingança",
@@ -158,8 +158,8 @@
       ],
       "models": 53,
       "artworks": 53,
-      "approved": 0,
-      "pending": 53,
+      "approved": 52,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -170,8 +170,8 @@
       ],
       "models": 51,
       "artworks": 51,
-      "approved": 0,
-      "pending": 51,
+      "approved": 50,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -290,9 +290,9 @@
       ],
       "models": 32,
       "artworks": 32,
-      "approved": 0,
-      "pending": 32,
-      "status": "pending"
+      "approved": 32,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma de ruidium",
@@ -302,9 +302,9 @@
       ],
       "models": 51,
       "artworks": 51,
-      "approved": 0,
-      "pending": 51,
-      "status": "pending"
+      "approved": 51,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma do comando do trono",
@@ -314,9 +314,9 @@
       ],
       "models": 35,
       "artworks": 35,
-      "approved": 0,
-      "pending": 35,
-      "status": "pending"
+      "approved": 35,
+      "pending": 0,
+      "status": "approved"
     },
     {
       "label": "Arma quebra-força",

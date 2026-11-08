@@ -4,10 +4,10 @@
   "scope": "Todos os itens e todos os modelos de cada conjunto/família, incluindo armas, armaduras, capas e peças separadas, exceto munições para armas; substituir revestimentos por desenhos temáticos nativos.",
   "stats": {
     "physical_artworks": 4487,
-    "approved_artworks": 3188,
-    "pending_artworks": 1299,
+    "approved_artworks": 3462,
+    "pending_artworks": 1025,
     "catalog_references": 4643,
-    "approved_references": 3344,
+    "approved_references": 3618,
     "excluded_ammunition_artworks": 42
   },
   "family_coverage": [
@@ -26189,7 +26189,7 @@
     },
     {
       "family": "Ruidium Weapon",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "ruidium-antimatter-rifle",
@@ -26198,8 +26198,10 @@
           "artwork_ids": [
             "ruidium-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-automatic-rifle",
@@ -26208,8 +26210,10 @@
           "artwork_ids": [
             "ruidium-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-battleaxe",
@@ -26218,8 +26222,10 @@
           "artwork_ids": [
             "ruidium-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-blowgun",
@@ -26228,8 +26234,10 @@
           "artwork_ids": [
             "ruidium-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-club",
@@ -26238,8 +26246,10 @@
           "artwork_ids": [
             "ruidium-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-dagger",
@@ -26248,8 +26258,10 @@
           "artwork_ids": [
             "ruidium-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-dart",
@@ -26258,8 +26270,10 @@
           "artwork_ids": [
             "ruidium-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-double-bladed-scimitar",
@@ -26268,8 +26282,10 @@
           "artwork_ids": [
             "ruidium-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-flail",
@@ -26278,8 +26294,10 @@
           "artwork_ids": [
             "ruidium-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-glaive",
@@ -26288,8 +26306,10 @@
           "artwork_ids": [
             "ruidium-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-greataxe",
@@ -26298,8 +26318,10 @@
           "artwork_ids": [
             "ruidium-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-greatclub",
@@ -26308,8 +26330,10 @@
           "artwork_ids": [
             "ruidium-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-greatsword",
@@ -26318,8 +26342,10 @@
           "artwork_ids": [
             "ruidium-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-halberd",
@@ -26328,8 +26354,10 @@
           "artwork_ids": [
             "ruidium-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-hand-crossbow",
@@ -26338,8 +26366,10 @@
           "artwork_ids": [
             "ruidium-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-handaxe",
@@ -26348,8 +26378,10 @@
           "artwork_ids": [
             "ruidium-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-heavy-crossbow",
@@ -26358,8 +26390,10 @@
           "artwork_ids": [
             "ruidium-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-hooked-shortspear",
@@ -26368,8 +26402,10 @@
           "artwork_ids": [
             "ruidium-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-hoopak",
@@ -26378,8 +26414,10 @@
           "artwork_ids": [
             "ruidium-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-hunting-rifle",
@@ -26388,8 +26426,10 @@
           "artwork_ids": [
             "ruidium-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-javelin",
@@ -26398,8 +26438,10 @@
           "artwork_ids": [
             "ruidium-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-lance",
@@ -26408,8 +26450,10 @@
           "artwork_ids": [
             "ruidium-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-laser-pistol",
@@ -26418,8 +26462,10 @@
           "artwork_ids": [
             "ruidium-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-laser-rifle",
@@ -26428,8 +26474,10 @@
           "artwork_ids": [
             "ruidium-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-light-crossbow",
@@ -26438,8 +26486,10 @@
           "artwork_ids": [
             "ruidium-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-light-hammer",
@@ -26448,8 +26498,10 @@
           "artwork_ids": [
             "ruidium-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-light-repeating-crossbow",
@@ -26458,8 +26510,10 @@
           "artwork_ids": [
             "ruidium-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-longbow",
@@ -26468,8 +26522,10 @@
           "artwork_ids": [
             "ruidium-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-longsword",
@@ -26478,8 +26534,10 @@
           "artwork_ids": [
             "ruidium-longsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-longsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-mace",
@@ -26488,8 +26546,10 @@
           "artwork_ids": [
             "ruidium-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-maul",
@@ -26498,8 +26558,10 @@
           "artwork_ids": [
             "ruidium-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-morningstar",
@@ -26508,8 +26570,10 @@
           "artwork_ids": [
             "ruidium-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-musket",
@@ -26518,8 +26582,10 @@
           "artwork_ids": [
             "ruidium-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-pike",
@@ -26528,8 +26594,10 @@
           "artwork_ids": [
             "ruidium-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-pistol",
@@ -26538,8 +26606,10 @@
           "artwork_ids": [
             "ruidium-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-quarterstaff",
@@ -26548,8 +26618,10 @@
           "artwork_ids": [
             "ruidium-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-rapier",
@@ -26558,8 +26630,10 @@
           "artwork_ids": [
             "ruidium-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-revolver",
@@ -26568,8 +26642,10 @@
           "artwork_ids": [
             "ruidium-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-scimitar",
@@ -26578,8 +26654,10 @@
           "artwork_ids": [
             "ruidium-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-semiautomatic-pistol",
@@ -26588,8 +26666,10 @@
           "artwork_ids": [
             "ruidium-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-shortbow",
@@ -26598,8 +26678,10 @@
           "artwork_ids": [
             "ruidium-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-shortsword",
@@ -26608,8 +26690,10 @@
           "artwork_ids": [
             "ruidium-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-shotgun",
@@ -26618,8 +26702,10 @@
           "artwork_ids": [
             "ruidium-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-sickle",
@@ -26628,8 +26714,10 @@
           "artwork_ids": [
             "ruidium-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-sling",
@@ -26638,8 +26726,10 @@
           "artwork_ids": [
             "ruidium-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-spear",
@@ -26648,8 +26738,10 @@
           "artwork_ids": [
             "ruidium-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-trident",
@@ -26658,8 +26750,10 @@
           "artwork_ids": [
             "ruidium-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-war-pick",
@@ -26668,8 +26762,10 @@
           "artwork_ids": [
             "ruidium-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-warhammer",
@@ -26678,8 +26774,10 @@
           "artwork_ids": [
             "ruidium-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-whip",
@@ -26688,8 +26786,10 @@
           "artwork_ids": [
             "ruidium-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "ruidium-yklwa",
@@ -26698,8 +26798,10 @@
           "artwork_ids": [
             "ruidium-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "ruidium-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -29258,8 +29360,10 @@
           "artwork_ids": [
             "vicious-antimatter-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-antimatter-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-automatic-rifle",
@@ -29268,8 +29372,10 @@
           "artwork_ids": [
             "vicious-automatic-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-automatic-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-double-bladed-scimitar",
@@ -29278,8 +29384,10 @@
           "artwork_ids": [
             "vicious-double-bladed-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-double-bladed-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-hooked-shortspear",
@@ -29288,8 +29396,10 @@
           "artwork_ids": [
             "vicious-hooked-shortspear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-hooked-shortspear"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-hoopak",
@@ -29298,8 +29408,10 @@
           "artwork_ids": [
             "vicious-hoopak"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-hoopak"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-hunting-rifle",
@@ -29308,8 +29420,10 @@
           "artwork_ids": [
             "vicious-hunting-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-hunting-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-laser-pistol",
@@ -29318,8 +29432,10 @@
           "artwork_ids": [
             "vicious-laser-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-laser-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-laser-rifle",
@@ -29328,8 +29444,10 @@
           "artwork_ids": [
             "vicious-laser-rifle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-laser-rifle"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-light-repeating-crossbow",
@@ -29338,8 +29456,10 @@
           "artwork_ids": [
             "vicious-light-repeating-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-light-repeating-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-revolver",
@@ -29348,8 +29468,10 @@
           "artwork_ids": [
             "vicious-revolver"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-revolver"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-semiautomatic-pistol",
@@ -29358,8 +29480,10 @@
           "artwork_ids": [
             "vicious-semiautomatic-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-semiautomatic-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-shotgun",
@@ -29368,8 +29492,10 @@
           "artwork_ids": [
             "vicious-shotgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-shotgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-staff",
@@ -29378,8 +29504,10 @@
           "artwork_ids": [
             "vicious-staff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-staff"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon",
@@ -29388,8 +29516,10 @@
           "artwork_ids": [
             "vicious-weapon"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-battleaxe",
@@ -29398,8 +29528,10 @@
           "artwork_ids": [
             "vicious-weapon-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-blowgun",
@@ -29408,8 +29540,10 @@
           "artwork_ids": [
             "vicious-weapon-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-club",
@@ -29418,8 +29552,10 @@
           "artwork_ids": [
             "vicious-weapon-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-dagger",
@@ -29428,8 +29564,10 @@
           "artwork_ids": [
             "vicious-weapon-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-dart",
@@ -29438,8 +29576,10 @@
           "artwork_ids": [
             "vicious-weapon-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-flail",
@@ -29448,8 +29588,10 @@
           "artwork_ids": [
             "vicious-weapon-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-glaive",
@@ -29458,8 +29600,10 @@
           "artwork_ids": [
             "vicious-weapon-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-greataxe",
@@ -29468,8 +29612,10 @@
           "artwork_ids": [
             "vicious-weapon-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-greatclub",
@@ -29478,8 +29624,10 @@
           "artwork_ids": [
             "vicious-weapon-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-greatsword",
@@ -29488,8 +29636,10 @@
           "artwork_ids": [
             "vicious-weapon-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-halberd",
@@ -29498,8 +29648,10 @@
           "artwork_ids": [
             "vicious-weapon-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-hand-crossbow",
@@ -29508,8 +29660,10 @@
           "artwork_ids": [
             "vicious-weapon-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-handaxe",
@@ -29518,8 +29672,10 @@
           "artwork_ids": [
             "vicious-weapon-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-heavy-crossbow",
@@ -29528,8 +29684,10 @@
           "artwork_ids": [
             "vicious-weapon-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-javelin",
@@ -29538,8 +29696,10 @@
           "artwork_ids": [
             "vicious-weapon-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-lance",
@@ -29548,8 +29708,10 @@
           "artwork_ids": [
             "vicious-weapon-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-light-crossbow",
@@ -29558,8 +29720,10 @@
           "artwork_ids": [
             "vicious-weapon-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-light-hammer",
@@ -29568,8 +29732,10 @@
           "artwork_ids": [
             "vicious-weapon-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-longbow",
@@ -29578,8 +29744,10 @@
           "artwork_ids": [
             "vicious-weapon-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-mace",
@@ -29588,8 +29756,10 @@
           "artwork_ids": [
             "vicious-weapon-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-maul",
@@ -29598,8 +29768,10 @@
           "artwork_ids": [
             "vicious-weapon-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-morningstar",
@@ -29608,8 +29780,10 @@
           "artwork_ids": [
             "vicious-weapon-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-musket",
@@ -29618,8 +29792,10 @@
           "artwork_ids": [
             "vicious-weapon-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-pike",
@@ -29628,8 +29804,10 @@
           "artwork_ids": [
             "vicious-weapon-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-pistol",
@@ -29638,8 +29816,10 @@
           "artwork_ids": [
             "vicious-weapon-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-quarterstaff",
@@ -29648,8 +29828,10 @@
           "artwork_ids": [
             "vicious-weapon-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-rapier",
@@ -29658,8 +29840,10 @@
           "artwork_ids": [
             "vicious-weapon-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-scimitar",
@@ -29668,8 +29852,10 @@
           "artwork_ids": [
             "vicious-weapon-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-shortbow",
@@ -29678,8 +29864,10 @@
           "artwork_ids": [
             "vicious-weapon-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-shortsword",
@@ -29688,8 +29876,10 @@
           "artwork_ids": [
             "vicious-weapon-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-sickle",
@@ -29698,8 +29888,10 @@
           "artwork_ids": [
             "vicious-weapon-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-sling",
@@ -29708,8 +29900,10 @@
           "artwork_ids": [
             "vicious-weapon-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-spear",
@@ -29718,8 +29912,10 @@
           "artwork_ids": [
             "vicious-weapon-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-trident",
@@ -29728,8 +29924,10 @@
           "artwork_ids": [
             "vicious-weapon-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-war-pick",
@@ -29738,8 +29936,10 @@
           "artwork_ids": [
             "vicious-weapon-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-warhammer",
@@ -29748,8 +29948,10 @@
           "artwork_ids": [
             "vicious-weapon-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-weapon-whip",
@@ -29758,8 +29960,10 @@
           "artwork_ids": [
             "vicious-weapon-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-weapon-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "vicious-wooden-staff",
@@ -29778,8 +29982,10 @@
           "artwork_ids": [
             "vicious-yklwa"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "vicious-yklwa"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -30079,7 +30285,7 @@
     },
     {
       "family": "Weapon of Agonizing Paralysis",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "battleaxe-of-agonizing-paralysis",
@@ -30088,8 +30294,10 @@
           "artwork_ids": [
             "battleaxe-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "battleaxe-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "club-of-agonizing-paralysis",
@@ -30098,8 +30306,10 @@
           "artwork_ids": [
             "club-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "club-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "dagger-of-agonizing-paralysis",
@@ -30108,8 +30318,10 @@
           "artwork_ids": [
             "dagger-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dagger-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "double-bladed-scimitar-of-agonizing-paralysis",
@@ -30118,8 +30330,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "flail-of-agonizing-paralysis",
@@ -30128,8 +30342,10 @@
           "artwork_ids": [
             "flail-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flail-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "glaive-of-agonizing-paralysis",
@@ -30138,8 +30354,10 @@
           "artwork_ids": [
             "glaive-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "glaive-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "greataxe-of-agonizing-paralysis",
@@ -30148,8 +30366,10 @@
           "artwork_ids": [
             "greataxe-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greataxe-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatclub-of-agonizing-paralysis",
@@ -30158,8 +30378,10 @@
           "artwork_ids": [
             "greatclub-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatclub-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatsword-of-agonizing-paralysis",
@@ -30168,8 +30390,10 @@
           "artwork_ids": [
             "greatsword-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatsword-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "halberd-of-agonizing-paralysis",
@@ -30178,8 +30402,10 @@
           "artwork_ids": [
             "halberd-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "halberd-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "handaxe-of-agonizing-paralysis",
@@ -30188,8 +30414,10 @@
           "artwork_ids": [
             "handaxe-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "handaxe-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "hooked-shortspear-of-agonizing-paralysis",
@@ -30198,8 +30426,10 @@
           "artwork_ids": [
             "hooked-shortspear-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hooked-shortspear-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "hoopak-of-agonizing-paralysis",
@@ -30208,8 +30438,10 @@
           "artwork_ids": [
             "hoopak-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hoopak-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "javelin-of-agonizing-paralysis",
@@ -30218,8 +30450,10 @@
           "artwork_ids": [
             "javelin-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "javelin-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "lance-of-agonizing-paralysis",
@@ -30228,8 +30462,10 @@
           "artwork_ids": [
             "lance-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lance-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-hammer-of-agonizing-paralysis",
@@ -30238,8 +30474,10 @@
           "artwork_ids": [
             "light-hammer-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-hammer-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "longsword-of-agonizing-paralysis",
@@ -30248,8 +30486,10 @@
           "artwork_ids": [
             "longsword-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longsword-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "mace-of-agonizing-paralysis",
@@ -30258,8 +30498,10 @@
           "artwork_ids": [
             "mace-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mace-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "maul-of-agonizing-paralysis",
@@ -30268,8 +30510,10 @@
           "artwork_ids": [
             "maul-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "maul-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "morningstar-of-agonizing-paralysis",
@@ -30278,8 +30522,10 @@
           "artwork_ids": [
             "morningstar-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "morningstar-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "pike-of-agonizing-paralysis",
@@ -30288,8 +30534,10 @@
           "artwork_ids": [
             "pike-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pike-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "quarterstaff-of-agonizing-paralysis",
@@ -30298,8 +30546,10 @@
           "artwork_ids": [
             "quarterstaff-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "quarterstaff-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "rapier-of-agonizing-paralysis",
@@ -30308,8 +30558,10 @@
           "artwork_ids": [
             "rapier-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rapier-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "scimitar-of-agonizing-paralysis",
@@ -30318,8 +30570,10 @@
           "artwork_ids": [
             "scimitar-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortsword-of-agonizing-paralysis",
@@ -30328,8 +30582,10 @@
           "artwork_ids": [
             "shortsword-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shortsword-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "sickle-of-agonizing-paralysis",
@@ -30338,8 +30594,10 @@
           "artwork_ids": [
             "sickle-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sickle-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "spear-of-agonizing-paralysis",
@@ -30348,8 +30606,10 @@
           "artwork_ids": [
             "spear-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spear-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "trident-of-agonizing-paralysis",
@@ -30358,8 +30618,10 @@
           "artwork_ids": [
             "trident-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "trident-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "war-pick-of-agonizing-paralysis",
@@ -30368,8 +30630,10 @@
           "artwork_ids": [
             "war-pick-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "war-pick-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "warhammer-of-agonizing-paralysis",
@@ -30378,8 +30642,10 @@
           "artwork_ids": [
             "warhammer-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "warhammer-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "whip-of-agonizing-paralysis",
@@ -30388,8 +30654,10 @@
           "artwork_ids": [
             "whip-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "whip-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         },
         {
           "id": "yklwa-of-agonizing-paralysis",
@@ -30398,8 +30666,10 @@
           "artwork_ids": [
             "yklwa-of-agonizing-paralysis"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "yklwa-of-agonizing-paralysis"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -30414,8 +30684,10 @@
           "artwork_ids": [
             "antimatter-rifle-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimatter-rifle-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "automatic-rifle-of-certain-death",
@@ -30424,8 +30696,10 @@
           "artwork_ids": [
             "automatic-rifle-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "automatic-rifle-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "battleaxe-of-certain-death",
@@ -30434,8 +30708,10 @@
           "artwork_ids": [
             "battleaxe-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "battleaxe-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "blowgun-of-certain-death",
@@ -30444,8 +30720,10 @@
           "artwork_ids": [
             "blowgun-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "blowgun-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "club-of-certain-death",
@@ -30454,8 +30732,10 @@
           "artwork_ids": [
             "club-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "club-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "dagger-of-certain-death",
@@ -30464,8 +30744,10 @@
           "artwork_ids": [
             "dagger-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dagger-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "dart-of-certain-death",
@@ -30474,8 +30756,10 @@
           "artwork_ids": [
             "dart-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "dart-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "double-bladed-scimitar-of-certain-death",
@@ -30484,8 +30768,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "flail-of-certain-death",
@@ -30494,8 +30780,10 @@
           "artwork_ids": [
             "flail-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flail-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "glaive-of-certain-death",
@@ -30504,8 +30792,10 @@
           "artwork_ids": [
             "glaive-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "glaive-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "greataxe-of-certain-death",
@@ -30514,8 +30804,10 @@
           "artwork_ids": [
             "greataxe-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greataxe-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatclub-of-certain-death",
@@ -30524,8 +30816,10 @@
           "artwork_ids": [
             "greatclub-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatclub-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatsword-of-certain-death",
@@ -30534,8 +30828,10 @@
           "artwork_ids": [
             "greatsword-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatsword-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "halberd-of-certain-death",
@@ -30544,8 +30840,10 @@
           "artwork_ids": [
             "halberd-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "halberd-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "hand-crossbow-of-certain-death",
@@ -30554,8 +30852,10 @@
           "artwork_ids": [
             "hand-crossbow-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hand-crossbow-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "handaxe-of-certain-death",
@@ -30564,8 +30864,10 @@
           "artwork_ids": [
             "handaxe-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "handaxe-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "heavy-crossbow-of-certain-death",
@@ -30574,8 +30876,10 @@
           "artwork_ids": [
             "heavy-crossbow-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "heavy-crossbow-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "hooked-shortspear-of-certain-death",
@@ -30584,8 +30888,10 @@
           "artwork_ids": [
             "hooked-shortspear-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hooked-shortspear-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "hoopak-of-certain-death",
@@ -30594,8 +30900,10 @@
           "artwork_ids": [
             "hoopak-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hoopak-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "hunting-rifle-of-certain-death",
@@ -30604,8 +30912,10 @@
           "artwork_ids": [
             "hunting-rifle-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hunting-rifle-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "javelin-of-certain-death",
@@ -30614,8 +30924,10 @@
           "artwork_ids": [
             "javelin-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "javelin-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "lance-of-certain-death",
@@ -30624,8 +30936,10 @@
           "artwork_ids": [
             "lance-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lance-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-pistol-of-certain-death",
@@ -30634,8 +30948,10 @@
           "artwork_ids": [
             "laser-pistol-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-pistol-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-rifle-of-certain-death",
@@ -30644,8 +30960,10 @@
           "artwork_ids": [
             "laser-rifle-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-rifle-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-crossbow-of-certain-death",
@@ -30654,8 +30972,10 @@
           "artwork_ids": [
             "light-crossbow-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-crossbow-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-hammer-of-certain-death",
@@ -30664,8 +30984,10 @@
           "artwork_ids": [
             "light-hammer-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-hammer-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-repeating-crossbow-of-certain-death",
@@ -30674,8 +30996,10 @@
           "artwork_ids": [
             "light-repeating-crossbow-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-repeating-crossbow-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "longbow-of-certain-death",
@@ -30684,8 +31008,10 @@
           "artwork_ids": [
             "longbow-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longbow-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "longsword-of-certain-death",
@@ -30694,8 +31020,10 @@
           "artwork_ids": [
             "longsword-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longsword-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "mace-of-certain-death",
@@ -30704,8 +31032,10 @@
           "artwork_ids": [
             "mace-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "mace-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "maul-of-certain-death",
@@ -30714,8 +31044,10 @@
           "artwork_ids": [
             "maul-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "maul-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "morningstar-of-certain-death",
@@ -30724,8 +31056,10 @@
           "artwork_ids": [
             "morningstar-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "morningstar-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "musket-of-certain-death",
@@ -30734,8 +31068,10 @@
           "artwork_ids": [
             "musket-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "musket-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "pike-of-certain-death",
@@ -30744,8 +31080,10 @@
           "artwork_ids": [
             "pike-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pike-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "pistol-of-certain-death",
@@ -30754,8 +31092,10 @@
           "artwork_ids": [
             "pistol-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pistol-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "quarterstaff-of-certain-death",
@@ -30764,8 +31104,10 @@
           "artwork_ids": [
             "quarterstaff-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "quarterstaff-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "rapier-of-certain-death",
@@ -30774,8 +31116,10 @@
           "artwork_ids": [
             "rapier-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rapier-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "revolver-of-certain-death",
@@ -30784,8 +31128,10 @@
           "artwork_ids": [
             "revolver-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "revolver-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "scimitar-of-certain-death",
@@ -30794,8 +31140,10 @@
           "artwork_ids": [
             "scimitar-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "semiautomatic-pistol-of-certain-death",
@@ -30804,8 +31152,10 @@
           "artwork_ids": [
             "semiautomatic-pistol-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "semiautomatic-pistol-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortbow-of-certain-death",
@@ -30814,8 +31164,10 @@
           "artwork_ids": [
             "shortbow-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shortbow-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortsword-of-certain-death",
@@ -30824,8 +31176,10 @@
           "artwork_ids": [
             "shortsword-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shortsword-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "shotgun-of-certain-death",
@@ -30834,8 +31188,10 @@
           "artwork_ids": [
             "shotgun-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shotgun-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "sickle-of-certain-death",
@@ -30854,8 +31210,10 @@
           "artwork_ids": [
             "sling-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "sling-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "spear-of-certain-death",
@@ -30864,8 +31222,10 @@
           "artwork_ids": [
             "spear-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "spear-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "trident-of-certain-death",
@@ -30874,8 +31234,10 @@
           "artwork_ids": [
             "trident-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "trident-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "war-pick-of-certain-death",
@@ -30884,8 +31246,10 @@
           "artwork_ids": [
             "war-pick-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "war-pick-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "warhammer-of-certain-death",
@@ -30894,8 +31258,10 @@
           "artwork_ids": [
             "warhammer-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "warhammer-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "whip-of-certain-death",
@@ -30904,8 +31270,10 @@
           "artwork_ids": [
             "whip-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "whip-of-certain-death"
+          ],
+          "status": "approved"
         },
         {
           "id": "yklwa-of-certain-death",
@@ -30914,14 +31282,16 @@
           "artwork_ids": [
             "yklwa-of-certain-death"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "yklwa-of-certain-death"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Weapon of Throne's Command",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "antimatter-rifle-of-throne-s-command",
@@ -30930,8 +31300,10 @@
           "artwork_ids": [
             "antimatter-rifle-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimatter-rifle-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "automatic-rifle-of-throne-s-command",
@@ -30940,8 +31312,10 @@
           "artwork_ids": [
             "automatic-rifle-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "automatic-rifle-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "battleaxe-of-throne-s-command",
@@ -30950,8 +31324,10 @@
           "artwork_ids": [
             "battleaxe-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "battleaxe-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "blowgun-of-throne-s-command",
@@ -30960,8 +31336,10 @@
           "artwork_ids": [
             "blowgun-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "blowgun-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "double-bladed-scimitar-of-throne-s-command",
@@ -30970,8 +31348,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "flail-of-throne-s-command",
@@ -30980,8 +31360,10 @@
           "artwork_ids": [
             "flail-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "flail-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "glaive-of-throne-s-command",
@@ -30990,8 +31372,10 @@
           "artwork_ids": [
             "glaive-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "glaive-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "greataxe-of-throne-s-command",
@@ -31000,8 +31384,10 @@
           "artwork_ids": [
             "greataxe-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greataxe-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "greatsword-of-throne-s-command",
@@ -31010,8 +31396,10 @@
           "artwork_ids": [
             "greatsword-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "greatsword-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "halberd-of-throne-s-command",
@@ -31020,8 +31408,10 @@
           "artwork_ids": [
             "halberd-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "halberd-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "hand-crossbow-of-throne-s-command",
@@ -31030,8 +31420,10 @@
           "artwork_ids": [
             "hand-crossbow-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hand-crossbow-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "heavy-crossbow-of-throne-s-command",
@@ -31040,8 +31432,10 @@
           "artwork_ids": [
             "heavy-crossbow-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "heavy-crossbow-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "hooked-shortspear-of-throne-s-command",
@@ -31050,8 +31444,10 @@
           "artwork_ids": [
             "hooked-shortspear-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hooked-shortspear-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "hoopak-of-throne-s-command",
@@ -31060,8 +31456,10 @@
           "artwork_ids": [
             "hoopak-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hoopak-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "hunting-rifle-of-throne-s-command",
@@ -31070,8 +31468,10 @@
           "artwork_ids": [
             "hunting-rifle-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hunting-rifle-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "lance-of-throne-s-command",
@@ -31080,8 +31480,10 @@
           "artwork_ids": [
             "lance-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "lance-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-pistol-of-throne-s-command",
@@ -31090,8 +31492,10 @@
           "artwork_ids": [
             "laser-pistol-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-pistol-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-rifle-of-throne-s-command",
@@ -31100,8 +31504,10 @@
           "artwork_ids": [
             "laser-rifle-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-rifle-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "longbow-of-throne-s-command",
@@ -31110,8 +31516,10 @@
           "artwork_ids": [
             "longbow-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longbow-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "longsword-of-throne-s-command",
@@ -31120,8 +31528,10 @@
           "artwork_ids": [
             "longsword-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "longsword-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "maul-of-throne-s-command",
@@ -31130,8 +31540,10 @@
           "artwork_ids": [
             "maul-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "maul-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "morningstar-of-throne-s-command",
@@ -31140,8 +31552,10 @@
           "artwork_ids": [
             "morningstar-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "morningstar-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "musket-of-throne-s-command",
@@ -31150,8 +31564,10 @@
           "artwork_ids": [
             "musket-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "musket-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "pike-of-throne-s-command",
@@ -31160,8 +31576,10 @@
           "artwork_ids": [
             "pike-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pike-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "pistol-of-throne-s-command",
@@ -31170,8 +31588,10 @@
           "artwork_ids": [
             "pistol-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "pistol-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "rapier-of-throne-s-command",
@@ -31180,8 +31600,10 @@
           "artwork_ids": [
             "rapier-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "rapier-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "revolver-of-throne-s-command",
@@ -31190,8 +31612,10 @@
           "artwork_ids": [
             "revolver-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "revolver-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "scimitar-of-throne-s-command",
@@ -31200,8 +31624,10 @@
           "artwork_ids": [
             "scimitar-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "scimitar-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "semiautomatic-pistol-of-throne-s-command",
@@ -31210,8 +31636,10 @@
           "artwork_ids": [
             "semiautomatic-pistol-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "semiautomatic-pistol-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "shortsword-of-throne-s-command",
@@ -31220,8 +31648,10 @@
           "artwork_ids": [
             "shortsword-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shortsword-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "shotgun-of-throne-s-command",
@@ -31230,8 +31660,10 @@
           "artwork_ids": [
             "shotgun-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shotgun-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "trident-of-throne-s-command",
@@ -31240,8 +31672,10 @@
           "artwork_ids": [
             "trident-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "trident-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "war-pick-of-throne-s-command",
@@ -31250,8 +31684,10 @@
           "artwork_ids": [
             "war-pick-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "war-pick-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "warhammer-of-throne-s-command",
@@ -31260,8 +31696,10 @@
           "artwork_ids": [
             "warhammer-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "warhammer-of-throne-s-command"
+          ],
+          "status": "approved"
         },
         {
           "id": "whip-of-throne-s-command",
@@ -31270,14 +31708,16 @@
           "artwork_ids": [
             "whip-of-throne-s-command"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "whip-of-throne-s-command"
+          ],
+          "status": "approved"
         }
       ]
     },
     {
       "family": "Weapon of Warning",
-      "status": "pending",
+      "status": "approved",
       "models": [
         {
           "id": "antimatter-rifle-of-warning",
@@ -31286,8 +31726,10 @@
           "artwork_ids": [
             "antimatter-rifle-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "antimatter-rifle-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "automatic-rifle-of-warning",
@@ -31296,8 +31738,10 @@
           "artwork_ids": [
             "automatic-rifle-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "automatic-rifle-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "double-bladed-scimitar-of-warning",
@@ -31306,8 +31750,10 @@
           "artwork_ids": [
             "double-bladed-scimitar-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "double-bladed-scimitar-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "hooked-shortspear-of-warning",
@@ -31316,8 +31762,10 @@
           "artwork_ids": [
             "hooked-shortspear-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hooked-shortspear-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "hoopak-of-warning",
@@ -31326,8 +31774,10 @@
           "artwork_ids": [
             "hoopak-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hoopak-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "hunting-rifle-of-warning",
@@ -31336,8 +31786,10 @@
           "artwork_ids": [
             "hunting-rifle-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "hunting-rifle-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-pistol-of-warning",
@@ -31346,8 +31798,10 @@
           "artwork_ids": [
             "laser-pistol-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-pistol-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "laser-rifle-of-warning",
@@ -31356,8 +31810,10 @@
           "artwork_ids": [
             "laser-rifle-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "laser-rifle-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "light-repeating-crossbow-of-warning",
@@ -31366,8 +31822,10 @@
           "artwork_ids": [
             "light-repeating-crossbow-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "light-repeating-crossbow-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "net-of-warning",
@@ -31376,8 +31834,10 @@
           "artwork_ids": [
             "net-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "net-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "revolver-of-warning",
@@ -31386,8 +31846,10 @@
           "artwork_ids": [
             "revolver-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "revolver-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "semiautomatic-pistol-of-warning",
@@ -31396,8 +31858,10 @@
           "artwork_ids": [
             "semiautomatic-pistol-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "semiautomatic-pistol-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "shotgun-of-warning",
@@ -31406,8 +31870,10 @@
           "artwork_ids": [
             "shotgun-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "shotgun-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "staff-of-warning",
@@ -31416,8 +31882,10 @@
           "artwork_ids": [
             "staff-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "staff-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning",
@@ -31426,8 +31894,10 @@
           "artwork_ids": [
             "weapon-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-battleaxe",
@@ -31436,8 +31906,10 @@
           "artwork_ids": [
             "weapon-of-warning-battleaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-battleaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-blowgun",
@@ -31446,8 +31918,10 @@
           "artwork_ids": [
             "weapon-of-warning-blowgun"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-blowgun"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-club",
@@ -31456,8 +31930,10 @@
           "artwork_ids": [
             "weapon-of-warning-club"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-club"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-dagger",
@@ -31466,8 +31942,10 @@
           "artwork_ids": [
             "weapon-of-warning-dagger"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-dagger"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-dart",
@@ -31476,8 +31954,10 @@
           "artwork_ids": [
             "weapon-of-warning-dart"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-dart"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-flail",
@@ -31486,8 +31966,10 @@
           "artwork_ids": [
             "weapon-of-warning-flail"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-flail"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-glaive",
@@ -31496,8 +31978,10 @@
           "artwork_ids": [
             "weapon-of-warning-glaive"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-glaive"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-greataxe",
@@ -31506,8 +31990,10 @@
           "artwork_ids": [
             "weapon-of-warning-greataxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-greataxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-greatclub",
@@ -31516,8 +32002,10 @@
           "artwork_ids": [
             "weapon-of-warning-greatclub"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-greatclub"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-greatsword",
@@ -31526,8 +32014,10 @@
           "artwork_ids": [
             "weapon-of-warning-greatsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-greatsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-halberd",
@@ -31536,8 +32026,10 @@
           "artwork_ids": [
             "weapon-of-warning-halberd"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-halberd"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-hand-crossbow",
@@ -31546,8 +32038,10 @@
           "artwork_ids": [
             "weapon-of-warning-hand-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-hand-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-handaxe",
@@ -31556,8 +32050,10 @@
           "artwork_ids": [
             "weapon-of-warning-handaxe"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-handaxe"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-heavy-crossbow",
@@ -31566,8 +32062,10 @@
           "artwork_ids": [
             "weapon-of-warning-heavy-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-heavy-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-javelin",
@@ -31576,8 +32074,10 @@
           "artwork_ids": [
             "weapon-of-warning-javelin"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-javelin"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-lance",
@@ -31586,8 +32086,10 @@
           "artwork_ids": [
             "weapon-of-warning-lance"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-lance"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-light-crossbow",
@@ -31596,8 +32098,10 @@
           "artwork_ids": [
             "weapon-of-warning-light-crossbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-light-crossbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-light-hammer",
@@ -31606,8 +32110,10 @@
           "artwork_ids": [
             "weapon-of-warning-light-hammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-light-hammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-longbow",
@@ -31616,8 +32122,10 @@
           "artwork_ids": [
             "weapon-of-warning-longbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-longbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-mace",
@@ -31626,8 +32134,10 @@
           "artwork_ids": [
             "weapon-of-warning-mace"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-mace"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-maul",
@@ -31636,8 +32146,10 @@
           "artwork_ids": [
             "weapon-of-warning-maul"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-maul"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-morningstar",
@@ -31646,8 +32158,10 @@
           "artwork_ids": [
             "weapon-of-warning-morningstar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-morningstar"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-musket",
@@ -31656,8 +32170,10 @@
           "artwork_ids": [
             "weapon-of-warning-musket"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-musket"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-pike",
@@ -31666,8 +32182,10 @@
           "artwork_ids": [
             "weapon-of-warning-pike"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-pike"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-pistol",
@@ -31676,8 +32194,10 @@
           "artwork_ids": [
             "weapon-of-warning-pistol"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-pistol"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-quarterstaff",
@@ -31686,8 +32206,10 @@
           "artwork_ids": [
             "weapon-of-warning-quarterstaff"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-quarterstaff"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-rapier",
@@ -31696,8 +32218,10 @@
           "artwork_ids": [
             "weapon-of-warning-rapier"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-rapier"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-scimitar",
@@ -31706,8 +32230,10 @@
           "artwork_ids": [
             "weapon-of-warning-scimitar"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-scimitar"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-shortbow",
@@ -31716,8 +32242,10 @@
           "artwork_ids": [
             "weapon-of-warning-shortbow"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-shortbow"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-shortsword",
@@ -31726,8 +32254,10 @@
           "artwork_ids": [
             "weapon-of-warning-shortsword"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-shortsword"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-sickle",
@@ -31736,8 +32266,10 @@
           "artwork_ids": [
             "weapon-of-warning-sickle"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-sickle"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-sling",
@@ -31746,8 +32278,10 @@
           "artwork_ids": [
             "weapon-of-warning-sling"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-sling"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-spear",
@@ -31756,8 +32290,10 @@
           "artwork_ids": [
             "weapon-of-warning-spear"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-spear"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-trident",
@@ -31766,8 +32302,10 @@
           "artwork_ids": [
             "weapon-of-warning-trident"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-trident"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-war-pick",
@@ -31776,8 +32314,10 @@
           "artwork_ids": [
             "weapon-of-warning-war-pick"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-war-pick"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-warhammer",
@@ -31786,8 +32326,10 @@
           "artwork_ids": [
             "weapon-of-warning-warhammer"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-warhammer"
+          ],
+          "status": "approved"
         },
         {
           "id": "weapon-of-warning-whip",
@@ -31796,8 +32338,10 @@
           "artwork_ids": [
             "weapon-of-warning-whip"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "weapon-of-warning-whip"
+          ],
+          "status": "approved"
         },
         {
           "id": "wooden-staff-of-warning",
@@ -31806,8 +32350,10 @@
           "artwork_ids": [
             "wooden-staff-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "wooden-staff-of-warning"
+          ],
+          "status": "approved"
         },
         {
           "id": "yklwa-of-warning",
@@ -31816,8 +32362,10 @@
           "artwork_ids": [
             "yklwa-of-warning"
           ],
-          "approved_artwork_ids": [],
-          "status": "pending"
+          "approved_artwork_ids": [
+            "yklwa-of-warning"
+          ],
+          "status": "approved"
         }
       ]
     },
@@ -95477,8 +96025,10 @@
           "name": "Arma de ruidium (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-antimatter-rifle"
+      ]
     },
     {
       "id": "edf9a58697fa75c1",
@@ -95492,8 +96042,10 @@
           "name": "Arma de ruidium (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-automatic-rifle"
+      ]
     },
     {
       "id": "f080a6e3799f0af4",
@@ -95507,8 +96059,10 @@
           "name": "Arma de ruidium (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-battleaxe"
+      ]
     },
     {
       "id": "27921a30be92c60c",
@@ -95522,8 +96076,10 @@
           "name": "Arma de ruidium (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-blowgun"
+      ]
     },
     {
       "id": "142b2cb76e44ca03",
@@ -95537,8 +96093,10 @@
           "name": "Arma de ruidium (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-club"
+      ]
     },
     {
       "id": "52e060b9c8676a6e",
@@ -95552,8 +96110,10 @@
           "name": "Arma de ruidium (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-dagger"
+      ]
     },
     {
       "id": "627f2708db697a52",
@@ -95567,8 +96127,10 @@
           "name": "Arma de ruidium (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-dart"
+      ]
     },
     {
       "id": "f2d33e8882c092ac",
@@ -95582,8 +96144,10 @@
           "name": "Arma de ruidium (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-double-bladed-scimitar"
+      ]
     },
     {
       "id": "3f9510ba1c12b500",
@@ -95597,8 +96161,10 @@
           "name": "Arma de ruidium (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-flail"
+      ]
     },
     {
       "id": "d9487bef93af576f",
@@ -95612,8 +96178,10 @@
           "name": "Arma de ruidium (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-glaive"
+      ]
     },
     {
       "id": "d4a25c699ccb9d26",
@@ -95627,8 +96195,10 @@
           "name": "Arma de ruidium (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-greataxe"
+      ]
     },
     {
       "id": "e09288bf9ad78847",
@@ -95642,8 +96212,10 @@
           "name": "Arma de ruidium (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-greatclub"
+      ]
     },
     {
       "id": "ed03710aa0e193a4",
@@ -95657,8 +96229,10 @@
           "name": "Arma de ruidium (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-greatsword"
+      ]
     },
     {
       "id": "ff7b77316dd4b50b",
@@ -95672,8 +96246,10 @@
           "name": "Arma de ruidium (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-halberd"
+      ]
     },
     {
       "id": "3acf953e5efdd06d",
@@ -95687,8 +96263,10 @@
           "name": "Arma de ruidium (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-hand-crossbow"
+      ]
     },
     {
       "id": "ccaf7be22e0ffa2f",
@@ -95702,8 +96280,10 @@
           "name": "Arma de ruidium (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-handaxe"
+      ]
     },
     {
       "id": "0314bca270d3ca19",
@@ -95717,8 +96297,10 @@
           "name": "Arma de ruidium (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-heavy-crossbow"
+      ]
     },
     {
       "id": "cbcc54876aa41776",
@@ -95732,8 +96314,10 @@
           "name": "Arma de ruidium (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-hooked-shortspear"
+      ]
     },
     {
       "id": "173b806aa417e570",
@@ -95747,8 +96331,10 @@
           "name": "Arma de ruidium (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-hoopak"
+      ]
     },
     {
       "id": "6332d53aba9adef3",
@@ -95762,8 +96348,10 @@
           "name": "Arma de ruidium (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-hunting-rifle"
+      ]
     },
     {
       "id": "b8a447067e516f02",
@@ -95777,8 +96365,10 @@
           "name": "Arma de ruidium (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-javelin"
+      ]
     },
     {
       "id": "06ecabb8b2e8ad9c",
@@ -95792,8 +96382,10 @@
           "name": "Arma de ruidium (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-lance"
+      ]
     },
     {
       "id": "d35054b817d62e63",
@@ -95807,8 +96399,10 @@
           "name": "Arma de ruidium (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-laser-pistol"
+      ]
     },
     {
       "id": "f0be2aed12f25704",
@@ -95822,8 +96416,10 @@
           "name": "Arma de ruidium (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-laser-rifle"
+      ]
     },
     {
       "id": "d98042f448c8e345",
@@ -95837,8 +96433,10 @@
           "name": "Arma de ruidium (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-light-crossbow"
+      ]
     },
     {
       "id": "42c825e52483b12d",
@@ -95852,8 +96450,10 @@
           "name": "Arma de ruidium (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-light-hammer"
+      ]
     },
     {
       "id": "80494bc715b4e64b",
@@ -95867,8 +96467,10 @@
           "name": "Arma de ruidium (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-light-repeating-crossbow"
+      ]
     },
     {
       "id": "edc91837c9a21d9f",
@@ -95882,8 +96484,10 @@
           "name": "Arma de ruidium (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-longbow"
+      ]
     },
     {
       "id": "d9f46e3303817dc0",
@@ -95897,8 +96501,10 @@
           "name": "Arma de ruidium (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-longsword"
+      ]
     },
     {
       "id": "549c3f96c0c461bc",
@@ -95912,8 +96518,10 @@
           "name": "Arma de ruidium (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-mace"
+      ]
     },
     {
       "id": "c2b2ccf19986c1c5",
@@ -95927,8 +96535,10 @@
           "name": "Arma de ruidium (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-maul"
+      ]
     },
     {
       "id": "d1d6f1ced0aa89b9",
@@ -95942,8 +96552,10 @@
           "name": "Arma de ruidium (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-morningstar"
+      ]
     },
     {
       "id": "a20e203361c76f78",
@@ -95957,8 +96569,10 @@
           "name": "Arma de ruidium (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-musket"
+      ]
     },
     {
       "id": "1eee1318a36cdbc7",
@@ -95972,8 +96586,10 @@
           "name": "Arma de ruidium (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-pike"
+      ]
     },
     {
       "id": "8bbeaa4c442e6ecc",
@@ -95987,8 +96603,10 @@
           "name": "Arma de ruidium (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-pistol"
+      ]
     },
     {
       "id": "e2ec6523ec193926",
@@ -96002,8 +96620,10 @@
           "name": "Arma de ruidium (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-quarterstaff"
+      ]
     },
     {
       "id": "aa22682913f1d6d0",
@@ -96017,8 +96637,10 @@
           "name": "Arma de ruidium (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-rapier"
+      ]
     },
     {
       "id": "5eb8ed9d236779e3",
@@ -96032,8 +96654,10 @@
           "name": "Arma de ruidium (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-revolver"
+      ]
     },
     {
       "id": "aebd51e9109bdb14",
@@ -96047,8 +96671,10 @@
           "name": "Arma de ruidium (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-scimitar"
+      ]
     },
     {
       "id": "6515a86ea652a22d",
@@ -96062,8 +96688,10 @@
           "name": "Arma de ruidium (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-semiautomatic-pistol"
+      ]
     },
     {
       "id": "a01ff7954c4d06f1",
@@ -96077,8 +96705,10 @@
           "name": "Arma de ruidium (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-shortbow"
+      ]
     },
     {
       "id": "8c3909e1619fd969",
@@ -96092,8 +96722,10 @@
           "name": "Arma de ruidium (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-shortsword"
+      ]
     },
     {
       "id": "f49819e42450e14b",
@@ -96107,8 +96739,10 @@
           "name": "Arma de ruidium (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-shotgun"
+      ]
     },
     {
       "id": "2b58796aa0519142",
@@ -96122,8 +96756,10 @@
           "name": "Arma de ruidium (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-sickle"
+      ]
     },
     {
       "id": "9fbc905b92e78542",
@@ -96137,8 +96773,10 @@
           "name": "Arma de ruidium (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-sling"
+      ]
     },
     {
       "id": "1f6b3e412947dc1c",
@@ -96152,8 +96790,10 @@
           "name": "Arma de ruidium (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-spear"
+      ]
     },
     {
       "id": "60d558f111db73e0",
@@ -96167,8 +96807,10 @@
           "name": "Arma de ruidium (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-trident"
+      ]
     },
     {
       "id": "eb98b3067c9f4912",
@@ -96182,8 +96824,10 @@
           "name": "Arma de ruidium (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-war-pick"
+      ]
     },
     {
       "id": "61ce8697c8990cfd",
@@ -96197,8 +96841,10 @@
           "name": "Arma de ruidium (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-warhammer"
+      ]
     },
     {
       "id": "747759e33f8fddd8",
@@ -96212,8 +96858,10 @@
           "name": "Arma de ruidium (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-whip"
+      ]
     },
     {
       "id": "f710a36929502c8d",
@@ -96227,8 +96875,10 @@
           "name": "Arma de ruidium (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "ruidium-yklwa"
+      ]
     },
     {
       "id": "d719a3a6caaf75bd",
@@ -101856,8 +102506,10 @@
           "name": "Arma cruel (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-antimatter-rifle"
+      ]
     },
     {
       "id": "79423f69c420f9fc",
@@ -101871,8 +102523,10 @@
           "name": "Arma cruel (Bastão de foco arcano)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-staff"
+      ]
     },
     {
       "id": "b2740c88828c0822",
@@ -101886,8 +102540,10 @@
           "name": "Arma cruel (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-automatic-rifle"
+      ]
     },
     {
       "id": "e84a2f51bcd007cc",
@@ -101901,8 +102557,10 @@
           "name": "Arma cruel (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-battleaxe"
+      ]
     },
     {
       "id": "3b5a7310f1251d7b",
@@ -101916,8 +102574,10 @@
           "name": "Arma cruel (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-blowgun"
+      ]
     },
     {
       "id": "9a00e87e526172db",
@@ -101931,8 +102591,10 @@
           "name": "Arma cruel (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-club"
+      ]
     },
     {
       "id": "8bb0c420072722d4",
@@ -101946,8 +102608,10 @@
           "name": "Arma cruel (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-dagger"
+      ]
     },
     {
       "id": "ad178daad2f17c0e",
@@ -101961,8 +102625,10 @@
           "name": "Arma cruel (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-dart"
+      ]
     },
     {
       "id": "5c46a353a20b00d4",
@@ -101976,8 +102642,10 @@
           "name": "Arma cruel (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-double-bladed-scimitar"
+      ]
     },
     {
       "id": "26b405150194aa21",
@@ -101991,8 +102659,10 @@
           "name": "Arma cruel (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-flail"
+      ]
     },
     {
       "id": "c613488df10277f9",
@@ -102006,8 +102676,10 @@
           "name": "Arma cruel (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-glaive"
+      ]
     },
     {
       "id": "07663c0ac02abe74",
@@ -102021,8 +102693,10 @@
           "name": "Arma cruel (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-greataxe"
+      ]
     },
     {
       "id": "fbb2e5356bb52a5a",
@@ -102036,8 +102710,10 @@
           "name": "Arma cruel (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-greatclub"
+      ]
     },
     {
       "id": "6ae8b629bfe1548e",
@@ -102051,8 +102727,10 @@
           "name": "Arma cruel (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-greatsword"
+      ]
     },
     {
       "id": "5a13242144a842f8",
@@ -102066,8 +102744,10 @@
           "name": "Arma cruel (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-halberd"
+      ]
     },
     {
       "id": "8c759ec31e18d1ee",
@@ -102081,8 +102761,10 @@
           "name": "Arma cruel (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-hand-crossbow"
+      ]
     },
     {
       "id": "84f9a90f4d4b4bd8",
@@ -102096,8 +102778,10 @@
           "name": "Arma cruel (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-handaxe"
+      ]
     },
     {
       "id": "4336313d010cfdeb",
@@ -102111,8 +102795,10 @@
           "name": "Arma cruel (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-heavy-crossbow"
+      ]
     },
     {
       "id": "6aa467f095b156a4",
@@ -102126,8 +102812,10 @@
           "name": "Arma cruel (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-hooked-shortspear"
+      ]
     },
     {
       "id": "43e73fd3b95dca02",
@@ -102141,8 +102829,10 @@
           "name": "Arma cruel (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-hoopak"
+      ]
     },
     {
       "id": "255d33089155ad57",
@@ -102156,8 +102846,10 @@
           "name": "Arma cruel (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-hunting-rifle"
+      ]
     },
     {
       "id": "c566e5ad0a415903",
@@ -102171,8 +102863,10 @@
           "name": "Arma cruel (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-javelin"
+      ]
     },
     {
       "id": "8893f770f4a96094",
@@ -102186,8 +102880,10 @@
           "name": "Arma cruel (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-lance"
+      ]
     },
     {
       "id": "e21e507c4d67978d",
@@ -102201,8 +102897,10 @@
           "name": "Arma cruel (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-laser-pistol"
+      ]
     },
     {
       "id": "883f61cc093c39c9",
@@ -102216,8 +102914,10 @@
           "name": "Arma cruel (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-laser-rifle"
+      ]
     },
     {
       "id": "a2b1842f014105dd",
@@ -102231,8 +102931,10 @@
           "name": "Arma cruel (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-light-crossbow"
+      ]
     },
     {
       "id": "973075fdf680a5ae",
@@ -102246,8 +102948,10 @@
           "name": "Arma cruel (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-light-hammer"
+      ]
     },
     {
       "id": "3888daed7b963d98",
@@ -102261,8 +102965,10 @@
           "name": "Arma cruel (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-light-repeating-crossbow"
+      ]
     },
     {
       "id": "794e52c4ea3f6e22",
@@ -102276,8 +102982,10 @@
           "name": "Arma cruel (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-longbow"
+      ]
     },
     {
       "id": "7324eb029ce9b277",
@@ -102291,8 +102999,10 @@
           "name": "Arma cruel (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon"
+      ]
     },
     {
       "id": "6f3a78f11fa7c53e",
@@ -102306,8 +103016,10 @@
           "name": "Arma cruel (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-mace"
+      ]
     },
     {
       "id": "eac9a05d20916162",
@@ -102321,8 +103033,10 @@
           "name": "Arma cruel (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-maul"
+      ]
     },
     {
       "id": "61bd2dd15a1af53d",
@@ -102336,8 +103050,10 @@
           "name": "Arma cruel (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-morningstar"
+      ]
     },
     {
       "id": "d135f0b3bce0401c",
@@ -102351,8 +103067,10 @@
           "name": "Arma cruel (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-musket"
+      ]
     },
     {
       "id": "b05987066b5752af",
@@ -102366,8 +103084,10 @@
           "name": "Arma cruel (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-pike"
+      ]
     },
     {
       "id": "4eae8292c9454af1",
@@ -102381,8 +103101,10 @@
           "name": "Arma cruel (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-pistol"
+      ]
     },
     {
       "id": "651f747910639c1d",
@@ -102396,8 +103118,10 @@
           "name": "Arma cruel (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-quarterstaff"
+      ]
     },
     {
       "id": "e3f0c92f8aad6e71",
@@ -102411,8 +103135,10 @@
           "name": "Arma cruel (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-rapier"
+      ]
     },
     {
       "id": "e600532cfbfb4a2e",
@@ -102426,8 +103152,10 @@
           "name": "Arma cruel (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-revolver"
+      ]
     },
     {
       "id": "9780e2072f77a19f",
@@ -102441,8 +103169,10 @@
           "name": "Arma cruel (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-scimitar"
+      ]
     },
     {
       "id": "aa70afb51a5f4fc7",
@@ -102456,8 +103186,10 @@
           "name": "Arma cruel (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-semiautomatic-pistol"
+      ]
     },
     {
       "id": "287c43c30e51400e",
@@ -102471,8 +103203,10 @@
           "name": "Arma cruel (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-shortbow"
+      ]
     },
     {
       "id": "c0681bf0a16f7db2",
@@ -102486,8 +103220,10 @@
           "name": "Arma cruel (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-shortsword"
+      ]
     },
     {
       "id": "5e924c7e59d0d87b",
@@ -102501,8 +103237,10 @@
           "name": "Arma cruel (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-shotgun"
+      ]
     },
     {
       "id": "511235c655868abe",
@@ -102516,8 +103254,10 @@
           "name": "Arma cruel (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-sickle"
+      ]
     },
     {
       "id": "ba0670e6262dc5a4",
@@ -102531,8 +103271,10 @@
           "name": "Arma cruel (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-sling"
+      ]
     },
     {
       "id": "a2db8bbc74fda516",
@@ -102546,8 +103288,10 @@
           "name": "Arma cruel (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-spear"
+      ]
     },
     {
       "id": "7685aa4db75ad0b0",
@@ -102561,8 +103305,10 @@
           "name": "Arma cruel (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-trident"
+      ]
     },
     {
       "id": "5e95ac404dd632f2",
@@ -102576,8 +103322,10 @@
           "name": "Arma cruel (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-war-pick"
+      ]
     },
     {
       "id": "27d335fda91c19ae",
@@ -102591,8 +103339,10 @@
           "name": "Arma cruel (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-warhammer"
+      ]
     },
     {
       "id": "4b73a8e1b45341e9",
@@ -102606,8 +103356,10 @@
           "name": "Arma cruel (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-weapon-whip"
+      ]
     },
     {
       "id": "9d4b57bac93eda29",
@@ -102636,8 +103388,10 @@
           "name": "Arma cruel (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "vicious-yklwa"
+      ]
     },
     {
       "id": "0c2f74bb82f57cc5",
@@ -102961,8 +103715,10 @@
           "name": "Arma da paralisia agonizante (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "battleaxe-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "aa3467b4d1408d30",
@@ -102976,8 +103732,10 @@
           "name": "Arma da paralisia agonizante (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "club-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "1d93ae467db4f2a2",
@@ -102991,8 +103749,10 @@
           "name": "Arma da paralisia agonizante (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dagger-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "6df21e1849a17485",
@@ -103006,8 +103766,10 @@
           "name": "Arma da paralisia agonizante (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "d9842b650df3408d",
@@ -103021,8 +103783,10 @@
           "name": "Arma da paralisia agonizante (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flail-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "f4f1dea84fbb5a90",
@@ -103036,8 +103800,10 @@
           "name": "Arma da paralisia agonizante (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glaive-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "51a906699dcb9824",
@@ -103051,8 +103817,10 @@
           "name": "Arma da paralisia agonizante (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greataxe-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "096caa94efe0f7e9",
@@ -103066,8 +103834,10 @@
           "name": "Arma da paralisia agonizante (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatclub-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "fc11a6dc6bdd8889",
@@ -103081,8 +103851,10 @@
           "name": "Arma da paralisia agonizante (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatsword-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "f34360b464ff757d",
@@ -103096,8 +103868,10 @@
           "name": "Arma da paralisia agonizante (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "halberd-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "c9c045c5290026f3",
@@ -103111,8 +103885,10 @@
           "name": "Arma da paralisia agonizante (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "handaxe-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "a3b8c185bbb356bb",
@@ -103126,8 +103902,10 @@
           "name": "Arma da paralisia agonizante (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hooked-shortspear-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "c8816d373e1d3fb7",
@@ -103141,8 +103919,10 @@
           "name": "Arma da paralisia agonizante (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hoopak-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "1acf4fccae514a8c",
@@ -103156,8 +103936,10 @@
           "name": "Arma da paralisia agonizante (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "javelin-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "1c5298b7319fc37d",
@@ -103171,8 +103953,10 @@
           "name": "Arma da paralisia agonizante (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lance-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "35d65083cdc2cb0b",
@@ -103186,8 +103970,10 @@
           "name": "Arma da paralisia agonizante (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-hammer-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "f43e5d407bd84150",
@@ -103201,8 +103987,10 @@
           "name": "Arma da paralisia agonizante (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longsword-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "90c9d5f89765cb7d",
@@ -103216,8 +104004,10 @@
           "name": "Arma da paralisia agonizante (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mace-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "81bcaa223cba7e7f",
@@ -103231,8 +104021,10 @@
           "name": "Arma da paralisia agonizante (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "maul-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "8a19f3d20e655fbe",
@@ -103246,8 +104038,10 @@
           "name": "Arma da paralisia agonizante (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "morningstar-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "b2efa071c9c371ef",
@@ -103261,8 +104055,10 @@
           "name": "Arma da paralisia agonizante (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pike-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "be74414cde6f6e87",
@@ -103276,8 +104072,10 @@
           "name": "Arma da paralisia agonizante (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "quarterstaff-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "bea25c988484e3df",
@@ -103291,8 +104089,10 @@
           "name": "Arma da paralisia agonizante (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rapier-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "2adc50c33f4a09f6",
@@ -103306,8 +104106,10 @@
           "name": "Arma da paralisia agonizante (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "e454bae9e5c29c5e",
@@ -103321,8 +104123,10 @@
           "name": "Arma da paralisia agonizante (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortsword-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "42dc7da127ead0c3",
@@ -103336,8 +104140,10 @@
           "name": "Arma da paralisia agonizante (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sickle-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "95cbd73348e60e73",
@@ -103351,8 +104157,10 @@
           "name": "Arma da paralisia agonizante (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spear-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "858448dd96b2a81c",
@@ -103366,8 +104174,10 @@
           "name": "Arma da paralisia agonizante (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "trident-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "12948ae433aacefa",
@@ -103381,8 +104191,10 @@
           "name": "Arma da paralisia agonizante (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "war-pick-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "216bdf95ed2275f9",
@@ -103396,8 +104208,10 @@
           "name": "Arma da paralisia agonizante (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "warhammer-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "e692ff9587080d96",
@@ -103411,8 +104225,10 @@
           "name": "Arma da paralisia agonizante (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "whip-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "452834e6bb3a67e5",
@@ -103426,8 +104242,10 @@
           "name": "Arma da paralisia agonizante (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "yklwa-of-agonizing-paralysis"
+      ]
     },
     {
       "id": "69d5f67d2faf93b9",
@@ -103441,8 +104259,10 @@
           "name": "Arma da morte certa (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimatter-rifle-of-certain-death"
+      ]
     },
     {
       "id": "c33dc909886de023",
@@ -103456,8 +104276,10 @@
           "name": "Arma da morte certa (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "automatic-rifle-of-certain-death"
+      ]
     },
     {
       "id": "1016c72db4b5522a",
@@ -103471,8 +104293,10 @@
           "name": "Arma da morte certa (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "battleaxe-of-certain-death"
+      ]
     },
     {
       "id": "893c51753737f17a",
@@ -103486,8 +104310,10 @@
           "name": "Arma da morte certa (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "blowgun-of-certain-death"
+      ]
     },
     {
       "id": "b93f2bc86522d20f",
@@ -103501,8 +104327,10 @@
           "name": "Arma da morte certa (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "club-of-certain-death"
+      ]
     },
     {
       "id": "9ba3f5ffb19ea1c7",
@@ -103516,8 +104344,10 @@
           "name": "Arma da morte certa (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dagger-of-certain-death"
+      ]
     },
     {
       "id": "d7eba06553ff27bb",
@@ -103531,8 +104361,10 @@
           "name": "Arma da morte certa (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "dart-of-certain-death"
+      ]
     },
     {
       "id": "37baaa63b5d6a65e",
@@ -103546,8 +104378,10 @@
           "name": "Arma da morte certa (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-certain-death"
+      ]
     },
     {
       "id": "0886313bb2e67780",
@@ -103561,8 +104395,10 @@
           "name": "Arma da morte certa (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flail-of-certain-death"
+      ]
     },
     {
       "id": "9fe3263244fd3712",
@@ -103576,8 +104412,10 @@
           "name": "Arma da morte certa (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glaive-of-certain-death"
+      ]
     },
     {
       "id": "6a00b34b8955bd43",
@@ -103591,8 +104429,10 @@
           "name": "Arma da morte certa (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greataxe-of-certain-death"
+      ]
     },
     {
       "id": "6c0d54c83129aa72",
@@ -103606,8 +104446,10 @@
           "name": "Arma da morte certa (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatclub-of-certain-death"
+      ]
     },
     {
       "id": "084dcd34a790d952",
@@ -103621,8 +104463,10 @@
           "name": "Arma da morte certa (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatsword-of-certain-death"
+      ]
     },
     {
       "id": "15a01d948dc362d6",
@@ -103636,8 +104480,10 @@
           "name": "Arma da morte certa (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "halberd-of-certain-death"
+      ]
     },
     {
       "id": "b2fce8790a691070",
@@ -103651,8 +104497,10 @@
           "name": "Arma da morte certa (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hand-crossbow-of-certain-death"
+      ]
     },
     {
       "id": "298e8db14120a433",
@@ -103666,8 +104514,10 @@
           "name": "Arma da morte certa (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "handaxe-of-certain-death"
+      ]
     },
     {
       "id": "7ce773e4951780d7",
@@ -103681,8 +104531,10 @@
           "name": "Arma da morte certa (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "heavy-crossbow-of-certain-death"
+      ]
     },
     {
       "id": "b0f4ee7160122648",
@@ -103696,8 +104548,10 @@
           "name": "Arma da morte certa (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hooked-shortspear-of-certain-death"
+      ]
     },
     {
       "id": "4c24824a9f1bf024",
@@ -103711,8 +104565,10 @@
           "name": "Arma da morte certa (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hoopak-of-certain-death"
+      ]
     },
     {
       "id": "c70795177ad95f97",
@@ -103726,8 +104582,10 @@
           "name": "Arma da morte certa (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hunting-rifle-of-certain-death"
+      ]
     },
     {
       "id": "0db0460e280cc601",
@@ -103741,8 +104599,10 @@
           "name": "Arma da morte certa (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "javelin-of-certain-death"
+      ]
     },
     {
       "id": "b0b5706d81e39f6a",
@@ -103756,8 +104616,10 @@
           "name": "Arma da morte certa (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lance-of-certain-death"
+      ]
     },
     {
       "id": "c5f748af1ed26010",
@@ -103771,8 +104633,10 @@
           "name": "Arma da morte certa (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-pistol-of-certain-death"
+      ]
     },
     {
       "id": "efb14a5b1ea92f51",
@@ -103786,8 +104650,10 @@
           "name": "Arma da morte certa (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-rifle-of-certain-death"
+      ]
     },
     {
       "id": "1363fce5e738dc71",
@@ -103801,8 +104667,10 @@
           "name": "Arma da morte certa (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-crossbow-of-certain-death"
+      ]
     },
     {
       "id": "a86a083f9c65f6c8",
@@ -103816,8 +104684,10 @@
           "name": "Arma da morte certa (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-hammer-of-certain-death"
+      ]
     },
     {
       "id": "96241e9f0937198b",
@@ -103831,8 +104701,10 @@
           "name": "Arma da morte certa (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-repeating-crossbow-of-certain-death"
+      ]
     },
     {
       "id": "5dde7add5af86594",
@@ -103846,8 +104718,10 @@
           "name": "Arma da morte certa (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longbow-of-certain-death"
+      ]
     },
     {
       "id": "4120ccb734fd5b2d",
@@ -103861,8 +104735,10 @@
           "name": "Arma da morte certa (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longsword-of-certain-death"
+      ]
     },
     {
       "id": "522b7090b2a5498e",
@@ -103876,8 +104752,10 @@
           "name": "Arma da morte certa (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "mace-of-certain-death"
+      ]
     },
     {
       "id": "a42d7bdbe719e831",
@@ -103891,8 +104769,10 @@
           "name": "Arma da morte certa (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "maul-of-certain-death"
+      ]
     },
     {
       "id": "33436be8d959579c",
@@ -103906,8 +104786,10 @@
           "name": "Arma da morte certa (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "morningstar-of-certain-death"
+      ]
     },
     {
       "id": "a9ca4aaa4659c057",
@@ -103921,8 +104803,10 @@
           "name": "Arma da morte certa (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "musket-of-certain-death"
+      ]
     },
     {
       "id": "57b1bec6f9818612",
@@ -103936,8 +104820,10 @@
           "name": "Arma da morte certa (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pike-of-certain-death"
+      ]
     },
     {
       "id": "f2a74150b701721d",
@@ -103951,8 +104837,10 @@
           "name": "Arma da morte certa (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pistol-of-certain-death"
+      ]
     },
     {
       "id": "b70ed3d4a5e85d49",
@@ -103966,8 +104854,10 @@
           "name": "Arma da morte certa (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "quarterstaff-of-certain-death"
+      ]
     },
     {
       "id": "3fc4ba508222d183",
@@ -103981,8 +104871,10 @@
           "name": "Arma da morte certa (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rapier-of-certain-death"
+      ]
     },
     {
       "id": "ef2a03e0a5c1b33d",
@@ -103996,8 +104888,10 @@
           "name": "Arma da morte certa (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "revolver-of-certain-death"
+      ]
     },
     {
       "id": "189ade9305a30b7a",
@@ -104011,8 +104905,10 @@
           "name": "Arma da morte certa (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-certain-death"
+      ]
     },
     {
       "id": "2384587ab29e4237",
@@ -104026,8 +104922,10 @@
           "name": "Arma da morte certa (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "semiautomatic-pistol-of-certain-death"
+      ]
     },
     {
       "id": "31e04df5550eca35",
@@ -104041,8 +104939,10 @@
           "name": "Arma da morte certa (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortbow-of-certain-death"
+      ]
     },
     {
       "id": "681e74c6a7619951",
@@ -104056,8 +104956,10 @@
           "name": "Arma da morte certa (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortsword-of-certain-death"
+      ]
     },
     {
       "id": "7f6c5da3a9766cf7",
@@ -104071,8 +104973,10 @@
           "name": "Arma da morte certa (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shotgun-of-certain-death"
+      ]
     },
     {
       "id": "1d7a9299e255ec84",
@@ -104101,8 +105005,10 @@
           "name": "Arma da morte certa (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "sling-of-certain-death"
+      ]
     },
     {
       "id": "363f0fffd90e4ace",
@@ -104116,8 +105022,10 @@
           "name": "Arma da morte certa (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "spear-of-certain-death"
+      ]
     },
     {
       "id": "a3d0afeded92a57f",
@@ -104131,8 +105039,10 @@
           "name": "Arma da morte certa (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "trident-of-certain-death"
+      ]
     },
     {
       "id": "e7d1d8318a1d550c",
@@ -104146,8 +105056,10 @@
           "name": "Arma da morte certa (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "war-pick-of-certain-death"
+      ]
     },
     {
       "id": "ae648bcc3fba9370",
@@ -104161,8 +105073,10 @@
           "name": "Arma da morte certa (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "warhammer-of-certain-death"
+      ]
     },
     {
       "id": "a8a3675b944fad92",
@@ -104176,8 +105090,10 @@
           "name": "Arma da morte certa (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "whip-of-certain-death"
+      ]
     },
     {
       "id": "2428ccd5eb02cebe",
@@ -104191,8 +105107,10 @@
           "name": "Arma da morte certa (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "yklwa-of-certain-death"
+      ]
     },
     {
       "id": "cf7bb085171f2146",
@@ -104206,8 +105124,10 @@
           "name": "Arma do Comando do Trono (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimatter-rifle-of-throne-s-command"
+      ]
     },
     {
       "id": "dbf90835f5aebd94",
@@ -104221,8 +105141,10 @@
           "name": "Arma do Comando do Trono (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "automatic-rifle-of-throne-s-command"
+      ]
     },
     {
       "id": "81399115337b4ddd",
@@ -104236,8 +105158,10 @@
           "name": "Arma do Comando do Trono (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "battleaxe-of-throne-s-command"
+      ]
     },
     {
       "id": "f59f4aa98f7d696d",
@@ -104251,8 +105175,10 @@
           "name": "Arma do Comando do Trono (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "blowgun-of-throne-s-command"
+      ]
     },
     {
       "id": "a13e46773d831560",
@@ -104266,8 +105192,10 @@
           "name": "Arma do Comando do Trono (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-throne-s-command"
+      ]
     },
     {
       "id": "9066cac803e52d1d",
@@ -104281,8 +105209,10 @@
           "name": "Arma do Comando do Trono (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "flail-of-throne-s-command"
+      ]
     },
     {
       "id": "11c01f6884e583c1",
@@ -104296,8 +105226,10 @@
           "name": "Arma do Comando do Trono (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "glaive-of-throne-s-command"
+      ]
     },
     {
       "id": "5493fafa1d3510d5",
@@ -104311,8 +105243,10 @@
           "name": "Arma do Comando do Trono (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greataxe-of-throne-s-command"
+      ]
     },
     {
       "id": "e16fa20aadb96a02",
@@ -104326,8 +105260,10 @@
           "name": "Arma do Comando do Trono (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "greatsword-of-throne-s-command"
+      ]
     },
     {
       "id": "6c8f1ec34c63daef",
@@ -104341,8 +105277,10 @@
           "name": "Arma do Comando do Trono (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "halberd-of-throne-s-command"
+      ]
     },
     {
       "id": "99f62443f1dba682",
@@ -104356,8 +105294,10 @@
           "name": "Arma do Comando do Trono (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hand-crossbow-of-throne-s-command"
+      ]
     },
     {
       "id": "27d6708e5935415c",
@@ -104371,8 +105311,10 @@
           "name": "Arma do Comando do Trono (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "heavy-crossbow-of-throne-s-command"
+      ]
     },
     {
       "id": "6803a93a0a5077c3",
@@ -104386,8 +105328,10 @@
           "name": "Arma do Comando do Trono (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hooked-shortspear-of-throne-s-command"
+      ]
     },
     {
       "id": "851ba528105ec589",
@@ -104401,8 +105345,10 @@
           "name": "Arma do Comando do Trono (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hoopak-of-throne-s-command"
+      ]
     },
     {
       "id": "8ae32b068c0887a7",
@@ -104416,8 +105362,10 @@
           "name": "Arma do Comando do Trono (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hunting-rifle-of-throne-s-command"
+      ]
     },
     {
       "id": "ea4fd0ff9054840f",
@@ -104431,8 +105379,10 @@
           "name": "Arma do Comando do Trono (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "lance-of-throne-s-command"
+      ]
     },
     {
       "id": "e8b0baeb99e130e6",
@@ -104446,8 +105396,10 @@
           "name": "Arma do Comando do Trono (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-pistol-of-throne-s-command"
+      ]
     },
     {
       "id": "ccda85b960277268",
@@ -104461,8 +105413,10 @@
           "name": "Arma do Comando do Trono (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-rifle-of-throne-s-command"
+      ]
     },
     {
       "id": "5012c18a47297ac6",
@@ -104476,8 +105430,10 @@
           "name": "Arma do Comando do Trono (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longbow-of-throne-s-command"
+      ]
     },
     {
       "id": "9cb52581fd2a9b42",
@@ -104491,8 +105447,10 @@
           "name": "Arma do Comando do Trono (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "longsword-of-throne-s-command"
+      ]
     },
     {
       "id": "628e8fd10a0424cf",
@@ -104506,8 +105464,10 @@
           "name": "Arma do Comando do Trono (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "maul-of-throne-s-command"
+      ]
     },
     {
       "id": "ed049c35b6c53875",
@@ -104521,8 +105481,10 @@
           "name": "Arma do Comando do Trono (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "morningstar-of-throne-s-command"
+      ]
     },
     {
       "id": "7ebb4940c6c71f44",
@@ -104536,8 +105498,10 @@
           "name": "Arma do Comando do Trono (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "musket-of-throne-s-command"
+      ]
     },
     {
       "id": "77972bed71efb452",
@@ -104551,8 +105515,10 @@
           "name": "Arma do Comando do Trono (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pike-of-throne-s-command"
+      ]
     },
     {
       "id": "1e96e207edbd8c5c",
@@ -104566,8 +105532,10 @@
           "name": "Arma do Comando do Trono (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "pistol-of-throne-s-command"
+      ]
     },
     {
       "id": "b148df7327b06599",
@@ -104581,8 +105549,10 @@
           "name": "Arma do Comando do Trono (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "rapier-of-throne-s-command"
+      ]
     },
     {
       "id": "c7edbadc37011c9e",
@@ -104596,8 +105566,10 @@
           "name": "Arma do Comando do Trono (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "revolver-of-throne-s-command"
+      ]
     },
     {
       "id": "49463babab013a8d",
@@ -104611,8 +105583,10 @@
           "name": "Arma do Comando do Trono (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "scimitar-of-throne-s-command"
+      ]
     },
     {
       "id": "5416da1ddf66ace4",
@@ -104626,8 +105600,10 @@
           "name": "Arma do Comando do Trono (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "semiautomatic-pistol-of-throne-s-command"
+      ]
     },
     {
       "id": "1f87d0f895314ecf",
@@ -104641,8 +105617,10 @@
           "name": "Arma do Comando do Trono (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shortsword-of-throne-s-command"
+      ]
     },
     {
       "id": "1966dfcb440f3e30",
@@ -104656,8 +105634,10 @@
           "name": "Arma do Comando do Trono (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shotgun-of-throne-s-command"
+      ]
     },
     {
       "id": "489a6ed6ede412db",
@@ -104671,8 +105651,10 @@
           "name": "Arma do Comando do Trono (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "trident-of-throne-s-command"
+      ]
     },
     {
       "id": "0ca90eae93a3f9c2",
@@ -104686,8 +105668,10 @@
           "name": "Arma do Comando do Trono (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "war-pick-of-throne-s-command"
+      ]
     },
     {
       "id": "fd4e8c6497a50a2f",
@@ -104701,8 +105685,10 @@
           "name": "Arma do Comando do Trono (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "warhammer-of-throne-s-command"
+      ]
     },
     {
       "id": "f90e8ea063cd24e7",
@@ -104716,8 +105702,10 @@
           "name": "Arma do Comando do Trono (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "whip-of-throne-s-command"
+      ]
     },
     {
       "id": "3b8f9b88e935678d",
@@ -104731,8 +105719,10 @@
           "name": "Arma da vigilância (Rifle de antimatéria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "antimatter-rifle-of-warning"
+      ]
     },
     {
       "id": "a3533b146a5cd9f1",
@@ -104746,8 +105736,10 @@
           "name": "Arma da vigilância (Bastão de foco arcano)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "staff-of-warning"
+      ]
     },
     {
       "id": "458b126d6015c004",
@@ -104761,8 +105753,10 @@
           "name": "Arma da vigilância (Rifle automático)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "automatic-rifle-of-warning"
+      ]
     },
     {
       "id": "7f31b78f66bca4eb",
@@ -104776,8 +105770,10 @@
           "name": "Arma da vigilância (Machado de batalha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-battleaxe"
+      ]
     },
     {
       "id": "cf5fc779ebb77507",
@@ -104791,8 +105787,10 @@
           "name": "Arma da vigilância (Zarabatana)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-blowgun"
+      ]
     },
     {
       "id": "92d2e6f5b4a9e227",
@@ -104806,8 +105804,10 @@
           "name": "Arma da vigilância (Clava)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-club"
+      ]
     },
     {
       "id": "a715b0f2326fe584",
@@ -104821,8 +105821,10 @@
           "name": "Arma da vigilância (Adaga)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-dagger"
+      ]
     },
     {
       "id": "874e1c0aac28b519",
@@ -104836,8 +105838,10 @@
           "name": "Arma da vigilância (Dardo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-dart"
+      ]
     },
     {
       "id": "6620e38fa936aa33",
@@ -104851,8 +105855,10 @@
           "name": "Arma da vigilância (Cimitarra de duas lâminas)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "double-bladed-scimitar-of-warning"
+      ]
     },
     {
       "id": "58681dbea9f1cf77",
@@ -104866,8 +105872,10 @@
           "name": "Arma da vigilância (Mangual)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-flail"
+      ]
     },
     {
       "id": "7954c6a214af98fd",
@@ -104881,8 +105889,10 @@
           "name": "Arma da vigilância (Glaive)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-glaive"
+      ]
     },
     {
       "id": "7e0aebaced58b60b",
@@ -104896,8 +105906,10 @@
           "name": "Arma da vigilância (Machado grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-greataxe"
+      ]
     },
     {
       "id": "194b80d6ad3e39bb",
@@ -104911,8 +105923,10 @@
           "name": "Arma da vigilância (Clava grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-greatclub"
+      ]
     },
     {
       "id": "6e68952fe69231a1",
@@ -104926,8 +105940,10 @@
           "name": "Arma da vigilância (Espada grande)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-greatsword"
+      ]
     },
     {
       "id": "42292db1b101c8e4",
@@ -104941,8 +105957,10 @@
           "name": "Arma da vigilância (Alabarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-halberd"
+      ]
     },
     {
       "id": "822ecb827634c660",
@@ -104956,8 +105974,10 @@
           "name": "Arma da vigilância (Besta de mão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-hand-crossbow"
+      ]
     },
     {
       "id": "fd50687001a41bcc",
@@ -104971,8 +105991,10 @@
           "name": "Arma da vigilância (Machadinha)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-handaxe"
+      ]
     },
     {
       "id": "582bbbab8ffa21ee",
@@ -104986,8 +106008,10 @@
           "name": "Arma da vigilância (Besta pesada)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-heavy-crossbow"
+      ]
     },
     {
       "id": "232d16e2c7c71b72",
@@ -105001,8 +106025,10 @@
           "name": "Arma da vigilância (Lança curta com gancho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hooked-shortspear-of-warning"
+      ]
     },
     {
       "id": "ba134dd39a0fe191",
@@ -105016,8 +106042,10 @@
           "name": "Arma da vigilância (Hoopak)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hoopak-of-warning"
+      ]
     },
     {
       "id": "95c20716a5ef809c",
@@ -105031,8 +106059,10 @@
           "name": "Arma da vigilância (Rifle de caça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "hunting-rifle-of-warning"
+      ]
     },
     {
       "id": "a88d41689f8b4772",
@@ -105046,8 +106076,10 @@
           "name": "Arma da vigilância (Azagaia)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-javelin"
+      ]
     },
     {
       "id": "92ae846a2cf00812",
@@ -105061,8 +106093,10 @@
           "name": "Arma da vigilância (Lança de cavalaria)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-lance"
+      ]
     },
     {
       "id": "95b4a3fec72961f2",
@@ -105076,8 +106110,10 @@
           "name": "Arma da vigilância (Pistola laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-pistol-of-warning"
+      ]
     },
     {
       "id": "597f1588830bf4ab",
@@ -105091,8 +106127,10 @@
           "name": "Arma da vigilância (Rifle laser)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "laser-rifle-of-warning"
+      ]
     },
     {
       "id": "4c83ea8d96aae7a4",
@@ -105106,8 +106144,10 @@
           "name": "Arma da vigilância (Besta leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-light-crossbow"
+      ]
     },
     {
       "id": "69134278a658f9b2",
@@ -105121,8 +106161,10 @@
           "name": "Arma da vigilância (Martelo leve)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-light-hammer"
+      ]
     },
     {
       "id": "6c108fcc82dfe3b4",
@@ -105136,8 +106178,10 @@
           "name": "Arma da vigilância (Besta leve de repetição)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "light-repeating-crossbow-of-warning"
+      ]
     },
     {
       "id": "7f5decba29273061",
@@ -105151,8 +106195,10 @@
           "name": "Arma da vigilância (Arco longo)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-longbow"
+      ]
     },
     {
       "id": "21dc8c7f035c8026",
@@ -105166,8 +106212,10 @@
           "name": "Arma da vigilância (Espada longa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning"
+      ]
     },
     {
       "id": "f464ed3a3846dcbb",
@@ -105181,8 +106229,10 @@
           "name": "Arma da vigilância (Maça)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-mace"
+      ]
     },
     {
       "id": "b334516b89fe6fe3",
@@ -105196,8 +106246,10 @@
           "name": "Arma da vigilância (Malho)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-maul"
+      ]
     },
     {
       "id": "d14704d64e52d5f2",
@@ -105211,8 +106263,10 @@
           "name": "Arma da vigilância (Estrela da manhã)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-morningstar"
+      ]
     },
     {
       "id": "6c9151dda9eeb722",
@@ -105226,8 +106280,10 @@
           "name": "Arma da vigilância (Mosquete)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-musket"
+      ]
     },
     {
       "id": "7dca6c0d051aa320",
@@ -105241,8 +106297,10 @@
           "name": "Arma da vigilância (Rede)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "net-of-warning"
+      ]
     },
     {
       "id": "5216a5c8a60fa8cb",
@@ -105256,8 +106314,10 @@
           "name": "Arma da vigilância (Pique)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-pike"
+      ]
     },
     {
       "id": "e5cb51cf53a69625",
@@ -105271,8 +106331,10 @@
           "name": "Arma da vigilância (Pistola)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-pistol"
+      ]
     },
     {
       "id": "3d0e0106fd7de502",
@@ -105286,8 +106348,10 @@
           "name": "Arma da vigilância (Bordão)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-quarterstaff"
+      ]
     },
     {
       "id": "fc2c949ba9fd150f",
@@ -105301,8 +106365,10 @@
           "name": "Arma da vigilância (Rapieira)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-rapier"
+      ]
     },
     {
       "id": "d448b46740f686e1",
@@ -105316,8 +106382,10 @@
           "name": "Arma da vigilância (Revólver)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "revolver-of-warning"
+      ]
     },
     {
       "id": "2dd1849e6d91eda6",
@@ -105331,8 +106399,10 @@
           "name": "Arma da vigilância (Cimitarra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-scimitar"
+      ]
     },
     {
       "id": "8fd553056535f42b",
@@ -105346,8 +106416,10 @@
           "name": "Arma da vigilância (Pistola semiautomática)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "semiautomatic-pistol-of-warning"
+      ]
     },
     {
       "id": "8698f606658143c5",
@@ -105361,8 +106433,10 @@
           "name": "Arma da vigilância (Arco curto)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-shortbow"
+      ]
     },
     {
       "id": "2d8b16279486d1bd",
@@ -105376,8 +106450,10 @@
           "name": "Arma da vigilância (Espada curta)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-shortsword"
+      ]
     },
     {
       "id": "95f5214828dd31bb",
@@ -105391,8 +106467,10 @@
           "name": "Arma da vigilância (Espingarda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "shotgun-of-warning"
+      ]
     },
     {
       "id": "ddbd1c6e2a6ed03e",
@@ -105406,8 +106484,10 @@
           "name": "Arma da vigilância (Foice)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-sickle"
+      ]
     },
     {
       "id": "d021712110aa3a85",
@@ -105421,8 +106501,10 @@
           "name": "Arma da vigilância (Funda)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-sling"
+      ]
     },
     {
       "id": "06cabfce5cb0853d",
@@ -105436,8 +106518,10 @@
           "name": "Arma da vigilância (Lança)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-spear"
+      ]
     },
     {
       "id": "34ffa85b834e6083",
@@ -105451,8 +106535,10 @@
           "name": "Arma da vigilância (Tridente)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-trident"
+      ]
     },
     {
       "id": "7a750bd3bc3d70f2",
@@ -105466,8 +106552,10 @@
           "name": "Arma da vigilância (Picareta de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-war-pick"
+      ]
     },
     {
       "id": "bcfc1cfd3caec7c6",
@@ -105481,8 +106569,10 @@
           "name": "Arma da vigilância (Martelo de guerra)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-warhammer"
+      ]
     },
     {
       "id": "1c210e173eeb64e8",
@@ -105496,8 +106586,10 @@
           "name": "Arma da vigilância (Chicote)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "weapon-of-warning-whip"
+      ]
     },
     {
       "id": "9773626db5a1b926",
@@ -105511,8 +106603,10 @@
           "name": "Arma da vigilância (Bastão de foco druídico)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "wooden-staff-of-warning"
+      ]
     },
     {
       "id": "bcba1de168b56eb7",
@@ -105526,8 +106620,10 @@
           "name": "Arma da vigilância (Yklwa)"
         }
       ],
-      "status": "pending",
-      "completed_consumers": []
+      "status": "approved",
+      "completed_consumers": [
+        "yklwa-of-warning"
+      ]
     },
     {
       "id": "5f049ae88589569e",
