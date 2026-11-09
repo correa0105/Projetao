@@ -51,7 +51,11 @@ export function RelicCatalogue({
   const owned = new Set(state?.purchases.map((purchase) => purchase.offer_id));
 
   return (
-    <section className="relic-shop-showcase" aria-label="Catálogo de Relíquias">
+    <section
+      className="relic-shop-showcase"
+      aria-label="Catálogo de Relíquias"
+      data-empty={!visible.length || undefined}
+    >
       <nav className="shop-shelves shop-stone" aria-label="Prateleiras de Relíquias">
         <h2>Prateleiras</h2>
         {shelves.map(([key, label]) => (

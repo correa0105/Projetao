@@ -9,7 +9,7 @@
 }
 
 .relic-shop {
-  --relic-showcase-width: calc(64vw - var(--page-header-edge));
+  --relic-showcase-width: calc(56vw - var(--page-header-edge));
   position: relative;
   isolation: isolate;
   min-height: 100dvh;
@@ -43,10 +43,14 @@
 
 .relic-shop-showcase {
   display: grid;
-  grid-template-columns: clamp(8.5rem, 9vw, 10rem) minmax(0, 1fr);
+  grid-template-columns: clamp(7.75rem, 8vw, 9rem) minmax(0, 1fr);
   gap: 10px;
   width: var(--relic-showcase-width);
-  height: clamp(23rem, 57dvh, 36rem);
+  height: clamp(17rem, 43dvh, 24rem);
+}
+
+.relic-shop-showcase[data-empty] {
+  height: auto;
 }
 
 .relic-shop-showcase .shop-shelves h2 {
@@ -94,10 +98,10 @@
 
 .relic-vendor-speech {
   position: absolute;
-  top: clamp(175px, 34dvh, 295px);
-  left: calc(var(--page-header-edge) + var(--relic-showcase-width) + 14px);
-  width: clamp(8rem, 12.5vw, 14.5rem);
-  padding: 10px 12px;
+  bottom: clamp(4.5rem, 13dvh, 8.5rem);
+  left: 61vw;
+  width: clamp(13.5rem, 16vw, 18rem);
+  padding: 12px 14px;
   border: 1px solid #ad9159;
   border-radius: 10px;
   background: #28271deb;
@@ -130,6 +134,48 @@
   line-height: 1.4;
 }
 
+.relic-vendor-speech :is(.relic-vendor-trigger, .relic-vendor-topics button) {
+  border: 1px solid #b89a595f;
+  border-radius: 4px;
+  background: #493a23;
+  color: #ffebc6;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.relic-vendor-speech .relic-vendor-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+  padding: 7px 10px;
+}
+
+.relic-vendor-topics {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0.55rem 0 0;
+  max-height: min(12rem, 27dvh);
+  overflow-y: auto;
+  border-top: 1px solid #ad91595e;
+}
+
+.relic-vendor-topics li + li {
+  margin-top: 0.3rem;
+}
+
+.relic-vendor-speech .relic-vendor-topics button {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.relic-vendor-speech button:is(:hover, :focus-visible, [aria-pressed='true']) {
+  background: #685133;
+  border-color: #d1ad6e;
+}
+
 @media (min-width: 1250px) {
   .relic-shop-showcase .shop-product-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -139,7 +185,7 @@
 @media (max-width: 1020px) {
   .relic-shop {
     --relic-showcase-width: 100%;
-    padding-top: clamp(16rem, 42dvh, 23rem);
+    padding-top: clamp(17rem, 48dvh, 25rem);
   }
 
   .relic-shop-backdrop img {
@@ -149,10 +195,14 @@
 
   .relic-vendor-speech {
     position: relative;
-    top: auto;
+    bottom: auto;
     left: auto;
-    width: min(52%, 16rem);
+    width: min(74%, 18rem);
     margin-bottom: 0.8rem;
+  }
+
+  .relic-vendor-topics {
+    max-height: none;
   }
 
   .relic-shop-showcase {
@@ -182,10 +232,6 @@
 
   .relic-shop-showcase .shop-search-row label {
     flex-basis: 100%;
-  }
-
-  .relic-vendor-speech {
-    width: min(58%, 15rem);
   }
 
   .relic-vendor-speech p {
