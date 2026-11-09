@@ -17,21 +17,73 @@
 }
 
 .relic-shop-backdrop {
+  --relic-art-x: 58%;
+  --relic-art-y: 59%;
+  --relic-art-scale: 1.14;
   position: fixed;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
 
-.relic-shop-backdrop img {
+.relic-shop-scene {
+  position: absolute;
+  inset: 0;
+  transform: scale(var(--relic-art-scale));
+  transform-origin: left center;
+}
+
+.relic-shop-art {
+  position: absolute;
+  top: var(--relic-art-y);
+  left: var(--relic-art-x);
+  width: max(100vw, 150dvh);
+  aspect-ratio: 3 / 2;
+  transform: translate(calc(-1 * var(--relic-art-x)), calc(-1 * var(--relic-art-y)));
+}
+
+.relic-shop-art img,
+.relic-vendor-trigger svg {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 58% 59%;
-  transform: scale(1.14);
-  transform-origin: left center;
+}
+
+.relic-shop .relic-vendor-trigger {
+  position: absolute;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.relic-vendor-trigger svg {
+  overflow: visible;
+}
+
+.relic-vendor-trigger path {
+  fill: transparent;
+  stroke: #e8bc72;
+  stroke-width: 2;
+  stroke-opacity: 0.9;
+  filter: drop-shadow(0 0 3px #a96015);
+  cursor: pointer;
+  pointer-events: fill;
+}
+
+.relic-vendor-trigger[data-greeting] path {
+  stroke-opacity: 0;
+}
+
+.relic-vendor-trigger:is(:hover, :focus-visible, [aria-expanded='true']) path {
+  fill: #e8bc7211;
+  stroke: #ffe5a6;
+  stroke-width: 3;
+  stroke-opacity: 1;
 }
 
 .relic-shop-backdrop::after {
@@ -42,6 +94,8 @@
 }
 
 .relic-shop-showcase {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: clamp(7.75rem, 8vw, 9rem) minmax(0, 1fr);
   gap: 10px;
@@ -98,15 +152,23 @@
 
 .relic-vendor-speech {
   position: absolute;
-  bottom: clamp(4.5rem, 13dvh, 8.5rem);
-  left: 61vw;
-  width: clamp(13.5rem, 16vw, 18rem);
+  z-index: 2;
+  top: clamp(8.5rem, 23dvh, 13.5rem);
+  left: calc(56vw + 12px);
+  width: clamp(10.5rem, 13vw, 15.5rem);
   padding: 12px 14px;
   border: 1px solid #ad9159;
   border-radius: 10px;
   background: #28271deb;
   color: #f2e5ca;
   box-shadow: 0 5px 18px #0005;
+}
+
+.relic-vendor-speech > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .relic-vendor-speech::after {
@@ -134,7 +196,7 @@
   line-height: 1.4;
 }
 
-.relic-vendor-speech :is(.relic-vendor-trigger, .relic-vendor-topics button) {
+.relic-vendor-speech button {
   border: 1px solid #b89a595f;
   border-radius: 4px;
   background: #493a23;
@@ -143,12 +205,12 @@
   line-height: 1.3;
 }
 
-.relic-vendor-speech .relic-vendor-trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.65rem;
-  padding: 7px 10px;
+.relic-vendor-speech > header button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
 }
 
 .relic-vendor-topics {
@@ -185,24 +247,41 @@
 @media (max-width: 1020px) {
   .relic-shop {
     --relic-showcase-width: 100%;
-    padding-top: clamp(17rem, 48dvh, 25rem);
+    padding-top: clamp(17rem, 56dvh, 36rem);
   }
 
-  .relic-shop-backdrop img {
-    object-position: 77% 50%;
-    transform: none;
+  .relic-shop-backdrop {
+    --relic-art-x: 73%;
+    --relic-art-y: 50%;
+    --relic-art-scale: 1;
   }
 
   .relic-vendor-speech {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    width: min(74%, 18rem);
-    margin-bottom: 0.8rem;
+    top: max(104px, 14dvh);
+    left: max(12px, var(--page-header-edge));
+    width: min(55vw, 16rem);
+    max-height: 32dvh;
+    overflow: hidden;
+  }
+
+  .relic-vendor-speech:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .relic-vendor-speech > :is(header, p) {
+    flex: none;
+  }
+
+  .relic-vendor-speech::after {
+    display: none;
   }
 
   .relic-vendor-topics {
+    min-height: 0;
     max-height: none;
+    scrollbar-width: thin;
+    scrollbar-color: #ad9159 #28271d;
   }
 
   .relic-shop-showcase {
@@ -236,5 +315,9 @@
 
   .relic-vendor-speech p {
     font-size: 0.82rem;
+  }
+
+  .relic-vendor-speech {
+    left: 12px;
   }
 }
