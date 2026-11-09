@@ -614,6 +614,8 @@ function Portal({ user }: { user: User }) {
       return <Cards key={character?.id || 'visitor'} character={character} onPurchased={refresh} />;
     if (page === 'character-cards')
       return <CharacterCards key={character?.id || 'visitor'} character={character} />;
+    if (page === 'reliquias')
+      return <RelicShop characterId={character?.id} onPurchased={refresh} />;
     return (
       <>
         {page !== 'characters' && page !== 'pets' && (
@@ -652,9 +654,6 @@ function Portal({ user }: { user: User }) {
             onPurchased={refresh}
             canAdmin={administrator}
           />
-        )}
-        {page === 'reliquias' && (
-          <RelicShop characterId={character?.id} onPurchased={refresh} />
         )}
         {page === 'inventory' &&
           (!character ? (
@@ -722,7 +721,7 @@ function Portal({ user }: { user: User }) {
       <div className="main-shell">
         {page !== 'vtt' && (
           <PageHeader
-            showTitle={page !== 'world' && page !== 'tower' && page !== 'reliquias'}
+            showTitle={page !== 'world' && page !== 'tower'}
             title={
               page === 'characters'
                 ? 'Seu acampamento'

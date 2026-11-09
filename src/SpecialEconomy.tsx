@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Modal } from './components';
+import { RelicCatalogue } from './RelicCatalogue';
 import { api, post } from './api';
 import type { Character } from './types';
 import {
@@ -364,11 +365,14 @@ export function SpecialShop({
   currency,
   characterId,
   changed,
+  onHistory,
 }: {
   currency: SpecialCurrency;
   characterId?: string;
   changed?: () => Promise<void>;
+  onHistory?: () => void;
 }) {
+  const [collectionOpen, setCollectionOpen] = useState(false);
   const [state, setState] = useState<SpecialShopState | null>(null);
   const [draft, setDraft] = useState<SpecialOffer | null>(null);
   const [confirm, setConfirm] = useState<SpecialOffer | null>(null);
@@ -413,14 +417,310 @@ export function SpecialShop({
       setBusy(false);
     }
   }
+  const prestige = currency === 'prestige';
   const label = currencyLabels[currency];
   const owned = new Set(state?.purchases.map((p) => p.offer_id));
-  return (
-    <section className="stack special-economy" aria-label={'Loja de ' + label}>
-      {currency === 'crystals' ? <h3>Entreposto da Torre</h3> : <h2>Ofertas de Relíquias</h2>}
+  const canBuy = (offer: SpecialOffer) =>
+    !!state &&
+    !busy &&
+    ((prestige && !companionOffer(offer)) || !!characterId) &&
+    (!prestige || !owned.has(offer.id)) &&
+    state.balance >= offer.price;
+  const createOffer = (category?: SpecialOffer['category']) => {
+    const offer = blankOffer(currency);
+    setDraft({ ...offer, category: category ?? offer.category });
+  };
+  const dialogOpen = prestige && (confirm || draft || collectionOpen);
+  const feedback = (
+    <>
       {error && <p role="alert">{error}</p>}
       {notice && <p role="status">{notice}</p>}
+    </>
+  );
+  const status = (
+    <>
+      {!dialogOpen && feedback}
       {!state && !error && <p role="status">Consultando a loja…</p>}
+    </>
+  );
+  const confirmation = confirm && (
+    <div className="stack" role="group" aria-label="Confirmar compra especial">
+      <p>
+        Comprar {confirm.name} por {confirm.price.toLocaleString('pt-BR')} {label}?
+      </p>
+      <button
+        className="button primary"
+        disabled={busy}
+        onClick={() =>
+          void act(async () => {
+            const key = confirm.id + ':' + (characterId || '');
+            const requestId = requestIds.current.get(key) || crypto.randomUUID();
+            requestIds.current.set(key, requestId);
+            await post(path + '/purchases', {
+              offer_id: confirm.id,
+              request_id: requestId,
+              revision: confirm.revision,
+              character_id:
+                currency === 'crystals' || companionOffer(confirm) ? characterId : undefined,
+            });
+            requestIds.current.delete(key);
+            setConfirm(null);
+            await load();
+            await changed?.();
+            setNotice('Compra registrada.');
+          })
+        }
+      >
+        Confirmar compra
+      </button>
+      <button className="button outline" disabled={busy} onClick={() => setConfirm(null)}>
+        Cancelar
+      </button>
+    </div>
+  );
+  const editor = draft && (
+    <form
+      className="stack"
+      onSubmit={(e) => {
+        e.preventDefault();
+        void act(async () => {
+          const { id, ...body } = draft;
+          await api(path + '/offers/' + id, { method: 'PUT', body: JSON.stringify(body) });
+          setDraft(null);
+          await load();
+          setNotice('Oferta salva.');
+        });
+      }}
+    >
+      {!prestige && <h4>{draft.revision ? 'Editar oferta' : 'Nova oferta'}</h4>}
+      <label>
+        Categoria
+        <select
+          value={draft.category}
+          disabled={draft.revision > 0}
+          onChange={(e) =>
+            setDraft({
+              ...draft,
+              target_key: null,
+              category: e.target.value as SpecialOffer['category'],
+            })
+          }
+        >
+          {offerCategories
+            .filter((kind) => (kind === 'tower_item') === (currency === 'crystals'))
+            .map((kind) => (
+              <option key={kind} value={kind}>
+                {specialOfferCategoryLabels[kind]}
+              </option>
+            ))}
+        </select>
+      </label>
+      {companionOffer(draft) && (
+        <label>
+          Modelo de referência
+          <select
+            value={draft.target_key ?? ''}
+            onChange={(e) => setDraft({ ...draft, target_key: e.target.value || null })}
+          >
+            <option value="">Escolha o modelo base</option>
+            {(draft.category === 'mount' ? mounts : pets).map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
+      {draft.category === 'weapon_skin' && (
+        <label>
+          Identificador da arma do catálogo
+          <input
+            value={draft.target_key ?? ''}
+            maxLength={120}
+            onChange={(e) => setDraft({ ...draft, target_key: e.target.value || null })}
+          />
+        </label>
+      )}
+      <label>
+        Nome
+        <input
+          value={draft.name}
+          maxLength={100}
+          required
+          onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+        />
+      </label>
+      <label>
+        Descrição e regras
+        <textarea
+          value={draft.description}
+          maxLength={2000}
+          required
+          onChange={(e) => setDraft({ ...draft, description: e.target.value })}
+        />
+      </label>
+      <label>
+        Imagem publicada no site
+        <input
+          value={draft.image_path || ''}
+          maxLength={250}
+          placeholder="/profiles/exemplo.webp"
+          onChange={(e) => setDraft({ ...draft, image_path: e.target.value || null })}
+        />
+      </label>
+      <label>
+        Preço em {label}
+        <input
+          type="number"
+          required
+          min={1}
+          max={1000000}
+          value={draft.price || ''}
+          onChange={(e) => setDraft({ ...draft, price: Number(e.target.value) })}
+        />
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          checked={draft.active}
+          onChange={(e) => setDraft({ ...draft, active: e.target.checked })}
+        />{' '}
+        Publicar oferta
+      </label>
+      <button className="button primary" disabled={busy}>
+        Salvar oferta
+      </button>
+      <button
+        type="button"
+        className="button outline"
+        disabled={busy}
+        onClick={() => setDraft(null)}
+      >
+        Cancelar edição
+      </button>
+    </form>
+  );
+  const collection = state && (
+    <ul className="special-offers">
+      {state.purchases.map((p) => (
+        <li key={p.id}>
+          {p.snapshot.image_path && <img src={p.snapshot.image_path} alt="" loading="lazy" />}
+          <div>
+            <strong>{p.snapshot.name}</strong>
+            <p>{p.used_at ? 'Usado em uma expedição' : p.snapshot.description}</p>
+            {p.snapshot.category === 'profile_border' && (
+              <button
+                className="button outline"
+                disabled={busy}
+                onClick={() =>
+                  void act(async () => {
+                    await api('/prestige/profile-border', {
+                      method: 'PUT',
+                      body: JSON.stringify({
+                        purchase_id: state.equipped_border === p.id ? null : p.id,
+                      }),
+                    });
+                    await load();
+                    setNotice('Borda do perfil atualizada.');
+                  })
+                }
+              >
+                {state.equipped_border === p.id ? 'Retirar borda' : 'Usar no perfil'}
+              </button>
+            )}
+            {p.snapshot.category === 'weapon_skin' &&
+              characterId &&
+              ([true, false] as const).map((enabled) => (
+                <button
+                  key={String(enabled)}
+                  className="button outline"
+                  disabled={busy}
+                  onClick={() =>
+                    void act(async () => {
+                      await api('/prestige/weapon-skin/' + p.id, {
+                        method: 'PUT',
+                        body: JSON.stringify({ character_id: characterId, enabled }),
+                      });
+                      setNotice(
+                        enabled ? 'Skin aplicada à arma na mochila.' : 'Skin retirada da arma.',
+                      );
+                    })
+                  }
+                >
+                  {enabled ? 'Aplicar ao personagem' : 'Retirar do personagem'}
+                </button>
+              ))}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+
+  if (prestige) {
+    return (
+      <>
+        <RelicCatalogue
+          state={state}
+          status={status}
+          busy={busy}
+          canBuy={canBuy}
+          onBuy={setConfirm}
+          onEdit={setDraft}
+          onCreate={createOffer}
+          onCollection={() => setCollectionOpen(true)}
+          onHistory={onHistory}
+        />
+        {confirm && (
+          <Modal
+            title="Confirmar compra"
+            close={() => {
+              if (!busy) setConfirm(null);
+            }}
+          >
+            <div className="stack special-economy">
+              {feedback}
+              {confirmation}
+            </div>
+          </Modal>
+        )}
+        {draft && (
+          <Modal
+            title={draft.revision ? 'Editar oferta' : 'Nova oferta'}
+            close={() => {
+              if (!busy) setDraft(null);
+            }}
+          >
+            <div className="stack special-economy">
+              {feedback}
+              {editor}
+            </div>
+          </Modal>
+        )}
+        {collectionOpen && (
+          <Modal
+            title="Minha coleção"
+            close={() => {
+              if (!busy) setCollectionOpen(false);
+            }}
+          >
+            <div className="stack special-economy">
+              {feedback}
+              {state?.purchases.length ? (
+                collection
+              ) : (
+                <p>Você ainda não tem relíquias na coleção.</p>
+              )}
+            </div>
+          </Modal>
+        )}
+      </>
+    );
+  }
+
+  return (
+    <section className="stack special-economy" aria-label={'Loja de ' + label}>
+      <h3>Entreposto da Torre</h3>
+      {status}
       {state && (
         <>
           <p>
@@ -429,22 +729,14 @@ export function SpecialShop({
               {state.balance.toLocaleString('pt-BR')} {label}
             </strong>
           </p>
-          {currency === 'crystals' && (
-            <p>
-              Os itens do Entreposto ficam com o personagem comprador e são usados nas mesas
-              oficiais de uma expedição ativa.
-            </p>
-          )}
-          {currency === 'crystals' && !characterId && (
-            <p>Selecione um personagem para comprar com cristais.</p>
-          )}
+          <p>
+            Os itens do Entreposto ficam com o personagem comprador e são usados nas mesas oficiais
+            de uma expedição ativa.
+          </p>
+          {!characterId && <p>Selecione um personagem para comprar com cristais.</p>}
           {!state.offers.some((offer) => offer.active) && <p>Nenhuma oferta publicada.</p>}
           {state.can_edit && (
-            <button
-              className="button outline"
-              disabled={busy}
-              onClick={() => setDraft(blankOffer(currency))}
-            >
+            <button className="button outline" disabled={busy} onClick={() => createOffer()}>
               Cadastrar oferta
             </button>
           )}
@@ -462,15 +754,10 @@ export function SpecialShop({
                   {offer.active && (
                     <button
                       className="button outline"
-                      disabled={
-                        busy ||
-                        ((currency === 'crystals' || companionOffer(offer)) && !characterId) ||
-                        (currency === 'prestige' && owned.has(offer.id)) ||
-                        state.balance < offer.price
-                      }
+                      disabled={!canBuy(offer)}
                       onClick={() => setConfirm(offer)}
                     >
-                      {currency === 'prestige' && owned.has(offer.id) ? 'Na coleção' : 'Comprar'}
+                      Comprar
                     </button>
                   )}
                   {state.can_edit && (
@@ -486,225 +773,12 @@ export function SpecialShop({
               </li>
             ))}
           </ul>
-          {confirm && (
-            <div className="stack" role="group" aria-label="Confirmar compra especial">
-              <p>
-                Comprar {confirm.name} por {confirm.price.toLocaleString('pt-BR')} {label}?
-              </p>
-              <button
-                className="button primary"
-                disabled={busy}
-                onClick={() =>
-                  void act(async () => {
-                    const key = confirm.id + ':' + (characterId || '');
-                    const requestId = requestIds.current.get(key) || crypto.randomUUID();
-                    requestIds.current.set(key, requestId);
-                    await post(path + '/purchases', {
-                      offer_id: confirm.id,
-                      request_id: requestId,
-                      revision: confirm.revision,
-                      character_id:
-                        currency === 'crystals' || companionOffer(confirm)
-                          ? characterId
-                          : undefined,
-                    });
-                    requestIds.current.delete(key);
-                    setConfirm(null);
-                    await load();
-                    await changed?.();
-                    setNotice('Compra registrada.');
-                  })
-                }
-              >
-                Confirmar compra
-              </button>
-              <button className="button outline" disabled={busy} onClick={() => setConfirm(null)}>
-                Cancelar
-              </button>
-            </div>
-          )}
-          {draft && (
-            <form
-              className="stack"
-              onSubmit={(e) => {
-                e.preventDefault();
-                void act(async () => {
-                  const { id, ...body } = draft;
-                  await api(path + '/offers/' + id, { method: 'PUT', body: JSON.stringify(body) });
-                  setDraft(null);
-                  await load();
-                  setNotice('Oferta salva.');
-                });
-              }}
-            >
-              <h4>{draft.revision ? 'Editar oferta' : 'Nova oferta'}</h4>
-              <label>
-                Categoria
-                <select
-                  value={draft.category}
-                  disabled={draft.revision > 0}
-                  onChange={(e) =>
-                    setDraft({
-                      ...draft,
-                      target_key: null,
-                      category: e.target.value as SpecialOffer['category'],
-                    })
-                  }
-                >
-                  {offerCategories
-                    .filter((kind) => (kind === 'tower_item') === (currency === 'crystals'))
-                    .map((kind) => (
-                      <option key={kind} value={kind}>
-                        {specialOfferCategoryLabels[kind]}
-                      </option>
-                    ))}
-                </select>
-              </label>
-              {companionOffer(draft) && (
-                <label>
-                  Modelo de referência
-                  <select
-                    value={draft.target_key ?? ''}
-                    onChange={(e) => setDraft({ ...draft, target_key: e.target.value || null })}
-                  >
-                    <option value="">Escolha o modelo base</option>
-                    {(draft.category === 'mount' ? mounts : pets).map((item) => (
-                      <option key={item.id} value={item.id}>
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              )}
-              {draft.category === 'weapon_skin' && (
-                <label>
-                  Identificador da arma do catálogo
-                  <input
-                    value={draft.target_key ?? ''}
-                    maxLength={120}
-                    onChange={(e) => setDraft({ ...draft, target_key: e.target.value || null })}
-                  />
-                </label>
-              )}
-              <label>
-                Nome
-                <input
-                  value={draft.name}
-                  maxLength={100}
-                  required
-                  onChange={(e) => setDraft({ ...draft, name: e.target.value })}
-                />
-              </label>
-              <label>
-                Descrição e regras
-                <textarea
-                  value={draft.description}
-                  maxLength={2000}
-                  required
-                  onChange={(e) => setDraft({ ...draft, description: e.target.value })}
-                />
-              </label>
-              <label>
-                Imagem publicada no site
-                <input
-                  value={draft.image_path || ''}
-                  maxLength={250}
-                  placeholder="/profiles/exemplo.webp"
-                  onChange={(e) => setDraft({ ...draft, image_path: e.target.value || null })}
-                />
-              </label>
-              <label>
-                Preço em {label}
-                <input
-                  type="number"
-                  required
-                  min={1}
-                  max={1000000}
-                  value={draft.price || ''}
-                  onChange={(e) => setDraft({ ...draft, price: Number(e.target.value) })}
-                />
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={draft.active}
-                  onChange={(e) => setDraft({ ...draft, active: e.target.checked })}
-                />{' '}
-                Publicar oferta
-              </label>
-              <button className="button primary" disabled={busy}>
-                Salvar oferta
-              </button>
-              <button
-                type="button"
-                className="button outline"
-                disabled={busy}
-                onClick={() => setDraft(null)}
-              >
-                Cancelar edição
-              </button>
-            </form>
-          )}
+          {confirmation}
+          {editor}
           {!!state.purchases.length && (
             <details>
-              <summary>{currency === 'crystals' ? 'Itens do personagem' : 'Minha coleção'}</summary>
-              <ul className="special-offers">
-                {state.purchases.map((p) => (
-                  <li key={p.id}>
-                    {p.snapshot.image_path && (
-                      <img src={p.snapshot.image_path} alt="" loading="lazy" />
-                    )}
-                    <div>
-                      <strong>{p.snapshot.name}</strong>
-                      <p>{p.used_at ? 'Usado em uma expedição' : p.snapshot.description}</p>
-                      {p.snapshot.category === 'profile_border' && (
-                        <button
-                          className="button outline"
-                          disabled={busy}
-                          onClick={() =>
-                            void act(async () => {
-                              await api('/prestige/profile-border', {
-                                method: 'PUT',
-                                body: JSON.stringify({
-                                  purchase_id: state.equipped_border === p.id ? null : p.id,
-                                }),
-                              });
-                              await load();
-                              setNotice('Borda do perfil atualizada.');
-                            })
-                          }
-                        >
-                          {state.equipped_border === p.id ? 'Retirar borda' : 'Usar no perfil'}
-                        </button>
-                      )}
-                      {p.snapshot.category === 'weapon_skin' &&
-                        characterId &&
-                        ([true, false] as const).map((enabled) => (
-                          <button
-                            key={String(enabled)}
-                            className="button outline"
-                            disabled={busy}
-                            onClick={() =>
-                              void act(async () => {
-                                await api('/prestige/weapon-skin/' + p.id, {
-                                  method: 'PUT',
-                                  body: JSON.stringify({ character_id: characterId, enabled }),
-                                });
-                                setNotice(
-                                  enabled
-                                    ? 'Skin aplicada à arma na mochila.'
-                                    : 'Skin retirada da arma.',
-                                );
-                              })
-                            }
-                          >
-                            {enabled ? 'Aplicar ao personagem' : 'Retirar do personagem'}
-                          </button>
-                        ))}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <summary>Itens do personagem</summary>
+              {collection}
             </details>
           )}
         </>

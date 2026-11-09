@@ -9,109 +9,186 @@
 }
 
 .relic-shop {
+  --relic-showcase-width: calc(64vw - var(--page-header-edge));
   position: relative;
   isolation: isolate;
-  display: grid;
-  align-content: center;
   min-height: 100dvh;
-  padding: max(80px, 9dvh) var(--page-header-edge) calc(82px + env(safe-area-inset-bottom));
+  padding: 110px var(--page-header-edge) calc(80px + env(safe-area-inset-bottom));
 }
 
-.relic-shop::before {
-  content: '';
+.relic-shop-backdrop {
   position: fixed;
   z-index: -1;
   inset: 0;
+  overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(90deg, #140e0cd9, #140e0cb3 24%, #140e0c00 58%);
 }
 
-.relic-shop-art {
-  position: fixed;
-  z-index: -2;
-  inset: 0;
+.relic-shop-backdrop img {
+  display: block;
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   object-fit: cover;
-  object-position: 68% 48%;
-  pointer-events: none;
+  object-position: 58% 59%;
+  transform: scale(1.14);
+  transform-origin: left center;
 }
 
-.relic-shop-counter {
-  width: min(44vw, 33rem);
-  min-width: 0;
+.relic-shop-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #130e0a40, #130e0a24 46%, transparent 76%);
 }
 
-.relic-shop-intro {
+.relic-shop-showcase {
   display: grid;
-  justify-items: start;
-  color: #fbefd9;
-  text-shadow: 0 2px 12px #120b06;
+  grid-template-columns: clamp(8.5rem, 9vw, 10rem) minmax(0, 1fr);
+  gap: 10px;
+  width: var(--relic-showcase-width);
+  height: clamp(23rem, 57dvh, 36rem);
 }
 
-.relic-shop-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: #f0c88d;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.relic-shop-showcase .shop-shelves h2 {
+  font-size: 0.85rem;
 }
 
-.relic-shop-kicker img {
+.relic-shop-showcase .shop-shelves button {
+  font-size: 0.79rem;
+}
+
+.relic-shop-showcase .shop-search-row {
+  flex-wrap: wrap;
+}
+
+.relic-shop-showcase .shop-search-row img {
   object-fit: contain;
 }
 
-.relic-shop-intro h1 {
-  margin: 0.2em 0 0;
-  color: #ffe9bd;
-  font-size: clamp(2.65rem, 6vw, 5.25rem);
-  line-height: 1.05;
+.relic-shop-showcase .shop-catalog > p {
+  margin: 0.45rem 0 0;
 }
 
-.relic-shop-intro blockquote {
-  max-width: 20rem;
-  margin: 1rem 0 1.35rem;
-  color: inherit;
-  font-size: clamp(0.95rem, 1.65vw, 1.2rem);
-  line-height: 1.5;
-}
-
-.relic-shop-intro .button {
+.relic-shop-showcase .relic-shop-add {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  background: #251910;
-  color: #ffe9bd;
+  gap: 0.35rem;
+  align-self: flex-start;
+  margin-top: 0.55rem;
+  font-size: 0.75rem;
 }
 
-.relic-shop-catalogue {
-  margin-top: 1.25rem;
-  padding: clamp(1rem, 2vw, 1.5rem);
-  border: 1px solid #b892565e;
-  border-radius: 0.65rem;
-  background: #1e1712ee;
-  box-shadow: 0 8px 32px #110b074d;
+.relic-shop-showcase .shop-product-art {
+  cursor: default;
 }
 
-@media (max-width: 740px) {
+.relic-shop-showcase .relic-shop-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid #a48c5142;
+  border-radius: 4px;
+  background: #17171485;
+  color: #d0c4aa;
+}
+
+.relic-vendor-speech {
+  position: absolute;
+  top: clamp(175px, 34dvh, 295px);
+  left: calc(var(--page-header-edge) + var(--relic-showcase-width) + 14px);
+  width: clamp(8rem, 12.5vw, 14.5rem);
+  padding: 10px 12px;
+  border: 1px solid #ad9159;
+  border-radius: 10px;
+  background: #28271deb;
+  color: #f2e5ca;
+  box-shadow: 0 5px 18px #0005;
+}
+
+.relic-vendor-speech::after {
+  content: '';
+  position: absolute;
+  top: 42%;
+  left: 100%;
+  width: 9px;
+  height: 9px;
+  transform: translateX(-4px) rotate(45deg);
+  border-top: 1px solid #ad9159;
+  border-right: 1px solid #ad9159;
+  background: #28271d;
+}
+
+.relic-vendor-speech strong {
+  color: #d1b17a;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.relic-vendor-speech p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 1250px) {
+  .relic-shop-showcase .shop-product-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1020px) {
   .relic-shop {
-    align-content: start;
-    padding-block-start: max(14rem, 44dvh);
-    padding-inline: clamp(14px, 4.5vw, 24px);
+    --relic-showcase-width: 100%;
+    padding-top: clamp(16rem, 42dvh, 23rem);
   }
 
-  .relic-shop::before {
-    background: linear-gradient(180deg, #140e0c00 28%, #140e0cbb 53%, #140e0cd9 100%);
+  .relic-shop-backdrop img {
+    object-position: 77% 50%;
+    transform: none;
   }
 
-  .relic-shop-art {
-    object-position: 77% center;
+  .relic-vendor-speech {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(52%, 16rem);
+    margin-bottom: 0.8rem;
   }
 
-  .relic-shop-counter {
-    width: 100%;
+  .relic-shop-showcase {
+    height: auto;
+  }
+
+  .relic-shop-showcase .shop-product-list {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 650px) {
+  .relic-shop {
+    padding-inline: 12px;
+  }
+
+  .relic-shop-showcase {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .relic-shop-showcase .shop-shelves button {
+    width: auto;
+    gap: 0.45rem;
+    padding-inline: 0.55rem;
+  }
+
+  .relic-shop-showcase .shop-search-row label {
+    flex-basis: 100%;
+  }
+
+  .relic-vendor-speech {
+    width: min(58%, 15rem);
+  }
+
+  .relic-vendor-speech p {
+    font-size: 0.82rem;
   }
 }
