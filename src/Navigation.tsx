@@ -6,7 +6,6 @@ import {
   type ComponentType,
   type CSSProperties,
 } from 'react';
-import { Gem } from 'lucide-react';
 import {
   CandleIcon,
   HelmetIcon,
@@ -317,19 +316,15 @@ export function Navigation({ page, go, maintenanceAreas = [] }: { page: Page; go
                 aria-current={page === target ? 'page' : undefined}
                 onClick={() => navigate(target)}
               >
-                {target === 'reliquias' ? (
-                  <Gem className="dock-destination-art" size={30} aria-hidden="true" />
-                ) : (
-                  <img
-                    className="dock-destination-art"
-                    src={`/navigation/illustrated-20261020/${target}.webp`}
-                    alt=""
-                    aria-hidden="true"
-                    draggable={false}
-                    width={30}
-                    height={30}
-                  />
-                )}
+                <img
+                  className="dock-destination-art"
+                  src={`/navigation/illustrated-20261020/${target}.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  draggable={false}
+                  width={30}
+                  height={30}
+                />
                 <span>{label}{maintenanceAreas.includes(target as MaintenanceArea) && <small style={{ display: 'block', fontSize: '0.75em' }}>Em manutenção</small>}</span>
               </button>
             ))}

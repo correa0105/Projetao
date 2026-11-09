@@ -1,39 +1,52 @@
-.relic-shop {
-  width: min(100%, 72rem);
-  margin: 0 auto;
-}
-
-.relic-shop-scene {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  align-items: center;
-  min-height: clamp(22rem, 40vw, 32rem);
-  overflow: hidden;
-  border: 1px solid #8c6a42;
-  border-radius: 0.65rem;
+:root .app-shell[data-page='reliquias'] > .main-shell {
+  padding-bottom: 0;
   background: #19130f;
 }
 
+:root .app-shell[data-page='reliquias'] .main-content {
+  max-width: none;
+  padding: 0;
+}
+
+.relic-shop {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: center;
+  min-height: 100dvh;
+  padding: max(80px, 9dvh) var(--page-header-edge) calc(82px + env(safe-area-inset-bottom));
+}
+
+.relic-shop::before {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #140e0cd9, #140e0cb3 24%, #140e0c00 58%);
+}
+
 .relic-shop-art {
-  position: absolute;
+  position: fixed;
+  z-index: -2;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   object-fit: cover;
-  object-position: 70% 48%;
+  object-position: 68% 48%;
+  pointer-events: none;
+}
+
+.relic-shop-counter {
+  width: min(44vw, 33rem);
+  min-width: 0;
 }
 
 .relic-shop-intro {
-  z-index: 0;
   display: grid;
-  align-content: center;
   justify-items: start;
-  align-self: stretch;
-  width: min(57%, 39rem);
-  padding: clamp(1.25rem, 4vw, 3.75rem);
-  background: linear-gradient(90deg, #18110eee, #18110edc 57%, #18110e00);
   color: #fbefd9;
+  text-shadow: 0 2px 12px #120b06;
 }
 
 .relic-shop-kicker {
@@ -45,6 +58,10 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.relic-shop-kicker img {
+  object-fit: contain;
 }
 
 .relic-shop-intro h1 {
@@ -71,27 +88,30 @@
 }
 
 .relic-shop-catalogue {
-  margin-top: 1rem;
-  padding: clamp(1rem, 3vw, 2rem);
-  border: 1px solid #7d614568;
+  margin-top: 1.25rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid #b892565e;
   border-radius: 0.65rem;
-  background: #1e1915;
+  background: #1e1712ee;
+  box-shadow: 0 8px 32px #110b074d;
 }
 
-@media (max-width: 640px) {
-  .relic-shop-scene {
-    min-height: 0;
+@media (max-width: 740px) {
+  .relic-shop {
+    align-content: start;
+    padding-block-start: max(14rem, 44dvh);
+    padding-inline: clamp(14px, 4.5vw, 24px);
+  }
+
+  .relic-shop::before {
+    background: linear-gradient(180deg, #140e0c00 28%, #140e0cbb 53%, #140e0cd9 100%);
   }
 
   .relic-shop-art {
-    position: static;
-    height: auto;
-    aspect-ratio: 1.6;
+    object-position: 77% center;
   }
 
-  .relic-shop-intro {
+  .relic-shop-counter {
     width: 100%;
-    padding: 1.25rem;
-    background: none;
   }
 }
