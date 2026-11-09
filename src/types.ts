@@ -157,6 +157,7 @@ export type Page =
   | 'board'
   | 'hooks'
   | 'shop'
+  | 'reliquias'
   | 'stable'
   | 'pets'
   | 'events'

@@ -69,6 +69,7 @@ import { Achievements } from './Achievements';
 import { Cards } from './Cards';
 import { CharacterCards } from './CharacterCards';
 import { Shop } from './Shop';
+import { RelicShop } from './RelicShop';
 import { Inventory } from './Inventory';
 import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
@@ -98,6 +99,7 @@ const titles: Record<Page, string> = {
   board: 'Mural Alvorada',
   hooks: 'Mural Alvorada',
   shop: 'Empório do viajante',
+  reliquias: 'Relíquias',
   stable: 'Estábulo da Alvorada',
   pets: 'Casa dos mascotes',
   events: 'Eventos da Alvorada',
@@ -651,6 +653,9 @@ function Portal({ user }: { user: User }) {
             canAdmin={administrator}
           />
         )}
+        {page === 'reliquias' && (
+          <RelicShop characterId={character?.id} onPurchased={refresh} />
+        )}
         {page === 'inventory' &&
           (!character ? (
             noCharacter
@@ -717,7 +722,7 @@ function Portal({ user }: { user: User }) {
       <div className="main-shell">
         {page !== 'vtt' && (
           <PageHeader
-            showTitle={page !== 'world' && page !== 'tower'}
+            showTitle={page !== 'world' && page !== 'tower' && page !== 'reliquias'}
             title={
               page === 'characters'
                 ? 'Seu acampamento'

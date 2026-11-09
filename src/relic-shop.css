@@ -1,0 +1,97 @@
+.relic-shop {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.relic-shop-scene {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: center;
+  min-height: clamp(22rem, 40vw, 32rem);
+  overflow: hidden;
+  border: 1px solid #8c6a42;
+  border-radius: 0.65rem;
+  background: #19130f;
+}
+
+.relic-shop-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 48%;
+}
+
+.relic-shop-intro {
+  z-index: 0;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  align-self: stretch;
+  width: min(57%, 39rem);
+  padding: clamp(1.25rem, 4vw, 3.75rem);
+  background: linear-gradient(90deg, #18110eee, #18110edc 57%, #18110e00);
+  color: #fbefd9;
+}
+
+.relic-shop-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #f0c88d;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.relic-shop-intro h1 {
+  margin: 0.2em 0 0;
+  color: #ffe9bd;
+  font-size: clamp(2.65rem, 6vw, 5.25rem);
+  line-height: 1.05;
+}
+
+.relic-shop-intro blockquote {
+  max-width: 20rem;
+  margin: 1rem 0 1.35rem;
+  color: inherit;
+  font-size: clamp(0.95rem, 1.65vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.relic-shop-intro .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #251910;
+  color: #ffe9bd;
+}
+
+.relic-shop-catalogue {
+  margin-top: 1rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid #7d614568;
+  border-radius: 0.65rem;
+  background: #1e1915;
+}
+
+@media (max-width: 640px) {
+  .relic-shop-scene {
+    min-height: 0;
+  }
+
+  .relic-shop-art {
+    position: static;
+    height: auto;
+    aspect-ratio: 1.6;
+  }
+
+  .relic-shop-intro {
+    width: 100%;
+    padding: 1.25rem;
+    background: none;
+  }
+}

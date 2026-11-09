@@ -217,13 +217,7 @@ export function RetirementDialog({
   );
 }
 
-export function PrestigeCenter({
-  close,
-  characterId,
-}: {
-  close: () => void;
-  characterId?: string;
-}) {
+export function PrestigeCenter({ close }: { close: () => void }) {
   const [state, setState] = useState<PrestigeState | null>(null);
   const [values, setValues] = useState<string[] | null>(null);
   const [error, setError] = useState('');
@@ -246,9 +240,10 @@ export function PrestigeCenter({
       <div className="stack special-economy">
         <p>
           A partir do nível {minimumPrestigeLevel}, aposente um personagem no acampamento para
-          receber Prestígio. Use-o na loja ou contribua para a Ferraria da sua guilda.
+          receber Prestígio. Use-o em Relíquias ou contribua para a Ferraria da sua guilda.
         </p>
         {error && <p role="alert">{error}</p>}
+        {!state && !error && <p role="status">Consultando aposentadorias…</p>}
         {state?.can_edit && (
           <details>
             <summary>Configurar recompensas de aposentadoria</summary>
@@ -329,6 +324,7 @@ export function PrestigeCenter({
             </form>
           </details>
         )}
+        {state && !state.history.length && <p>Nenhuma aposentadoria registrada.</p>}
         {!!state?.history.length && (
           <details>
             <summary>Histórico de aposentadorias</summary>
@@ -343,7 +339,6 @@ export function PrestigeCenter({
             </ul>
           </details>
         )}
-        <SpecialShop currency="prestige" characterId={characterId} />
       </div>
     </Modal>
   );
@@ -422,7 +417,7 @@ export function SpecialShop({
   const owned = new Set(state?.purchases.map((p) => p.offer_id));
   return (
     <section className="stack special-economy" aria-label={'Loja de ' + label}>
-      <h3>{currency === 'crystals' ? 'Entreposto da Torre' : 'Loja de Prestígio'}</h3>
+      {currency === 'crystals' ? <h3>Entreposto da Torre</h3> : <h2>Ofertas de Relíquias</h2>}
       {error && <p role="alert">{error}</p>}
       {notice && <p role="status">{notice}</p>}
       {!state && !error && <p role="status">Consultando a loja…</p>}

@@ -4,11 +4,11 @@ As missões pagam ouro ao personagem e Créditos do Bastião (CB) ao jogador. CB
 
 ## Prestígio de aposentadoria e cristais
 
-Prestígio de aposentadoria pertence à conta. A partir do nível 5, o jogador pode recomeçar com o mesmo personagem no nível 1 ou aposentá-lo definitivamente. O servidor credita a recompensa pelo nível anterior, uma vez por jornada. A administração configura os valores no painel **Prestígio** do acampamento. Os saltos dos níveis 5, 9, 13 e 17 precisam superar os aumentos comuns. A exclusão comum do acampamento não credita Prestígio.
+Prestígio de aposentadoria pertence à conta. A partir do nível 5, o jogador pode recomeçar com o mesmo personagem no nível 1 ou aposentá-lo definitivamente. O servidor credita a recompensa pelo nível anterior, uma vez por jornada. A administração configura os valores em **Loja → Relíquias → Histórico e recompensas**. Os saltos dos níveis 5, 9, 13 e 17 precisam superar os aumentos comuns. A exclusão comum do acampamento não credita Prestígio.
 
 A nova jornada conserva identidade, vaga, história, bens e vínculo de guilda. O jogador escolhe a classe e pode manter os resultados anteriores ou receber uma rolagem única do servidor. A ficha volta à confirmação das escolhas de nível 1 e permite redistribuir os seis resultados. A progressão da jornada volta a zero. A aposentadoria definitiva arquiva os dados e libera a vaga. O fundador escolhe outro personagem ativo para representar a guilda antes de arquivar o representante atual.
 
-A Loja de Prestígio aceita bordas de perfil, skins vinculadas a armas específicas e companheiros com artes exclusivas e um modelo de referência. O jogador equipa a borda na coleção, aplica a skin a uma arma da mochila ou recebe a montaria ou mascote no personagem selecionado. O cadastro de ofertas, preços e artes pertence à administração global. O catálogo inicia vazio.
+A loja **Relíquias** aceita Prestígio por bordas de perfil, skins vinculadas a armas específicas e companheiros com artes exclusivas e um modelo de referência. O jogador equipa a borda na coleção, aplica a skin a uma arma da mochila ou recebe a montaria ou mascote no personagem selecionado. O cadastro de ofertas, preços e artes pertence à administração global. O catálogo inicia vazio.
 
 Cristais da Torre ficam na carteira do personagem. O Entreposto no Gabinete de Cristais vende itens de expedição com armazenamento separado da mochila comum. O consumo é registrado apenas na mesa oficial de uma expedição ativa com participação do personagem. A mesa registra o uso e o mestre aplica a regra descrita na oferta.
 

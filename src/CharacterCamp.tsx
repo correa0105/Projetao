@@ -17,7 +17,7 @@ import './character-camp.css';
 import { CampBackdrop } from './CampBackdrop';
 import {CampRoster} from './CampRoster';
 import type {CharacterCampState} from '../shared/character-account';
-import { PrestigeCenter, RetirementDialog } from './SpecialEconomy';
+import { RetirementDialog } from './SpecialEconomy';
 
 export async function readArtReference(file: File) {
   if (file.size > 8 * 1024 * 1024) throw new Error('Escolha uma imagem de até 8 MB.');
@@ -108,7 +108,6 @@ export function CharacterCamp({
   const [editing, setEditing] = useState<Character | null>(null);
   const [deleting, setDeleting] = useState<Character | null>(null);
   const [retiring, setRetiring] = useState<Character | null>(null);
-  const [prestigeOpen, setPrestigeOpen] = useState(false);
   const [retirementNotice, setRetirementNotice] = useState('');
   const [deleteName, setDeleteName] = useState('');
   const [deleteError, setDeleteError] = useState('');
@@ -219,7 +218,6 @@ export function CharacterCamp({
           {characters.length + state.pending_new} / {capacity} personagens
         </span>
         <button className="camp-roster-toggle" disabled={!camp} onClick={()=>setRoster(null)}>Personagens e slots</button>
-        <button className="camp-roster-toggle" onClick={() => setPrestigeOpen(true)}>Prestígio</button>
       </div>
       <div className="camp-stage">
         {visibleCharacters.map((character) => (
@@ -471,7 +469,6 @@ export function CharacterCamp({
           await onRefresh();
           if (mode === 'restart') location.hash = 'profile';
         }} />}
-      {prestigeOpen && <PrestigeCenter close={() => setPrestigeOpen(false)} characterId={selectedId} />}
       {error && !editing && <FlashMessage>{error}</FlashMessage>}
       {notice && (
         <FlashMessage key={notice.id}>
