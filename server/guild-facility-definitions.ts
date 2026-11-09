@@ -4,7 +4,7 @@ import { transaction } from './db.js';
 import { AppError } from './services.js';
 import { isAdministrator, requireAdministrator } from './administrators.js';
 import { guildFacilities } from '../shared/guild-facilities.js';
-import { bastionProgressionSchema } from '../shared/guild-bastion.js';
+import { bastionProgressionSchema, bastionSpecialCost } from '../shared/guild-bastion.js';
 import { bastionDefinitions } from './guild-bastion.js';
 export function guildFacilityDefinitionsRouter() {
   const router = Router();
@@ -45,6 +45,9 @@ export function guildFacilityDefinitionsRouter() {
       if ((previous?.revision ?? 0) !== input.revision)
         throw new AppError(409, 'O objeto mudou. Reabra a edição para carregar a versão atual.');
       if (input.progression) {
+        if (input.progression.levels.some(t => t.requirements.some(r =>
+          (r.kind === 'prestige_cost' || r.kind === 'crystal_cost') && r.kind !== bastionSpecialCost(room),
+        ))) throw new AppError(400, 'A Ferraria recebe Prestígio e a Ferramenta de Expedição recebe cristais.');
         const ids = [...new Set(input.progression.levels.flatMap(t => t.requirements.flatMap(r => r.kind === 'monster_tag' ? [r.tag_id] : [])))];
         if (ids.length && (await db.query('SELECT id FROM mission_tags WHERE id=ANY($1::uuid[]) FOR SHARE', [ids])).rowCount !== ids.length)
           throw new AppError(400, 'Uma das tags escolhidas não existe.');

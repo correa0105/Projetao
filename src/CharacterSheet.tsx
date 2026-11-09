@@ -337,19 +337,19 @@ export function CharacterSheet({
       {error && <FlashMessage>{error}</FlashMessage>}
       {saved && <FlashMessage kind="info">Salvo.</FlashMessage>}
       {!data && !error && <p role="status">Abrindo o tomo…</p>}
-      {data && (!s?.rolls || !s?.choices) && (
+      {data && (!s?.rolls || !s?.choices || s.retirement_rebuild) && (
         <section className="sheet-panel">
           <h3>
-            <BookOpen size={20} /> {s ? 'Suas escolhas' : 'Complete sua origem'}
+            <BookOpen size={20} /> {s?.retirement_rebuild ? 'Escolhas da nova jornada' : s ? 'Suas escolhas' : 'Complete sua origem'}
             <SheetHelp label="rolagem de atributos">
               4d6 por atributo, descartando o menor. Resultados abaixo de 8 são ajustados para 8,
-              antes dos bônus. Uma rolagem permanente por personagem; depois
-              você distribui os seis resultados.
+              antes dos bônus. Depois da rolagem, distribua os seis resultados entre os atributos.
             </SheetHelp>
           </h3>
           <p>
-            Confira as escolhas antes de rolar. Depois da rolagem, origem e treinamento ficam
-            registrados.
+            {s?.retirement_rebuild
+              ? 'Confirme as escolhas de nível 1 da classe antes de distribuir os atributos.'
+              : 'Confira as escolhas antes de rolar. Depois da rolagem, origem e treinamento ficam registrados.'}
           </p>
           <fieldset disabled={busy} className="sheet-form-reset">
             {s?.rules_version === '5.1' && !s.choices && (
@@ -404,7 +404,7 @@ export function CharacterSheet({
           </div>
         </section>
       )}
-      {rolls && s?.choices && !s?.finalized_at && (
+      {rolls && s?.choices && !s?.finalized_at && !s.retirement_rebuild && (
         <section className="sheet-panel">
           <h3>
             <Dices size={22} /> O destino está lançado

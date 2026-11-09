@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
-import { bastionProgressionSchema, type BastionState } from '../shared/guild-bastion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { bastionProgressionSchema, bastionSpecialCost, type BastionState } from '../shared/guild-bastion';
 import type { GuildFacilityCatalog, GuildFacilityDefinition } from '../shared/guild-facilities';
 import { money } from '../shared/rules';
-import { api } from './api';
+import { api, post } from './api';
 import { GuildBastionEditor } from './GuildBastionEditor';
 import './guild-bastion.css';
 
@@ -23,6 +23,8 @@ export function GuildBastionPanel({
     [busy, setBusy] = useState(false);
   const [error, setError] = useState(''),
     [notice, setNotice] = useState('');
+  const [contribution, setContribution] = useState('');
+  const contributionRequest = useRef<{ key: string; id: string } | null>(null);
   const [tags, setTags] = useState<{ id: string; name: string; active: boolean }[]>([]);
   const [custom, setCustom] = useState<{
     key: string;
@@ -61,6 +63,11 @@ export function GuildBastionPanel({
   }, [path, room]);
   const facility = state?.facilities.find((f) => f.room === room),
     definition = catalog?.items.find((f) => f.room === room);
+  const specialCost = bastionSpecialCost(room);
+  const currency = specialCost === 'prestige_cost' ? 'prestige' : 'crystals';
+  const label = currency === 'prestige' ? 'Prestígio' : 'cristais';
+  const balances = specialCost ? state?.special_balances : undefined;
+  const personal = (currency === 'prestige' ? balances?.personal_prestige : balances?.personal_crystals) ?? 0;
   async function perform(work: () => Promise<void>) {
     setBusy(true);
     setError('');
@@ -100,6 +107,37 @@ export function GuildBastionPanel({
       {state && facility && definition && !editing && (
         <>
           <p>{definition.description}</p>
+          {balances && (
+            <details className="bastion-current" key={room + ':' + balances.character_id}>
+              <summary>{currency === 'prestige' ? 'Prestígio da Ferraria' : 'Cristais da Ferramenta de Expedição'}</summary>
+              <p>Na guilda · {balances[currency].toLocaleString('pt-BR')} {label}</p>
+              <p>Disponível para contribuir · {personal.toLocaleString('pt-BR')} {label}</p>
+              <form className="stack" onSubmit={event => {
+                event.preventDefault();
+                const amount = Number(contribution);
+                if (!Number.isInteger(amount) || amount < 1 || amount > personal || busy) return;
+                void perform(async () => {
+                  const key = [guildId, balances.character_id, currency, amount].join(':');
+                  const previous = contributionRequest.current;
+                  const request = previous?.key === key ? previous : { key, id: crypto.randomUUID() };
+                  contributionRequest.current = request;
+                  await post('/guilds/' + guildId + '/bastion/contributions', {
+                    currency, amount, request_id: request.id, character_id: balances.character_id,
+                  });
+                  contributionRequest.current = null;
+                  setContribution('');
+                  await load();
+                  setNotice('Contribuição registrada para a guilda.');
+                });
+              }}>
+                <label>Quantidade de {label}
+                  <input type="number" min={1} max={Math.min(personal, 1_000_000)} required disabled={!personal || busy}
+                    value={contribution} onChange={event => setContribution(event.target.value)} />
+                </label>
+                <button className="button outline" disabled={!personal || busy}>Contribuir para a guilda</button>
+              </form>
+            </details>
+          )}
           <div className="bastion-current">
             <span className="bastion-eyebrow">
               Nível {facility.level} de 10 · Benefício vigente

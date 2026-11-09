@@ -15,7 +15,7 @@ export async function grantCharacterStartingItems(db: PoolClient, characterId: s
     return false;
   const row = (
     await db.query(
-      'SELECT c.class,s.choices,s.finalized_at FROM characters c JOIN character_sheets s ON s.character_id=c.id WHERE c.id=$1 AND c.deleted_at IS NULL',
+      'SELECT c.class,s.choices,s.finalized_at FROM characters c JOIN character_sheets s ON s.character_id=c.id WHERE c.id=$1 AND c.deleted_at IS NULL AND c.retirement_cycle=0',
       [characterId],
     )
   ).rows[0];

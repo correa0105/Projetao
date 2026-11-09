@@ -408,6 +408,7 @@ export type VttMessage = {
   created_at: string;
 };
 export type VttState = {
+  tower_characters?: { id: string; name: string }[];
   region_id?: string | null;
   location_id?: string | null;
   storage?: import('./vtt-storage').VttStorage;

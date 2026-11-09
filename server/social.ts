@@ -95,7 +95,10 @@ export function socialRouter() {
       {
         rows: [u],
       } = await pool.query(
-        `SELECT u.id,u.name,COALESCE(p.document,'{}') AS document,COALESCE(p.revision,0) AS revision,${avatarSql} AS avatar FROM "user" u LEFT JOIN player_profiles p ON p.user_id=u.id WHERE u.id=$1`,
+        `SELECT u.id,u.name,COALESCE(p.document,'{}') AS document,COALESCE(p.revision,0) AS revision,${avatarSql} AS avatar,
+         s.snapshot->>'image_path' AS prestige_border FROM "user" u LEFT JOIN player_profiles p ON p.user_id=u.id
+         LEFT JOIN prestige_profile_borders b ON b.user_id=u.id
+         LEFT JOIN special_shop_purchases s ON s.id=b.purchase_id AND s.user_id=u.id WHERE u.id=$1`,
         [uid],
       );
     if (!u) throw new AppError(404, 'Perfil não encontrado.');
@@ -230,11 +233,11 @@ export function socialRouter() {
         ),
         pool.query('SELECT code,unlocked_at FROM achievements WHERE character_id=$1', [cid]),
         pool.query(
-          'SELECT id,mount_id,coat,name,equipment,displayed FROM character_mounts WHERE character_id=$1',
+          'SELECT id,mount_id,coat,name,equipment,displayed,prestige_art FROM character_mounts WHERE character_id=$1',
           [cid],
         ),
         pool.query(
-          'SELECT id,pet_id,appearance,name,displayed FROM character_pets WHERE character_id=$1',
+          'SELECT id,pet_id,appearance,name,displayed,prestige_art FROM character_pets WHERE character_id=$1',
           [cid],
         ),
         pool.query(
@@ -251,7 +254,7 @@ export function socialRouter() {
         pool.query('SELECT code,title,description FROM achievement_definitions'),
       ]);
     const publicImages = async (
-      animals: { id: string; displayed: boolean; image_url?: string | null }[],
+      animals: { id: string; displayed: boolean; image_url?: string | null; prestige_art?: string | null }[],
     ) =>
       (await withCompanionImages(pool, cid, animals)).map((animal) => ({
         ...animal,

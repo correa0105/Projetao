@@ -12,6 +12,7 @@ import { socialRouter } from './social.js';
 import { guildsRouter } from './guilds.js';
 import { guildFacilityDefinitionsRouter } from './guild-facility-definitions.js';
 import { towerRouter } from './tower.js';
+import { specialEconomyRouter } from './special-economy.js';
 import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
 import express from 'express';
 import { authenticationClientIp, configureReverseProxy } from './reverse-proxy.js';
@@ -293,6 +294,7 @@ export function createApp() {
   app.use('/api', guildsRouter());
   app.use('/api', guildFacilityDefinitionsRouter());
   app.use('/api', towerRouter());
+  app.use('/api', specialEconomyRouter());
   app.use('/api', houseRouter());
   app.use('/api', house2Router());
   app.use('/api', worldClockRouter());

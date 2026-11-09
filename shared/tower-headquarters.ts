@@ -172,8 +172,8 @@ export const towerAnswers: Record<TowerTopic, Answer> = {
   trade: {
     title: 'Como os cristais são comercializados?',
     paragraphs: [
-      'O entreposto ainda não está aberto. Nesta sede, ainda não há venda de cristais, troca por ouro ou mercadorias que possam ser compradas com esse saldo.',
-      'Por enquanto, os cristais conquistados ficam guardados no registro do personagem. Posso mostrar seu saldo e os tesouros que deram origem às recompensas.',
+      'O Entreposto aceita os cristais conquistados pelo seu personagem nas expedições. As ofertas e os preços ficam no Gabinete de Cristais.',
+      'As compras são guardadas no registro da Torre do próprio personagem.',
     ],
     action: { label: 'Ver meu registro de cristais', room: 'crystals' },
     related: ['uses', 'crystals', 'treasures'],
@@ -181,8 +181,8 @@ export const towerAnswers: Record<TowerTopic, Answer> = {
   uses: {
     title: 'Em que posso usar meus cristais?',
     paragraphs: [
-      'Hoje, os cristais são acumulados como moeda da Torre. Ainda não existe um serviço de gasto, compra ou aprimoramento com eles nesta sede.',
-      'Eles não concedem atributos, experiência, cartas ou melhorias automaticamente. As relíquias sem um item vinculado também permanecem colecionáveis. Quando um tesouro inclui um item do catálogo, ele é entregue ao inventário pelas regras da recompensa.',
+      'Use os cristais no Entreposto ou contribua para a Ferramenta de Expedição da sua guilda. O fundador autoriza a melhoria.',
+      'Use os itens do Entreposto na mesa oficial de uma expedição ativa, com o personagem que fez a compra.',
     ],
     action: { label: 'Consultar cristais e registros', room: 'crystals' },
     related: ['trade', 'treasures', 'return'],

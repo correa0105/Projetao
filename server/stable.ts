@@ -17,7 +17,7 @@ export function stableRouter() {
     );
     if (!character.rowCount) throw new AppError(404, 'Personagem não encontrado.');
     const { rows } = await pool.query(
-      'SELECT id,mount_id,coat,name,price_cp,equipment,equipment_price_cp,created_at,displayed FROM character_mounts WHERE character_id=$1 ORDER BY created_at DESC,id',
+      'SELECT id,mount_id,coat,name,price_cp,equipment,equipment_price_cp,created_at,displayed,prestige_art FROM character_mounts WHERE character_id=$1 ORDER BY created_at DESC,id',
       [id],
     );
     res.json(await withCompanionImages(pool, id, rows));

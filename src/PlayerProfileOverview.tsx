@@ -6,11 +6,13 @@ import { cards } from '../shared/cards';
 import { GuildCrest } from './GuildCrest';
 import type { Crest } from '../shared/guilds';
 import { visitProfile } from './HallOfFame';
+import './special-economy.css';
 type Character = { id: string; name: string; portrait: string; class: string; level: number };
 export type PlayerOverview = {
   id: string;
   name: string;
   avatar: string;
+  prestige_border?: string | null;
   is_owner: boolean;
   document: ProfileSettings;
   characters: Character[];
@@ -73,6 +75,7 @@ export function PlayerProfileOverview({
               onError={(e) => (e.currentTarget.style.display = 'none')}
             />
           )}
+          {p.prestige_border && <img className="prestige-border-art" src={p.prestige_border} alt="" />}
         </div>
         <div className="player-identity">
           <span className="social-eyebrow">Perfil do viajante</span>

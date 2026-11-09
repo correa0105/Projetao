@@ -1,5 +1,5 @@
 import type { PoolClient } from 'pg';
-export async function withCompanionImages<T extends { id: string }>(
+export async function withCompanionImages<T extends { id: string; prestige_art?: string | null }>(
   db: Pick<PoolClient, 'query'>,
   characterId: string,
   companions: T[],
@@ -12,12 +12,13 @@ export async function withCompanionImages<T extends { id: string }>(
   return companions.map((animal) => {
     const row = rows.find((entry) => entry.id === animal.id);
     const hasImage = row?.equipment_revision !== null && row?.equipment_revision !== undefined;
+    const { prestige_art, ...publicAnimal } = animal;
     return {
-      ...animal,
+      ...publicAnimal,
       image_revision: hasImage ? row.image_revision : 0,
       image_url: hasImage
         ? `/api/companions/${characterId}/${row.kind}/${row.id}/image?v=${row.image_revision}`
-        : null,
+        : prestige_art ?? null,
       equipment_revision: row?.revision ?? 0,
       art_equipment_revision: row?.equipment_revision ?? null,
     };

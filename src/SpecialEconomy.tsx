@@ -1,0 +1,811 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Modal } from './components';
+import { api, post } from './api';
+import type { Character } from './types';
+import {
+  minimumPrestigeLevel,
+  prestigeMilestones,
+  specialOfferCategoryLabels,
+  type SpecialCurrency,
+  type SpecialOffer,
+  type SpecialPurchase,
+  type SpecialShopState,
+} from '../shared/special-economy';
+import { rankTitle } from '../shared/progression';
+import { classes } from '../shared/rules';
+import { mounts } from '../shared/mounts';
+import { pets } from '../shared/pets';
+import './special-economy.css';
+
+type PrestigeState = {
+  balance: number;
+  can_edit: boolean;
+  rewards: number[] | null;
+  revision: number;
+  history: {
+    character_id: string;
+    cycle: number;
+    name: string;
+    level: number;
+    points: number;
+    previous_class: string;
+    mode: 'restart' | 'permanent';
+    retired_at: string;
+  }[];
+};
+type RetirementPreview = {
+  level: number;
+  cycle: number;
+  has_rolls: boolean;
+  points: number | null;
+  revision: number;
+  blocker: string | null;
+  representatives: { id: string; name: string }[] | null;
+};
+
+export function RetirementDialog({
+  character,
+  close,
+  completed,
+}: {
+  character: Character;
+  close: () => void;
+  completed: (points: number, mode: 'restart' | 'permanent') => void | Promise<void>;
+}) {
+  const [preview, setPreview] = useState<RetirementPreview | null>(null);
+  const [name, setName] = useState('');
+  const [mode, setMode] = useState<'restart' | 'permanent'>('restart');
+  const [nextClass, setNextClass] = useState(character.class);
+  const [dice, setDice] = useState<'keep' | 'reroll'>('keep');
+  const [replacement, setReplacement] = useState('');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const request = useRef(crypto.randomUUID());
+  useEffect(() => {
+    let live = true;
+    api<RetirementPreview>('/characters/' + character.id + '/retirement')
+      .then((value) => {
+        if (live) {
+          setPreview(value);
+          if (!value.has_rolls) setDice('reroll');
+        }
+      })
+      .catch((e: Error) => {
+        if (live) setError(e.message);
+      });
+    return () => {
+      live = false;
+    };
+  }, [character.id]);
+  const available =
+    preview &&
+    preview.points !== null &&
+    !preview.blocker &&
+    (mode === 'restart' || preview.representatives === null || !!replacement);
+  return (
+    <Modal
+      title={'Aposentar ' + character.name}
+      close={() => {
+        if (!busy) close();
+      }}
+    >
+      <form
+        className="stack"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          if (!preview || !available || name !== character.name || busy) return;
+          setBusy(true);
+          setError('');
+          try {
+            const result = await post<{ points: number }>(
+              '/characters/' + character.id + '/retirement',
+              {
+                name,
+                mode,
+                level: preview.level,
+                revision: preview.revision,
+                cycle: preview.cycle,
+                request_id: request.current,
+                ...(mode === 'restart'
+                  ? { class: nextClass, dice }
+                  : { replacement_id: replacement || undefined }),
+              },
+            );
+            await completed(result.points, mode);
+          } catch (e) {
+            setError((e as Error).message);
+          } finally {
+            setBusy(false);
+          }
+        }}
+      >
+        <p>
+          O Prestígio é calculado pelo nível atual. O primeiro marco para aposentar é o nível{' '}
+          {minimumPrestigeLevel}.
+        </p>
+        {!preview && !error && <p role="status">Consultando a recompensa…</p>}
+        {preview?.points === null && !preview.blocker && (
+          <p>A tabela de recompensas aguarda configuração.</p>
+        )}
+        {preview?.points != null && (
+          <p>
+            Nível {preview.level} ·{' '}
+            <strong>{preview.points.toLocaleString('pt-BR')} de Prestígio</strong>
+          </p>
+        )}
+        {preview?.blocker && <p role="status">{preview.blocker}</p>}
+        <label>
+          O que fazer com o personagem
+          <select
+            value={mode}
+            disabled={busy}
+            onChange={(e) => setMode(e.target.value as typeof mode)}
+          >
+            <option value="restart">Recomeçar no nível 1</option>
+            <option value="permanent">Aposentar para sempre</option>
+          </select>
+        </label>
+        {mode === 'restart' ? (
+          <>
+            <p>
+              O personagem conserva sua identidade, vaga e bens. A ficha abre no nível 1 para
+              confirmar a classe e a distribuição dos atributos.
+            </p>
+            <label>
+              Classe da nova jornada
+              <select
+                value={nextClass}
+                disabled={busy}
+                onChange={(e) => setNextClass(e.target.value)}
+              >
+                {classes.map((cls) => (
+                  <option key={cls}>{cls}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Dados dos atributos
+              <select
+                value={dice}
+                disabled={busy}
+                onChange={(e) => setDice(e.target.value as typeof dice)}
+              >
+                <option value="keep" disabled={preview?.has_rolls === false}>
+                  Manter e redistribuir os dados antigos
+                </option>
+                <option value="reroll">Rerrolar e distribuir os novos dados</option>
+              </select>
+            </label>
+          </>
+        ) : (
+          <p>
+            A aposentadoria definitiva guarda a ficha e os bens no histórico e libera a vaga no
+            acampamento.
+          </p>
+        )}
+        {mode === 'permanent' && preview?.representatives && (
+          <label>
+            Novo representante do fundador
+            <select value={replacement} onChange={(e) => setReplacement(e.target.value)} required>
+              <option value="">Selecione um personagem</option>
+              {preview.representatives.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+            {!preview.representatives.length && (
+              <small>O fundador precisa de outro personagem ativo e livre de guilda.</small>
+            )}
+          </label>
+        )}
+        {error && <p role="alert">{error}</p>}
+        <label>
+          Digite o nome para confirmar
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            disabled={!available || busy}
+            required
+          />
+        </label>
+        <button className="button primary" disabled={!available || name !== character.name || busy}>
+          Confirmar aposentadoria
+        </button>
+      </form>
+    </Modal>
+  );
+}
+
+export function PrestigeCenter({
+  close,
+  characterId,
+}: {
+  close: () => void;
+  characterId?: string;
+}) {
+  const [state, setState] = useState<PrestigeState | null>(null);
+  const [values, setValues] = useState<string[] | null>(null);
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  useEffect(() => {
+    let live = true;
+    api<PrestigeState>('/prestige')
+      .then((value) => {
+        if (live) setState(value);
+      })
+      .catch((e: Error) => {
+        if (live) setError(e.message);
+      });
+    return () => {
+      live = false;
+    };
+  }, []);
+  return (
+    <Modal title="Prestígio" close={close}>
+      <div className="stack special-economy">
+        <p>
+          A partir do nível {minimumPrestigeLevel}, aposente um personagem no acampamento para
+          receber Prestígio. Use-o na loja ou contribua para a Ferraria da sua guilda.
+        </p>
+        {error && <p role="alert">{error}</p>}
+        {state?.can_edit && (
+          <details>
+            <summary>Configurar recompensas de aposentadoria</summary>
+            <form
+              className="stack"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (!values || busy) return;
+                setBusy(true);
+                setError('');
+                try {
+                  const saved = await api<Pick<PrestigeState, 'rewards' | 'revision'>>(
+                    '/prestige/rewards',
+                    {
+                      method: 'PUT',
+                      body: JSON.stringify({
+                        rewards: values.map(Number),
+                        revision: state.revision,
+                      }),
+                    },
+                  );
+                  setState({ ...state, ...saved });
+                  setValues(null);
+                } catch (e) {
+                  setError((e as Error).message);
+                } finally {
+                  setBusy(false);
+                }
+              }}
+            >
+              <p>
+                Informe os pontos de cada nível. Os saltos de patente nos níveis 5, 9, 13 e 17 devem
+                ser maiores que os aumentos comuns.
+              </p>
+              {!values ? (
+                <button
+                  type="button"
+                  className="button outline"
+                  onClick={() =>
+                    setValues(
+                      state.rewards?.map(String) ??
+                        Array.from({ length: 20 }, (_, i) =>
+                          i + 1 < minimumPrestigeLevel ? '0' : '',
+                        ),
+                    )
+                  }
+                >
+                  Editar tabela
+                </button>
+              ) : (
+                <>
+                  <div className="prestige-level-grid">
+                    {values.map((amount, i) => (
+                      <label key={i}>
+                        Nível {i + 1}
+                        {prestigeMilestones.includes(i + 1) && ' · ' + rankTitle(i + 1)}
+                        <input
+                          type="number"
+                          min={0}
+                          max={1_000_000}
+                          required
+                          value={amount}
+                          disabled={i + 1 < minimumPrestigeLevel}
+                          onChange={(e) =>
+                            setValues(
+                              values.map((value, level) => (level === i ? e.target.value : value)),
+                            )
+                          }
+                        />
+                      </label>
+                    ))}
+                  </div>
+                  <button className="button primary" disabled={busy}>
+                    Salvar recompensas
+                  </button>
+                </>
+              )}
+            </form>
+          </details>
+        )}
+        {!!state?.history.length && (
+          <details>
+            <summary>Histórico de aposentadorias</summary>
+            <ul>
+              {state.history.map((c) => (
+                <li key={c.character_id + ':' + c.cycle}>
+                  {c.name} · {c.previous_class} nível {c.level} ·{' '}
+                  {c.mode === 'restart' ? 'Nova jornada' : 'Definitiva'} ·{' '}
+                  {c.points.toLocaleString('pt-BR')} de Prestígio
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+        <SpecialShop currency="prestige" characterId={characterId} />
+      </div>
+    </Modal>
+  );
+}
+
+const currencyLabels = { prestige: 'Prestígio', crystals: 'cristais' } as const;
+const offerCategories = Object.keys(specialOfferCategoryLabels) as SpecialOffer['category'][];
+const blankOffer = (currency: SpecialCurrency): SpecialOffer => ({
+  id: crypto.randomUUID(),
+  revision: 0,
+  category: currency === 'crystals' ? 'tower_item' : 'profile_border',
+  name: '',
+  description: '',
+  image_path: null,
+  target_key: null,
+  price: 0,
+  active: false,
+});
+const companionOffer = (offer: SpecialOffer) =>
+  offer.category === 'mount' || offer.category === 'pet';
+
+export function SpecialShop({
+  currency,
+  characterId,
+  changed,
+}: {
+  currency: SpecialCurrency;
+  characterId?: string;
+  changed?: () => Promise<void>;
+}) {
+  const [state, setState] = useState<SpecialShopState | null>(null);
+  const [draft, setDraft] = useState<SpecialOffer | null>(null);
+  const [confirm, setConfirm] = useState<SpecialOffer | null>(null);
+  const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
+  const [busy, setBusy] = useState(false);
+  const requestIds = useRef(new Map<string, string>());
+  const path = '/special-shop/' + currency;
+  const query =
+    currency === 'crystals' && characterId
+      ? '?character_id=' + encodeURIComponent(characterId)
+      : '';
+  const load = useCallback(
+    async () => setState(await api<SpecialShopState>(path + query)),
+    [path, query],
+  );
+  useEffect(() => {
+    let live = true;
+    setState(null);
+    setConfirm(null);
+    api<SpecialShopState>(path + query)
+      .then((data) => {
+        if (live) setState(data);
+      })
+      .catch((e: Error) => {
+        if (live) setError(e.message);
+      });
+    return () => {
+      live = false;
+    };
+  }, [path, query]);
+  async function act(action: () => Promise<void>) {
+    if (busy) return;
+    setBusy(true);
+    setError('');
+    setNotice('');
+    try {
+      await action();
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  const label = currencyLabels[currency];
+  const owned = new Set(state?.purchases.map((p) => p.offer_id));
+  return (
+    <section className="stack special-economy" aria-label={'Loja de ' + label}>
+      <h3>{currency === 'crystals' ? 'Entreposto da Torre' : 'Loja de Prestígio'}</h3>
+      {error && <p role="alert">{error}</p>}
+      {notice && <p role="status">{notice}</p>}
+      {!state && !error && <p role="status">Consultando a loja…</p>}
+      {state && (
+        <>
+          <p>
+            Saldo disponível ·{' '}
+            <strong>
+              {state.balance.toLocaleString('pt-BR')} {label}
+            </strong>
+          </p>
+          {currency === 'crystals' && (
+            <p>
+              Os itens do Entreposto ficam com o personagem comprador e são usados nas mesas
+              oficiais de uma expedição ativa.
+            </p>
+          )}
+          {currency === 'crystals' && !characterId && (
+            <p>Selecione um personagem para comprar com cristais.</p>
+          )}
+          {!state.offers.some((offer) => offer.active) && <p>Nenhuma oferta publicada.</p>}
+          {state.can_edit && (
+            <button
+              className="button outline"
+              disabled={busy}
+              onClick={() => setDraft(blankOffer(currency))}
+            >
+              Cadastrar oferta
+            </button>
+          )}
+          <ul className="special-offers">
+            {state.offers.map((offer) => (
+              <li key={offer.id}>
+                {offer.image_path && <img src={offer.image_path} alt="" loading="lazy" />}
+                <div>
+                  <strong>{offer.name}</strong>
+                  <small>
+                    {specialOfferCategoryLabels[offer.category]} ·{' '}
+                    {offer.active ? offer.price.toLocaleString('pt-BR') + ' ' + label : 'Rascunho'}
+                  </small>
+                  <p>{offer.description}</p>
+                  {offer.active && (
+                    <button
+                      className="button outline"
+                      disabled={
+                        busy ||
+                        ((currency === 'crystals' || companionOffer(offer)) && !characterId) ||
+                        (currency === 'prestige' && owned.has(offer.id)) ||
+                        state.balance < offer.price
+                      }
+                      onClick={() => setConfirm(offer)}
+                    >
+                      {currency === 'prestige' && owned.has(offer.id) ? 'Na coleção' : 'Comprar'}
+                    </button>
+                  )}
+                  {state.can_edit && (
+                    <button
+                      className="button outline"
+                      disabled={busy}
+                      onClick={() => setDraft(offer)}
+                    >
+                      Editar oferta
+                    </button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          {confirm && (
+            <div className="stack" role="group" aria-label="Confirmar compra especial">
+              <p>
+                Comprar {confirm.name} por {confirm.price.toLocaleString('pt-BR')} {label}?
+              </p>
+              <button
+                className="button primary"
+                disabled={busy}
+                onClick={() =>
+                  void act(async () => {
+                    const key = confirm.id + ':' + (characterId || '');
+                    const requestId = requestIds.current.get(key) || crypto.randomUUID();
+                    requestIds.current.set(key, requestId);
+                    await post(path + '/purchases', {
+                      offer_id: confirm.id,
+                      request_id: requestId,
+                      revision: confirm.revision,
+                      character_id:
+                        currency === 'crystals' || companionOffer(confirm)
+                          ? characterId
+                          : undefined,
+                    });
+                    requestIds.current.delete(key);
+                    setConfirm(null);
+                    await load();
+                    await changed?.();
+                    setNotice('Compra registrada.');
+                  })
+                }
+              >
+                Confirmar compra
+              </button>
+              <button className="button outline" disabled={busy} onClick={() => setConfirm(null)}>
+                Cancelar
+              </button>
+            </div>
+          )}
+          {draft && (
+            <form
+              className="stack"
+              onSubmit={(e) => {
+                e.preventDefault();
+                void act(async () => {
+                  const { id, ...body } = draft;
+                  await api(path + '/offers/' + id, { method: 'PUT', body: JSON.stringify(body) });
+                  setDraft(null);
+                  await load();
+                  setNotice('Oferta salva.');
+                });
+              }}
+            >
+              <h4>{draft.revision ? 'Editar oferta' : 'Nova oferta'}</h4>
+              <label>
+                Categoria
+                <select
+                  value={draft.category}
+                  disabled={draft.revision > 0}
+                  onChange={(e) =>
+                    setDraft({
+                      ...draft,
+                      target_key: null,
+                      category: e.target.value as SpecialOffer['category'],
+                    })
+                  }
+                >
+                  {offerCategories
+                    .filter((kind) => (kind === 'tower_item') === (currency === 'crystals'))
+                    .map((kind) => (
+                      <option key={kind} value={kind}>
+                        {specialOfferCategoryLabels[kind]}
+                      </option>
+                    ))}
+                </select>
+              </label>
+              {companionOffer(draft) && (
+                <label>
+                  Modelo de referência
+                  <select
+                    value={draft.target_key ?? ''}
+                    onChange={(e) => setDraft({ ...draft, target_key: e.target.value || null })}
+                  >
+                    <option value="">Escolha o modelo base</option>
+                    {(draft.category === 'mount' ? mounts : pets).map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
+              {draft.category === 'weapon_skin' && (
+                <label>
+                  Identificador da arma do catálogo
+                  <input
+                    value={draft.target_key ?? ''}
+                    maxLength={120}
+                    onChange={(e) => setDraft({ ...draft, target_key: e.target.value || null })}
+                  />
+                </label>
+              )}
+              <label>
+                Nome
+                <input
+                  value={draft.name}
+                  maxLength={100}
+                  required
+                  onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+                />
+              </label>
+              <label>
+                Descrição e regras
+                <textarea
+                  value={draft.description}
+                  maxLength={2000}
+                  required
+                  onChange={(e) => setDraft({ ...draft, description: e.target.value })}
+                />
+              </label>
+              <label>
+                Imagem publicada no site
+                <input
+                  value={draft.image_path || ''}
+                  maxLength={250}
+                  placeholder="/profiles/exemplo.webp"
+                  onChange={(e) => setDraft({ ...draft, image_path: e.target.value || null })}
+                />
+              </label>
+              <label>
+                Preço em {label}
+                <input
+                  type="number"
+                  required
+                  min={1}
+                  max={1000000}
+                  value={draft.price || ''}
+                  onChange={(e) => setDraft({ ...draft, price: Number(e.target.value) })}
+                />
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={draft.active}
+                  onChange={(e) => setDraft({ ...draft, active: e.target.checked })}
+                />{' '}
+                Publicar oferta
+              </label>
+              <button className="button primary" disabled={busy}>
+                Salvar oferta
+              </button>
+              <button
+                type="button"
+                className="button outline"
+                disabled={busy}
+                onClick={() => setDraft(null)}
+              >
+                Cancelar edição
+              </button>
+            </form>
+          )}
+          {!!state.purchases.length && (
+            <details>
+              <summary>{currency === 'crystals' ? 'Itens do personagem' : 'Minha coleção'}</summary>
+              <ul className="special-offers">
+                {state.purchases.map((p) => (
+                  <li key={p.id}>
+                    {p.snapshot.image_path && (
+                      <img src={p.snapshot.image_path} alt="" loading="lazy" />
+                    )}
+                    <div>
+                      <strong>{p.snapshot.name}</strong>
+                      <p>{p.used_at ? 'Usado em uma expedição' : p.snapshot.description}</p>
+                      {p.snapshot.category === 'profile_border' && (
+                        <button
+                          className="button outline"
+                          disabled={busy}
+                          onClick={() =>
+                            void act(async () => {
+                              await api('/prestige/profile-border', {
+                                method: 'PUT',
+                                body: JSON.stringify({
+                                  purchase_id: state.equipped_border === p.id ? null : p.id,
+                                }),
+                              });
+                              await load();
+                              setNotice('Borda do perfil atualizada.');
+                            })
+                          }
+                        >
+                          {state.equipped_border === p.id ? 'Retirar borda' : 'Usar no perfil'}
+                        </button>
+                      )}
+                      {p.snapshot.category === 'weapon_skin' &&
+                        characterId &&
+                        ([true, false] as const).map((enabled) => (
+                          <button
+                            key={String(enabled)}
+                            className="button outline"
+                            disabled={busy}
+                            onClick={() =>
+                              void act(async () => {
+                                await api('/prestige/weapon-skin/' + p.id, {
+                                  method: 'PUT',
+                                  body: JSON.stringify({ character_id: characterId, enabled }),
+                                });
+                                setNotice(
+                                  enabled
+                                    ? 'Skin aplicada à arma na mochila.'
+                                    : 'Skin retirada da arma.',
+                                );
+                              })
+                            }
+                          >
+                            {enabled ? 'Aplicar ao personagem' : 'Retirar do personagem'}
+                          </button>
+                        ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+        </>
+      )}
+    </section>
+  );
+}
+
+export function TowerTableItems({
+  room,
+  characters,
+  close,
+}: {
+  room: string;
+  characters: { id: string; name: string }[];
+  close: () => void;
+}) {
+  const [character, select] = useState(characters[0]?.id || '');
+  const [items, setItems] = useState<SpecialPurchase[] | null>(null);
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [confirm, setConfirm] = useState<string | null>(null);
+  const path = '/vtt/rooms/' + room + '/tower-items/' + character;
+  useEffect(() => {
+    if (!character) return;
+    let live = true;
+    setItems(null);
+    setError('');
+    setConfirm(null);
+    api<{ items: SpecialPurchase[] }>(path)
+      .then((data) => {
+        if (live) setItems(data.items);
+      })
+      .catch((e: Error) => {
+        if (live) setError(e.message);
+      });
+    return () => {
+      live = false;
+    };
+  }, [path, character]);
+  return (
+    <Modal
+      title="Itens da Torre"
+      close={() => {
+        if (!busy) close();
+      }}
+    >
+      <div className="stack special-economy">
+        <label>
+          Personagem da expedição
+          <select value={character} onChange={(e) => select(e.target.value)} disabled={busy}>
+            {characters.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        {error && <p role="alert">{error}</p>}
+        {!items && !error && <p role="status">Consultando os itens…</p>}
+        {items?.length === 0 && <p>Nenhum item disponível para esta expedição.</p>}
+        <ul className="special-offers">
+          {items?.map((item) => (
+            <li key={item.id}>
+              {item.snapshot.image_path && <img src={item.snapshot.image_path} alt="" />}
+              <div>
+                <strong>{item.snapshot.name}</strong>
+                <p>{item.snapshot.description}</p>
+                <button
+                  className="button outline"
+                  disabled={busy}
+                  onClick={async () => {
+                    if (confirm !== item.id) {
+                      setConfirm(item.id);
+                      return;
+                    }
+                    setBusy(true);
+                    setError('');
+                    try {
+                      await post(path + '/' + item.id + '/use', {});
+                      setItems((current) => current?.filter((entry) => entry.id !== item.id) ?? []);
+                      setConfirm(null);
+                    } catch (e) {
+                      setError((e as Error).message);
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                >
+                  {confirm === item.id ? 'Confirmar uso e consumir' : 'Usar na mesa'}
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Modal>
+  );
+}

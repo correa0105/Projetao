@@ -14,9 +14,11 @@ Todos os requisitos de um nível devem ser cumpridos juntos. É possível combin
 - Tags de monstro: escolher uma tag do catálogo existente. Cada participante membro soma as tags recebidas na conclusão.
 - Cristais da Torre: total conquistado pelos membros, incluindo recompensa base e bônus do tesouro.
 - Créditos do Bastião do tesouro: custo opcional por nível, debitado somente na evolução. Membros contribuem com seus CB de missões; o ouro legado da guilda fica preservado separadamente.
+- Prestígio contribuído: custo em pontos do tesouro da Ferraria, oriundos da aposentadoria de personagens.
+- Cristais contribuídos: custo em cristais doados à Ferramenta de Expedição na Mesa de Estratégia.
 - Outros critérios: nome, identificador estável e quantidade. O administrador confirma o progresso da guilda com justificativa e revisão concorrente.
 
-**Missões, tags e cristais são metas acumuladas, sem consumo**, conforme decisão do proprietário. Cristais contam pelo que foi conquistado, independentemente do saldo atual da carteira. Não reduzir tags pessoais, conquistas ou cristais para evoluir uma instalação. Requisitos próprios também representam metas, sem gasto automático.
+**Missões, tags e cristais conquistados são metas acumuladas, sem consumo.** O custo em cristais usa o saldo doado separadamente. Requisitos próprios também representam metas, sem gasto automático.
 
 O progresso conta conquistas realizadas durante a participação na guilda. Os registros novos são duráveis: sair da guilda, remover personagem/missão ou gastar cristais não apaga o progresso já registrado. A migração recupera o histórico comprovável dos membros atuais a partir de sua data de entrada; não inventa filiações passadas que o banco não registrou.
 
@@ -26,6 +28,6 @@ A janela mostra benefício vigente, próximo benefício, requisitos com barras d
 
 A migração aditiva `136_guild_bastion_progression.sql` acrescenta a progressão ao catálogo existente, créditos duráveis e progresso administrativo auditado. Não altera os níveis, tesouros, carteiras ou tags pessoais existentes. A conclusão da missão e as recompensas da Torre registram créditos na mesma transação do pagamento original, com referências únicas para impedir repetição.
 
-A evolução bloqueia a guilda, confere nível e regras atuais no servidor, verifica todos os critérios, debita somente o custo explícito em CB e registra ledger e fotografia dos requisitos/benefício. Reenvios não repetem débito ou evolução. Alterações administrativas usam revisão e auditoria, com permissão revalidada na transação.
+A evolução bloqueia a guilda, confere nível e regras atuais no servidor, verifica todos os critérios e debita os custos explícitos em CB, Prestígio ou cristais. O histórico conserva os requisitos e benefícios no momento da evolução. Reenvios não repetem débito ou evolução. Alterações administrativas usam revisão e auditoria, com permissão revalidada na transação.
 
 Os testes de bastião cobrem configuração pendente, benefício base e evolução, critérios combinados, sigilo, revogação administrativa, revisão, créditos repetidos, saída de membro, rollback e evolução concorrente sem consumo. As regressões de sede e instalações cadastram regras explícitas em fixtures privadas de teste; nenhum desses benefícios ou preços de teste é levado ao seed real.

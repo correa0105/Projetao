@@ -37,6 +37,8 @@ import {
 import type { Character, Item } from './types';
 import { TowerDialog, TowerFloorEditor, TowerRewardEditor, TowerItemPreview } from './TowerEditors';
 import { TowerHeadquarters } from './TowerHeadquarters';
+import { SpecialShop } from './SpecialEconomy';
+import { Modal } from './components';
 import type { TowerRoom } from '../shared/tower-headquarters';
 import './tower.css';
 import './tower-redesign.css';
@@ -81,6 +83,7 @@ export function Tower({
     [draft, setDraft] = useState<TowerFloorContent | null>(null),
     [rewardDraft, setRewardDraft] = useState<TowerRewardTable | null>(null),
     [itemPreview, setItemPreview] = useState<TowerItemInfo | null>(null);
+  const [crystalShopOpen, setCrystalShopOpen] = useState(false);
   const refresh = useCallback(async () => setState(await api<TowerState>('/tower')), []);
   useEffect(() => {
     void refresh().catch((e) => setError(e.message));
@@ -191,8 +194,12 @@ export function Tower({
         characterName={character?.name}
         crystals={crystals}
         pending={pending}
+        openCrystalShop={() => setCrystalShopOpen(true)}
       >
       <div className="tower-body" id="tower-content">
+        {crystalShopOpen && <Modal title="Loja de Cristais" close={() => setCrystalShopOpen(false)}>
+          <SpecialShop currency="crystals" characterId={character?.id} changed={refresh} />
+        </Modal>}
         {error && (
           <div className="tower-error" role="alert">
             {error}
@@ -784,6 +791,17 @@ export function Tower({
                             {towerRegionLabel(towerFloors[currentRun.cleared_floor].zone)}
                           </p>
                         </div>
+                      )}
+                    {['preparing', 'active'].includes(currentRun.status) &&
+                      (currentRun.can_manage || currentRun.members.some(member => member.mine)) && (
+                        <button className="button outline" disabled={busy} onClick={() => void act(async () => {
+                          const selected = currentRun.members.find(member => member.mine && member.character_id === character?.id)
+                            ?? currentRun.members.find(member => member.mine);
+                          const table = await post<{ room_id: string }>('/tower/expeditions/' + currentRun.id + '/table', {
+                            character_id: selected?.character_id,
+                          });
+                          location.hash = 'vtt?room=' + table.room_id;
+                        })}>Abrir mesa da expedição</button>
                       )}
                     {currentRun.summary && (
                       <p className="tower-run-summary">{currentRun.summary}</p>

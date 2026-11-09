@@ -229,7 +229,7 @@ async function state(rid: string, user: string) {
       : viewpoints[0]?.id || null
     : user;
   const document = isGm ? r.document : playerDocument(r.document, viewingUser || '', spectator);
-  const [assets, members, messages] = await Promise.all([
+  const [assets, members, messages, towerCharacters] = await Promise.all([
     pool.query(
       uniqueVttAssetsSql,
       [rid],
@@ -244,10 +244,17 @@ async function state(rid: string, user: string) {
         FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY vtt_messages.id DESC LIMIT 100`,
       [rid, user, isGm],
     ),
+    r.owner_id === user || r.role === 'player' ? pool.query(
+      `SELECT c.id,c.name FROM tower_expedition_rooms l JOIN tower_expeditions e ON e.id=l.run_id AND e.status='active'
+       JOIN tower_members m ON m.run_id=e.id JOIN characters c ON c.id=m.character_id
+       WHERE l.room_id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL ORDER BY c.name,c.id`,
+      [rid,user],
+    ).then(result => result.rows) : [],
   ]);
   const visible = new Set(paths(document));
   return {
     id: rid,
+    ...(towerCharacters.length ? { tower_characters: towerCharacters } : {}),
     region_id: r.region_id,
     location_id: r.location_id,
     revision: r.revision,

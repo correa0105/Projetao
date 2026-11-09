@@ -17,6 +17,7 @@ import './character-camp.css';
 import { CampBackdrop } from './CampBackdrop';
 import {CampRoster} from './CampRoster';
 import type {CharacterCampState} from '../shared/character-account';
+import { PrestigeCenter, RetirementDialog } from './SpecialEconomy';
 
 export async function readArtReference(file: File) {
   if (file.size > 8 * 1024 * 1024) throw new Error('Escolha uma imagem de até 8 MB.');
@@ -106,6 +107,9 @@ export function CharacterCamp({
   const [availability, setAvailability] = useState<boolean | null>(null);
   const [editing, setEditing] = useState<Character | null>(null);
   const [deleting, setDeleting] = useState<Character | null>(null);
+  const [retiring, setRetiring] = useState<Character | null>(null);
+  const [prestigeOpen, setPrestigeOpen] = useState(false);
+  const [retirementNotice, setRetirementNotice] = useState('');
   const [deleteName, setDeleteName] = useState('');
   const [deleteError, setDeleteError] = useState('');
   const [reference, setReference] = useState('');
@@ -215,6 +219,7 @@ export function CharacterCamp({
           {characters.length + state.pending_new} / {capacity} personagens
         </span>
         <button className="camp-roster-toggle" disabled={!camp} onClick={()=>setRoster(null)}>Personagens e slots</button>
+        <button className="camp-roster-toggle" onClick={() => setPrestigeOpen(true)}>Prestígio</button>
       </div>
       <div className="camp-stage">
         {visibleCharacters.map((character) => (
@@ -269,6 +274,7 @@ export function CharacterCamp({
                 <p className="muted small">Geração de imagens sem limite</p>
               )}
               <div className="camp-actions">
+                <button className="button outline small-button" onClick={() => setRetiring(character)}>Aposentar</button>
                 <button className="button outline small-button camp-swap" disabled={!camp} onClick={()=>setRoster(positions.indexOf(character.id))}>Trocar personagem</button>
                 <a
                   className="button outline small-button"
@@ -456,6 +462,16 @@ export function CharacterCamp({
           />
         </Modal>
       )}
+      {retirementNotice && <FlashMessage>{retirementNotice}</FlashMessage>}
+      {retiring && <RetirementDialog character={retiring} close={() => setRetiring(null)}
+        completed={async (points, mode) => {
+          if (mode === 'restart') onSelect(retiring.id);
+          setRetiring(null);
+          setRetirementNotice(retiring.name + (mode === 'restart' ? ' começou uma nova jornada. ' : ' entrou para o histórico. ') + 'Você recebeu ' + points.toLocaleString('pt-BR') + ' de Prestígio.');
+          await onRefresh();
+          if (mode === 'restart') location.hash = 'profile';
+        }} />}
+      {prestigeOpen && <PrestigeCenter close={() => setPrestigeOpen(false)} characterId={selectedId} />}
       {error && !editing && <FlashMessage>{error}</FlashMessage>}
       {notice && (
         <FlashMessage key={notice.id}>
@@ -565,8 +581,8 @@ export function CharacterCamp({
               aos itens e à imagem. A vaga ficará livre para outro personagem.
             </p>
             <p className="muted small">
-              Esta ação não pode ser desfeita pela interface. Registros de compras e participações
-              em missões permanecem no histórico.
+              A exclusão não concede Prestígio. Se {deleting.name} ainda não chegou ao nível 4,
+              o próximo personagem deste slot usará os mesmos dados de atributos.
             </p>
             <label>
               Digite {deleting.name} para confirmar

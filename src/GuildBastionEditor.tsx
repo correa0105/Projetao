@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   emptyBastionProgression,
+  bastionSpecialCost,
   type BastionProgression,
   type BastionRequirement,
 } from '../shared/guild-bastion';
@@ -72,8 +73,8 @@ export function GuildBastionEditor({
         <>
           <h4>Requisitos para alcançar o nível {selected}</h4>
           <p>
-            Todos os requisitos devem ser cumpridos. Missões, tags e cristais são metas acumuladas,
-            sem consumo. Créditos do Bastião são retirados do tesouro ao evoluir.
+            Todos os requisitos devem ser cumpridos. Missões, tags e cristais conquistados contam
+            como metas acumuladas. Os custos são retirados do tesouro ao evoluir.
           </p>
           {tier.requirements.map((r, i) => (
             <fieldset className="bastion-requirement-editor" key={i}>
@@ -99,6 +100,8 @@ export function GuildBastionEditor({
                   <option value="monster_tag">Tag de monstro</option>
                   <option value="tower_crystals">Cristais conquistados na Torre</option>
                   <option value="treasury">Créditos do Bastião no tesouro</option>
+                  {bastionSpecialCost(value.room) === 'prestige_cost' && <option value="prestige_cost">Custo em Prestígio</option>}
+                  {bastionSpecialCost(value.room) === 'crystal_cost' && <option value="crystal_cost">Custo em cristais doados</option>}
                   <option value="custom">Outro critério</option>
                 </select>
               </label>

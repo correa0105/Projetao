@@ -9,6 +9,7 @@ import {
 } from '../shared/guild-facilities.js';
 import {
   bastionRequirementKey,
+  bastionSpecialCost,
   bastionProgressionSchema,
   emptyBastionProgression,
   type BastionProgression,
@@ -94,6 +95,10 @@ export function requirementLabel(r: BastionRequirement, tags: { id: string; name
       return 'Cristais conquistados na Torre';
     case 'treasury':
       return 'Créditos do Bastião no tesouro';
+    case 'prestige_cost':
+      return 'Prestígio contribuído para a Ferraria';
+    case 'crystal_cost':
+      return 'Cristais contribuídos para a Ferramenta de Expedição';
     case 'custom':
       return r.label;
   }
@@ -106,8 +111,10 @@ export async function bastionFacilityStates(db: Database, guildId: string, treas
       guildId,
     ])
   ).rows;
-  const guild = (await db.query('SELECT prestige FROM player_guilds WHERE id=$1', [guildId]))
+  const guild = (await db.query('SELECT prestige,prestige_points,tower_crystals FROM player_guilds WHERE id=$1', [guildId]))
     .rows[0];
+  metrics.totals.prestige_cost = guild.prestige_points;
+  metrics.totals.crystal_cost = guild.tower_crystals;
   const settings = communitySettingsSchema.parse(
     (await db.query('SELECT document FROM community_settings WHERE singleton')).rows[0]?.document ||
       {},
@@ -136,7 +143,7 @@ export async function bastionFacilityStates(db: Database, guildId: string, treas
               current,
               target: r.target,
               met: current >= r.target,
-              consumed: r.kind === 'treasury',
+              consumed: r.kind === 'treasury' || r.kind === bastionSpecialCost(f.room),
             };
           }),
         }
@@ -181,6 +188,8 @@ export async function requireBastionUpgrade(
     );
   return {
     cost: state.next.requirements.find((r) => r.kind === 'treasury')?.target || 0,
+    prestigeCost: room === 'forge' ? state.next.requirements.find((r) => r.kind === 'prestige_cost')?.target || 0 : 0,
+    crystalCost: room === 'meeting' ? state.next.requirements.find((r) => r.kind === 'crystal_cost')?.target || 0 : 0,
     snapshot: {
       level,
       benefit: state.next.benefit,

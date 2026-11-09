@@ -1783,6 +1783,7 @@ export function deriveSheet(
   return { ...sheet, featureEntries: sheetFeatureEntries(character, c, sheet.featureGroups) };
 }
 export type SheetRecord = {
+  retirement_rebuild?: boolean;
   rolls_revealed?: number;
   ability_roll_floor?: number;
   choices: SheetChoices | null;

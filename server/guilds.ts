@@ -7,6 +7,8 @@ import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { requireAdministrator, isAdministrator } from './administrators.js';
 import { bastionBalance, changeBastionCredits, requireEconomyClient } from './bastion-currency.js';
+import { specialBalance, spendSpecialBalance } from './special-economy.js';
+import { specialCurrencySchema } from '../shared/special-economy.js';
 import {
   guildFacilities,
   guildFacilityMaxLevel,
@@ -75,7 +77,7 @@ async function guild(
   if (!g) throw new AppError(404, 'Guilda não encontrada.');
   const member = (
     await db.query(
-      'SELECT 1 FROM player_guild_members WHERE guild_id=$1 AND user_id=$2 AND ($3::uuid IS NULL OR character_id=$3)',
+      'SELECT 1 FROM player_guild_members m JOIN characters c ON c.id=m.character_id AND c.deleted_at IS NULL WHERE m.guild_id=$1 AND m.user_id=$2 AND ($3::uuid IS NULL OR m.character_id=$3)',
       [id, uid, characterId],
     )
   ).rowCount;
@@ -699,15 +701,54 @@ export function guildsRouter() {
   });
   router.get('/guilds/:id/bastion', async (req, res) => {
     const id = uuid.parse(req.params.id);
-    const { rows: [g] } = await pool.query('SELECT owner_id,bastion_treasury_cp FROM player_guilds WHERE id=$1', [id]);
+    const uid = res.locals.user.id;
+    const { rows: [g] } = await pool.query('SELECT owner_id,bastion_treasury_cp,prestige_points,tower_crystals FROM player_guilds WHERE id=$1', [id]);
     if (!g) throw new AppError(404, 'Guilda não encontrada.');
-    const member = !!(await pool.query('SELECT 1 FROM player_guild_members WHERE guild_id=$1 AND user_id=$2 AND ($3::uuid IS NULL OR character_id=$3)',
-      [id, res.locals.user.id, res.locals.guildCharacterId])).rowCount;
+    const member = (await pool.query('SELECT m.character_id FROM player_guild_members m JOIN characters c ON c.id=m.character_id AND c.deleted_at IS NULL WHERE m.guild_id=$1 AND m.user_id=$2 AND ($3::uuid IS NULL OR m.character_id=$3)',
+      [id, uid, res.locals.guildCharacterId])).rows[0];
     const state = await bastionFacilityStates(pool, id, member ? Number(g.bastion_treasury_cp) : 0);
-    res.json({ ...state, custom: member ? state.custom : [], progress_visible: member,
+    const special_balances = member ? {
+      prestige: g.prestige_points, crystals: g.tower_crystals, character_id: member.character_id,
+      personal_prestige: await specialBalance(pool, uid, 'prestige'),
+      personal_crystals: await specialBalance(pool, uid, 'crystals', member.character_id),
+    } : undefined;
+    res.json({ ...state, special_balances, custom: member ? state.custom : [], progress_visible: !!member,
       facilities: state.facilities.map(f => member ? f : { ...f, can_upgrade: false,
         next: f.next ? { ...f.next, requirements: f.next.requirements.map(r => ({ ...r, current: 0, met: false })) } : null }),
-      can_edit: await isAdministrator(res.locals.user.id), can_upgrade: member && g.owner_id === res.locals.user.id });
+      can_edit: await isAdministrator(uid), can_upgrade: !!member && g.owner_id === uid });
+  });
+  router.post('/guilds/:id/bastion/contributions', async (req, res) => {
+    const id = uuid.parse(req.params.id), uid = res.locals.user.id;
+    const input = z.object({ currency: specialCurrencySchema, amount: z.number().int().min(1).max(1_000_000), request_id: uuid, character_id: uuid }).strict().parse(req.body);
+    res.json(await transaction(async db => {
+      await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))', ['guild-special:' + uid + ':' + input.request_id]);
+      const previous = (await db.query(
+        'SELECT guild_id,character_id,currency,amount FROM guild_special_contributions WHERE user_id=$1 AND request_id=$2',
+        [uid,input.request_id],
+      )).rows[0];
+      if (previous) {
+        if (previous.guild_id !== id || previous.character_id !== input.character_id || previous.currency !== input.currency || previous.amount !== input.amount)
+          throw new AppError(409, 'Este pedido já foi usado para outra contribuição.');
+        return { replayed: true };
+      }
+      const g = await guild(db, id, uid, false, input.character_id);
+      const character = (await db.query(
+        'SELECT id FROM characters WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL FOR UPDATE',
+        [input.character_id,uid],
+      )).rows[0];
+      if (!character) throw new AppError(404, 'Escolha um personagem ativo da guilda.');
+      const prestige = input.currency === 'prestige' ? input.amount : 0;
+      const crystals = input.currency === 'crystals' ? input.amount : 0;
+      if (g.prestige_points + prestige > 2147483647 || g.tower_crystals + crystals > 2147483647)
+        throw new AppError(409, 'O limite do tesouro foi atingido.');
+      await spendSpecialBalance(db, uid, input.currency, input.amount, character.id);
+      await db.query('UPDATE player_guilds SET prestige_points=prestige_points+$2,tower_crystals=tower_crystals+$3 WHERE id=$1', [id,prestige,crystals]);
+      await db.query(
+        'INSERT INTO guild_special_contributions(user_id,request_id,guild_id,character_id,currency,amount) VALUES($1,$2,$3,$4,$5,$6)',
+        [uid,input.request_id,id,character.id,input.currency,input.amount],
+      );
+      return { replayed: false };
+    }));
   });
   router.put('/guilds/:id/bastion/progress/:key', async (req, res) => {
     await requireAdministrator(res.locals.user.id);
@@ -757,12 +798,14 @@ export function guildsRouter() {
         const current = stored?.level || 1;
         if (input.level <= current) return { level: current, replayed: true };
         if (input.level !== current + 1) throw new AppError(409, 'Melhore um nível por vez.');
-        const { cost, snapshot } = await requireBastionUpgrade(db, id, facility.room, input.level, Number(g.bastion_treasury_cp));
+        const { cost, prestigeCost, crystalCost, snapshot } = await requireBastionUpgrade(db, id, facility.room, input.level, Number(g.bastion_treasury_cp));
         if (input.revision !== undefined && snapshot.revision !== input.revision)
           throw new AppError(409, 'Os requisitos mudaram. Reabra os detalhes antes de evoluir.');
-        await db.query('UPDATE player_guilds SET bastion_treasury_cp=bastion_treasury_cp-$2 WHERE id=$1', [
+        await db.query('UPDATE player_guilds SET bastion_treasury_cp=bastion_treasury_cp-$2,prestige_points=prestige_points-$3,tower_crystals=tower_crystals-$4 WHERE id=$1', [
           id,
           cost,
+          prestigeCost,
+          crystalCost,
         ]);
         await db.query(
           'INSERT INTO player_guild_room_facilities(guild_id,room,level) VALUES($1,$2,$3) ON CONFLICT(guild_id,room) DO UPDATE SET level=excluded.level,updated_at=now()',

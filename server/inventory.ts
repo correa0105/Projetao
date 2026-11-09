@@ -57,8 +57,11 @@ export async function lockStorage(client: PoolClient, userId: string, characterI
 
 export async function storageState(client: PoolClient, userId: string, characterId: string) {
   const inventory = await client.query(
-    `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,i.quantity FROM inventory i JOIN catalog_items c ON c.id=i.item_id
+    `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,i.quantity,
+     COALESCE(s.snapshot->>'image_path',c.image_path) AS image_path FROM inventory i JOIN catalog_items c ON c.id=i.item_id
      JOIN characters p ON p.id=i.character_id
+     LEFT JOIN prestige_weapon_skins k ON k.character_id=i.character_id AND k.item_id=i.item_id
+     LEFT JOIN special_shop_purchases s ON s.id=k.purchase_id AND s.user_id=p.user_id
      WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY c.name`,
     [characterId, userId],
   );
@@ -68,8 +71,12 @@ export async function storageState(client: PoolClient, userId: string, character
     [userId],
   );
   const equipped = await client.query(
-    `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,e.slot FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id
-     JOIN characters p ON p.id=e.character_id WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY e.slot`,
+    `SELECT c.*,COALESCE(c.raw_data->>'armor_piece_name',c.name) AS name,e.slot,
+     COALESCE(s.snapshot->>'image_path',c.image_path) AS image_path FROM character_equipment e JOIN catalog_items c ON c.id=e.item_id
+     JOIN characters p ON p.id=e.character_id
+     LEFT JOIN prestige_weapon_skins k ON k.character_id=e.character_id AND k.item_id=e.item_id
+     LEFT JOIN special_shop_purchases s ON s.id=k.purchase_id AND s.user_id=p.user_id
+     WHERE p.id=$1 AND p.user_id=$2 AND p.deleted_at IS NULL ORDER BY e.slot`,
     [characterId, userId],
   );
   return {

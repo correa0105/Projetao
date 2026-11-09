@@ -357,10 +357,10 @@ export function characterSheetRouter() {
       // não o nível atual, impede reescolher a origem de uma ficha já confirmada.
       const {
         rows: [sheet],
-      } = await client.query('SELECT rolls,choices FROM character_sheets WHERE character_id=$1', [
+      } = await client.query('SELECT rolls,choices,retirement_rebuild FROM character_sheets WHERE character_id=$1', [
         id,
       ]);
-      if (sheet?.rolls && sheet.choices?.version === 2)
+      if (sheet?.rolls && sheet.choices?.version === 2 && !sheet.retirement_rebuild)
         throw new AppError(409, 'As escolhas ficam fixas após a rolagem.');
       const species = sheet && !sheet.choices ? req.body.species : c.race;
       const choices = validated(species, c.class, req.body);
@@ -372,7 +372,7 @@ export function characterSheetRouter() {
         choices.backgroundType,
       ]);
       await client.query(
-        `INSERT INTO character_sheets(character_id,choices) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET choices=$2,rules_version='5.2.1',updated_at=now()`,
+        `INSERT INTO character_sheets(character_id,choices) VALUES($1,$2) ON CONFLICT(character_id) DO UPDATE SET choices=$2,rules_version='5.2.1',retirement_rebuild=false,updated_at=now()`,
         [id, JSON.stringify(choices)],
       );
     });
@@ -432,6 +432,7 @@ export function characterSheetRouter() {
         id,
       ]);
       if (!sheet?.rolls || !sheet.choices) throw new AppError(409, 'Role os atributos primeiro.');
+      if (sheet.retirement_rebuild) throw new AppError(409, 'Confirme as escolhas da nova classe antes de distribuir os atributos.');
       if(sheet.rolls_revealed!==6)throw new AppError(409,'Confirme os seis resultados antes de distribuir os atributos.');
       if (sheet.finalized_at) {
         if (

@@ -35,6 +35,7 @@ export function TowerHeadquarters({
   characterName,
   crystals,
   pending,
+  openCrystalShop,
   children,
 }: {
   room: TowerRoom;
@@ -42,6 +43,7 @@ export function TowerHeadquarters({
   characterName?: string;
   crystals: number;
   pending: number;
+  openCrystalShop: () => void;
   children: ReactNode;
 }) {
   const current = towerRooms.find((r) => r.id === room)!;
@@ -357,13 +359,10 @@ export function TowerHeadquarters({
                       </button>
                     ))}
                   </div>
-                  <div className="tower-crystal-notice">
-                    <b>Entreposto ainda fechado</b>
-                    <p>
-                      A sede ainda não opera venda de cristais, câmbio por ouro ou compras com esse
-                      saldo.
-                    </p>
-                  </div>
+                  <button className="tower-primary" onClick={openCrystalShop}>
+                    Abrir Entreposto da Torre
+                    <Diamond size={16} />
+                  </button>
                   <button className="tower-primary" onClick={() => go('treasures')}>
                     Consultar meus tesouros
                     <ArrowUpRight size={16} />

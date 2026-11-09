@@ -14,6 +14,7 @@ import { vttPersonalHref, vttInviteCode, vttEntryTarget } from '../shared/vtt-li
 import { VttLobby } from './VttLobby';
 import { vttStorageLabel } from '../shared/vtt-storage';
 import { VttHighQualityCapture, renderVttCaptureFrame, type VttCaptureFrame } from './VttHighQualityCapture';
+import { TowerTableItems } from './SpecialEconomy';
 import { VttItemLayers, VttStackButtons } from './VttItemLayers';
 import { VttRoomCharacters } from './VttRoomCharacters';
 import { reorderVttItems } from '../shared/vtt-stacking';
@@ -451,6 +452,7 @@ export function VttSession({ characters, user, media, reviewVisualPreferences }:
     [brushRadius, setBrushRadius] = useState(140),
     [panelOpen, setPanelOpen] = useState(true),
     [mapsOpen, setMapsOpen] = useState(false),
+    [towerItemsOpen, setTowerItemsOpen] = useState(false),
     [sheetId, setSheetId] = useState<string | null>(null),
     [diceOpen, setDiceOpen] = useState(false),
     [dice3d, setDice3d] = useState(true),
@@ -2926,6 +2928,13 @@ export function VttSession({ characters, user, media, reviewVisualPreferences }:
           </div>
         )}
         <div className="vtt-top-actions">
+          {!preview && !spectator && !!state.tower_characters?.length && (
+            <button onClick={() => setTowerItemsOpen(true)}>Itens da Torre</button>
+          )}
+          {towerItemsOpen && !preview && !spectator && !!state.tower_characters?.length && (
+            <TowerTableItems key={state.id} room={state.id} characters={state.tower_characters}
+              close={() => setTowerItemsOpen(false)} />
+          )}
           {gm && personalId && <button className="vtt-personal-share" aria-label="Copiar link fixo do meu VTT" title="Copiar link fixo do meu VTT" onClick={()=>void copyText((personalUrl || new URL(vttPersonalHref(personalId),location.href).href)).catch(e=>setNotice(e.message))}><Copy size={17}/><span>Link da mesa</span></button>}
           <VttHighQualityCapture administrator={gm} frame={captureFrame} roomId={state.id}/>
           {gm && (

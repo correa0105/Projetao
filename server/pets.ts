@@ -68,7 +68,7 @@ export function petsRouter() {
         id,
         (
           await pool.query(
-            'SELECT id,pet_id,name,appearance,price_cp,created_at,displayed FROM character_pets WHERE character_id=$1 ORDER BY created_at DESC,id',
+            'SELECT id,pet_id,name,appearance,price_cp,created_at,displayed,prestige_art FROM character_pets WHERE character_id=$1 ORDER BY created_at DESC,id',
             [id],
           )
         ).rows,

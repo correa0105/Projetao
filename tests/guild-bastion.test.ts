@@ -13,6 +13,7 @@ import {
   type BastionState,
 } from '../shared/guild-bastion';
 import { creditBastionCrystals, creditBastionMission } from '../server/guild-bastion';
+import { economyVersion } from '../shared/economy';
 
 test('bastião exige benefício base, níveis sequenciais e requisitos distintos válidos', () => {
   const p = emptyBastionProgression();
@@ -69,7 +70,7 @@ test('bastião: metas cumulativas, benefícios por nível, revisão, sigilo e ev
   async function request(path: string, who?: Account, method = 'GET', body?: unknown) {
     const response = await fetch(base + path, {
       method,
-      headers: { Origin: origin, Cookie: who?.cookie || '', 'Content-Type': 'application/json' },
+      headers: { Origin: origin, Cookie: who?.cookie || '', 'Content-Type': 'application/json', 'X-Economy-Version': economyVersion },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
     return { status: response.status, data: await response.json() };
@@ -84,7 +85,7 @@ test('bastião: metas cumulativas, benefícios por nível, revisão, sigilo e ev
     const guildId = randomUUID(),
       tag = 'd70910aa-47e5-4884-a261-100000000001';
     await pool.query(
-      'INSERT INTO player_guilds(id,owner_id,document,treasury_cp,founding_cp,request_id) VALUES($1,$2,$3,50000,0,$4)',
+      'INSERT INTO player_guilds(id,owner_id,document,treasury_cp,bastion_treasury_cp,founding_cp,request_id) VALUES($1,$2,$3,50000,50000,0,$4)',
       [
         guildId,
         owner.id,
@@ -260,8 +261,8 @@ test('bastião: metas cumulativas, benefícios por nível, revisão, sigilo e ev
         assert.equal(current.benefit, progression.levels[1].benefit);
         assert.equal(
           Number(
-            (await pool.query('SELECT treasury_cp FROM player_guilds WHERE id=$1', [guildId]))
-              .rows[0].treasury_cp,
+            (await pool.query('SELECT bastion_treasury_cp FROM player_guilds WHERE id=$1', [guildId]))
+              .rows[0].bastion_treasury_cp,
           ),
           40000,
         );

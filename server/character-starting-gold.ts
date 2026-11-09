@@ -9,7 +9,7 @@ export async function grantCharacterStartingGold(
 ) {
   const result = await db.query(
     `UPDATE characters SET gold_cp=gold_cp+$3,starting_wealth_granted=true
-     WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL AND starting_wealth_granted=false
+     WHERE id=$1 AND user_id=$2 AND deleted_at IS NULL AND starting_wealth_granted=false AND retirement_cycle=0
      RETURNING id`,
     [characterId, userId, CHARACTER_STARTING_GOLD_CP],
   );
