@@ -2,6 +2,17 @@
 
 Atualização de 17/10: a hora global editada pelo administrador governa a iluminação. O relógio fica abaixo do título, ao lado de Print em alta qualidade (exclusivo de administrador). Mobília tem giro livre, e as duas gramas de referência mais duas variações estão nos dois editores; Grama clara rala forma o chão da vizinhança. Margens, trilhas, poço e distribuição das pedras/plantas foram revisados. O histórico abaixo conserva as etapas anteriores. Ver [HOUSE2-LANDSCAPE-CONTROLS-20261017.md](HOUSE2-LANDSCAPE-CONTROLS-20261017.md).
 
+## Horta
+
+Abra **Horta** no menu da vizinhança ou selecione uma casa sua e clique em **Abrir horta**. Cada casa tem um canteiro e um fermentador. A semente e os ingredientes são pagos em ouro pelo personagem dono da casa. A primeira rega inicia o crescimento. O servidor mantém os horários em tempo real, inclusive com o site fechado.
+
+| Planta | Semente | Cultivo após regar | Colheita |
+|---|---:|---:|---|
+| Erva-bálsamo | 5 PO | 8 h | 1 Poção de Cura ou venda por 12 PO |
+| Raiz-dourada | 8 PO | 12 h | Venda por 20 PO |
+
+As cascas de fruta custam 3 PO, fermentam em 2 horas e reduzem o cultivo em 2 horas. O composto de folhas custa 6 PO, fermenta em 4 horas e reduz o cultivo em 4 horas. Cada planta aceita uma aplicação, que consome o adubo. A venda credita ouro ao personagem, e a poção vai para a mochila.
+
 ## Acabamento e câmera — 16/10/2026
 
 A câmera começa próxima do vilarejo e limita a janela inteira ao quadrado de

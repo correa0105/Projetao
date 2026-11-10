@@ -3,27 +3,27 @@ import { balancedMagicPrice, economyVersion } from '../shared/economy.js';
 import { houseCatalog } from '../shared/house.js';
 import { INITIAL_RULEBOOK, rulebookDocumentSchema, type RulebookDocument } from '../shared/rulebook.js';
 
+const missionCreditsRulebookVersion = 'mission-credits-by-difficulty';
+
 // Publish only the requested economy articles, keeping all other edits and images.
 export async function applyEconomyRulebook(db: PoolClient) {
   const book = (await db.query('SELECT * FROM rulebook_documents WHERE id=1 FOR UPDATE')).rows[0];
-  if (
-    !book ||
-    (
-      await db.query(
-        "SELECT 1 FROM economy_settings_history WHERE version=$1 AND area='rulebook' AND reference='1'",
-        [economyVersion],
-      )
-    ).rowCount
-  )
-    return;
+  if (!book) return;
+  const { rows: applied } = await db.query<{ version: string }>(
+    "SELECT version FROM economy_settings_history WHERE version=ANY($1::text[]) AND area='rulebook' AND reference='1'",
+    [[economyVersion, missionCreditsRulebookVersion]],
+  );
+  if (applied.some(({ version }) => version === missionCreditsRulebookVersion)) return;
+  const initial = !applied.some(({ version }) => version === economyVersion);
+  const articles = initial ? ['missoes-recompensas', 'economia-moedas'] : ['missoes-recompensas'];
   const document = structuredClone(book.document) as RulebookDocument;
   for (const chapter of document.chapters) {
     for (const article of chapter.articles) {
-      if (!['missoes-recompensas', 'economia-moedas'].includes(article.id)) continue;
+      if (!articles.includes(article.id)) continue;
       const current = INITIAL_RULEBOOK.chapters
         .flatMap((c) => c.articles)
         .find((a) => a.id === article.id)!;
-      article.title = current.title;
+      if (initial) article.title = current.title;
       article.summary = current.summary;
       for (const block of current.blocks) {
         const index = article.blocks.findIndex((b) => b.id === block.id);
@@ -34,8 +34,11 @@ export async function applyEconomyRulebook(db: PoolClient) {
   }
   rulebookDocumentSchema.parse(document);
   await db.query(
-    "INSERT INTO economy_settings_history(version,area,reference,document)VALUES($1,'rulebook','1',$2)",
-    [economyVersion, JSON.stringify(book.document)],
+    "INSERT INTO economy_settings_history(version,area,reference,document) SELECT version,'rulebook','1',$2 FROM unnest($1::text[]) AS versions(version)",
+    [
+      initial ? [economyVersion, missionCreditsRulebookVersion] : [missionCreditsRulebookVersion],
+      JSON.stringify(book.document),
+    ],
   );
   if (JSON.stringify(document) === JSON.stringify(book.document)) return;
   await db.query(

@@ -12,17 +12,11 @@ const gold: Record<Rank, readonly number[]> = {
   Ametista: [1000, 1250, 1500],
   Obsidiana: [2000, 2500, 3000],
 };
-const credits: Record<Rank, readonly number[]> = {
-  Ferro: [40, 50, 60],
-  Bronze: [60, 75, 90],
-  Adamantium: [80, 100, 120],
-  Ametista: [120, 150, 180],
-  Obsidiana: [160, 200, 240],
-};
+const creditsByDifficulty = [40, 50, 60] as const;
 export function missionReward(rank: Rank, difficulty: string = 'Moderada') {
   const index = missionDifficulties.indexOf(difficulty as MissionDifficulty);
   if (!gold[rank] || index < 0) throw new Error('Patente ou dificuldade de missão inválida.');
-  return { gold_cp: gold[rank][index] * 100, bastion_credits: credits[rank][index] };
+  return { gold_cp: gold[rank][index] * 100, bastion_credits: creditsByDifficulty[index] };
 }
 export const rarityReferencePo = {
   common: 200,

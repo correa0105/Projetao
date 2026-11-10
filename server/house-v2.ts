@@ -7,6 +7,7 @@ import { AppError } from './services.js';
 import { changeBastionCredits, requireEconomyClient } from './bastion-currency.js';
 import { requireAdministrator } from './administrators.js';
 import { house2TokensRouter } from './house2-tokens.js';
+import { houseGardenRouter } from './house-garden.js';
 import { house2LightItems } from '../shared/house2-items-lighting.js';
 import { house2FinishesCatalog } from '../shared/house2-finishes.js';
 import {
@@ -90,6 +91,7 @@ export function house2Router() {
     next();
   });
   router.use(house2TokensRouter());
+  router.use(houseGardenRouter());
   router.get('/house-v2', async (_req, res) => {
     const user = res.locals.user.id;
     const neighborhoods = await pool.query(

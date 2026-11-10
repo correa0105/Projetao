@@ -16,15 +16,15 @@ Membros podem contribuir com Prestígio para a Ferraria ou com cristais para a F
 
 ## Recompensas por missão
 
-Cada célula indica **PO + CB**. Ouro é pago por personagem; CB são pagos uma vez por conta em cada missão, mesmo com dois personagens inscritos. Testes usam a patente de origem e a dificuldade. Os contadores de nível e os quatro testes de patente permanecem iguais.
+Cada célula indica **PO + CB**. Ouro é pago por personagem. CB são pagos uma vez por conta em cada missão, mesmo com dois personagens inscritos. Todas as patentes recebem os mesmos CB por dificuldade. O ouro dos testes usa a patente de origem e a dificuldade.
 
 | Patente | Tranquila | Moderada | Perigosa |
 |---|---:|---:|---:|
 | Ferro / Iniciante | 100 + 40 | 125 + 50 | 150 + 60 |
-| Bronze / Intermediário | 250 + 60 | 300 + 75 | 350 + 90 |
-| Adamantium / Profissional | 500 + 80 | 625 + 100 | 750 + 120 |
-| Ametista / Mestre | 1.000 + 120 | 1.250 + 150 | 1.500 + 180 |
-| Obsidiana / Heroico | 2.000 + 160 | 2.500 + 200 | 3.000 + 240 |
+| Bronze / Intermediário | 250 + 40 | 300 + 50 | 350 + 60 |
+| Adamantium / Profissional | 500 + 40 | 625 + 50 | 750 + 60 |
+| Ametista / Mestre | 1.000 + 40 | 1.250 + 50 | 1.500 + 60 |
+| Obsidiana / Heroico | 2.000 + 40 | 2.500 + 50 | 3.000 + 60 |
 
 Missões abertas/em andamento recebem a tabela atual. Missões concluídas conservam os valores e pagamentos históricos, sem recompensa retroativa. A conclusão inteira é transacional e não repete créditos em reenvios.
 

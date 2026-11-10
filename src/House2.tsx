@@ -26,6 +26,7 @@ import {
   Save,
   Search,
   Settings,
+  Sprout,
   Undo2,
   Warehouse,
   Paintbrush,
@@ -50,6 +51,7 @@ import { useHouse2ItemSounds } from './House2ItemSounds';
 import { house2LightItems } from '../shared/house2-items-lighting';
 import { MusicControls } from './SiteMusic';
 import { House2FinishesShop } from './House2FinishesShop';
+import { HouseGardenPanel } from './HouseGardenPanel';
 import { House2Interior, house2CutawayImage } from './House2Interior';
 import { house2Architecture } from './house2-architecture';
 import { house2DayPhases } from '../shared/house2-lighting';
@@ -99,7 +101,7 @@ import type { Character, User } from './types';
 import './house2.css';
 
 const number = (n: number) => n.toLocaleString('pt-BR');
-type Tool = 'terrain' | 'houses' | 'shop' | 'collection' | 'settings' | 'ground' | 'tokens';
+type Tool = 'terrain' | 'houses' | 'shop' | 'collection' | 'settings' | 'ground' | 'tokens' | 'garden';
 const toolNames: Record<Tool, string> = {
   terrain: 'Terrenos',
   houses: 'Casas vazias',
@@ -108,6 +110,7 @@ const toolNames: Record<Tool, string> = {
   settings: 'Vizinhança',
   ground: 'Pintar terreno',
   tokens: 'Meus tokens',
+  garden: 'Horta',
 };
 const toolIcons = {
   terrain: LandPlot,
@@ -117,10 +120,15 @@ const toolIcons = {
   settings: Settings,
   ground: Paintbrush,
   tokens: UsersRound,
+  garden: Sprout,
 };
 type Camera = House2Camera;
 
-export function House2({ character, user }: { character?: Character; user: User }) {
+export function House2({ character, user, onGardenChanged }: {
+  character?: Character;
+  user: User;
+  onGardenChanged?: () => Promise<void>;
+}) {
   const scope = sceneSnapshotScope(user.id, character?.id || '', basicAccountPreview());
   const [opening] = useState(() => {
     const id = readSceneSnapshot<string>(scope, 'house-active');
@@ -203,6 +211,7 @@ export function House2({ character, user }: { character?: Character; user: User 
   sceneIdRef.current = sceneId;
   const plot = scene?.plots.find((p) => p.id === selected);
   const canEdit = !!plot?.can_edit;
+  const gardenPlot = plot ?? scene?.plots.find((candidate) => candidate.can_edit && candidate.house_id && candidate.character_id === character?.id);
   const house = house2Houses.find((h) => h.id === plot?.house_id);
   const shownPlot =
     plot && draft?.house
@@ -1680,8 +1689,18 @@ export function House2({ character, user }: { character?: Character; user: User 
       {tool && (
         <ScenePanel id="house2" title={toolNames[tool]} close={() => setTool(null)}>
           <div className="h2-panel">
-            {tool !== 'ground' && tool !== 'tokens' && balance}
-            {tool === 'tokens' ? (
+            {tool !== 'ground' && tool !== 'tokens' && tool !== 'garden' && balance}
+            {tool === 'garden' ? (
+              gardenPlot?.can_edit && gardenPlot.house_id && gardenPlot.character_id ? (
+                <HouseGardenPanel
+                  key={gardenPlot.id + ':' + gardenPlot.character_id}
+                  plotId={gardenPlot.id}
+                  characterId={gardenPlot.character_id}
+                  characterName={gardenPlot.owner_name ?? 'Personagem'}
+                  onChanged={onGardenChanged}
+                />
+              ) : <p>Selecione um terreno seu com uma casa construída para abrir a horta.</p>
+            ) : tool === 'tokens' ? (
               <House2TokensPanel
                 controls={actors}
                 center={{ x: boundedCamera.x, y: boundedCamera.y }}
@@ -1768,6 +1787,11 @@ export function House2({ character, user }: { character?: Character; user: User 
                 </div>
                 {tool === 'terrain' && (
                   <>
+                    {plot?.house_id && canEdit && (
+                      <button type="button" onClick={() => setTool('garden')}>
+                        <Sprout size={16} /> Abrir horta
+                      </button>
+                    )}
                     {plot && !plot.character_id && (
                       <>
                         <p>

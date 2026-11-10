@@ -708,7 +708,7 @@ function Portal({ user }: { user: User }) {
         )}
         {page === 'lore' && <LoreLibrary />}
         {page === 'house' && <HousePage character={character} user={user} onPurchased={refresh} />}
-        {page === 'house2' && <House2Page key={character?.id || 'no-character'} character={character} user={user} />}
+        {page === 'house2' && <House2Page key={character?.id || 'no-character'} character={character} user={user} onGardenChanged={refresh} />}
         {page === 'guild' && (
           <GuildPage key={character?.id || 'no-character'} user={user} characters={characters} activeCharacterId={character?.id || ''} onSelectCharacter={setSelectedId} onPurchased={refresh} />
         )}

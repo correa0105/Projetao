@@ -594,6 +594,36 @@ body.house2-immersive .app-shell > .main-shell > .page-header {
   padding-bottom: 13px;
   border-bottom: 1px solid #78613b4d;
 }
+.h2-garden,
+.h2-garden-card,
+.h2-garden-option {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+}
+.h2-garden {
+  gap: 0.8rem;
+}
+.h2-garden-card {
+  padding: 0.75rem;
+  border: 1px solid #8a774459;
+  border-radius: 0.45rem;
+  background: #2e34294d;
+}
+.h2-garden-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+}
+.h2-garden-option + .h2-garden-option {
+  padding-top: 0.6rem;
+  border-top: 1px solid #8a77444d;
+}
+.h2-garden-card button {
+  white-space: normal;
+  text-align: left;
+}
 .h2-plot-summary {
   padding-bottom: 15px;
   border-bottom: 1px solid #78613b4d;

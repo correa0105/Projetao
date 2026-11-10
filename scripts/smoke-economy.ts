@@ -71,7 +71,7 @@ try {
     await expect(form).toBeVisible();
     await form.getByLabel('Patente da missão').selectOption('Obsidiana');
     await form.getByLabel('Dificuldade').selectOption('Perigosa');
-    await expect(form).toContainText('240 Créditos do Bastião');
+    await expect(form).toContainText('60 Créditos do Bastião');
     await expect(form.getByLabel('Patente da missão').locator('option:checked')).toContainText(
       '3000 PO',
     );
@@ -113,7 +113,7 @@ try {
       true,
     );
     checks.push(
-      `Recompensas por patente/dificuldade, carteira House e contribuição real da guilda em ${width} px`,
+      `Ouro por patente e CB por dificuldade, carteira House e contribuição da guilda em ${width} px`,
     );
   }
   expect(errors).toEqual([]);

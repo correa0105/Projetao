@@ -427,7 +427,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
         {
           id: 'missoes-recompensas',
           title: 'Recompensas das missões',
-          summary: 'Patente e dificuldade determinam o ouro e os Créditos do Bastião.',
+          summary: 'O ouro varia por patente e dificuldade. Os Créditos do Bastião variam pela dificuldade.',
           tag: 'Recompensas',
           blocks: [
             {
@@ -442,7 +442,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
             {
               id: 'missoes-recompensas-texto',
               type: 'text',
-              text: 'Na conclusão, o autor registra o resumo. Cada personagem inscrito recebe ouro e progresso uma única vez. Cada jogador recebe também Créditos do Bastião (CB), uma vez por missão, mesmo participando com dois personagens. Os créditos servem para House e guilda e não são convertidos em ouro. Um teste paga pela patente de origem e dificuldade. Missões já concluídas conservam seus pagamentos históricos.',
+              text: 'Na conclusão, o autor registra o resumo. Cada personagem inscrito recebe ouro e progresso uma única vez. Cada jogador recebe Créditos do Bastião (CB) uma vez por missão, mesmo participando com dois personagens. Todas as patentes recebem 40 CB na Tranquila, 50 CB na Moderada e 60 CB na Perigosa. Os créditos servem para House e guilda e não são convertidos em ouro. O ouro de um teste segue a patente de origem e a dificuldade. Missões já concluídas conservam seus pagamentos históricos.',
             },
           ],
         },

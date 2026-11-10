@@ -75,12 +75,24 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
       [legacy],
     )
   ).rows[0].id;
+  const activeMission = (
+    await pool.query(
+      "INSERT INTO board_posts(author_id,kind,title,description,location,difficulty,mission_rank,status,reward_cp)VALUES($1,'mission','Em andamento','Aventura em andamento','Vigília','Tranquila','Obsidiana','active',90000)RETURNING id",
+      [legacy],
+    )
+  ).rows[0].id;
   await configureTestBastion();
   const oldBook = structuredClone(INITIAL_RULEBOOK);
   const oldArticle = oldBook.chapters
     .flatMap((c) => c.articles)
     .find((a) => a.id === 'missoes-recompensas')!;
+  const currencyArticle = oldBook.chapters
+    .flatMap((c) => c.articles)
+    .find((a) => a.id === 'economia-moedas')!;
+  currencyArticle.summary = 'Resumo de moedas publicado pela administração.';
   oldArticle.summary = 'Pagamento anterior';
+  const oldRewardTable = oldArticle.blocks.find((block) => block.type === 'table')!;
+  oldRewardTable.rows[1][3] = '350 PO + 90 CB';
   oldArticle.blocks.push({
     id: 'custom-economy-note',
     type: 'text',
@@ -90,9 +102,13 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
     JSON.stringify(oldBook),
   ]);
   await migrate();
+  await pool.query(
+    "INSERT INTO economy_settings_history(version,area,reference,document)VALUES($1,'rulebook','1',$2)",
+    [economyVersion, JSON.stringify(oldBook)],
+  );
   await seed();
   await t.test(
-    'preserva saldos anteriores e histórico, ajustando somente missões abertas e preços',
+    'preserva saldos e histórico, atualiza CB de missões abertas e em andamento e publica a regra',
     async () => {
       assert.equal(
         (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [legacyCharacter.id]))
@@ -105,10 +121,9 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
       assert.equal(Number(g.treasury_cp), 98765);
       assert.equal(g.bastion_treasury_cp, 0);
       assert.equal(g.founding_currency, 'gold');
-      assert.equal(
-        (await pool.query('SELECT reward_cp FROM board_posts WHERE id=$1', [oldMission])).rows[0]
-          .reward_cp,
-        15000,
+      assert.deepEqual(
+        (await pool.query('SELECT reward_cp,bastion_credits FROM board_posts WHERE id=$1', [oldMission])).rows[0],
+        { reward_cp: 15000, bastion_credits: 0 },
       );
       assert.equal(
         (await pool.query('SELECT gold_cp FROM mission_rewards WHERE post_id=$1', [oldMission]))
@@ -120,7 +135,11 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
           openMission,
         ])
       ).rows[0];
-      assert.deepEqual(m, { reward_cp: 35000, bastion_credits: 90 });
+      assert.deepEqual(m, { reward_cp: 35000, bastion_credits: 60 });
+      assert.deepEqual(
+        (await pool.query('SELECT reward_cp,bastion_credits FROM board_posts WHERE id=$1', [activeMission])).rows[0],
+        { reward_cp: 200000, bastion_credits: 40 },
+      );
       const p = (
         await pool.query("SELECT progression FROM guild_facility_definitions WHERE room='forge'")
       ).rows[0].progression;
@@ -133,6 +152,9 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
       const book = (await pool.query('SELECT * FROM rulebook_documents WHERE id=1')).rows[0];
       assert.equal(book.revision, 6);
       assert(JSON.stringify(book.document).includes('Anotação administrativa preservada.'));
+      assert(JSON.stringify(book.document).includes('Resumo de moedas publicado pela administração.'));
+      assert(JSON.stringify(book.document).includes('350 PO + 60 CB'));
+      assert(!JSON.stringify(book.document).includes('350 PO + 90 CB'));
       assert(!JSON.stringify(book.document).includes('Pagamento anterior'));
       assert.deepEqual(
         (await pool.query('SELECT snapshot FROM rulebook_versions WHERE revision=5')).rows[0]
@@ -205,9 +227,10 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
       async () => {
         for (const rank of RANKS) {
           let prior = 0;
-          for (const difficulty of missionDifficulties) {
+          for (const [index, difficulty] of missionDifficulties.entries()) {
             const r = missionReward(rank, difficulty);
-            assert(r.gold_cp > prior && r.bastion_credits > 0);
+            assert(r.gold_cp > prior);
+            assert.equal(r.bastion_credits, [40, 50, 60][index]);
             prior = r.gold_cp;
           }
         }
@@ -340,7 +363,7 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
           }),
         );
         assert.equal(await goldOf(a.id), 72500);
-        assert.equal(await bastionBalance(player.id), 140);
+        assert.equal(await bastionBalance(player.id), 110);
       },
     );
     await t.test('saldo insuficiente desfaz missão inteira, sem crédito parcial', async () => {
@@ -366,7 +389,7 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
           .rows[0].n,
         0,
       );
-      await pool.query('UPDATE house2_accounts SET balance=140 WHERE user_id=$1', [player.id]);
+      await pool.query('UPDATE house2_accounts SET balance=110 WHERE user_id=$1', [player.id]);
     });
     await t.test('House usa somente CB, replays e cliente antigo protegidos', async () => {
       const before = await goldOf(a.id),
@@ -383,7 +406,7 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
         req('/house/purchase', player, order),
       ]);
       results.forEach((r) => assert([200, 201].includes(r.status), JSON.stringify(r.data)));
-      assert.equal(await bastionBalance(player.id), 125);
+      assert.equal(await bastionBalance(player.id), 95);
       assert.equal(await goldOf(a.id), before);
       ok(await req('/catalog/house-letter/price', admin, { price_cp: 125 }, 'PATCH'), 400);
       const plot = (
@@ -404,7 +427,7 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
         req('/house-v2/plots/' + plot.id + '/purchase', player, plotOrder),
       ]);
       bought.forEach((r) => ok(r));
-      assert.equal(await bastionBalance(player.id), 525);
+      assert.equal(await bastionBalance(player.id), 495);
       assert.equal(await goldOf(a.id), before);
       const furniture = house2FurnitureForSale[0],
         furnitureOrder = {
@@ -414,7 +437,7 @@ test('Economia: migração preserva bens e pagamentos; missões e compras usam a
           idempotency_key: randomUUID(),
         };
       ok(await req('/house-v2/furniture', player, furnitureOrder));
-      assert.equal(await bastionBalance(player.id), 525 - furniture.price);
+      assert.equal(await bastionBalance(player.id), 495 - furniture.price);
     });
     await t.test(
       'fundação, contribuição e mobília da guilda usam CB, preservando ouro antigo',
