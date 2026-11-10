@@ -5,7 +5,7 @@ const wood = '/achievement-wood-v1.png';
 const board = ['/notice-village-complete-v5.png', '/notices/wood-plaque-v1.png', wood];
 export const relicShopArt = '/shop/reliquias-v1.webp';
 export const crystalShopArt = '/shop/cristais-sala-v1.webp';
-export const crystalMerchantArt = '/shop/cristais-nara-v1.webp';
+export const crystalMerchantArt = '/shop/cristais-guardiao-v1.webp';
 export const primaryPageAssets: Partial<Record<Page, readonly string[]>> = {
   overview: ['/home-guild-hall.webp'],
   tower: [

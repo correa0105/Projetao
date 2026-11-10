@@ -5,28 +5,28 @@ import { SpecialShop } from './SpecialEconomy';
 import type { Character } from './types';
 import './crystal-shop.css';
 
+const merchant = 'Guardião dos Cristais';
 const greeting =
   'Bem-vindo, viajante. Traga seus cristais até o balcão. Eu cuido do que você leva de volta à Torre.';
 const topics = [
   {
-    question: 'Como consigo cristais?',
+    question: 'Como ganho cristais?',
     answer:
       'Volte de uma expedição e resgate as recompensas na Torre. Os cristais ficam na carteira do personagem que os recebeu.',
   },
   {
-    question: 'Onde uso os itens da loja?',
+    question: 'Onde uso os itens?',
     answer:
       'Use os itens nas mesas oficiais de expedições ativas da Torre em que seu personagem participa. Suas compras aparecem em Itens do personagem.',
   },
   {
-    question: 'Como ajudo a guilda?',
+    question: 'Como doar à guilda?',
     answer:
       'Doe cristais para a Ferramenta de Expedição na Mesa de Estratégia da guilda. O fundador autoriza a melhoria.',
   },
   {
     question: 'Quem é você?',
-    answer:
-      'Sou Nara, a lapidária do Entreposto. Sei pela luz de uma pedra se ela já viu o fundo da Torre.',
+    answer: 'Sou o guardião do Entreposto. Protejo os cristais da Torre.',
   },
 ] as const;
 
@@ -67,7 +67,8 @@ function CrystalMerchant() {
   return (
     <aside
       ref={host}
-      aria-label="Nara, lapidária da Torre"
+      className="crystal-vendor"
+      aria-label={merchant}
       onKeyDown={(event) => {
         if (talking && event.key === 'Escape') {
           event.stopPropagation();
@@ -80,17 +81,17 @@ function CrystalMerchant() {
         type="button"
         className="crystal-vendor-figure"
         data-greeting={view === 'greeting' || undefined}
-        aria-label="Conversar com Nara"
-        title="Conversar com Nara"
+        aria-label={`Conversar com o ${merchant}`}
+        title={`Conversar com o ${merchant}`}
         aria-expanded={talking}
         aria-controls={topicsId}
         onClick={() => (talking ? closeAndFocus() : setView('talk'))}
       >
-        <img src={crystalMerchantArt} width={638} height={760} alt="" draggable={false} />
+        <img src={crystalMerchantArt} width={817} height={1000} alt="" draggable={false} />
       </button>
       <div className="relic-vendor-speech crystal-vendor-speech" hidden={view === 'closed'}>
         <header>
-          <strong>Nara · Lapidária da Torre</strong>
+          <strong>{merchant}</strong>
           {talking && (
             <button type="button" aria-label="Encerrar conversa" onClick={closeAndFocus}>
               <X size={16} aria-hidden="true" />
@@ -103,7 +104,7 @@ function CrystalMerchant() {
         <ul
           id={topicsId}
           className="relic-vendor-topics"
-          aria-label="Perguntas para Nara"
+          aria-label={`Perguntas para o ${merchant}`}
           hidden={!talking}
         >
           {topics.map((entry) => (
