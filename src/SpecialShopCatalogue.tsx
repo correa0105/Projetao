@@ -1,5 +1,7 @@
-import { useState, type ReactNode } from 'react';
-import { Pencil, Plus, Search, ShoppingBag, Table2 } from 'lucide-react';
+import { useRef, useState, type ReactNode } from 'react';
+import { Maximize2, Pencil, Plus, Search, ShoppingBag, Table2 } from 'lucide-react';
+import { Modal } from './components';
+import { prestigeWeapon, prestigeWeaponStage } from '../shared/prestige-weapons';
 import {
   specialOfferCategoryLabels,
   type SpecialCurrency,
@@ -9,6 +11,7 @@ import {
 
 const relicShelves = [
   ['all', 'Todos'],
+  ['prestige_weapon', 'Armas de Prestígio'],
   ['profile_border', 'Bordas de perfil'],
   ['weapon_skin', 'Skins de armas'],
   ['mount', 'Montarias'],
@@ -40,6 +43,7 @@ function searchText(value: string) {
 export function SpecialShopCatalogue({
   currency,
   characterName,
+  characterLevel,
   state,
   status,
   busy,
@@ -52,6 +56,7 @@ export function SpecialShopCatalogue({
 }: {
   currency: SpecialCurrency;
   characterName?: string;
+  characterLevel?: number;
   state: SpecialShopState | null;
   status: ReactNode;
   busy: boolean;
@@ -64,6 +69,8 @@ export function SpecialShopCatalogue({
 }) {
   const [shelf, setShelf] = useState<'all' | SpecialOffer['category']>('all');
   const [search, setSearch] = useState('');
+  const [previewId, setPreviewId] = useState<string | null>(null);
+  const productList = useRef<HTMLDivElement>(null);
   const crystals = currency === 'crystals';
   const shelves = crystals ? crystalShelves : relicShelves;
   const text = currencyText[currency];
@@ -76,6 +83,9 @@ export function SpecialShopCatalogue({
       searchText(offer.name + ' ' + offer.description).includes(query),
   );
   const owned = new Set(state?.purchases.map((purchase) => purchase.offer_id));
+  const preview = offers.find((offer) => offer.id === previewId);
+  const previewWeapon =
+    preview?.category === 'prestige_weapon' ? prestigeWeapon(preview.target_key) : undefined;
 
   return (
     <section
@@ -91,7 +101,10 @@ export function SpecialShopCatalogue({
             type="button"
             className={shelf === key ? 'active' : ''}
             aria-pressed={shelf === key}
-            onClick={() => setShelf(key)}
+            onClick={() => {
+              setShelf(key);
+              if (productList.current) productList.current.scrollTop = 0;
+            }}
           >
             {label}
             <span aria-hidden="true">
@@ -111,7 +124,10 @@ export function SpecialShopCatalogue({
               aria-label="Procurar item"
               placeholder="Procure um item…"
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={(event) => {
+                setSearch(event.target.value);
+                if (productList.current) productList.current.scrollTop = 0;
+              }}
             />
           </label>
           {state && (
@@ -165,7 +181,7 @@ export function SpecialShopCatalogue({
             <Plus size={14} aria-hidden="true" /> Cadastrar oferta
           </button>
         )}
-        <div className="shop-product-list" tabIndex={0} aria-label={'Ofertas de ' + text.title}>
+        <div ref={productList} className="shop-product-list" tabIndex={0} aria-label={'Ofertas de ' + text.title}>
           {state && !visible.length && (
             <p className="special-shop-empty" role="status">
               {!offers.length
@@ -175,51 +191,103 @@ export function SpecialShopCatalogue({
                   : 'Nenhuma oferta nesta prateleira.'}
             </p>
           )}
-          {visible.map((offer) => (
-            <article key={offer.id} className="shop-product">
-              <div className="shop-product-art">
-                {(offer.image_path || crystals) && (
-                  <img src={offer.image_path || icon} alt="" loading="lazy" />
+          {visible.map((offer) => {
+            const weapon =
+              offer.category === 'prestige_weapon' ? prestigeWeapon(offer.target_key) : undefined;
+            const stage = weapon && prestigeWeaponStage(weapon, characterLevel ?? 0);
+            return (
+              <article key={offer.id} className="shop-product">
+                {offer.image_path ? (
+                  <button
+                    type="button"
+                    className="shop-product-art special-art-preview"
+                    aria-label={'Ver arte e detalhes de ' + offer.name}
+                    onClick={() => setPreviewId(offer.id)}
+                  >
+                    <img src={offer.image_path} alt="" loading="lazy" />
+                    <Maximize2 size={13} aria-hidden="true" />
+                  </button>
+                ) : (
+                  <div className="shop-product-art">{crystals && <img src={icon} alt="" />}</div>
                 )}
-              </div>
-              <div>
-                <small>{specialOfferCategoryLabels[offer.category]}</small>
-                <h3>{offer.name}</h3>
-                <p>{offer.description}</p>
-                <footer>
-                  <strong>
-                    {offer.active
-                      ? offer.price.toLocaleString('pt-BR') + ' ' + text.label
-                      : 'Rascunho'}
-                  </strong>
-                  {offer.active && (
-                    <button type="button" disabled={!canBuy(offer)} onClick={() => onBuy(offer)}>
-                      {!crystals && owned.has(offer.id) ? (
-                        'Na coleção'
-                      ) : (
-                        <>
-                          Comprar <Plus size={12} aria-hidden="true" />
-                        </>
-                      )}
-                    </button>
+                <div>
+                  <small>{specialOfferCategoryLabels[offer.category]}</small>
+                  <h3>{offer.name}</h3>
+                  <p>{offer.description}</p>
+                  {weapon && (
+                    <small className="special-weapon-stage">
+                      {stage
+                        ? `${stage.rarity} · +${stage.bonus} no nível atual`
+                        : `${weapon.stages[0].rarity} · exige nível ${weapon.stages[0].level}`}
+                    </small>
                   )}
-                  {state?.can_edit && (
-                    <button
-                      type="button"
-                      aria-label={'Editar oferta ' + offer.name}
-                      title="Editar oferta"
-                      disabled={busy}
-                      onClick={() => onEdit(offer)}
-                    >
-                      <Pencil size={14} aria-hidden="true" />
-                    </button>
-                  )}
-                </footer>
-              </div>
-            </article>
-          ))}
+                  <footer>
+                    <strong>
+                      {offer.active
+                        ? offer.price.toLocaleString('pt-BR') + ' ' + text.label
+                        : 'Rascunho'}
+                    </strong>
+                    {offer.active && (
+                      <button type="button" disabled={!canBuy(offer)} onClick={() => onBuy(offer)}>
+                        {!crystals && owned.has(offer.id) ? (
+                          'Na coleção'
+                        ) : (
+                          <>
+                            Comprar <Plus size={12} aria-hidden="true" />
+                          </>
+                        )}
+                      </button>
+                    )}
+                    {state?.can_edit && (
+                      <button
+                        type="button"
+                        aria-label={'Editar oferta ' + offer.name}
+                        title="Editar oferta"
+                        disabled={busy}
+                        onClick={() => onEdit(offer)}
+                      >
+                        <Pencil size={14} aria-hidden="true" />
+                      </button>
+                    )}
+                  </footer>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
+      {preview && (
+        <Modal title={preview.name} close={() => setPreviewId(null)}>
+          <div className="special-art-details">
+            <img src={preview.image_path || icon} alt={preview.name} />
+            <p>{preview.description}</p>
+            {previewWeapon && (
+              <>
+                <ul aria-label="Estágios da arma">
+                  {previewWeapon.stages.map((stage) => (
+                    <li key={stage.level}>
+                      Nível {stage.level} · {stage.rarity} · +{stage.bonus} no ataque e no dano
+                    </li>
+                  ))}
+                </ul>
+                <p>{previewWeapon.effectText}</p>
+                <p>O bônus acompanha o nível atual de quem equipa a arma.</p>
+              </>
+            )}
+            <button
+              type="button"
+              className="button primary"
+              disabled={!canBuy(preview)}
+              onClick={() => {
+                setPreviewId(null);
+                onBuy(preview);
+              }}
+            >
+              Comprar por {preview.price.toLocaleString('pt-BR')} {text.label}
+            </button>
+          </div>
+        </Modal>
+      )}
     </section>
   );
 }

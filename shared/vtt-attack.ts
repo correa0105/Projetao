@@ -7,6 +7,20 @@ export type AttackRequest = {
   weaponItemId?: string;
 };
 export type AttackMode = 'normal' | 'advantage' | 'disadvantage';
+export type PrestigeAttackCommand =
+  | {
+      kind: 'attack';
+      request_id: string;
+      actor_id: string;
+      target_id: string;
+      item_id: string;
+      mode: AttackMode;
+      visual: boolean;
+    }
+  | { kind: 'damage'; attackId: string };
+export type AttackRoll = NonNullable<VttMessage['roll']> & {
+  weaponOutcome?: { hit: boolean; critical: boolean };
+};
 export function attackFormula(formula: string, mode: AttackMode) {
   const match = formula.replace(/\s/g, '').match(/^(?:1d20|2d20(?:kh1|kl1))([+-]\d+)?$/i);
   if (!match) throw Error('Este ataque não informa uma rolagem de d20 válida.');

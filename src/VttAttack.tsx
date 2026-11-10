@@ -6,7 +6,10 @@ import {
   criticalDamage,
   type AttackMode,
   type AttackRequest,
+  type AttackRoll,
+  type PrestigeAttackCommand,
 } from '../shared/vtt-attack';
+import { prestigeWeapon } from '../shared/prestige-weapons';
 import type { VttMessage, VttToken } from '../shared/vtt';
 import {
   weaponVisual,
@@ -35,7 +38,8 @@ export function VttAttack({
     label: string,
     damage?: { actor_id: string; target_id: string },
     visual?: AttackVisualCommand,
-  ) => Promise<VttMessage['roll']>;
+    prestige?: PrestigeAttackCommand,
+  ) => Promise<AttackRoll | null>;
   onBusy: (busy: boolean) => void;
   applyDamage?: (messageIds: string[], tokenId: string) => Promise<void>;
   discardDamage: (messageIds: string[]) => Promise<void>;
@@ -56,10 +60,12 @@ export function VttAttack({
   const [applied, setApplied] = useState(false);
   const inFlight = useRef(false),
     completed = useRef<Roll[]>([]),
+    pendingRequest = useRef<{ key: string; id: string } | null>(null),
     context = `${request.actorId}:${request.name}:${target?.id || ''}:${active}`,
     currentContext = useRef(context);
   currentContext.current = context;
   useEffect(() => {
+    pendingRequest.current = null;
     setResult(null);
     setDamage([]);
     completed.current = [];
@@ -67,7 +73,9 @@ export function VttAttack({
     setApplied(false);
     setError('');
   }, [context]);
-  const formulas = result?.critical ? request.damage.flatMap(criticalDamage) : request.damage;
+  const prestige = prestigeWeapon(request.weaponItemId);
+  const formulas =
+    result?.critical && !prestige ? request.damage.flatMap(criticalDamage) : request.damage;
   const done = damage.length > 0 && damage.length === formulas.length;
   const pending = !!result?.hit && !discarded && !done && formulas.length > 0;
   useEffect(() => {
@@ -96,12 +104,27 @@ export function VttAttack({
     const snapshot = { ...target },
       at = context;
     await run(async () => {
-      await validate?.();
+      if (!prestige) await validate?.();
       setResult(null);
       setDamage([]);
       completed.current = [];
       setDiscarded(false);
       setApplied(false);
+      let command: PrestigeAttackCommand | undefined;
+      if (prestige) {
+        const key = context + ':' + mode + ':' + visual;
+        if (pendingRequest.current?.key !== key)
+          pendingRequest.current = { key, id: crypto.randomUUID() };
+        command = {
+          kind: 'attack',
+          request_id: pendingRequest.current.id,
+          actor_id: request.actorId,
+          target_id: snapshot.id,
+          item_id: prestige.id,
+          mode,
+          visual: visual === 'auto',
+        };
+      }
       const value = await roll(
         attackFormula(request.attack, mode),
         request.name + ' → ' + snapshot.name + ' · ataque',
@@ -114,17 +137,24 @@ export function VttAttack({
               kind: weaponVisual(request.name),
               weapon: weaponStyle(request.name),
             },
+        command,
       );
       if (!value) throw Error('A rolagem não retornou um resultado.');
+      pendingRequest.current = null;
       if (currentContext.current === at)
-        setResult({ roll: value, target: snapshot, ...attackOutcome(value, snapshot.ac) });
+        setResult({
+          roll: value,
+          target: snapshot,
+          ...(value.weaponOutcome ?? attackOutcome(value, snapshot.ac)),
+        });
     });
   }
   async function hurt() {
     if (!result?.hit || discarded || done || !active || result.target.id !== target?.id) return;
     const at = context;
     await run(async () => {
-      await validate?.();
+      if (!prestige) await validate?.();
+      if (prestige && !result.roll.messageId) throw Error('Ataque de Prestígio não identificado.');
       for (let i = completed.current.length; i < formulas.length; i++) {
         if (currentContext.current !== at) return;
         const value = await roll(
@@ -134,6 +164,8 @@ export function VttAttack({
             result.target.name +
             (result.critical ? ' · dano crítico' : ' · dano'),
           { actor_id: request.actorId, target_id: result.target.id },
+          undefined,
+          prestige ? { kind: 'damage', attackId: result.roll.messageId! } : undefined,
         );
         if (!value) throw Error('A rolagem de dano não retornou um resultado.');
         if (currentContext.current !== at) return;
@@ -196,7 +228,7 @@ export function VttAttack({
       >
         <Swords size={14} /> {result ? 'Rolar novo ataque' : 'Rolar ataque'}
       </button>
-      {!result && request.damage.length > 0 && (
+      {!prestige && !result && request.damage.length > 0 && (
         <button
           className="vtt-attack-separate"
           disabled={busy || !active}

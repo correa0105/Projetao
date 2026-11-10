@@ -160,7 +160,7 @@ import {
 import { tokenRotationHandleAt, rotationFromDrag, tokenResizeHandleAt, tokenResizeCursor, resizeTokenRectangle, type ResizeHandle } from '../shared/vtt-token-resize';
 import './vtt-token-editing.css';
 import { renderVtt, tokenAt, drawingAt, segmentDistance, type VttCamera } from './vtt-canvas';
-import type { AttackRequest } from '../shared/vtt-attack';
+import type { AttackRequest, AttackRoll, PrestigeAttackCommand } from '../shared/vtt-attack';
 import { vttUpdateMessage } from '../shared/vtt-protocol';
 import { pingDuration, type VttPing } from './vtt-ping';
 import { VttSheet } from './VttSheet';
@@ -2741,25 +2741,33 @@ export function VttSession({ characters, user, media, reviewVisualPreferences }:
     spellId?: string,
     damage?: { actor_id: string; target_id: string },
     attackVisual?: AttackVisualCommand,
+    prestige?: PrestigeAttackCommand,
   ) {
     if (spectator) throw Error('Espectadores podem somente assistir à mesa.');
     await save();
-    const next = await post<VttState & { createdMessageId: string }>(
-      `/vtt/rooms/${state!.id}/messages`,
-      {
+    const roomPath = `/vtt/rooms/${state!.id}`;
+    const path = prestige?.kind === 'damage'
+      ? '/prestige-attacks/' + prestige.attackId + '/damage'
+      : prestige?.kind === 'attack' ? '/prestige-attacks' : '/messages';
+    const payload = prestige?.kind === 'attack'
+      ? { request_id: prestige.request_id, actor_id: prestige.actor_id, target_id: prestige.target_id,
+          item_id: prestige.item_id, mode: prestige.mode, visual: prestige.visual, private: privateRoll }
+      : prestige?.kind === 'damage' ? {} : {
         ...(spellId ? { spell_id: spellId } : {}),
         ...(damage ? { damage } : {}),
         ...(attackVisual ? { attack_visual: attackVisual } : {}),
         text: textValue,
         formula: formulaValue,
         private: privateRoll,
-      },
+      };
+    const next = await post<VttState & { createdMessageId: string; weaponOutcome?: AttackRoll['weaponOutcome'] }>(
+      roomPath + path, payload,
     );
     setState(next);
     stateRef.current = next;
     setChat('');
     const rolled = next.messages.find((m) => m.id === next.createdMessageId)?.roll;
-    return rolled ? { ...rolled, messageId: next.createdMessageId } : null;
+    return rolled ? { ...rolled, messageId: next.createdMessageId, weaponOutcome: next.weaponOutcome } : null;
   }
   async function applyRolledDamage(messageIds: string[], tokenId: string) {
     await save();
@@ -3253,7 +3261,7 @@ export function VttSession({ characters, user, media, reviewVisualPreferences }:
               tokens={scene.tokens}
               effects={doc.effects}
               sheetOpen={!!sheetId}
-              roll={(formula, label, damage, visual) => send(formula, label, undefined, damage, visual)}
+              roll={(formula, label, damage, visual, prestige) => send(formula, label, undefined, damage, visual, prestige)}
               shareSpell={shareSpell}
               refresh={refreshRoom}
               gm={gm}

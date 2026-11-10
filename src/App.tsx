@@ -617,7 +617,7 @@ function Portal({ user }: { user: User }) {
     if (page === 'character-cards')
       return <CharacterCards key={character?.id || 'visitor'} character={character} />;
     if (page === 'reliquias')
-      return <RelicShop characterId={character?.id} onPurchased={refresh} />;
+      return <RelicShop character={character} onPurchased={refresh} />;
     if (page === 'cristais')
       return <CrystalShop character={character} onPurchased={refresh} />;
     return (

@@ -34,6 +34,7 @@ export type SpecialCurrency = z.infer<typeof specialCurrencySchema>;
 export const specialOfferCategorySchema = z.enum([
   'profile_border',
   'weapon_skin',
+  'prestige_weapon',
   'mount',
   'pet',
   'tower_item',
@@ -41,6 +42,7 @@ export const specialOfferCategorySchema = z.enum([
 export const specialOfferCategoryLabels = {
   profile_border: 'Borda de perfil',
   weapon_skin: 'Skin de arma',
+  prestige_weapon: 'Arma de Prestígio',
   mount: 'Montaria',
   pet: 'Mascote',
   tower_item: 'Item de expedição',

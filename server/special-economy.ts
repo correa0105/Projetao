@@ -22,6 +22,7 @@ import { eclipseStagId, mounts } from '../shared/mounts.js';
 import { pets } from '../shared/pets.js';
 import weaponAliases from '../shared/catalog-weapon-names.json' with { type: 'json' };
 import { withdrawnWeaponOffer } from '../shared/shop-availability.js';
+import { prestigeSkinArt, prestigeWeapon } from '../shared/prestige-weapons.js';
 import {
   minimumPrestigeLevel,
   prestigeMilestones,
@@ -83,6 +84,8 @@ async function validateOfferContent(db: Database, input: z.infer<typeof specialO
     throw new AppError(400, 'Escolha o modelo de referência da montaria.');
   if (category === 'pet' && !pets.some((pet) => pet.id === target_key))
     throw new AppError(400, 'Escolha o modelo de referência do mascote.');
+  if (category === 'prestige_weapon' && !prestigeWeapon(target_key))
+    throw new AppError(400, 'Escolha uma arma de Prestígio da forja.');
   if (category === 'weapon_skin') {
     const item = (
       await db.query('SELECT id,raw_data FROM catalog_items WHERE id=$1 AND active', [target_key])
@@ -492,7 +495,7 @@ export function specialEconomyRouter() {
       pool.query(
         'SELECT ' +
           offerFields +
-          ' FROM special_shop_offers WHERE currency=$1 AND (active OR $2) ORDER BY category,name,id',
+          " FROM special_shop_offers WHERE currency=$1 AND (active OR $2) ORDER BY (category='prestige_weapon') DESC,category,name,id",
         [currency, canEdit],
       ),
       specialBalance(pool, uid, currency, character),
@@ -512,7 +515,11 @@ export function specialEconomyRouter() {
       offers: offers.rows,
       balance,
       can_edit: canEdit,
-      purchases,
+      purchases: currency === 'prestige'
+        ? purchases.map((purchase) => purchase.snapshot.category === 'weapon_skin'
+          ? { ...purchase, snapshot: { ...purchase.snapshot, image_path: prestigeSkinArt(purchase.snapshot.image_path) } }
+          : purchase)
+        : purchases,
       equipped_border: border?.rows[0]?.purchase_id ?? null,
     });
   });
@@ -607,7 +614,7 @@ export function specialEconomyRouter() {
             replayed: true,
           };
         }
-        if (input.character_id) await ownedCharacter(db, uid, input.character_id, true);
+        const buyer = input.character_id ? await ownedCharacter(db, uid, input.character_id, true) : null;
         const offer = (
           await db.query(
             'SELECT ' +
@@ -619,19 +626,26 @@ export function specialEconomyRouter() {
         if (!offer || offer.revision !== input.revision)
           throw new AppError(409, 'A oferta mudou. Atualize a loja.');
         const companion = offer.category === 'mount' || offer.category === 'pet';
+        const isPrestigeWeapon = offer.category === 'prestige_weapon';
+        const weapon = isPrestigeWeapon ? prestigeWeapon(offer.target_key) : undefined;
         const namedMount = offer.category === 'mount' && offer.target_key === eclipseStagId;
         if (namedMount && !input.companion_name)
           throw new AppError(400, 'Dê um nome ao Cervo do Eclipse.');
         if (!namedMount && input.companion_name)
           throw new AppError(400, 'Esta oferta não aceita nome de montaria.');
-        if ((currency === 'crystals' || companion) !== !!input.character_id)
-          throw new AppError(400, 'Escolha o personagem que receberá o companheiro.');
+        if ((currency === 'crystals' || companion || isPrestigeWeapon) !== !!buyer)
+          throw new AppError(400, 'Escolha o personagem que receberá a compra.');
+        if (isPrestigeWeapon && !weapon)
+          throw new AppError(409, 'Esta arma de Prestígio está indisponível.');
+        if (weapon && buyer!.level < weapon.stages[0].level)
+          throw new AppError(409, `Esta arma exige nível ${weapon.stages[0].level} para compra.`);
         if (
           currency === 'prestige' &&
           (
             await db.query(
-              "SELECT 1 FROM special_shop_purchases WHERE user_id=$1 AND offer_id=$2 AND currency='prestige'",
-              [uid, input.offer_id],
+              `SELECT 1 FROM special_shop_purchases WHERE user_id=$1 AND currency='prestige'
+               AND (offer_id=$2 OR ($3::text IS NOT NULL AND snapshot->>'category'='prestige_weapon' AND snapshot->>'target_key'=$3))`,
+              [uid, input.offer_id, weapon?.id ?? null],
             )
           ).rowCount
         )
@@ -670,6 +684,12 @@ export function specialEconomyRouter() {
             `INSERT INTO character_pets(character_id,pet_id,name,price_cp,idempotency_key,prestige_art,displayed)
            VALUES($1,$2,left($3,40),0,$4,$5,NOT EXISTS(SELECT 1 FROM character_pets WHERE character_id=$1))`,
             [input.character_id, target_key, name, purchase.id, image_path],
+          );
+        if (weapon)
+          await db.query(
+            `INSERT INTO inventory(character_id,item_id,quantity) VALUES($1,$2,1)
+             ON CONFLICT(character_id,item_id) DO UPDATE SET quantity=inventory.quantity+1`,
+            [buyer!.id, weapon.id],
           );
         return { id: purchase.id, balance, replayed: false };
       }),

@@ -1,5 +1,6 @@
 import { sheetAttacks, weaponData, type SheetChoices } from './character-sheet.js';
 import aliases from './catalog-weapon-names.json';
+import { prestigeWeapon, prestigeWeaponStage } from './prestige-weapons.js';
 export type CombatItem = {
   id: string;
   name: string;
@@ -41,6 +42,8 @@ export function equippedAttacks(
       Object.keys(weaponData).find((n) => normalize(n) === normalize(item.name));
     if (!name) return [];
     seen.add(item.id);
+    const weapon = prestigeWeapon(item.id);
+    const bonus = weapon ? prestigeWeaponStage(weapon, character.level || 1)?.bonus ?? 0 : 0;
     return sheetAttacks(
       character.race,
       character.class,
@@ -50,6 +53,8 @@ export function equippedAttacks(
       character.level || 1,
     ).map((attack) => ({
       ...attack,
+      attack: attack.attack + bonus,
+      ability: attack.ability + bonus,
       name: item.name,
       itemId: item.id,
       image_path: item.image_path || null,

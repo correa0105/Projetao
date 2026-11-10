@@ -6,6 +6,8 @@ As ofertas da Torre têm descrições e artes próprias. A Brasa de Vigília par
 
 As aparências de Relíquias usam como referências temáticas [Celestial Longbow](https://www.dndbeyond.com/magic-items/10402409-celestial-longbow), de RoskoIV, e [Harbinger’s Blossom Dagger](https://www.dndbeyond.com/magic-items/10455536-harbingers-blossom-dagger), de MP026. O Cervo do Eclipse é uma montaria original da Alvorada.
 
+A forja de Prestígio usa a [progressão de bônus por raridade das regras básicas](https://www.dndbeyond.com/sources/dnd/br-2024/magic-items-a-z) como referência de potência. Os efeitos situacionais são autorais, com inspiração temática em [Fang of the Emerald Tyrant](https://www.dndbeyond.com/magic-items/11985502-fang-of-the-emerald-tyrant), de PaxtonVerus, e [Holybrand](https://www.dndbeyond.com/magic-items/10772795-holybrand-the-warhammer-of-judgment), de djallan42.
+
 Expansão do Empório de 06/10: 258 famílias mágicas e equipamentos físicos
 derivados do SRD 5.2.1 abaixo, com nomes/resumos em português e páginas por item
 em data/emporium-expansion.json. Mantidos os créditos dos produtos históricos.

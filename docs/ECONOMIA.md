@@ -10,6 +10,17 @@ A nova jornada conserva identidade, vaga, história, bens e vínculo de guilda. 
 
 A loja **Relíquias** aceita Prestígio por bordas de perfil, skins vinculadas a armas específicas e companheiros com artes exclusivas e um modelo de referência. O catálogo usa a disposição do Empório, com prateleiras, busca, saldo e coleção sobre o cenário em tela inteira. A saudação do robô desaparece sozinha. Selecionar o robô contornado abre perguntas sobre as relíquias, o Prestígio e a coleção. O jogador equipa a borda na coleção, aplica a skin a uma arma da mochila ou recebe a montaria ou mascote no personagem selecionado. O cadastro de ofertas, preços e artes pertence à administração global. O Arco da Vigília Celeste e a Adaga do Primeiro Broto são skins. O Cervo do Eclipse é exclusivo de Relíquias e recebe um nome na compra.
 
+A prateleira **Armas de Prestígio** vende armas de inventário e mostra os estágios ao abrir a arte. A arma vai à mochila do personagem selecionado e cada modelo é comprado uma vez por conta. O bônus usa o nível atual de quem equipa a arma. Após reinício de jornada, o efeito adormece até o nível exigido. As skins têm uma prateleira separada e mudam a aparência.
+
+| Arma | Estágios no ataque e no dano | Efeito |
+| --- | --- | --- |
+| Espada da Aurora Velada | +1 no nível 5, +2 no 11 e +3 no 17 | A partir do nível 11, soma 1d4 extra no crítico. |
+| Arco do Eclipse | +1 no nível 5 e +2 no 13 | +2 de dano entre 40 e 150 pés. |
+| Martelo da Sentinela | +2 a partir do nível 9 | +2 de dano com o portador a metade dos PV ou menos. |
+| Rapieira da Ressaca | +1 a partir do nível 5 | +1 de dano contra um alvo a metade dos PV ou menos. |
+
+A mesa calcula bônus e efeitos ao atacar com a arma equipada. O dano fica associado ao acerto, ao mapa e ao alvo da rolagem. Tentar rolar o mesmo dano de novo recupera o resultado já registrado.
+
 Cristais da Torre ficam na carteira do personagem. **Loja → Cristais** e o Entreposto no Gabinete de Cristais compartilham ofertas, compras e saldo. A loja tem cenário próprio e o Guardião dos Cristais explica como ganhar, usar ou doar cristais. Os itens ficam no registro da Torre. O consumo é registrado apenas na mesa oficial de uma expedição ativa com participação do personagem. A mesa registra o uso e o mestre aplica a regra descrita na oferta.
 
 A Brasa de Vigília ilumina uma área pequena por dez minutos. A Esmeralda do Fôlego estabiliza uma criatura a 0 PV. Ambas são consumíveis da Torre com artes próprias e fontes temáticas em [Fontes e atribuição](ATTRIBUTION.md#ofertas-homebrew).

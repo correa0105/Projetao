@@ -51,6 +51,7 @@ import {
 } from '../shared/vtt-attachments.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
 import { vttCompanionsRouter } from './vtt-companions.js';
+import { vttPrestigeWeaponsRouter } from './vtt-prestige-weapons.js';
 import {vttVehiclesRouter} from './vtt-vehicles.js';
 import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
@@ -480,6 +481,7 @@ export function vttRouter() {
   router.use(vttVoiceRouter(room));
   router.use(vttCombatRouter(room, canSee));
   router.use(vttDamageRouter(room, canSee, state));
+  router.use(vttPrestigeWeaponsRouter(room, canSee, state));
   router.use(vttSiegeRouter(room,state,canSee));
   router.use(vttMonsterPresetRouter());
   router.use(vttPremiumRouter());

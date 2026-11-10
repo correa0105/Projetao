@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { X } from 'lucide-react';
+import type { Character } from './types';
 import { relicShopArt } from './page-assets';
 import { PrestigeCenter, SpecialShop } from './SpecialEconomy';
 import './relic-shop.css';
@@ -160,10 +161,10 @@ function RelicVendor() {
 }
 
 export function RelicShop({
-  characterId,
+  character,
   onPurchased,
 }: {
-  characterId?: string;
+  character?: Character;
   onPurchased: () => Promise<void>;
 }) {
   const [prestigeOpen, setPrestigeOpen] = useState(false);
@@ -173,7 +174,9 @@ export function RelicShop({
       <RelicVendor />
       <SpecialShop
         currency="prestige"
-        characterId={characterId}
+        characterId={character?.id}
+        characterName={character?.name}
+        characterLevel={character?.level}
         changed={onPurchased}
         onPrestige={() => setPrestigeOpen(true)}
       />

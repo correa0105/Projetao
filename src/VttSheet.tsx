@@ -18,6 +18,7 @@ import { ItemThumbnail } from './ItemThumbnail';
 import { modifier, statNames } from '../shared/rules';
 import { armorBundle } from '../shared/armor-bundles';
 import type { AttackRequest } from '../shared/vtt-attack';
+import { prestigeWeapon, prestigeWeaponStage } from '../shared/prestige-weapons';
 import './vtt-sheet.css';
 import { ActionShortcut } from './VttHotbar';
 import { requestSpellCast } from './useVttSpells';
@@ -435,49 +436,67 @@ export function VttSheet({
                         </details>
                       )}
                       {data.attacks.length ? (
-                        data.attacks.map((w) => (
-                          <article key={w.itemId}>
-                            <div className="vtt-sheet-attack-title">
-                              <ItemThumbnail image={w.image_path} name={w.name} />
-                              <strong>{w.name}</strong>
-                              {data.can_use && (
-                                <ActionShortcut
-                                  action={{
-                                    kind: 'attack',
-                                    characterId: c!.id,
-                                    sourceId: w.itemId,
-                                    label: w.name,
-                                  }}
-                                />
-                              )}
-                            </div>
-                            <div>
-                              <button
-                                onClick={() =>
-                                  onAttack({
-                                    actorId: t.id,
-                                    weaponItemId: w.itemId,
-                                    name: t.name + ' · ' + w.name,
-                                    attack: '1d20' + signed(w.attack),
-                                    damage: w.dice === '—' ? [] : [w.dice + signed(w.ability)],
-                                  })
-                                }
-                              >
-                                Acerto {signed(w.attack)}
-                              </button>
-                              {w.dice !== '—' && (
-                                <button onClick={() => void weaponDamage(w.itemId)}>
-                                  {w.dice}
-                                  {signed(w.ability)}
+                        data.attacks.map((w) => {
+                          const weapon = prestigeWeapon(w.itemId);
+                          const stage = weapon && prestigeWeaponStage(weapon, c!.level);
+                          return (
+                            <article key={w.itemId}>
+                              <div className="vtt-sheet-attack-title">
+                                <ItemThumbnail image={w.image_path} name={w.name} />
+                                <strong>{w.name}</strong>
+                                {data.can_use && (
+                                  <ActionShortcut
+                                    action={{
+                                      kind: 'attack',
+                                      characterId: c!.id,
+                                      sourceId: w.itemId,
+                                      label: w.name,
+                                    }}
+                                  />
+                                )}
+                              </div>
+                              <div>
+                                <button
+                                  onClick={() =>
+                                    onAttack({
+                                      actorId: t.id,
+                                      weaponItemId: w.itemId,
+                                      name: t.name + ' · ' + w.name,
+                                      attack: '1d20' + signed(w.attack),
+                                      damage: w.dice === '—' ? [] : [w.dice + signed(w.ability)],
+                                    })
+                                  }
+                                >
+                                  Acerto {signed(w.attack)}
                                 </button>
+                                {w.dice !== '—' && !weapon && (
+                                  <button onClick={() => void weaponDamage(w.itemId)}>
+                                    {w.dice}
+                                    {signed(w.ability)}
+                                  </button>
+                                )}
+                                {w.dice !== '—' && weapon && (
+                                  <span>
+                                    {w.dice}
+                                    {signed(w.ability)} no acerto
+                                  </span>
+                                )}
+                              </div>
+                              <small>
+                                {w.type}
+                                {w.mastery ? ' · ' + w.mastery : ''}
+                              </small>
+                              {weapon && (
+                                <small>
+                                  {stage
+                                    ? `${stage.rarity} · +${stage.bonus}`
+                                    : `Desperta no nível ${weapon.stages[0].level}`}
+                                  {c!.level >= weapon.effectLevel ? ' · ' + weapon.effectText : ''}
+                                </small>
                               )}
-                            </div>
-                            <small>
-                              {w.type}
-                              {w.mastery ? ' · ' + w.mastery : ''}
-                            </small>
-                          </article>
-                        ))
+                            </article>
+                          );
+                        })
                       ) : (
                         <p>Nenhum ataque disponível.</p>
                       )}

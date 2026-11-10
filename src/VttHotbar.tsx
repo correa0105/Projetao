@@ -24,9 +24,9 @@ import { ItemThumbnail } from './ItemThumbnail';
 import { VttEffectPreview } from './VttEffectPreview';
 import type { EffectPreset } from '../shared/vtt-effects';
 import type { VttSheetData } from '../shared/vtt-sheet';
-import type { VttMessage, VttToken } from '../shared/vtt';
+import type { VttToken } from '../shared/vtt';
 import type { MonsterAction } from '../shared/vtt-monster-actions';
-import type { AttackRequest } from '../shared/vtt-attack';
+import type { AttackRequest, AttackRoll, PrestigeAttackCommand } from '../shared/vtt-attack';
 import type { AttackVisualCommand } from '../shared/vtt-attack-visual';
 import { VttAttack } from './VttAttack';
 import { requestSpellCast } from './useVttSpells';
@@ -83,7 +83,8 @@ export function VttHotbar({
     label: string,
     damage?: { actor_id: string; target_id: string },
     visual?: AttackVisualCommand,
-  ) => Promise<VttMessage['roll']>;
+    prestige?: PrestigeAttackCommand,
+  ) => Promise<AttackRoll | null>;
   applyDamage?: (messageIds: string[], tokenId: string) => Promise<void>;
   discardDamage: (messageIds: string[]) => Promise<void>;
   onAttack: (request: AttackRequest) => void;

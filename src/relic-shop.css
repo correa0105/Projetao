@@ -146,6 +146,54 @@
   cursor: default;
 }
 
+:is(.relic-shop-showcase, .crystal-shop-showcase) .special-art-preview {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.special-art-preview svg {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  color: #debc81;
+}
+
+.special-art-preview:is(:hover, :focus-visible) img {
+  filter: drop-shadow(0 5px 8px #000a) brightness(1.12);
+}
+
+.shop-product .special-weapon-stage {
+  display: block;
+  color: #e4bd83;
+  margin-top: 0.3rem;
+}
+
+.special-art-details {
+  display: grid;
+  gap: 0.65rem;
+  color: #eadfc9;
+}
+
+.special-art-details > img {
+  width: 100%;
+  height: min(36dvh, 20rem);
+  object-fit: contain;
+  padding: 0.75rem;
+  background: radial-gradient(ellipse, #493625 0%, #1d1917 75%);
+  border: 1px solid #8c6b454d;
+  border-radius: 0.4rem;
+}
+
+.special-art-details :is(p, ul) {
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .special-art-details > img {
+    height: min(26dvh, 14rem);
+  }
+}
+
 :is(.relic-shop-showcase, .crystal-shop-showcase) .special-shop-empty {
   grid-column: 1 / -1;
   margin: 0;

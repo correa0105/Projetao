@@ -6,6 +6,7 @@ import { AppError } from './services.js';
 import { allocatedCopies, companionAllocated } from './companion-inventory.js';
 import { armorSetPieces } from './equipment-sets.js';
 import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
+import { prestigeSkinArt } from '../shared/prestige-weapons.js';
 import { grantCharacterStartingItems } from './character-starting-items.js';
 import {
   EQUIPMENT_SLOTS,
@@ -80,9 +81,9 @@ export async function storageState(client: PoolClient, userId: string, character
     [characterId, userId],
   );
   return {
-    inventory: inventory.rows.map(clothingPieceAppearance),
+    inventory: inventory.rows.map((item) => clothingPieceAppearance({ ...item, image_path: prestigeSkinArt(item.image_path) })),
     vault: vault.rows.map(clothingPieceAppearance),
-    equipped: equipped.rows.map(clothingPieceAppearance),
+    equipped: equipped.rows.map((item) => clothingPieceAppearance({ ...item, image_path: prestigeSkinArt(item.image_path) })),
     companion_allocated: await companionAllocated(client, characterId),
     companions: await companionBags(client, characterId),
   };

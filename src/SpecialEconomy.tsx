@@ -15,6 +15,7 @@ import {
 import { rankTitle } from '../shared/progression';
 import { classes } from '../shared/rules';
 import { eclipseStagId, mounts } from '../shared/mounts';
+import { prestigeWeapon, prestigeWeapons } from '../shared/prestige-weapons';
 import { pets } from '../shared/pets';
 import './special-economy.css';
 
@@ -397,11 +398,14 @@ const blankOffer = (currency: SpecialCurrency): SpecialOffer => ({
 });
 const companionOffer = (offer: SpecialOffer) =>
   offer.category === 'mount' || offer.category === 'pet';
+const characterOffer = (offer: SpecialOffer) =>
+  companionOffer(offer) || offer.category === 'prestige_weapon';
 
 export function SpecialShop({
   currency,
   characterId,
   characterName,
+  characterLevel,
   storefront = false,
   changed,
   onPrestige,
@@ -409,6 +413,7 @@ export function SpecialShop({
   currency: SpecialCurrency;
   characterId?: string;
   characterName?: string;
+  characterLevel?: number;
   storefront?: boolean;
   changed?: () => Promise<void>;
   onPrestige?: () => void;
@@ -469,12 +474,15 @@ export function SpecialShop({
     setConfirm(offer);
   };
   const owned = new Set(state?.purchases.map((p) => p.offer_id));
-  const canBuy = (offer: SpecialOffer) =>
-    !!state &&
-    !busy &&
-    ((prestige && !companionOffer(offer)) || !!characterId) &&
-    (!prestige || !owned.has(offer.id)) &&
-    state.balance >= offer.price;
+  const canBuy = (offer: SpecialOffer) => {
+    const weapon = offer.category === 'prestige_weapon' ? prestigeWeapon(offer.target_key) : undefined;
+    return !!state &&
+      !busy &&
+      ((prestige && !characterOffer(offer)) || !!characterId) &&
+      (!prestige || !owned.has(offer.id)) &&
+      (offer.category !== 'prestige_weapon' || (!!weapon && (characterLevel ?? 0) >= weapon.stages[0].level)) &&
+      state.balance >= offer.price;
+  };
   const createOffer = (category?: SpecialOffer['category']) => {
     const offer = blankOffer(currency);
     setDraft({ ...offer, category: category ?? offer.category });
@@ -497,6 +505,7 @@ export function SpecialShop({
       <p>
         Comprar {confirm.name} por {confirm.price.toLocaleString('pt-BR')} {label}?
       </p>
+      {confirm.category === 'prestige_weapon' && <p>A arma vai para a mochila de <strong>{characterName}</strong>.</p>}
       {nameNeeded && (
         <label>
           Nome da montaria
@@ -517,7 +526,7 @@ export function SpecialShop({
               revision: confirm.revision,
               companion_name: nameNeeded ? companionName.trim() : undefined,
               character_id:
-                currency === 'crystals' || companionOffer(confirm) ? characterId : undefined,
+                currency === 'crystals' || characterOffer(confirm) ? characterId : undefined,
             });
             requestIds.current.delete(key);
             setConfirm(null);
@@ -595,6 +604,18 @@ export function SpecialShop({
             maxLength={120}
             onChange={(e) => setDraft({ ...draft, target_key: e.target.value || null })}
           />
+        </label>
+      )}
+      {draft.category === 'prestige_weapon' && (
+        <label>
+          Arma da forja
+          <select
+            value={draft.target_key ?? ''}
+            onChange={(event) => setDraft({ ...draft, target_key: event.target.value || null })}
+          >
+            <option value="">Escolha a arma</option>
+            {prestigeWeapons.map((weapon) => <option key={weapon.id} value={weapon.id}>{weapon.name}</option>)}
+          </select>
         </label>
       )}
       <label>
@@ -718,6 +739,7 @@ export function SpecialShop({
         <SpecialShopCatalogue
           currency={currency}
           characterName={characterName}
+          characterLevel={characterLevel}
           state={state}
           status={status}
           busy={busy}
