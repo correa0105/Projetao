@@ -166,7 +166,7 @@ export function RelicShop({
   characterId?: string;
   onPurchased: () => Promise<void>;
 }) {
-  const [historyOpen, setHistoryOpen] = useState(false);
+  const [prestigeOpen, setPrestigeOpen] = useState(false);
 
   return (
     <article className="relic-shop">
@@ -175,9 +175,9 @@ export function RelicShop({
         currency="prestige"
         characterId={characterId}
         changed={onPurchased}
-        onHistory={() => setHistoryOpen(true)}
+        onPrestige={() => setPrestigeOpen(true)}
       />
-      {historyOpen && <PrestigeCenter close={() => setHistoryOpen(false)} />}
+      {prestigeOpen && <PrestigeCenter close={() => setPrestigeOpen(false)} />}
     </article>
   );
 }

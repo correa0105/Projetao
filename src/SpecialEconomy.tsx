@@ -218,6 +218,8 @@ export function RetirementDialog({
   );
 }
 
+const prestigeLevels = Array.from({ length: 20 }, (_, index) => index + 1);
+
 export function PrestigeCenter({ close }: { close: () => void }) {
   const [state, setState] = useState<PrestigeState | null>(null);
   const [values, setValues] = useState<string[] | null>(null);
@@ -237,14 +239,51 @@ export function PrestigeCenter({ close }: { close: () => void }) {
     };
   }, []);
   return (
-    <Modal title="Prestígio" close={close}>
+    <Modal title="Tabela de Prestígio" close={close}>
       <div className="stack special-economy">
         <p>
           A partir do nível {minimumPrestigeLevel}, aposente um personagem no acampamento para
           receber Prestígio. Use-o em Relíquias ou contribua para a Ferraria da sua guilda.
         </p>
         {error && <p role="alert">{error}</p>}
-        {!state && !error && <p role="status">Consultando aposentadorias…</p>}
+        {!state && !error && <p role="status">Consultando a tabela de Prestígio…</p>}
+        {state && (
+          <>
+            {!state.rewards && <p>Os pontos dos níveis 5 a 20 ainda estão a definir.</p>}
+            <div
+              className="prestige-rewards-scroll"
+              role="region"
+              aria-label="Recompensas de aposentadoria por nível"
+              tabIndex={0}
+            >
+              <table className="prestige-rewards-table" aria-label="Pontos de Prestígio por nível">
+                <thead>
+                  <tr>
+                    <th scope="col">Nível</th>
+                    <th scope="col">Patente</th>
+                    <th scope="col">Prestígio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {prestigeLevels.map((level) => {
+                    const points = level < minimumPrestigeLevel ? 0 : state.rewards?.[level - 1];
+                    const milestone = prestigeMilestones.includes(level);
+                    return (
+                      <tr key={level} data-milestone={milestone || undefined}>
+                        <th scope="row">{level}</th>
+                        <td>
+                          {rankTitle(level)}
+                          {milestone && <small>Marco</small>}
+                        </td>
+                        <td>{points?.toLocaleString('pt-BR') ?? 'A definir'}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
         {state?.can_edit && (
           <details>
             <summary>Configurar recompensas de aposentadoria</summary>
@@ -286,9 +325,7 @@ export function PrestigeCenter({ close }: { close: () => void }) {
                   onClick={() =>
                     setValues(
                       state.rewards?.map(String) ??
-                        Array.from({ length: 20 }, (_, i) =>
-                          i + 1 < minimumPrestigeLevel ? '0' : '',
-                        ),
+                        prestigeLevels.map((level) => (level < minimumPrestigeLevel ? '0' : '')),
                     )
                   }
                 >
@@ -365,12 +402,12 @@ export function SpecialShop({
   currency,
   characterId,
   changed,
-  onHistory,
+  onPrestige,
 }: {
   currency: SpecialCurrency;
   characterId?: string;
   changed?: () => Promise<void>;
-  onHistory?: () => void;
+  onPrestige?: () => void;
 }) {
   const [collectionOpen, setCollectionOpen] = useState(false);
   const [state, setState] = useState<SpecialShopState | null>(null);
@@ -668,7 +705,7 @@ export function SpecialShop({
           onEdit={setDraft}
           onCreate={createOffer}
           onCollection={() => setCollectionOpen(true)}
-          onHistory={onHistory}
+          onPrestige={onPrestige}
         />
         {confirm && (
           <Modal

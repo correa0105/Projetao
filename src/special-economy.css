@@ -42,6 +42,42 @@
 .prestige-level-grid input {
   width: 100%;
 }
+.prestige-rewards-scroll {
+  max-height: min(42dvh, 22rem);
+  overflow: auto;
+  border: 1px solid #7d61456e;
+  border-radius: 0.4rem;
+  scrollbar-width: thin;
+}
+.prestige-rewards-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.prestige-rewards-table :is(th, td) {
+  padding: 0.42rem clamp(0.35rem, 2vw, 0.85rem);
+  border-bottom: 1px solid #7d614540;
+  text-align: left;
+}
+.prestige-rewards-table thead th {
+  position: sticky;
+  top: 0;
+  background: #30271e;
+  color: #f1d7aa;
+}
+.prestige-rewards-table tr > :last-child {
+  text-align: right;
+}
+.prestige-rewards-table tr[data-milestone] {
+  background: #9c703129;
+  color: #f0d5a4;
+}
+.prestige-rewards-table td small {
+  display: inline-block;
+  margin-left: 0.4em;
+  color: #e3bc7e;
+}
 .player-avatar img.prestige-border-art {
   position: absolute;
   inset: 0;

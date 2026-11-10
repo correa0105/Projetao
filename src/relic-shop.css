@@ -123,6 +123,12 @@
   object-fit: contain;
 }
 
+.relic-shop-showcase .relic-prestige-table-button {
+  align-items: center;
+  font-size: 0.74rem;
+  white-space: nowrap;
+}
+
 .relic-shop-showcase .shop-catalog > p {
   margin: 0.45rem 0 0;
 }

@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { Pencil, Plus, ScrollText, Search, ShoppingBag } from 'lucide-react';
+import { Pencil, Plus, Search, ShoppingBag, Table2 } from 'lucide-react';
 import {
   specialOfferCategoryLabels,
   type SpecialOffer,
@@ -27,7 +27,7 @@ export function RelicCatalogue({
   onEdit,
   onCreate,
   onCollection,
-  onHistory,
+  onPrestige,
 }: {
   state: SpecialShopState | null;
   status: ReactNode;
@@ -37,7 +37,7 @@ export function RelicCatalogue({
   onEdit: (offer: SpecialOffer) => void;
   onCreate: (category?: SpecialOffer['category']) => void;
   onCollection: () => void;
-  onHistory?: () => void;
+  onPrestige?: () => void;
 }) {
   const [shelf, setShelf] = useState<(typeof shelves)[number][0]>('all');
   const [search, setSearch] = useState('');
@@ -109,15 +109,14 @@ export function RelicCatalogue({
             <ShoppingBag size={17} aria-hidden="true" />
             <b aria-hidden="true">{state?.purchases.length ?? 0}</b>
           </button>
-          {onHistory && (
+          {onPrestige && (
             <button
               type="button"
-              className="shop-cart-toggle"
-              aria-label="Histórico e recompensas"
-              title="Histórico e recompensas"
-              onClick={onHistory}
+              className="shop-cart-toggle relic-prestige-table-button"
+              onClick={onPrestige}
             >
-              <ScrollText size={17} aria-hidden="true" />
+              <Table2 size={16} aria-hidden="true" />
+              Tabela de Prestígio
             </button>
           )}
         </div>
