@@ -1,4 +1,4 @@
-import { mounts } from './mounts.js';
+import { eclipseStagId, mounts } from './mounts.js';
 import { pets, petVariants } from './pets.js';
 export function basicCompanionToken(
   kind: 'mount' | 'pet',
@@ -7,7 +7,8 @@ export function basicCompanionToken(
 ) {
   const valid =
     kind === 'mount'
-      ? mounts.some((m) => m.id === species) && ['original', 'alternate'].includes(appearance)
+      ? mounts.some((m) => m.id === species) &&
+        (appearance === 'original' || (species !== eclipseStagId && appearance === 'alternate'))
       : pets.some((p) => p.id === species) &&
         (appearance === 'original' ||
           petVariants.some((p) => p.pet_id === species && p.id === appearance));

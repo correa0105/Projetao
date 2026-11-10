@@ -1,5 +1,13 @@
 # Equipamentos de montarias e mascotes — 06/10/2026
 
+## Auxílios dos companheiros
+
+Cada espécie de montaria, espécie de mascote e raça alternativa de mascote tem um auxílio próprio. Pelagens da mesma montaria compartilham seu auxílio. O catálogo e o inventário mostram a situação e a perícia correspondentes.
+
+Em uma mesa virtual, o mestre abre **Fichas → Montarias** ou **Mascotes** e usa **Rolar auxílio** quando a situação se aplica. O personagem e seu próprio companheiro precisam estar visíveis e com PV na cena ativa, fora da iniciativa. A mesa rola a perícia com o modificador da ficha e o bônus do companheiro e registra a rolagem no chat. A recarga de 24 horas reais é compartilhada entre os companheiros e as mesas do personagem.
+
+Os auxílios comuns dão +1 em perícias situacionais. O Cervo do Eclipse, vendido em Relíquias, oferece **Trilha Entre Véus** (+2 em Sobrevivência ao traçar uma rota sob neblina ou pouca luz). O auxílio é uma rolagem de perícia e não modifica CA, dano, ataque, salvaguarda ou deslocamento.
+
 No Inventário, a área de itens equipados permite escolher **Personagem**, **Montaria**
 ou **Mascote**. Cada animal comprado pode ser selecionado e equipado com peças da
 mochila, por clique no espaço ou arraste. Os espaços seguem a anatomia: cobras não

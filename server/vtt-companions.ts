@@ -1,4 +1,5 @@
-import {canManageVtt} from './vtt-permissions.js';
+import { canManageVtt } from './vtt-permissions.js';
+import { randomInt } from 'node:crypto';
 import { reuseVttAsset } from './vtt-assets.js';
 import express from 'express';
 import { z } from 'zod';
@@ -14,13 +15,18 @@ import {
   snapPoint,
   documentSchema,
   type VttDocument,
+  type VttToken,
 } from '../shared/vtt.js';
 import { tokenPlacement } from '../shared/vtt-placement';
 import { movementBlocked, attachmentMovementError } from '../shared/vtt-movement.js';
 import { translateAttachmentGroup } from '../shared/vtt-attachments.js';
 import { vttAssetPath } from '../shared/vtt-token-image.js';
-import type { VttCompanion } from '../shared/vtt-companions.js';
+import type { VttCompanion, VttCompanionAid } from '../shared/vtt-companions.js';
 import { basicCompanionTokenBytes } from './companion-token-art.js';
+import { companionAid } from '../shared/companion-aid.js';
+import { deriveSheet, skills, skillAbilities } from '../shared/character-sheet.js';
+import { modifier } from '../shared/rules.js';
+import { rollFormula } from '../shared/vtt-roll.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = {
   id: string;
@@ -31,6 +37,66 @@ type Room = {
 };
 type Access = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
 const uuid = z.string().uuid();
+type AidRow = {
+  id: string;
+  kind: 'mount' | 'pet';
+  species: string;
+  appearance: string;
+  name: string;
+  character_id: string;
+  character_name: string;
+  user_id: string;
+  ready_at: Date | null;
+};
+async function aidRows(db: DB, room: string, ids: string[], lock = false) {
+  if (!ids.length) return [];
+  const { rows } = await db.query<AidRow>(
+    `SELECT a.*, c.name AS character_name, c.user_id,
+        CASE WHEN u.last_used_at > now() - interval '24 hours'
+          THEN u.last_used_at + interval '24 hours' END AS ready_at
+       FROM (
+         SELECT id, character_id, 'mount' AS kind, mount_id AS species, coat AS appearance, name
+         FROM character_mounts WHERE id=ANY($2::uuid[])
+         UNION ALL
+         SELECT id, character_id, 'pet', pet_id, appearance, name
+         FROM character_pets WHERE id=ANY($2::uuid[])
+       ) a
+       JOIN characters c ON c.id=a.character_id AND c.deleted_at IS NULL
+       JOIN vtt_rooms r ON r.id=$1
+       JOIN vtt_character_links l ON l.room_id=r.id AND l.character_id=c.id
+       LEFT JOIN vtt_members m ON m.room_id=r.id AND m.user_id=c.user_id
+       LEFT JOIN vtt_companion_aid u ON u.character_id=c.id
+       WHERE c.user_id=r.owner_id OR m.role='player'
+       ORDER BY c.name,a.name,a.id${lock ? ' FOR KEY SHARE OF c' : ''}`,
+    [room, ids],
+  );
+  return rows;
+}
+
+function activeAidTokens(room: Room) {
+  const scene = room.document.scenes.find((s) => s.id === room.document.activeScene);
+  if (!scene || room.document.initiative.length) return [];
+  return scene.tokens.filter((t) => t.layer === 'tokens' && !t.hidden && t.hp > 0);
+}
+
+function aidOnScene(row: AidRow, tokens: VttToken[]): VttCompanionAid | undefined {
+  if (
+    !tokens.some((t) => t.characterId === row.character_id && t.controller === row.user_id) ||
+    !tokens.some((t) => t.companionId === row.id && t.controller === row.user_id)
+  )
+    return;
+  const aid = companionAid(row.kind, row.species, row.appearance);
+  if (!aid) return;
+  return {
+    id: row.id,
+    kind: row.kind,
+    name: row.name,
+    characterName: row.character_name,
+    aid,
+    readyAt: row.ready_at?.toISOString() ?? null,
+  };
+}
+
 async function owned(db: DB, user: string) {
   const { rows } = await db.query(
     'SELECT a.*,c.name AS character_name,u.name AS owner_name,w.image_revision,(art.image IS NOT NULL) AS has_portrait ' +
@@ -176,10 +242,72 @@ export function vttCompanionsRouter(
 ) {
   const router = express.Router();
   router.get('/vtt/rooms/:id/companions', async (req, res) => {
-    const room = await access(pool, uuid.parse(req.params.id), res.locals.user.id);
+    const user = res.locals.user.id;
+    const room = await access(pool, uuid.parse(req.params.id), user);
+    const tokens = canManageVtt(room, user) ? activeAidTokens(room) : [];
+    const rows = await aidRows(
+      pool,
+      room.id,
+      tokens.flatMap((t) => (t.companionId ? [t.companionId] : [])),
+    );
     res.json({
-      companions: room.role === 'spectator' ? [] : await owned(pool, res.locals.user.id),
+      companions: room.role === 'spectator' ? [] : await owned(pool, user),
+      aids: rows.flatMap((row) => aidOnScene(row, tokens) ?? []),
     });
+  });
+  router.post('/vtt/rooms/:id/companions/:companion/aid', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      id = uuid.parse(req.params.companion);
+    const { id: user, name: author } = res.locals.user;
+    await transaction(async (db) => {
+      if (!canManageVtt(await access(db, rid, user), user))
+        throw new AppError(403, 'Somente o mestre pode autorizar o auxílio na mesa.');
+      const [row] = await aidRows(db, rid, [id], true);
+      if (!row) throw new AppError(404, 'Companheiro não encontrado nesta mesa.');
+      const current = await access(db, rid, user, true);
+      if (!canManageVtt(current, user))
+        throw new AppError(403, 'Somente o mestre pode autorizar o auxílio na mesa.');
+      const check = aidOnScene(row, activeAidTokens(current));
+      if (!check)
+        throw new AppError(409, 'Coloque o personagem e o companheiro em cena fora da iniciativa.');
+      const {
+        rows: [character],
+      } = await db.query(
+        `SELECT c.*, s.choices, s.finalized_at
+         FROM characters c LEFT JOIN character_sheets s ON s.character_id=c.id
+         WHERE c.id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL`,
+        [row.character_id, row.user_id],
+      );
+      if (!character) throw new AppError(404, 'Personagem não encontrado.');
+      const { aid } = check;
+      const skillIndex = skills.indexOf(aid.skill);
+      const skill =
+        character.finalized_at &&
+        deriveSheet(character, character.choices).skills.find((entry) => entry.name === aid.skill);
+      const total =
+        (skill ? skill.value : modifier(character.stats[skillAbilities[skillIndex]])) + aid.bonus;
+      const usage = await db.query(
+        `INSERT INTO vtt_companion_aid(character_id) VALUES($1)
+         ON CONFLICT(character_id) DO UPDATE SET last_used_at=now()
+         WHERE vtt_companion_aid.last_used_at <= now() - interval '24 hours'
+         RETURNING last_used_at`,
+        [row.character_id],
+      );
+      if (!usage.rowCount)
+        throw new AppError(409, 'Este personagem já recebeu auxílio nas últimas 24 horas.');
+      const roll = rollFormula('1d20' + (total < 0 ? total : '+' + total), randomInt);
+      await db.query(
+        'INSERT INTO vtt_messages(room_id,author_id,author,text,roll) VALUES($1,$2,$3,$4,$5)',
+        [
+          rid,
+          user,
+          author,
+          `${check.characterName} · ${aid.skill} · ${check.name} · ${aid.name} (+${aid.bonus})`,
+          JSON.stringify(roll),
+        ],
+      );
+    });
+    res.status(201).json(await state(rid, user));
   });
   router.post(
     '/vtt/rooms/:id/companions/:companion',

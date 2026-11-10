@@ -1,5 +1,5 @@
 // SRD 5.2.1, Equipment p.100; Animals pp.357,359,360,364. See docs/ATTRIBUTION.md.
-export const mounts = [
+export const stableMounts = [
   {
     id: 'riding-horse',
     name: 'Cavalo de montaria',
@@ -63,6 +63,25 @@ export const mounts = [
     head: '22% 22%',
   },
 ] as const;
+export const eclipseStagId = 'eclipse-stag';
+export const eclipseStagImage = '/stable/eclipse-stag-v1.webp';
+export const mounts = [
+  ...stableMounts,
+  {
+    id: eclipseStagId,
+    name: 'Cervo do Eclipse',
+    price_cp: 0,
+    size: 'Grande',
+    speed: 45,
+    capacity: 420,
+    ac: 11,
+    hp: 14,
+    scale: 1.08,
+    description: 'Cervo de pelagem escura com galhadas de pontas pálidas. Exclusivo de Relíquias.',
+    comment: 'Encontra caminho quando a neblina apaga a trilha.',
+    head: '23% 22%',
+  },
+] as const;
 export type Mount = (typeof mounts)[number];
 export type OwnedMount = {
   image_url?: string | null;
@@ -83,6 +102,7 @@ export function ownedMountImage(
   mount: Pick<OwnedMount, 'mount_id' | 'coat' | 'equipment' | 'image_url'>,
 ) {
   if (mount.image_url) return mount.image_url;
+  if (mount.mount_id === eclipseStagId) return eclipseStagImage;
   const armor = mount.equipment.find((id) => id.startsWith('barding-'));
   const saddle = mount.equipment.find((id) => id === 'saddle-riding' || id === 'saddle-military');
   if (armor)
@@ -123,4 +143,5 @@ export const mountCoats: Record<string, { id: string; label: string; color: stri
     { id: 'original', label: 'Castanha', color: '#81563d' },
     { id: 'alternate', label: 'Cinza', color: '#a3a39b' },
   ],
+  [eclipseStagId]: [{ id: 'original', label: 'Carvão lunar', color: '#373643' }],
 };

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Check, Footprints } from 'lucide-react';
 import { api } from './api';
 import { mounts, mountCoats, ownedMountImage, type OwnedMount } from '../shared/mounts';
+import { companionAid, companionAidSummary } from '../shared/companion-aid';
 import './character-mount.css';
 import { useCampMountSize } from './useCampMountSize';
 import { preloadImage } from './asset-preloader';
@@ -102,26 +103,30 @@ export function MountSelection({ characterId }: { characterId: string }) {
         </p>
       )}
       <div className="inventory-mount-list">
-        {items.map((item) => (
-          <button
-            key={item.id}
-            className="inventory-mount-choice"
-            disabled={busy}
-            aria-pressed={item.displayed}
-            aria-label={`Mostrar ${item.name} no acampamento`}
-            onClick={() => void select(item.id)}
-          >
-            <img src={ownedMountImage(item)} alt="" />
-            <span>
-              <strong>{item.name}</strong>
-              <small>
-                {mounts.find((animal) => animal.id === item.mount_id)?.name} ·{' '}
-                {mountCoats[item.mount_id]?.find((coat) => coat.id === item.coat)?.label}
-              </small>
-            </span>
-            {item.displayed && <Check size={17} />}
-          </button>
-        ))}
+        {items.map((item) => {
+          const aid = companionAid('mount', item.mount_id, item.coat);
+          return (
+            <button
+              key={item.id}
+              className="inventory-mount-choice"
+              disabled={busy}
+              aria-pressed={item.displayed}
+              aria-label={`Mostrar ${item.name} no acampamento`}
+              onClick={() => void select(item.id)}
+            >
+              <img src={ownedMountImage(item)} alt="" />
+              <span>
+                <strong>{item.name}</strong>
+                <small>
+                  {mounts.find((animal) => animal.id === item.mount_id)?.name} ·{' '}
+                  {mountCoats[item.mount_id]?.find((coat) => coat.id === item.coat)?.label}
+                </small>
+                {aid && <small>{companionAidSummary(aid)}</small>}
+              </span>
+              {item.displayed && <Check size={17} />}
+            </button>
+          );
+        })}
       </div>
       {items.length > 0 && (
         <button

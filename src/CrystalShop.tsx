@@ -87,7 +87,7 @@ function CrystalMerchant() {
         aria-controls={topicsId}
         onClick={() => (talking ? closeAndFocus() : setView('talk'))}
       >
-        <img src={crystalMerchantArt} width={817} height={1000} alt="" draggable={false} />
+        <img src={crystalMerchantArt} width={900} height={894} alt="" draggable={false} />
       </button>
       <div className="relic-vendor-speech crystal-vendor-speech" hidden={view === 'closed'}>
         <header>

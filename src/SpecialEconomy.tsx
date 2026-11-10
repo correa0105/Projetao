@@ -14,7 +14,7 @@ import {
 } from '../shared/special-economy';
 import { rankTitle } from '../shared/progression';
 import { classes } from '../shared/rules';
-import { mounts } from '../shared/mounts';
+import { eclipseStagId, mounts } from '../shared/mounts';
 import { pets } from '../shared/pets';
 import './special-economy.css';
 
@@ -417,6 +417,7 @@ export function SpecialShop({
   const [state, setState] = useState<SpecialShopState | null>(null);
   const [draft, setDraft] = useState<SpecialOffer | null>(null);
   const [confirm, setConfirm] = useState<SpecialOffer | null>(null);
+  const [companionName, setCompanionName] = useState('');
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
@@ -461,6 +462,12 @@ export function SpecialShop({
   const prestige = currency === 'prestige';
   const showStorefront = prestige || storefront;
   const label = currencyLabels[currency];
+  const nameNeeded = confirm?.category === 'mount' && confirm.target_key === eclipseStagId;
+  const validName = /^[\p{L}\p{M}\p{N} '\-]{1,40}$/u.test(companionName.trim());
+  const startPurchase = (offer: SpecialOffer) => {
+    setCompanionName('');
+    setConfirm(offer);
+  };
   const owned = new Set(state?.purchases.map((p) => p.offer_id));
   const canBuy = (offer: SpecialOffer) =>
     !!state &&
@@ -490,9 +497,15 @@ export function SpecialShop({
       <p>
         Comprar {confirm.name} por {confirm.price.toLocaleString('pt-BR')} {label}?
       </p>
+      {nameNeeded && (
+        <label>
+          Nome da montaria
+          <input value={companionName} maxLength={40} onChange={(event) => setCompanionName(event.target.value)} />
+        </label>
+      )}
       <button
         className="button primary"
-        disabled={busy}
+        disabled={busy || (nameNeeded && !validName)}
         onClick={() =>
           void act(async () => {
             const key = confirm.id + ':' + (characterId || '');
@@ -502,6 +515,7 @@ export function SpecialShop({
               offer_id: confirm.id,
               request_id: requestId,
               revision: confirm.revision,
+              companion_name: nameNeeded ? companionName.trim() : undefined,
               character_id:
                 currency === 'crystals' || companionOffer(confirm) ? characterId : undefined,
             });
@@ -708,7 +722,7 @@ export function SpecialShop({
           status={status}
           busy={busy}
           canBuy={canBuy}
-          onBuy={setConfirm}
+          onBuy={startPurchase}
           onEdit={setDraft}
           onCreate={createOffer}
           onCollection={() => setCollectionOpen(true)}
@@ -803,7 +817,7 @@ export function SpecialShop({
                     <button
                       className="button outline"
                       disabled={!canBuy(offer)}
-                      onClick={() => setConfirm(offer)}
+                      onClick={() => startPurchase(offer)}
                     >
                       Comprar
                     </button>

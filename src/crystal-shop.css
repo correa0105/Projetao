@@ -28,25 +28,22 @@
 }
 
 .crystal-vendor {
-  --vendor-height: clamp(13rem, 60dvh, 39rem);
-  --vendor-art-width: calc(1.85 * var(--vendor-height));
+  --vendor-width: min(44vw, clamp(17rem, 65dvh, 42rem));
   position: fixed;
   z-index: 2;
-  right: 0;
-  /* A borda inferior do recorte acompanha a linha do balcão na arte de fundo. */
-  bottom: calc(42dvh - 0.116 * max(100dvh, 66.667vw) - 3px);
-  width: min(41vw, 42rem);
+  right: clamp(0px, 2vw, 2.5rem);
+  /* As mãos ficam sobre o tampo, cuja linha depende do recorte do cenário. */
+  bottom: calc(42dvh - 0.116 * max(100dvh, 66.667vw) - 19px);
+  width: var(--vendor-width);
   pointer-events: none;
 }
 
 .crystal-shop .crystal-vendor-figure {
   display: block;
   width: 100%;
-  height: var(--vendor-height);
+  aspect-ratio: 900 / 894;
   min-height: 0;
   padding: 0;
-  overflow: clip;
-  overflow-clip-margin: 2px;
   border: 0;
   border-radius: 0;
   background: none;
@@ -57,25 +54,22 @@
 
 .crystal-vendor-figure img {
   display: block;
-  width: var(--vendor-art-width);
-  max-width: none;
+  width: 100%;
   height: auto;
-  filter: drop-shadow(1px 0 #bd9a62) drop-shadow(-1px 0 #bd9a62) drop-shadow(0 1px #bd9a62)
-    drop-shadow(0 -1px #bd9a62);
+  filter: drop-shadow(0 4px 8px #160e09b0) drop-shadow(0 0 1px #bf9c6d);
 }
 
 .crystal-vendor-figure[data-greeting] img {
-  filter: none;
+  filter: drop-shadow(0 4px 8px #160e09b0);
 }
 
 .crystal-vendor-figure:is(:hover, :focus-visible, [aria-expanded='true']) img {
-  filter: drop-shadow(1px 0 #ffe3aa) drop-shadow(-1px 0 #ffe3aa) drop-shadow(0 1px #ffe3aa)
-    drop-shadow(0 -1px #ffe3aa) drop-shadow(0 0 4px #cb9759);
+  filter: drop-shadow(0 4px 8px #160e09b0) drop-shadow(0 0 2px #e5b875);
 }
 
 .crystal-vendor .crystal-vendor-speech {
-  top: calc(0.11 * var(--vendor-art-width) - 2rem);
-  left: calc(0.24 * var(--vendor-art-width) - 6px);
+  top: calc(0.19 * var(--vendor-width) - 2rem);
+  left: calc(0.37 * var(--vendor-width) - 6px);
   width: clamp(10.5rem, 16vw, 15rem);
   transform: translateX(-100%);
   background: #25242aef;
@@ -111,10 +105,8 @@
   }
 
   .crystal-vendor {
-    --vendor-height: clamp(12rem, 44dvh, 25rem);
-    --vendor-art-width: calc(1.74 * var(--vendor-height));
-    bottom: 44dvh;
-    width: min(66vw, 30rem);
+    --vendor-width: min(69vw, clamp(12rem, 44dvh, 25rem));
+    bottom: 42.8dvh;
   }
 
   .crystal-vendor .crystal-vendor-speech {
@@ -129,19 +121,18 @@
   }
 
   .crystal-vendor {
-    --vendor-height: clamp(11rem, 37dvh, 21rem);
-    --vendor-art-width: min(112vw, calc(1.75 * var(--vendor-height)));
-    width: 70vw;
+    --vendor-width: min(76vw, clamp(11rem, 41dvh, 23rem));
+    right: 0.5rem;
   }
 
   .crystal-vendor .crystal-vendor-speech {
-    top: max(-1.5rem, calc(110px - (56dvh - var(--vendor-height))));
+    top: max(-1rem, calc(110px - (57.2dvh - var(--vendor-width))));
     width: min(42vw, 12rem);
     padding: 10px;
   }
 
   .crystal-vendor .crystal-vendor-speech::after {
-    top: calc(0.1 * var(--vendor-art-width) + 1.25rem);
+    top: calc(0.18 * var(--vendor-width) + 0.75rem);
   }
 
   .crystal-vendor .crystal-vendor-speech p {

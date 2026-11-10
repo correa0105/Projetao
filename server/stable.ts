@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { stableGear } from '../shared/stable-gear.js';
-import { mounts } from '../shared/mounts.js';
+import { stableMounts } from '../shared/mounts.js';
 import { withCompanionImages } from './companion-images.js';
 import { currentGoldUnlimited, spendGold } from './gold.js';
 
@@ -75,7 +75,7 @@ export function stableRouter() {
         idempotency_key: z.string().uuid(),
       })
       .parse(req.body);
-    const mount = mounts.find((m) => m.id === data.mount_id);
+    const mount = stableMounts.find((m) => m.id === data.mount_id);
     if (!mount) throw new AppError(400, 'Montaria indisponível.');
     const equipment = [...data.equipment].sort();
     const gear = equipment.map((id) => stableGear.find((g) => g.id === id));

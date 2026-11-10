@@ -9,7 +9,8 @@ import {
   type CSSProperties,
 } from 'react';
 import { Coins, Check, Footprints } from 'lucide-react';
-import { mounts, mountNameComment, mountCoats } from '../shared/mounts';
+import { stableMounts as mounts, mountNameComment, mountCoats } from '../shared/mounts';
+import { companionAid, companionAidSummary } from '../shared/companion-aid';
 import type { Character } from './types';
 import { post } from './api';
 import { money } from '../shared/rules';
@@ -124,6 +125,7 @@ export function Stable({
 }) {
   const [selected, setSelected] = useState<string>(mounts[0].id);
   const mount = mounts.find((m) => m.id === selected)!;
+  const aid = companionAid('mount', mount.id);
   const [name, setName] = useState('');
   const [speech, setSpeech] = useState(ginnaGreeting);
   const [greetingVisible, setGreetingVisible] = useState(true);
@@ -549,6 +551,7 @@ export function Stable({
             <span className="stable-kicker">BESTA · {mount.size.toUpperCase()}</span>
             <h3>{mount.name}</h3>
             <p>{mount.description}</p>
+            {aid && <p>{companionAidSummary(aid)}</p>}
             <dl>
               {[
                 ['Deslocamento', `${mount.speed} pés (${mount.speed * 0.3} m)`],

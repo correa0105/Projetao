@@ -4704,6 +4704,14 @@ export function VttSession({ characters, user, media, reviewVisualPreferences }:
                   roomId={state.id}
                   kind={tab === 'mounts' ? 'mount' : 'pet'}
                   disabled={spectator || preview || busy}
+                  aidContext={gm && !preview ? scene.id + ':' + doc.initiative.length + ':' +
+                    scene.tokens.filter((token) => (token.characterId || token.companionId) && !token.hidden && token.hp > 0)
+                      .map((token) => token.id).join(',') : undefined}
+                  rollAid={(id) => void act(async () => {
+                    await save();
+                    receive(await post<VttState>(`/vtt/rooms/${state.id}/companions/${id}/aid`, {}));
+                    setTab('chat');
+                  })}
                   bring={(id) => void act(() => bringCompanion(id))}
                 />
               )}

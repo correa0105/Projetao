@@ -18,7 +18,7 @@ import {
   type SheetRecord,
 } from '../shared/character-sheet.js';
 import { ABILITY_ROLL_MIN_SCORE } from '../shared/ability-rolls.js';
-import { mounts } from '../shared/mounts.js';
+import { eclipseStagId, mounts } from '../shared/mounts.js';
 import { pets } from '../shared/pets.js';
 import weaponAliases from '../shared/catalog-weapon-names.json' with { type: 'json' };
 import { withdrawnWeaponOffer } from '../shared/shop-availability.js';
@@ -578,6 +578,7 @@ export function specialEconomyRouter() {
         request_id: uuid,
         revision: z.number().int().min(1),
         character_id: uuid.optional(),
+        companion_name: z.string().trim().min(1).max(40).regex(/^[\p{L}\p{M}\p{N} '\-]+$/u).optional(),
       })
       .strict()
       .parse(req.body);
@@ -588,7 +589,7 @@ export function specialEconomyRouter() {
         await db.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE', [uid]);
         const previous = (
           await db.query(
-            'SELECT id,currency,offer_id,character_id FROM special_shop_purchases WHERE user_id=$1 AND request_id=$2',
+            "SELECT id,currency,offer_id,character_id,snapshot->>'companion_name' AS companion_name FROM special_shop_purchases WHERE user_id=$1 AND request_id=$2",
             [uid, input.request_id],
           )
         ).rows[0];
@@ -596,7 +597,8 @@ export function specialEconomyRouter() {
           if (
             previous.currency !== currency ||
             previous.offer_id !== input.offer_id ||
-            previous.character_id !== (input.character_id ?? null)
+            previous.character_id !== (input.character_id ?? null) ||
+            previous.companion_name !== (input.companion_name ?? null)
           )
             throw new AppError(409, 'Este pedido já foi usado para outra compra.');
           return {
@@ -617,6 +619,11 @@ export function specialEconomyRouter() {
         if (!offer || offer.revision !== input.revision)
           throw new AppError(409, 'A oferta mudou. Atualize a loja.');
         const companion = offer.category === 'mount' || offer.category === 'pet';
+        const namedMount = offer.category === 'mount' && offer.target_key === eclipseStagId;
+        if (namedMount && !input.companion_name)
+          throw new AppError(400, 'Dê um nome ao Cervo do Eclipse.');
+        if (!namedMount && input.companion_name)
+          throw new AppError(400, 'Esta oferta não aceita nome de montaria.');
         if ((currency === 'crystals' || companion) !== !!input.character_id)
           throw new AppError(400, 'Escolha o personagem que receberá o companheiro.');
         if (
@@ -648,7 +655,7 @@ export function specialEconomyRouter() {
             offer.id,
             currency,
             offer.price,
-            JSON.stringify({ category, name, description, image_path, target_key }),
+            JSON.stringify({ category, name, description, image_path, target_key, companion_name: input.companion_name }),
             input.request_id,
           ],
         );
@@ -656,7 +663,7 @@ export function specialEconomyRouter() {
           await db.query(
             `INSERT INTO character_mounts(character_id,mount_id,name,price_cp,idempotency_key,prestige_art,displayed)
            VALUES($1,$2,left($3,40),0,$4,$5,NOT EXISTS(SELECT 1 FROM character_mounts WHERE character_id=$1))`,
-            [input.character_id, target_key, name, purchase.id, image_path],
+            [input.character_id, target_key, input.companion_name ?? name, purchase.id, image_path],
           );
         if (category === 'pet')
           await db.query(

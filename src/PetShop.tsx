@@ -18,6 +18,7 @@ import { money } from '../shared/rules';
 import { petArtwork } from './pet-art';
 import { Modal } from './components';
 import { OwnedPetArt } from './OwnedPetArt';
+import { companionAid, companionAidSummary } from '../shared/companion-aid';
 import type { Character } from './types';
 import './pet-shop.css';
 
@@ -124,6 +125,7 @@ export function PetCollection({ characterId }: { characterId: string }) {
       <div>
         {items.map((item) => {
           const pet = pets.find((pet) => pet.id === item.pet_id);
+          const aid = companionAid('pet', item.pet_id, item.appearance);
           return pet ? (
             <button
               key={item.id}
@@ -141,6 +143,7 @@ export function PetCollection({ characterId }: { characterId: string }) {
                     (breed) => breed.pet_id === item.pet_id && breed.appearance === item.appearance,
                   )?.name || pet.name}
                 </small>
+                {aid && <small>{companionAidSummary(aid)}</small>}
               </span>
               {item.displayed && <Check size={16} />}
             </button>
@@ -169,6 +172,7 @@ export function PetShop({
 }) {
   const [selected, setSelected] = useState<Pet>(pets[0]);
   const [appearance, setAppearance] = useState('original');
+  const selectedAid = companionAid('pet', selected.id, appearance);
   const [soundTrigger, setSoundTrigger] = useState(0);
   usePetAppearanceSound(selected.id, appearance, soundTrigger);
   const [name, setName] = useState('');
@@ -390,6 +394,7 @@ export function PetShop({
                 ))}
               </fieldset>
             )}
+            {selectedAid && <p className="muted">{companionAidSummary(selectedAid)}</p>}
             <label>
               Nome do mascote
               <input
@@ -564,6 +569,7 @@ export function PetShop({
     </section>
   );
 }
+
 function PetBreedEditor({
   breed,
   close,

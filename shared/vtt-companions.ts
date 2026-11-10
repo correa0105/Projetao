@@ -1,4 +1,14 @@
+import type { CompanionAid } from './companion-aid.js';
+
 export const companionMime = 'application/x-alvorada-companion';
+export type VttCompanionAid = {
+  id: string;
+  kind: 'mount' | 'pet';
+  name: string;
+  characterName: string;
+  aid: CompanionAid;
+  readyAt: string | null;
+};
 export type VttCompanion = {
   id: string;
   kind: 'mount' | 'pet';

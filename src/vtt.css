@@ -434,6 +434,11 @@
   font-size: 10px;
   color: #a49980;
 }
+.vtt-companion-aid-row small {
+  display: block;
+  margin-top: 3px;
+  line-height: 1.4;
+}
 .vtt-list-row button:first-child {
   flex: 1;
 }

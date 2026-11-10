@@ -10,6 +10,7 @@ import sharp from 'sharp';
 import { pool, transaction } from './db.js';
 import { AppError } from './services.js';
 import { normalizeArtImage, artWorkerAvailable } from './character-art.js';
+import { eclipseStagId, eclipseStagImage } from '../shared/mounts.js';
 import {
   allocatedCopies,
   companionAllocated,
@@ -183,7 +184,9 @@ export async function trustedCompanionBase(animal: {
   if (animal.kind === 'mount')
     return normalizeArtImage(
       await localImage(
-        `/stable/${animal.species_id}${animal.appearance === 'alternate' ? '-alternate' : ''}.png`,
+        animal.species_id === eclipseStagId
+          ? eclipseStagImage
+          : `/stable/${animal.species_id}${animal.appearance === 'alternate' ? '-alternate' : ''}.png`,
       ),
     );
   const art = petArtwork(animal.species_id, animal.appearance),
