@@ -158,6 +158,7 @@ export type Page =
   | 'hooks'
   | 'shop'
   | 'reliquias'
+  | 'cristais'
   | 'stable'
   | 'pets'
   | 'events'

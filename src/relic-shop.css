@@ -9,7 +9,7 @@
 }
 
 .relic-shop {
-  --relic-showcase-width: calc(56vw - var(--page-header-edge));
+  --special-shop-showcase-width: calc(56vw - var(--page-header-edge));
   position: relative;
   isolation: isolate;
   min-height: 100dvh;
@@ -93,47 +93,47 @@
   background: linear-gradient(90deg, #130e0a40, #130e0a24 46%, transparent 76%);
 }
 
-.relic-shop-showcase {
+:is(.relic-shop-showcase, .crystal-shop-showcase) {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: clamp(7.75rem, 8vw, 9rem) minmax(0, 1fr);
   gap: 10px;
-  width: var(--relic-showcase-width);
+  width: var(--special-shop-showcase-width);
   height: clamp(17rem, 43dvh, 24rem);
 }
 
-.relic-shop-showcase[data-empty] {
+:is(.relic-shop-showcase, .crystal-shop-showcase)[data-empty] {
   height: auto;
 }
 
-.relic-shop-showcase .shop-shelves h2 {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .shop-shelves h2 {
   font-size: 0.85rem;
 }
 
-.relic-shop-showcase .shop-shelves button {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .shop-shelves button {
   font-size: 0.79rem;
 }
 
-.relic-shop-showcase .shop-search-row {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .shop-search-row {
   flex-wrap: wrap;
 }
 
-.relic-shop-showcase .shop-search-row img {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .shop-search-row img {
   object-fit: contain;
 }
 
-.relic-shop-showcase .relic-prestige-table-button {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .relic-prestige-table-button {
   align-items: center;
   font-size: 0.74rem;
   white-space: nowrap;
 }
 
-.relic-shop-showcase .shop-catalog > p {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .shop-catalog > p {
   margin: 0.45rem 0 0;
 }
 
-.relic-shop-showcase .relic-shop-add {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .special-shop-add {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -142,11 +142,11 @@
   font-size: 0.75rem;
 }
 
-.relic-shop-showcase .shop-product-art {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .shop-product-art {
   cursor: default;
 }
 
-.relic-shop-showcase .relic-shop-empty {
+:is(.relic-shop-showcase, .crystal-shop-showcase) .special-shop-empty {
   grid-column: 1 / -1;
   margin: 0;
   padding: 1rem;
@@ -245,14 +245,14 @@
 }
 
 @media (min-width: 1250px) {
-  .relic-shop-showcase .shop-product-list {
+  :is(.relic-shop-showcase, .crystal-shop-showcase) .shop-product-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 1020px) {
   .relic-shop {
-    --relic-showcase-width: 100%;
+    --special-shop-showcase-width: 100%;
     padding-top: clamp(17rem, 56dvh, 36rem);
   }
 
@@ -290,11 +290,11 @@
     scrollbar-color: #ad9159 #28271d;
   }
 
-  .relic-shop-showcase {
+  :is(.relic-shop-showcase, .crystal-shop-showcase) {
     height: auto;
   }
 
-  .relic-shop-showcase .shop-product-list {
+  :is(.relic-shop-showcase, .crystal-shop-showcase) .shop-product-list {
     overflow: visible;
   }
 }
@@ -304,18 +304,18 @@
     padding-inline: 12px;
   }
 
-  .relic-shop-showcase {
+  :is(.relic-shop-showcase, .crystal-shop-showcase) {
     grid-template-columns: minmax(0, 1fr);
     gap: 7px;
   }
 
-  .relic-shop-showcase .shop-shelves button {
+  :is(.relic-shop-showcase, .crystal-shop-showcase) .shop-shelves button {
     width: auto;
     gap: 0.45rem;
     padding-inline: 0.55rem;
   }
 
-  .relic-shop-showcase .shop-search-row label {
+  :is(.relic-shop-showcase, .crystal-shop-showcase) .shop-search-row label {
     flex-basis: 100%;
   }
 

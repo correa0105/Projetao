@@ -2,23 +2,44 @@ import { useState, type ReactNode } from 'react';
 import { Pencil, Plus, Search, ShoppingBag, Table2 } from 'lucide-react';
 import {
   specialOfferCategoryLabels,
+  type SpecialCurrency,
   type SpecialOffer,
   type SpecialShopState,
 } from '../shared/special-economy';
 
-const shelves = [
+const relicShelves = [
   ['all', 'Todos'],
   ['profile_border', 'Bordas de perfil'],
   ['weapon_skin', 'Skins de armas'],
   ['mount', 'Montarias'],
   ['pet', 'Mascotes'],
 ] as const;
+const crystalShelves = [
+  ['all', 'Todos'],
+  ['tower_item', 'Itens de expedição'],
+] as const;
+const currencyText = {
+  prestige: {
+    title: 'Relíquias',
+    label: 'Prestígio',
+    icon: 'reliquias',
+    collection: 'Minha coleção',
+  },
+  crystals: {
+    title: 'Cristais',
+    label: 'cristais',
+    icon: 'cristais',
+    collection: 'Itens do personagem',
+  },
+} as const;
 
 function searchText(value: string) {
   return value.normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('pt-BR');
 }
 
-export function RelicCatalogue({
+export function SpecialShopCatalogue({
+  currency,
+  characterName,
   state,
   status,
   busy,
@@ -29,6 +50,8 @@ export function RelicCatalogue({
   onCollection,
   onPrestige,
 }: {
+  currency: SpecialCurrency;
+  characterName?: string;
   state: SpecialShopState | null;
   status: ReactNode;
   busy: boolean;
@@ -39,8 +62,12 @@ export function RelicCatalogue({
   onCollection: () => void;
   onPrestige?: () => void;
 }) {
-  const [shelf, setShelf] = useState<(typeof shelves)[number][0]>('all');
+  const [shelf, setShelf] = useState<'all' | SpecialOffer['category']>('all');
   const [search, setSearch] = useState('');
+  const crystals = currency === 'crystals';
+  const shelves = crystals ? crystalShelves : relicShelves;
+  const text = currencyText[currency];
+  const icon = `/navigation/illustrated-20261020/${text.icon}.webp`;
   const query = searchText(search.trim());
   const offers = state?.offers ?? [];
   const visible = offers.filter(
@@ -52,11 +79,11 @@ export function RelicCatalogue({
 
   return (
     <section
-      className="relic-shop-showcase"
-      aria-label="Catálogo de Relíquias"
+      className={crystals ? 'crystal-shop-showcase' : 'relic-shop-showcase'}
+      aria-label={'Catálogo de ' + text.title}
       data-empty={!visible.length || undefined}
     >
-      <nav className="shop-shelves shop-stone" aria-label="Prateleiras de Relíquias">
+      <nav className="shop-shelves shop-stone" aria-label={'Prateleiras de ' + text.title}>
         <h2>Prateleiras</h2>
         {shelves.map(([key, label]) => (
           <button
@@ -88,22 +115,17 @@ export function RelicCatalogue({
             />
           </label>
           {state && (
-            <span title="Saldo de Prestígio">
-              <img
-                src="/navigation/illustrated-20261020/reliquias.webp"
-                width={17}
-                height={17}
-                alt=""
-              />
-              {state.balance.toLocaleString('pt-BR')} Prestígio
+            <span title={'Saldo de ' + text.label}>
+              <img src={icon} width={17} height={17} alt="" />
+              {state.balance.toLocaleString('pt-BR')} {text.label}
             </span>
           )}
           <button
             type="button"
             className="shop-cart-toggle"
-            aria-label="Minha coleção"
-            title="Minha coleção"
-            disabled={!state}
+            aria-label={text.collection}
+            title={text.collection}
+            disabled={!state || (crystals && !characterName)}
             onClick={onCollection}
           >
             <ShoppingBag size={17} aria-hidden="true" />
@@ -120,20 +142,32 @@ export function RelicCatalogue({
             </button>
           )}
         </div>
+        {crystals && (
+          <p className="crystal-shop-note">
+            {characterName ? (
+              <>
+                As compras ficam com <strong>{characterName}</strong> para uso em mesas oficiais de
+                expedições ativas da Torre.
+              </>
+            ) : (
+              'Selecione um personagem para usar a carteira de cristais da Torre.'
+            )}
+          </p>
+        )}
         {status}
         {state?.can_edit && (
           <button
             type="button"
-            className="button outline relic-shop-add"
+            className="button outline special-shop-add"
             disabled={busy}
             onClick={() => onCreate(shelf === 'all' ? undefined : shelf)}
           >
             <Plus size={14} aria-hidden="true" /> Cadastrar oferta
           </button>
         )}
-        <div className="shop-product-list" tabIndex={0} aria-label="Ofertas de Relíquias">
+        <div className="shop-product-list" tabIndex={0} aria-label={'Ofertas de ' + text.title}>
           {state && !visible.length && (
-            <p className="relic-shop-empty" role="status">
+            <p className="special-shop-empty" role="status">
               {!offers.length
                 ? 'Nenhuma oferta publicada.'
                 : query
@@ -144,7 +178,9 @@ export function RelicCatalogue({
           {visible.map((offer) => (
             <article key={offer.id} className="shop-product">
               <div className="shop-product-art">
-                {offer.image_path && <img src={offer.image_path} alt="" loading="lazy" />}
+                {(offer.image_path || crystals) && (
+                  <img src={offer.image_path || icon} alt="" loading="lazy" />
+                )}
               </div>
               <div>
                 <small>{specialOfferCategoryLabels[offer.category]}</small>
@@ -152,11 +188,13 @@ export function RelicCatalogue({
                 <p>{offer.description}</p>
                 <footer>
                   <strong>
-                    {offer.active ? offer.price.toLocaleString('pt-BR') + ' Prestígio' : 'Rascunho'}
+                    {offer.active
+                      ? offer.price.toLocaleString('pt-BR') + ' ' + text.label
+                      : 'Rascunho'}
                   </strong>
                   {offer.active && (
                     <button type="button" disabled={!canBuy(offer)} onClick={() => onBuy(offer)}>
-                      {owned.has(offer.id) ? (
+                      {!crystals && owned.has(offer.id) ? (
                         'Na coleção'
                       ) : (
                         <>

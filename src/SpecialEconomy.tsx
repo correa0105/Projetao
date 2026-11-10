@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Modal } from './components';
-import { RelicCatalogue } from './RelicCatalogue';
+import { SpecialShopCatalogue } from './SpecialShopCatalogue';
 import { api, post } from './api';
 import type { Character } from './types';
 import {
@@ -401,11 +401,15 @@ const companionOffer = (offer: SpecialOffer) =>
 export function SpecialShop({
   currency,
   characterId,
+  characterName,
+  storefront = false,
   changed,
   onPrestige,
 }: {
   currency: SpecialCurrency;
   characterId?: string;
+  characterName?: string;
+  storefront?: boolean;
   changed?: () => Promise<void>;
   onPrestige?: () => void;
 }) {
@@ -455,6 +459,7 @@ export function SpecialShop({
     }
   }
   const prestige = currency === 'prestige';
+  const showStorefront = prestige || storefront;
   const label = currencyLabels[currency];
   const owned = new Set(state?.purchases.map((p) => p.offer_id));
   const canBuy = (offer: SpecialOffer) =>
@@ -467,7 +472,7 @@ export function SpecialShop({
     const offer = blankOffer(currency);
     setDraft({ ...offer, category: category ?? offer.category });
   };
-  const dialogOpen = prestige && (confirm || draft || collectionOpen);
+  const dialogOpen = showStorefront && (confirm || draft || collectionOpen);
   const feedback = (
     <>
       {error && <p role="alert">{error}</p>}
@@ -529,7 +534,7 @@ export function SpecialShop({
         });
       }}
     >
-      {!prestige && <h4>{draft.revision ? 'Editar oferta' : 'Nova oferta'}</h4>}
+      {!showStorefront && <h4>{draft.revision ? 'Editar oferta' : 'Nova oferta'}</h4>}
       <label>
         Categoria
         <select
@@ -693,10 +698,12 @@ export function SpecialShop({
     </ul>
   );
 
-  if (prestige) {
+  if (showStorefront) {
     return (
       <>
-        <RelicCatalogue
+        <SpecialShopCatalogue
+          currency={currency}
+          characterName={characterName}
           state={state}
           status={status}
           busy={busy}
@@ -735,7 +742,7 @@ export function SpecialShop({
         )}
         {collectionOpen && (
           <Modal
-            title="Minha coleção"
+            title={prestige ? 'Minha coleção' : 'Itens do personagem'}
             close={() => {
               if (!busy) setCollectionOpen(false);
             }}
@@ -745,7 +752,11 @@ export function SpecialShop({
               {state?.purchases.length ? (
                 collection
               ) : (
-                <p>Você ainda não tem relíquias na coleção.</p>
+                <p>
+                  {prestige
+                    ? 'Você ainda não tem relíquias na coleção.'
+                    : 'Este personagem ainda não tem itens do Entreposto.'}
+                </p>
               )}
             </div>
           </Modal>

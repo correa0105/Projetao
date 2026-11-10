@@ -57,6 +57,7 @@ const packages: {
     items: [
       { page: 'shop', label: 'Empório' },
       { page: 'reliquias', label: 'Relíquias' },
+      { page: 'cristais', label: 'Cristais' },
       { page: 'stable', label: 'Estábulo' },
       { page: 'pets', label: 'Mascotes' },
       { page: 'cards', label: 'Salão das cartas' },

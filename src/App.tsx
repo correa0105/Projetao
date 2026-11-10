@@ -70,6 +70,7 @@ import { Cards } from './Cards';
 import { CharacterCards } from './CharacterCards';
 import { Shop } from './Shop';
 import { RelicShop } from './RelicShop';
+import { CrystalShop } from './CrystalShop';
 import { Inventory } from './Inventory';
 import { CharacterCamp } from './CharacterCamp';
 import { money, modifier, statNames } from '../shared/rules';
@@ -100,6 +101,7 @@ const titles: Record<Page, string> = {
   hooks: 'Mural Alvorada',
   shop: 'Empório do viajante',
   reliquias: 'Relíquias',
+  cristais: 'Loja de Cristais',
   stable: 'Estábulo da Alvorada',
   pets: 'Casa dos mascotes',
   events: 'Eventos da Alvorada',
@@ -616,6 +618,8 @@ function Portal({ user }: { user: User }) {
       return <CharacterCards key={character?.id || 'visitor'} character={character} />;
     if (page === 'reliquias')
       return <RelicShop characterId={character?.id} onPurchased={refresh} />;
+    if (page === 'cristais')
+      return <CrystalShop character={character} onPurchased={refresh} />;
     return (
       <>
         {page !== 'characters' && page !== 'pets' && (
