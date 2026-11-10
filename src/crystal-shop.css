@@ -28,22 +28,25 @@
 }
 
 .crystal-vendor {
+  --vendor-height: clamp(13rem, 60dvh, 39rem);
+  --vendor-art-width: calc(1.85 * var(--vendor-height));
   position: fixed;
   z-index: 2;
-  right: clamp(0.75rem, 5vw, 6rem);
-  bottom: calc(42dvh - 0.116 * max(100dvh, 66.667vw) - 10px);
-  width: min(41vw, clamp(18rem, 53dvh, 36rem));
+  right: 0;
+  /* A borda inferior do recorte acompanha a linha do balcão na arte de fundo. */
+  bottom: calc(42dvh - 0.116 * max(100dvh, 66.667vw) - 3px);
+  width: min(41vw, 42rem);
   pointer-events: none;
 }
 
 .crystal-shop .crystal-vendor-figure {
   display: block;
   width: 100%;
-  aspect-ratio: 1;
+  height: var(--vendor-height);
   min-height: 0;
   padding: 0;
   overflow: clip;
-  overflow-clip-margin: 4px;
+  overflow-clip-margin: 2px;
   border: 0;
   border-radius: 0;
   background: none;
@@ -54,7 +57,8 @@
 
 .crystal-vendor-figure img {
   display: block;
-  width: 100%;
+  width: var(--vendor-art-width);
+  max-width: none;
   height: auto;
   filter: drop-shadow(1px 0 #bd9a62) drop-shadow(-1px 0 #bd9a62) drop-shadow(0 1px #bd9a62)
     drop-shadow(0 -1px #bd9a62);
@@ -70,18 +74,20 @@
 }
 
 .crystal-vendor .crystal-vendor-speech {
-  top: 5%;
-  left: 47%;
+  top: calc(0.11 * var(--vendor-art-width) - 2rem);
+  left: calc(0.24 * var(--vendor-art-width) - 6px);
   width: clamp(10.5rem, 16vw, 15rem);
+  transform: translateX(-100%);
   background: #25242aef;
   pointer-events: auto;
 }
 
 .crystal-vendor .crystal-vendor-speech::after {
   display: block;
-  top: 30px;
-  left: 0;
-  transform: translateX(-5px) rotate(225deg);
+  top: 2rem;
+  right: -5px;
+  left: auto;
+  transform: rotate(45deg);
   background: #25242a;
 }
 
@@ -105,9 +111,10 @@
   }
 
   .crystal-vendor {
-    right: clamp(0.75rem, 9vw, 6rem);
-    bottom: 43dvh;
-    width: min(66vw, clamp(12rem, 41dvh, 24rem));
+    --vendor-height: clamp(12rem, 44dvh, 25rem);
+    --vendor-art-width: calc(1.74 * var(--vendor-height));
+    bottom: 44dvh;
+    width: min(66vw, 30rem);
   }
 
   .crystal-vendor .crystal-vendor-speech {
@@ -122,22 +129,19 @@
   }
 
   .crystal-vendor {
-    right: 0.75rem;
+    --vendor-height: clamp(11rem, 37dvh, 21rem);
+    --vendor-art-width: min(112vw, calc(1.75 * var(--vendor-height)));
+    width: 70vw;
   }
 
   .crystal-vendor .crystal-vendor-speech {
-    top: -1.75rem;
-    right: 78%;
-    left: auto;
+    top: max(-1.5rem, calc(110px - (56dvh - var(--vendor-height))));
     width: min(42vw, 12rem);
     padding: 10px;
   }
 
   .crystal-vendor .crystal-vendor-speech::after {
-    top: 3.75rem;
-    right: -5px;
-    left: auto;
-    transform: rotate(45deg);
+    top: calc(0.1 * var(--vendor-art-width) + 1.25rem);
   }
 
   .crystal-vendor .crystal-vendor-speech p {
@@ -148,15 +152,5 @@
   .crystal-vendor .relic-vendor-topics button {
     padding: 5px 6px;
     font-size: 0.73rem;
-  }
-}
-
-@media (max-width: 650px) and (max-height: 700px) {
-  .crystal-vendor .crystal-vendor-speech {
-    top: 0;
-  }
-
-  .crystal-vendor .crystal-vendor-speech::after {
-    top: 2rem;
   }
 }
