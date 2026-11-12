@@ -244,7 +244,7 @@ export function PrestigeCenter({ close }: { close: () => void }) {
       <div className="stack special-economy">
         <p>
           A partir do nível {minimumPrestigeLevel}, aposente um personagem no acampamento para
-          receber Prestígio. Use-o em Relíquias ou contribua para a Ferraria da sua guilda.
+          receber Prestígio. Use-o nas ofertas da loja Relíquias.
         </p>
         {error && <p role="alert">{error}</p>}
         {!state && !error && <p role="status">Consultando a tabela de Prestígio…</p>}
