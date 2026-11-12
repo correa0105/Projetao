@@ -87,21 +87,22 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 8px;
 }
 .tutorial-preference {
   display: flex;
   align-items: center;
-  gap: 9px;
-  color: #e9dfcc;
-  font-size: 0.82rem;
-  line-height: 1.5;
+  gap: 6px;
+  min-height: 24px;
+  color: #c6bca8;
+  font-size: 0.6875rem;
+  line-height: 1.4;
   cursor: pointer;
 }
 .tutorial-preference input {
-  flex: 0 0 16px;
-  width: 16px;
-  height: 16px;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
   margin: 0;
   accent-color: #b78b4d;
 }

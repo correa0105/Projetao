@@ -23,7 +23,9 @@ export function PageTutorial({
   ready: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const [step, setStep] = useState(0);
+  const [progress, setProgress] = useState({ page, index: 0 });
+  const step = progress.page === page ? progress.index : 0;
+  const setStep = (index: number) => setProgress({ page, index });
   const [iconFailed, setIconFailed] = useState(false);
   const [preferences, setPreferences] = useState<{ userId: string; dismissed: string[] } | null>(
     null,
@@ -159,7 +161,7 @@ export function PageTutorial({
               )}
             </span>
             <div>
-              <span className="tutorial-label">Ajuda rápida</span>
+              <span className="tutorial-label">Como usar esta aba</span>
               <h2 id={titleId}>{tutorial.title}</h2>
             </div>
             <button
@@ -173,15 +175,19 @@ export function PageTutorial({
           </header>
           <section className="tutorial-explanation" aria-live="polite">
             <span className="tutorial-position">
-              Dica {step + 1} de {tutorial.steps.length}
+              Passo {step + 1} de {tutorial.steps.length}
             </span>
             <h3>{tutorial.steps[step].title}</h3>
             <p>{tutorial.steps[step].text}</p>
           </section>
           <footer>
-            <label className="tutorial-preference">
+            <label
+              className="tutorial-preference"
+              title="Vale somente para esta aba. Reabra pelo botão de ajuda quando precisar."
+            >
               <input
                 type="checkbox"
+                aria-label="Não mostrar automaticamente nesta aba"
                 checked={
                   pendingPreference?.userId === userId && pendingPreference.page === page
                     ? pendingPreference.dismissed
@@ -190,9 +196,8 @@ export function PageTutorial({
                 disabled={busy || !loaded}
                 onChange={(event) => void savePreference(event.target.checked)}
               />
-              Não mostrar automaticamente nesta aba
+              Não abrir automaticamente
             </label>
-            <p className="tutorial-preference-hint">Reabra pelo botão de ajuda quando precisar.</p>
             {busy && (
               <p className="tutorial-preference-hint" role="status">
                 Salvando preferência…

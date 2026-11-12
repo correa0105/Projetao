@@ -226,9 +226,12 @@ carregamento mantém os casos de atraso, falha, nova tentativa e Empório separa
 ## Ajuda por aba
 
 A ajuda abre automaticamente a cada entrada em uma aba, em um cartão de até
-520 px no canto inferior direito, com uma dica por vez e navegação Anterior/Próxima.
+520 px no canto inferior direito, com um passo por vez e navegação Anterior/Próxima.
 No celular, ocupa a largura disponível e fica acima do menu. Não há modal central
-nem escurecimento da página. A opção "Não mostrar automaticamente nesta aba"
+nem escurecimento da página. O rodapé compacto usa a opção "Não abrir automaticamente",
+com a explicação do escopo no texto de apoio ao passar o mouse. Os guias apresentam
+passos concretos com os nomes dos controles da aba, o que preencher e o resultado
+da ação, incluindo confirmações e restrições. A opção
 salva imediatamente a preferência da conta no PostgreSQL, usando os endpoints
 autenticados existentes. A escolha vale somente para aquela aba e pode ser
 desmarcada ao reabrir o guia pelo botão de interrogação. Fechar, clicar novamente

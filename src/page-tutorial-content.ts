@@ -4,480 +4,604 @@ type Tutorial = { title: string; description: string; steps: { title: string; te
 
 export const pageTutorials = {
   overview: {
-    title: 'Seu próximo passo na Alvorada',
-    description: 'Acompanhe os compromissos e encontre as áreas do portal.',
+    title: 'Como usar o Início',
+    description: 'Leia os avisos e encontre os compromissos da guilda.',
     steps: [
       {
-        title: 'Confira sua agenda',
-        text: 'Veja as aventuras próximas e abra uma publicação para conferir horário, patente e participantes.',
+        title: 'Abra uma notícia',
+        text: 'Role a página para ler os avisos. Quando uma publicação tiver o botão Explorar, clique nele ou na imagem para abrir o conteúdo vinculado.',
       },
       {
-        title: 'Escolha quem vai jogar',
-        text: 'Use o personagem selecionado para consultar a ficha e os recursos daquela jornada.',
+        title: 'Consulte uma missão da agenda',
+        text: 'Clique no nome de uma aventura na agenda. Você será levado ao mural de missões; abra o aviso correspondente para conferir data, horário e participação.',
       },
       {
-        title: 'Explore pelo Menu',
-        text: 'O Menu reúne Personagem, Mural, Loja, Explorar e Biblioteca. A ajuda de cada aba acompanha o que você abrir.',
+        title: 'Guarde um encontro no seu calendário',
+        text: 'Nos avisos de encontro, clique em Adicionar ao calendário. Abra o arquivo baixado no seu aplicativo de agenda para incluir o compromisso.',
+      },
+      {
+        title: 'Abra outra área',
+        text: 'Clique em Menu na navegação inferior e escolha um grupo, como Personagem ou Loja. Depois clique na aba desejada. O botão Início traz você de volta.',
       },
     ],
   },
   characters: {
-    title: 'Seu acampamento',
-    description: 'Crie e escolha os aventureiros da sua conta.',
+    title: 'Como usar Personagens',
+    description: 'Crie, selecione e organize os personagens do acampamento.',
     steps: [
       {
-        title: 'Escolha uma vaga',
-        text: 'Crie um personagem em uma vaga disponível e preencha suas escolhas de espécie, classe e antecedente.',
+        title: 'Crie em uma vaga livre',
+        text: 'Clique na silhueta com o sinal de +. Preencha Nome do personagem e as escolhas de criação. Se todas as vagas estiverem ocupadas, abra Personagens e slots para consultar seus personagens.',
       },
       {
-        title: 'Distribua os atributos',
-        text: 'Confira os seis valores rolados, escolha onde usar cada um e finalize a ficha. As rolagens pertencem à vaga.',
+        title: 'Escolha quem está ativo',
+        text: 'Clique na imagem do personagem no acampamento. Ele fica selecionado para Ficha, Inventário e compras; o mesmo clique abre a prévia do token usado na mesa.',
       },
       {
-        title: 'Cuide da jornada',
-        text: 'Selecione o personagem antes de visitar outras abas. A partir do nível 5, a aposentadoria permite recomeçar ou encerrar sua jornada com Prestígio.',
+        title: 'Feche a prévia do token',
+        text: 'Use Fechar ou pressione Escape para voltar ao acampamento. A imagem do token é uma prévia: abrir ou fechar essa janela não coloca o personagem em uma mesa.',
+      },
+      {
+        title: 'Troque quem aparece no acampamento',
+        text: 'Clique em Trocar personagem abaixo de um aventureiro e escolha outro para aquela posição. Personagens e slots abre a relação completa; retirar alguém da tela não exclui sua ficha.',
+      },
+      {
+        title: 'Conclua a ficha antes de gerar a arte',
+        text: 'Abra Menu → Personagem → Ficha e confirme a distribuição dos atributos. Depois volte ao acampamento para usar as opções de imagem do personagem.',
       },
     ],
   },
   profile: {
-    title: 'Conheça sua ficha',
-    description: 'Consulte atributos, escolhas e recursos do personagem selecionado.',
+    title: 'Como usar a Ficha',
+    description: 'Finalize os atributos e consulte as seções do personagem.',
     steps: [
       {
-        title: 'Confira os valores',
-        text: 'Atributos, perícias, salvaguardas e recursos ficam nas seções da ficha. Abra os detalhes de uma escolha para entender seu uso.',
+        title: 'Complete as escolhas iniciais',
+        text: 'Se a ficha ainda estiver em criação, preencha as opções exibidas e clique em Salvar escolhas. Quando disponível, Rolar os seis atributos inicia a etapa dos dados.',
       },
       {
-        title: 'Finalize as escolhas',
-        text: 'Complete as opções disponíveis para sua classe e origem antes de usar a ficha na mesa.',
+        title: 'Distribua os resultados',
+        text: 'Revele as seis rolagens. Em Resultado para cada atributo, escolha qual resultado será usado; depois distribua os bônus do antecedente. Revise e clique em Confirmar distribuição e abrir ficha: essa confirmação é definitiva.',
       },
       {
-        title: 'Revise o equipamento',
-        text: 'Os itens equipados no Inventário alimentam os ataques da ficha. Recursos específicos da sessão são acompanhados na mesa virtual.',
+        title: 'Troque a seção da ficha',
+        text: 'Clique em Atributos, Combate, Magias, História ou Equipamento. Cada botão muda o conteúdo mostrado; Equipamento permite consultar os bens, enquanto as trocas de itens são feitas no Inventário.',
+      },
+      {
+        title: 'Registre recursos e anotações',
+        text: 'Em Combate, ajuste os campos permitidos e clique em Salvar recursos. Em História, escreva em Anotações e use o botão de salvar da seção para guardar o texto.',
       },
     ],
   },
   inventory: {
-    title: 'Organize seus equipamentos',
-    description: 'Mochila, cofre e itens equipados do personagem.',
+    title: 'Como usar o Inventário',
+    description: 'Equipe itens e mova seus bens entre mochila e cofre.',
     steps: [
       {
-        title: 'Abra um item',
-        text: 'Selecione a peça para consultar descrição, quantidade e propriedades. Use a busca para localizar seus bens.',
+        title: 'Leia os detalhes de um item',
+        text: 'Clique na imagem de um item na Mochila ou no Cofre. O cartão aberto mostra descrição, quantidade, peso e valor; sair dele fecha a consulta.',
       },
       {
-        title: 'Equipe as peças',
-        text: 'Escolha as posições disponíveis para armas e armaduras. Equipamentos precisam estar na mochila e disponíveis para esse uso.',
+        title: 'Equipe uma arma ou armadura',
+        text: 'Em Itens equipados, clique na posição desejada e escolha um item compatível da mochila. No computador, também é possível arrastar o item para essa posição. Itens no cofre precisam ser levados à mochila primeiro.',
       },
       {
-        title: 'Organize o que sobra',
-        text: 'Transfira bens entre mochila e cofre. Confira a quantidade e a confirmação antes de descartar um item.',
+        title: 'Guarde ou retire itens',
+        text: 'Abra os detalhes do item e clique em Guardar no cofre ou Levar para a mochila. Na janela de transferência, informe a Quantidade e clique em Transferir.',
+      },
+      {
+        title: 'Retire uma peça equipada',
+        text: 'Abra a posição ocupada em Itens equipados e use a ação de desequipar. A peça continua sendo sua e volta a ficar disponível na mochila.',
+      },
+      {
+        title: 'Selecione um companheiro ou confira o token',
+        text: 'Na área de montarias e mascotes, escolha qual aparecerá no acampamento. Clique na imagem do personagem em Itens equipados para ver a prévia do token do VTT.',
+      },
+      {
+        title: 'Exclua somente quando tiver certeza',
+        text: 'Nos detalhes, Excluir item abre uma confirmação de quantidade. Confira o item e a quantidade antes de concluir: excluir não é o mesmo que guardá-lo no cofre.',
       },
     ],
   },
   achievements: {
-    title: 'Exponha suas conquistas',
-    description: 'Organize as marcas que sua jornada deixou.',
+    title: 'Como usar Conquistas',
+    description: 'Escolha as peças da estante e salve sua exposição.',
     steps: [
       {
-        title: 'Veja o que conquistou',
-        text: 'Consulte as conquistas liberadas pelo progresso do personagem e abra seus detalhes.',
+        title: 'Encontre uma conquista liberada',
+        text: 'Role até Catálogo de conquistas. Digite em Buscar conquista por nome ou use o filtro Desbloqueadas para mostrar as peças que já pode expor.',
       },
       {
-        title: 'Monte a exposição',
-        text: 'Use os espaços e prateleiras disponíveis para organizar as peças que deseja mostrar.',
+        title: 'Coloque uma peça na estante',
+        text: 'Escolha Prateleira 1, 2 ou 3 e clique em Exibir na estante na conquista desejada. Se ela já estiver exposta em outra prateleira, use Mover para esta prateleira.',
       },
       {
-        title: 'Confira sua apresentação',
-        text: 'Revise a posição das conquistas e salve os ajustes oferecidos pela aba.',
+        title: 'Ajuste a posição',
+        text: 'Arraste a peça na estante ou selecione-a em Peça na estante para usar os controles. Trazer para frente e Enviar para trás mudam a sobreposição entre as peças.',
+      },
+      {
+        title: 'Salve ou retire uma peça',
+        text: 'Clique em Salvar estante para guardar as posições. Para tirar uma peça da exposição, selecione-a, use Remover da prateleira e salve novamente; a conquista continua desbloqueada.',
+      },
+      {
+        title: 'Escolha seu título',
+        text: 'Na seção Títulos do personagem, clique em Exibir título em uma honraria recebida. Posição do título permite escolher Abaixo do nome ou Ao lado do nome.',
       },
     ],
   },
   board: {
-    title: 'Encontre sua próxima aventura',
-    description: 'O mural reúne as publicações da comunidade.',
+    title: 'Como usar o Mural',
+    description: 'Abra os avisos e encontre missões, ganchos e eventos.',
     steps: [
       {
-        title: 'Procure uma publicação',
-        text: 'Abra os avisos para conferir a proposta, a data, a dificuldade e a patente exigida.',
+        title: 'Abra um aviso ou uma lista',
+        text: 'Clique em um papel preso ao mural para ler o aviso. As placas Missões, Ganchos e Eventos abrem listas por categoria; a placa de eventos pode ficar desativada quando não houver evento disponível.',
       },
       {
-        title: 'Inscreva seu personagem',
-        text: 'Escolha um personagem elegível e confirme a participação enquanto a missão estiver aberta.',
+        title: 'Localize uma publicação',
+        text: 'Na lista, use Atuais, Todos ou Histórico e o campo Buscar aviso por nome. Clique no aviso desejado para abrir seu conteúdo completo.',
       },
       {
-        title: 'Acompanhe a conclusão',
-        text: 'O mestre inicia e conclui a missão. Ouro, progresso e Créditos do Bastião entram após a conclusão registrada.',
+        title: 'Entre em uma missão',
+        text: 'Abra uma missão e confira patente, data e horário. Com um personagem elegível selecionado, clique em Participar. Se o botão estiver desativado, leia a condição mostrada no próprio aviso.',
+      },
+      {
+        title: 'Publique uma missão',
+        text: 'Abra a placa Missões e clique em Registrar missão. Preencha o formulário apresentado e revise os dados antes de publicar. O aviso passa a aparecer no mural.',
+      },
+      {
+        title: 'Organize seus próprios avisos',
+        text: 'Arraste um aviso seu para outra posição no mural ou selecione-o e use as setas do teclado. Aguarde o fim da mensagem Salvando posição antes de sair.',
       },
     ],
   },
   missions: {
-    title: 'Acompanhe suas missões',
-    description: 'Consulte as aventuras e o histórico de participação.',
+    title: 'Como consultar Missões',
+    description: 'Encontre uma missão e acompanhe sua participação.',
     steps: [
       {
-        title: 'Escolha a missão',
-        text: 'Confira o estado da publicação e abra seus detalhes para ver a proposta e a agenda.',
+        title: 'Abra a lista de missões',
+        text: 'Clique na placa Missões do mural. Use Atuais para os avisos vigentes, Todos para a lista completa ou Histórico para consultar os registros anteriores.',
       },
       {
-        title: 'Confira a patente',
-        text: 'O personagem precisa atender à patente e aos requisitos da missão. Testes de promoção seguem requisitos próprios.',
+        title: 'Busque e abra um aviso',
+        text: 'Digite o nome em Buscar aviso por nome e clique no resultado. Leia a data, o horário, a patente e a proposta antes de se inscrever.',
       },
       {
-        title: 'Veja o resultado',
-        text: 'Depois que o mestre concluir, consulte o resumo e o registro das recompensas.',
+        title: 'Confirme a participação',
+        text: 'Selecione o aventureiro que vai jogar e clique em Participar no aviso. A ação fica indisponível se ele já estiver inscrito ou não cumprir os requisitos apresentados.',
+      },
+      {
+        title: 'Consulte o resultado',
+        text: 'Depois da conclusão registrada pelo mestre, abra o mesmo aviso pelo Histórico. O Resumo da missão e as recompensas aparecem no registro da publicação.',
       },
     ],
   },
   hooks: {
-    title: 'Siga os ganchos da história',
-    description: 'Descubra caminhos deixados pelas aventuras anteriores.',
+    title: 'Como usar os Ganchos',
+    description: 'Leia continuações de histórias e registre um novo gancho.',
     steps: [
       {
-        title: 'Leia a proposta',
-        text: 'Abra um gancho para conhecer a situação, os envolvidos e as possibilidades de continuidade.',
+        title: 'Encontre um gancho',
+        text: 'Clique na placa Ganchos e use Buscar aviso por nome para filtrar a lista. Abra um aviso para ler a situação proposta.',
       },
       {
-        title: 'Consulte a origem',
-        text: 'Quando houver vínculo com uma missão ou lugar do mundo, veja o registro para conhecer o contexto.',
+        title: 'Consulte a missão de origem',
+        text: 'No registro, procure o vínculo com a missão que deu origem ao gancho. Leia esse contexto antes de combinar uma continuação com o mestre.',
       },
       {
-        title: 'Leve a ideia à mesa',
-        text: 'Combine a continuidade com o mestre. A participação e as recompensas pertencem à missão publicada.',
+        title: 'Registre uma continuação',
+        text: 'Na lista de Ganchos, clique em Registrar gancho. Escolha a Missão de origem do gancho e preencha a proposta. Se não houver uma missão elegível, esse botão ficará desativado.',
+      },
+      {
+        title: 'Volte aos avisos anteriores',
+        text: 'Use os filtros Todos e Histórico para reencontrar registros. Fechar lista de avisos retorna à visão do mural.',
       },
     ],
   },
   shop: {
-    title: 'Compre no Empório',
-    description: 'Escolha equipamentos e confira o carrinho antes de pagar.',
+    title: 'Como comprar no Empório',
+    description: 'Escolha o modelo, monte o carrinho e finalize a compra.',
     steps: [
       {
-        title: 'Explore as prateleiras',
-        text: 'Filtre a categoria ou procure um item pelo nome. Abra seus detalhes para consultar propriedades e variantes.',
+        title: 'Encontre o item',
+        text: 'Clique em uma categoria de Prateleiras ou digite em Procurar item. Clique na arte ou no botão de informações para consultar o que o produto faz.',
       },
       {
-        title: 'Monte o carrinho',
-        text: 'Adicione os itens e as quantidades desejadas. Confira qual personagem está selecionado e o valor total.',
+        title: 'Escolha o modelo e adicione',
+        text: 'Quando houver seletores de modelo, tipo ou cor, escolha a variante desejada. Clique em Comprar para adicioná-la ao carrinho; esse clique ainda não encerra a compra.',
       },
       {
-        title: 'Confirme e equipe',
-        text: 'Finalize a compra com ouro. Os itens vão para a mochila e podem ser equipados pelo Inventário. Selecione o vendedor para conversar.',
+        title: 'Revise o carrinho',
+        text: 'Clique no ícone de carrinho ao lado da busca. Ajuste Quantidade, retire o que não quer e confira o total. Produtos de animais podem exigir a escolha do Destino.',
+      },
+      {
+        title: 'Pague e equipe',
+        text: 'Confira o personagem selecionado e clique em Finalizar compra. Os equipamentos comprados para ele ficam na mochila. Abra Menu → Personagem → Inventário para equipá-los.',
       },
     ],
   },
   reliquias: {
-    title: 'Descubra as Relíquias',
-    description: 'Use o Prestígio da conta para adquirir recompensas.',
+    title: 'Como usar Relíquias',
+    description: 'Compre com Prestígio e aplique as peças da coleção.',
     steps: [
       {
-        title: 'Escolha uma prateleira',
-        text: 'Consulte armas de Prestígio, skins, bordas e companheiros. Clique na arte para ampliar e ler os detalhes.',
+        title: 'Escolha a prateleira',
+        text: 'Selecione a categoria de relíquias e clique na arte de uma oferta para ampliar e consultar os detalhes. Armas mostram os requisitos de uso e os estágios de evolução.',
       },
       {
-        title: 'Confira quem recebe',
-        text: 'Armas e companheiros vão para o personagem escolhido. As armas mostram o nível exigido e seus estágios de evolução.',
+        title: 'Confirme a compra',
+        text: 'Clique em Comprar na oferta. Confira o custo em Prestígio e o personagem destinatário quando houver; depois clique em Confirmar compra. Para montarias, preencha também o nome solicitado.',
       },
       {
-        title: 'Use sua coleção',
-        text: 'A sacola abre suas compras para aplicar skins e bordas. A Tabela de Prestígio mostra as recompensas de aposentadoria configuradas.',
+        title: 'Abra o que já comprou',
+        text: 'Clique na sacola ao lado do saldo para abrir Minha coleção. Selecione a borda ou skin e use a opção de aplicação ao personagem ou item indicado.',
+      },
+      {
+        title: 'Confira o ganho por aposentadoria',
+        text: 'Abra Tabela de Prestígio para consultar os valores por nível. A aposentadoria em si é feita em Personagens, pelo botão Aposentar do aventureiro elegível.',
       },
     ],
   },
   cristais: {
-    title: 'A Loja de Cristais abrirá depois',
-    description: 'Esta área está reservada para uma próxima etapa do servidor.',
+    title: 'Loja de Cristais em breve',
+    description: 'Esta loja está bloqueada nesta etapa.',
     steps: [
       {
-        title: 'Consulte as áreas disponíveis',
-        text: 'O Empório oferece equipamentos por ouro e Relíquias reúne as recompensas de Prestígio.',
+        title: 'Volte à loja disponível',
+        text: 'Se a tela mostrar Loja de Cristais em breve, clique em Voltar. O botão abre o Empório, onde é possível comprar equipamentos com ouro.',
       },
       {
-        title: 'Acompanhe os avisos',
-        text: 'A abertura da Torre e da sua loja será informada pelo portal quando esta etapa estiver disponível.',
+        title: 'Abra as outras lojas pelo Menu',
+        text: 'Use Menu → Loja → Relíquias para consultar as compras com Prestígio. A Loja de Cristais não permite compras enquanto estiver bloqueada.',
       },
     ],
   },
   tower: {
-    title: 'A Torre abrirá depois',
-    description: 'As expedições da Torre estão bloqueadas nesta etapa do servidor.',
+    title: 'Torre em breve',
+    description: 'As expedições estão bloqueadas nesta etapa.',
     steps: [
       {
-        title: 'Encontre uma missão',
-        text: 'Use o Mural para consultar as aventuras disponíveis e se inscrever com seu personagem.',
+        title: 'Saia da tela de espera',
+        text: 'Na tela Torre em breve, clique em Voltar para abrir o Mural. Não é possível iniciar uma expedição enquanto esta área estiver bloqueada.',
       },
       {
-        title: 'Acompanhe a abertura',
-        text: 'As expedições, os cristais e a loja da Torre serão disponibilizados em uma próxima etapa.',
+        title: 'Encontre uma aventura disponível',
+        text: 'No Mural, clique na placa Missões, abra um aviso e confira os requisitos. Use Participar com um personagem elegível para se inscrever.',
       },
     ],
   },
   stable: {
-    title: 'Escolha sua montaria',
-    description: 'Encontre um companheiro de viagem e cuide de seu equipamento.',
+    title: 'Como comprar uma montaria',
+    description: 'Escolha a montaria, a pelagem e o nome antes de confirmar.',
     steps: [
       {
-        title: 'Conheça os modelos',
-        text: 'Compare as montarias, pelagens e preços. Abra os detalhes antes de confirmar a compra.',
+        title: 'Escolha o animal e a pelagem',
+        text: 'Use os seletores do Estábulo para escolher a montaria e clique em uma opção de Pelagem. A prévia muda para mostrar a combinação selecionada.',
       },
       {
-        title: 'Prepare a viagem',
-        text: 'Equipe acessórios e bardas compatíveis pelo inventário da montaria.',
+        title: 'Dê um nome e confira o total',
+        text: 'Preencha Dê um nome à sua montaria. Confira o personagem selecionado, o preço total e o saldo; sem nome ou saldo suficiente, a compra ficará indisponível.',
       },
       {
-        title: 'Leve para a mesa',
-        text: 'Montarias adquiridas podem ser colocadas na mesa virtual. Consulte seu auxílio e suas limitações antes de usá-los.',
+        title: 'Confirme a aquisição',
+        text: 'Clique em Comprar montaria. Na janela seguinte, confira o nome, o animal, a pelagem e o custo; depois clique em Confirmar compra.',
+      },
+      {
+        title: 'Mostre a montaria no acampamento',
+        text: 'Abra Menu → Personagem → Inventário e encontre sua coleção de montarias. Escolha a que deseja mostrar no acampamento; os equipamentos compatíveis também são organizados pelo Inventário.',
       },
     ],
   },
   pets: {
-    title: 'Encontre seu mascote',
-    description: 'Escolha e apresente o companheiro do seu personagem.',
+    title: 'Como comprar um mascote',
+    description: 'Escolha o companheiro e vincule-o ao personagem certo.',
     steps: [
       {
-        title: 'Escolha o companheiro',
-        text: 'Veja as espécies, aparências e valores disponíveis. Confira os detalhes e o auxílio de cada mascote.',
+        title: 'Selecione a espécie e a aparência',
+        text: 'Clique em um animal na lista Mascotes à venda. Se houver opções de Aparência, escolha a desejada e confira a mudança na prévia e a descrição do auxílio.',
       },
       {
-        title: 'Cuide dos equipamentos',
-        text: 'Use os acessórios compatíveis com o animal e consulte seus próprios itens.',
+        title: 'Escreva o nome',
+        text: 'Preencha Nome do mascote. Confira qual personagem está selecionado e compare o preço mostrado com os PO disponíveis.',
       },
       {
-        title: 'Use na aventura',
-        text: 'Coloque o mascote na mesa virtual quando fizer sentido para a cena. Os auxílios seguem o efeito e a frequência descritos.',
+        title: 'Compre o companheiro',
+        text: 'Clique em Levar este companheiro. Aguarde a confirmação da compra; o mascote passa a pertencer ao personagem selecionado.',
+      },
+      {
+        title: 'Escolha quem aparece com você',
+        text: 'Clique em Ver meus mascotes no inventário. Na coleção, use Mostrar no acampamento no mascote desejado para exibi-lo junto ao personagem.',
       },
     ],
   },
   events: {
-    title: 'Participe dos eventos',
-    description: 'Confira os encontros preparados pela comunidade.',
+    title: 'Como consultar Eventos',
+    description: 'Confira o estado da área antes de procurar um encontro.',
     steps: [
       {
-        title: 'Veja os encontros',
-        text: 'Abra um evento para consultar proposta, data, horário e condições de participação.',
+        title: 'Confira se a área está disponível',
+        text: 'Se aparecer Eventos em manutenção, clique em Voltar ao mural. Essa tela de manutenção não possui inscrição em eventos.',
       },
       {
-        title: 'Confira sua inscrição',
-        text: 'Use as ações disponíveis no evento e veja quais personagens podem participar.',
-      },
-      {
-        title: 'Acompanhe os registros',
-        text: 'Consulte as publicações relacionadas e as missões vinculadas para seguir o andamento do evento.',
+        title: 'Procure avisos no mural',
+        text: 'No Mural, clique na placa Eventos quando ela estiver habilitada e abra o aviso desejado. Confira a data, o horário e a descrição; use as missões vinculadas para consultar a participação.',
       },
     ],
   },
   titles: {
-    title: 'Escolha como será conhecido',
-    description: 'Consulte os títulos do seu personagem.',
+    title: 'Como exibir um título',
+    description: 'Mostre uma honraria recebida junto ao nome do personagem.',
     steps: [
       {
-        title: 'Confira os títulos',
-        text: 'Veja os títulos disponíveis e as condições apresentadas na aba.',
+        title: 'Encontre a seção de títulos',
+        text: 'Abra Conquistas e role até Títulos do personagem. As honrarias bloqueadas mostram o requisito e, quando disponível, o progresso para conquistá-las.',
       },
       {
-        title: 'Escolha sua apresentação',
-        text: 'Use as opções liberadas para definir o título exibido junto ao nome do personagem.',
+        title: 'Escolha uma honraria recebida',
+        text: 'Clique em Exibir título no título liberado que deseja usar. Ele passa a aparecer na apresentação do personagem.',
       },
       {
-        title: 'Revise o perfil',
-        text: 'Confira como o nome e o título aparecem na apresentação do aventureiro.',
+        title: 'Mude a posição ou oculte',
+        text: 'Em Posição do título, escolha Abaixo do nome ou Ao lado do nome. Para retirar a exibição, clique em Em exibição · ocultar na honraria selecionada.',
       },
     ],
   },
   cards: {
-    title: 'Entre no Salão das Cartas',
-    description: 'Explore as cartas e as ações disponíveis no salão.',
+    title: 'Como usar o Salão das cartas',
+    description: 'Abra o acervo, compre cartas e ocupe os três espaços da mesa.',
     steps: [
       {
-        title: 'Escolha o personagem',
-        text: 'Confira o aventureiro selecionado e o saldo antes de usar uma opção de compra ou abertura.',
+        title: 'Abra o catálogo',
+        text: 'Clique no baralho com a indicação Acervo, sobre a mesa. Escolha uma carta do acervo do Anfitrião para abrir a arte e os detalhes.',
       },
       {
-        title: 'Escolha uma carta',
-        text: 'Abra o catálogo do Anfitrião, compare as cartas e seus níveis e confira o preço antes de comprar.',
+        title: 'Compre uma carta',
+        text: 'Nos detalhes, selecione o nível desejado quando essa opção aparecer. Confira o preço e o personagem selecionado; clique em Comprar carta para incluí-la na coleção.',
       },
       {
-        title: 'Equipe até três cartas',
-        text: 'Escolha um dos três espaços sobre a mesa para equipar uma carta da coleção. Você pode trocar a carta ou esvaziar o espaço.',
+        title: 'Ocupe um espaço da mesa',
+        text: 'Feche o catálogo e clique em Escolher carta em um dos três espaços da mesa. Na coleção, selecione a carta que quer usar naquele lugar.',
+      },
+      {
+        title: 'Troque ou retire uma carta',
+        text: 'Abra uma carta da coleção, escolha o número em Espaço para equipar e clique em Equipar no espaço correspondente. Esvaziar espaço retira a carta da mesa sem apagá-la da coleção.',
       },
     ],
   },
   'character-cards': {
-    title: 'As cartas que acompanham você',
-    description: 'Consulte o acervo de cartas do personagem selecionado.',
+    title: 'Como usar sua coleção de cartas',
+    description: 'Encontre uma carta e escolha os espaços que acompanham o personagem.',
     steps: [
       {
-        title: 'Encontre sua carta',
-        text: 'Use Buscar na coleção para filtrar pelo nome ou pela família e abra a carta que deseja consultar.',
+        title: 'Filtre a coleção',
+        text: 'Digite um nome ou uma família em Buscar na coleção. A lista mostra as cartas adquiridas pelo personagem selecionado.',
       },
       {
-        title: 'Leia os detalhes',
-        text: 'Confira a arte, o nível e a história da carta. As cartas adquiridas no Salão das Cartas ficam neste acervo.',
+        title: 'Leia uma carta',
+        text: 'Clique na carta da lista. O registro mostra sua arte, nível, história e comentário do Anfitrião.',
       },
       {
-        title: 'Escolha os espaços',
-        text: 'Use Equipar no espaço para escolher quais cartas acompanham o personagem. Os três espaços selecionados aparecem na coleção e no Salão.',
+        title: 'Equipe em um dos três espaços',
+        text: 'No registro da carta, clique em Equipar no espaço 1, 2 ou 3. Se aquele espaço já estiver ocupado, a carta escolhida substitui a anterior.',
+      },
+      {
+        title: 'Retire de um espaço',
+        text: 'Na área Três cartas selecionadas, use o botão de retirar da carta desejada. Ela continua no acervo e pode ser equipada de novo; as escolhas também aparecem no Salão das cartas.',
       },
     ],
   },
   vtt: {
-    title: 'Prepare sua mesa virtual',
-    description: 'Entre na sessão e use os recursos da cena.',
+    title: 'Como entrar e jogar no VTT',
+    description: 'Configure a exibição, entre em uma mesa e identifique seus controles.',
     steps: [
       {
-        title: 'Entre na mesa',
-        text: 'Abra uma sala ou use o convite do mestre. Escolha a participação oferecida pela sessão.',
+        title: 'Configure a exibição',
+        text: 'Se a tela de efeitos aparecer, escolha quais quer exibir e clique em Entrar no VTT. Você pode rever essas preferências nas configurações da mesa.',
       },
       {
-        title: 'Coloque seu personagem',
-        text: 'Abra Fichas para importar os personagens e companheiros disponíveis. Selecione seu token para acessar suas ações.',
+        title: 'Entre pelo convite',
+        text: 'Em Entrar em uma mesa, cole o Link ou código de convite enviado pelo mestre. Marque Jogador para participar ou Espectador para assistir e clique em Entrar na mesa.',
       },
       {
-        title: 'Jogue e acompanhe',
-        text: 'Use chat, dados, ataques e recursos da ficha. Confirme o alvo e o resultado antes de aplicar dano. O mestre organiza mapas e cenas.',
+        title: 'Abra sua mesa como mestre',
+        text: 'Para preparar uma sessão sua, use Abrir minha mesa no quadro Minha mesa. Entrar como jogador em outra sala não torna você mestre dela.',
+      },
+      {
+        title: 'Coloque e selecione o personagem',
+        text: 'Dentro da sessão, abra Fichas para acessar os personagens disponíveis conforme sua permissão. Clique no seu token no mapa para selecioná-lo e usar os controles permitidos.',
+      },
+      {
+        title: 'Use as ações durante a sessão',
+        text: 'Com o token selecionado, consulte a ficha e a barra de ações para ataques e recursos. Confira o alvo antes de aplicar dano. Espectadores não podem mover tokens nem usar ações de jogo.',
       },
     ],
   },
   hall: {
-    title: 'Conheça as jornadas da comunidade',
-    description: 'Explore os registros dos aventureiros.',
+    title: 'Como usar o Hall da Fama',
+    description: 'Troque o ranking e visite a apresentação de um aventureiro.',
     steps: [
       {
-        title: 'Escolha um aventureiro',
-        text: 'Abra uma apresentação para conhecer o personagem e sua jornada.',
+        title: 'Escolha o ranking',
+        text: 'Clique em Menu do Hall da Fama. Selecione Geral, Conquistas, Prestígio, Aventureiros, Melhores perfis ou Honrarias para mudar o critério da classificação.',
       },
       {
-        title: 'Veja as conquistas',
-        text: 'Consulte as informações públicas e as marcas reunidas pelo aventureiro.',
+        title: 'Encontre um personagem',
+        text: 'Digite o nome do personagem, do jogador ou da classe em Buscar personagem no Hall da Fama. Use a paginação para consultar os demais resultados.',
       },
       {
-        title: 'Continue explorando',
-        text: 'Use as opções da aba para conhecer outros perfis e registros da comunidade.',
+        title: 'Visite o perfil',
+        text: 'Clique no personagem ou na entrada do ranking. O perfil público abre com a apresentação e os personagens que a pessoa escolheu expor.',
+      },
+      {
+        title: 'Entenda a classificação',
+        text: 'Abra Como a pontuação é calculada abaixo do ranking. A explicação mostra os critérios usados para aquela classificação.',
       },
     ],
   },
   profiles: {
-    title: 'Encontre outros jogadores',
-    description: 'Conheça os perfis e suas apresentações públicas.',
+    title: 'Como usar Perfis',
+    description: 'Encontre uma pessoa, visite seu acampamento e converse com amigos.',
     steps: [
       {
-        title: 'Procure um perfil',
-        text: 'Use a lista e a busca disponíveis para encontrar alguém da comunidade.',
+        title: 'Procure um jogador',
+        text: 'Em Nome do jogador ou ID do perfil, digite quem procura. Clique em Visitar perfil no resultado; Carregar mais perfis mostra outras pessoas da lista.',
       },
       {
-        title: 'Conheça os personagens',
-        text: 'Abra o perfil para consultar sua apresentação e os aventureiros expostos.',
+        title: 'Consulte um personagem exposto',
+        text: 'No acampamento do perfil, clique na imagem de um personagem para selecionar sua apresentação. As informações exibidas são públicas; mochila, ouro e e-mail não ficam disponíveis na visita.',
       },
       {
-        title: 'Converse com amigos',
-        text: 'Use os recursos sociais disponíveis. As conversas privadas dependem da amizade aceita.',
+        title: 'Envie ou aceite uma amizade',
+        text: 'Use a ação de amizade no perfil. Em Amigos e mensagens, confira Pedidos recebidos e use Aceitar para liberar a amizade.',
+      },
+      {
+        title: 'Abra uma conversa',
+        text: 'Depois de a amizade ser aceita, abra Amigos e mensagens e clique em Conversar com a pessoa. Escreva em Mensagem privada e use o botão de envio.',
       },
     ],
   },
   house: {
-    title: 'Encontre a comunidade no lobby',
-    description: 'Um espaço compartilhado para conversar e interpretar.',
+    title: 'Como usar o Lobby de RP',
+    description: 'Abra uma casa acessível e use o painel de interpretação.',
     steps: [
       {
-        title: 'Entre no cenário',
-        text: 'Escolha o personagem e consulte as áreas disponíveis no lobby.',
+        title: 'Escolha uma casa',
+        text: 'Abra o botão House, que tem o rótulo Menu da House. Em Escolher casa, selecione uma casa sua ou um convite aceito. Se a opção estiver disponível para seu personagem, Criar minha casa cria o espaço inicial.',
       },
       {
-        title: 'Participe da conversa',
-        text: 'Use o chat da área para conversar e interpretar com quem está presente.',
+        title: 'Explore o cenário',
+        text: 'Arraste a cena para os lados para ver o ambiente. Abra o menu House novamente para acessar as ferramentas e a seleção dos cômodos disponíveis.',
       },
       {
-        title: 'Respeite o espaço',
-        text: 'Interaja com as opções disponíveis na cena. A House particular fica na aba House do menu Explorar.',
+        title: 'Converse no painel RP',
+        text: 'No menu da casa, clique em RP. Com um personagem selecionado, escreva em Escreva sua mensagem de RP e clique na seta Enviar.',
+      },
+      {
+        title: 'Salve as mudanças da sua casa',
+        text: 'Se você for o dono, use Decorar para organizar as peças e depois clique em Salvar mudanças. Convidados respeitam as permissões da casa; o botão Descartar abandona ajustes ainda não salvos.',
       },
     ],
   },
   house2: {
-    title: 'Construa seu lugar na vila',
-    description: 'Escolha um terreno, decore a casa e acompanhe sua horta.',
+    title: 'Como usar a House',
+    description: 'Escolha um terreno, construa e organize sua casa.',
     steps: [
       {
-        title: 'Escolha onde morar',
-        text: 'Entre em uma vizinhança e selecione um lote. Terreno, casa e mobília são adquiridos com Créditos do Bastião.',
+        title: 'Entre em uma vizinhança',
+        text: 'Digite em Pesquisar vizinhanças se quiser filtrar a lista e clique no cartão da vizinhança. No mapa, arraste para explorar e use Aproximar mapa ou Afastar mapa.',
       },
       {
-        title: 'Decore seu terreno',
-        text: 'Coloque os objetos pela Minha coleção. Arraste as peças, gire e ajuste o tamanho pelas bordas. Use Salvar para guardar as posições.',
+        title: 'Compre um terreno',
+        text: 'Clique em um Terreno disponível e abra Terrenos nos controles da vizinhança. Confira o custo em Créditos do Bastião e clique em Comprar terreno; revise a confirmação antes de concluir.',
       },
       {
-        title: 'Cuide da horta',
-        text: 'Abra Horta e posicione o canteiro e o fermentador. Plante e regue para começar. As plantas mudam de aparência em horas reais e podem render cura ou ouro.',
+        title: 'Escolha a casa e a mobília',
+        text: 'Com seu terreno selecionado, abra Casas vazias para escolher a construção. Mobília abre a loja de objetos; Minha coleção reúne as peças que você já comprou.',
+      },
+      {
+        title: 'Posicione e salve',
+        text: 'Em Minha coleção, escolha uma peça para colocar no terreno. Arraste-a e use os controles de rotação e tamanho para ajustar. Clique em Salvar para guardar a disposição; Descartar abandona o rascunho.',
+      },
+      {
+        title: 'Plante na horta',
+        text: 'Com seu terreno e uma casa construída selecionados, abra Horta. Use Posicionar canteiro no terreno, escolha Plantar na semente desejada e clique em Regar para iniciar o tempo de crescimento.',
+      },
+      {
+        title: 'Colha quando estiver pronto',
+        text: 'Volte a Horta para ver o tempo restante. Quando a planta estiver pronta, use Colher e vender ou, nas plantas compatíveis, Colher e preparar Poção de Cura.',
       },
     ],
   },
   guild: {
-    title: 'Reúna sua companhia',
-    description: 'Participe de uma guilda e acompanhe o progresso coletivo.',
+    title: 'Como usar a Guilda',
+    description: 'Encontre sua companhia e aprenda a usar a sede.',
     steps: [
       {
-        title: 'Entre na companhia',
-        text: 'Consulte as guildas e use as opções de criação, convite ou participação disponíveis para o personagem.',
+        title: 'Encontre ou abra sua guilda',
+        text: 'Digite em Procurar guildas e clique em uma entrada para visitar. Se já participar de uma companhia, Minha guilda abre sua sede. Convites recebidos podem ser aceitos na área de convites.',
       },
       {
-        title: 'Conheça o bastião',
-        text: 'Explore as salas, os objetos e os benefícios de cada instalação. Abra seus detalhes para consultar os níveis.',
+        title: 'Funde uma companhia',
+        text: 'Se estiver elegível, clique em Fundar uma guilda. Preencha Nome da guilda, escolha o Personagem fundador, configure a apresentação e confira o custo em CB antes de clicar em Fundar guilda.',
       },
       {
-        title: 'Contribua para evoluir',
-        text: 'A Ferraria recebe ouro dos membros. A Ferramenta de Expedição usa as tags de monstros acumuladas pela guilda. O fundador autoriza a evolução quando os requisitos estiverem cumpridos.',
+        title: 'Abra as funções da sede',
+        text: 'Clique em Menu da sede. Companhia mostra os membros; Missões e tesouro abre os registros e contribuições; Salas da sede permite consultar as instalações.',
+      },
+      {
+        title: 'Contribua para uma instalação',
+        text: 'Abra a instalação e confira Próxima evolução. Na Ferraria, expanda Ouro da Ferraria, informe a contribuição e use Contribuir para a guilda. A Ferramenta de Expedição mostra as tags de monstros exigidas.',
+      },
+      {
+        title: 'Autorize uma evolução',
+        text: 'O fundador deve abrir a instalação, conferir os requisitos e usar Evoluir para o nível indicado quando o botão estiver habilitado. Os membros podem consultar o progresso sem autorizar a evolução.',
       },
     ],
   },
   world: {
-    title: 'Explore o mundo',
-    description: 'Encontre lugares, histórias e publicações no atlas.',
+    title: 'Como usar o Mundo',
+    description: 'Abra o reino, consulte um lugar e encontre as missões ligadas a ele.',
     steps: [
       {
-        title: 'Navegue pelo mapa',
-        text: 'Arraste para explorar e use o zoom para aproximar as regiões que deseja conhecer.',
+        title: 'Entre no reino',
+        text: 'Clique no Reino do Norte no mapa do mundo. Dentro do reino, arraste a imagem para explorar a área. Voltar ao mundo retorna ao mapa geral.',
       },
       {
-        title: 'Abra os lugares',
-        text: 'Selecione os pontos disponíveis para consultar descrições, informações e histórias.',
+        title: 'Abra um ponto do mapa',
+        text: 'Clique em um marcador de local. O painel lateral mostra o nome e a descrição; Fechar lista de missões recolhe o painel e deixa o mapa livre.',
       },
       {
-        title: 'Siga as aventuras',
-        text: 'Consulte as publicações vinculadas aos locais para encontrar missões e ganchos daquela região.',
+        title: 'Consulte missões ou história',
+        text: 'No painel do local, clique em Missões para ver os avisos ligados àquele lugar ou em História para ler seus registros. Abra um aviso para consultar a aventura.',
+      },
+      {
+        title: 'Publique no local escolhido',
+        text: 'Para anunciar uma aventura ali, clique em Registrar missão aqui. O formulário já recebe o local selecionado; complete e revise a missão antes de publicar.',
       },
     ],
   },
   lore: {
-    title: 'Consulte as histórias da Alvorada',
-    description: 'Leia o cenário e acompanhe seus acontecimentos.',
+    title: 'Como consultar a Lore',
+    description: 'Navegue por região e pasta ou procure uma crônica pelo nome.',
     steps: [
       {
-        title: 'Escolha um assunto',
-        text: 'Explore as pastas e páginas para encontrar povos, lugares, personagens e histórias.',
+        title: 'Abra o sumário',
+        text: 'Clique em Abrir sumário se a lista estiver recolhida. Escolha a Região e depois uma pasta; Todas as crônicas volta à lista de registros daquela região.',
       },
       {
-        title: 'Abra a leitura',
-        text: 'Selecione uma página e consulte o texto e as imagens. Use os vínculos disponíveis para conhecer o contexto.',
+        title: 'Procure uma crônica',
+        text: 'Digite um termo em Buscar no arquivo. Para retirar o filtro, use o X com o rótulo Limpar busca de crônicas.',
       },
       {
-        title: 'Acompanhe a cronologia',
-        text: 'Consulte os acontecimentos registrados para seguir a história do cenário.',
+        title: 'Abra e leia o registro',
+        text: 'Clique no título de uma crônica na lista. O texto e as imagens aparecem na área de leitura; a trilha acima do título indica a pasta a que ela pertence.',
+      },
+      {
+        title: 'Volte à lista',
+        text: 'Clique em Voltar ao arquivo para escolher outra crônica. Use o sumário para mudar de pasta ou região.',
       },
     ],
   },
   rules: {
-    title: 'Encontre a regra que precisa',
-    description: 'O códice reúne as mecânicas e os acordos do portal.',
+    title: 'Como consultar as Regras',
+    description: 'Abra capítulos e artigos ou encontre um termo no códice.',
     steps: [
       {
-        title: 'Escolha o capítulo',
-        text: 'Abra o sumário para navegar entre criação, progressão, economia, aventuras e vida na comunidade.',
+        title: 'Escolha um capítulo',
+        text: 'No Índice do códice, clique no nome do capítulo para expandir seus artigos. Clique no título de um artigo para abri-lo na área de leitura.',
       },
       {
-        title: 'Consulte o artigo',
-        text: 'Leia os procedimentos, valores e tabelas. As seções explicam como usar as mecânicas atuais.',
+        title: 'Busque uma regra',
+        text: 'Digite o assunto em Buscar no livro. Abra o resultado correspondente para ler a regra no contexto do artigo.',
       },
       {
-        title: 'Volte quando precisar',
-        text: 'Use a busca e os capítulos para consultar uma regra durante a preparação da aventura.',
+        title: 'Leia tabelas no celular',
+        text: 'Quando uma tabela for mais larga que a tela, deslize a própria tabela para os lados para ver as outras colunas. Role a área de leitura para continuar o artigo.',
+      },
+      {
+        title: 'Limpe o filtro para continuar',
+        text: 'Use o X com o rótulo Limpar busca para voltar ao índice completo. Expanda outro capítulo e escolha o próximo artigo.',
       },
     ],
   },
