@@ -225,12 +225,16 @@ carregamento mantém os casos de atraso, falha, nova tentativa e Empório separa
 
 ## Ajuda por aba
 
-A ajuda começa recolhida em um pequeno botão de interrogação no canto inferior
-direito. Abre somente ao clicar, em um cartão de até 290 px, com uma dica por vez
-e navegação Anterior/Próxima. No celular, o cartão fica acima do menu. Não há
-modal central, escurecimento da página, abertura automática ou confirmação de
-"não mostrar novamente". Fechar, clicar novamente no botão ou usar Escape recolhe
-o cartão; a troca de aba também o recolhe. As preferências antigas permanecem
-preservadas no banco, sem novos pedidos de leitura ou escrita para usar a ajuda.
+A ajuda abre automaticamente a cada entrada em uma aba, em um cartão de até
+520 px no canto inferior direito, com uma dica por vez e navegação Anterior/Próxima.
+No celular, ocupa a largura disponível e fica acima do menu. Não há modal central
+nem escurecimento da página. A opção "Não mostrar automaticamente nesta aba"
+salva imediatamente a preferência da conta no PostgreSQL, usando os endpoints
+autenticados existentes. A escolha vale somente para aquela aba e pode ser
+desmarcada ao reabrir o guia pelo botão de interrogação. Fechar, clicar novamente
+no botão ou usar Escape recolhe o cartão somente durante aquela visita; voltar à
+aba reabre o guia se a abertura automática não estiver desativada. As preferências
+anteriores de cada conta permanecem válidas. Falhas ao consultar ou salvar a escolha
+permitem tentar novamente, sem apresentar a gravação como concluída.
 Abas sem arte própria usam a ilustração da área correspondente; falhas de imagem
 mostram o ícone de ajuda.

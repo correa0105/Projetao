@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, CircleHelp, X } from 'lucide-react';
+import { api } from './api';
 import { pageTutorials } from './page-tutorial-content';
 import type { Page } from './types';
 import './page-tutorial.css';
@@ -24,19 +25,88 @@ export function PageTutorial({
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [iconFailed, setIconFailed] = useState(false);
+  const [preferences, setPreferences] = useState<{ userId: string; dismissed: string[] } | null>(
+    null,
+  );
+  const [pendingPreference, setPendingPreference] = useState<{
+    userId: string;
+    page: Page;
+    dismissed: boolean;
+  } | null>(null);
+  const busy = pendingPreference !== null;
+  const [preferenceError, setPreferenceError] = useState('');
+  const [saveError, setSaveError] = useState('');
+  const [retry, setRetry] = useState(0);
+  const automaticEntry = useRef(false);
+  const current = useRef({ page, userId });
+  current.current = { page, userId };
   const trigger = useRef<HTMLButtonElement>(null);
   const titleId = useId();
   const panelId = useId();
   const tutorial = pageTutorials[page];
 
-  // Help is opt-in: entering a tab never opens a guide over the page.
+  const loaded = preferences?.userId === userId;
+  const dismissed = loaded && preferences.dismissed.includes(page);
+
   useEffect(() => {
+    let active = true;
+    setPreferences(null);
+    setPreferenceError('');
+    api<{ dismissed: string[] }>('/tutorials')
+      .then((result) => {
+        if (active) setPreferences({ userId, dismissed: result.dismissed });
+      })
+      .catch(() => {
+        if (active) setPreferenceError('Não foi possível consultar sua preferência.');
+      });
+    return () => {
+      active = false;
+    };
+  }, [userId, retry]);
+
+  useEffect(() => {
+    automaticEntry.current = false;
     setOpen(false);
     setStep(0);
     setIconFailed(false);
-  }, [page, userId, ready]);
+    setSaveError('');
+  }, [page, userId]);
+
+  useEffect(() => {
+    if (!ready || !loaded || automaticEntry.current) return;
+    automaticEntry.current = true;
+    setOpen(!dismissed);
+  }, [page, userId, ready, loaded, dismissed]);
+
+  async function savePreference(skip: boolean) {
+    if (busy || !loaded) return;
+    setPendingPreference({ userId, page, dismissed: skip });
+    setSaveError('');
+    try {
+      await api('/tutorials/' + page, {
+        method: 'PUT',
+        body: JSON.stringify({ dismissed: skip }),
+      });
+      setPreferences((value) =>
+        value?.userId === userId
+          ? {
+              userId,
+              dismissed: skip
+                ? [...value.dismissed.filter((name) => name !== page), page]
+                : value.dismissed.filter((name) => name !== page),
+            }
+          : value,
+      );
+    } catch {
+      if (current.current.userId === userId && current.current.page === page)
+        setSaveError('Não foi possível salvar sua escolha. Tente novamente.');
+    } finally {
+      setPendingPreference(null);
+    }
+  }
 
   function close() {
+    automaticEntry.current = true;
     setOpen(false);
     trigger.current?.focus({ preventScroll: true });
   }
@@ -62,6 +132,7 @@ export function PageTutorial({
         aria-controls={open ? panelId : undefined}
         disabled={!ready}
         onClick={() => {
+          automaticEntry.current = true;
           if (open) close();
           else {
             setStep(0);
@@ -107,35 +178,73 @@ export function PageTutorial({
             <h3>{tutorial.steps[step].title}</h3>
             <p>{tutorial.steps[step].text}</p>
           </section>
-          <footer className="tutorial-actions">
-            <button
-              type="button"
-              className="button outline"
-              onClick={() => (step ? setStep(step - 1) : close())}
-            >
-              {step ? (
-                <>
-                  <ArrowLeft size={14} /> Anterior
-                </>
-              ) : (
-                'Fechar'
-              )}
-            </button>
-            <button
-              type="button"
-              className="button primary"
-              onClick={() => (step + 1 < tutorial.steps.length ? setStep(step + 1) : close())}
-            >
-              {step + 1 < tutorial.steps.length ? (
-                <>
-                  Próxima <ArrowRight size={14} />
-                </>
-              ) : (
-                <>
-                  <Check size={14} /> Entendi
-                </>
-              )}
-            </button>
+          <footer>
+            <label className="tutorial-preference">
+              <input
+                type="checkbox"
+                checked={
+                  pendingPreference?.userId === userId && pendingPreference.page === page
+                    ? pendingPreference.dismissed
+                    : dismissed
+                }
+                disabled={busy || !loaded}
+                onChange={(event) => void savePreference(event.target.checked)}
+              />
+              Não mostrar automaticamente nesta aba
+            </label>
+            <p className="tutorial-preference-hint">Reabra pelo botão de ajuda quando precisar.</p>
+            {busy && (
+              <p className="tutorial-preference-hint" role="status">
+                Salvando preferência…
+              </p>
+            )}
+            {preferenceError && (
+              <p className="tutorial-error" role="alert">
+                {preferenceError}{' '}
+                <button
+                  type="button"
+                  className="text-button"
+                  onClick={() => setRetry((value) => value + 1)}
+                >
+                  Tentar novamente
+                </button>
+              </p>
+            )}
+            {saveError && (
+              <p className="tutorial-error" role="alert">
+                {saveError}
+              </p>
+            )}
+            <div className="tutorial-actions">
+              <button
+                type="button"
+                className="button outline"
+                onClick={() => (step ? setStep(step - 1) : close())}
+              >
+                {step ? (
+                  <>
+                    <ArrowLeft size={14} /> Anterior
+                  </>
+                ) : (
+                  'Fechar'
+                )}
+              </button>
+              <button
+                type="button"
+                className="button primary"
+                onClick={() => (step + 1 < tutorial.steps.length ? setStep(step + 1) : close())}
+              >
+                {step + 1 < tutorial.steps.length ? (
+                  <>
+                    Próxima <ArrowRight size={14} />
+                  </>
+                ) : (
+                  <>
+                    <Check size={14} /> Entendi
+                  </>
+                )}
+              </button>
+            </div>
           </footer>
         </aside>
       )}
