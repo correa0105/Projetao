@@ -225,8 +225,12 @@ carregamento mantém os casos de atraso, falha, nova tentativa e Empório separa
 
 ## Ajuda por aba
 
-Os guias abrem em um cartão compacto no canto inferior direito, sem escurecer a
-página nem bloquear seus controles. No celular, ficam acima do menu. O botão de
-ajuda permite reabrir o guia; a preferência de não exibir novamente continua
-salva por conta e por aba. Abas sem arte própria usam a ilustração da área
-correspondente; falhas de imagem mostram o ícone de ajuda.
+A ajuda começa recolhida em um pequeno botão de interrogação no canto inferior
+direito. Abre somente ao clicar, em um cartão de até 290 px, com uma dica por vez
+e navegação Anterior/Próxima. No celular, o cartão fica acima do menu. Não há
+modal central, escurecimento da página, abertura automática ou confirmação de
+"não mostrar novamente". Fechar, clicar novamente no botão ou usar Escape recolhe
+o cartão; a troca de aba também o recolhe. As preferências antigas permanecem
+preservadas no banco, sem novos pedidos de leitura ou escrita para usar a ajuda.
+Abas sem arte própria usam a ilustração da área correspondente; falhas de imagem
+mostram o ícone de ajuda.
