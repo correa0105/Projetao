@@ -105,3 +105,7 @@ referências fornecidas pelo usuário em docs/references, autoria/licença origi
 não informadas. Diálogos são originais. Música temporária em
 public/audio/ginna-lullaby-of-woe.mp3: arquivo fornecido pelo usuário, com fonte
 registrada em public/audio/manifest.json; não atribuído a CC0.
+
+## Artes da horta
+
+Os estágios de Erva-bálsamo e Raiz-dourada e o fermentador em `public/house2/garden-20261111/` foram criados com ImageGen para o portal. Os sprites usam vista superior e transparência, exportados como WebP leves. Os PNGs originais ficam preservados no acervo local de imagens geradas. O robô da Loja de Cristais reaproveita a arte de Relíquias com o recorte já usado pelo contorno de interação.

@@ -46,8 +46,13 @@ export function guildFacilityDefinitionsRouter() {
         throw new AppError(409, 'O objeto mudou. Reabra a edição para carregar a versão atual.');
       if (input.progression) {
         if (input.progression.levels.some(t => t.requirements.some(r =>
-          (r.kind === 'prestige_cost' || r.kind === 'crystal_cost') && r.kind !== bastionSpecialCost(room),
-        ))) throw new AppError(400, 'A Ferraria recebe Prestígio e a Ferramenta de Expedição recebe cristais.');
+          r.kind === 'prestige_cost' || r.kind === 'crystal_cost' || r.kind === 'tower_crystals' ||
+          (r.kind === 'gold_cost' && room !== 'forge'),
+        ))) throw new AppError(400, 'A Ferraria evolui com ouro e a Ferramenta de Expedição com tags de monstros.');
+        const required = bastionSpecialCost(room);
+        if (required && input.progression.levels.some(t => t.level > 1 && t.enabled && !t.requirements.some(r =>
+          r.kind === required || (required === 'monster_tags' && r.kind === 'monster_tag'),
+        ))) throw new AppError(400, 'Defina o custo em ouro da Ferraria ou a meta de tags da Ferramenta de Expedição.');
         const ids = [...new Set(input.progression.levels.flatMap(t => t.requirements.flatMap(r => r.kind === 'monster_tag' ? [r.tag_id] : [])))];
         if (ids.length && (await db.query('SELECT id FROM mission_tags WHERE id=ANY($1::uuid[]) FOR SHARE', [ids])).rowCount !== ids.length)
           throw new AppError(400, 'Uma das tags escolhidas não existe.');

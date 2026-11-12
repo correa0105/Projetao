@@ -29,6 +29,12 @@ const plotSelect = `SELECT p.*,coalesce(p.village_slot,p.number) AS number,c.nam
   coalesce(c.user_id=$2,false) AND c.deleted_at IS NULL AS can_edit
   FROM house2_plots p LEFT JOIN characters c ON c.id=p.character_id
   LEFT JOIN "user" u ON u.id=c.user_id`;
+const gardenItemSelect = `SELECT i.id,i.catalog_id,i.plot_id,i.x,i.y,i.rotation,i.scale,i.light_on,i.light_revision,
+  i.garden_plot_id,i.garden_role,CASE WHEN i.garden_role IS NOT NULL THEN jsonb_build_object(
+    'crop',g.crop,'ready_at',g.ready_at,'watered_at',g.watered_at,'fertilized',coalesce(g.fertilized,false),
+    'compost',g.compost,'compost_ready_at',g.compost_ready_at,'server_time',clock_timestamp()) END AS garden
+  FROM house2_items i LEFT JOIN house2_plots gp ON gp.id=i.garden_plot_id
+  LEFT JOIN house2_gardens g ON g.plot_id=gp.id AND g.character_id=gp.character_id`;
 async function editPlot(db: PoolClient, id: string, user: string) {
   const p = (
     await db.query(`${plotSelect} WHERE p.id=$1 AND p.retired_at IS NULL FOR UPDATE OF p`, [
@@ -106,7 +112,7 @@ export function house2Router() {
         ?.balance ?? house2StartingBalance;
     const inventory = (
       await pool.query(
-        'SELECT id,catalog_id,plot_id,x,y,rotation,scale,light_on,light_revision FROM house2_items WHERE user_id=$1 ORDER BY created_at,id',
+        gardenItemSelect + ' WHERE i.user_id=$1 ORDER BY i.created_at,i.id',
         [user],
       )
     ).rows;
@@ -167,7 +173,7 @@ export function house2Router() {
     ).rows;
     const items = (
       await pool.query(
-        'SELECT i.id,i.catalog_id,i.plot_id,i.x,i.y,i.rotation,i.scale,i.light_on,i.light_revision FROM house2_items i JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL ORDER BY i.created_at,i.id',
+        gardenItemSelect + ' JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL ORDER BY i.created_at,i.id',
         [id],
       )
     ).rows;
@@ -449,7 +455,7 @@ export function house2Router() {
       for (const i of b.items) {
         const owned = items.find((o) => o.id === i.id),
           spec = house2Furniture.find((f) => f.id === owned?.catalog_id);
-        if (!owned || !spec || (owned.plot_id && owned.plot_id !== id))
+        if (!owned || !spec || (owned.plot_id && owned.plot_id !== id) || (owned.garden_plot_id && owned.garden_plot_id !== id))
           throw new AppError(403, 'Esta mobília não está disponível no seu terreno.');
         const scale = i.scale ?? owned.scale;
         if (!house2Within(p, i, spec.width * scale, spec.height * scale))

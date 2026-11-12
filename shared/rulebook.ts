@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { classes, races, statNames } from './rules.js';
 import { MISSION_THRESHOLDS, RANKS, rankTitle, rankLabel } from './progression.js';
 import { missionDifficulties, missionReward } from './economy.js';
+import { currentRuleChapters } from './rulebook-current';
 
 export const RULEBOOK_MAX_DOCUMENT_BYTES = 2 * 1024 * 1024;
 export const RULEBOOK_MAX_IMAGE_BYTES = 8 * 1024 * 1024;
@@ -238,7 +239,8 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
               ordered: true,
               items: [
                 'A ficha rola 4d6 e descarta o menor dado para obter cada valor.',
-                'Os valores são rolados uma única vez e distribuídos entre os seis atributos.',
+                'Cada resultado tem mínimo 8 antes dos bônus. A soma dos seis fica entre 72 e 90. Os valores são distribuídos entre os seis atributos.',
+                'A vaga conserva os resultados ao excluir e recriar um personagem que ainda não atingiu o nível 4.',
                 'Os bônus de atributo vêm do antecedente escolhido.',
                 'A ficha finalizada conserva suas escolhas ao ser reaberta.',
               ],
@@ -383,9 +385,9 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
               ordered: false,
               items: [
                 'A compra confere o preço e o saldo; pagamento e entrega ficam registrados juntos.',
-                'Itens de equipamento inicial são registros da ficha. Compras da loja ficam no inventário.',
+                'O equipamento inicial é entregue à mochila uma vez. Excluir, recriar ou importar a ficha não repõe itens descartados ou transferidos.',
                 'A mochila permite equipar itens nas posições disponíveis e transferir bens entre mochila e cofre.',
-                'A armadura de placas entrega seis componentes pelo preço do conjunto; as demais armaduras entregam o peitoral.',
+                'A compra entrega as peças do modelo informado no catálogo. Confira os componentes e a compatibilidade antes de equipar.',
                 'Montaria, pelagem e acessórios comprados no estábulo ficam vinculados ao personagem.',
               ],
             },
@@ -394,7 +396,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
               type: 'callout',
               title: 'Descrição não é efeito automático',
               tone: 'warning',
-              text: 'Efeitos mágicos descritos no catálogo não são automação de combate. Vender, consumir e resolver efeitos dos itens continuam fora da cobertura atual do portal.',
+              text: 'Consulte as propriedades de cada item. A mesa oferece consumo de itens, rolagens e efeitos específicos implementados, incluindo as armas de Prestígio. O mestre confirma a aplicação dos efeitos que exigem interpretação.',
             },
           ],
         },
@@ -475,7 +477,7 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
             {
               id: 'convivencia-guilda-texto',
               type: 'text',
-              text: 'A Alvorada Cinzenta reúne uma única guilda compartilhada. Quem publica uma missão é responsável por mestrá-la e encerrar seu registro. Personagens, saldos, equipamentos e escolhas particulares pertencem à conta que os criou.',
+              text: 'A Alvorada Cinzenta reúne os aventureiros da comunidade e suas companhias. Os jogadores podem criar e participar de guildas pelas opções do portal. Quem publica uma missão é responsável por mestrá-la e encerrar seu registro. Personagens, saldos, equipamentos e escolhas particulares pertencem à conta que os criou.',
             },
             {
               id: 'convivencia-guilda-juramento',
@@ -501,5 +503,6 @@ export const INITIAL_RULEBOOK: RulebookDocument = {
         },
       ],
     },
+    ...currentRuleChapters,
   ],
 };

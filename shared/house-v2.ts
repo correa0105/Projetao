@@ -9,6 +9,7 @@ import { house2DefaultGrassImage } from './reference-grass';
 import { house2ExtraLightItems } from './house2-items-lighting';
 import type { House2Finishes } from './house2-finishes';
 import { furnishingCredits, housePlotCredits } from './economy';
+import { gardenFurniture, type GardenView } from './house-garden';
 
 export const house2Size = 200;
 export const house2Landscape = house2DefaultGrassImage;
@@ -39,7 +40,7 @@ export const house2Houses = houses
     interior: vttVisualSource(h.interior),
     price: 500 + Math.floor(i / 5) * 150,
   }));
-export const house2Furniture = [...furniture, ...medievalFurniture, ...expandedFurniture, ...house2ExtraLightItems].map(
+export const house2Furniture = [...furniture, ...medievalFurniture, ...expandedFurniture, ...house2ExtraLightItems, ...gardenFurniture].map(
   (f) => ({
     ...f,
     image: vttVisualSource(f.image),
@@ -48,7 +49,7 @@ export const house2Furniture = [...furniture, ...medievalFurniture, ...expandedF
 );
 // Retain historical pieces for collections, layout validation and rendering.
 export const house2FurnitureForSale = house2Furniture.filter(
-  (f) => !['furniture-113', 'furniture-115'].includes(f.id),
+  (f) => !['furniture-113', 'furniture-115', ...gardenFurniture.map(piece => piece.id)].includes(f.id),
 );
 export const house2Terrains = {
   earth: '/vtt/terrain-v3-20261013/earth.webp',
@@ -88,6 +89,9 @@ export type House2Plot = {
   village_slot: number | null;
 };
 export type House2Item = {
+  garden_plot_id?: string | null;
+  garden_role?: 'bed' | 'compost' | null;
+  garden?: GardenView | null;
   light_on?: boolean;
   light_revision?: number;
   id: string;

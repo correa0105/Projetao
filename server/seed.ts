@@ -4,6 +4,7 @@ import { transaction } from './db.js';
 import { PLATE_PIECES } from '../shared/armor-bundles.js';
 import { seedLore } from './lore.js';
 import { ensureInitialRulebook } from './rulebook.js';
+import { applyCurrentRulebook } from './rulebook-update.js';
 import { lockCatalogPrices } from './shop-prices.js';
 import { seedArmorPieces } from './armor-catalog.js';
 import { seedClothingPieces } from './clothing-catalog.js';
@@ -300,5 +301,6 @@ export async function seed() {
   await seedLore();
   await ensureInitialRulebook();
   await transaction(applyEconomyRulebook);
+  await transaction(applyCurrentRulebook);
   console.log('Catálogo e cenário inicial disponíveis.');
 }

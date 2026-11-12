@@ -3,8 +3,9 @@ import { PasswordRecovery } from './PasswordRecovery';
 import { RecoveryMailSettings } from './RecoveryMailSettings';
 import { AssetGate, AssetLoading, usePreparedAssets } from './AssetLoading';
 import { openingPageAssets, siteBootAssets } from './page-assets';
+import { PageTutorial } from './PageTutorial';
 import { markInitialLoadComplete } from './loading-visit';
-import { maintenanceMessage, type MaintenanceArea } from '../shared/maintenance';
+import { launchLockedAreas, maintenanceMessage, type MaintenanceArea } from '../shared/maintenance';
 import { vttPersonalHref } from '../shared/vtt-links';
 import { HomeJournal } from './HomeJournal';
 import { AccountPreview } from './AccountPreview';
@@ -165,7 +166,7 @@ function Portal({ user }: { user: User }) {
   const [contentScopes, setContentScopes] = useState(user.admin_scopes || []);
   const canManageBoard = administrator || contentScopes.includes('board');
   const canManageEvents = administrator || contentScopes.includes('events');
-  const [maintenanceAreas, setMaintenanceAreas] = useState<MaintenanceArea[]>([]);
+  const [maintenanceAreas, setMaintenanceAreas] = useState<MaintenanceArea[]>([...launchLockedAreas]);
   const [deletingMission, setDeletingMission] = useState<Post | null>(null);
   const [deletionError, setDeletionError] = useState('');
   const [completingMission, setCompletingMission] = useState<Post | null>(null);
@@ -582,7 +583,11 @@ function Portal({ user }: { user: User }) {
         </Suspense>
       );
     if (page === 'overview') return <HomeJournal upcoming={upcoming} canEdit={administrator || contentScopes.includes('home')} />;
-    if ((page === 'events' || page === 'tower') && maintenanceAreas.includes(page))
+    if ((page === 'tower' || page === 'cristais') && maintenanceAreas.includes(page))
+      return <Empty title={page === 'tower' ? 'Torre em breve' : 'Loja de Cristais em breve'} action={<button className="button" onClick={() => go(page === 'tower' ? 'board' : 'shop')}>Voltar</button>}>
+        {maintenanceMessage(page)}
+      </Empty>;
+    if (page === 'events' && maintenanceAreas.includes(page))
       return <Empty title={page === 'events' ? 'Eventos em manutenção' : 'Torre em manutenção'} action={<button className="button" onClick={() => go('board')}>Voltar ao mural</button>}>
         {maintenanceMessage(page)}
       </Empty>;
@@ -815,6 +820,7 @@ function Portal({ user }: { user: User }) {
         </main>
       </div>
       <Navigation page={page} go={go} maintenanceAreas={maintenanceAreas} />
+      <PageTutorial page={page} userId={user.id} ready={!loading && !loadError} />
       {character && (page === 'characters' || page === 'inventory') && <CharacterTokenPreview key={`${character.id}:${character.portrait_revision}`} character={character} />}
       {(page === 'characters' || page === 'inventory') && <CharacterArtChoice onRefresh={refresh} />}
       {toast && <FlashMessage kind="info">{toast}</FlashMessage>}

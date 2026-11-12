@@ -41,7 +41,7 @@
 .crystal-shop .crystal-vendor-figure {
   display: block;
   width: 100%;
-  aspect-ratio: 900 / 894;
+  aspect-ratio: 476 / 483;
   min-height: 0;
   padding: 0;
   border: 0;
@@ -52,24 +52,24 @@
   pointer-events: auto;
 }
 
-.crystal-vendor-figure img {
+.crystal-vendor-figure :is(img, svg) {
   display: block;
   width: 100%;
   height: auto;
   filter: drop-shadow(0 4px 8px #160e09b0) drop-shadow(0 0 1px #bf9c6d);
 }
 
-.crystal-vendor-figure[data-greeting] img {
+.crystal-vendor-figure[data-greeting] :is(img, svg) {
   filter: drop-shadow(0 4px 8px #160e09b0);
 }
 
-.crystal-vendor-figure:is(:hover, :focus-visible, [aria-expanded='true']) img {
+.crystal-vendor-figure:is(:hover, :focus-visible, [aria-expanded='true']) :is(img, svg) {
   filter: drop-shadow(0 4px 8px #160e09b0) drop-shadow(0 0 2px #e5b875);
 }
 
 .crystal-vendor .crystal-vendor-speech {
-  top: calc(0.19 * var(--vendor-width) - 2rem);
-  left: calc(0.37 * var(--vendor-width) - 6px);
+  top: calc(0.36 * var(--vendor-width) - 2rem);
+  left: calc(0.49 * var(--vendor-width) - 6px);
   width: clamp(10.5rem, 16vw, 15rem);
   transform: translateX(-100%);
   background: #25242aef;

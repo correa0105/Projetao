@@ -12,6 +12,7 @@ import { socialRouter } from './social.js';
 import { guildsRouter } from './guilds.js';
 import { guildFacilityDefinitionsRouter } from './guild-facility-definitions.js';
 import { towerRouter } from './tower.js';
+import { pageTutorialsRouter } from './page-tutorials.js';
 import { specialEconomyRouter } from './special-economy.js';
 import { clothingPieceAppearance } from '../shared/clothing-bundles.js';
 import express from 'express';
@@ -219,7 +220,10 @@ export function createApp() {
     const eventMediaWrite = area === 'event-images' && !['GET', 'HEAD'].includes(req.method);
     if (['events', 'events-scene'].includes(area) || eventMediaWrite)
       await requireAreaAvailable('events', res.locals.user.id);
-    if (area === 'tower') await requireAreaAvailable('tower', res.locals.user.id);
+    if (area === 'tower' || /^\/vtt\/rooms\/[^/]+\/tower-items(?:\/|$)/.test(req.path))
+      await requireAreaAvailable('tower', res.locals.user.id);
+    if (/^\/special-shop\/crystals(?:\/|$)/.test(req.path))
+      await requireAreaAvailable('cristais', res.locals.user.id);
     next();
   });
   app.use('/api', recoveryMailSettingsRouter());
@@ -295,6 +299,7 @@ export function createApp() {
   app.use('/api', guildFacilityDefinitionsRouter());
   app.use('/api', towerRouter());
   app.use('/api', specialEconomyRouter());
+  app.use('/api', pageTutorialsRouter());
   app.use('/api', houseRouter());
   app.use('/api', house2Router());
   app.use('/api', worldClockRouter());
@@ -320,7 +325,7 @@ export function createApp() {
             ? 'staff'
             : 'player',
       canEditKingdom: scopes.includes('world'),
-      maintenance_areas: maintenanceAreas().filter(area => !scopes.includes(area)),
+      maintenance_areas: maintenanceAreas().filter(area => area === 'tower' || area === 'cristais' || !scopes.includes(area)),
     });
   });
   app.get('/api/characters', async (_req, res) => {

@@ -4,10 +4,11 @@ import { crystalMerchantArt, crystalShopArt } from './page-assets';
 import { SpecialShop } from './SpecialEconomy';
 import type { Character } from './types';
 import './crystal-shop.css';
+import { robotBounds, robotOutline, sceneHeight, sceneWidth } from './RelicShop';
 
-const merchant = 'Guardião dos Cristais';
+const merchant = 'Robô de bronze';
 const greeting =
-  'Bem-vindo, viajante. Traga seus cristais até o balcão. Eu cuido do que você leva de volta à Torre.';
+  'Bem-vindo, viajante. Pode deixar os cristais no balcão. Conto cada um com muito cuidado. Minhas engrenagens ajudam.';
 const topics = [
   {
     question: 'Como ganho cristais?',
@@ -20,13 +21,13 @@ const topics = [
       'Use os itens nas mesas oficiais de expedições ativas da Torre em que seu personagem participa. Suas compras aparecem em Itens do personagem.',
   },
   {
-    question: 'Como doar à guilda?',
+    question: 'Posso usar cristais na guilda?',
     answer:
-      'Doe cristais para a Ferramenta de Expedição na Mesa de Estratégia da guilda. O fundador autoriza a melhoria.',
+      'A guilda evolui com ouro e tags de monstros. Guarde seus cristais para as ofertas e expedições da Torre.',
   },
   {
     question: 'Quem é você?',
-    answer: 'Sou o guardião do Entreposto. Protejo os cristais da Torre.',
+    answer: 'Cuido das relíquias e confiro cada cristal. Pode confiar na contagem. Tenho mais prática com números do que com dobradiças.',
   },
 ] as const;
 
@@ -36,6 +37,7 @@ function CrystalMerchant() {
   const host = useRef<HTMLElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const topicsId = useId();
+  const clipId = useId();
   const talking = view === 'talk';
 
   function closeConversation() {
@@ -87,7 +89,10 @@ function CrystalMerchant() {
         aria-controls={topicsId}
         onClick={() => (talking ? closeAndFocus() : setView('talk'))}
       >
-        <img src={crystalMerchantArt} width={900} height={894} alt="" draggable={false} />
+        <svg viewBox={`${robotBounds.x} ${robotBounds.y} ${robotBounds.width} ${robotBounds.height}`} aria-hidden="true">
+          <defs><clipPath id={clipId}><path d={robotOutline} fillRule="evenodd" clipRule="evenodd" /></clipPath></defs>
+          <image href={crystalMerchantArt} width={sceneWidth} height={sceneHeight} clipPath={`url(#${clipId})`} />
+        </svg>
       </button>
       <div className="relic-vendor-speech crystal-vendor-speech" hidden={view === 'closed'}>
         <header>

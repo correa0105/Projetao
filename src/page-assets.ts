@@ -1,11 +1,12 @@
 import type { Page } from './types';
+import { launchLockedAreas, type MaintenanceArea } from '../shared/maintenance';
 
 // Only opening scenery belongs here. Catalogues and maps load inside their own areas.
 const wood = '/achievement-wood-v1.png';
 const board = ['/notice-village-complete-v5.png', '/notices/wood-plaque-v1.png', wood];
 export const relicShopArt = '/shop/reliquias-v1.webp';
 export const crystalShopArt = '/shop/cristais-sala-v2.webp';
-export const crystalMerchantArt = '/shop/cristais-guardiao-balcao-v1.webp';
+export const crystalMerchantArt = relicShopArt;
 export const primaryPageAssets: Partial<Record<Page, readonly string[]>> = {
   overview: ['/home-guild-hall.webp'],
   tower: [
@@ -46,6 +47,7 @@ export const primaryPageAssets: Partial<Record<Page, readonly string[]>> = {
 // destination instead of fetching every area's background before entering.
 export const siteBootAssets = ['/alvorada-map-v2.png','/alvorada-fog.svg'];
 export function openingPageAssets(page: Page) {
+  if (launchLockedAreas.includes(page as MaintenanceArea)) return [];
   if(page==='cards')return [matchMedia('(max-width:900px)').matches
     ? '/cards/host-shadow-study-mobile-20261027.png'
     : '/cards/host-shadow-study-20261027.png'];

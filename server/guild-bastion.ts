@@ -9,7 +9,6 @@ import {
 } from '../shared/guild-facilities.js';
 import {
   bastionRequirementKey,
-  bastionSpecialCost,
   bastionProgressionSchema,
   emptyBastionProgression,
   type BastionProgression,
@@ -79,9 +78,11 @@ export async function bastionMetrics(db: Database, guildId: string, treasury: nu
     )
   ).rows;
   const tags = (await db.query('SELECT id,name,active FROM mission_tags ORDER BY name')).rows;
-  const totals: Record<string, number> = { treasury };
-  for (const row of rows)
+  const totals: Record<string, number> = { treasury, monster_tags: 0 };
+  for (const row of rows) {
     totals[row.metric === 'monster_tag' ? 'tag:' + row.tag_id : row.metric] = Number(row.total);
+    if (row.metric === 'monster_tag') totals.monster_tags += Number(row.total);
+  }
   for (const row of custom) totals['custom:' + row.key] = row.value;
   return { totals, custom, tags };
 }
@@ -91,6 +92,10 @@ export function requirementLabel(r: BastionRequirement, tags: { id: string; name
       return 'Missões concluídas pela guilda';
     case 'monster_tag':
       return 'Tags de ' + (tags.find((t) => t.id === r.tag_id)?.name || 'monstro');
+    case 'monster_tags':
+      return 'Tags de monstros conquistadas pela guilda';
+    case 'gold_cost':
+      return 'Ouro contribuído para a Ferraria';
     case 'tower_crystals':
       return 'Cristais conquistados na Torre';
     case 'treasury':
@@ -111,10 +116,11 @@ export async function bastionFacilityStates(db: Database, guildId: string, treas
       guildId,
     ])
   ).rows;
-  const guild = (await db.query('SELECT prestige,prestige_points,tower_crystals FROM player_guilds WHERE id=$1', [guildId]))
+  const guild = (await db.query('SELECT prestige,treasury_cp,prestige_points,tower_crystals FROM player_guilds WHERE id=$1', [guildId]))
     .rows[0];
   metrics.totals.prestige_cost = guild.prestige_points;
   metrics.totals.crystal_cost = guild.tower_crystals;
+  metrics.totals.gold_cost = Number(guild.treasury_cp);
   const settings = communitySettingsSchema.parse(
     (await db.query('SELECT document FROM community_settings WHERE singleton')).rows[0]?.document ||
       {},
@@ -143,7 +149,7 @@ export async function bastionFacilityStates(db: Database, guildId: string, treas
               current,
               target: r.target,
               met: current >= r.target,
-              consumed: r.kind === 'treasury' || r.kind === bastionSpecialCost(f.room),
+              consumed: r.kind === 'treasury' || r.kind === 'gold_cost',
             };
           }),
         }
@@ -188,8 +194,7 @@ export async function requireBastionUpgrade(
     );
   return {
     cost: state.next.requirements.find((r) => r.kind === 'treasury')?.target || 0,
-    prestigeCost: room === 'forge' ? state.next.requirements.find((r) => r.kind === 'prestige_cost')?.target || 0 : 0,
-    crystalCost: room === 'meeting' ? state.next.requirements.find((r) => r.kind === 'crystal_cost')?.target || 0 : 0,
+    goldCost: state.next.requirements.find((r) => r.kind === 'gold_cost')?.target || 0,
     snapshot: {
       level,
       benefit: state.next.benefit,

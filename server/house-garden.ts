@@ -23,11 +23,13 @@ const gardenRequest = z
 const hour = 3_600_000;
 type GardenState = Pick<HouseGarden, 'crop' | 'fertilized' | 'compost'> & {
   ready_at: Date | null;
+  watered_at: Date | null;
   compost_ready_at: Date | null;
 };
 const emptyGarden: GardenState = {
   crop: null,
   ready_at: null,
+  watered_at: null,
   fertilized: false,
   compost: null,
   compost_ready_at: null,
@@ -46,6 +48,7 @@ function gardenReward(state: GardenState, operation: GardenAction, now: Date) {
       if (!state.crop || state.ready_at)
         throw new AppError(409, 'Plante uma semente que ainda precise de água.');
       state.ready_at = new Date(now.getTime() + gardenCrops[state.crop].hours * hour);
+      state.watered_at = now;
       break;
     case 'ferment':
       if (state.compost) throw new AppError(409, 'O fermentador já tem um lote.');
@@ -81,6 +84,7 @@ function gardenReward(state: GardenState, operation: GardenAction, now: Date) {
         item = gardenHealingItem;
       } else gold = gardenCrops[state.crop].saleCp;
       state.crop = state.ready_at = null;
+      state.watered_at = null;
       state.fertilized = false;
       break;
   }
@@ -93,6 +97,7 @@ function serialize(state: GardenState, gold: number, now: Date): HouseGarden {
     gold_cp: gold,
     server_time: now.toISOString(),
     ready_at: state.ready_at?.toISOString() ?? null,
+    watered_at: state.watered_at?.toISOString() ?? null,
     compost_ready_at: state.compost_ready_at?.toISOString() ?? null,
   };
 }
@@ -112,7 +117,7 @@ async function lockedGarden(db: PoolClient, userId: string, plotId: string, char
   if (!plot.rowCount) throw new AppError(404, 'Horta disponível somente em uma casa sua.');
   const garden = (
     await db.query<GardenState>(
-      'SELECT crop,ready_at,fertilized,compost,compost_ready_at FROM house2_gardens WHERE plot_id=$1 AND character_id=$2',
+      'SELECT crop,ready_at,watered_at,fertilized,compost,compost_ready_at FROM house2_gardens WHERE plot_id=$1 AND character_id=$2',
       [plotId, characterId],
     )
   ).rows[0];
@@ -123,11 +128,26 @@ async function lockedGarden(db: PoolClient, userId: string, plotId: string, char
 export function houseGardenRouter() {
   const router = Router();
   const path = '/house-v2/plots/:plot/garden';
+  router.post(path + '/items', async (req, res) => {
+    const plot = uuid.parse(req.params.plot);
+    const { character_id: character } = z.object({ character_id: uuid }).strict().parse(req.body);
+    res.json(await transaction(async db => {
+      await lockedGarden(db, res.locals.user.id, plot, character);
+      await db.query(
+        `INSERT INTO house2_items(user_id,catalog_id,garden_plot_id,garden_role)
+         SELECT $1,CASE role WHEN 'bed' THEN 'h2-garden-bed' ELSE 'h2-garden-compost' END,$2,role
+         FROM (VALUES ('bed'),('compost')) AS roles(role)
+         ON CONFLICT(garden_plot_id,garden_role) DO NOTHING`,
+        [res.locals.user.id,plot],
+      );
+      return { items: (await db.query('SELECT * FROM house2_items WHERE garden_plot_id=$1 ORDER BY garden_role',[plot])).rows };
+    }));
+  });
   router.get(path, async (req, res) => {
     const plot = uuid.parse(req.params.plot);
     const row = (
       await pool.query<GardenState & { gold_cp: number; now: Date }>(
-        `SELECT g.crop,g.ready_at,coalesce(g.fertilized,false) AS fertilized,g.compost,g.compost_ready_at,c.gold_cp,clock_timestamp() AS now
+        `SELECT g.crop,g.ready_at,g.watered_at,coalesce(g.fertilized,false) AS fertilized,g.compost,g.compost_ready_at,c.gold_cp,clock_timestamp() AS now
        FROM house2_plots p JOIN characters c ON c.id=p.character_id
        LEFT JOIN house2_gardens g ON g.plot_id=p.id AND g.character_id=c.id
        WHERE p.id=$1 AND p.retired_at IS NULL AND p.house_id IS NOT NULL AND c.user_id=$2 AND c.deleted_at IS NULL`,
@@ -176,10 +196,10 @@ export function houseGardenRouter() {
             [character, reward.item],
           );
         await db.query(
-          `INSERT INTO house2_gardens(plot_id,character_id,crop,ready_at,fertilized,compost,compost_ready_at)
-         VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(plot_id,character_id) DO UPDATE SET
+          `INSERT INTO house2_gardens(plot_id,character_id,crop,ready_at,fertilized,compost,compost_ready_at,watered_at)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT(plot_id,character_id) DO UPDATE SET
          crop=EXCLUDED.crop,ready_at=EXCLUDED.ready_at,fertilized=EXCLUDED.fertilized,
-         compost=EXCLUDED.compost,compost_ready_at=EXCLUDED.compost_ready_at`,
+         compost=EXCLUDED.compost,compost_ready_at=EXCLUDED.compost_ready_at,watered_at=EXCLUDED.watered_at`,
           [
             plot,
             character,
@@ -188,6 +208,7 @@ export function houseGardenRouter() {
             state.fertilized,
             state.compost,
             state.compost_ready_at,
+            state.watered_at,
           ],
         );
         await db.query(

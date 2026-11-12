@@ -4,7 +4,9 @@ Atualização de 17/10: a hora global editada pelo administrador governa a ilumi
 
 ## Horta
 
-Abra **Horta** no menu da vizinhança ou selecione uma casa sua e clique em **Abrir horta**. Cada casa tem um canteiro e um fermentador. A semente e os ingredientes são pagos em ouro pelo personagem dono da casa. A primeira rega inicia o crescimento. O servidor mantém os horários em tempo real, inclusive com o site fechado.
+Abra **Horta** no menu da vizinhança ou selecione uma casa sua e clique em **Abrir horta**. Cada casa tem um canteiro e um fermentador. **Posicionar canteiro no terreno** e **Posicionar fermentador no terreno** abrem os mesmos controles da mobília. O dono pode arrastar, girar, ajustar o tamanho, guardar e recolocar cada peça dentro do próprio lote. **Salvar** registra a posição. Cada casa mantém uma unidade de cada peça, inclusive em reenvios da operação.
+
+A semente e os ingredientes são pagos em ouro pelo personagem dono da casa. A primeira rega inicia o crescimento. O canteiro mostra sementes, brotos, plantas em desenvolvimento e colheita pronta. As duas plantas têm artes próprias para cada estágio. O servidor mantém os horários em tempo real, inclusive com o site fechado ou a peça guardada. Mover o canteiro conserva a planta e seus horários. Hortas existentes recebem suas peças visuais perto da borda do lote quando há espaço no limite de objetos.
 
 | Planta | Semente | Cultivo após regar | Colheita |
 |---|---:|---:|---|

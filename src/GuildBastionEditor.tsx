@@ -73,7 +73,7 @@ export function GuildBastionEditor({
         <>
           <h4>Requisitos para alcançar o nível {selected}</h4>
           <p>
-            Todos os requisitos devem ser cumpridos. Missões, tags e cristais conquistados contam
+            Todos os requisitos devem ser cumpridos. Missões e tags conquistadas contam
             como metas acumuladas. Os custos são retirados do tesouro ao evoluir.
           </p>
           {tier.requirements.map((r, i) => (
@@ -98,10 +98,9 @@ export function GuildBastionEditor({
                 >
                   <option value="missions">Missões concluídas</option>
                   <option value="monster_tag">Tag de monstro</option>
-                  <option value="tower_crystals">Cristais conquistados na Torre</option>
+                  <option value="monster_tags">Total de tags de monstros</option>
                   <option value="treasury">Créditos do Bastião no tesouro</option>
-                  {bastionSpecialCost(value.room) === 'prestige_cost' && <option value="prestige_cost">Custo em Prestígio</option>}
-                  {bastionSpecialCost(value.room) === 'crystal_cost' && <option value="crystal_cost">Custo em cristais doados</option>}
+                  {bastionSpecialCost(value.room) === 'gold_cost' && <option value="gold_cost">Ouro da Ferraria</option>}
                   <option value="custom">Outro critério</option>
                 </select>
               </label>
@@ -152,18 +151,18 @@ export function GuildBastionEditor({
                 </>
               )}
               <label>
-                {r.kind === 'treasury' ? 'Quantidade em CB' : 'Quantidade necessária'}
+                {r.kind === 'treasury' ? 'Quantidade em CB' : r.kind === 'gold_cost' ? 'Quantidade em PO' : 'Quantidade necessária'}
                 <input
                   type="number"
-                  min={r.kind === 'treasury' ? 0.01 : 1}
-                  max={r.kind === 'treasury' ? 10_000_000 : 1_000_000_000}
-                  step={r.kind === 'treasury' ? 0.01 : 1}
-                  value={r.kind === 'treasury' ? r.target / 100 : r.target}
+                  min={r.kind === 'treasury' || r.kind === 'gold_cost' ? 0.01 : 1}
+                  max={r.kind === 'treasury' || r.kind === 'gold_cost' ? 10_000_000 : 1_000_000_000}
+                  step={r.kind === 'treasury' || r.kind === 'gold_cost' ? 0.01 : 1}
+                  value={r.kind === 'treasury' || r.kind === 'gold_cost' ? r.target / 100 : r.target}
                   onChange={(e) =>
                     requirement(i, {
                       ...r,
                       target:
-                        r.kind === 'treasury'
+                        r.kind === 'treasury' || r.kind === 'gold_cost'
                           ? Math.round(Number(e.target.value) * 100)
                           : Number(e.target.value),
                     })
@@ -186,7 +185,7 @@ export function GuildBastionEditor({
             type="button"
             disabled={tier.requirements.length >= 12}
             onClick={() =>
-              update({ requirements: [...tier.requirements, { kind: 'missions', target: 1 }] })
+              update({ requirements: [...tier.requirements, { kind: bastionSpecialCost(value.room) ?? 'missions', target: 1 }] })
             }
           >
             Adicionar requisito

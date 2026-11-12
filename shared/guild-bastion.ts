@@ -4,6 +4,8 @@ const target = z.number().int().min(1).max(1_000_000_000);
 export const bastionRequirementSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('missions'), target }).strict(),
   z.object({ kind: z.literal('monster_tag'), tag_id: z.string().uuid(), target }).strict(),
+  z.object({ kind: z.literal('monster_tags'), target }).strict(),
+  z.object({ kind: z.literal('gold_cost'), target }).strict(),
   z.object({ kind: z.literal('tower_crystals'), target }).strict(),
   z.object({ kind: z.literal('treasury'), target }).strict(),
   z.object({ kind: z.literal('prestige_cost'), target }).strict(),
@@ -19,7 +21,7 @@ export const bastionRequirementSchema = z.discriminatedUnion('kind', [
 ]);
 export type BastionRequirement = z.infer<typeof bastionRequirementSchema>;
 export const bastionSpecialCost = (room: string) =>
-  room === 'forge' ? 'prestige_cost' : room === 'meeting' ? 'crystal_cost' : null;
+  room === 'forge' ? 'gold_cost' : room === 'meeting' ? 'monster_tags' : null;
 export const bastionRequirementKey = (r: BastionRequirement) =>
   r.kind === 'monster_tag' ? 'tag:' + r.tag_id : r.kind === 'custom' ? 'custom:' + r.key : r.kind;
 export const bastionProgressionSchema = z
@@ -93,6 +95,6 @@ export type BastionState = {
   can_edit: boolean;
   can_upgrade: boolean;
   progress_visible: boolean;
-  special_balances?: { prestige: number; crystals: number; personal_prestige: number; personal_crystals: number; character_id: string };
+  special_balances?: { gold_cp: number; personal_gold_cp: number; gold_unlimited: boolean; character_id: string };
   custom: { key: string; value: number; revision: number }[];
 };

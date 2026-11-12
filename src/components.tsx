@@ -67,6 +67,7 @@ export function Modal({
   title,
   close,
   children,
+  className,
   parchment = false,
   dismissOnBackdrop = true,
   dismissOnEscape = true,
@@ -74,6 +75,7 @@ export function Modal({
   title: string;
   close: () => void;
   children: ReactNode;
+  className?: string;
   parchment?: boolean;
   dismissOnBackdrop?: boolean;
   dismissOnEscape?: boolean;
@@ -84,7 +86,7 @@ export function Modal({
   }, []);
   return (
     <dialog
-      className={parchment ? 'character-sheet character-creation-dialog' : undefined}
+      className={[parchment ? 'character-sheet character-creation-dialog' : '', className].filter(Boolean).join(' ') || undefined}
       ref={ref}
       onCancel={(event) => {
         event.preventDefault();

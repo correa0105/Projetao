@@ -7,11 +7,11 @@ import './relic-shop.css';
 
 const vendorGreeting =
   'Chegue mais, viajante. Se ouvir um rangido, é o baú. Minhas engrenagens estão em dia.';
-const sceneWidth = 1440;
-const sceneHeight = 960;
-const robotBounds = { x: 710, y: 201, width: 476, height: 483 };
+export const sceneWidth = 1440;
+export const sceneHeight = 960;
+export const robotBounds = { x: 710, y: 201, width: 476, height: 483 };
 // Coordinates in the shop illustration. The second subpath is the gap inside the right arm.
-const robotOutline = `
+export const robotOutline = `
   M1011 210 C1011 201 1042 201 1048 209 L1046 232 Q1045 245 1037 249
   L1038 267 C1085 272 1114 306 1127 347 C1135 375 1132 403 1133 430
   L1131 466 Q1129 478 1098 485 L1090 490 Q1102 494 1113 499

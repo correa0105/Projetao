@@ -58,6 +58,7 @@ import { rollFormula } from '../shared/vtt-roll.js';
 import { attackOutcome } from '../shared/vtt-attack.js';
 import { attackVisualSchema } from '../shared/vtt-attack-visual.js';
 import { vttProtocolVersion, vttUpdateMessage } from '../shared/vtt-protocol.js';
+import { launchLockedAreas } from '../shared/maintenance.js';
 import {
   documentSchema,
   newToken,
@@ -245,7 +246,7 @@ async function state(rid: string, user: string) {
         FROM vtt_messages WHERE room_id=$1 AND (NOT private OR author_id=$2 OR $3) ORDER BY vtt_messages.id DESC LIMIT 100`,
       [rid, user, isGm],
     ),
-    r.owner_id === user || r.role === 'player' ? pool.query(
+    !launchLockedAreas.includes('tower') && (r.owner_id === user || r.role === 'player') ? pool.query(
       `SELECT c.id,c.name FROM tower_expedition_rooms l JOIN tower_expeditions e ON e.id=l.run_id AND e.status='active'
        JOIN tower_members m ON m.run_id=e.id JOIN characters c ON c.id=m.character_id
        WHERE l.room_id=$1 AND c.user_id=$2 AND c.deleted_at IS NULL ORDER BY c.name,c.id`,

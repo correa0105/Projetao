@@ -52,6 +52,8 @@ import { house2LightItems } from '../shared/house2-items-lighting';
 import { MusicControls } from './SiteMusic';
 import { House2FinishesShop } from './House2FinishesShop';
 import { HouseGardenPanel } from './HouseGardenPanel';
+import { House2GardenArt } from './House2GardenArt';
+import type { HouseGarden } from '../shared/house-garden';
 import { House2Interior, house2CutawayImage } from './House2Interior';
 import { house2Architecture } from './house2-architecture';
 import { house2DayPhases } from '../shared/house2-lighting';
@@ -434,20 +436,20 @@ export function House2({ character, user, onGardenChanged }: {
       });
     setTool('terrain');
   }
-  function startDraft(): House2Layout | null {
-    if (!plot?.can_edit || busy) return null;
+  function startDraft(target = plot): House2Layout | null {
+    if (!target?.can_edit || busy) return null;
     return (
-      draft || {
-        revision: plot.revision,
-        ground: structuredClone(plot.ground ?? []),
-        house: plot.house_id
+      (target.id === plot?.id ? draft : null) || {
+        revision: target.revision,
+        ground: structuredClone(target.ground ?? []),
+        house: target.house_id
           ? {
-              x: plot.house_x!,
-              y: plot.house_y!,
-              rotation: plot.house_rotation as 0 | 90 | 180 | 270,
+              x: target.house_x!,
+              y: target.house_y!,
+              rotation: target.house_rotation as 0 | 90 | 180 | 270,
             }
           : null,
-        items: (scene?.items.filter((i) => i.plot_id === plot.id) || []).map((i) => ({
+        items: (scene?.items.filter((i) => i.plot_id === target.id) || []).map((i) => ({
           id: i.id,
           x: i.x!,
           y: i.y!,
@@ -544,25 +546,54 @@ export function House2({ character, user, onGardenChanged }: {
       setBusy(false);
     }
   }
-  function place(item: House2Item) {
-    const d = startDraft(),
+  function place(item: House2Item, target = plot) {
+    const d = startDraft(target),
       spec = house2Furniture.find((f) => f.id === item.catalog_id);
-    if (!d || !spec || !plot || d.items.some((i) => i.id === item.id)) return;
+    if (!d || !spec || !target || d.items.some((i) => i.id === item.id)) return;
+    if (item.garden_plot_id && item.garden_plot_id !== target.id) {
+      setNotice('Este canteiro pertence à horta de outro terreno.');
+      return;
+    }
     if (d.items.length >= 200) {
       setNotice('O terreno comporta até 200 peças nesta versão de testes.');
       return;
     }
     d.items.push({
       id: item.id,
-      x: plot.x + plot.width / 2,
-      y: plot.y + plot.height / 2,
+      x: target.x + target.width / 2,
+      y: target.y + target.height / 2,
       rotation: 0,
       scale: item.scale ?? 1,
     });
     setDraft(structuredClone(d));
+    setSelected(target.id);
     setSelectedPiece(item.id);
-    setInterior(plot.id);
+    setInterior(target.id);
     setNotice('Arraste a peça dentro do seu terreno e salve as mudanças.');
+  }
+  const updateGarden = useCallback((garden: HouseGarden) => {
+    const update = (item: House2Item) => item.garden_plot_id === gardenPlot?.id ? { ...item, garden } : item;
+    setScene(current => current ? { ...current, items: current.items.map(update) } : current);
+    setDirectory(current => current ? { ...current, inventory: current.inventory.map(update) } : current);
+  }, [gardenPlot?.id]);
+  async function arrangeGarden(role: 'bed' | 'compost') {
+    const target = gardenPlot;
+    if (!target?.can_edit || !target.character_id || busy || (target.id !== selected && guardDirty())) return;
+    setBusy(true);
+    try {
+      const result = await post<{ items: House2Item[] }>(`/house-v2/plots/${target.id}/garden/items`, { character_id: target.character_id });
+      await reload(sceneId, true);
+      const item = result.items.find(piece => piece.garden_role === role)!;
+      setSelected(target.id);
+      setCamera({ x: target.x + target.width / 2, y: target.y + target.height / 2, span: Math.max(target.height + 7, (target.width + 7) / aspect) });
+      if (item.plot_id) setSelectedPiece(item.id);
+      else place(item, target);
+      setTool('collection');
+    } catch (error) {
+      setNotice((error as Error).message);
+    } finally {
+      setBusy(false);
+    }
   }
   function adjust(rotation: -1 | 0 | 1 = 0, dx = 0, dy = 0) {
     const d = startDraft();
@@ -979,6 +1010,9 @@ export function House2({ character, user, onGardenChanged }: {
       <span>
         Arraste para mover. Use as bordas para redimensionar e o controle acima para girar.
       </span>
+      {shownItems.some(item => item.id === selectedPiece && item.garden_role) && (
+        <button onClick={() => setTool('garden')}><Sprout size={15} /> Cuidar da horta</button>
+      )}
       <label className="h2-checkbox">
         <input type="checkbox" checked={snap} onChange={(e) => setSnap(e.target.checked)} />{' '}
         Encaixar na grade
@@ -1414,13 +1448,12 @@ export function House2({ character, user, onGardenChanged }: {
                 }
               >
                 <title>{spec.name}</title>
-                <image
-                  href={spec.image}
-                  x={(-spec.width * item.scale) / 2}
-                  y={(-spec.height * item.scale) / 2}
-                  width={spec.width * item.scale}
-                  height={spec.height * item.scale}
-                />
+                {item.garden_role ? (
+                  <House2GardenArt item={item} width={spec.width * item.scale} height={spec.height * item.scale} />
+                ) : (
+                  <image href={spec.image} x={(-spec.width * item.scale) / 2} y={(-spec.height * item.scale) / 2}
+                    width={spec.width * item.scale} height={spec.height * item.scale} />
+                )}
               </g>
             );
           })}
@@ -1698,6 +1731,8 @@ export function House2({ character, user, onGardenChanged }: {
                   characterId={gardenPlot.character_id}
                   characterName={gardenPlot.owner_name ?? 'Personagem'}
                   onChanged={onGardenChanged}
+                  onStateChanged={updateGarden}
+                  onArrange={arrangeGarden}
                 />
               ) : <p>Selecione um terreno seu com uma casa construída para abrir a horta.</p>
             ) : tool === 'tokens' ? (

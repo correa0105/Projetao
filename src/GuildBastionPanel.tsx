@@ -64,10 +64,8 @@ export function GuildBastionPanel({
   const facility = state?.facilities.find((f) => f.room === room),
     definition = catalog?.items.find((f) => f.room === room);
   const specialCost = bastionSpecialCost(room);
-  const currency = specialCost === 'prestige_cost' ? 'prestige' : 'crystals';
-  const label = currency === 'prestige' ? 'Prestígio' : 'cristais';
-  const balances = specialCost ? state?.special_balances : undefined;
-  const personal = (currency === 'prestige' ? balances?.personal_prestige : balances?.personal_crystals) ?? 0;
+  const balances = specialCost === 'gold_cost' ? state?.special_balances : undefined;
+  const personal = balances?.gold_unlimited ? 100_000_000 : (balances?.personal_gold_cp ?? 0);
   async function perform(work: () => Promise<void>) {
     setBusy(true);
     setError('');
@@ -92,7 +90,7 @@ export function GuildBastionPanel({
     });
   }
   const quantity = (kind: string, n: number) =>
-    kind === 'treasury' ? money(n) + ' CB' : n.toLocaleString('pt-BR');
+    kind === 'treasury' ? money(n) + ' CB' : kind === 'gold_cost' ? money(n) + ' PO' : n.toLocaleString('pt-BR');
   const customRequirements =
     facility?.progression.levels.flatMap((t) =>
       t.requirements.filter((r) => r.kind === 'custom'),
@@ -109,20 +107,20 @@ export function GuildBastionPanel({
           <p>{definition.description}</p>
           {balances && (
             <details className="bastion-current" key={room + ':' + balances.character_id}>
-              <summary>{currency === 'prestige' ? 'Prestígio da Ferraria' : 'Cristais da Ferramenta de Expedição'}</summary>
-              <p>Na guilda · {balances[currency].toLocaleString('pt-BR')} {label}</p>
-              <p>Disponível para contribuir · {personal.toLocaleString('pt-BR')} {label}</p>
+              <summary>Ouro da Ferraria</summary>
+              <p>Na guilda · {money(balances.gold_cp)} PO</p>
+              <p>Disponível para contribuir · {balances.gold_unlimited ? '∞' : money(personal)} PO</p>
               <form className="stack" onSubmit={event => {
                 event.preventDefault();
-                const amount = Number(contribution);
+                const amount = Math.round(Number(contribution) * 100);
                 if (!Number.isInteger(amount) || amount < 1 || amount > personal || busy) return;
                 void perform(async () => {
-                  const key = [guildId, balances.character_id, currency, amount].join(':');
+                  const key = [guildId, balances.character_id, 'gold', amount].join(':');
                   const previous = contributionRequest.current;
                   const request = previous?.key === key ? previous : { key, id: crypto.randomUUID() };
                   contributionRequest.current = request;
                   await post('/guilds/' + guildId + '/bastion/contributions', {
-                    currency, amount, request_id: request.id, character_id: balances.character_id,
+                    currency: 'gold', amount, request_id: request.id, character_id: balances.character_id,
                   });
                   contributionRequest.current = null;
                   setContribution('');
@@ -130,8 +128,8 @@ export function GuildBastionPanel({
                   setNotice('Contribuição registrada para a guilda.');
                 });
               }}>
-                <label>Quantidade de {label}
-                  <input type="number" min={1} max={Math.min(personal, 1_000_000)} required disabled={!personal || busy}
+                <label>Quantidade em PO
+                  <input type="number" min={0.01} step={0.01} max={Math.min(personal, 100_000_000) / 100} required disabled={!personal || busy}
                     value={contribution} onChange={event => setContribution(event.target.value)} />
                 </label>
                 <button className="button outline" disabled={!personal || busy}>Contribuir para a guilda</button>

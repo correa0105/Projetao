@@ -21,11 +21,11 @@ A prateleira **Armas de Prestígio** vende armas de inventário e mostra os est�
 
 A mesa calcula bônus e efeitos ao atacar com a arma equipada. O dano fica associado ao acerto, ao mapa e ao alvo da rolagem. Tentar rolar o mesmo dano de novo recupera o resultado já registrado.
 
-Cristais da Torre ficam na carteira do personagem. **Loja → Cristais** e o Entreposto no Gabinete de Cristais compartilham ofertas, compras e saldo. A loja tem cenário próprio e o Guardião dos Cristais explica como ganhar, usar ou doar cristais. Os itens ficam no registro da Torre. O consumo é registrado apenas na mesa oficial de uma expedição ativa com participação do personagem. A mesa registra o uso e o mestre aplica a regra descrita na oferta.
+A Torre e **Loja → Cristais** ficam bloqueadas nesta etapa do servidor, inclusive para administradores e chamadas diretas. O menu indica **Em breve**. Seus dados, carteiras e compras anteriores continuam registrados. A loja está preparada com o robô de bronze de Relíquias e o mesmo fluxo de conversa para sua abertura futura.
 
 A Brasa de Vigília ilumina uma área pequena por dez minutos. A Esmeralda do Fôlego estabiliza uma criatura a 0 PV. Ambas são consumíveis da Torre com artes próprias e fontes temáticas em [Fontes e atribuição](ATTRIBUTION.md#ofertas-homebrew).
 
-Membros podem contribuir com Prestígio para a Ferraria ou com cristais para a Ferramenta de Expedição na Mesa de Estratégia. As contribuições alimentam saldos próprios do tesouro da guilda. O fundador autoriza a evolução, e o custo configurado é debitado uma única vez. A pontuação histórica de patente da guilda é independente do saldo de Prestígio.
+A Ferraria evolui com ouro contribuído pelos membros. O ouro do personagem alimenta `player_guilds.treasury_cp`, separado dos Créditos do Bastião. O fundador autoriza cada evolução e o custo é debitado uma vez. A Ferramenta de Expedição na Mesa de Estratégia usa metas de tags de monstros, pelo total ou pelos tipos configurados. Essas tags são conquistas acumuladas da companhia. A administração configura os benefícios e as quantidades de cada nível. Regras anteriores retiradas ficam na auditoria, e os saldos antigos permanecem registrados.
 
 ## Recompensas por missão
 

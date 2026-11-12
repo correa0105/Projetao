@@ -15,7 +15,7 @@ import {
   BookIcon,
 } from './GuildIcons';
 import type { Page } from './types';
-import type { MaintenanceArea } from '../shared/maintenance';
+import { launchLockedAreas, type MaintenanceArea } from '../shared/maintenance';
 
 type Destination = { page: Page; label: string };
 
@@ -313,7 +313,7 @@ export function Navigation({ page, go, maintenanceAreas = [] }: { page: Page; go
                 key={target}
                 className="dock-destination"
                 disabled={maintenanceAreas.includes(target as MaintenanceArea)}
-                title={maintenanceAreas.includes(target as MaintenanceArea) ? 'Em manutenção' : undefined}
+                title={maintenanceAreas.includes(target as MaintenanceArea) ? (launchLockedAreas.includes(target as MaintenanceArea) ? 'Em breve' : 'Em manutenção') : undefined}
                 aria-current={page === target ? 'page' : undefined}
                 onClick={() => navigate(target)}
               >
@@ -326,7 +326,7 @@ export function Navigation({ page, go, maintenanceAreas = [] }: { page: Page; go
                   width={30}
                   height={30}
                 />
-                <span>{label}{maintenanceAreas.includes(target as MaintenanceArea) && <small style={{ display: 'block', fontSize: '0.75em' }}>Em manutenção</small>}</span>
+                <span>{label}{maintenanceAreas.includes(target as MaintenanceArea) && <small style={{ display: 'block', fontSize: '0.75em' }}>{launchLockedAreas.includes(target as MaintenanceArea) ? 'Em breve' : 'Em manutenção'}</small>}</span>
               </button>
             ))}
           </div>

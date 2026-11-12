@@ -20,11 +20,15 @@ export function HouseGardenPanel({
   characterId,
   characterName,
   onChanged,
+  onStateChanged,
+  onArrange,
 }: {
   plotId: string;
   characterId: string;
   characterName: string;
   onChanged?: () => Promise<void>;
+  onStateChanged?: (garden: HouseGarden) => void;
+  onArrange?: (role: 'bed' | 'compost') => Promise<void>;
 }) {
   const path = '/house-v2/plots/' + plotId + '/garden';
   const [snapshot, setSnapshot] = useState<{ garden: HouseGarden; received: number }>();
@@ -39,7 +43,10 @@ export function HouseGardenPanel({
     let active = true;
     void api<HouseGarden>(path)
       .then((garden) => {
-        if (active) setSnapshot({ garden, received: Date.now() });
+        if (active) {
+          setSnapshot({ garden, received: Date.now() });
+          onStateChanged?.(garden);
+        }
       })
       .catch((failure: Error) => {
         if (active) setError(failure.message);
@@ -72,6 +79,7 @@ export function HouseGardenPanel({
       });
       requests.current.delete(key);
       setSnapshot({ garden: result.garden, received: Date.now() });
+      onStateChanged?.(result.garden);
       if (result.item_id) setNotice('Uma Poção de Cura foi guardada na mochila.');
       if (result.gold_delta_cp > 0)
         setNotice(`Colheita vendida por ${money(result.gold_delta_cp)} PO.`);
@@ -112,6 +120,7 @@ export function HouseGardenPanel({
         <h3>
           <Sprout size={18} aria-hidden="true" /> Canteiro
         </h3>
+        {onArrange && <button className="button outline" disabled={busy} onClick={() => void onArrange('bed')}>Posicionar canteiro no terreno</button>}
         {!crop ? (
           (Object.keys(gardenCrops) as (keyof typeof gardenCrops)[]).map((id) => {
             const seed = gardenCrops[id];
@@ -184,6 +193,7 @@ export function HouseGardenPanel({
         <h3>
           <FlaskConical size={18} aria-hidden="true" /> Fermentador
         </h3>
+        {onArrange && <button className="button outline" disabled={busy} onClick={() => void onArrange('compost')}>Posicionar fermentador no terreno</button>}
         {compost && garden.compost_ready_at ? (
           <>
             <strong>{compost.name}</strong>
