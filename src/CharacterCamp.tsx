@@ -18,6 +18,7 @@ import { CampBackdrop } from './CampBackdrop';
 import {CampRoster} from './CampRoster';
 import type {CharacterCampState} from '../shared/character-account';
 import { RetirementDialog } from './SpecialEconomy';
+import { CharacterTokenPreview } from './CharacterTokenPreview';
 
 export async function readArtReference(file: File) {
   if (file.size > 8 * 1024 * 1024) throw new Error('Escolha uma imagem de até 8 MB.');
@@ -106,6 +107,7 @@ export function CharacterCamp({
   const [loadError, setLoadError] = useState('');
   const [availability, setAvailability] = useState<boolean | null>(null);
   const [editing, setEditing] = useState<Character | null>(null);
+  const [previewingId, setPreviewingId] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<Character | null>(null);
   const [retiring, setRetiring] = useState<Character | null>(null);
   const [retirementNotice, setRetirementNotice] = useState('');
@@ -207,9 +209,17 @@ export function CharacterCamp({
     limit: editing.art_unlimited ? null : ART_MONTHLY_LIMIT,
   } : null;
   const quotaFull = editingQuota?.limit !== null && editingQuota !== null && editingQuota.used >= editingQuota.limit;
+  const previewing = characters.find((character) => character.id === previewingId);
   return (
     <section className="character-camp" aria-label="Acampamento dos personagens">
       <CampBackdrop />
+      {previewing && (
+        <CharacterTokenPreview
+          key={`${previewing.id}:${previewing.portrait_revision}`}
+          character={previewing}
+          close={() => setPreviewingId(null)}
+        />
+      )}
       {positions.includes(selectedId) && <CampMount key={`mount-${selectedId}`} characterId={selectedId} />}
       {positions.includes(selectedId) && <CampPet key={`pet-${selectedId}`} characterId={selectedId} />}
       <div className="page-header-spacer" aria-hidden="true" />
@@ -234,7 +244,12 @@ export function CharacterCamp({
             <button
               className="camp-figure"
               aria-label={`Selecionar ${character.name}`}
-              onClick={() => onSelect(character.id)}
+              aria-haspopup="dialog"
+              title="Selecionar personagem e ver token"
+              onClick={() => {
+                onSelect(character.id);
+                setPreviewingId(character.id);
+              }}
             >
               {character.portrait_revision > 0 ? (
                 <img
@@ -321,15 +336,6 @@ export function CharacterCamp({
                       : 'Gerar imagem'}
                 </button>
               </div>
-              {state.jobs.filter(job => job.character_id === character.id && job.status === 'failed' && job.can_retry).slice(0, 1).map(job => (
-                <button key={job.id} className="button outline small-button" disabled={busy || availability !== true}
-                  onClick={async () => {
-                    setBusy(true);
-                    try { await post(`/character-art/${job.id}/retry`, {}); await onRefresh(); }
-                    catch (error) { setError((error as Error).message); }
-                    finally { setBusy(false); }
-                  }}>Concluir token</button>
-              ))}
             </div>
           </article>
         ))}

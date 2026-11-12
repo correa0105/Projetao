@@ -1,199 +1,164 @@
 .page-tutorial-trigger {
   position: fixed;
   z-index: 45;
-  right: 20px;
-  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: max(16px, env(safe-area-inset-right));
+  bottom: calc(18px + env(safe-area-inset-bottom));
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   padding: 0;
-  border: 1px solid #ba955c;
-  border-radius: 50%;
-  color: #e6c590;
-  background: #1c1a16f2;
-  box-shadow: 0 4px 16px #0007;
-}
-dialog.page-tutorial {
-  width: min(840px, calc(100vw - 28px));
-  max-width: none;
   border: 1px solid #9a7849;
-  border-radius: 12px;
-  color: #e9dfcc;
-  background: #24211c;
-}
-.page-tutorial .dialog-inner {
-  padding: 0;
-}
-.page-tutorial .dialog-head {
-  margin: 0;
-  padding: 24px 28px 18px;
-}
-.page-tutorial .dialog-head h2 {
-  font-size: clamp(1.25rem, 3vw, 1.7rem);
-}
-.tutorial-banner {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 20px 28px;
-  background: #191812;
-}
-.tutorial-banner > img {
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.3;
-}
-.tutorial-banner::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: linear-gradient(90deg, #15130ef5, #15130e50);
-}
-.tutorial-banner > span,
-.tutorial-position {
+  border-radius: 50%;
   color: #d4b17b;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
+  background: #24211cf2;
+  box-shadow: 0 3px 12px #0005;
 }
-.tutorial-banner p {
-  margin: 5px 0 0;
-  max-width: 36rem;
-  line-height: 1.5;
+.page-tutorial {
+  position: fixed;
+  z-index: 44;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: calc(64px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  width: min(320px, calc(100vw - 32px));
+  max-height: calc(100dvh - 88px - env(safe-area-inset-bottom));
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid #9a784970;
+  border-radius: 10px;
+  color: #e9dfcc;
+  background: #24211cf7;
+  box-shadow: 0 8px 28px #0006;
 }
-.tutorial-content {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-}
-.tutorial-steps {
-  list-style: none;
-  margin: 0;
-  padding: 24px 16px;
-  border-right: 1px solid #80633f44;
-  background: #1b19154d;
-}
-.tutorial-steps li + li {
-  margin-top: 8px;
-}
-.tutorial-steps button {
+.tutorial-heading {
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 100%;
-  padding: 12px;
-  text-align: left;
-  border: 1px solid transparent;
-  border-radius: 7px;
+}
+.tutorial-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  color: #d4b17b;
+}
+.tutorial-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+.tutorial-heading > div {
+  flex: 1;
+  min-width: 0;
+}
+.tutorial-label,
+.tutorial-position {
+  color: #c4a77b;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+}
+.tutorial-heading h2 {
+  margin: 3px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.tutorial-close {
+  align-self: flex-start;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border: 0;
   color: #c6bca8;
-  background: none;
+  background: transparent;
+}
+.tutorial-explanation {
+  padding: 16px 0 12px;
+}
+.tutorial-explanation h3 {
+  margin: 5px 0 7px;
+  font-size: 0.95rem;
+}
+.tutorial-explanation p {
+  margin: 0;
+  color: #c6bca8;
+  font-size: 0.81rem;
+  line-height: 1.55;
+}
+.tutorial-steps {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+.tutorial-steps button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid #8f744e70;
+  border-radius: 50%;
+  color: #c4a77b;
+  font-size: 0.72rem;
+  background: transparent;
 }
 .tutorial-steps button > span {
   display: grid;
   place-items: center;
-  flex: 0 0 28px;
-  width: 28px;
-  min-width: 28px;
-  height: 28px;
-  border: 1px solid #8f744e70;
-  border-radius: 50%;
-  color: #dabc85;
 }
 .tutorial-steps button[aria-current='step'] {
   color: #f7ead2;
-  border-color: #b58c4e80;
+  border-color: #b58c4e;
   background: #66502f45;
-}
-.tutorial-explanation {
-  min-height: 255px;
-  padding: 28px;
-}
-.tutorial-page-icon {
-  display: block;
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  margin-bottom: 12px;
-}
-.tutorial-explanation h3 {
-  margin: 10px 0;
-  font-size: 1.25rem;
-}
-.tutorial-explanation p {
-  margin: 0;
-  line-height: 1.65;
-  color: #dbd0bb;
-}
-.tutorial-footer {
-  padding: 18px 28px 24px;
-  border-top: 1px solid #80633f44;
 }
 .tutorial-footer > label {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 0.85rem;
+  gap: 7px;
+  font-size: 0.72rem;
+  color: #b8ab94;
 }
 .tutorial-footer input {
-  width: 16px;
-  height: 16px;
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  margin: 0;
   accent-color: #c19c61;
 }
-.tutorial-footer > small {
-  display: block;
-  margin: 7px 0 18px 25px;
-  color: #b8ab94;
+.tutorial-footer > p[role='alert'] {
+  color: #e3a392;
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 .tutorial-actions {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
+  margin-top: 14px;
 }
 .tutorial-actions .button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  min-height: 32px;
+  padding: 7px 10px;
+  font-size: 0.72rem;
+}
+.page-tutorial button:focus-visible,
+.page-tutorial-trigger:focus-visible {
+  outline: 2px solid #d4b17b;
+  outline-offset: 3px;
 }
 @media (max-width: 600px) {
-  .tutorial-content {
-    grid-template-columns: 1fr;
-  }
-  .tutorial-steps {
-    display: flex;
-    gap: 6px;
-    padding: 12px;
-    border-right: 0;
-    border-bottom: 1px solid #80633f44;
-  }
-  .tutorial-steps li {
-    flex: 1;
-  }
-  .tutorial-steps li + li {
-    margin: 0;
-  }
-  .tutorial-steps button {
-    flex-direction: column;
-    height: 100%;
-    padding: 8px 4px;
-    font-size: 0.72rem;
-    line-height: 1.3;
-    text-align: center;
-  }
-  .tutorial-explanation {
-    min-height: 220px;
-    padding: 20px;
-  }
-  .page-tutorial .dialog-head,
-  .tutorial-banner,
-  .tutorial-footer {
-    padding-inline: 20px;
-  }
   .page-tutorial-trigger {
     right: 12px;
     bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+  .page-tutorial {
+    right: 12px;
+    bottom: calc(116px + env(safe-area-inset-bottom));
+    width: min(300px, calc(100vw - 24px));
+    max-height: calc(100dvh - 140px - env(safe-area-inset-bottom));
+    padding: 14px;
   }
 }

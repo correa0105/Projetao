@@ -87,40 +87,27 @@ try {
     (await outsider.request.get(origin + `/api/characters/${first.id}/token?preview=1`)).status(),
   ).toBe(404);
   await outsider.close();
+  await context.request.put(origin + '/api/tutorials/characters', { data: { dismissed: true } });
+  await context.request.put(origin + '/api/tutorials/inventory', { data: { dismissed: true } });
   await page.goto(origin + '/#characters');
+  await expect(page.locator('.character-token-preview-trigger')).toHaveCount(0);
   await page.getByRole('button', { name: 'Selecionar Aurora', exact: true }).click();
-  let trigger = page.getByRole('button', { name: 'Ver token de Aurora no VTT', exact: true });
-  await expect(trigger).toBeVisible({ timeout: 60000 });
-  const position = await trigger.boundingBox();
-  expect(position!.x).toBeGreaterThan(1370);
-  expect(position!.y).toBeGreaterThan(890);
-  await trigger.hover();
-  let preview = page.getByRole('region', { name: 'Prévia do token de Aurora', exact: true });
+  let preview = page.getByRole('dialog', { name: 'Token de Aurora', exact: true });
   await expect(preview.getByRole('img')).toBeVisible();
   expect(
     await preview
       .getByRole('img')
       .evaluate((img: HTMLImageElement) => [img.naturalWidth, img.naturalHeight]),
   ).toEqual([512, 512]);
-  await preview.getByRole('img').hover();
-  await expect(preview).toBeVisible();
   await page.screenshot({ path: 'test-results/token-preview/desktop.png' });
-  await page.mouse.move(20, 20);
-  await expect(preview).toHaveCount(0);
-  await trigger.focus();
-  await expect(preview).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(preview).toHaveCount(0);
-  await trigger.click();
-  await expect(preview).toBeVisible();
-  await page.mouse.click(20, 20);
-  await expect(preview).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Selecionar Aurora', exact: true })).toBeFocused();
   await page.getByRole('button', { name: 'Selecionar Bruma', exact: true }).click();
-  trigger = page.getByRole('button', { name: 'Ver token de Bruma no VTT', exact: true });
-  await trigger.hover();
-  preview = page.getByRole('region', { name: 'Prévia do token de Bruma', exact: true });
+  preview = page.getByRole('dialog', { name: 'Token de Bruma', exact: true });
   await expect(preview).toContainText('quando a arte estiver pronta');
   await expect(preview.getByRole('img')).toHaveCount(0);
+  await preview.getByRole('button', { name: 'Fechar', exact: true }).click();
   await pool.query('INSERT INTO character_tokens(character_id,image)VALUES($1,$2)', [
     second.id,
     token,
@@ -128,8 +115,13 @@ try {
   await pool.query('UPDATE characters SET portrait_revision=2 WHERE id=$1', [second.id]);
   await page.reload();
   await page.getByRole('button', { name: 'Selecionar Bruma', exact: true }).click();
-  await page.getByRole('button', { name: 'Ver token de Bruma no VTT', exact: true }).hover();
   await expect(preview.getByRole('img')).toHaveAttribute('src', /v=2$/);
+  await preview.getByRole('button', { name: 'Fechar', exact: true }).click();
+  await page.goto(origin + '/#inventory');
+  await expect(page.locator('.character-token-preview-trigger')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Ver token de Bruma no VTT', exact: true }).click();
+  await expect(preview.getByRole('img')).toBeVisible();
+  await preview.getByRole('button', { name: 'Fechar', exact: true }).click();
   const mobile = await browser.newContext({
     viewport: { width: 390, height: 844 },
     hasTouch: true,
@@ -141,15 +133,7 @@ try {
   touch.on('pageerror', (e) => errors.push(e.message));
   await touch.goto(origin + '/#characters');
   await touch.getByRole('button', { name: 'Selecionar Aurora', exact: true }).tap();
-  const touchTrigger = touch.getByRole('button', {
-    name: 'Ver token de Aurora no VTT',
-    exact: true,
-  });
-  await touchTrigger.tap();
-  const touchPreview = touch.getByRole('region', {
-    name: 'Prévia do token de Aurora',
-    exact: true,
-  });
+  const touchPreview = touch.getByRole('dialog', { name: 'Token de Aurora', exact: true });
   await expect(touchPreview.getByRole('img')).toBeVisible();
   for (const width of [390, 320]) {
     await touch.setViewportSize({ width, height: 844 });
@@ -160,18 +144,13 @@ try {
       true,
     );
   }
-  expect(
-    await touch
-      .locator('.character-token-preview-light')
-      .evaluate((e) => getComputedStyle(e).animationName),
-  ).toBe('none');
   await touch.screenshot({ path: 'test-results/token-preview/mobile-320.png' });
-  await touchPreview.getByRole('button', { name: 'Fechar prévia do token' }).tap();
+  await touchPreview.getByRole('button', { name: 'Fechar', exact: true }).tap();
   await expect(touchPreview).toHaveCount(0);
   await mobile.close();
   expect(errors).toEqual([]);
   console.log(
-    'PASS: token real e privado, canto inferior direito, hover/foco/Escape/toque, troca de personagem/revisão, sem retrato substituto e celular 390/320.',
+    'PASS: token real e privado ao clicar no personagem, sem botão flutuante, Escape/foco/toque, troca de personagem/revisão e celular 390/320.',
   );
 } finally {
   await browser.close();

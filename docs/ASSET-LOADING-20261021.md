@@ -222,3 +222,11 @@ o navegador revalida. Autorização e personagem excluído continuam conferidos 
 navegar/recarregar, versões antigas, bytes, visitante anônimo, atualização de arte
 e separação entre fundo de perfil e acampamento em 1440/390 px. O smoke de
 carregamento mantém os casos de atraso, falha, nova tentativa e Empório separado.
+
+## Ajuda por aba
+
+Os guias abrem em um cartão compacto no canto inferior direito, sem escurecer a
+página nem bloquear seus controles. No celular, ficam acima do menu. O botão de
+ajuda permite reabrir o guia; a preferência de não exibir novamente continua
+salva por conta e por aba. Abas sem arte própria usam a ilustração da área
+correspondente; falhas de imagem mostram o ícone de ajuda.

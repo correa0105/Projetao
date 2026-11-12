@@ -36,3 +36,12 @@ Imagem `alvorada-cinzenta:character-account-camp-20261027`, fonte `d5057422dfc3d
 Concessões transacionais aplicadas somente a Pai do Cris (global1) e Crowley (global0/oito escopos): quatro slots cada. Comparadas integralmente as 26 linhas anteriores de rolagens, todas idênticas; quatro novas linhas vazias, total 30. Dois registros de capacidade, com auditoria própria. Nenhuma ficha, imagem, mochila, job ou permissão alterada durante a concessão. Ilustrador recarregado ocioso, PID 29948 → 37208 e heartbeat confirmado antes das concessões.
 
 Atualizar com Ctrl+F5. Salvos ficam no pequeno ícone inferior esquerdo; disposição em Personagens e slots; edição global em Editar ficha · Admin.
+
+## Prévia do token
+
+Clicar na figura do personagem no acampamento seleciona o aventureiro e abre a
+prévia de seu token superior. No Inventário, clicar na imagem do personagem
+abre a mesma prévia. Não há botão de token flutuante no canto da tela. O pedido
+da imagem acontece somente ao abrir; revisão, autorização, estado sem arte e
+nova tentativa continuam preservados. Escape, fechar ou clicar fora encerra a
+prévia e devolve o foco ao personagem.

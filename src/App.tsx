@@ -57,7 +57,6 @@ import { CharacterForm, Empty, Login, Modal, PostForm } from './components';
 import { rankName, rankTitle, rankLabel, progressionLabel, testEligible } from '../shared/progression';
 import { Navigation } from './Navigation';
 import { CharacterSelector } from './CharacterSelector';
-import { CharacterTokenPreview } from './CharacterTokenPreview';
 import { CharacterArtChoice } from './CharacterArtChoice';
 import { MissionCompletion } from './MissionCompletion';
 import { MissionTags } from './MissionTags';
@@ -821,7 +820,6 @@ function Portal({ user }: { user: User }) {
       </div>
       <Navigation page={page} go={go} maintenanceAreas={maintenanceAreas} />
       <PageTutorial page={page} userId={user.id} ready={!loading && !loadError} />
-      {character && (page === 'characters' || page === 'inventory') && <CharacterTokenPreview key={`${character.id}:${character.portrait_revision}`} character={character} />}
       {(page === 'characters' || page === 'inventory') && <CharacterArtChoice onRefresh={refresh} />}
       {toast && <FlashMessage kind="info">{toast}</FlashMessage>}
       {modal==='recovery-mail'&&administrator&&<RecoveryMailSettings close={()=>setModal(null)}/>}

@@ -11,6 +11,7 @@ import {
 import type { Character, StorageState } from './types';
 import './equipment.css';
 import { CharacterArtButton } from './CharacterArtButton';
+import { CharacterTokenPreview } from './CharacterTokenPreview';
 import { ArmorSetPicker } from './ArmorSetPicker';
 import { armorSetOptions, inventoryPieceName } from './armor-set-options';
 
@@ -35,6 +36,8 @@ export function EquipmentPanel({
 }) {
   const [over, setOver] = useState<EquipmentSlot | null>(null);
   const [portraitFailed, setPortraitFailed] = useState(false);
+  const [previewing, setPreviewing] = useState(false);
+  useEffect(() => setPreviewing(false), [character.id]);
   useEffect(() => setPortraitFailed(false), [character.id, character.portrait_revision]);
   const left: EquipmentSlot[] = [
     'head',
@@ -67,6 +70,13 @@ export function EquipmentPanel({
   );
   return (
     <section className="equipment-panel loot-storage" aria-label="Itens equipados" aria-busy={busy}>
+      {previewing && (
+        <CharacterTokenPreview
+          key={`${character.id}:${character.portrait_revision}`}
+          character={character}
+          close={() => setPreviewing(false)}
+        />
+      )}
       <header>
         <h2>Itens equipados</h2>
         <p>Arraste da mochila ou clique em um espaço para equipar.</p>
@@ -74,15 +84,23 @@ export function EquipmentPanel({
       <ArmorSetPicker key={character.id} options={armorSets} busy={busy} onEquip={onEquipSet} />
       <div className="equipment-grid">
         <figure className="equipment-character">
-          <img
-            src={
-              character.portrait_revision > 0 && !portraitFailed
-                ? `/api/characters/${character.id}/portrait?v=${character.portrait_revision}`
-                : '/character-silhouette-v2.png'
-            }
-            alt={character.name}
-            onError={() => setPortraitFailed(true)}
-          />
+          <button
+            type="button"
+            className="equipment-character-preview"
+            aria-label={`Ver token de ${character.name} no VTT`}
+            aria-haspopup="dialog"
+            onClick={() => setPreviewing(true)}
+          >
+            <img
+              src={
+                character.portrait_revision > 0 && !portraitFailed
+                  ? `/api/characters/${character.id}/portrait?v=${character.portrait_revision}`
+                  : '/character-silhouette-v2.png'
+              }
+              alt={character.name}
+              onError={() => setPortraitFailed(true)}
+            />
+          </button>
           <figcaption>{character.name}</figcaption>
         </figure>
         {EQUIPMENT_SLOTS.map((slot) => {

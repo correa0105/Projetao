@@ -1,12 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, Check, CircleHelp } from 'lucide-react';
-import { Modal } from './components';
+import { useEffect, useId, useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight, Check, CircleHelp, X } from 'lucide-react';
 import { api } from './api';
 import { pageTutorials } from './page-tutorial-content';
-import { primaryPageAssets } from './page-assets';
 import { launchLockedAreas, type MaintenanceArea } from '../shared/maintenance';
 import type { Page } from './types';
 import './page-tutorial.css';
+
+// These tabs share illustrations with their parent area.
+const tutorialIcons: Partial<Record<Page, string>> = {
+  overview: 'guild',
+  missions: 'board',
+  hooks: 'board',
+  titles: 'achievements',
+};
 
 export function PageTutorial({
   page,
@@ -25,6 +31,9 @@ export function PageTutorial({
   const [error, setError] = useState('');
   const viewed = useRef(new Set<string>());
   const submitting = useRef(false);
+  const titleId = useId();
+  const panelId = useId();
+  const [iconFailed, setIconFailed] = useState(false);
   const tutorial = pageTutorials[page];
   useEffect(() => {
     let active = true;
@@ -43,6 +52,7 @@ export function PageTutorial({
   }, [userId]);
   useEffect(() => {
     setStep(0);
+    setIconFailed(false);
     setError('');
     setSkip(dismissed?.includes(page) ?? false);
     setOpen(
@@ -81,7 +91,14 @@ export function PageTutorial({
       setBusy(false);
     }
   }
-  const art = primaryPageAssets[page]?.[0];
+  useEffect(() => {
+    if (!open || busy) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && !document.querySelector('dialog[open]')) void finish();
+    };
+    document.addEventListener('keydown', escape);
+    return () => document.removeEventListener('keydown', escape);
+  }, [open, busy, skip, page, dismissed]);
   return (
     <>
       <button
@@ -89,6 +106,8 @@ export function PageTutorial({
         className="page-tutorial-trigger"
         aria-label="Como usar esta aba"
         title="Como usar esta aba"
+        aria-expanded={open}
+        aria-controls={panelId}
         onClick={() => {
           setStep(0);
           setSkip(dismissed?.includes(page) ?? false);
@@ -99,48 +118,59 @@ export function PageTutorial({
         <CircleHelp size={21} aria-hidden="true" />
       </button>
       {open && (
-        <Modal
-          title={tutorial.title}
-          className="page-tutorial"
-          close={() => {
-            if (!busy) void finish();
-          }}
-        >
-          <div className="tutorial-banner">
-            {art && <img src={art} alt="" />}
-            <span>Guia da aba</span>
-            <p>{tutorial.description}</p>
-          </div>
-          <div className="tutorial-content">
-            <ol className="tutorial-steps" aria-label="Passos do tutorial">
+        <aside id={panelId} className="page-tutorial" aria-labelledby={titleId}>
+          <header className="tutorial-heading">
+            <span className="tutorial-icon" aria-hidden="true">
+              {iconFailed ? (
+                <CircleHelp size={24} />
+              ) : (
+                <img
+                  src={`/navigation/illustrated-20261020/${tutorialIcons[page] ?? page}.webp`}
+                  alt=""
+                  width={32}
+                  height={32}
+                  onError={() => setIconFailed(true)}
+                />
+              )}
+            </span>
+            <div>
+              <span className="tutorial-label">Guia da aba</span>
+              <h2 id={titleId}>{tutorial.title}</h2>
+            </div>
+            <button
+              type="button"
+              className="tutorial-close"
+              aria-label="Fechar guia"
+              disabled={busy}
+              onClick={() => void finish()}
+            >
+              <X size={16} aria-hidden="true" />
+            </button>
+          </header>
+          <section className="tutorial-explanation" aria-live="polite">
+            <span className="tutorial-position">
+              Passo {step + 1} de {tutorial.steps.length}
+            </span>
+            <h3>{tutorial.steps[step].title}</h3>
+            <p>{tutorial.steps[step].text}</p>
+          </section>
+          <footer className="tutorial-footer">
+            <ol className="tutorial-steps" aria-label="Passos do guia">
               {tutorial.steps.map((entry, index) => (
                 <li key={entry.title}>
                   <button
                     type="button"
                     aria-current={index === step ? 'step' : undefined}
                     disabled={busy}
+                    aria-label={`Passo ${index + 1}: ${entry.title}`}
+                    title={entry.title}
                     onClick={() => setStep(index)}
                   >
                     <span aria-hidden="true">{index < step ? <Check size={16} /> : index + 1}</span>
-                    {entry.title}
                   </button>
                 </li>
               ))}
             </ol>
-            <section className="tutorial-explanation" aria-live="polite">
-              <img
-                className="tutorial-page-icon"
-                src={`/navigation/illustrated-20261020/${page}.webp`}
-                alt=""
-              />
-              <span className="tutorial-position">
-                Passo {step + 1} de {tutorial.steps.length}
-              </span>
-              <h3>{tutorial.steps[step].title}</h3>
-              <p>{tutorial.steps[step].text}</p>
-            </section>
-          </div>
-          <div className="tutorial-footer">
             <label>
               <input
                 type="checkbox"
@@ -150,7 +180,6 @@ export function PageTutorial({
               />{' '}
               Não mostrar novamente nesta aba
             </label>
-            <small>Reabra este guia pelo botão de ajuda quando precisar.</small>
             {error && <p role="alert">{error}</p>}
             <div className="tutorial-actions">
               <button
@@ -186,8 +215,8 @@ export function PageTutorial({
                 )}
               </button>
             </div>
-          </div>
-        </Modal>
+          </footer>
+        </aside>
       )}
     </>
   );
