@@ -32,6 +32,8 @@ export const house2StartingBalance = 0;
 export const house2PlotPrice = housePlotCredits;
 export const house2PlotSize = 18;
 export const house2PlotExpansion = 3;
+export const house2ItemMinScale = 0.25;
+export const house2ItemMaxScale = 1.5;
 export const house2Houses = houses
   .filter((h) => h.category === 'Casas vazias')
   .map((h, i) => ({
@@ -150,7 +152,8 @@ export const house2LayoutSchema = z
           .extend({
             id: z.string().uuid(),
             rotation: z.number().finite().min(0).lt(360),
-            scale: z.number().finite().min(0.25).max(3).optional(),
+            // Accept historical layouts; the server restricts new sizes to house2ItemMaxScale.
+            scale: z.number().finite().min(house2ItemMinScale).max(3).optional(),
           })
           .strict(),
       )

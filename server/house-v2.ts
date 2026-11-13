@@ -18,6 +18,7 @@ import {
   house2Furniture,
   house2FurnitureForSale,
   house2LayoutSchema,
+  house2ItemMaxScale,
   house2Within,
   house2VillagePlots,
   house2HousePlacement,
@@ -112,7 +113,7 @@ export function house2Router() {
         ?.balance ?? house2StartingBalance;
     const inventory = (
       await pool.query(
-        gardenItemSelect + ' WHERE i.user_id=$1 ORDER BY i.created_at,i.id',
+        gardenItemSelect + " WHERE i.user_id=$1 AND i.catalog_id <> 'h2-garden-compost' ORDER BY i.created_at,i.id",
         [user],
       )
     ).rows;
@@ -173,7 +174,7 @@ export function house2Router() {
     ).rows;
     const items = (
       await pool.query(
-        gardenItemSelect + ' JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL ORDER BY i.created_at,i.id',
+        gardenItemSelect + " JOIN house2_plots p ON p.id=i.plot_id WHERE p.neighborhood_id=$1 AND p.retired_at IS NULL AND i.catalog_id <> 'h2-garden-compost' ORDER BY i.created_at,i.id",
         [id],
       )
     ).rows;
@@ -458,6 +459,8 @@ export function house2Router() {
         if (!owned || !spec || (owned.plot_id && owned.plot_id !== id) || (owned.garden_plot_id && owned.garden_plot_id !== id))
           throw new AppError(403, 'Esta mobília não está disponível no seu terreno.');
         const scale = i.scale ?? owned.scale;
+        if (scale > house2ItemMaxScale && (owned.plot_id !== id || scale !== owned.scale))
+          throw new AppError(400, `O tamanho do item deve ser de até ${house2ItemMaxScale * 100}%.`);
         if (!house2Within(p, i, spec.width * scale, spec.height * scale))
           throw new AppError(400, 'A mobília deve ficar inteiramente no seu terreno.');
       }

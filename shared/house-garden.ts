@@ -9,7 +9,7 @@ export const gardenCrops: Record<
   CropId,
   { name: string; seedCp: number; hours: number; saleCp: number; healing: boolean }
 > = {
-  'erva-balsamo': { name: 'Erva-bálsamo', seedCp: 500, hours: 8, saleCp: 1200, healing: true },
+  'erva-balsamo': { name: 'Erva-bálsamo', seedCp: 500, hours: 24, saleCp: 1200, healing: true },
   'raiz-dourada': { name: 'Raiz-dourada', seedCp: 800, hours: 12, saleCp: 2000, healing: false },
 };
 
@@ -17,8 +17,8 @@ export const gardenComposts: Record<
   CompostId,
   { name: string; costCp: number; hours: number; reductionHours: number }
 > = {
-  cascas: { name: 'Cascas de fruta', costCp: 300, hours: 2, reductionHours: 2 },
-  composto: { name: 'Composto de folhas', costCp: 600, hours: 4, reductionHours: 4 },
+  cascas: { name: 'Cascas de fruta', costCp: 300, hours: 2, reductionHours: 1 },
+  composto: { name: 'Composto de folhas', costCp: 600, hours: 4, reductionHours: 2 },
 };
 
 export const gardenHealingItem = 'potion-of-healing';

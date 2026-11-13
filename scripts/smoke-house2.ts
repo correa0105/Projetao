@@ -358,7 +358,7 @@ try {
   await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('0°');
   await page.getByRole('button', { name: 'Girar peça 90° à direita', exact: true }).click();
   await expect(page.getByLabel('Ângulo do objeto', { exact: true })).toHaveText('90°');
-  await page.getByLabel('Tamanho do item', { exact: true }).fill('160');
+  await page.getByLabel('Tamanho do item', { exact: true }).fill('150');
   await expect(page.getByLabel('Encaixar na grade')).not.toBeChecked();
   const neighborhood = (await request(context, '/house-v2', undefined, 'GET')).neighborhoods[0].id;
   const fixedBefore = (
@@ -369,7 +369,7 @@ try {
   await expect(page.locator('.h2-world-notice')).toContainText('Terreno salvo');
   const fractional = (await request(context, '/house-v2', undefined, 'GET')).inventory[0];
   expect(fractional.x).toBe(9.17);
-  expect(fractional.scale).toBe(1.6);
+  expect(fractional.scale).toBe(1.5);
   await page.getByLabel('Posição X', { exact: true }).fill('9.23');
   const piece = page
     .locator('[data-house2-piece]')
@@ -395,7 +395,7 @@ try {
     saved = directory.inventory.find((i: any) => i.id === itemId);
   expect(saved.plot_id).toBe(plotId);
   expect(saved.rotation).toBe(90);
-  expect(saved.scale).toBe(1.6);
+  expect(saved.scale).toBe(1.5);
   const n = directory.neighborhoods[0].id,
     state = await request(context, '/house-v2/neighborhoods/' + n, undefined, 'GET'),
     lot = state.plots.find((p: any) => p.id === plotId);

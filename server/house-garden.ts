@@ -135,12 +135,11 @@ export function houseGardenRouter() {
       await lockedGarden(db, res.locals.user.id, plot, character);
       await db.query(
         `INSERT INTO house2_items(user_id,catalog_id,garden_plot_id,garden_role)
-         SELECT $1,CASE role WHEN 'bed' THEN 'h2-garden-bed' ELSE 'h2-garden-compost' END,$2,role
-         FROM (VALUES ('bed'),('compost')) AS roles(role)
+         VALUES ($1,'h2-garden-bed',$2,'bed')
          ON CONFLICT(garden_plot_id,garden_role) DO NOTHING`,
         [res.locals.user.id,plot],
       );
-      return { items: (await db.query('SELECT * FROM house2_items WHERE garden_plot_id=$1 ORDER BY garden_role',[plot])).rows };
+      return { items: (await db.query("SELECT * FROM house2_items WHERE garden_plot_id=$1 AND garden_role='bed'",[plot])).rows };
     }));
   });
   router.get(path, async (req, res) => {

@@ -84,6 +84,8 @@ import { TerrainTexturePicker } from './TerrainTexturePicker';
 import {
   house2Clamp,
   house2RotatedSize,
+  house2ItemMinScale,
+  house2ItemMaxScale,
   house2Furniture,
   house2FurnitureForSale,
   house2Houses,
@@ -563,7 +565,7 @@ export function House2({ character, user, onGardenChanged }: {
       x: target.x + target.width / 2,
       y: target.y + target.height / 2,
       rotation: 0,
-      scale: item.scale ?? 1,
+      scale: Math.min(house2ItemMaxScale, item.scale ?? 1),
     });
     setDraft(structuredClone(d));
     setSelected(target.id);
@@ -576,14 +578,14 @@ export function House2({ character, user, onGardenChanged }: {
     setScene(current => current ? { ...current, items: current.items.map(update) } : current);
     setDirectory(current => current ? { ...current, inventory: current.inventory.map(update) } : current);
   }, [gardenPlot?.id]);
-  async function arrangeGarden(role: 'bed' | 'compost') {
+  async function arrangeGarden() {
     const target = gardenPlot;
     if (!target?.can_edit || !target.character_id || busy || (target.id !== selected && guardDirty())) return;
     setBusy(true);
     try {
       const result = await post<{ items: House2Item[] }>(`/house-v2/plots/${target.id}/garden/items`, { character_id: target.character_id });
       await reload(sceneId, true);
-      const item = result.items.find(piece => piece.garden_role === role)!;
+      const item = result.items.find(piece => piece.garden_role === 'bed')!;
       setSelected(target.id);
       setCamera({ x: target.x + target.width / 2, y: target.y + target.height / 2, span: Math.max(target.height + 7, (target.width + 7) / aspect) });
       if (item.plot_id) setSelectedPiece(item.id);
@@ -619,8 +621,8 @@ export function House2({ character, user, onGardenChanged }: {
     if (!d || !piece || !spec || !plot || !Number.isFinite(value)) return;
     const bounds = house2RotatedSize(spec.width, spec.height, piece.rotation);
     piece.scale = Math.max(
-      0.25,
-      Math.min(3, value, plot.width / bounds.width, plot.height / bounds.height),
+      house2ItemMinScale,
+      Math.min(house2ItemMaxScale, value, plot.width / bounds.width, plot.height / bounds.height),
     );
     Object.assign(
       piece,
@@ -923,6 +925,7 @@ export function House2({ character, user, onGardenChanged }: {
   const selectedTransform =
     draft?.items.find((i) => i.id === selectedPiece) ??
     shownItems.find((i) => i.id === selectedPiece);
+  const editingPiece = tool === 'collection' && !!selectedTransform;
   const actorPlots = useMemo(
     () =>
       (scene?.plots ?? []).map((p) => ({
@@ -1061,8 +1064,8 @@ export function House2({ character, user, onGardenChanged }: {
             <input
               aria-label="Tamanho do item"
               type="range"
-              min={25}
-              max={300}
+              min={house2ItemMinScale * 100}
+              max={house2ItemMaxScale * 100}
               step={1}
               value={Math.round((selectedTransform?.scale ?? 1) * 100)}
               disabled={busy}
@@ -1722,7 +1725,7 @@ export function House2({ character, user, onGardenChanged }: {
       {tool && (
         <ScenePanel id="house2" title={toolNames[tool]} close={() => setTool(null)}>
           <div className="h2-panel">
-            {tool !== 'ground' && tool !== 'tokens' && tool !== 'garden' && balance}
+            {tool !== 'ground' && tool !== 'tokens' && tool !== 'garden' && !editingPiece && balance}
             {tool === 'garden' ? (
               gardenPlot?.can_edit && gardenPlot.house_id && gardenPlot.character_id ? (
                 <HouseGardenPanel
@@ -1770,7 +1773,7 @@ export function House2({ character, user, onGardenChanged }: {
               </>
             ) : (
               <>
-                <div className="h2-plot-summary">
+                {!editingPiece && <div className="h2-plot-summary">
                   {plot ? (
                     <>
                       <span className="h2-eyebrow">
@@ -1819,7 +1822,7 @@ export function House2({ character, user, onGardenChanged }: {
                       compra.
                     </p>
                   )}
-                </div>
+                </div>}
                 {tool === 'terrain' && (
                   <>
                     {plot?.house_id && canEdit && (

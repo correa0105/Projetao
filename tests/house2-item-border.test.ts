@@ -47,7 +47,7 @@ test('all eight borders stop at the lot limits and at the minimum size in every 
         { x: -500, y: 800 },
       ]) {
         const next = house2ResizeFromBorder(plot, { ...item, rotation }, size, handle, delta);
-        assert(next.scale! >= 0.25 && next.scale! <= 3);
+        assert(next.scale! >= 0.25 && next.scale! <= 1.5);
         assert(house2Within(plot, next, size.width * next.scale!, size.height * next.scale!));
         house2LayoutSchema.parse({ revision: 0, house: null, items: [next] });
       }

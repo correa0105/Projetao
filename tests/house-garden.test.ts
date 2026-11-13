@@ -72,7 +72,7 @@ test('horta usa horas reais, respeita o dono e paga a colheita uma vez', async (
     }
     assert.equal((await send(owner)).status, 404);
     await pool.query(
-      'UPDATE house2_plots SET character_id=$2,house_id=$3,house_x=x+2,house_y=y+2 WHERE id=$1',
+      'UPDATE house2_plots SET character_id=$2,house_id=$3,house_x=x+width/2.0,house_y=y+height/2.0 WHERE id=$1',
       [plot, character.id, house2Houses[0].id],
     );
     assert.equal((await send(other)).status, 404);
@@ -80,6 +80,54 @@ test('horta usa horas reais, respeita o dono e paga a colheita uma vez', async (
       (await send(other, { action: 'plant', crop: 'erva-balsamo' }, undefined, visitor.id)).status,
       404,
     );
+    const arrange = () => fetch(url + '/items', {
+      method: 'POST',
+      headers: { Origin: origin, Cookie: owner.cookie, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ character_id: character.id }),
+    });
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const response = await arrange();
+      assert.equal(response.status, 200);
+      const { items } = await response.json();
+      assert.equal(items.length, 1);
+      assert.equal(items[0].garden_role, 'bed');
+    }
+    assert.equal((await pool.query('SELECT count(*)::int n FROM house2_items WHERE garden_plot_id=$1', [plot])).rows[0].n, 1);
+    const retired = (await pool.query(
+      `INSERT INTO house2_items(user_id,catalog_id,plot_id,x,y,garden_plot_id,garden_role)
+       SELECT $1,'h2-garden-compost',id,x+5,y+5,id,'compost' FROM house2_plots WHERE id=$2 RETURNING id`,
+      [owner.id, plot],
+    )).rows[0].id;
+    const apiRoot = 'http://127.0.0.1:' + address.port + '/api';
+    const directory = await (await fetch(apiRoot + '/house-v2', { headers: { Cookie: owner.cookie } })).json();
+    assert(!directory.inventory.some((piece: { id: string }) => piece.id === retired));
+    const neighborhood = (await pool.query('SELECT neighborhood_id FROM house2_plots WHERE id=$1', [plot])).rows[0].neighborhood_id;
+    const scene = await (await fetch(apiRoot + '/house-v2/neighborhoods/' + neighborhood, { headers: { Cookie: owner.cookie } })).json();
+    assert(!scene.items.some((piece: { id: string }) => piece.id === retired));
+    assert.equal((await pool.query('SELECT plot_id FROM house2_items WHERE id=$1', [retired])).rows[0].plot_id, plot);
+    const bed = directory.inventory.find((piece: { garden_role?: string }) => piece.garden_role === 'bed');
+    const layoutUrl = apiRoot + '/house-v2/plots/' + plot + '/layout';
+    async function layout(scale: number, who = owner) {
+      const p = (await pool.query('SELECT * FROM house2_plots WHERE id=$1', [plot])).rows[0];
+      return fetch(layoutUrl, {
+        method: 'PUT',
+        headers: { Origin: origin, Cookie: who.cookie, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ revision: p.revision,
+          house: { x: p.house_x, y: p.house_y, rotation: p.house_rotation },
+          items: [{ id: bed.id, x: p.x + p.width / 2, y: p.y + p.height / 2, rotation: 37.25, scale }],
+        }),
+      });
+    }
+    for (const scale of [1.5001, 1.6, 3, 3.01, 0.24]) assert.equal((await layout(scale)).status, 400);
+    assert.equal((await layout(1.5, other)).status, 403);
+    assert.equal((await layout(1.5)).status, 200);
+    assert.equal((await pool.query('SELECT scale FROM house2_items WHERE id=$1', [bed.id])).rows[0].scale, 1.5);
+    await pool.query('UPDATE house2_items SET scale=2 WHERE id=$1', [bed.id]);
+    assert.equal((await layout(2.1)).status, 400);
+    assert.equal((await layout(2)).status, 200);
+    assert.equal((await pool.query('SELECT scale FROM house2_items WHERE id=$1', [bed.id])).rows[0].scale, 2);
+    assert.equal((await layout(1.5)).status, 200);
+    assert.equal((await layout(2)).status, 400);
     const plant = { action: 'plant', crop: 'erva-balsamo' } as const;
     const key = randomUUID();
     const planted = await Promise.all([act(plant, key), act(plant, key)]);
@@ -88,7 +136,7 @@ test('horta usa horas reais, respeita o dono e paga a colheita uma vez', async (
     );
     assert.equal((await send(owner, { action: 'water' }, key)).status, 409);
     const growing = (await act({ action: 'water' })).garden;
-    assert.equal(Date.parse(growing.ready_at) - Date.parse(growing.server_time), 8 * 3600_000);
+    assert.equal(Date.parse(growing.ready_at) - Date.parse(growing.server_time), 24 * 3600_000);
     assert.equal((await send(owner, { action: 'harvest', destination: 'healing' })).status, 409);
     const fermenting = (await act({ action: 'ferment', compost: 'cascas' })).garden;
     assert.equal(fermenting.gold_cp, 4200);
@@ -104,7 +152,7 @@ test('horta usa horas reais, respeita o dono e paga a colheita uma vez', async (
     const fertilized = (await act({ action: 'fertilize' })).garden;
     assert.equal(fertilized.fertilized, true);
     assert.equal(fertilized.compost, null);
-    assert.equal(Date.parse(growing.ready_at) - Date.parse(fertilized.ready_at), 2 * 3600_000);
+    assert.equal(Date.parse(growing.ready_at) - Date.parse(fertilized.ready_at), 1 * 3600_000);
     assert.equal((await send(owner)).data.ready_at, fertilized.ready_at);
     assert.equal((await send(owner, { action: 'fertilize' })).status, 409);
     await pool.query(
@@ -143,6 +191,13 @@ test('horta usa horas reais, respeita o dono e paga a colheita uma vez', async (
       sales.every((result) => result.gold_delta_cp === 2000 && result.garden.gold_cp === 5400),
     );
     assert.equal((await send(owner, sell)).status, 409);
+    await act({ action: 'plant', crop: 'raiz-dourada' });
+    const secondRoot = (await act({ action: 'water' })).garden;
+    await act({ action: 'ferment', compost: 'composto' });
+    assert.equal((await send(owner, { action: 'fertilize' })).status, 409);
+    await pool.query("UPDATE house2_gardens SET compost_ready_at=now()-interval '1 minute' WHERE plot_id=$1", [plot]);
+    const leaves = (await act({ action: 'fertilize' })).garden;
+    assert.equal(Date.parse(secondRoot.ready_at) - Date.parse(leaves.ready_at), 2 * 3600_000);
     await pool.query('UPDATE house2_plots SET character_id=$2 WHERE id=$1', [plot, visitor.id]);
     assert.equal((await send(owner)).status, 404);
     assert.equal((await send(other)).data.crop, null);

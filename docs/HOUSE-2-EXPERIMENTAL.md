@@ -4,16 +4,16 @@ Atualização de 17/10: a hora global editada pelo administrador governa a ilumi
 
 ## Horta
 
-Abra **Horta** no menu da vizinhança ou selecione uma casa sua e clique em **Abrir horta**. Cada casa tem um canteiro e um fermentador. **Posicionar canteiro no terreno** e **Posicionar fermentador no terreno** abrem os mesmos controles da mobília. O dono pode arrastar, girar, ajustar o tamanho, guardar e recolocar cada peça dentro do próprio lote. **Salvar** registra a posição. Cada casa mantém uma unidade de cada peça, inclusive em reenvios da operação.
+Abra **Horta** no menu da vizinhança ou selecione uma casa sua e clique em **Abrir horta**. O canteiro é o único objeto da horta no terreno e dá acesso tanto ao cultivo quanto à fermentação. O fermentador redondo foi retirado do mapa e da coleção; seus registros antigos e os adubos em preparo são preservados. **Posicionar canteiro no terreno** abre os controles da mobília. O dono pode arrastar, girar, ajustar o tamanho até 150%, guardar e recolocar o canteiro dentro do próprio lote. **Salvar** registra a posição. Cada casa mantém um único canteiro, inclusive em reenvios da operação.
 
 A semente e os ingredientes são pagos em ouro pelo personagem dono da casa. A primeira rega inicia o crescimento. O canteiro mostra sementes, brotos, plantas em desenvolvimento e colheita pronta. As duas plantas têm artes próprias para cada estágio. O servidor mantém os horários em tempo real, inclusive com o site fechado ou a peça guardada. Mover o canteiro conserva a planta e seus horários. Hortas existentes recebem suas peças visuais perto da borda do lote quando há espaço no limite de objetos.
 
 | Planta | Semente | Cultivo após regar | Colheita |
 |---|---:|---:|---|
-| Erva-bálsamo | 5 PO | 8 h | 1 Poção de Cura ou venda por 12 PO |
+| Erva-bálsamo | 5 PO | 24 h | 1 Poção de Cura ou venda por 12 PO |
 | Raiz-dourada | 8 PO | 12 h | Venda por 20 PO |
 
-As cascas de fruta custam 3 PO, fermentam em 2 horas e reduzem o cultivo em 2 horas. O composto de folhas custa 6 PO, fermenta em 4 horas e reduz o cultivo em 4 horas. Cada planta aceita uma aplicação, que consome o adubo. A venda credita ouro ao personagem, e a poção vai para a mochila.
+As cascas de fruta custam 3 PO, fermentam em 2 horas e reduzem o cultivo em 1 hora. O composto de folhas custa 6 PO, fermenta em 4 horas e reduz o cultivo em 2 horas. O painel informa **Adubo disponível para aplicar daqui a X h Y min** durante o preparo e libera a aplicação somente quando a fermentação termina. Cada planta aceita uma aplicação, que consome o adubo. A venda credita ouro ao personagem, e a poção vai para a mochila. Os novos prazos de cultivo valem a partir da rega; cultivos já iniciados conservam seus horários salvos.
 
 ## Acabamento e câmera — 16/10/2026
 

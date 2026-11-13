@@ -6,7 +6,7 @@ Selecionar uma mobília própria mostra oito alças na moldura e um controle cir
 
 As alças acompanham o zoom com tamanho constante na tela e aceitam mouse e toque. Pelo teclado, foque uma alça e use as setas ou +/− para mudar o tamanho em 5 pontos percentuais. No controle de giro, Enter/espaço ou as setas giram a peça. Esc cancela o gesto em andamento; cancelamento de ponteiro ou perda de captura também restaura o rascunho anterior.
 
-Salvar e Descartar continuam usando o layout existente no PostgreSQL. A escala permanece entre 25% e 300%, limitada também pelo espaço disponível no terreno. Toda a imagem permanece dentro do lote, inclusive após giro. Somente o proprietário recebe os controles; casas fixas e visitas conservam suas permissões.
+Salvar e Descartar continuam usando o layout existente no PostgreSQL. A escala vai de 25% a 150%, limitada também pelo espaço disponível no terreno. O mesmo teto vale para barra, teclado, alças e novas escalas enviadas à API. Peças antigas acima do teto conservam seu tamanho salvo enquanto não forem redimensionadas; não podem ser ampliadas nem recolocadas acima de 150%. Toda a imagem permanece dentro do lote, inclusive após giro. Somente o proprietário recebe os controles; casas fixas e visitas conservam suas permissões. Ao editar uma peça, o painel prioriza seus controles e oculta saldo, resumo do terreno e controles do telhado.
 
 Implementação em `src/House2ItemBorder.tsx`, `src/house2-item-transform.ts`, `src/House2.tsx` e `src/house2.css`. Sem alteração de servidor, esquema ou artes.
 

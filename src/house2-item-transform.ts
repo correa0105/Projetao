@@ -1,6 +1,8 @@
 import {
   house2Clamp,
   house2RotatedSize,
+  house2ItemMinScale,
+  house2ItemMaxScale,
   type House2Layout,
   type House2Plot,
 } from '../shared/house-v2';
@@ -58,7 +60,7 @@ export function house2ResizeFromBorder(
     x: bounds.width / 2,
     y: bounds.height / 2,
   };
-  let maximum = 3;
+  let maximum = house2ItemMaxScale;
   for (const axis of ['x', 'y'] as const) {
     const minimum = plot[axis],
       end = minimum + (axis === 'x' ? plot.width : plot.height);
@@ -69,7 +71,7 @@ export function house2ResizeFromBorder(
         maximum = Math.min(maximum, (minimum - anchor[axis]) / coefficient);
     }
   }
-  const next = Math.max(0.25, Math.min(maximum, requested));
+  const next = Math.max(house2ItemMinScale, Math.min(maximum, requested));
   return { ...item, scale: next, x: anchor.x + center.x * next, y: anchor.y + center.y * next };
 }
 

@@ -28,7 +28,7 @@ export function HouseGardenPanel({
   characterName: string;
   onChanged?: () => Promise<void>;
   onStateChanged?: (garden: HouseGarden) => void;
-  onArrange?: (role: 'bed' | 'compost') => Promise<void>;
+  onArrange?: () => Promise<void>;
 }) {
   const path = '/house-v2/plots/' + plotId + '/garden';
   const [snapshot, setSnapshot] = useState<{ garden: HouseGarden; received: number }>();
@@ -120,7 +120,7 @@ export function HouseGardenPanel({
         <h3>
           <Sprout size={18} aria-hidden="true" /> Canteiro
         </h3>
-        {onArrange && <button className="button outline" disabled={busy} onClick={() => void onArrange('bed')}>Posicionar canteiro no terreno</button>}
+        {onArrange && <button className="button outline" disabled={busy} onClick={() => void onArrange()}>Posicionar canteiro no terreno</button>}
         {!crop ? (
           (Object.keys(gardenCrops) as (keyof typeof gardenCrops)[]).map((id) => {
             const seed = gardenCrops[id];
@@ -193,14 +193,13 @@ export function HouseGardenPanel({
         <h3>
           <FlaskConical size={18} aria-hidden="true" /> Fermentador
         </h3>
-        {onArrange && <button className="button outline" disabled={busy} onClick={() => void onArrange('compost')}>Posicionar fermentador no terreno</button>}
         {compost && garden.compost_ready_at ? (
           <>
             <strong>{compost.name}</strong>
             <p>
               {compostReady
                 ? 'Adubo pronto para aplicar.'
-                : `Fermentando · faltam ${remaining(garden.compost_ready_at, now)}.`}
+                : `Adubo disponível para aplicar daqui a ${remaining(garden.compost_ready_at, now)}.`}
             </p>
             <p>Reduz o cultivo em {compost.reductionHours} h. Cada planta aceita uma aplicação.</p>
           </>
