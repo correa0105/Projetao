@@ -11,6 +11,7 @@ const tutorialIcons: Partial<Record<Page, string>> = {
   missions: 'board',
   hooks: 'board',
   titles: 'achievements',
+  professions: 'inventory',
 };
 
 export function PageTutorial({

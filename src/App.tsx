@@ -84,6 +84,7 @@ const Tower = lazy(() => import('./Tower').then((module) => ({ default: module.T
 const GuildPage = lazy(() => import('./Guilds').then((module) => ({ default: module.Guilds })));
 const HousePage = lazy(() => import('./RPLobby').then((module) => ({ default: module.RPLobby })));
 const House2Page = lazy(() => import('./House2').then((module) => ({ default: module.House2 })));
+const ProfessionsPage = lazy(() => import('./Professions').then((module) => ({ default: module.Professions })));
 const HallOfFame = lazy(() =>
   import('./HallOfFame').then((module) => ({ default: module.HallOfFame })),
 );
@@ -114,6 +115,7 @@ const titles: Record<Page, string> = {
   profiles: 'Perfis da Alvorada',
   house: 'Lobby de RP',
   house2: 'House',
+  professions: 'Profissões',
   guild: 'Guilda',
   world: 'Mapa Alvorada',
   lore: 'Crônicas & lore',
@@ -717,6 +719,7 @@ function Portal({ user }: { user: User }) {
         {page === 'lore' && <LoreLibrary />}
         {page === 'house' && <HousePage character={character} user={user} onPurchased={refresh} />}
         {page === 'house2' && <House2Page key={character?.id || 'no-character'} character={character} user={user} onGardenChanged={refresh} />}
+        {page === 'professions' && <ProfessionsPage key={character?.id || 'no-character'} character={character} onChanged={refresh} go={go} />}
         {page === 'guild' && (
           <GuildPage key={character?.id || 'no-character'} user={user} characters={characters} activeCharacterId={character?.id || ''} onSelectCharacter={setSelectedId} onPurchased={refresh} />
         )}

@@ -1,0 +1,227 @@
+[
+  {
+    "profession": "smithing",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive medieval BLACKSMITH workshop interior, wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper ember light against cool blue night through a narrow window. A real stone forge and anvil, tongs, hammer, iron billets, hanging hand tools and a shallow quenching trough. Eye-level three-quarter view, believable craftsmanship, strong depth. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/smithing.png",
+    "asset": "public/professions/20261113/smithing.webp",
+    "sha256": "f61af244a37c7a6ab3138dc6ed8dab34c87c7189a9adf78369bfb8ff49079583",
+    "bytes": 201612
+  },
+  {
+    "profession": "alchemy",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of an alchemist laboratory with copper distillation coils, amber glass retorts, jars of mineral salts, mortar, brass scale and small controlled blue and orange flames. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/alchemy.png",
+    "asset": "public/professions/20261113/alchemy.webp",
+    "sha256": "c30d9596dad67377ea1d65494a61f47270ab5ed4db5badc33d750c5206e938e7",
+    "bytes": 246116
+  },
+  {
+    "profession": "brewing",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval brewer cellar with oak fermentation barrels, malt sacks, ceramic mugs, copper brewing kettle, hops and barley. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/brewing.png",
+    "asset": "public/professions/20261113/brewing.webp",
+    "sha256": "a3a1bd3d9a49eded35547338dd6d5f8ddea03084651bd2ea40f9e59b9227fad1",
+    "bytes": 241190
+  },
+  {
+    "profession": "calligraphy",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval calligrapher scriptorium with quills, ink stones, blank vellum, brass rulers, scroll racks and candles. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/calligraphy.png",
+    "asset": "public/professions/20261113/calligraphy.webp",
+    "sha256": "e3dcc5957c2cf6f1e98e1b9a69ddb3e38ee3ff8c5d9597cf3bed17d8af05b7ac",
+    "bytes": 252522
+  },
+  {
+    "profession": "carpentry",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval carpenter timber workshop with clamps, planks, wooden joints, hand saws, planes, wood shavings and rough beams. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/carpentry.png",
+    "asset": "public/professions/20261113/carpentry.webp",
+    "sha256": "104a2872cc80253190d9d16912e174bde30e4a5844f4be2ff4940cc937678afd",
+    "bytes": 230704
+  },
+  {
+    "profession": "cartography",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval cartographer observatory studio with huge unlabeled parchment maps, dividers, compasses, a brass astrolabe, carved map relief and rolled charts. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/cartography.png",
+    "asset": "public/professions/20261113/cartography.webp",
+    "sha256": "4bdb2156d1affba60b5b0218d0a7af38f435406e7006894d3a29ab7ede0dd8a5",
+    "bytes": 233150
+  },
+  {
+    "profession": "cobbling",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval cobbler shop with wooden shoe lasts, dark leather boots, stitching awls, waxed thread spools, leather soles and brass buckles. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/cobbling.png",
+    "asset": "public/professions/20261113/cobbling.webp",
+    "sha256": "0db531a2a66e3eb688f287d99d79e63a880ce9b3abfd5ed3ea36cf99f0590181",
+    "bytes": 185164
+  },
+  {
+    "profession": "cooking",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval cook kitchen with cast iron cauldron, stone hearth, herbs, rough bread, roots, ceramic bowls and copper pans. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/cooking.png",
+    "asset": "public/professions/20261113/cooking.webp",
+    "sha256": "9e4de3f5e84e393fb1e18389ea356d7d381afb548c8ff940481729f8aeda7c12",
+    "bytes": 257504
+  },
+  {
+    "profession": "glassblowing",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval glassblower workshop with a glowing small glass furnace, blowpipes, hand tools, molten amber glass and exquisite colored bottles. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/glassblowing.png",
+    "asset": "public/professions/20261113/glassblowing.webp",
+    "sha256": "0899bc26ecba2142a6b28b0baf17f990d3c9a8fb8cede0590ea9576df44d2579",
+    "bytes": 225972
+  },
+  {
+    "profession": "jewelry",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval jeweler atelier with an engraving bench, faceted loose gems, silver wire, loupe, delicate rings, small crucible and trays of polished stones. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/jewelry.png",
+    "asset": "public/professions/20261113/jewelry.webp",
+    "sha256": "4d63b858bb3a6f89375f3281c27c5f98c0320a9b61903a9f09e669df517a693c",
+    "bytes": 237202
+  },
+  {
+    "profession": "leatherwork",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval leatherworker tannery atelier with hanging clean cured animal hides, stitching frame, saddlery, cutting patterns, bone awls and waxed thread. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/leatherwork.png",
+    "asset": "public/professions/20261113/leatherwork.webp",
+    "sha256": "8ffad91e28b0541fd566a70c379f16f3b8118b4af0cec9f355f806de055a48b3",
+    "bytes": 263930
+  },
+  {
+    "profession": "masonry",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval stone mason workshop with carved dark limestone blocks, mallets, metal chisels, stone relief, plumb line and a stone cutting bench. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/masonry.png",
+    "asset": "public/professions/20261113/masonry.webp",
+    "sha256": "2930c7976f66a77762aad716b59706748207b01ff8311bac368515e8c6c1b438",
+    "bytes": 201818
+  },
+  {
+    "profession": "painting",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval painter studio with raw mineral pigments, wooden easel showing an unfinished atmospheric landscape with no person, brushes, clay pigment dishes and canvas rolls. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/painting.png",
+    "asset": "public/professions/20261113/painting.webp",
+    "sha256": "0f86c9f72961e24ef395a13e5e537e815ec8fef45e6187848b495d2540d72214",
+    "bytes": 221930
+  },
+  {
+    "profession": "tinkering",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval fantasy tinkerer workshop with small mechanical brass gears, springs, hand-powered clockworks, lock mechanisms, screwdrivers and precision calipers, strictly no modern electronics. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/tinkering.png",
+    "asset": "public/professions/20261113/tinkering.webp",
+    "sha256": "14f72d83073f59452e663e81755255cc347102fda9aae453a76588301750bee9",
+    "bytes": 216678
+  },
+  {
+    "profession": "weaving",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval weaver workshop with a large wooden hand loom, shuttles, richly textured wool yarn, dark blue and copper cloth and thread spools. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/weaving.png",
+    "asset": "public/professions/20261113/weaving.webp",
+    "sha256": "0d76dd329572efa2a813077e4f9101ff42018e47bddb2971bee3abc505d4eae3",
+    "bytes": 264740
+  },
+  {
+    "profession": "pottery",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval potter workshop with a foot-powered pottery wheel, wet clay vase, drying earthenware shelves, glaze jars and a warm brick kiln. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/pottery.png",
+    "asset": "public/professions/20261113/pottery.webp",
+    "sha256": "e7ca77760f782d67f30a5048e1b1a3cef9e3155621f90b7fbec026936ac09427",
+    "bytes": 235156
+  },
+  {
+    "profession": "woodcarving",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval woodcarver workshop with hand gouges, chisels, carved hardwood bowls, a partly carved animal figure, wooden shavings and a bench vise. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/woodcarving.png",
+    "asset": "public/professions/20261113/woodcarving.webp",
+    "sha256": "01793db813145bd23de24414771fbb6fa4261bbf4c6b6de3d8f37899f55b2041",
+    "bytes": 196412
+  },
+  {
+    "profession": "thieves-tools",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval locksmith secret workshop with an opened brass lock, tiny precision picks, tumblers, steel springs, restrained wall candles and a barred night window, no modern items. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/thieves-tools.png",
+    "asset": "public/professions/20261113/thieves-tools.webp",
+    "sha256": "c8700ae9f521f49eaa85d4ba8257d2f40c52df9beabe1bbeedb42e3a6461873d",
+    "bytes": 209778
+  },
+  {
+    "profession": "navigation",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval fantasy navigator cabin with a large wooden ship wheel visible at side, a brass astrolabe, compass, unlabeled sea chart, ropes and a night ocean through cabin windows. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/navigation.png",
+    "asset": "public/professions/20261113/navigation.webp",
+    "sha256": "a8730e22f45845c07a6d5cba3ff4803b8205167b67f9dabfd015cc28b5b398bc",
+    "bytes": 227830
+  },
+  {
+    "profession": "disguise",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval theatrical disguise wardrobe atelier with elegant blank masks, natural pigment makeup, wigs on wooden stands, folded cloaks and a dim copper framed mirror. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/disguise.png",
+    "asset": "public/professions/20261113/disguise.webp",
+    "sha256": "e0f7fc45e70adeccf082b3fc97c53dfb38a295119784a0839fca2e7b73b7d4a2",
+    "bytes": 202144
+  },
+  {
+    "profession": "forgery",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval fantasy seal maker secret archive with wax stamps, embossed seals, blank parchment documents, magnifying lens, quill, wax sticks and cabinets, no writing or modern objects. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/forgery.png",
+    "asset": "public/professions/20261113/forgery.webp",
+    "sha256": "87eea86975e53bc3769e0044b020ad422605e6b9d25d01a2d1824e585ed84bbc",
+    "bytes": 187416
+  },
+  {
+    "profession": "herbalism",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval herbalist apothecary greenhouse workshop with dried medicinal plants hanging from beams, potted herbs, amber medicine bottles, mortar and pestle, a clean preparation table and cool moonlight. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/herbalism.png",
+    "asset": "public/professions/20261113/herbalism.webp",
+    "sha256": "3fc1c23430e70de899c15c0915ac3283ee0f50a05bb16ef8135364018b2241d7",
+    "bytes": 316008
+  },
+  {
+    "profession": "poison",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a dark medieval fantasy toxicologist apothecary with careful sealed small vials, strange fictional mushrooms, dark dried herbs, mortar, fine brass filter and locked reagent cabinet, restrained purple shadows, no labels, no hazardous real procedure. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/poison.png",
+    "asset": "public/professions/20261113/poison.webp",
+    "sha256": "bdbac3f92346725b09fd0190cc93e58fc16b28a7ff38e6c3441d77d32a7ca313",
+    "bytes": 222618
+  },
+  {
+    "profession": "luthiery",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval fantasy luthier and musician workshop with an unfinished wooden lute, harp and violin, tuning pegs, strings, carving tools and dark velvet-lined instrument shelves. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/luthiery.png",
+    "asset": "public/professions/20261113/luthiery.webp",
+    "sha256": "cd4ad8eec64d68215e0b1e86af09b63a65efa3f355d943f79095ea09e10e6669",
+    "bytes": 252574
+  },
+  {
+    "profession": "games",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: full-width scenic background for the Alvorada Cinzenta fantasy RPG profession workshop. Create one beautiful immersive scene of a medieval board game artisan workshop with a beautiful unfinished carved wooden chess board, tiny carved fantasy pieces, plain ivory dice, hand painted blank playing cards and precision carving tools. Wide landscape 16:9 composition, detailed hand-painted dark fantasy realism, rich weathered wood and charcoal stone, warm copper candle light against cool blue night through a narrow window. Eye-level three-quarter view, believable craftsmanship, strong depth, distinct profession-specific scenery. Keep a broad clean workbench in the lower foreground and atmospheric readable negative space in the upper left where the website will place text. Moderate contrast and dark corners, beautiful material detail, no people, no modern equipment, no lettering, no logos, no UI, no vivid green glow. The image itself is scenery, not a website screenshot.",
+    "original": "artwork-archive/professions-20261113/games.png",
+    "asset": "public/professions/20261113/games.webp",
+    "sha256": "1ae322cdbdbda1a1a7134ad880e9ec386605f11e56a5a8d8a8da6e23740bcafd",
+    "bytes": 220598
+  }
+]

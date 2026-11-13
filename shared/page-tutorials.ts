@@ -22,6 +22,7 @@ export const tutorialPages = [
   'profiles',
   'house',
   'house2',
+  'professions',
   'guild',
   'world',
   'lore',

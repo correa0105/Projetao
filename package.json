@@ -31,7 +31,8 @@
     "test:lore": "node scripts/test-lore-isolated.mjs",
     "test:rulebook": "node scripts/test-rulebook-isolated.mjs",
     "test:community": "node scripts/test-community-isolated.mjs",
-    "test:community:browser": "node scripts/test-community-isolated.mjs --browser"
+    "test:community:browser": "node scripts/test-community-isolated.mjs --browser",
+    "test:professions": "node scripts/test-professions-isolated.mjs"
   },
   "dependencies": {
     "better-auth": "^1.7.5",

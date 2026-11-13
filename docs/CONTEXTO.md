@@ -28,6 +28,7 @@ Resumo consolidado em 27/10/2026. As regras permanentes estão em [AGENTS.md](..
 | Mundo, reino e pins | [KINGDOM-2D](KINGDOM-2D.md), [WORLD-PINS](WORLD-PINS-20261021.md), [ATLAS-3D-MATERIALS](ATLAS-3D-MATERIALS.md) |
 | Missões, patentes e regras | [PATENTES](PATENTES.md), [ROADMAP-REGRAS](ROADMAP-REGRAS.md) |
 | House e perspectiva da mobília | [HOUSE](HOUSE.md), [HOUSE-ART-DIRECTION](HOUSE-ART-DIRECTION.md) |
+| Profissões, oficinas e materiais de mesa | [PROFISSOES](PROFISSOES.md) |
 | Torre | [TORRE-EXPERIMENTAL](TORRE-EXPERIMENTAL.md) |
 | Comunidade, conquistas e calendário | [SALAO-CONQUISTAS](SALAO-CONQUISTAS.md), [CALENDARIO-MASCOTES](CALENDARIO-MASCOTES.md), [PROFILE-VISIT-SIGNPOST](PROFILE-VISIT-SIGNPOST.md) |
 

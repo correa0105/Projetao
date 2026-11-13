@@ -71,6 +71,7 @@ const packages: {
       { page: 'world', label: 'Mundo' },
       { page: 'house', label: 'Lobby de RP' },
       { page: 'house2', label: 'House' },
+      { page: 'professions', label: 'Profissões' },
       { page: 'guild', label: 'Guilda' },
     ],
   },
@@ -319,7 +320,7 @@ export function Navigation({ page, go, maintenanceAreas = [] }: { page: Page; go
               >
                 <img
                   className="dock-destination-art"
-                  src={`/navigation/illustrated-20261020/${target}.webp`}
+                  src={target==='professions'?'/sheet/training-badges-20261019/smithing.webp':`/navigation/illustrated-20261020/${target}.webp`}
                   alt=""
                   aria-hidden="true"
                   draggable={false}

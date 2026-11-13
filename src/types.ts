@@ -170,6 +170,7 @@ export type Page =
   | 'profiles'
   | 'house'
   | 'house2'
+  | 'professions'
   | 'guild'
   | 'world'
   | 'lore'

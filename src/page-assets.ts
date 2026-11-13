@@ -35,6 +35,7 @@ export const primaryPageAssets: Partial<Record<Page, readonly string[]>> = {
   hall: ['/achievement-house-v3.png'],
   profiles: ['/character-camp-v2.png'],
   house: [wood],
+  professions: ['/professions/20261113/smithing.webp'],
   reliquias: [relicShopArt],
   cristais: [crystalShopArt, crystalMerchantArt],
   shop: [

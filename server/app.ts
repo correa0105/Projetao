@@ -37,6 +37,7 @@ import { AppError, purchase } from './services.js';
 import { completeMission, completionSchema, publishMissionHook } from './missions.js';
 import { houseRouter } from './house.js';
 import { house2Router } from './house-v2.js';
+import { professionsRouter } from './professions.js';
 import { worldClockRouter } from './world-clock.js';
 import { accountPreview, basicPreviewPayload } from './account-preview.js';
 import { atlasId, resolvePostLocation } from './atlas.js';
@@ -302,6 +303,7 @@ export function createApp() {
   app.use('/api', pageTutorialsRouter());
   app.use('/api', houseRouter());
   app.use('/api', house2Router());
+  app.use('/api', professionsRouter());
   app.use('/api', worldClockRouter());
   app.get('/api/me', async (_req, res) => {
     const {

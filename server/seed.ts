@@ -11,6 +11,7 @@ import { seedClothingPieces } from './clothing-catalog.js';
 import { applyEconomyPrices, applyEconomyRulebook } from './economy-prices.js';
 import { thematicEquipmentImage, approvedThematicEquipmentImages } from '../shared/thematic-equipment-art.js';
 import { withdrawnWeaponOffer, withdrawnBookOffer } from '../shared/shop-availability.js';
+import { seedProfessionCatalog } from './professions.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -179,6 +180,7 @@ export async function seed() {
       AND c.raw_data ? 'armor_bundle_model_image'
       AND c.raw_data->>'armor_bundle_model_image' IS DISTINCT FROM parent.image_path`, [Object.keys(reviewedImages)]);
     await seedClothingPieces(client);
+    await seedProfessionCatalog(client);
     const entries = [
       [
         'dominios-da-alvorada',
