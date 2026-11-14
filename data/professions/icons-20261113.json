@@ -1,0 +1,502 @@
+[
+  {
+    "id": "craft-material-hide",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a folded warm brown cured animal hide with a softly irregular natural edge and visible supple leather grain. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-hide.png",
+    "asset": "public/professions/icons-20261113/craft-material-hide.webp",
+    "sha256": "aca7587ec150f60026615605eba934e6a29aa3e36823cd1626b98b1df4a2653d",
+    "bytes": 18754,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-iron",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a compact pile of three rough iron ore rocks, dark stone with visible rusty metallic iron veins. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-iron.png",
+    "asset": "public/professions/icons-20261113/craft-material-iron.webp",
+    "sha256": "ba6e601db3e385b4b11a1810fdc6a50c345036ee49e46ba32ab767a37c7cd365",
+    "bytes": 20638,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-herb",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a tied bundle of fictional medicinal broad leaves and delicate pale flowers. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-herb.png",
+    "asset": "public/professions/icons-20261113/craft-material-herb.webp",
+    "sha256": "bc8f026e7a13599912faa3da1a706790508d0fa3ede7d2476f7c26eb6b0a8dbc",
+    "bytes": 23418,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-wood",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small stack of rich brown hardwood billets with clean cut ends and clear wood grain. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-wood.png",
+    "asset": "public/professions/icons-20261113/craft-material-wood.webp",
+    "sha256": "ff9e961742d619d703dc97172538dccb0f2a599a4f46165aab4859aee0041faf",
+    "bytes": 21168,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-aromatic",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small tied bouquet of aromatic leafy herbs with lavender flowers and tiny cream blossoms. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-aromatic.png",
+    "asset": "public/professions/icons-20261113/craft-material-aromatic.webp",
+    "sha256": "693910277dcbc245827efe096b7d74fccdc2f4e336e84a90f4ff55fa3292516d",
+    "bytes": 28372,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-venom",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a tightly stoppered small fantasy reagent vial with a dark violet fictional liquid and a tied purple cord. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-venom.png",
+    "asset": "public/professions/icons-20261113/craft-material-venom.webp",
+    "sha256": "6fbc1f3e10c3951c79965b9b5eb80ff8a0404dcc6ddb31ce520d346045625a41",
+    "bytes": 19206,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-pigment",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of three small shallow clay dishes containing ground ochre, crimson and ultramarine mineral pigments. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-pigment.png",
+    "asset": "public/professions/icons-20261113/craft-material-pigment.webp",
+    "sha256": "ef1a00d33b7fbd4e198c7b4d17e5f9501e944259d0526c605236299afa981131",
+    "bytes": 21744,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-clay",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of two soft lumps of earthy terracotta potter clay with thumb grooves and a small raw clay curl. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-clay.png",
+    "asset": "public/professions/icons-20261113/craft-material-clay.webp",
+    "sha256": "463ff58b1fcaa70658dd3e03639e14826c7919beee4c61705337d8037b954a6a",
+    "bytes": 17776,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-quartz",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small open linen pouch spilling pale quartz sand beside one translucent rough quartz crystal. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-quartz.png",
+    "asset": "public/professions/icons-20261113/craft-material-quartz.webp",
+    "sha256": "4f6540be97dad444f92a549d9ea4d7af16a4624b3c1253c7ef2f937cb6fc98a0",
+    "bytes": 25732,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-gem",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of one beautiful uncut garnet gemstone with a partially rough stone base and red crystalline facets. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-gem.png",
+    "asset": "public/professions/icons-20261113/craft-material-gem.webp",
+    "sha256": "0ae54bcabcb23e8f82c51b24ecfe8d140b201cbd072b723cd5bd071869b5e7c4",
+    "bytes": 20320,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-flax",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a tidy sheaf of long golden flax fibers tied in the middle with rustic thread. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-flax.png",
+    "asset": "public/professions/icons-20261113/craft-material-flax.webp",
+    "sha256": "e1c77f2d90bbdb87dc7cb93682195d914a4d95dbc21df6139e575b5cdc54a925",
+    "bytes": 22348,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-wool",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a fluffy compact bundle of raw cream sheep wool tied with a brown natural cord. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-wool.png",
+    "asset": "public/professions/icons-20261113/craft-material-wool.webp",
+    "sha256": "2badc30828c2ff12996858706043802fe3713c3cff0f02ca73c77cf407fbe138",
+    "bytes": 22554,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-wax",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of two golden beeswax blocks with a small natural honeycomb fragment. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-wax.png",
+    "asset": "public/professions/icons-20261113/craft-material-wax.webp",
+    "sha256": "0105cb62c08e69e6152cfdb12f97e2a47bfc2ce437995f35a3de0098daedc772",
+    "bytes": 31714,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-grain",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small burlap pouch of golden cereal grains with two ripe wheat heads. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-grain.png",
+    "asset": "public/professions/icons-20261113/craft-material-grain.webp",
+    "sha256": "eb3a7d29ac86597b2a327bdbc7737f5d6b270214c7af7ea615c4728f64683482",
+    "bytes": 25482,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-hops",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small cluster of fresh muted green hop cones attached to a few serrated leaves. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-hops.png",
+    "asset": "public/professions/icons-20261113/craft-material-hops.webp",
+    "sha256": "32a9deaf4663f86e98f3d42460e0227fa2259ca1bc1f7ba887a839b945b589dc",
+    "bytes": 28728,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-fat",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small simple earthenware crock containing pale rendered animal fat with a tied cloth cover pulled partly aside. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-fat.png",
+    "asset": "public/professions/icons-20261113/craft-material-fat.webp",
+    "sha256": "833b15a8386a45372c4c4906acc2ef1421d50b28abf9e02a5d0229781d08c77b",
+    "bytes": 23134,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-meat",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a wrapped parcel of dried game meat strips tied with twine, appetizing rustic provisions. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-meat.png",
+    "asset": "public/professions/icons-20261113/craft-material-meat.webp",
+    "sha256": "a0618340dcf0449309c6ccba766b4aac0529ce6e1365a6fad741ba3c7c903e5f",
+    "bytes": 24784,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-feather",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of three elegant natural bird feathers, cream brown and blue-gray, tied together at the quills. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-feather.png",
+    "asset": "public/professions/icons-20261113/craft-material-feather.webp",
+    "sha256": "a9e0e0697a72d4c738307a045dc6f901b0e41c7b5431a7432d253bbbb8839ce2",
+    "bytes": 23332,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-notes",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small bundle of rugged exploration notes with tiny nonverbal route marks, folded parchment, graphite pencil and cord. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-notes.png",
+    "asset": "public/professions/icons-20261113/craft-material-notes.webp",
+    "sha256": "5da397424b341e39719f29d8e1f6f01c1d1c531d4dea57af73b03b257e2a9c3e",
+    "bytes": 27570,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-stone",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a rough block of warm gray limestone with a small cut face revealing its stone texture. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-stone.png",
+    "asset": "public/professions/icons-20261113/craft-material-stone.webp",
+    "sha256": "de34009176600d3e5bdad1259eb731f20702834a492bec90c291cfc332133926",
+    "bytes": 22444,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-arcane",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a tiny sealed crystal vial of glowing violet arcane essence on a copper foot, strictly a magical fictional reagent. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-arcane.png",
+    "asset": "public/professions/icons-20261113/craft-material-arcane.webp",
+    "sha256": "388b12dd3b2c6ca8d0d3ea4614ce28f130300348d2bf3fa2d755f48a05ec386d",
+    "bytes": 16586,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-alloy",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of two refined silvery fantasy steel ingots with dark copper-brown edges and no lettering. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-alloy.png",
+    "asset": "public/professions/icons-20261113/craft-material-alloy.webp",
+    "sha256": "6e5148735ecb3a9cf6d0c46f9651f420e0c4d72bb5b54e2673c26e6c9a65a872",
+    "bytes": 18358,
+    "transparent": true
+  },
+  {
+    "id": "craft-field-map",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of an unfurled rugged explorer map with a simple hand drawn river, mountains and one compass rose, no letters. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-field-map.png",
+    "asset": "public/professions/icons-20261113/craft-field-map.webp",
+    "sha256": "6bdedec202cee631e460f1b76a475862ab25c08dc4952efe9f934e4b019076c4",
+    "bytes": 24908,
+    "transparent": true
+  },
+  {
+    "id": "craft-material-silk",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a spool of fine luminous cream silk thread beside a small fold of rich indigo silk. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-material-silk.png",
+    "asset": "public/professions/icons-20261113/craft-material-silk.webp",
+    "sha256": "fa0e6ef85424e8127715edf57ba20596538f784b822e23496e42e35c27c0da47",
+    "bytes": 23508,
+    "transparent": true
+  },
+  {
+    "id": "craft-route-map",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a folded parchment road map with a clearly visible winding copper dotted trail linking tiny landmark drawings, no letters. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-route-map.png",
+    "asset": "public/professions/icons-20261113/craft-route-map.webp",
+    "sha256": "68b44df82d4529b59939ea44ed6932cb47e5f647b26002d6f1f48028451aee26",
+    "bytes": 25094,
+    "transparent": true
+  },
+  {
+    "id": "craft-ale",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of two sealed amber glass bottles of artisan ale with waxed corks, beside a small wooden mug topped with pale foam. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-ale.png",
+    "asset": "public/professions/icons-20261113/craft-ale.webp",
+    "sha256": "9f9edae34781f4cbba61c9de66254ba34337f1cb80278c02e5151c3cc2de152b",
+    "bytes": 24706,
+    "transparent": true
+  },
+  {
+    "id": "craft-malt-extract",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small stoppered amber glass flask holding thick golden malt extract beside a few barley grains. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-malt-extract.png",
+    "asset": "public/professions/icons-20261113/craft-malt-extract.webp",
+    "sha256": "b7b010bd9f839adb878ce036b1aead531a6e3359467e82a1300810bc742148dd",
+    "bytes": 21646,
+    "transparent": true
+  },
+  {
+    "id": "craft-manuscript",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a beautiful half-open hand bound medieval illuminated manuscript, cream parchment pages with delicate gold blue and red marginal decoration, no readable writing. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-manuscript.png",
+    "asset": "public/professions/icons-20261113/craft-manuscript.webp",
+    "sha256": "50bb29b8cc56864719bc09f593a013ba0424b4a4cbfc9312dd73c77a3ec02a5e",
+    "bytes": 27828,
+    "transparent": true
+  },
+  {
+    "id": "craft-sealed-letter",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a folded cream parchment letter tied with thin blue ribbon and a round crimson wax seal, no lettering. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-sealed-letter.png",
+    "asset": "public/professions/icons-20261113/craft-sealed-letter.webp",
+    "sha256": "47df5a8c3752db00dcc2f5404991bc8bbebedd9eac52911342817fcc9deed39e",
+    "bytes": 17606,
+    "transparent": true
+  },
+  {
+    "id": "craft-leather-boots",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a pair of well crafted plain warm brown leather travel boots with brass buckles and sturdy stitched soles. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-leather-boots.png",
+    "asset": "public/professions/icons-20261113/craft-leather-boots.webp",
+    "sha256": "d1f7acda58b6163044ca26eaaa3a978e90b039d3bf42245bb135a2d888afa500",
+    "bytes": 19988,
+    "transparent": true
+  },
+  {
+    "id": "craft-lined-boots",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a pair of dark brown leather winter boots with thick cream fur lining around the opening and sturdy soles. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-lined-boots.png",
+    "asset": "public/professions/icons-20261113/craft-lined-boots.webp",
+    "sha256": "7e774807e6b66592ef7a1aea654cac6a8db3b7b88bfde20336e1750ec0e2b0e0",
+    "bytes": 23964,
+    "transparent": true
+  },
+  {
+    "id": "craft-trail-meal",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of an appetizing rustic trail meal of flatbread, dried meat and a few roasted roots on a folded linen cloth. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-trail-meal.png",
+    "asset": "public/professions/icons-20261113/craft-trail-meal.webp",
+    "sha256": "c63ec1ac0acc4cd863ca494b37d831d4839dea440685ffd002e4ff98b5faaee4",
+    "bytes": 27316,
+    "transparent": true
+  },
+  {
+    "id": "craft-ring",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of one small handcrafted copper and silver ring with a simple engraved band and a warm tiny garnet, visibly one ring. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-ring.png",
+    "asset": "public/professions/icons-20261113/craft-ring.webp",
+    "sha256": "c8e9596dd88bd311d1c127c0d94a40f912037267daa35eb1f0edc81ac7e73ac0",
+    "bytes": 18310,
+    "transparent": true
+  },
+  {
+    "id": "craft-gem-amulet",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a polished deep blue gemstone pendant in a hand crafted silver setting with a loop of brown leather cord. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-gem-amulet.png",
+    "asset": "public/professions/icons-20261113/craft-gem-amulet.webp",
+    "sha256": "30f4e4e280441a6aa4420f4119b0fdd86d9c8a873d225ac4a2878a518a57826b",
+    "bytes": 20958,
+    "transparent": true
+  },
+  {
+    "id": "craft-stone-relief",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small finished gray stone relief panel with a carefully carved spreading oak tree in a simple stone frame. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-stone-relief.png",
+    "asset": "public/professions/icons-20261113/craft-stone-relief.webp",
+    "sha256": "0934bcbbe8275700905a21577ccf097c76eec920042a9730737ea1831d7a49de",
+    "bytes": 26642,
+    "transparent": true
+  },
+  {
+    "id": "craft-whetstone",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a rectangular fine gray sharpening stone in a dark wooden holder with a tiny copper oil flask beside it. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-whetstone.png",
+    "asset": "public/professions/icons-20261113/craft-whetstone.webp",
+    "sha256": "f7e57dfd573b65ef8d9aa12ea783991ec4a54a8c1678ab5aa41b2bc354ac9ec8",
+    "bytes": 17734,
+    "transparent": true
+  },
+  {
+    "id": "craft-painted-banner",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a compact folded medieval cloth banner partly unfurled from a short wooden crossbar, rich indigo fabric with a simple gold sun motif. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-painted-banner.png",
+    "asset": "public/professions/icons-20261113/craft-painted-banner.webp",
+    "sha256": "8c6728dea18f0de74a7756135ddbbbe3ba147d45a5f0c506f9da57e349ac2356",
+    "bytes": 19412,
+    "transparent": true
+  },
+  {
+    "id": "craft-landscape",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small completed landscape painting of distant mountains and a river in a tasteful dark wood frame. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-landscape.png",
+    "asset": "public/professions/icons-20261113/craft-landscape.webp",
+    "sha256": "fd60b71df572f65b84037663ad0b38320860ecd320d8f478cd6a2596792e5cb3",
+    "bytes": 23758,
+    "transparent": true
+  },
+  {
+    "id": "craft-glazed-pot",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a handmade rounded ceramic pot with a small fitted lid and rich deep blue glossy glaze over terracotta. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-glazed-pot.png",
+    "asset": "public/professions/icons-20261113/craft-glazed-pot.webp",
+    "sha256": "8b4f6cc30484d0d5b05151e294dad6ea816f08bbfe7d6db1635ea8e738f0173c",
+    "bytes": 22674,
+    "transparent": true
+  },
+  {
+    "id": "craft-wood-talisman",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a carved dark hardwood leaf talisman suspended from a softly coiled rustic cord, delicate engraved wood grain. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-wood-talisman.png",
+    "asset": "public/professions/icons-20261113/craft-wood-talisman.webp",
+    "sha256": "93809b4812eb58faf601d2613010f03417717f122134f80fae33483b2d3df897",
+    "bytes": 19478,
+    "transparent": true
+  },
+  {
+    "id": "craft-lock-picks",
+    "source": "existing-site-art",
+    "prompt": null,
+    "original": "artwork-archive/profession-icons-20261113/craft-lock-picks.webp",
+    "asset": "public/professions/icons-20261113/craft-lock-picks.webp",
+    "sha256": "cfe6926297b5fda7d3c56ea7e1a5602dff26a59df8773e7d44e269a7977b5bed",
+    "bytes": 21160,
+    "transparent": true
+  },
+  {
+    "id": "craft-practice-lock",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a brass practice padlock with a small cutaway window exposing three internal pins, one plain key beside it. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-practice-lock.png",
+    "asset": "public/professions/icons-20261113/craft-practice-lock.webp",
+    "sha256": "b7cd356334a8dc5004ac2606d6a76607e5cdbaf76ac92ff2a7fc98a486d9c7b6",
+    "bytes": 25018,
+    "transparent": true
+  },
+  {
+    "id": "craft-star-chart",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of an elegant navy blue and parchment star chart with golden constellations, a small brass astrolabe and no readable writing. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-star-chart.png",
+    "asset": "public/professions/icons-20261113/craft-star-chart.webp",
+    "sha256": "1a25693a0374c4be783f1a5e73e29348fc1c3ab9f55afdd01802e3cc83c4829e",
+    "bytes": 24768,
+    "transparent": true
+  },
+  {
+    "id": "craft-sea-chart",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a rolled parchment nautical chart partly open, small drawn waves and islands with a prominent brass compass, no readable writing. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-sea-chart.png",
+    "asset": "public/professions/icons-20261113/craft-sea-chart.webp",
+    "sha256": "78e1ef0bc7f9240b1a209f8e9e9cecb47af15ea05bd2b9033f531da2ce15f201",
+    "bytes": 26240,
+    "transparent": true
+  },
+  {
+    "id": "craft-stage-mask",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of one elegant ivory theatrical half-mask with a subtle indigo painted edge and dark ribbon ties. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-stage-mask.png",
+    "asset": "public/professions/icons-20261113/craft-stage-mask.webp",
+    "sha256": "82b81f79877131cfac35810fa5968acafaa30d5aff902141c3c06061c0e9da2c",
+    "bytes": 24158,
+    "transparent": true
+  },
+  {
+    "id": "craft-disguise-pigments",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of an open small leather cosmetics roll holding three tiny pots of warm natural face pigments and one delicate brush. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-disguise-pigments.png",
+    "asset": "public/professions/icons-20261113/craft-disguise-pigments.webp",
+    "sha256": "fef152aa4727223578cd686f0d2d78e5bebc0905003269f4d97ec181062fb5e9",
+    "bytes": 26626,
+    "transparent": true
+  },
+  {
+    "id": "craft-replica-seal",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small wood handled brass wax stamp beside a finished crimson wax impression, no lettering. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-replica-seal.png",
+    "asset": "public/professions/icons-20261113/craft-replica-seal.webp",
+    "sha256": "7c84f2e1707b21d02686b68c45142c571d9dd4d35beb6fde22a44dc74bc0976a",
+    "bytes": 19180,
+    "transparent": true
+  },
+  {
+    "id": "craft-document-copy",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of two neatly stacked cream parchment documents with decorative copper ruled borders and tiny abstract pen marks, no readable writing. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-document-copy.png",
+    "asset": "public/professions/icons-20261113/craft-document-copy.webp",
+    "sha256": "ecffbe04004f3a85113aed4ca08c768d8d7c66904407bae1036410e5732ee232",
+    "bytes": 18144,
+    "transparent": true
+  },
+  {
+    "id": "craft-repellent",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small amber glass bottle of herbal trail repellent with a tied cloth cap and a little aromatic herb sprig. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-repellent.png",
+    "asset": "public/professions/icons-20261113/craft-repellent.webp",
+    "sha256": "8b41b782c59e6e83e1bf86d5ca21b81edd1a75e2c5bbd34df4193850181fe5da",
+    "bytes": 20842,
+    "transparent": true
+  },
+  {
+    "id": "craft-carved-game",
+    "source": "image_gen",
+    "prompt": "Create ONE premium medieval fantasy RPG inventory icon of a small carved wooden chess board with a few beautifully carved wooden fantasy game pieces and no lettering. Square 1:1 composition, single isolated object or tightly grouped inventory item centered with generous transparent padding. Style: richly detailed hand-painted 3D-like game inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta equipment art. Crisp readable silhouette at 40 pixels, beautiful material texture, subtle warm edge lighting from upper left, restrained copper highlights, natural saturated material colors. Slight three-quarter isometric view, polished high quality, not a line icon, not a vector symbol, not a photograph. Transparent background with clean alpha. No scene, no ground plane, no rectangular background, no border, no icon badge frame, no text, no labels, no watermark, no UI. The object must fill about 75 percent of the square and remain recognizable at small size.",
+    "original": "artwork-archive/profession-icons-20261113/craft-carved-game.png",
+    "asset": "public/professions/icons-20261113/craft-carved-game.webp",
+    "sha256": "276012c3a3c8ebff60d75880a2e43656463cceff48bcc2bc544f3a61ee6517a6",
+    "bytes": 23392,
+    "transparent": true
+  }
+]

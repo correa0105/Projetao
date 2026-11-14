@@ -520,7 +520,7 @@ export const pageTutorials = {
       { title: 'Encontre seu ofício', text: 'Abra uma oficina. A proficiência correspondente na ficha concluída libera a bancada; os demais cenários podem ser visitados para conhecer as receitas.' },
       { title: 'Reúna os materiais', text: 'Confira a quantidade disponível na mochila. O mestre registra os materiais obtidos em mesa. Frascos, tinta, papel e outros insumos podem ser comprados no Empório.' },
       { title: 'Trabalhe na bancada', text: 'Escolha uma receita e revise o que será consumido. Clique em Usar materiais e iniciar. Faça os ajustes, os encaixes ou o traçado indicados em dourado e confirme cada etapa.' },
-      { title: 'Recolha sua criação', text: 'O preparo continua contando com o site fechado. Após concluir as etapas e o tempo de produção, clique em Recolher criação. O resultado vai para a mochila uma única vez.' },
+      { title: 'Recolha e evolua', text: 'O preparo continua contando com o site fechado. Após concluir as etapas e o prazo, clique em Recolher criação para receber o item e experiência neste ofício. Há dez níveis; novas receitas são liberadas nos níveis 3, 6 e 10.' },
       { title: 'Registre os materiais da mesa', text: 'O mestre encontra Entregas de mesa nesta aba. Escolha uma mesa que você conduz, um personagem participante, o material e a quantidade, registre a origem na aventura e confirme a entrega.' },
     ],
   },

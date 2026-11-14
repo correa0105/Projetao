@@ -1,21 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  Clock3,
-  FlaskConical,
-  Hammer,
-  Layers,
-  Leaf,
-  LockKeyhole,
-  Map as MapIcon,
-  Package,
-  Search,
-  Sparkles,
-  Users,
-  X,
-} from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Clock3, LockKeyhole, Search, Users, X } from 'lucide-react';
 import { api, post } from './api';
 import {
   professions,
@@ -33,6 +17,9 @@ import {
 } from '../shared/professions';
 import type { Character, Page } from './types';
 import './professions.css';
+import { AdvancedWorkshop } from './ProfessionMechanics';
+import { professionItemArtwork } from '../shared/profession-art';
+import { professionProgress } from '../shared/profession-progression';
 
 const nodes = [
   'Ruínas',
@@ -53,13 +40,26 @@ function timeLeft(date: string, now: number) {
   const minutes = Math.max(0, Math.ceil((Date.parse(date) - now) / 60000));
   return minutes ? `${Math.floor(minutes / 60)} h ${minutes % 60} min` : 'Pronto para recolher';
 }
-function Workshop({
+function Workshop(props: {
+  step: WorkshopStep;
+  disabled: boolean;
+  busy: boolean;
+  submit: (input: WorkshopInput) => void;
+}) {
+  const { step } = props;
+  return step.kind === 'balance' || step.kind === 'assembly' || step.kind === 'trace' ? (
+    <AdvancedWorkshop {...props} step={step} />
+  ) : (
+    <BasicWorkshop {...props} step={step} />
+  );
+}
+function BasicWorkshop({
   step,
   disabled,
   busy,
   submit,
 }: {
-  step: WorkshopStep;
+  step: Extract<WorkshopStep, { kind: 'dial' | 'order' | 'pattern' | 'map' }>;
   disabled: boolean;
   busy: boolean;
   submit: (input: WorkshopInput) => void;
@@ -636,11 +636,19 @@ export function Professions({
     return () => window.clearInterval(timer);
   }, []);
   const profession = professions.find((p) => p.id === selected);
-  const unlocked = !!profession && professionUnlocked(profession, state?.proficiencies ?? []);
+  const administrator = state?.capabilities?.all_professions === true;
+  const unlimitedMaterials = state?.capabilities?.unlimited_materials === true;
+  const hasProfession = (p: Profession) =>
+    administrator || professionUnlocked(p, state?.proficiencies ?? []);
+  const unlocked = !!profession && hasProfession(profession);
+  const craftingProgress =
+    state?.progress?.find((p) => p.profession_id === selected) ?? professionProgress();
   const active = state?.projects.find((p) => !p.claimed_at);
   const current = active?.profession_id === selected ? active : undefined;
   const recipe =
     current?.recipe ?? profession?.recipes.find((r) => r.id === recipeId) ?? profession?.recipes[0];
+  const recipeUnlocked =
+    unlocked && (administrator || craftingProgress.level >= (recipe?.required_level ?? 1));
   const now = state ? Date.parse(state.server_time) + Math.max(0, tick - received) : tick;
   function open(p: Profession) {
     setSelected(p.id);
@@ -682,7 +690,8 @@ export function Professions({
         await post('/professions/projects/' + current.id + '/collect', {});
       requestKeys.current.delete(operation);
       await reload();
-      if (kind === 'collect') setNotice('Criação recolhida. O resultado já está na mochila.');
+      if (kind === 'collect')
+        setNotice(`Criação na mochila. +${recipe.experience ?? 20} EXP em ${profession.name}.`);
       if (kind !== 'step') void onChanged().catch(() => {});
     } catch (e) {
       setError((e as Error).message);
@@ -693,13 +702,16 @@ export function Professions({
     }
   }
   function availability(r: CraftRecipe) {
-    return r.ingredients.every(
-      (i) => (state?.inventory.find((v) => v.id === i.item_id)?.available ?? 0) >= i.quantity,
+    return (
+      unlimitedMaterials ||
+      r.ingredients.every(
+        (i) => (state?.inventory.find((v) => v.id === i.item_id)?.available ?? 0) >= i.quantity,
+      )
     );
   }
   const filtered = professions.filter(
     (p) =>
-      (!mine || professionUnlocked(p, state?.proficiencies ?? [])) &&
+      (!mine || hasProfession(p)) &&
       (p.name + ' ' + p.tools.join(' '))
         .normalize('NFD')
         .replace(/\p{Diacritic}/gu, '')
@@ -800,7 +812,8 @@ export function Professions({
                 <>
                   <Check size={17} />
                   <span>
-                    <strong>Bancada liberada</strong> · proficiência confirmada na ficha
+                    <strong>Bancada liberada</strong> ·{' '}
+                    {administrator ? 'acesso de administrador' : 'proficiência confirmada na ficha'}
                   </span>
                 </>
               ) : (
@@ -815,6 +828,36 @@ export function Professions({
                   </span>
                 </>
               )}
+            </div>
+            <div
+              className="pf-level-progress"
+              aria-label={'Nível de crafting em ' + profession.name}
+            >
+              <div>
+                <strong>
+                  Nível {craftingProgress.level} · {craftingProgress.title}
+                </strong>
+                <span>
+                  {administrator
+                    ? 'Todos os níveis liberados'
+                    : craftingProgress.next_level === null
+                      ? 'Nível máximo'
+                      : craftingProgress.experience + ' / ' + craftingProgress.next_level + ' EXP'}
+                </span>
+              </div>
+              <progress
+                max={
+                  craftingProgress.next_level === null
+                    ? 1
+                    : craftingProgress.next_level - craftingProgress.level_start
+                }
+                value={
+                  craftingProgress.next_level === null
+                    ? 1
+                    : craftingProgress.experience - craftingProgress.level_start
+                }
+              />
+              <small>Conclua criações para ganhar experiência neste ofício.</small>
             </div>
             <div className="pf-studio-grid">
               <aside className="pf-recipe-shelf" aria-label="Receitas da profissão">
@@ -831,16 +874,30 @@ export function Professions({
                       disabled={!!current}
                       aria-pressed={recipe?.id === r.id}
                     >
-                      {item?.image_path ? (
-                        <img src={item.image_path} alt="" />
-                      ) : (
-                        <Package size={28} />
-                      )}
+                      <img
+                        className="pf-object-icon"
+                        src={professionItemArtwork(
+                          r.output.item_id,
+                          item?.image_path,
+                          profession.badge,
+                        )}
+                        alt=""
+                      />
                       <span>
                         <strong>{r.name}</strong>
                         <small>
                           {r.output.quantity > 1 ? r.output.quantity + ' unidades · ' : ''}
                           {r.hours} h de produção
+                        </small>
+                        <small
+                          className={
+                            'pf-recipe-level ' +
+                            (!administrator && craftingProgress.level < (r.required_level ?? 1)
+                              ? 'is-locked'
+                              : '')
+                          }
+                        >
+                          Nível {r.required_level ?? 1} · {r.experience ?? 20} EXP
                         </small>
                       </span>
                       <ArrowRight size={16} />
@@ -850,7 +907,11 @@ export function Professions({
                 {recipe && (
                   <div className="pf-ingredients">
                     <h3>Materiais da receita</h3>
-                    <p>Estas quantidades serão consumidas ao iniciar.</p>
+                    <p>
+                      {unlimitedMaterials
+                        ? 'Materiais ilimitados na sua bancada.'
+                        : 'Estas quantidades serão consumidas ao iniciar.'}
+                    </p>
                     {recipe.ingredients.map((i) => {
                       const item = state?.inventory.find((v) => v.id === i.item_id),
                         table = professionMaterialIds.has(i.item_id),
@@ -858,17 +919,20 @@ export function Professions({
                       return (
                         <div
                           className={
-                            'pf-ingredient ' + (amount >= i.quantity ? 'is-available' : '')
+                            'pf-ingredient ' +
+                            (unlimitedMaterials || amount >= i.quantity ? 'is-available' : '')
                           }
                           key={i.item_id}
                         >
-                          {table ? (
-                            <Leaf size={20} />
-                          ) : item?.image_path ? (
-                            <img src={item.image_path} alt="" />
-                          ) : (
-                            <Package size={20} />
-                          )}
+                          <img
+                            className="pf-object-icon"
+                            src={professionItemArtwork(
+                              i.item_id,
+                              item?.image_path,
+                              profession.badge,
+                            )}
+                            alt=""
+                          />
                           <div>
                             <strong>{item?.name ?? i.item_id}</strong>
                             <small>{table ? 'Obtido em mesa' : 'Insumo do Empório'}</small>
@@ -877,13 +941,14 @@ export function Professions({
                             aria-label={
                               (item?.name ?? i.item_id) +
                               ': ' +
-                              amount +
-                              ' disponíveis de ' +
+                              (unlimitedMaterials
+                                ? 'materiais ilimitados; '
+                                : amount + ' disponíveis de ') +
                               i.quantity +
                               ' necessários'
                             }
                           >
-                            {amount}/{i.quantity}
+                            {unlimitedMaterials ? '∞' : amount}/{i.quantity}
                           </span>
                         </div>
                       );
@@ -944,7 +1009,16 @@ export function Professions({
                       />
                     ) : (
                       <div className="pf-ready">
-                        <Sparkles size={42} />
+                        <img
+                          className="pf-result-icon"
+                          src={professionItemArtwork(
+                            current.recipe.output.item_id,
+                            state?.inventory.find((i) => i.id === current.recipe.output.item_id)
+                              ?.image_path,
+                            profession.badge,
+                          )}
+                          alt=""
+                        />
                         <span className="pf-kicker">ETAPAS CONCLUÍDAS</span>
                         <h2>
                           {Date.parse(current.ready_at) <= now
@@ -962,7 +1036,11 @@ export function Professions({
                           disabled={busy || !unlocked || Date.parse(current.ready_at) > now}
                           onClick={() => void act('collect')}
                         >
-                          <Package size={18} />
+                          <img
+                            className="pf-button-art"
+                            src="/navigation/illustrated-20261020/inventory.webp"
+                            alt=""
+                          />
                           {busy ? 'Recolhendo…' : 'Recolher criação'}
                         </button>
                       </div>
@@ -971,13 +1049,14 @@ export function Professions({
                 ) : recipe ? (
                   <div className="pf-project-intro">
                     <div className="pf-bench-symbol">
-                      {['alchemy', 'herbalism', 'poison'].includes(profession.id) ? (
-                        <FlaskConical size={58} />
-                      ) : ['cartography', 'navigation'].includes(profession.id) ? (
-                        <MapIcon size={58} />
-                      ) : (
-                        <Hammer size={58} />
-                      )}
+                      <img
+                        src={professionItemArtwork(
+                          recipe.output.item_id,
+                          state?.inventory.find((i) => i.id === recipe.output.item_id)?.image_path,
+                          profession.badge,
+                        )}
+                        alt=""
+                      />
                     </div>
                     <span className="pf-kicker">UMA NOVA CRIAÇÃO</span>
                     <h2>{recipe.name}</h2>
@@ -998,22 +1077,40 @@ export function Professions({
                       <p className="pf-locked-note">
                         <LockKeyhole size={17} /> Esta bancada aguarda a proficiência na ficha.
                       </p>
+                    ) : !recipeUnlocked ? (
+                      <p className="pf-locked-note">
+                        <LockKeyhole size={17} /> Alcance o nível {recipe.required_level} neste
+                        ofício para liberar esta receita.
+                      </p>
                     ) : !availability(recipe) ? (
                       <p className="pf-locked-note">
-                        <Package size={17} /> Reúna os materiais indicados no livro da oficina.
+                        <img
+                          className="pf-button-art"
+                          src="/navigation/illustrated-20261020/inventory.webp"
+                          alt=""
+                        />{' '}
+                        Reúna os materiais indicados no livro da oficina.
                       </p>
                     ) : (
                       <p className="pf-start-note">
-                        Ao iniciar, os materiais listados serão usados. O trabalho fica salvo para
-                        você continuar depois.
+                        {unlimitedMaterials
+                          ? 'Seu acesso de administrador fornece os materiais.'
+                          : 'Ao iniciar, os materiais listados serão usados.'}{' '}
+                        O trabalho fica salvo para você continuar depois.
                       </p>
                     )}
                     <button
                       className="button pf-primary"
-                      disabled={!unlocked || !availability(recipe) || busy || !state}
+                      disabled={
+                        !recipeUnlocked || !availability(recipe) || busy || !state || !character
+                      }
                       onClick={() => void act('start')}
                     >
-                      <Layers size={18} />
+                      <img
+                        className="pf-button-art"
+                        src={'/sheet/training-badges-20261019/' + profession.badge + '.webp'}
+                        alt=""
+                      />
                       {busy ? 'Preparando…' : 'Usar materiais e iniciar'}
                     </button>
                   </div>
@@ -1067,19 +1164,13 @@ export function Professions({
                 aria-pressed={mine}
                 onClick={() => setMine(!mine)}
               >
-                Minhas profissões{' '}
-                <span>
-                  {
-                    professions.filter((p) => professionUnlocked(p, state?.proficiencies ?? []))
-                      .length
-                  }
-                </span>
+                Minhas profissões <span>{professions.filter((p) => hasProfession(p)).length}</span>
               </button>
               <span>{filtered.length} oficinas</span>
             </div>
             <div className="pf-profession-grid">
               {filtered.map((p) => {
-                const allowed = professionUnlocked(p, state?.proficiencies ?? []);
+                const allowed = hasProfession(p);
                 return (
                   <button
                     key={p.id}
@@ -1128,17 +1219,29 @@ export function Professions({
             )}
             <div className="pf-how">
               <div>
-                <Leaf size={23} />
+                <img
+                  className="pf-how-art"
+                  src={professionItemArtwork('craft-material-herb')}
+                  alt=""
+                />
                 <strong>Encontre na aventura</strong>
                 <p>Couro, plantas, minérios e descobertas são entregues pelo mestre.</p>
               </div>
               <div>
-                <Package size={23} />
+                <img
+                  className="pf-how-art"
+                  src="/navigation/illustrated-20261020/shop.webp"
+                  alt=""
+                />
                 <strong>Complete no Empório</strong>
                 <p>Compre os frascos, a tinta e os outros insumos que a receita pede.</p>
               </div>
               <div>
-                <Hammer size={23} />
+                <img
+                  className="pf-how-art"
+                  src="/sheet/training-badges-20261019/smithing.webp"
+                  alt=""
+                />
                 <strong>Crie na sua bancada</strong>
                 <p>Use sua proficiência, conclua o trabalho e guarde o resultado na mochila.</p>
               </div>

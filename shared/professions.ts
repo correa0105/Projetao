@@ -1,4 +1,30 @@
+import { extendProfessionRecipes } from './profession-advanced';
 export type WorkshopStep =
+  | {
+      kind: 'balance';
+      title: string;
+      instruction: string;
+      visual: string;
+      labels: string[];
+      target: number[];
+      tolerance: number;
+    }
+  | {
+      kind: 'assembly';
+      title: string;
+      instruction: string;
+      visual: string;
+      parts: string[];
+      target: number[];
+    }
+  | {
+      kind: 'trace';
+      title: string;
+      instruction: string;
+      visual: string;
+      guide: { x: number; y: number }[];
+      tolerance: number;
+    }
   | {
       kind: 'dial';
       title: string;
@@ -18,9 +44,17 @@ export type WorkshopStep =
     }
   | { kind: 'pattern'; title: string; instruction: string; visual: string; target: number[] }
   | { kind: 'map'; title: string; instruction: string; visual: string; target: number[] };
-export type WorkshopInput = { value?: number; points?: number[] };
+export type WorkshopInput = {
+  value?: number;
+  points?: number[];
+  ratios?: number[];
+  slots?: number[];
+  path?: { x: number; y: number }[];
+};
 export type CraftIngredient = { item_id: string; quantity: number };
 export type CraftRecipe = {
+  required_level?: number;
+  experience?: number;
   id: string;
   profession_id: string;
   name: string;
@@ -42,6 +76,17 @@ export type Profession = {
   recipes: CraftRecipe[];
 };
 export const professionMaterials = [
+  [
+    'arcane',
+    'Essência arcana',
+    'Reagente mágico raro obtido em aventuras e usado em criações avançadas.',
+  ],
+  ['alloy', 'Liga metálica refinada', 'Lingotes especiais obtidos em mesa para obras de precisão.'],
+  [
+    'silk',
+    'Seda de ofício',
+    'Fibras nobres obtidas em aventura para acabamentos de alta qualidade.',
+  ],
   ['hide', 'Couro de animal', 'Pele obtida em aventura e preparada para o ofício.'],
   ['iron', 'Minério de ferro', 'Ferro bruto recuperado durante uma aventura.'],
   ['wood', 'Madeira de cerne', 'Madeira escolhida e recolhida em mesa.'],
@@ -843,11 +888,86 @@ export const professions: Profession[] = [
     ],
   ),
 ];
+extendProfessionRecipes(professions);
 export const craftRecipes = professions.flatMap((p) => p.recipes);
 export function professionUnlocked(profession: Profession, proficiencies: readonly string[]) {
   return profession.tools.some((tool) => proficiencies.includes(tool));
 }
 export function validWorkshopInput(step: WorkshopStep, input: WorkshopInput) {
+  const field =
+    step.kind === 'dial'
+      ? 'value'
+      : step.kind === 'balance'
+        ? 'ratios'
+        : step.kind === 'assembly'
+          ? 'slots'
+          : step.kind === 'trace'
+            ? 'path'
+            : 'points';
+  if (Object.keys(input).some((key) => key !== field)) return false;
+  if (step.kind === 'balance')
+    return (
+      !!input.ratios &&
+      input.ratios.length === step.target.length &&
+      input.ratios.every(
+        (v, i) =>
+          Number.isInteger(v) &&
+          v >= 0 &&
+          v <= 100 &&
+          Math.abs(v - step.target[i]) <= step.tolerance,
+      ) &&
+      input.ratios.reduce((a, b) => a + b, 0) === 100
+    );
+  if (step.kind === 'assembly')
+    return (
+      !!input.slots &&
+      input.slots.length === step.target.length &&
+      input.slots.every((v, i) => v === step.target[i])
+    );
+  if (step.kind === 'trace') {
+    const path = input.path;
+    if (
+      !path ||
+      path.length < 12 ||
+      path.length > 256 ||
+      path.some(
+        (p) =>
+          !Number.isFinite(p.x) ||
+          !Number.isFinite(p.y) ||
+          p.x < 0 ||
+          p.x > 100 ||
+          p.y < 0 ||
+          p.y > 100,
+      )
+    )
+      return false;
+    const distance = (a: { x: number; y: number }, b: { x: number; y: number }) =>
+      Math.hypot(a.x - b.x, a.y - b.y);
+    if (
+      distance(path[0], step.guide[0]) > step.tolerance ||
+      distance(path[path.length - 1], step.guide[step.guide.length - 1]) > step.tolerance
+    )
+      return false;
+    let cursor = 0;
+    for (const guide of step.guide) {
+      const next = path.findIndex((p, i) => i >= cursor && distance(p, guide) <= step.tolerance);
+      if (next < 0) return false;
+      cursor = next;
+    }
+    for (const p of path) {
+      let nearest = Infinity;
+      for (let i = 1; i < step.guide.length; i++) {
+        const a = step.guide[i - 1],
+          b = step.guide[i],
+          dx = b.x - a.x,
+          dy = b.y - a.y,
+          t = Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / (dx * dx + dy * dy)));
+        nearest = Math.min(nearest, distance(p, { x: a.x + t * dx, y: a.y + t * dy }));
+      }
+      if (nearest > step.tolerance) return false;
+    }
+    return true;
+  }
   if (step.kind === 'dial')
     return (
       typeof input.value === 'number' &&
@@ -888,6 +1008,15 @@ export type ProfessionInventoryItem = {
   active: boolean;
 };
 export type ProfessionState = {
+  capabilities?: { all_professions: boolean; unlimited_materials: boolean };
+  progress?: {
+    profession_id: string;
+    experience: number;
+    level: number;
+    level_start: number;
+    next_level: number | null;
+    title: string;
+  }[];
   server_time: string;
   character: { id: string; name: string } | null;
   proficiencies: string[];

@@ -17,6 +17,7 @@ import {
 } from '../shared/professions';
 import { purchaseContents } from '../shared/armor-bundles';
 import { economyVersion } from '../shared/economy';
+import { professionProgress } from '../shared/profession-progression';
 
 test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e entregas em mesa', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[a-f0-9]{32}$/);
@@ -53,7 +54,12 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
   }
   type Account = Awaited<ReturnType<typeof account>>;
   let network = 1;
-  async function request(path: string, who?: Account, body?: unknown) {
+  async function request(
+    path: string,
+    who?: Account,
+    body?: unknown,
+    extraHeaders: Record<string, string> = {},
+  ) {
     const response = await fetch(root + path, {
       method: body === undefined ? 'GET' : 'POST',
       headers: {
@@ -62,6 +68,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         'X-Economy-Version': economyVersion,
         'X-Forwarded-For': '198.51.100.' + network,
         ...(who ? { Cookie: who.cookie } : {}),
+        ...extraHeaders,
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -84,8 +91,23 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         [character, i.item_id, i.quantity],
       );
   }
-  const solve = (s: WorkshopStep) =>
-    s.kind === 'dial' ? { value: s.target } : { points: s.target };
+  const solve = (s: WorkshopStep) => {
+    if (s.kind === 'dial') return { value: s.target };
+    if (s.kind === 'balance') return { ratios: s.target };
+    if (s.kind === 'assembly') return { slots: s.target };
+    if (s.kind === 'trace')
+      return {
+        path: s.guide.flatMap((p, i) =>
+          i === 0
+            ? [p]
+            : Array.from({ length: 8 }, (_, j) => ({
+                x: s.guide[i - 1].x + ((p.x - s.guide[i - 1].x) * (j + 1)) / 8,
+                y: s.guide[i - 1].y + ((p.y - s.guide[i - 1].y) * (j + 1)) / 8,
+              })),
+        ),
+      };
+    return { points: s.target };
+  };
   try {
     const owner = await account('Artesão'),
       other = await account('Visitante'),
@@ -259,14 +281,99 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
       },
     );
     await t.test(
-      'todas as 25 profissões e 50 receitas produzem os itens corretos com suas etapas e prazos',
+      'níveis liberam receitas e a experiência é concedida uma vez por criação',
+      async () => {
+        assert.equal(professionProgress(0).level, 1);
+        assert.equal(professionProgress(40).level, 2);
+        assert.equal(professionProgress(100).level, 3);
+        assert.equal(professionProgress(2800).level, 10);
+        assert.equal(
+          Number(
+            (
+              await pool.query(
+                "SELECT experience FROM character_profession_progress WHERE character_id=$1 AND profession_id='herbalism'",
+                [hero.id],
+              )
+            ).rows[0].experience,
+          ),
+          20,
+        );
+        assert.equal(
+          (
+            await pool.query(
+              'SELECT count(*)::int n FROM profession_experience_rewards WHERE project_id=$1',
+              [project.id],
+            )
+          ).rows[0].n,
+          1,
+        );
+        const advanced = craftRecipes.find(
+          (r) => r.profession_id === 'herbalism' && r.required_level === 3,
+        )!;
+        await stock(hero.id, advanced.ingredients);
+        const payload = { character_id: hero.id, recipe_id: advanced.id, request_id: randomUUID() };
+        assert.equal((await request('/professions/projects', owner, payload)).status, 403);
+        assert.equal(
+          (await request('/professions/projects', owner, { ...payload, experience: 99999 })).status,
+          400,
+        );
+        await pool.query(
+          "UPDATE character_profession_progress SET experience=100 WHERE character_id=$1 AND profession_id='herbalism'",
+          [hero.id],
+        );
+        let response = await request('/professions/projects', owner, payload);
+        assert.equal(response.status, 200, JSON.stringify(response.data));
+        let p = response.data;
+        for (const step of advanced.steps) {
+          response = await request('/professions/projects/' + p.id + '/steps', owner, {
+            revision: p.revision,
+            request_id: randomUUID(),
+            input: solve(step),
+          });
+          assert.equal(response.status, 200, JSON.stringify(response.data));
+          p = response.data;
+        }
+        await pool.query(
+          "UPDATE profession_projects SET ready_at=clock_timestamp()-interval '1 minute' WHERE id=$1",
+          [p.id],
+        );
+        const results = await Promise.all([
+          request('/professions/projects/' + p.id + '/collect', owner, {}),
+          request('/professions/projects/' + p.id + '/collect', owner, {}),
+        ]);
+        assert(results.every((r) => r.status === 200));
+        assert.equal(
+          Number(
+            (
+              await pool.query(
+                "SELECT experience FROM character_profession_progress WHERE character_id=$1 AND profession_id='herbalism'",
+                [hero.id],
+              )
+            ).rows[0].experience,
+          ),
+          135,
+        );
+        const progress = (
+          await request('/professions?character_id=' + hero.id, owner)
+        ).data.progress.find((v: any) => v.profession_id === 'herbalism');
+        assert.equal(progress.level, 3);
+        assert.equal(progress.experience, 135);
+      },
+    );
+    await t.test(
+      'todas as 25 profissões e 125 receitas produzem os itens corretos com suas etapas e prazos',
       async () => {
         assert.equal(professions.length, 25);
-        assert.equal(craftRecipes.length, 50);
+        assert.equal(craftRecipes.length, 125);
         await pool.query('UPDATE characters SET sheet_overrides=$2 WHERE id=$1', [
           hero.id,
           JSON.stringify({ proficiencies: professions.flatMap((p) => p.tools) }),
         ]);
+        for (const p of professions)
+          await pool.query(
+            'INSERT INTO character_profession_progress(character_id,profession_id,experience)VALUES($1,$2,2800)ON CONFLICT(character_id,profession_id)DO UPDATE SET experience=2800',
+            [hero.id, p.id],
+          );
         for (const recipe of craftRecipes) {
           network++;
           await stock(hero.id, recipe.ingredients);
@@ -404,7 +511,145 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           ).rows[0].n,
           1,
         );
-        assert.equal(professionMaterials.length, 20);
+        assert.equal(professionMaterials.length, 23);
+      },
+    );
+    await t.test(
+      'acesso ilimitado exige habilitação da conta e administrador global atual',
+      async () => {
+        network = 190;
+        const admin = await account('Administrador de teste'),
+          another = await account('Outro administrador'),
+          scoped = await account('Admin VTT');
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=ANY($1::text[])', [
+          [admin.id, another.id],
+        ]);
+        const c = await createLegacyTestCharacter(admin.id),
+          otherHero = await createLegacyTestCharacter(another.id),
+          scopedHero = await createLegacyTestCharacter(scoped.id);
+        const target = craftRecipes.find(
+          (r) => r.profession_id === 'smithing' && r.required_level === 10,
+        )!;
+        const b = { character_id: c.id, recipe_id: target.id, request_id: randomUUID() };
+        assert.equal((await request('/professions/projects', admin, b)).status, 403);
+        await pool.query(
+          "INSERT INTO profession_administrator_access(user_id,enabled,granted_by,reason)VALUES($1,true,$1,'Solicitação explícita de teste')",
+          [admin.id],
+        );
+        const state = (await request('/professions?character_id=' + c.id, admin)).data;
+        assert.equal(state.capabilities.all_professions, true);
+        assert.equal(state.capabilities.unlimited_materials, true);
+        assert.equal(state.progress[0].level, 1);
+        assert.equal(
+          (await request('/professions?character_id=' + otherHero.id, another)).data.capabilities
+            .all_professions,
+          false,
+        );
+        await pool.query("INSERT INTO administrator_scopes(user_id,scope)VALUES($1,'vtt')", [
+          scoped.id,
+        ]);
+        await pool.query(
+          "INSERT INTO profession_administrator_access(user_id,enabled,granted_by,reason)VALUES($1,true,$1,'Teste de permissão por área')",
+          [scoped.id],
+        );
+        assert.equal(
+          (await request('/professions?character_id=' + scopedHero.id, scoped)).data.capabilities
+            .unlimited_materials,
+          false,
+        );
+        const basic = (
+          await request('/professions?character_id=' + c.id, admin, undefined, {
+            'X-Account-Preview': 'basic',
+          })
+        ).data;
+        assert.equal(basic.capabilities.all_professions, false);
+        const started = await request('/professions/projects', admin, b);
+        assert.equal(started.status, 200, JSON.stringify(started.data));
+        let p = started.data;
+        assert.equal(p.materials_waived, true);
+        for (const i of target.ingredients) assert.equal(await count(c.id, i.item_id), 0);
+        await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [admin.id]);
+        assert.equal(
+          (
+            await request('/professions/projects/' + p.id + '/steps', admin, {
+              revision: p.revision,
+              request_id: randomUUID(),
+              input: solve(p.recipe.steps[0]),
+            })
+          ).status,
+          403,
+        );
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [admin.id]);
+        await pool.query(
+          'UPDATE profession_administrator_access SET enabled=false WHERE user_id=$1',
+          [admin.id],
+        );
+        assert.equal(
+          (
+            await request('/professions/projects/' + p.id + '/steps', admin, {
+              revision: p.revision,
+              request_id: randomUUID(),
+              input: solve(p.recipe.steps[0]),
+            })
+          ).status,
+          403,
+        );
+        await pool.query(
+          'UPDATE profession_administrator_access SET enabled=true WHERE user_id=$1',
+          [admin.id],
+        );
+        for (const step of target.steps) {
+          const r = await request('/professions/projects/' + p.id + '/steps', admin, {
+            revision: p.revision,
+            request_id: randomUUID(),
+            input: solve(step),
+          });
+          assert.equal(r.status, 200, JSON.stringify(r.data));
+          p = r.data;
+        }
+        assert.equal(
+          (await request('/professions/projects/' + p.id + '/collect', admin, {})).status,
+          409,
+        );
+        await pool.query(
+          "UPDATE profession_projects SET ready_at=clock_timestamp()-interval '1 minute' WHERE id=$1",
+          [p.id],
+        );
+        assert.equal(
+          (await request('/professions/projects/' + p.id + '/collect', admin, {})).status,
+          200,
+        );
+        for (const id of purchaseContents(target.output.item_id))
+          assert.equal(await count(c.id, id), 1);
+        for (const i of target.ingredients) assert.equal(await count(c.id, i.item_id), 0);
+      },
+    );
+    await t.test(
+      'novas mecânicas rejeitam misturas incompletas, encaixes errados e traçados fora do molde',
+      async () => {
+        const steps = craftRecipes.flatMap((r) => r.steps);
+        const mix = steps.find((s) => s.kind === 'balance')!;
+        assert.equal(validWorkshopInput(mix, { ratios: [50, 30, 20] }), true);
+        assert.equal(validWorkshopInput(mix, { ratios: [50, 30, 19] }), false);
+        assert.equal(validWorkshopInput(mix, { ratios: [100, 0, 0] }), false);
+        const assembly = steps.find((s) => s.kind === 'assembly')!;
+        assert.equal(validWorkshopInput(assembly, solve(assembly)), true);
+        assert.equal(validWorkshopInput(assembly, { slots: [0, 0, 0] }), false);
+        const trace = steps.find((s) => s.kind === 'trace')!;
+        assert.equal(validWorkshopInput(trace, solve(trace)), true);
+        assert.equal(
+          validWorkshopInput(trace, { path: Array.from({ length: 30 }, () => ({ x: 99, y: 99 })) }),
+          false,
+        );
+        assert.equal(
+          validWorkshopInput(trace, {
+            path: [
+              { x: 12, y: 72 },
+              { x: 88, y: 28 },
+            ],
+          }),
+          false,
+        );
       },
     );
     await t.test(

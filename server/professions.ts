@@ -7,6 +7,9 @@ import { AppError } from './services.js';
 import { lockStorage } from './inventory.js';
 import { allocatedCopies } from './companion-inventory.js';
 import { administrationFor } from './administrators.js';
+import { isBasicPreview } from './account-preview.js';
+import { professionProgress } from '../shared/profession-progression.js';
+import { professionItemArtwork } from '../shared/profession-art.js';
 import { deriveSheet, type SheetChoices } from '../shared/character-sheet.js';
 import { purchaseContents } from '../shared/armor-bundles.js';
 import {
@@ -41,10 +44,16 @@ const customDescriptions: Record<string, string> = {
 export async function seedProfessionCatalog(db: DB) {
   for (const [id, name, description] of professionMaterials)
     await db.query(
-      `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,active)
-     VALUES($1,$2,$2,'Materiais de ofício',$3,1,0.25,'Alvorada Cinzenta · Profissões','',$4,false)
-     ON CONFLICT(id) DO UPDATE SET name=excluded.name,description=excluded.description,raw_data=excluded.raw_data,active=false`,
-      [materialItemId(id), name, description, { crafting_material: true, table_loot: true }],
+      `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,active,image_path)
+     VALUES($1,$2,$2,'Materiais de ofício',$3,1,0.25,'Alvorada Cinzenta · Profissões','',$4,false,$5)
+     ON CONFLICT(id) DO UPDATE SET name=excluded.name,description=excluded.description,raw_data=excluded.raw_data,active=false,image_path=excluded.image_path`,
+      [
+        materialItemId(id),
+        name,
+        description,
+        { crafting_material: true, table_loot: true },
+        professionItemArtwork(materialItemId(id)),
+      ],
     );
   const seen = new Set<string>();
   for (const recipe of craftRecipes) {
@@ -52,15 +61,16 @@ export async function seedProfessionCatalog(db: DB) {
     if (!id.startsWith('craft-') || seen.has(id)) continue;
     seen.add(id);
     await db.query(
-      `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,active)
-       VALUES($1,$2,$2,'Criações de ofício',$3,1,0.5,'Alvorada Cinzenta · Profissões','',$4,false)
-       ON CONFLICT(id) DO UPDATE SET name=excluded.name,description=excluded.description,raw_data=excluded.raw_data,active=false`,
+      `INSERT INTO catalog_items(id,name,original_name,category,description,price_cp,weight_lb,source,source_url,raw_data,active,image_path)
+       VALUES($1,$2,$2,'Criações de ofício',$3,1,0.5,'Alvorada Cinzenta · Profissões','',$4,false,$5)
+       ON CONFLICT(id) DO UPDATE SET name=excluded.name,description=excluded.description,raw_data=excluded.raw_data,active=false,image_path=excluded.image_path`,
       [
         id,
         recipe.name,
         customDescriptions[id] ||
           `${recipe.name} produzido na oficina. Peça de uso narrativo; não concede bônus automáticos de combate ou perícias.`,
         { profession_id: recipe.profession_id, crafted: true, narrative: true },
+        professionItemArtwork(id),
       ],
     );
   }
@@ -82,12 +92,22 @@ async function character(db: DB, id: string, user: string, lock = false) {
   ).rows[0];
   const proficiencies: string[] =
     s?.finalized_at && s.choices ? deriveSheet(c, s.choices as SheetChoices).proficiencies : [];
-  return { c, proficiencies };
+  return { c, proficiencies, unlimited: await administratorAccess(db, user) };
 }
-function requireProfession(id: string, proficiencies: string[]) {
+async function administratorAccess(db: DB, user: string) {
+  if (isBasicPreview()) return false;
+  const row = (
+    await db.query(
+      'SELECT u.administrador,a.enabled FROM "user" u LEFT JOIN profession_administrator_access a ON a.user_id=u.id WHERE u.id=$1',
+      [user],
+    )
+  ).rows[0];
+  return row?.administrador === 1 && row?.enabled === true;
+}
+function requireProfession(id: string, proficiencies: string[], unlimited = false) {
   const profession = professions.find((p) => p.id === id);
   if (!profession) throw new AppError(404, 'Profissão não encontrada.');
-  if (!professionUnlocked(profession, proficiencies))
+  if (!unlimited && !professionUnlocked(profession, proficiencies))
     throw new AppError(403, 'Esta bancada exige a proficiência correspondente na ficha concluída.');
   return profession;
 }
@@ -109,7 +129,7 @@ async function project(db: DB, id: string, user: string) {
   const actor = await character(db, row.character_id, user, true);
   const p = (await db.query('SELECT * FROM profession_projects WHERE id=$1 FOR UPDATE', [id]))
     .rows[0] as CraftProject;
-  requireProfession(p.profession_id, actor.proficiencies);
+  requireProfession(p.profession_id, actor.proficiencies, actor.unlimited);
   return p;
 }
 export function professionsRouter() {
@@ -123,6 +143,21 @@ export function professionsRouter() {
       )
     ).rows;
     const actor = id ? await character(pool, id, res.locals.user.id) : null;
+    const unlimited = actor?.unlimited ?? (await administratorAccess(pool, res.locals.user.id));
+    const progressRows = id
+      ? (
+          await pool.query(
+            'SELECT profession_id,experience FROM character_profession_progress WHERE character_id=$1',
+            [id],
+          )
+        ).rows
+      : [];
+    const progress = professions.map((p) => ({
+      profession_id: p.id,
+      ...professionProgress(
+        Number(progressRows.find((r) => r.profession_id === p.id)?.experience ?? 0),
+      ),
+    }));
     const itemIds = [
       ...new Set(
         craftRecipes.flatMap((r) => [r.output.item_id, ...r.ingredients.map((i) => i.item_id)]),
@@ -147,16 +182,16 @@ export function professionsRouter() {
           )
         ).rows
       : [];
-    res
-      .set('Cache-Control', 'no-store')
-      .json({
-        server_time: new Date().toISOString(),
-        character: actor ? { id: actor.c.id, name: actor.c.name } : null,
-        proficiencies: actor?.proficiencies ?? [],
-        inventory,
-        projects,
-        rooms,
-      });
+    res.set('Cache-Control', 'no-store').json({
+      server_time: new Date().toISOString(),
+      character: actor ? { id: actor.c.id, name: actor.c.name } : null,
+      proficiencies: actor?.proficiencies ?? [],
+      inventory,
+      projects,
+      rooms,
+      capabilities: { all_professions: unlimited, unlimited_materials: unlimited },
+      progress,
+    });
   });
   router.post('/professions/projects', async (req, res) => {
     const b = z
@@ -168,7 +203,7 @@ export function professionsRouter() {
         const actor = await character(db, b.character_id, res.locals.user.id, true);
         const recipe = craftRecipes.find((r) => r.id === b.recipe_id);
         if (!recipe) throw new AppError(404, 'Receita não encontrada.');
-        requireProfession(recipe.profession_id, actor.proficiencies);
+        requireProfession(recipe.profession_id, actor.proficiencies, actor.unlimited);
         const previous = (
           await db.query(
             'SELECT * FROM profession_projects WHERE character_id=$1 AND request_id=$2',
@@ -180,6 +215,19 @@ export function professionsRouter() {
             throw new AppError(409, 'Esta solicitação já foi usada para outra receita.');
           return previous;
         }
+        const experience = Number(
+          (
+            await db.query(
+              'SELECT experience FROM character_profession_progress WHERE character_id=$1 AND profession_id=$2',
+              [b.character_id, recipe.profession_id],
+            )
+          ).rows[0]?.experience ?? 0,
+        );
+        if (!actor.unlimited && professionProgress(experience).level < (recipe.required_level ?? 1))
+          throw new AppError(
+            403,
+            `Esta receita exige nível ${recipe.required_level} em ${professions.find((p) => p.id === recipe.profession_id)!.name}.`,
+          );
         if (
           (
             await db.query(
@@ -192,36 +240,38 @@ export function professionsRouter() {
             409,
             'Conclua e recolha o trabalho em andamento antes de iniciar outro.',
           );
-        for (const i of [...recipe.ingredients].sort((a, b) =>
-          a.item_id.localeCompare(b.item_id),
-        )) {
-          const row = (
+        if (!actor.unlimited)
+          for (const i of [...recipe.ingredients].sort((a, b) =>
+            a.item_id.localeCompare(b.item_id),
+          )) {
+            const row = (
+              await db.query(
+                'SELECT i.quantity,c.name FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND i.item_id=$2 FOR UPDATE OF i',
+                [b.character_id, i.item_id],
+              )
+            ).rows[0];
+            const available =
+              (row?.quantity ?? 0) - (await allocatedCopies(db, b.character_id, i.item_id));
+            if (available < i.quantity)
+              throw new AppError(
+                409,
+                `Materiais insuficientes: ${row?.name ?? i.item_id}. Peças equipadas ou reservadas não podem ser consumidas.`,
+              );
+          }
+        if (!actor.unlimited)
+          for (const i of recipe.ingredients) {
             await db.query(
-              'SELECT i.quantity,c.name FROM inventory i JOIN catalog_items c ON c.id=i.item_id WHERE i.character_id=$1 AND i.item_id=$2 FOR UPDATE OF i',
-              [b.character_id, i.item_id],
-            )
-          ).rows[0];
-          const available =
-            (row?.quantity ?? 0) - (await allocatedCopies(db, b.character_id, i.item_id));
-          if (available < i.quantity)
-            throw new AppError(
-              409,
-              `Materiais insuficientes: ${row?.name ?? i.item_id}. Peças equipadas ou reservadas não podem ser consumidas.`,
+              'DELETE FROM inventory WHERE character_id=$1 AND item_id=$2 AND quantity=$3',
+              [b.character_id, i.item_id, i.quantity],
             );
-        }
-        for (const i of recipe.ingredients) {
-          await db.query(
-            'DELETE FROM inventory WHERE character_id=$1 AND item_id=$2 AND quantity=$3',
-            [b.character_id, i.item_id, i.quantity],
-          );
-          await db.query(
-            'UPDATE inventory SET quantity=quantity-$3 WHERE character_id=$1 AND item_id=$2',
-            [b.character_id, i.item_id, i.quantity],
-          );
-        }
+            await db.query(
+              'UPDATE inventory SET quantity=quantity-$3 WHERE character_id=$1 AND item_id=$2',
+              [b.character_id, i.item_id, i.quantity],
+            );
+          }
         return (
           await db.query(
-            `INSERT INTO profession_projects(character_id,recipe_id,profession_id,recipe,request_id,ready_at) VALUES($1,$2,$3,$4,$5,clock_timestamp()+($6*interval '1 hour')) RETURNING *`,
+            `INSERT INTO profession_projects(character_id,recipe_id,profession_id,recipe,request_id,ready_at,materials_waived) VALUES($1,$2,$3,$4,$5,clock_timestamp()+($6*interval '1 hour'),$7) RETURNING *`,
             [
               b.character_id,
               recipe.id,
@@ -229,6 +279,7 @@ export function professionsRouter() {
               JSON.stringify(recipe),
               b.request_id,
               recipe.hours,
+              actor.unlimited,
             ],
           )
         ).rows[0];
@@ -245,6 +296,19 @@ export function professionsRouter() {
             .object({
               value: z.number().finite().min(0).max(100).optional(),
               points: z.array(z.number().int().min(0).max(20)).max(20).optional(),
+              ratios: z.array(z.number().int().min(0).max(100)).max(10).optional(),
+              slots: z.array(z.number().int().min(0).max(20)).max(20).optional(),
+              path: z
+                .array(
+                  z
+                    .object({
+                      x: z.number().finite().min(0).max(100),
+                      y: z.number().finite().min(0).max(100),
+                    })
+                    .strict(),
+                )
+                .max(256)
+                .optional(),
             })
             .strict(),
         })
@@ -308,6 +372,16 @@ export function professionsRouter() {
           await db.query(
             'INSERT INTO inventory(character_id,item_id,quantity)VALUES($1,$2,$3)ON CONFLICT(character_id,item_id)DO UPDATE SET quantity=inventory.quantity+excluded.quantity',
             [p.character_id, i.item_id, i.quantity],
+          );
+        const experience = recipe.experience ?? 20;
+        const awarded = await db.query(
+          'INSERT INTO profession_experience_rewards(project_id,character_id,profession_id,experience)VALUES($1,$2,$3,$4)ON CONFLICT(project_id)DO NOTHING RETURNING project_id',
+          [id, p.character_id, p.profession_id, experience],
+        );
+        if (awarded.rowCount)
+          await db.query(
+            'INSERT INTO character_profession_progress(character_id,profession_id,experience)VALUES($1,$2,$3)ON CONFLICT(character_id,profession_id)DO UPDATE SET experience=character_profession_progress.experience+excluded.experience,updated_at=clock_timestamp()',
+            [p.character_id, p.profession_id, experience],
           );
         return (
           await db.query(

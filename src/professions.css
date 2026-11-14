@@ -1066,3 +1066,261 @@
     transition: none;
   }
 }
+.pf-bench-symbol > img {
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px #0007);
+}
+.pf-bench-symbol {
+  border-color: #b4965a33;
+  background: #aa8a4810;
+  box-shadow: 0 0 65px #c29b4814;
+}
+.pf-object-icon {
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 3px #0005);
+}
+.pf-recipe > .pf-object-icon {
+  width: 48px;
+  height: 48px;
+}
+.pf-ingredient > .pf-object-icon {
+  width: 34px;
+  height: 34px;
+}
+.pf-button-art {
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.pf-result-icon {
+  width: 116px;
+  height: 116px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 12px #0006);
+  margin-bottom: 23px;
+}
+.pf-how-art {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  grid-row: span 2;
+}
+.pf-recipe-level {
+  color: #cfb87c !important;
+  font-size: 0.66rem !important;
+}
+.pf-recipe-level.is-locked {
+  color: #a6a18c !important;
+}
+.pf-level-progress {
+  padding: 17px 20px;
+  background: #152016e8;
+  border: 1px solid #aa945344;
+  margin: 0 0 22px;
+  border-radius: 4px;
+}
+.pf-level-progress > div {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.83rem;
+}
+.pf-level-progress > div > span {
+  font-size: 0.73rem;
+  color: #c7b68a;
+}
+.pf-level-progress strong {
+  color: #e6d5aa;
+}
+.pf-level-progress progress {
+  display: block;
+  width: 100%;
+  height: 7px;
+  border: 0;
+  border-radius: 8px;
+  margin: 12px 0 9px;
+  overflow: hidden;
+  background: #303828;
+  accent-color: #c6a56a;
+}
+.pf-level-progress progress::-webkit-progress-bar {
+  background: #303828;
+}
+.pf-level-progress progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #94723f, #d3b67a);
+}
+.pf-level-progress progress::-moz-progress-bar {
+  background: #c6a56a;
+}
+.pf-level-progress small {
+  font-size: 0.69rem;
+  color: #aaa992;
+}
+.pf-formula {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px;
+  border: 1px solid #b99b5555;
+  color: #d6c18d;
+  font-size: 0.76rem;
+}
+.pf-formula > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 100px;
+}
+.pf-formula i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.pf-balance-controls {
+  display: grid;
+  gap: 13px;
+  margin: 20px 0;
+}
+.pf-balance-controls label {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+.pf-balance-controls input {
+  grid-column: 1/-1;
+  width: 100%;
+  padding: 0;
+  accent-color: #c4a369;
+}
+.pf-balance-controls output {
+  color: #ddc28b;
+}
+.pf-mixture-total,
+.pf-extra-hint {
+  font-size: 0.76rem;
+  text-align: center;
+  color: #c9bd98;
+  line-height: 1.8;
+}
+.pf-assembly-parts,
+.pf-assembly-slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  margin: 18px 0;
+}
+.pf-assembly-parts button,
+.pf-assembly-slots button {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 12px 8px;
+  color: #ddc994;
+  border: 1px solid #ad8d5455;
+  border-radius: 5px;
+  background: #303523;
+  font-size: 0.75rem;
+}
+.pf-assembly-parts svg,
+.pf-assembly-slots svg {
+  width: 70px;
+  height: 70px;
+}
+.pf-assembly-parts button[aria-pressed='true'] {
+  outline: 2px solid #dbb777;
+  background: #51432d;
+}
+.pf-assembly-parts button:disabled {
+  opacity: 0.45;
+}
+.pf-assembly-slots button {
+  background: #151f15;
+  border-style: dashed;
+  min-height: 160px;
+}
+.pf-assembly-slots button.is-correct {
+  border-style: solid;
+  border-color: #dbb777;
+  background: #5b4e2a44;
+}
+.pf-assembly-slots small {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+.pf-assembly-slots span {
+  font-size: 0.65rem;
+  color: #b3b298;
+}
+.pf-trace-canvas {
+  display: block;
+  width: min(100%, 380px);
+  margin: 12px auto;
+  touch-action: none;
+  cursor: crosshair;
+}
+.pf-assisted-trace {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+  margin: 15px 0;
+}
+.pf-assisted-trace button {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: #d9c18a;
+  background: #303523;
+  border: 1px solid #b1935666;
+  padding: 8px 10px;
+  font-size: 0.7rem;
+  border-radius: 3px;
+}
+.pf-assisted-trace button:disabled {
+  opacity: 0.5;
+}
+@media (max-width: 760px) {
+  .pf-level-progress {
+    padding: 14px;
+  }
+  .pf-level-progress > div {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .pf-ingredient > .pf-object-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .pf-assembly-parts,
+  .pf-assembly-slots {
+    gap: 7px;
+  }
+  .pf-assembly-parts svg,
+  .pf-assembly-slots svg {
+    width: 52px;
+    height: 52px;
+  }
+  .pf-assembly-slots button {
+    min-height: 145px;
+    font-size: 0.65rem;
+    padding: 10px 5px;
+  }
+  .pf-assembly-slots small {
+    font-size: 0.52rem;
+  }
+  .pf-formula {
+    font-size: 0.7rem;
+  }
+  .pf-bench-symbol > img {
+    width: 106px;
+    height: 106px;
+  }
+}
