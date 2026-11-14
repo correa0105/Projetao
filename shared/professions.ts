@@ -1001,6 +1001,7 @@ export type CraftProject = {
   ready_at: string;
   created_at: string;
   claimed_at: string | null;
+  canceled_at?: string | null;
   last_assisted_at?: string | null;
   assist_count?: number;
   seconds_saved?: number;
@@ -1017,7 +1018,7 @@ export type ProfessionInventoryItem = {
   active: boolean;
 };
 export type ProfessionState = {
-  capabilities?: { all_professions: boolean; unlimited_materials: boolean };
+  capabilities?: { all_professions: boolean; unlimited_materials: boolean; cancel_production?:boolean };
   progress?: {
     profession_id: string;
     experience: number;

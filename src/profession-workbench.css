@@ -1,0 +1,242 @@
+.pf-craft-scene.is-interactive {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline-offset: 4px;
+}
+.pf-craft-scene.is-interactive:focus-visible {
+  outline: 2px solid #d1ad70;
+}
+.pf-craft-scene.is-interactive * {
+  pointer-events: none;
+}
+.pf-craft-scene.has-tool-cursor {
+  cursor: none;
+}
+.pf-craft-scene.has-tool-cursor .pf-scene-tool {
+  visibility: hidden;
+}
+.pf-tool-cursor {
+  position: absolute;
+  left: var(--pointer-x, 57%);
+  top: var(--pointer-y, 44%);
+  width: clamp(76px, 11vw, 138px);
+  aspect-ratio: 1;
+  transform: translate(calc(-1 * var(--hotspot-x)), calc(-1 * var(--hotspot-y)));
+  z-index: 9;
+  display: none;
+  pointer-events: none;
+}
+.has-tool-cursor .pf-tool-cursor {
+  display: block;
+}
+.pf-tool-cursor img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: var(--hotspot-x) var(--hotspot-y);
+  filter: drop-shadow(4px 8px 4px #0009);
+}
+.pf-tool-cursor img.is-stroking {
+  animation: pf-cursor-strike 0.3s ease-out;
+}
+.pf-gesture-stir .pf-tool-cursor img.is-stroking {
+  animation: pf-cursor-macerate 0.35s ease-in-out;
+}
+.pf-gesture-draw .pf-tool-cursor img.is-stroking {
+  transform: rotate(-5deg);
+  animation: none;
+}
+.pf-gesture-polish .pf-tool-cursor img.is-stroking,
+.pf-gesture-stitch .pf-tool-cursor img.is-stroking {
+  animation: pf-cursor-polish 0.25s ease-out;
+}
+.pf-hand-drawing,
+.pf-hand-effects {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+.pf-hand-drawing path {
+  fill: none;
+  stroke: #352116;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 1px 0 #ebd5a43b);
+}
+.pf-hand-drawing path.is-paint {
+  stroke: #845937;
+  stroke-width: 9;
+  opacity: 0.85;
+}
+.pf-scene-writing .pf-hand-drawing {
+  clip-path: polygon(29% 31%, 61% 22%, 79% 64%, 37% 79%, 24% 58%);
+}
+.pf-scene-kiln .pf-hand-drawing path {
+  stroke: #9ba4af;
+  stroke-width: 7;
+}
+.pf-hand-burst {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+.pf-hand-burst b {
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff0bc99, #ee963d33 28%, transparent 65%);
+  mix-blend-mode: screen;
+  animation: pf-hand-impact 0.45s ease-out both;
+}
+.pf-hand-burst i {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffe3a1;
+  box-shadow: 0 0 7px #f39b3d;
+  animation: pf-hand-fragment 0.65s ease-out both;
+}
+.pf-gesture-stir .pf-hand-burst b {
+  inset: -22px;
+  border: 1px solid #c8d3a585;
+  background: none;
+  animation: pf-hand-ripple 0.65s ease-out both;
+}
+.pf-gesture-stir .pf-hand-burst i {
+  width: 3px;
+  height: 5px;
+  background: #b3bd87;
+  box-shadow: 0 0 5px #b4cf7944;
+}
+.pf-gesture-draw .pf-hand-burst b {
+  inset: -3px;
+  background: #352116;
+  mix-blend-mode: normal;
+  animation: pf-hand-impact 0.2s ease-out both;
+}
+.pf-gesture-stitch .pf-hand-burst i {
+  width: 13px;
+  height: 1px;
+  background: #e3ca91;
+  box-shadow: none;
+}
+.pf-gesture-carve .pf-hand-burst i {
+  width: 5px;
+  height: 3px;
+  border-radius: 1px;
+  background: #d9ba8b;
+  box-shadow: none;
+}
+.pf-scene-stone .pf-hand-burst i {
+  background: #c1b9aa;
+}
+.pf-gesture-polish .pf-hand-burst i {
+  width: 2px;
+  height: 2px;
+  background: #e0d9c8;
+  box-shadow: none;
+}
+.pf-workbench-instruction {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #b6a78b;
+  margin: 10px 0 0;
+}
+@keyframes pf-cursor-strike {
+  0% {
+    transform: translateY(-9px) rotate(-35deg);
+  }
+  45% {
+    transform: rotate(5deg);
+  }
+  65% {
+    transform: rotate(-7deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes pf-cursor-macerate {
+  0% {
+    transform: translate(-5px, -8px) rotate(-12deg);
+  }
+  50% {
+    transform: translate(4px, 2px) rotate(8deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes pf-cursor-polish {
+  0% {
+    transform: translate(-6px, -3px) rotate(-7deg);
+  }
+  50% {
+    transform: translate(5px, 3px) rotate(3deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes pf-hand-impact {
+  0% {
+    opacity: 1;
+    transform: scale(0.65);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+@keyframes pf-hand-fragment {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) rotate(var(--turn));
+  }
+}
+@keyframes pf-hand-ripple {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+@media (max-width: 600px) {
+  .pf-scene-writing .pf-hand-drawing {
+    clip-path: polygon(24% 31%, 68% 23%, 90% 65%, 30% 80%, 17% 58%);
+  }
+  .pf-tool-cursor {
+    width: 80px;
+  }
+  .pf-hand-drawing path {
+    stroke-width: 3.5px;
+  }
+  .pf-workbench-instruction {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-hand-burst i {
+    display: none;
+  }
+  .pf-hand-burst b {
+    animation: pf-hand-impact 0.15s linear both !important;
+  }
+  .pf-tool-cursor img.is-stroking {
+    animation: none !important;
+  }
+}

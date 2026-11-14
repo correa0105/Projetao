@@ -12,6 +12,8 @@ O livro da oficina informa o produto, a quantidade, o prazo e os materiais consu
 
 A produção é automática: tendo os materiais, basta iniciar e esperar. As antigas etapas de ajustes, proporções, encaixes e traçados deixaram de ser obrigatórias, inclusive para trabalhos em andamento. A ajuda na bancada é opcional: uma ação reduz até 30 minutos do prazo e pode ser repetida somente depois de duas horas reais. A animação acompanha o ofício: marteladas na forja, mistura, escrita, costura, entalhe, polimento, forno ou preparo culinário. A API verifica dono, proficiência, estado, prazo e intervalo com o relógio do PostgreSQL, registra cada ajuda e impede reenvios ou duas abas de reduzir o prazo duas vezes. Não gasta novos materiais nem concede experiência extra.
 
+A bancada também responde diretamente ao ponteiro. Dentro do quadrante, o cursor assume a ferramenta do ofício: martelo, pilão, concha, pena, pincel, agulha, formão ou lima. Cliques produzem golpes e partículas no ponto indicado; segurar e arrastar mistura ingredientes, costura, trabalha o acabamento ou desenha traços no pergaminho. A interação visual continua disponível durante o intervalo entre ajudas, mas só a primeira ação elegível registra a redução no servidor. Não é preciso cumprir uma sequência ou completar um desenho. Toque e arrasto funcionam no celular; Enter ou espaço oferece a mesma ajuda pelo teclado. A ferramenta sai junto com o ponteiro do quadrante, e o movimento reduzido conserva a interação e seus retornos.
+
 O prazo começa ao iniciar a produção e corre em horas reais com o site fechado. A poção de cura exige 24 horas. **Recolher criação** é liberado quando o prazo terminar; a entrega ocorre uma única vez. A mochila recebe os itens existentes do catálogo, incluindo as peças reais quando o resultado é uma armadura completa. Projetos guardam a receita iniciada, preservando custos e resultados anteriores. Produtos narrativos antigos continuam narrativos; os novos preparos de apoio têm efeitos explícitos.
 
 ## Materiais de aventura e Empório
@@ -35,6 +37,8 @@ O bônus aparece na ficha do site e na ficha do VTT. Os botões de perícia do V
 ## Acesso de administrador
 
 A concessão solicitada para a conta proprietária fica em `profession_administrator_access`, vinculada ao ID da conta. O servidor exige essa concessão e administrador global vigente; a prévia básica suprime o acesso. Ela libera todas as profissões e receitas com materiais virtuais ilimitados na bancada, selecionando um personagem próprio. Os prazos e o intervalo entre ajudas permanecem. Não altera as quantidades reais da mochila nem as permissões de outras contas. O sorteio do VTT ainda respeita o nível real do ofício e uma tentativa por inscrito.
+
+O administrador global pode **Excluir processo em andamento** em uma bancada própria. A interface pede confirmação e informa que não haverá produto, experiência nem devolução de materiais. O servidor revalida a permissão atual, exclui prévia básica e administradores por área, confere a posse e registra data, ator e solicitação no projeto. A migration 156 mantém o registro cancelado para auditoria e libera a vaga de produção. Reenvios não duplicam efeitos; recolher, ajudar ou executar etapas de uma produção cancelada é recusado. Uma criação já recolhida não pode ser cancelada.
 
 ## Dados e arte
 

@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { ArrowRight, Check, Clock3 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowRight, Check, Clock3, Trash2 } from 'lucide-react';
 import type { CraftProject, Profession } from '../shared/professions';
 import { nextProfessionAssist, professionWork } from '../shared/profession-production';
 import { professionItemArtwork } from '../shared/profession-art';
 import './profession-production.css';
+import { ProfessionWorkbench } from './ProfessionWorkbench';
 function duration(ms: number) {
   const minutes = Math.max(0, Math.ceil(ms / 60000));
   return minutes >= 60 ? `${Math.floor(minutes / 60)} h ${minutes % 60} min` : `${minutes} min`;
@@ -17,6 +18,8 @@ export function ProfessionProduction({
   itemImage,
   assist,
   collect,
+  canCancel,
+  cancel,
 }: {
   project: CraftProject;
   profession: Profession;
@@ -26,13 +29,17 @@ export function ProfessionProduction({
   itemImage?: string | null;
   assist: () => Promise<boolean>;
   collect: () => void;
+  canCancel: boolean;
+  cancel: () => Promise<boolean>;
 }) {
   const work = professionWork(profession.id),
     ready = Date.parse(project.ready_at) <= now;
   const next = nextProfessionAssist(project),
     canAssist = unlocked && !ready && next <= now;
   const [animating, setAnimating] = useState(false),
-    [feedback, setFeedback] = useState('');
+    [feedback, setFeedback] = useState(''),
+    [confirmCancel, setConfirmCancel] = useState(false);
+  const requesting = useRef(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null),
     mounted = useRef(true);
   useEffect(() => {
@@ -47,12 +54,18 @@ export function ProfessionProduction({
     0,
     Math.min(100, 100 * (1 - remaining / (project.recipe.hours * 3600000))),
   );
-  async function help() {
-    if (!canAssist || busy || animating) return;
+  async function help(demo = true) {
+    if (!canAssist || busy || animating || requesting.current) return;
+    requesting.current = true;
     setFeedback('');
-    const accepted = await assist();
+    let accepted = false;
+    try {
+      accepted = await assist();
+    } finally {
+      requesting.current = false;
+    }
     if (!mounted.current || !accepted) return;
-    setAnimating(true);
+    if (demo) setAnimating(true);
     setFeedback('Ajuda registrada. O prazo foi reduzido em até 30 minutos.');
     timer.current = setTimeout(() => {
       if (mounted.current) setAnimating(false);
@@ -70,81 +83,13 @@ export function ProfessionProduction({
           alt=""
         />
       </div>
-      <div
-        className={
-          'pf-craft-scene pf-scene-' +
-          work.bench +
-          (animating ? ' is-working' : '') +
-          (ready ? ' is-finished' : '')
-        }
-        role="img"
-        aria-label={animating ? work.working : 'Bancada de ' + profession.name}
-      >
-        <div
-          className="pf-scene-environment"
-          style={{ backgroundImage: `url(${profession.background})` }}
-        />
-        <div className="pf-scene-light" />
-        <img
-          className="pf-scene-bench"
-          src={'/professions/actions-20261114/' + work.bench + '-bench.webp'}
-          alt=""
-          draggable={false}
-        />
-        {work.tool && (
-          <img
-            className="pf-scene-tool"
-            src={'/professions/actions-20261114/' + work.tool + '.webp'}
-            alt=""
-            draggable={false}
-          />
-        )}
-        <div className="pf-scene-impact" />
-        <div className="pf-scene-particles" aria-hidden="true">
-          {Array.from({ length: 18 }, (_, i) => (
-            <i
-              key={i}
-              style={
-                {
-                  '--i': i,
-                  '--x': `${Math.cos(i * 2.4) * (55 + i * 5)}px`,
-                  '--y': `${-30 - (i % 5) * 24}px`,
-                  '--delay': `${(i % 6) * 0.035}s`,
-                } as CSSProperties
-              }
-            />
-          ))}
-        </div>
-        {work.bench === 'writing' && (
-          <svg className="pf-scene-ink" viewBox="0 0 600 375" aria-hidden="true">
-            <path d="M243 216Q280 196 300 217T365 204M244 231Q277 221 327 236T386 223" />
-          </svg>
-        )}
-        {(work.bench === 'mixture' || work.bench === 'cooking' || work.bench === 'kiln') && (
-          <div className="pf-scene-steam" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </div>
-        )}
-        <span className="pf-scene-caption">
-          {ready ? (
-            <>
-              <Check size={14} /> Pronto para recolher
-            </>
-          ) : animating ? (
-            <>
-              <span className="pf-working-dot" />
-              {work.working}…
-            </>
-          ) : (
-            <>
-              <span className="pf-working-dot" />
-              Sua oficina está trabalhando
-            </>
-          )}
-        </span>
-      </div>
+      <ProfessionWorkbench
+        profession={profession}
+        enabled={unlocked && !ready && !confirmCancel}
+        ready={ready}
+        animating={animating}
+        onWork={() => void help(false)}
+      />
       <div className="pf-production-progress">
         <div>
           <strong>{ready ? 'Sua criação está pronta.' : duration(remaining) + ' restantes'}</strong>
@@ -204,6 +149,46 @@ export function ProfessionProduction({
       <div className="pf-production-feedback" role="status">
         {feedback}
       </div>
+      {canCancel && (
+        <div className="pf-cancel-production">
+          {confirmCancel ? (
+            <div role="alertdialog" aria-label="Excluir produção em andamento">
+              <h3>Excluir esta produção?</h3>
+              <p>
+                A bancada será liberada. Você não receberá o item nem experiência. Materiais já
+                usados não serão devolvidos.
+              </p>
+              <div>
+                <button
+                  autoFocus
+                  className="button"
+                  disabled={busy}
+                  onClick={() => setConfirmCancel(false)}
+                >
+                  Manter produção
+                </button>
+                <button
+                  className="button pf-cancel-confirm"
+                  disabled={busy}
+                  onClick={() => void cancel()}
+                >
+                  <Trash2 size={15} />
+                  {busy ? 'Excluindo…' : 'Excluir processo'}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              className="button pf-cancel-trigger"
+              disabled={busy}
+              onClick={() => setConfirmCancel(true)}
+            >
+              <Trash2 size={15} />
+              Excluir processo em andamento
+            </button>
+          )}
+        </div>
+      )}
       {!!project.assist_count && (
         <p className="pf-assist-history">
           <Check size={13} />

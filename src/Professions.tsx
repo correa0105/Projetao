@@ -123,7 +123,7 @@ export function Professions({
   const unlocked = !!profession && hasProfession(profession);
   const craftingProgress =
     state?.progress?.find((p) => p.profession_id === selected) ?? professionProgress();
-  const active = state?.projects.find((p) => !p.claimed_at);
+  const active = state?.projects.find((p) => !p.claimed_at && !p.canceled_at);
   const current = active?.profession_id === selected ? active : undefined;
   const recipe =
     (current?.recipe.id === recipeId ? current.recipe : undefined) ??
@@ -149,7 +149,7 @@ export function Professions({
     }
     return value;
   }
-  async function act(kind: 'start' | 'assist' | 'collect') {
+  async function act(kind: 'start' | 'assist' | 'collect' | 'cancel') {
     if (locked.current || !character || !profession || !recipe) return false;
     locked.current = true;
     setBusy(true);
@@ -170,10 +170,16 @@ export function Professions({
         });
       else if (kind === 'collect' && current)
         await post('/professions/projects/' + current.id + '/collect', {});
+      else if (kind === 'cancel' && current)
+        await post('/professions/projects/' + current.id + '/cancel', {
+          request_id: key(operation),
+        });
       requestKeys.current.delete(operation);
       await reload();
       if (kind === 'collect')
         setNotice(`Criação na mochila. +${recipe.experience ?? 20} EXP em ${profession.name}.`);
+      if (kind === 'cancel')
+        setNotice('Produção excluída. A bancada está livre para iniciar outra criação.');
       if (kind !== 'assist') void onChanged().catch(() => {});
       return true;
     } catch (e) {
@@ -380,14 +386,12 @@ export function Professions({
                           onClick={() => {
                             setRecipeId(r.id);
                             if (innerWidth < 760)
-                              document
-                                .querySelector('.pf-bench')
-                                ?.scrollIntoView({
-                                  behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
-                                    ? 'auto'
-                                    : 'smooth',
-                                  block: 'start',
-                                });
+                              document.querySelector('.pf-bench')?.scrollIntoView({
+                                behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+                                  ? 'auto'
+                                  : 'smooth',
+                                block: 'start',
+                              });
                           }}
                           disabled={busy}
                           aria-pressed={recipe?.id === r.id}
@@ -509,6 +513,8 @@ export function Professions({
                         ?.image_path
                     }
                     assist={() => act('assist')}
+                    canCancel={state?.capabilities?.cancel_production === true}
+                    cancel={() => act('cancel')}
                     collect={() => void act('collect')}
                   />
                 ) : recipe ? (

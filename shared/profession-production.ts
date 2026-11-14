@@ -189,6 +189,83 @@ const work: Record<string, ProfessionWork> = {
 export function professionWork(id: string) {
   return work[id] ?? work.smithing;
 }
+export function professionGesture(id: string): {
+  mode: 'strike' | 'stir' | 'draw' | 'carve' | 'stitch' | 'polish';
+  tool: string;
+  hotspot: [number, number];
+  hint: string;
+} {
+  const w = professionWork(id);
+  switch (w.bench) {
+    case 'forge':
+      return {
+        mode: 'strike',
+        tool: 'smith-hammer',
+        hotspot: [72, 25],
+        hint: 'Clique na peça para martelar o metal.',
+      };
+    case 'mixture':
+      return {
+        mode: 'stir',
+        tool: 'pestle',
+        hotspot: [74, 76],
+        hint: 'Segure e mova o pilão para macerar e misturar os ingredientes.',
+      };
+    case 'cooking':
+      return {
+        mode: 'stir',
+        tool: 'ladle',
+        hotspot: [72, 75],
+        hint: 'Segure e mova a concha para mexer o preparo.',
+      };
+    case 'writing':
+      return {
+        mode: 'draw',
+        tool: w.tool ?? 'quill',
+        hotspot: w.tool === 'brush' ? [15, 85] : [7, 94],
+        hint:
+          id === 'painting'
+            ? 'Segure e arraste o pincel para pintar.'
+            : 'Segure e arraste a pena para desenhar no pergaminho.',
+      };
+    case 'textile':
+      return {
+        mode: 'stitch',
+        tool: 'sewing-needle',
+        hotspot: [15, 85],
+        hint: 'Clique ou arraste a agulha para costurar o acabamento.',
+      };
+    case 'wood':
+    case 'stone':
+      return {
+        mode: 'carve',
+        tool: 'carving-chisel',
+        hotspot: [15, 85],
+        hint: 'Clique ou arraste o formão para talhar os detalhes.',
+      };
+    case 'precision':
+      return {
+        mode: 'polish',
+        tool: 'fine-file',
+        hotspot: [15, 85],
+        hint: 'Segure e mova a lima para polir e ajustar a peça.',
+      };
+    case 'kiln':
+      return id === 'pottery'
+        ? {
+            mode: 'draw',
+            tool: 'brush',
+            hotspot: [15, 85],
+            hint: 'Segure e arraste o pincel para aplicar o esmalte à cerâmica.',
+          }
+        : {
+            mode: 'polish',
+            tool: 'fine-file',
+            hotspot: [15, 85],
+            hint: 'Segure e mova a ferramenta para dar acabamento ao vidro.',
+          };
+  }
+}
 export function nextProfessionAssist(project: { last_assisted_at?: string | null }) {
   return project.last_assisted_at
     ? Date.parse(project.last_assisted_at) + professionAssistCooldownMs

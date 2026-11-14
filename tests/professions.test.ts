@@ -655,6 +655,138 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
       },
     );
     await t.test(
+      'administrador exclui produção própria sem recompensa, libera bancada e preserva auditoria',
+      async () => {
+        const admin = await account('Administrador da bancada'),
+          foreign = await account('Outro administrador de bancada');
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=ANY($1::text[])', [
+          [admin.id, foreign.id],
+        ]);
+        await pool.query(
+          "INSERT INTO profession_administrator_access(user_id,enabled,granted_by,reason)VALUES($1,true,$1,'Teste descartável')",
+          [admin.id],
+        );
+        const c = await createLegacyTestCharacter(admin.id),
+          target = craftRecipes.find((r) => r.profession_id === 'smithing')!;
+        const b = { character_id: c.id, recipe_id: target.id, request_id: randomUUID() };
+        const started = await request('/professions/projects', admin, b);
+        assert.equal(started.status, 200);
+        const p = started.data,
+          path = '/professions/projects/' + p.id,
+          key = { request_id: randomUUID() };
+        assert.equal((await request(path + '/cancel', undefined, key)).status, 401);
+        assert.equal((await request(path + '/cancel', foreign, key)).status, 404);
+        assert.equal(
+          (await request(path + '/cancel', admin, { ...key, refund: true })).status,
+          400,
+        );
+        assert.equal(
+          (await request(path + '/cancel', admin, key, { 'X-Account-Preview': 'basic' })).status,
+          403,
+        );
+        await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [admin.id]);
+        await pool.query("INSERT INTO administrator_scopes(user_id,scope)VALUES($1,'vtt')", [
+          admin.id,
+        ]);
+        assert.equal((await request(path + '/cancel', admin, key)).status, 403);
+        assert.equal(
+          (await request('/professions?character_id=' + c.id, admin)).data.capabilities
+            .cancel_production,
+          false,
+        );
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [admin.id]);
+        assert.equal(
+          (await request('/professions?character_id=' + c.id, admin)).data.capabilities
+            .cancel_production,
+          true,
+        );
+        const canceled = await Promise.all([
+          request(path + '/cancel', admin, key),
+          request(path + '/cancel', admin, key),
+        ]);
+        assert(
+          canceled.every((r) => r.status === 200),
+          JSON.stringify(canceled),
+        );
+        assert(canceled[0].data.canceled_at);
+        assert.equal(canceled[0].data.claimed_at, null);
+        assert.equal(
+          (await request(path + '/cancel', admin, { request_id: randomUUID() })).status,
+          409,
+        );
+        assert.equal(
+          (await request(path + '/assist', admin, { request_id: randomUUID() })).status,
+          409,
+        );
+        await pool.query(
+          "UPDATE profession_projects SET ready_at=clock_timestamp()-interval '1 minute' WHERE id=$1",
+          [p.id],
+        );
+        assert.equal((await request(path + '/collect', admin, {})).status, 409);
+        assert.equal(
+          (
+            await request(path + '/steps', admin, {
+              revision: p.revision,
+              request_id: randomUUID(),
+              input: { value: 50 },
+            })
+          ).status,
+          409,
+        );
+        assert.equal(
+          (
+            await pool.query(
+              'SELECT count(*)::int n FROM profession_experience_rewards WHERE project_id=$1',
+              [p.id],
+            )
+          ).rows[0].n,
+          0,
+        );
+        for (const id of purchaseContents(target.output.item_id))
+          assert.equal(await count(c.id, id), 0);
+        for (const i of target.ingredients) assert.equal(await count(c.id, i.item_id), 0);
+        const audit = (
+          await pool.query(
+            'SELECT canceled_by,cancellation_request_id FROM profession_projects WHERE id=$1',
+            [p.id],
+          )
+        ).rows[0];
+        assert.equal(audit.canceled_by, admin.id);
+        assert.equal(audit.cancellation_request_id, key.request_id);
+        assert(
+          !(await request('/professions?character_id=' + c.id, admin)).data.projects.some(
+            (r: any) => r.id === p.id,
+          ),
+        );
+        assert.equal((await request('/professions/projects', admin, b)).data.id, p.id);
+        const next = await request('/professions/projects', admin, {
+          ...b,
+          request_id: randomUUID(),
+        });
+        assert.equal(next.status, 200);
+        assert.notEqual(next.data.id, p.id);
+        await pool.query(
+          "UPDATE profession_projects SET ready_at=clock_timestamp()-interval '1 minute' WHERE id=$1",
+          [next.data.id],
+        );
+        const raced = await Promise.all([
+          request('/professions/projects/' + next.data.id + '/cancel', admin, {
+            request_id: randomUUID(),
+          }),
+          request('/professions/projects/' + next.data.id + '/collect', admin, {}),
+        ]);
+        assert.deepEqual(raced.map((r) => r.status).sort(), [200, 409]);
+        const done = (
+          await pool.query('SELECT claimed_at,canceled_at FROM profession_projects WHERE id=$1', [
+            next.data.id,
+          ])
+        ).rows[0];
+        assert.notEqual(Boolean(done.claimed_at), Boolean(done.canceled_at));
+        for (const id of purchaseContents(target.output.item_id))
+          assert.equal(await count(c.id, id), done.claimed_at ? target.output.quantity : 0);
+      },
+    );
+    await t.test(
       'novas mecânicas rejeitam misturas incompletas, encaixes errados e traçados fora do molde',
       async () => {
         const steps = craftRecipes.flatMap((r) => r.steps);

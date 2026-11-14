@@ -134,15 +134,22 @@ async function managedRoom(db: DB, id: string, user: string) {
     throw new AppError(403, 'Somente o mestre autorizado desta mesa pode registrar materiais.');
   return room;
 }
-async function project(db: DB, id: string, user: string) {
+async function project(db: DB, id: string, user: string, requireTraining = true) {
   const row = (await db.query('SELECT character_id FROM profession_projects WHERE id=$1', [id]))
     .rows[0];
   if (!row) throw new AppError(404, 'Trabalho não encontrado.');
   const actor = await character(db, row.character_id, user, true);
   const p = (await db.query('SELECT * FROM profession_projects WHERE id=$1 FOR UPDATE', [id]))
     .rows[0] as CraftProject;
-  requireProfession(p.profession_id, actor.proficiencies, actor.unlimited);
+  if (requireTraining) requireProfession(p.profession_id, actor.proficiencies, actor.unlimited);
   return p;
+}
+async function canCancelProduction(db: DB, user: string) {
+  return (
+    !isBasicPreview() &&
+    (await db.query('SELECT administrador FROM "user" WHERE id=$1', [user])).rows[0]
+      ?.administrador === 1
+  );
 }
 export function professionsRouter() {
   const router = Router();
@@ -189,7 +196,7 @@ export function professionsRouter() {
     const projects = id
       ? (
           await pool.query(
-            'SELECT * FROM profession_projects WHERE character_id=$1 ORDER BY (claimed_at IS NULL) DESC,created_at DESC LIMIT 30',
+            'SELECT * FROM profession_projects WHERE character_id=$1 AND canceled_at IS NULL ORDER BY (claimed_at IS NULL) DESC,created_at DESC LIMIT 30',
             [id],
           )
         ).rows
@@ -201,7 +208,11 @@ export function professionsRouter() {
       inventory,
       projects,
       rooms,
-      capabilities: { all_professions: unlimited, unlimited_materials: unlimited },
+      capabilities: {
+        all_professions: unlimited,
+        unlimited_materials: unlimited,
+        cancel_production: await canCancelProduction(pool, res.locals.user.id),
+      },
       progress,
     });
   });
@@ -243,7 +254,7 @@ export function professionsRouter() {
         if (
           (
             await db.query(
-              'SELECT 1 FROM profession_projects WHERE character_id=$1 AND claimed_at IS NULL',
+              'SELECT 1 FROM profession_projects WHERE character_id=$1 AND claimed_at IS NULL AND canceled_at IS NULL',
               [b.character_id],
             )
           ).rowCount
@@ -304,6 +315,7 @@ export function professionsRouter() {
     res.json(
       await transaction(async (db) => {
         const p = await project(db, id, res.locals.user.id);
+        if (p.canceled_at) throw new AppError(409, 'Esta produção foi excluída.');
         const previous = await db.query(
           'SELECT id FROM profession_project_assists WHERE project_id=$1 AND request_id=$2',
           [id, b.request_id],
@@ -385,6 +397,7 @@ export function professionsRouter() {
             throw new AppError(409, 'Esta solicitação já foi usada para outra etapa.');
           return p;
         }
+        if (p.canceled_at) throw new AppError(409, 'Esta produção foi excluída.');
         if (p.claimed_at || p.step >= p.recipe.steps.length)
           throw new AppError(409, 'As etapas deste trabalho já terminaram.');
         if (p.revision !== b.revision)
@@ -413,6 +426,7 @@ export function professionsRouter() {
     res.json(
       await transaction(async (db) => {
         const p = await project(db, id, res.locals.user.id);
+        if (p.canceled_at) throw new AppError(409, 'Esta produção foi excluída.');
         if (p.claimed_at) return p;
         const now = (await db.query('SELECT clock_timestamp() AS now')).rows[0].now as Date;
         if (new Date(p.ready_at).getTime() > now.getTime())
@@ -456,6 +470,37 @@ export function professionsRouter() {
           [id],
         )
       ).rows,
+    );
+  });
+  router.post('/professions/projects/:id/cancel', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      b = z.object({ request_id: uuid }).strict().parse(req.body);
+    res.json(
+      await transaction(async (db) => {
+        const p = await project(db, id, res.locals.user.id, false);
+        if (!(await canCancelProduction(db, res.locals.user.id)))
+          throw new AppError(
+            403,
+            'Somente administrador global pode excluir uma produção própria.',
+          );
+        if (p.canceled_at) {
+          const prior = (
+            await db.query('SELECT cancellation_request_id FROM profession_projects WHERE id=$1', [
+              id,
+            ])
+          ).rows[0];
+          if (prior.cancellation_request_id === b.request_id) return p;
+          throw new AppError(409, 'Esta produção já foi excluída.');
+        }
+        if (p.claimed_at)
+          throw new AppError(409, 'Uma criação já recolhida não pode ser excluída.');
+        return (
+          await db.query(
+            'UPDATE profession_projects SET canceled_at=clock_timestamp(),canceled_by=$2,cancellation_request_id=$3,revision=revision+1 WHERE id=$1 RETURNING *',
+            [id, res.locals.user.id, b.request_id],
+          )
+        ).rows[0];
+      }),
     );
   });
   router.post('/professions/material-grants', () => {
