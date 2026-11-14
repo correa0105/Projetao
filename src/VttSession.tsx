@@ -17,6 +17,7 @@ import { VttHighQualityCapture, renderVttCaptureFrame, type VttCaptureFrame } fr
 import { TowerTableItems } from './SpecialEconomy';
 import { VttItemLayers, VttStackButtons } from './VttItemLayers';
 import { VttRoomCharacters } from './VttRoomCharacters';
+import {VttProfessionRewards,VttMaterialPresence} from './VttProfessionRewards';
 import { reorderVttItems } from '../shared/vtt-stacking';
 import {vttVisualSource} from '../shared/vtt-asset-visuals';
 import {VttSceneryLibrary,type VttSceneryCollection} from './VttSceneryLibrary';
@@ -257,7 +258,9 @@ type Tab =
   | 'journal'
   | 'music'
   | 'table'
+  | 'rewards'
   | 'help';
+// Crafting rewards use their own roster and server-controlled d100.
 type Entry = {
   id: string;
   name: string;
@@ -292,6 +295,7 @@ const tabs: { id: Tab; name: string; icon: typeof Sun }[] = [
   { id: 'library', name: 'Biblioteca de assets', icon: BookOpen },
   { id: 'music', name: 'Som', icon: Music },
   { id: 'combat', name: 'Combate', icon: Swords },
+  { id: 'rewards', name: 'Materiais da aventura', icon: Dices },
   { id: 'table', name: 'Configurações e ajuda', icon: Settings2 },
 ];
 const toolList: { id: Tool; name: string; icon: typeof Sun; gm?: boolean }[] = [
@@ -3736,10 +3740,11 @@ export function VttSession({ characters, user, media, reviewVisualPreferences }:
           )}
         </div>
 
+        <VttMaterialPresence roomId={state.id} active={!spectator&&!preview}/>
         {panelOpen && (
           <aside className="vtt-panel">
             <nav className="vtt-panel-tabs" aria-label="Painéis da mesa">
-              {tabs.map(({ id, name, icon: Icon }) => (
+              {tabs.filter(t=>t.id!=='rewards'||!spectator).map(({ id, name, icon: Icon }) => (
                 <button
                   ref={id === 'library' ? libraryButton : undefined}
                   key={id}
@@ -4108,6 +4113,7 @@ export function VttSession({ characters, user, media, reviewVisualPreferences }:
                   </button>
                 )}
               </div>
+              {tab==='rewards'&&!spectator&&<VttProfessionRewards roomId={state.id} readOnly={preview}/>}
               {['sheet', 'mounts', 'pets','vehicles','siege', 'token', 'journal'].includes(tab) && (
                 <div className="vtt-subtabs vtt-companion-tabs">
                   <button aria-pressed={tab === 'sheet'} onClick={() => setTab('sheet')}>

@@ -7,6 +7,7 @@ import { creditMissionTags } from './mission-tag-progress.js';
 import { creditBastionMission } from './guild-bastion.js';
 import { changeBastionCredits } from './bastion-currency.js';
 import { missionReward } from '../shared/economy.js';
+import { settleMissionProfessionRewards } from './profession-loot.js';
 import {
   progressMission,
   testEligible,
@@ -86,7 +87,9 @@ export async function completeMission(
   userId: string,
   data: z.infer<typeof completionSchema>,
 ) {
-  return transaction(async (client) => {
+  return transaction(client=>completeMissionInTransaction(client,id,userId,data));
+}
+export async function completeMissionInTransaction(client:PoolClient,id:string,userId:string,data:z.infer<typeof completionSchema>){
     // Same lock as inscriptions/status changes: the roster cannot change during settlement.
     const {
       rows: [mission],
@@ -110,6 +113,8 @@ export async function completeMission(
         'Confirme todos os personagens inscritos, sem adicionar ou repetir personagens.',
       );
     // Stable character order prevents deadlocks between two missions with shared participants.
+    await client.query('SELECT u.id FROM "user" u WHERE u.id IN(SELECT c.user_id FROM characters c JOIN mission_participants p ON p.character_id=c.id WHERE p.post_id=$1) ORDER BY u.id FOR UPDATE',[id]);
+    await settleMissionProfessionRewards(client,id,userId,data.summary);
     const reward = missionReward(mission.mission_rank as Rank, mission.difficulty);
     const gold = reward.gold_cp;
     const rewardedUsers = new Set<string>();
@@ -168,5 +173,4 @@ export async function completeMission(
     );
     if (data.hook) await insertHook(client, id, userId, data.hook);
     return completed;
-  });
 }

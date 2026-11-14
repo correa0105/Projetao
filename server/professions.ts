@@ -10,6 +10,11 @@ import { administrationFor } from './administrators.js';
 import { isBasicPreview } from './account-preview.js';
 import { professionProgress } from '../shared/profession-progression.js';
 import { professionItemArtwork } from '../shared/profession-art.js';
+import { professionBuff, professionBuffDescription } from '../shared/profession-buffs.js';
+import {
+  professionAssistCooldownMs,
+  professionAssistReductionSeconds,
+} from '../shared/profession-production.js';
 import { deriveSheet, type SheetChoices } from '../shared/character-sheet.js';
 import { purchaseContents } from '../shared/armor-bundles.js';
 import {
@@ -67,9 +72,16 @@ export async function seedProfessionCatalog(db: DB) {
       [
         id,
         recipe.name,
-        customDescriptions[id] ||
+        (professionBuff(id)
+          ? professionBuffDescription(professionBuff(id)!)
+          : customDescriptions[id]) ||
           `${recipe.name} produzido na oficina. Peça de uso narrativo; não concede bônus automáticos de combate ou perícias.`,
-        { profession_id: recipe.profession_id, crafted: true, narrative: true },
+        {
+          profession_id: recipe.profession_id,
+          crafted: true,
+          narrative: !professionBuff(id),
+          profession_buff: professionBuff(id) ?? null,
+        },
         professionItemArtwork(id),
       ],
     );
@@ -165,7 +177,7 @@ export function professionsRouter() {
     ];
     const inventory = (
       await pool.query(
-        `SELECT c.id,c.name,c.image_path,c.price_cp,c.active,coalesce(i.quantity,0)::int AS quantity FROM catalog_items c LEFT JOIN inventory i ON i.item_id=c.id AND i.character_id=$1 WHERE c.id=ANY($2::text[]) ORDER BY c.name`,
+        `SELECT c.id,c.name,c.description,c.category,c.image_path,c.price_cp,c.active,coalesce(i.quantity,0)::int AS quantity FROM catalog_items c LEFT JOIN inventory i ON i.item_id=c.id AND i.character_id=$1 WHERE c.id=ANY($2::text[]) ORDER BY c.name`,
         [id ?? null, itemIds],
       )
     ).rows;
@@ -286,6 +298,51 @@ export function professionsRouter() {
       }),
     );
   });
+  router.post('/professions/projects/:id/assist', async (req, res) => {
+    const id = uuid.parse(req.params.id);
+    const b = z.object({ request_id: uuid }).strict().parse(req.body);
+    res.json(
+      await transaction(async (db) => {
+        const p = await project(db, id, res.locals.user.id);
+        const previous = await db.query(
+          'SELECT id FROM profession_project_assists WHERE project_id=$1 AND request_id=$2',
+          [id, b.request_id],
+        );
+        if (previous.rowCount) return p;
+        const now = (await db.query('SELECT clock_timestamp() AS now')).rows[0].now as Date;
+        if (p.claimed_at || new Date(p.ready_at).getTime() <= now.getTime())
+          throw new AppError(409, 'Esta criação já está pronta para recolher.');
+        if (
+          p.last_assisted_at &&
+          new Date(p.last_assisted_at).getTime() + professionAssistCooldownMs > now.getTime()
+        )
+          throw new AppError(409, 'Aguarde duas horas entre as ajudas neste trabalho.');
+        const ready = new Date(
+          Math.max(
+            now.getTime(),
+            new Date(p.ready_at).getTime() - professionAssistReductionSeconds * 1000,
+          ),
+        );
+        const seconds = Math.max(
+          1,
+          Math.min(
+            professionAssistReductionSeconds,
+            Math.ceil((new Date(p.ready_at).getTime() - ready.getTime()) / 1000),
+          ),
+        );
+        await db.query(
+          'INSERT INTO profession_project_assists(project_id,request_id,actor_id,previous_ready_at,ready_at,reduced_seconds)VALUES($1,$2,$3,$4,$5,$6)',
+          [id, b.request_id, res.locals.user.id, p.ready_at, ready, seconds],
+        );
+        return (
+          await db.query(
+            'UPDATE profession_projects SET ready_at=$2,last_assisted_at=$3,assist_count=assist_count+1,seconds_saved=seconds_saved+$4,revision=revision+1 WHERE id=$1 RETURNING *',
+            [id, ready, now, seconds],
+          )
+        ).rows[0];
+      }),
+    );
+  });
   router.post('/professions/projects/:id/steps', async (req, res) => {
     const id = uuid.parse(req.params.id),
       b = z
@@ -358,11 +415,8 @@ export function professionsRouter() {
         const p = await project(db, id, res.locals.user.id);
         if (p.claimed_at) return p;
         const now = (await db.query('SELECT clock_timestamp() AS now')).rows[0].now as Date;
-        if (p.step !== p.recipe.steps.length || new Date(p.ready_at).getTime() > now.getTime())
-          throw new AppError(
-            409,
-            'Conclua as etapas e aguarde o tempo de produção antes de recolher.',
-          );
+        if (new Date(p.ready_at).getTime() > now.getTime())
+          throw new AppError(409, 'Aguarde o tempo de produção antes de recolher.');
         const recipe = p.recipe as CraftRecipe,
           granted = purchaseContents(recipe.output.item_id).map((item_id) => ({
             item_id,
@@ -404,65 +458,10 @@ export function professionsRouter() {
       ).rows,
     );
   });
-  router.post('/professions/material-grants', async (req, res) => {
-    const b = z
-      .object({
-        room_id: uuid,
-        character_id: uuid,
-        material_id: z.string().max(100),
-        quantity: z.number().int().min(1).max(99),
-        reason: z.string().trim().min(5).max(500),
-        request_id: uuid,
-      })
-      .strict()
-      .parse(req.body);
-    if (!professionMaterialIds.has(b.material_id))
-      throw new AppError(400, 'Escolha um material de ofício adquirido em mesa.');
-    res.json(
-      await transaction(async (db) => {
-        const room = await managedRoom(db, b.room_id, res.locals.user.id);
-        await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))', [
-          'profession-material:' + res.locals.user.id + ':' + b.request_id,
-        ]);
-        const target = (
-          await db.query(
-            `SELECT id,user_id FROM characters c WHERE id=$1 AND deleted_at IS NULL AND(user_id=$2 OR EXISTS(SELECT 1 FROM vtt_members m WHERE m.room_id=$3 AND m.user_id=c.user_id AND m.role IS DISTINCT FROM 'spectator'))`,
-            [b.character_id, room.owner_id, room.id],
-          )
-        ).rows[0];
-        if (!target) throw new AppError(403, 'O personagem precisa participar desta mesa.');
-        await lockStorage(db, target.user_id, b.character_id);
-        const previous = (
-          await db.query(
-            'SELECT * FROM profession_material_grants WHERE actor_id=$1 AND request_id=$2',
-            [res.locals.user.id, b.request_id],
-          )
-        ).rows[0];
-        if (previous) {
-          if (!isDeepStrictEqual(previous.payload, b))
-            throw new AppError(409, 'Esta entrega já foi usada para outro material.');
-          return previous;
-        }
-        await db.query(
-          'INSERT INTO inventory(character_id,item_id,quantity)VALUES($1,$2,$3)ON CONFLICT(character_id,item_id)DO UPDATE SET quantity=inventory.quantity+excluded.quantity',
-          [b.character_id, b.material_id, b.quantity],
-        );
-        return (
-          await db.query(
-            'INSERT INTO profession_material_grants(actor_id,room_id,character_id,material_id,quantity,reason,request_id,payload)VALUES($1,$2,$3,$4,$5,$6,$7,$8)RETURNING *',
-            [
-              res.locals.user.id,
-              b.room_id,
-              b.character_id,
-              b.material_id,
-              b.quantity,
-              b.reason,
-              b.request_id,
-              JSON.stringify(b),
-            ],
-          )
-        ).rows[0];
-      }),
+  router.post('/professions/material-grants', () => {
+    throw new AppError(
+      410,
+      'Os materiais agora são sorteados no VTT e entregues somente no registro de conclusão da mesa.',
     );
   });
   return router;

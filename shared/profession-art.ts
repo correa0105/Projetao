@@ -1,3 +1,5 @@
+import { professionBuff } from './profession-buffs';
+
 const craftedIcons = new Set([
   'craft-field-map',
   'craft-route-map',
@@ -28,6 +30,8 @@ const craftedIcons = new Set([
   'craft-carved-game',
 ]);
 const aliases: Record<string, string> = {
+  'craft-material-rare-catalyst': 'craft-material-arcane',
+  'craft-material-masterwork-core': 'craft-material-gem',
   'craft-detailed-map': 'craft-field-map',
   'craft-survey-atlas': 'craft-route-map',
   'craft-master-atlas': 'craft-route-map',
@@ -45,7 +49,7 @@ const aliases: Record<string, string> = {
   'craft-carved-game-deluxe': 'craft-carved-game',
 };
 export function professionItemArtwork(id: string, existing?: string | null, badge = 'smithing') {
-  const key = aliases[id] ?? id;
+  const key = aliases[id] ?? professionBuff(id)?.art ?? id;
   return key.startsWith('craft-material-') || craftedIcons.has(key)
     ? `/professions/icons-20261113/${key}.webp`
     : existing || `/sheet/training-badges-20261019/${badge}.webp`;

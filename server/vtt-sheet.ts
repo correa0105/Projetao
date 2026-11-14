@@ -1,5 +1,8 @@
-import {canManageVtt} from './vtt-permissions.js';
+import { canManageVtt } from './vtt-permissions.js';
 import { Router } from 'express';
+import { randomInt } from 'node:crypto';
+import { rollFormula } from '../shared/vtt-roll.js';
+import { skills } from '../shared/character-sheet.js';
 import type { PoolClient } from 'pg';
 import { z } from 'zod';
 import { pool, transaction } from './db.js';
@@ -11,6 +14,11 @@ import { readVttLoadout } from './vtt-weapon-loadout.js';
 import { applyTokenDeath, type VttDocument } from '../shared/vtt.js';
 import { applyTokenBlood } from '../shared/vtt-blood.js';
 import { attachmentUnavailable } from '../shared/vtt-attachments.js';
+import {
+  activeProfessionBuffs,
+  activateProfessionBuff,
+  withProfessionBuffs,
+} from './profession-buffs.js';
 type DB = Pick<PoolClient, 'query'>;
 type Room = { id: string; owner_id: string; document: VttDocument; role?: string | null };
 export type RoomAccess = (db: DB, id: string, user: string, lock?: boolean) => Promise<Room>;
@@ -75,6 +83,7 @@ export async function resources(
 async function sheetData(getRoom: RoomAccess, rid: string, tid: string, user: string) {
   const a = await access(getRoom, pool, rid, tid, user);
   const c = a.character;
+  const buffs = await activeProfessionBuffs(pool, c.id);
   const [loadout, uses, r] = await Promise.all([
     readVttLoadout(pool, rid, c, a.sheet?.choices),
     pool.query(
@@ -98,7 +107,11 @@ async function sheetData(getRoom: RoomAccess, rid: string, tid: string, user: st
     },
     token: a.token,
     sheet: a.sheet || null,
-    derived: a.sheet?.finalized_at && a.sheet.choices ? deriveSheet(c, a.sheet.choices) : null,
+    derived: withProfessionBuffs(
+      a.sheet?.finalized_at && a.sheet.choices ? deriveSheet(c, a.sheet.choices) : null,
+      buffs,
+    ),
+    profession_buffs: buffs,
     inventory: loadout.inventory.map((i) => ({ ...i, consumable: consumableItems.has(i.id) })),
     attacks: loadout.attacks,
     available_weapons: loadout.available_weapons,
@@ -111,6 +124,62 @@ async function sheetData(getRoom: RoomAccess, rid: string, tid: string, user: st
 }
 export function vttSheetRouter(getRoom: RoomAccess) {
   const router = Router();
+  router.post('/vtt/rooms/:id/sheets/:token/skill-check', async (req, res) => {
+    const rid = uuid.parse(req.params.id),
+      tid = uuid.parse(req.params.token),
+      user = res.locals.user.id;
+    const b = z
+      .object({ skill: z.string().max(80), request_id: uuid })
+      .strict()
+      .parse(req.body);
+    if (!skills.includes(b.skill)) throw new AppError(400, 'Escolha uma perícia da ficha.');
+    await transaction(async (db) => {
+      const a = await access(getRoom, db, rid, tid, user, true);
+      const previous = (
+        await db.query(
+          'SELECT room_id,skill_check FROM vtt_messages WHERE author_id=$1 AND skill_check_key=$2',
+          [user, b.request_id],
+        )
+      ).rows[0];
+      if (previous) {
+        if (
+          previous.room_id !== rid ||
+          previous.skill_check?.character_id !== a.character.id ||
+          previous.skill_check?.skill !== b.skill
+        )
+          throw new AppError(409, 'Esta rolagem já foi usada para outra perícia.');
+        return;
+      }
+      if (!a.sheet?.finalized_at)
+        throw new AppError(409, 'Conclua a ficha antes de usar suas perícias.');
+      const buffs = await activeProfessionBuffs(db, a.character.id),
+        base = deriveSheet(a.character, a.sheet.choices).skills.find((s) => s.name === b.skill)!;
+      const bonus = Math.max(
+        0,
+        ...buffs.filter((v) => v.skills.includes(b.skill)).map((v) => v.bonus),
+      );
+      const total = base.value + bonus,
+        roll = rollFormula('1d20' + (total >= 0 ? '+' : '') + total, randomInt);
+      await db.query(
+        'INSERT INTO vtt_messages(room_id,author_id,author,text,roll,skill_check_key,skill_check)VALUES($1,$2,$3,$4,$5,$6,$7)',
+        [
+          rid,
+          user,
+          a.character.name,
+          `${a.character.name} · ${b.skill}${bonus ? ' · preparo de ofício +' + bonus : ''}`,
+          JSON.stringify(roll),
+          b.request_id,
+          JSON.stringify({
+            character_id: a.character.id,
+            skill: b.skill,
+            base: base.value,
+            profession_bonus: bonus,
+          }),
+        ],
+      );
+    });
+    res.json(await sheetData(getRoom, rid, tid, user));
+  });
   router.put('/vtt/rooms/:id/sheets/:token/weapons', async (req, res) => {
     const rid = uuid.parse(req.params.id),
       tid = uuid.parse(req.params.token),
@@ -292,6 +361,7 @@ export function vttSheetRouter(getRoom: RoomAccess) {
             [cid, input.item_id],
           );
         label = 'usou ' + item.name;
+        await activateProfessionBuff(db, cid, input.item_id, input.idempotency_key);
       } else if (input.kind === 'slot') {
         if (!input.slot || input.item_id)
           throw new AppError(400, 'Escolha o nível do espaço de magia.');

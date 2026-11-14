@@ -18,6 +18,16 @@ import {
 import { purchaseContents } from '../shared/armor-bundles';
 import { economyVersion } from '../shared/economy';
 import { professionProgress } from '../shared/profession-progression';
+import { newDocument, newToken } from '../shared/vtt';
+import {
+  defaultProfessionLootTables,
+  materialOutcome,
+  materialProbabilities,
+  professionMaterialLevel,
+  professionLootTable,
+} from '../shared/profession-loot';
+import { professionBuffs } from '../shared/profession-buffs';
+import referencePrices from '../shared/profession-reference-prices.json';
 
 test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e entregas em mesa', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[a-f0-9]{32}$/);
@@ -66,7 +76,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         Origin: origin,
         'Content-Type': 'application/json',
         'X-Economy-Version': economyVersion,
-        'X-Forwarded-For': '198.51.100.' + network,
+        'X-Forwarded-For': '198.51.' + Math.floor(network / 250) + '.' + (network % 250),
         ...(who ? { Cookie: who.cookie } : {}),
         ...extraHeaders,
       },
@@ -361,10 +371,10 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
       },
     );
     await t.test(
-      'todas as 25 profissões e 125 receitas produzem os itens corretos com suas etapas e prazos',
+      'todas as 25 profissões e 618 receitas produzem automaticamente os itens corretos no prazo',
       async () => {
         assert.equal(professions.length, 25);
-        assert.equal(craftRecipes.length, 125);
+        assert.equal(craftRecipes.length, 618);
         await pool.query('UPDATE characters SET sheet_overrides=$2 WHERE id=$1', [
           hero.id,
           JSON.stringify({ proficiencies: professions.flatMap((p) => p.tools) }),
@@ -394,16 +404,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
             ) < 10,
             recipe.id,
           );
-          for (const step of recipe.steps) {
-            assert(validWorkshopInput(step, solve(step)));
-            const result = await request('/professions/projects/' + p.id + '/steps', owner, {
-              revision: p.revision,
-              request_id: randomUUID(),
-              input: solve(step),
-            });
-            assert.equal(result.status, 200, JSON.stringify(result.data));
-            p = result.data;
-          }
+          assert.equal(p.step, 0);
           await pool.query(
             "UPDATE profession_projects SET ready_at=clock_timestamp()-interval '1 minute' WHERE id=$1",
             [p.id],
@@ -422,96 +423,137 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
       },
     );
     await t.test(
-      'materiais de mesa ficam fora da loja e só o mestre atual pode conceder a participantes',
+      'produção automática e ajuda opcional: 30 minutos, intervalo de duas horas e reenvios',
       async () => {
-        const room = (
-          await pool.query(
-            'INSERT INTO vtt_rooms(owner_id,invite,document)VALUES($1,$2,$3)RETURNING id',
-            [master.id, randomUUID(), JSON.stringify({ name: 'Jornada da oficina' })],
-          )
-        ).rows[0].id;
-        await pool.query('INSERT INTO vtt_members(room_id,user_id)VALUES($1,$2)', [room, other.id]);
-        const body = {
-          room_id: room,
-          character_id: visitor.id,
-          material_id: materialItemId('hide'),
-          quantity: 2,
-          reason: 'Couro obtido na caçada da aventura.',
+        await stock(hero.id, recipe.ingredients);
+        const before = await count(hero.id, 'potion-of-healing');
+        const start = await request('/professions/projects', owner, {
+          character_id: hero.id,
+          recipe_id: recipe.id,
           request_id: randomUUID(),
-        };
+        });
+        assert.equal(start.status, 200);
+        let p = start.data;
+        assert.equal(p.step, 0);
+        const path = '/professions/projects/' + p.id + '/assist';
+        assert.equal((await request(path, other, { request_id: randomUUID() })).status, 404);
         assert.equal(
-          (await request('/professions/rooms/' + room + '/characters', owner)).status,
-          403,
-        );
-        assert.equal((await request('/professions/material-grants', owner, body)).status, 403);
-        assert.equal(
-          (
-            await request('/professions/material-grants', master, {
-              ...body,
-              character_id: outsider.id,
-            })
-          ).status,
-          403,
-        );
-        assert.equal(
-          (
-            await request('/professions/material-grants', master, {
-              ...body,
-              material_id: 'potion-of-healing',
-            })
-          ).status,
+          (await request(path, owner, { request_id: randomUUID(), minutes: 900 })).status,
           400,
         );
-        const grants = await Promise.all([
-          request('/professions/material-grants', master, body),
-          request('/professions/material-grants', master, body),
-        ]);
-        assert(
-          grants.every((r) => r.status === 200),
-          JSON.stringify(grants),
+        const keys = [randomUUID(), randomUUID()];
+        const results = await Promise.all(
+          keys.map((request_id) => request(path, owner, { request_id })),
         );
-        assert.equal(grants[0].data.id, grants[1].data.id);
-        assert.equal(await count(visitor.id, materialItemId('hide')), 2);
+        assert.deepEqual(results.map((r) => r.status).sort(), [200, 409]);
+        const accepted = results.findIndex((r) => r.status === 200),
+          first = results[accepted].data;
+        assert.equal(Date.parse(p.ready_at) - Date.parse(first.ready_at), 1800000);
+        assert.equal(first.assist_count, 1);
+        assert.equal(first.seconds_saved, 1800);
         assert.equal(
-          (await request('/professions/material-grants', master, { ...body, quantity: 3 })).status,
+          (await request(path, owner, { request_id: keys[accepted] })).data.assist_count,
+          1,
+        );
+        assert.equal((await request(path, owner, { request_id: randomUUID() })).status, 409);
+        await pool.query(
+          "UPDATE profession_projects SET last_assisted_at=clock_timestamp()-interval '2 hours'+interval '10 seconds' WHERE id=$1",
+          [p.id],
+        );
+        assert.equal((await request(path, owner, { request_id: randomUUID() })).status, 409);
+        await pool.query(
+          "UPDATE profession_projects SET last_assisted_at=clock_timestamp()-interval '2 hours' WHERE id=$1",
+          [p.id],
+        );
+        const second = await request(path, owner, { request_id: randomUUID() });
+        assert.equal(second.status, 200);
+        assert.equal(second.data.assist_count, 2);
+        assert.equal(Date.parse(first.ready_at) - Date.parse(second.data.ready_at), 1800000);
+        assert.equal(
+          (await request('/professions/projects/' + p.id + '/collect', owner, {})).status,
           409,
         );
         await pool.query(
-          "UPDATE vtt_members SET role='spectator' WHERE room_id=$1 AND user_id=$2",
-          [room, other.id],
+          "UPDATE profession_projects SET ready_at=clock_timestamp()+interval '10 minutes',last_assisted_at=clock_timestamp()-interval '2 hours' WHERE id=$1",
+          [p.id],
         );
-        assert.equal(
-          (
-            await request('/professions/material-grants', master, {
-              ...body,
-              request_id: randomUUID(),
-            })
-          ).status,
-          403,
-        );
-        const material = (
-          await pool.query('SELECT active FROM catalog_items WHERE id=$1', [materialItemId('hide')])
-        ).rows[0];
-        assert.equal(material.active, false);
-        const checkout = await request('/shop/checkout', owner, {
-          character_id: hero.id,
-          idempotency_key: randomUUID(),
-          items: [{ item_id: materialItemId('hide'), quantity: 1 }],
-        });
-        assert.equal(checkout.status, 409);
-        const before = await count(visitor.id, materialItemId('hide'));
-        await seedProfessionCatalog(pool);
-        assert.equal(await count(visitor.id, materialItemId('hide')), before);
+        const finish = await request(path, owner, { request_id: randomUUID() });
+        assert.equal(finish.status, 200);
+        assert.equal(finish.data.step, 0);
+        assert(Date.parse(finish.data.ready_at) <= Date.now());
+        const claims = await Promise.all([
+          request('/professions/projects/' + p.id + '/collect', owner, {}),
+          request('/professions/projects/' + p.id + '/collect', owner, {}),
+        ]);
+        assert(claims.every((r) => r.status === 200));
+        assert.equal(await count(hero.id, 'potion-of-healing'), before + 1);
+        assert.equal((await request(path, owner, { request_id: randomUUID() })).status, 409);
         assert.equal(
           (
             await pool.query(
-              'SELECT count(*)::int n FROM profession_material_grants WHERE actor_id=$1',
-              [master.id],
+              'SELECT count(*)::int n FROM profession_project_assists WHERE project_id=$1',
+              [p.id],
             )
           ).rows[0].n,
-          1,
+          3,
         );
-        assert.equal(professionMaterials.length, 23);
+        for (const ingredient of recipe.ingredients)
+          assert.equal(await count(hero.id, ingredient.item_id), 0);
+        // A legacy project also completes with no preparation steps performed.
+        await stock(hero.id, recipe.ingredients);
+        p = (
+          await request('/professions/projects', owner, {
+            character_id: hero.id,
+            recipe_id: recipe.id,
+            request_id: randomUUID(),
+          })
+        ).data;
+        await pool.query(
+          "UPDATE profession_projects SET ready_at=clock_timestamp()-interval '1 minute' WHERE id=$1",
+          [p.id],
+        );
+        assert.equal(
+          (await request('/professions/projects/' + p.id + '/collect', owner, {})).status,
+          200,
+        );
+      },
+    );
+    await t.test(
+      'materiais só são entregues pela conclusão do VTT e continuam fora da loja',
+      async () => {
+        const before = await count(visitor.id, materialItemId('hide'));
+        assert.equal(
+          (
+            await request('/professions/material-grants', master, {
+              character_id: visitor.id,
+              material_id: materialItemId('hide'),
+              quantity: 99,
+            })
+          ).status,
+          410,
+        );
+        assert.equal(await count(visitor.id, materialItemId('hide')), before);
+        assert.equal(
+          (
+            await pool.query('SELECT active FROM catalog_items WHERE id=$1', [
+              materialItemId('hide'),
+            ])
+          ).rows[0].active,
+          false,
+        );
+        assert.equal(
+          (
+            await request('/shop/checkout', owner, {
+              character_id: hero.id,
+              idempotency_key: randomUUID(),
+              items: [{ item_id: materialItemId('hide'), quantity: 1 }],
+            })
+          ).status,
+          409,
+        );
+        await seedProfessionCatalog(pool);
+        assert.equal(await count(visitor.id, materialItemId('hide')), before);
+        assert.equal(professionMaterials.length, 25);
       },
     );
     await t.test(
@@ -571,10 +613,8 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         await pool.query('UPDATE "user" SET administrador=0 WHERE id=$1', [admin.id]);
         assert.equal(
           (
-            await request('/professions/projects/' + p.id + '/steps', admin, {
-              revision: p.revision,
+            await request('/professions/projects/' + p.id + '/assist', admin, {
               request_id: randomUUID(),
-              input: solve(p.recipe.steps[0]),
             })
           ).status,
           403,
@@ -586,10 +626,8 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         );
         assert.equal(
           (
-            await request('/professions/projects/' + p.id + '/steps', admin, {
-              revision: p.revision,
+            await request('/professions/projects/' + p.id + '/assist', admin, {
               request_id: randomUUID(),
-              input: solve(p.recipe.steps[0]),
             })
           ).status,
           403,
@@ -598,15 +636,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           'UPDATE profession_administrator_access SET enabled=true WHERE user_id=$1',
           [admin.id],
         );
-        for (const step of target.steps) {
-          const r = await request('/professions/projects/' + p.id + '/steps', admin, {
-            revision: p.revision,
-            request_id: randomUUID(),
-            input: solve(step),
-          });
-          assert.equal(r.status, 200, JSON.stringify(r.data));
-          p = r.data;
-        }
+
         assert.equal(
           (await request('/professions/projects/' + p.id + '/collect', admin, {})).status,
           409,
@@ -691,18 +721,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         );
         const projects = started.map((r) => r.data);
         network = 101;
-        for (let step = 0; step < recipe.steps.length; step++) {
-          const advanced = await Promise.all(
-            projects.map((p, index) =>
-              request('/professions/projects/' + p.id + '/steps', actors[index].who, {
-                revision: step,
-                request_id: randomUUID(),
-                input: solve(recipe.steps[step]),
-              }),
-            ),
-          );
-          assert(advanced.every((r) => r.status === 200));
-        }
+
         await pool.query(
           "UPDATE profession_projects SET ready_at=clock_timestamp()-interval '1 minute' WHERE character_id=ANY($1::uuid[])",
           [actors.map((a) => a.character.id)],
@@ -719,6 +738,454 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           for (const i of recipe.ingredients)
             assert.equal(await count(a.character.id, i.item_id), 0);
         }
+      },
+    );
+    await t.test('raridade, níveis, bônus ×2 e custo das receitas são coerentes', async () => {
+      const tables = defaultProfessionLootTables();
+      assert.equal(tables.length, 100);
+      assert.equal(professionBuffs.length, 48);
+      for (const table of tables) {
+        const probabilities = materialProbabilities(table.entries);
+        assert.equal(
+          probabilities.reduce((n, e) => n + e.chance, 0),
+          100,
+        );
+        for (const e of table.entries)
+          assert(professionMaterialLevel(table.profession_id, e.item_id) <= table.min_level);
+        for (let value = 91; value <= 100; value++)
+          assert.equal(materialOutcome(table.entries, value)?.multiplier, 2);
+        for (let value = 1; value <= 90; value++)
+          assert([undefined, 1].includes(materialOutcome(table.entries, value)?.multiplier));
+        if (table.min_level > 1) {
+          const previous = professionLootTable(
+            tables,
+            table.profession_id,
+            table.min_level === 3 ? 1 : table.min_level === 6 ? 3 : 6,
+          )!;
+          for (const e of previous.entries) {
+            const before = materialProbabilities(previous.entries)
+              .filter((p) => p.item_id === e.item_id)
+              .reduce((n, p) => n + p.chance * p.quantity, 0);
+            const after = probabilities
+              .filter((p) => p.item_id === e.item_id)
+              .reduce((n, p) => n + p.chance * p.quantity, 0);
+            assert(after >= before, table.profession_id + ' ' + table.min_level + ' ' + e.item_id);
+          }
+        }
+      }
+      for (const r of craftRecipes) {
+        const price = (referencePrices as Record<string, number>)[r.output.item_id] ?? 0;
+        if (price >= 1000000) {
+          assert.equal(r.required_level, 10);
+          assert(r.ingredients.some((i) => i.item_id === materialItemId('masterwork-core')));
+        }
+        if (price >= 100000)
+          assert(r.ingredients.some((i) => i.item_id === materialItemId('rare-catalyst')));
+      }
+    });
+    await t.test(
+      'VTT: um d100 por inscrito, nível da profissão, ausentes e entrega somente na conclusão',
+      async () => {
+        network = 5000;
+        await pool.query('UPDATE characters SET sheet_overrides=$2 WHERE id=$1', [
+          visitor.id,
+          JSON.stringify({ proficiencies: ['Kit de herbalismo'] }),
+        ]);
+        await pool.query(
+          'INSERT INTO character_sheets(character_id,choices,rolls,assignment,finalized_at)VALUES($1,$2,$3,$4,now())ON CONFLICT(character_id)DO UPDATE SET choices=excluded.choices,finalized_at=now()',
+          [
+            visitor.id,
+            JSON.stringify(defaultChoices(visitor.race, visitor.class)),
+            JSON.stringify(Array.from({ length: 6 }, () => [4, 4, 4, 4])),
+            JSON.stringify([0, 1, 2, 3, 4, 5]),
+          ],
+        );
+        const second = await createLegacyTestCharacter(owner.id, 'Outra ficha do mesmo jogador');
+        const document = newDocument(randomUUID());
+        const room = (
+          await pool.query(
+            'INSERT INTO vtt_rooms(owner_id,invite,document)VALUES($1,$2,$3)RETURNING id',
+            [master.id, randomUUID(), JSON.stringify(document)],
+          )
+        ).rows[0].id;
+        await pool.query(
+          "INSERT INTO vtt_members(room_id,user_id,role)VALUES($1,$2,'player'),($1,$3,'player'),($1,$4,'spectator')",
+          [room, owner.id, other.id, stranger.id],
+        );
+        const path = '/vtt/rooms/' + room + '/material-rewards';
+        const tables = defaultProfessionLootTables().filter((t) =>
+          ['herbalism', 'smithing'].includes(t.profession_id),
+        );
+        const payload = {
+          request_id: randomUUID(),
+          title: 'Caçada dos artesãos',
+          mission_id: null,
+          character_ids: [hero.id, second.id, visitor.id],
+          tables,
+        };
+        assert.equal((await request(path, undefined)).status, 401);
+        assert.equal((await request(path, owner, payload)).status, 403);
+        assert.equal(
+          (
+            await request(path, master, {
+              ...payload,
+              tables: [
+                {
+                  profession_id: 'herbalism',
+                  min_level: 1,
+                  entries: [{ item_id: materialItemId('arcane'), chance: 1, quantity: 1 }],
+                },
+              ],
+            })
+          ).status,
+          400,
+        );
+        const opened = await Promise.all([
+          request(path, master, payload),
+          request(path, master, payload),
+        ]);
+        assert(
+          opened.every((r) => r.status === 200),
+          JSON.stringify(opened),
+        );
+        assert.equal(opened[0].data.id, opened[1].data.id);
+        const run = opened[0].data;
+        assert.equal(run.roster.length, 2);
+        assert.equal(
+          (await request(path, master, { ...payload, title: 'Outra aventura' })).status,
+          409,
+        );
+        assert.equal(
+          (await request(path, master, { ...payload, request_id: randomUUID() })).status,
+          409,
+        );
+        const rollPath = path + '/' + run.id + '/roll',
+          b = {
+            request_id: randomUUID(),
+            player_id: other.id,
+            character_id: visitor.id,
+            profession_id: 'herbalism',
+          };
+        assert.equal((await request(rollPath, owner, b)).status, 403);
+        assert.equal(
+          (
+            await request(rollPath, stranger, {
+              ...b,
+              player_id: stranger.id,
+              character_id: outsider.id,
+            })
+          ).status,
+          403,
+        );
+        assert.equal(
+          (await request(rollPath, other, { ...b, profession_id: 'smithing' })).status,
+          403,
+        );
+        assert.equal((await request(rollPath, other, { ...b, value: 100 })).status, 400);
+        assert.equal((await request(path + '/presence', other, {})).status, 200);
+        assert.equal((await request(path + '/presence', master, {})).status, 200);
+        assert(
+          (await pool.query('SELECT material_owner_seen_at FROM vtt_rooms WHERE id=$1', [room]))
+            .rows[0].material_owner_seen_at,
+        );
+        assert.equal((await request(rollPath, master, b)).status, 409);
+        const stockBefore = new Map(
+          await Promise.all(
+            professionMaterials.map(
+              async ([id]) =>
+                [materialItemId(id), await count(visitor.id, materialItemId(id))] as const,
+            ),
+          ),
+        );
+        const rolled = await Promise.all([
+          request(rollPath, other, b),
+          request(rollPath, other, { ...b, request_id: randomUUID() }),
+        ]);
+        assert.deepEqual(rolled.map((r) => r.status).sort(), [200, 409]);
+        const result = rolled.find((r) => r.status === 200)!.data;
+        assert.equal(result.profession_level, 1);
+        assert.equal(result.table_level, 1);
+        assert.equal(result.multiplier, result.value >= 91 ? 2 : 1);
+        if (result.item_id) assert(professionMaterialLevel('herbalism', result.item_id) <= 1);
+        assert.equal(
+          (await request(rollPath, other, { ...b, request_id: result.request_id })).status,
+          200,
+        );
+        for (const [id, n] of stockBefore) assert.equal(await count(visitor.id, id), n);
+        assert.equal(
+          (
+            await request(path + '/' + run.id + '/complete', master, {
+              summary: 'Os inscritos concluíram a caçada.',
+            })
+          ).status,
+          409,
+        );
+        const ownBody = {
+          request_id: randomUUID(),
+          player_id: owner.id,
+          character_id: hero.id,
+          profession_id: 'smithing',
+        };
+        const ownRoll = await request(rollPath, master, ownBody);
+        assert.equal(ownRoll.status, 200, JSON.stringify(ownRoll.data));
+        const ownBefore = ownRoll.data.item_id ? await count(hero.id, ownRoll.data.item_id) : 0;
+        assert.equal(
+          (
+            await request(rollPath, master, {
+              ...ownBody,
+              character_id: second.id,
+              request_id: randomUUID(),
+            })
+          ).status,
+          409,
+        );
+        assert.equal(
+          (
+            await request(path + '/' + run.id + '/complete', other, {
+              summary: 'Um jogador não pode concluir a mesa.',
+            })
+          ).status,
+          403,
+        );
+        const completed = await Promise.all([
+          request(path + '/' + run.id + '/complete', master, {
+            summary: 'Os inscritos concluíram a caçada.',
+          }),
+          request(path + '/' + run.id + '/complete', master, {
+            summary: 'Os inscritos concluíram a caçada.',
+          }),
+        ]);
+        assert(
+          completed.every((r) => r.status === 200),
+          JSON.stringify(completed),
+        );
+        if (result.item_id)
+          assert.equal(
+            await count(visitor.id, result.item_id),
+            stockBefore.get(result.item_id)! + result.quantity,
+          );
+        if (ownRoll.data.item_id)
+          assert.equal(
+            await count(hero.id, ownRoll.data.item_id),
+            ownBefore + ownRoll.data.quantity,
+          );
+        assert.equal(
+          (
+            await pool.query(
+              'SELECT count(*)::int n FROM vtt_table_conclusions WHERE reward_id=$1',
+              [run.id],
+            )
+          ).rows[0].n,
+          1,
+        );
+        assert.equal(
+          (
+            await pool.query(
+              'SELECT count(*)::int n FROM vtt_profession_reward_rolls WHERE reward_id=$1 AND granted_at IS NOT NULL',
+              [run.id],
+            )
+          ).rows[0].n,
+          2,
+        );
+        const messages = (
+          await pool.query('SELECT roll FROM vtt_messages WHERE room_id=$1 AND roll IS NOT NULL', [
+            room,
+          ])
+        ).rows;
+        assert.equal(messages.length, 2);
+        assert(messages.every((m) => m.roll.formula === '1d100'));
+        // The same roster is derived from mission inscriptions, not from client recipients.
+        const mission = (
+          await pool.query(
+            "INSERT INTO board_posts(author_id,kind,title,description,location,status,starts_at,mission_rank,difficulty,reward_cp)VALUES($1,'mission','Expedição de ofício','Uma expedição completa para os artesãos.','Teste','active',now(),'Ferro','Moderada',12500)RETURNING id",
+            [master.id],
+          )
+        ).rows[0].id;
+        await pool.query(
+          'INSERT INTO mission_participants(post_id,character_id)VALUES($1,$2),($1,$3),($1,$4)',
+          [mission, hero.id, second.id, visitor.id],
+        );
+        const linked = await request(path, master, {
+          ...payload,
+          request_id: randomUUID(),
+          mission_id: mission,
+          character_ids: [],
+          title: 'Expedição de ofício',
+        });
+        assert.equal(linked.status, 200, JSON.stringify(linked.data));
+        assert.equal(linked.data.roster.length, 2);
+        const summary = {
+          summary: 'A expedição foi concluída com todos os inscritos.',
+          rewards: [hero.id, second.id, visitor.id].map((character_id) => ({ character_id })),
+        };
+        assert.equal(
+          (await request('/board/' + mission + '/complete', master, summary)).status,
+          409,
+        );
+        const goldBefore = (
+          await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [visitor.id])
+        ).rows[0].gold_cp;
+        await pool.query(
+          "UPDATE vtt_members SET last_seen_at=clock_timestamp()-interval '2 minutes' WHERE room_id=$1",
+          [room],
+        );
+        for (const [who, cid, prof] of [
+          [owner.id, hero.id, 'smithing'],
+          [other.id, visitor.id, 'herbalism'],
+        ])
+          assert.equal(
+            (
+              await request(path + '/' + linked.data.id + '/roll', master, {
+                request_id: randomUUID(),
+                player_id: who,
+                character_id: cid,
+                profession_id: prof,
+              })
+            ).status,
+            200,
+          );
+        assert.equal(
+          (
+            await request(path + '/' + linked.data.id + '/complete', master, {
+              summary: summary.summary,
+            })
+          ).status,
+          200,
+        );
+        assert.equal(
+          (await pool.query('SELECT status FROM board_posts WHERE id=$1', [mission])).rows[0]
+            .status,
+          'completed',
+        );
+        assert.equal(
+          (await pool.query('SELECT gold_cp FROM characters WHERE id=$1', [visitor.id])).rows[0]
+            .gold_cp,
+          goldBefore + 12500,
+        );
+        assert.equal(
+          (
+            await request(path, master, {
+              ...payload,
+              request_id: randomUUID(),
+              mission_id: mission,
+            })
+          ).status,
+          409,
+        );
+        await pool.query("UPDATE vtt_members SET role='player' WHERE room_id=$1 AND user_id=$2", [
+          room,
+          stranger.id,
+        ]);
+        const untrained = await request(path, master, {
+          ...payload,
+          request_id: randomUUID(),
+          title: 'Aventura sem ofício habilitado',
+          character_ids: [outsider.id],
+        });
+        assert.equal(untrained.status, 200);
+        const noPrize = await request(path + '/' + untrained.data.id + '/roll', master, {
+          request_id: randomUUID(),
+          player_id: stranger.id,
+          character_id: outsider.id,
+          profession_id: 'no-profession',
+        });
+        assert.equal(noPrize.status, 200, JSON.stringify(noPrize.data));
+        assert.equal(noPrize.data.item_id, null);
+        assert.equal(noPrize.data.profession_level, 0);
+        assert.equal(
+          (
+            await request(path + '/' + untrained.data.id + '/complete', master, {
+              summary: 'Registrada a participação sem materiais habilitados.',
+            })
+          ).status,
+          200,
+        );
+        // Consumable buffs use the existing real-inventory and resource ledger.
+        const scene = document.scenes[0],
+          token = newToken(randomUUID(), scene);
+        token.characterId = visitor.id;
+        token.controller = other.id;
+        token.name = visitor.name;
+        scene.tokens.push(token);
+        await pool.query('UPDATE vtt_rooms SET document=$2 WHERE id=$1', [
+          room,
+          JSON.stringify(document),
+        ]);
+        await pool.query(
+          'INSERT INTO vtt_character_links(room_id,character_id,imported_by)VALUES($1,$2,$3)',
+          [room, visitor.id, other.id],
+        );
+        const sheetPath = '/vtt/rooms/' + room + '/sheets/' + token.id;
+        const initial = (await request(sheetPath, other)).data;
+        const baseSkill = initial.derived.skills.find((s: any) => s.name === 'Investigação').value;
+        await stock(visitor.id, [
+          { item_id: 'craft-support-calligraphy-3', quantity: 2 },
+          { item_id: 'craft-support-calligraphy-6', quantity: 1 },
+        ]);
+        const use = {
+          kind: 'consumable',
+          item_id: 'craft-support-calligraphy-3',
+          idempotency_key: randomUUID(),
+        };
+        assert.equal((await request(sheetPath + '/use', owner, use)).status, 403);
+        const used = await Promise.all([
+          request(sheetPath + '/use', other, use),
+          request(sheetPath + '/use', other, use),
+        ]);
+        assert(
+          used.every((r) => r.status === 200),
+          JSON.stringify(used),
+        );
+        assert.equal(await count(visitor.id, use.item_id), 1);
+        assert.equal(
+          used[0].data.derived.skills.find((s: any) => s.name === 'Investigação').value,
+          baseSkill + 1,
+        );
+        assert.equal(
+          (
+            await request(sheetPath + '/use', other, {
+              kind: 'consumable',
+              item_id: 'craft-support-calligraphy-6',
+              idempotency_key: randomUUID(),
+            })
+          ).status,
+          200,
+        );
+        const after = (await request(sheetPath, other)).data;
+        assert.equal(after.profession_buffs.length, 1);
+        assert.equal(
+          after.derived.skills.find((s: any) => s.name === 'Investigação').value,
+          baseSkill + 2,
+        );
+        const check = { skill: 'Investigação', request_id: randomUUID() };
+        assert.equal(
+          (await request(sheetPath + '/skill-check', other, { ...check, bonus: 99 })).status,
+          400,
+        );
+        assert.equal((await request(sheetPath + '/skill-check', other, check)).status, 200);
+        assert.equal((await request(sheetPath + '/skill-check', other, check)).status, 200);
+        const recorded = (
+          await pool.query('SELECT roll,skill_check FROM vtt_messages WHERE skill_check_key=$1', [
+            check.request_id,
+          ])
+        ).rows;
+        assert.equal(recorded.length, 1);
+        assert.equal(recorded[0].skill_check.profession_bonus, 2);
+        assert.equal(recorded[0].roll.total - recorded[0].roll.dice[0], baseSkill + 2);
+        await pool.query(
+          "UPDATE character_profession_buffs SET started_at=clock_timestamp()-interval '2 hours',expires_at=clock_timestamp()-interval '1 minute' WHERE character_id=$1",
+          [visitor.id],
+        );
+        const expired = { ...check, request_id: randomUUID() };
+        assert.equal((await request(sheetPath + '/skill-check', other, expired)).status, 200);
+        assert.equal(
+          (
+            await pool.query('SELECT skill_check FROM vtt_messages WHERE skill_check_key=$1', [
+              expired.request_id,
+            ])
+          ).rows[0].skill_check.profession_bonus,
+          0,
+        );
       },
     );
   } finally {

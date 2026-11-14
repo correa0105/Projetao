@@ -1,0 +1,155 @@
+[
+  {
+    "id": "forge-bench",
+    "source": "image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: premium medieval fantasy game crafting animation foreground, isolated workstation sprite, landscape 3:2 framing. Create a richly detailed hand-painted realistic fantasy blacksmith workstation: a substantial dark forged steel anvil with a beautifully worn horn pointing right, resting firmly on an old round oak stump wrapped in iron bands. A bright orange heated steel blank lies across the flat anvil face, centered horizontally; its hottest impact spot is at 57 percent of image width and 43 percent of image height. Small restrained bed of glowing coals in a black iron brazier behind the anvil on the left. A few believable tools and metal scale flakes at the base. Make the metal, oak grain, rivets and embers exquisitely textured and physically believable, like premium Baldur-inspired RPG equipment artwork. Three-quarter side view, camera slightly above tabletop, no exaggerated isometric perspective. Warm copper highlights and deep blue-night shadows, dark fantasy atmosphere. Entire workstation fully visible, fills 82 percent of canvas, generous clean transparent padding. Transparent background with clean alpha; no room, no floor rectangle, no character, no hand, no hammer (a separate animated hammer will be layered above), no text, no diagram, no labels, no flat geometry, no interface. This is final game art, not a mockup.",
+    "original": "artwork-archive/profession-actions-20261114/forge-bench.png",
+    "asset": "public/professions/actions-20261114/forge-bench.webp",
+    "bytes": 157414,
+    "sha256": "6fefbff808b001a083f75f897fa74bd909e258a7c6fea85a0c939ca581dde958"
+  },
+  {
+    "id": "smith-hammer",
+    "source": "image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: isolated animated tool sprite for a premium medieval fantasy blacksmith game. Create exactly one realistic artisan blacksmith cross-peen hammer, not a weapon: compact heavy dark steel striking head at upper right, sturdy straight honey-brown hickory handle descending diagonally toward lower left, full tool visible in a square canvas. The main flat striking face points downward/right toward a workpiece. Beautiful hand-painted 3D-like fantasy game art, physically believable steel edges, subtle wear, small forged marks, leather grip at handle end, restrained warm copper edge light and cool dark steel shadows. Crisp silhouette recognizable at 80px. Tool occupies about 80 percent of canvas with generous transparent padding. Transparent background clean alpha. No hand, no person, no ground, no scene, no shadow rectangle, no lettering, no watermark, no magical oversized weapon, no cartoon and no flat vector shapes. Match richly illustrated Alvorada Cinzenta RPG inventory art.",
+    "original": "artwork-archive/profession-actions-20261114/smith-hammer.png",
+    "asset": "public/professions/actions-20261114/smith-hammer.webp",
+    "bytes": 28670,
+    "sha256": "abd0d0d8488052194b1ce1741ee14dcd5671b4fcf2e53ff6e63eb93ab503d10b"
+  },
+  {
+    "id": "mixture-bench",
+    "source": "image_gen",
+    "prompt": "A richly detailed medieval alchemist's compact tabletop apparatus: a broad heavy dark stone mortar centered on an old oak tray, crushed medicinal leaves and pale green liquid inside, copper alembic behind left with glass condenser and a small deep-blue glass vial behind right. Fine clusters of dried herbs, folded linen and tiny amber reagent bottles at the edges. No pestle; a separate moving pestle will be animated above the mortar. The mortar opening is clearly visible at approximately x55 percent y42 percent of the image. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable material textures, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, entire compact workstation grouped in the middle, occupies 82 percent of canvas with transparent padding. Transparent background with clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, no numbers, no watermark, no flat vector shapes. Final high-quality game art, not a diagram.",
+    "original": "artwork-archive/profession-actions-20261114/mixture-bench.png",
+    "asset": "public/professions/actions-20261114/mixture-bench.webp",
+    "bytes": 198256,
+    "sha256": "69412302a2645e55131ebcef4e7f6d10a12ad35dfe4c7f0eacf4ce98a8cc79f5"
+  },
+  {
+    "id": "writing-bench",
+    "source": "image_gen",
+    "prompt": "A beautiful medieval scribe and cartographer's desktop vignette: broad aged ivory parchment spread diagonally across a dark walnut writing board, subtle incomplete ink strokes and a faint hand-drawn route with no readable text. Ornate brass inkwell, small sealing wax stick and a closed leatherbound reference book at the far edges. Main clear parchment working area centered at x55 percent y48 percent. No quill or brush; an animated pen will be layered separately. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable material textures, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, entire compact workstation grouped in the middle, occupies 82 percent of canvas with transparent padding. Transparent background with clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, no numbers, no watermark, no flat vector shapes. Final high-quality game art, not a diagram.",
+    "original": "artwork-archive/profession-actions-20261114/writing-bench.png",
+    "asset": "public/professions/actions-20261114/writing-bench.webp",
+    "bytes": 156958,
+    "sha256": "f72d33078286b7dfe163015a151f40ce275cb498d43de12708c0c7ef69ea1d26"
+  },
+  {
+    "id": "wood-bench",
+    "source": "image_gen",
+    "prompt": "A master artisan's woodcraft workstation: rich honey-brown wooden blank lying firmly in an old walnut bench vise, half-carved flowing ornamental relief with careful chisel marks, fine curling wood shavings along the base, a brass measuring square and a small block of wood at the edges. The carving work area is clearly visible at x56 percent y42 percent. No chisel or hand plane; moving tool will be layered separately. Entire small bench vise and working piece visible. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable material textures, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, entire compact workstation grouped in the middle, occupies 82 percent of canvas with transparent padding. Transparent background with clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, no numbers, no watermark, no flat vector shapes. Final high-quality game art, not a diagram.",
+    "original": "artwork-archive/profession-actions-20261114/wood-bench.png",
+    "asset": "public/professions/actions-20261114/wood-bench.webp",
+    "bytes": 143000,
+    "sha256": "a24444e368f6b673fee85775cbfe1c51b6ea394d91527308f0ceff25352858a8"
+  },
+  {
+    "id": "textile-bench",
+    "source": "image_gen",
+    "prompt": "A detailed medieval tailor and leatherworker's compact work surface: beautiful supple warm-brown leather and deep midnight-blue woven cloth stretched across a dark oak stitching frame, a partially stitched strong copper thread seam across the center, small spools of linen thread, brass thimble and folded material at the edges. Keep the central sewing region clear and visible around x55 percent y45 percent. No sewing needle; the animated needle will be separate. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable material textures, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, entire compact workstation grouped in the middle, occupies 82 percent of canvas with transparent padding. Transparent background with clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, no numbers, no watermark, no flat vector shapes. Final high-quality game art, not a diagram.",
+    "original": "artwork-archive/profession-actions-20261114/textile-bench.png",
+    "asset": "public/professions/actions-20261114/textile-bench.webp",
+    "bytes": 167820,
+    "sha256": "b84288351c789a6168b1eaccf60a9f3517f400fc164cbb8e73a450cfeed3ab7c"
+  },
+  {
+    "id": "precision-bench",
+    "source": "image_gen",
+    "prompt": "An exquisite medieval jeweler and tinker's precision workbench vignette: small ornate dark brass vise gripping an unfinished silver ring with a crimson gem, tiny polished brass cogwheels and copper lock mechanism parts resting on a dark midnight-blue velvet pad. Compact little loupe and small gem fragments at the edges. Clear central work area around x55 percent y43 percent, no moving file or pliers, tools will be added separately. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable materials, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, fully visible compact workstation grouped in middle occupies 82 percent of canvas with transparent padding. Transparent background clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, numbers or watermark, no flat vector shapes. Final richly textured game art.",
+    "original": "artwork-archive/profession-actions-20261114/precision-bench.png",
+    "asset": "public/professions/actions-20261114/precision-bench.webp",
+    "bytes": 186468,
+    "sha256": "af25bcc1d0870f90e28ab3c2fffcd79d72bb6c170a595d381c95c6853682cb98"
+  },
+  {
+    "id": "stone-bench",
+    "source": "image_gen",
+    "prompt": "A medieval stonemason's compact workstation: a beautiful gray limestone block secured by dark wooden braces on a heavy oak base, half-carved ornamental stone relief on the visible top and face, realistic stone chips at the bottom, subtle pale dust on the wood. Clear carving area around x55 percent y40 percent. No chisel or hammer, those will animate separately. Physically substantial stone, beautifully textured. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable materials, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, fully visible compact workstation grouped in middle occupies 82 percent of canvas with transparent padding. Transparent background clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, numbers or watermark, no flat vector shapes. Final richly textured game art.",
+    "original": "artwork-archive/profession-actions-20261114/stone-bench.png",
+    "asset": "public/professions/actions-20261114/stone-bench.webp",
+    "bytes": 162034,
+    "sha256": "a7ee8bdfea94ed6152110c922ec2a3ac4433b5a17654127b454f91691ad149fc"
+  },
+  {
+    "id": "kiln-bench",
+    "source": "image_gen",
+    "prompt": "A richly illustrated medieval ceramic and glass artisan's workstation: a compact brick kiln glowing amber behind-left, an elegant unfinished earthenware bowl on a sturdy dark wood pottery turntable in the foreground-center, two beautiful amber and cobalt glass vessels and a small glass rod behind-right. Tiny ceramic scraps and natural clay textures. Main bowl clearly visible at x55 percent y45 percent. No hands, no separate floating tools. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable materials, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, fully visible compact workstation grouped in middle occupies 82 percent of canvas with transparent padding. Transparent background clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, numbers or watermark, no flat vector shapes. Final richly textured game art.",
+    "original": "artwork-archive/profession-actions-20261114/kiln-bench.png",
+    "asset": "public/professions/actions-20261114/kiln-bench.webp",
+    "bytes": 162984,
+    "sha256": "c150cd1ce90c3ad560e5885c9bccc6dfd9bf83e33ae3e58b24abca379a6282d1"
+  },
+  {
+    "id": "cooking-bench",
+    "source": "image_gen",
+    "prompt": "A premium medieval cook's compact hearth workbench vignette: a deep heavy black cast-iron cooking pot centered on a low rustic stone hearth with a restrained warm glow below, rich broth and colorful chopped vegetables visible inside, a few fragrant herb bunches, grain sack and folded linen at the edges. Clear open pot surface at x55 percent y40 percent. No spoon or ladle; an animated ladle will be layered separately. Premium hand-painted 3D-like medieval fantasy game workstation sprite, exquisite believable materials, warm copper highlights and cool blue-night shadows, matching Alvorada Cinzenta illustrated RPG equipment. Slightly elevated three-quarter side view. Landscape 3:2 framing, fully visible compact workstation grouped in middle occupies 82 percent of canvas with transparent padding. Transparent background clean alpha, no room or rectangular floor, no person or hands, no UI, no letters, numbers or watermark, no flat vector shapes. Final richly textured game art.",
+    "original": "artwork-archive/profession-actions-20261114/cooking-bench.png",
+    "asset": "public/professions/actions-20261114/cooking-bench.webp",
+    "bytes": 204438,
+    "sha256": "acf1a869d92d78c22f6fed2a939bdde0843ef82d9be38467524a73e4d8383482"
+  },
+  {
+    "id": "pestle",
+    "source": "image_gen",
+    "prompt": "A beautifully worn dark granite herbalist's pestle, handle at upper left, broad rounded grinding end at lower right; a simple solid physically believable stone tool, small traces of crushed herbs at the rounded end. One single isolated artisan tool sprite for a richly illustrated medieval fantasy crafting game, square composition with entire tool visible, generous transparent padding, realistic hand-painted 3D-like RPG equipment quality, beautiful detailed materials, warm copper edge light, cool blue-night shadows. Transparent background with clean alpha, no hand or person, no workstation, no ground, no text or watermark, no line art, no flat geometry. Fill 80 percent of the canvas. This tool will be animated above a separate workstation.",
+    "original": "artwork-archive/profession-actions-20261114/pestle.png",
+    "asset": "public/professions/actions-20261114/pestle.webp",
+    "bytes": 46598,
+    "sha256": "8073ea550d8d1e2a7ef41249ebec15979407997634e0144fc2ef8593a748a2c7"
+  },
+  {
+    "id": "quill",
+    "source": "image_gen",
+    "prompt": "An elegant warm ivory feather quill with a slender brass nib at lower left and feather plume extending toward upper right. Beautiful realistic feather barbs, copper binding and a fine dark ink nib. No ink bottle. One single isolated artisan tool sprite for a richly illustrated medieval fantasy crafting game, square composition with entire tool visible, generous transparent padding, realistic hand-painted 3D-like RPG equipment quality, beautiful detailed materials, warm copper edge light, cool blue-night shadows. Transparent background with clean alpha, no hand or person, no workstation, no ground, no text or watermark, no line art, no flat geometry. Fill 80 percent of the canvas. This tool will be animated above a separate workstation.",
+    "original": "artwork-archive/profession-actions-20261114/quill.png",
+    "asset": "public/professions/actions-20261114/quill.webp",
+    "bytes": 45864,
+    "sha256": "1a4674e63dc728288065870b49b0d60e06f71a6781282b44d8a91d3d883f22c1"
+  },
+  {
+    "id": "carving-chisel",
+    "source": "image_gen",
+    "prompt": "An artisan's small wood and stone carving chisel: sturdy dark honey-brown oak handle at upper left, ferrule and sharp flat beveled steel blade extending toward lower right. Crisp believable cutting edge, fine grain and subtle wear. One single isolated artisan tool sprite for a richly illustrated medieval fantasy crafting game, square composition with entire tool visible, generous transparent padding, realistic hand-painted 3D-like RPG equipment quality, beautiful detailed materials, warm copper edge light, cool blue-night shadows. Transparent background with clean alpha, no hand or person, no workstation, no ground, no text or watermark, no line art, no flat geometry. Fill 80 percent of the canvas. This tool will be animated above a separate workstation.",
+    "original": "artwork-archive/profession-actions-20261114/carving-chisel.png",
+    "asset": "public/professions/actions-20261114/carving-chisel.webp",
+    "bytes": 31592,
+    "sha256": "a076e0aae848f947937a05d05a12778b747d66ee4fbaab5a77612da15ee7ee94"
+  },
+  {
+    "id": "sewing-needle",
+    "source": "image_gen",
+    "prompt": "A medieval artisan's long polished steel sewing needle angled from upper right to lower left, clearly visible eye near upper right with a single warm copper-brown linen thread loop elegantly curving behind. The sharp working tip points lower left. Make the single needle readable at small scale with delicate restrained metallic highlights. One single isolated artisan tool sprite for a richly illustrated medieval fantasy crafting game, square composition with entire tool visible, generous transparent padding, realistic hand-painted 3D-like RPG equipment quality, beautiful detailed materials, warm copper edge light, cool blue-night shadows. Transparent background with clean alpha, no hand or person, no workstation, no ground, no text or watermark, no line art, no flat geometry. Fill 80 percent of the canvas. This tool will be animated above a separate workstation.",
+    "original": "artwork-archive/profession-actions-20261114/sewing-needle.png",
+    "asset": "public/professions/actions-20261114/sewing-needle.webp",
+    "bytes": 72056,
+    "sha256": "2c5af917e2483328e173be9ead7196265c53316615ee5a0b5ad15dac399b7251"
+  },
+  {
+    "id": "fine-file",
+    "source": "image_gen",
+    "prompt": "A finely crafted jeweler's small precision metal file, short walnut handle at upper left and long narrow textured steel file shaft pointing toward lower right; delicate parallel teeth on working surface, brass ferrule, believable handcrafted tool, no knife edge. Exactly one isolated artisan tool, square composition, entire tool fully visible with transparent padding, premium richly detailed hand-painted 3D-like medieval fantasy RPG inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta art. Realistic beautiful materials and believable proportions. Transparent background clean alpha. No hand, person, workbench, background, ground, letters, labels, watermark, diagram or vector shapes. Tool fills 80 percent of square.",
+    "original": "artwork-archive/profession-actions-20261114/fine-file.png",
+    "asset": "public/professions/actions-20261114/fine-file.webp",
+    "bytes": 27050,
+    "sha256": "4f94cbe0fb6af25dc2346c9f975d91abc5117e3573c4a6f8b3c31a712ee1855b"
+  },
+  {
+    "id": "ladle",
+    "source": "image_gen",
+    "prompt": "A medieval cook's long-handled ladle, elegant worn honey-brown wood handle at upper left curving down toward a deep round dark iron ladle cup at lower right. Subtle polished wear and a restrained copper highlight, no food or liquid. Exactly one isolated artisan tool, square composition, entire tool fully visible with transparent padding, premium richly detailed hand-painted 3D-like medieval fantasy RPG inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta art. Realistic beautiful materials and believable proportions. Transparent background clean alpha. No hand, person, workbench, background, ground, letters, labels, watermark, diagram or vector shapes. Tool fills 80 percent of square.",
+    "original": "artwork-archive/profession-actions-20261114/ladle.png",
+    "asset": "public/professions/actions-20261114/ladle.webp",
+    "bytes": 27694,
+    "sha256": "bfd949879d5b067b44a0eea940930e23df297f5d62d38777df25115f9df8a16b"
+  },
+  {
+    "id": "brush",
+    "source": "image_gen",
+    "prompt": "An artisan painter's fine pointed brush, slender worn walnut handle extending toward upper right, small brass ferrule and a soft tapered bristle tip pointing lower left with a trace of warm reddish ochre pigment. Beautiful visible natural bristles, no palette or paint pot. Exactly one isolated artisan tool, square composition, entire tool fully visible with transparent padding, premium richly detailed hand-painted 3D-like medieval fantasy RPG inventory illustration matching warm copper, parchment and blue-night Alvorada Cinzenta art. Realistic beautiful materials and believable proportions. Transparent background clean alpha. No hand, person, workbench, background, ground, letters, labels, watermark, diagram or vector shapes. Tool fills 80 percent of square.",
+    "original": "artwork-archive/profession-actions-20261114/brush.png",
+    "asset": "public/professions/actions-20261114/brush.webp",
+    "bytes": 18028,
+    "sha256": "477b1070911adfbf8be2c80b5495f7f40e830555bff7e92eebddbf7d0d02e591"
+  }
+]

@@ -35,6 +35,7 @@ import { fightingStyles } from '../shared/fighting-styles.js';
 import { warforgedArtMode } from '../shared/warforged-appearance.js';
 import { MISSION_THRESHOLDS } from '../shared/progression.js';
 import { modifier } from '../shared/rules.js';
+import {activeProfessionBuffs,withProfessionBuffs} from './profession-buffs.js';
 
 async function owned(client: Pick<PoolClient, 'query'>, id: string, userId: string, lock = false) {
   const {
@@ -68,7 +69,7 @@ async function result(id: string, user: string) {
         choices: seedAdvancement(c.class, sheet.choices, sheet.prepared, sheet.slots_used),
       }
     : sheet;
-  const derived = normalized?.finalized_at ? deriveSheet(c, normalized.choices) : null;
+  const derived = withProfessionBuffs(normalized?.finalized_at ? deriveSheet(c, normalized.choices) : null,await activeProfessionBuffs(pool,id));
   const aliases: Record<string, string> = {
     'Duas adagas': 'Adaga',
     'Cinco adagas': 'Adaga',

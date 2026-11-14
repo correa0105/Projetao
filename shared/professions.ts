@@ -1,4 +1,5 @@
 import { extendProfessionRecipes } from './profession-advanced';
+import {expandProfessionCatalog} from './profession-expansion';
 export type WorkshopStep =
   | {
       kind: 'balance';
@@ -76,6 +77,8 @@ export type Profession = {
   recipes: CraftRecipe[];
 };
 export const professionMaterials = [
+  ['rare-catalyst','Catalisador raro de ofício','Componente raro de aventuras para peças valiosas e preparos superiores. Exige ofício de nível 6; sua chance no d100 é reduzida.'],
+  ['masterwork-core','Núcleo de obra-prima','Componente excepcional para criações de grande valor. Exige ofício de nível 10 e tem uma chance muito baixa de obtenção.'],
   [
     'arcane',
     'Essência arcana',
@@ -889,6 +892,7 @@ export const professions: Profession[] = [
   ),
 ];
 extendProfessionRecipes(professions);
+expandProfessionCatalog(professions);
 export const craftRecipes = professions.flatMap((p) => p.recipes);
 export function professionUnlocked(profession: Profession, proficiencies: readonly string[]) {
   return profession.tools.some((tool) => proficiencies.includes(tool));
@@ -997,8 +1001,13 @@ export type CraftProject = {
   ready_at: string;
   created_at: string;
   claimed_at: string | null;
+  last_assisted_at?: string | null;
+  assist_count?: number;
+  seconds_saved?: number;
 };
 export type ProfessionInventoryItem = {
+  description?:string;
+  category?:string;
   id: string;
   name: string;
   image_path: string | null;

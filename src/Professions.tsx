@@ -3,585 +3,64 @@ import { ArrowLeft, ArrowRight, Check, Clock3, LockKeyhole, Search, Users, X } f
 import { api, post } from './api';
 import {
   professions,
-  professionMaterials,
-  materialItemId,
   professionMaterialIds,
   professionUnlocked,
-  validWorkshopInput,
   type Profession,
   type CraftRecipe,
-  type CraftProject,
   type ProfessionState,
-  type WorkshopStep,
-  type WorkshopInput,
 } from '../shared/professions';
 import type { Character, Page } from './types';
 import './professions.css';
-import { AdvancedWorkshop } from './ProfessionMechanics';
+import { ProfessionProduction } from './ProfessionProduction';
+import { ProfessionRecipeDetails } from './ProfessionRecipeDetails';
 import { professionItemArtwork } from '../shared/profession-art';
 import { professionProgress } from '../shared/profession-progression';
 
-const nodes = [
-  'Ruínas',
-  'Colina',
-  'Torre',
-  'Ponte',
-  'Bosque',
-  'Lago',
-  'Acampamento',
-  'Pedreira',
-  'Clareira',
-];
-const point = (index: number) => ({
-  x: 100 + (index % 3) * 180,
-  y: 55 + Math.floor(index / 3) * 86,
-});
 function timeLeft(date: string, now: number) {
   const minutes = Math.max(0, Math.ceil((Date.parse(date) - now) / 60000));
   return minutes ? `${Math.floor(minutes / 60)} h ${minutes % 60} min` : 'Pronto para recolher';
 }
-function Workshop(props: {
-  step: WorkshopStep;
-  disabled: boolean;
-  busy: boolean;
-  submit: (input: WorkshopInput) => void;
-}) {
-  const { step } = props;
-  return step.kind === 'balance' || step.kind === 'assembly' || step.kind === 'trace' ? (
-    <AdvancedWorkshop {...props} step={step} />
-  ) : (
-    <BasicWorkshop {...props} step={step} />
-  );
-}
-function BasicWorkshop({
-  step,
-  disabled,
-  busy,
-  submit,
-}: {
-  step: Extract<WorkshopStep, { kind: 'dial' | 'order' | 'pattern' | 'map' }>;
-  disabled: boolean;
-  busy: boolean;
-  submit: (input: WorkshopInput) => void;
-}) {
-  const [value, setValue] = useState(50),
-    [points, setPoints] = useState<number[]>([]);
-  const input: WorkshopInput = step.kind === 'dial' ? { value } : { points };
-  const matches = validWorkshopInput(step, input);
-  const toggle = (index: number) =>
-    setPoints((current) =>
-      step.kind === 'pattern'
-        ? current.includes(index)
-          ? current.filter((i) => i !== index)
-          : [...current, index]
-        : current.includes(index)
-          ? current
-          : [...current, index],
-    );
-  const lines = points.map((index) => point(index));
-  return (
-    <div className="pf-workshop" data-workshop-kind={step.kind}>
-      <div className="pf-step-heading">
-        <span className="pf-kicker">NA BANCADA</span>
-        <h3>{step.title}</h3>
-        <p>{step.instruction}</p>
-      </div>
-      <div className={'pf-work-surface pf-visual-' + step.visual}>
-        <svg className="pf-work-svg" viewBox="0 0 600 310" role="img" aria-label={step.title}>
-          <defs>
-            <linearGradient id="pf-brass">
-              <stop stopColor="#715234" />
-              <stop offset=".5" stopColor="#d9ad70" />
-              <stop offset="1" stopColor="#755136" />
-            </linearGradient>
-            <radialGradient id="pf-heat">
-              <stop stopColor="#ffe0a1" />
-              <stop offset=".45" stopColor="#ce7438" />
-              <stop offset="1" stopColor="#5c3027" />
-            </radialGradient>
-          </defs>
-          <path d="M28 280H572M24 290H576" stroke="#8d6543" opacity=".45" />
-          {step.kind === 'dial' && (
-            <>
-              {step.visual === 'heat' ? (
-                <>
-                  <path d="M164 249 210 210H390L440 249Z" fill="#373633" stroke="#8b8070" />
-                  <path d="M185 207H415L450 174H210Z" fill="url(#pf-brass)" />
-                  <rect
-                    x="242"
-                    y="151"
-                    width="130"
-                    height="26"
-                    rx="8"
-                    fill="url(#pf-heat)"
-                    style={{ opacity: 0.35 + value / 150 }}
-                  />
-                  <path
-                    d="M282 130Q253 100 290 70Q278 103 304 91Q332 122 307 139"
-                    fill="#d79752"
-                    opacity={value / 100}
-                  />
-                </>
-              ) : ['mixture', 'pressure'].includes(step.visual) ? (
-                <>
-                  <path
-                    d="M270 45H330V114L387 226Q394 256 362 260H238Q206 256 213 226L270 114Z"
-                    fill="#96b5bd16"
-                    stroke="#9db2b5"
-                    strokeWidth="3"
-                  />
-                  <path
-                    d={`M225 ${242 - value}Q300 ${260 - value} 375 ${242 - value}L378 231Q386 249 358 250H242Q216 249 222 231Z`}
-                    fill="#b88b6190"
-                  />
-                  <path d="M278 54H322M262 120H339" stroke="#c8ac80" strokeWidth="4" />
-                  {[0, 1, 2].map((n) => (
-                    <circle
-                      key={n}
-                      cx={270 + n * 28}
-                      cy={210 - value / 2 - n * 12}
-                      r={4 + n}
-                      fill="#e8d9bb"
-                      opacity=".6"
-                    />
-                  ))}
-                </>
-              ) : ['tension', 'tuning'].includes(step.visual) ? (
-                <>
-                  <path
-                    d="M188 69Q300 10 412 69V216Q300 281 188 216Z"
-                    fill="#6e4c2b"
-                    stroke="#bd925b"
-                    strokeWidth="3"
-                  />
-                  {[0, 1, 2, 3, 4].map((n) => (
-                    <path
-                      key={n}
-                      d={`M${240 + n * 30} 57Q${240 + n * 30 + (value - 50) / 3} 147 ${240 + n * 30} 244`}
-                      fill="none"
-                      stroke="#d9c49a"
-                      strokeWidth="2"
-                    />
-                  ))}
-                </>
-              ) : step.visual === 'compass' ? (
-                <>
-                  <circle
-                    cx="300"
-                    cy="150"
-                    r="98"
-                    fill="#1e292d"
-                    stroke="url(#pf-brass)"
-                    strokeWidth="9"
-                  />
-                  <path d="M300 65V235M215 150H385" stroke="#bd9c62" />
-                  <g transform={`rotate(${(value - 50) * 2} 300 150)`}>
-                    <path d="M300 75 316 150 300 225 284 150Z" fill="#bd9462" />
-                    <path d="M300 75 316 150H284Z" fill="#d4d4c2" />
-                  </g>
-                </>
-              ) : (
-                <>
-                  <rect
-                    x="145"
-                    y="77"
-                    width="310"
-                    height="145"
-                    rx="12"
-                    fill="#765635"
-                    stroke="#c8a470"
-                    strokeWidth="2"
-                  />
-                  <path d="M168 113H432M168 185H432" stroke="#30251e" opacity=".6" />
-                  <path d={`M${165 + value * 2.7} 52V248`} stroke="#e2ba76" strokeWidth="4" />
-                  <path d="M300 65V235" stroke="#dac7a1" strokeDasharray="5 8" />
-                </>
-              )}
-              <text x="300" y="294" textAnchor="middle" fill="#e8d9bc" fontSize="15">
-                {value}
-                {step.unit} · alvo {step.target}
-                {step.unit}
-              </text>
-            </>
-          )}
-          {step.kind === 'pattern' && (
-            <>
-              <rect
-                x="55"
-                y="24"
-                width="485"
-                height="250"
-                rx={step.visual === 'gem' ? 60 : 15}
-                fill={['hide', 'sole', 'mask'].includes(step.visual) ? '#76553c' : '#544a37'}
-                stroke="#b49665"
-                strokeWidth="2"
-              />
-              {Array.from({ length: 9 }, (_, i) => {
-                const p = point(i);
-                return (
-                  <g key={i}>
-                    <circle
-                      cx={p.x}
-                      cy={p.y + 12}
-                      r="17"
-                      fill={points.includes(i) ? '#c6a06a' : '#292a26'}
-                      stroke={points.includes(i) ? '#f2dcad' : '#8b8169'}
-                      strokeWidth="2"
-                    />
-                    <text
-                      x={p.x}
-                      y={p.y + 18}
-                      textAnchor="middle"
-                      fill={points.includes(i) ? '#211c15' : '#d0c5ac'}
-                      fontSize="15"
-                    >
-                      {i + 1}
-                    </text>
-                  </g>
-                );
-              })}
-            </>
-          )}
-          {step.kind === 'map' && (
-            <>
-              <rect x="32" y="16" width="535" height="275" rx="10" fill="#c5af7e" />
-              <path
-                d="M80 20Q150 140 254 160T340 290"
-                fill="none"
-                stroke="#738f99"
-                strokeWidth="13"
-                opacity=".6"
-              />
-              <path
-                d="M340 50 365 22 390 50M390 70 423 30 453 70M365 80 392 48 416 80"
-                fill="#8d8966"
-              />
-              {lines.length > 1 && (
-                <polyline
-                  points={lines.map((p) => `${p.x},${p.y}`).join(' ')}
-                  fill="none"
-                  stroke="#764627"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              )}
-              {nodes.map((label, i) => {
-                const p = point(i);
-                return (
-                  <g key={i}>
-                    <circle
-                      cx={p.x}
-                      cy={p.y}
-                      r="12"
-                      fill={points.includes(i) ? '#a55d32' : '#485a4a'}
-                    />
-                    <text x={p.x} y={p.y + 28} textAnchor="middle" fill="#302a20" fontSize="12">
-                      {label}
-                    </text>
-                  </g>
-                );
-              })}
-            </>
-          )}
-          {step.kind === 'order' && (
-            <>
-              <rect
-                x="48"
-                y="78"
-                width="502"
-                height="152"
-                rx="14"
-                fill="#4a3829"
-                stroke="#9d7b4e"
-              />
-              {step.tiles.map((_, index) => (
-                <g key={index}>
-                  <rect
-                    x={65 + index * (460 / step.tiles.length)}
-                    y="113"
-                    width={440 / step.tiles.length}
-                    height="85"
-                    rx="5"
-                    fill={points[index] === undefined ? '#282821' : '#8d6c42'}
-                    stroke="#ae8b59"
-                  />
-                  <text
-                    x={65 + index * (460 / step.tiles.length) + 220 / step.tiles.length}
-                    y="159"
-                    textAnchor="middle"
-                    fill="#f0ddba"
-                    fontSize="13"
-                  >
-                    {points[index] === undefined ? index + 1 : step.tiles[points[index]]}
-                  </text>
-                </g>
-              ))}
-            </>
-          )}
-        </svg>
-        {step.kind === 'dial' ? (
-          <div className="pf-adjustment">
-            <label htmlFor="pf-adjust">
-              {step.title}
-              <output>
-                {value}
-                {step.unit}
-              </output>
-            </label>
-            <div className="pf-dial-track">
-              <span
-                style={{
-                  left: `${step.target - step.tolerance}%`,
-                  width: `${step.tolerance * 2}%`,
-                }}
-              />
-              <input
-                id="pf-adjust"
-                aria-label={step.title}
-                type="range"
-                min="0"
-                max="100"
-                value={value}
-                disabled={disabled || busy}
-                onChange={(e) => setValue(Number(e.target.value))}
-              />
-            </div>
-            <small>
-              Faixa desejada: {step.target - step.tolerance}–{step.target + step.tolerance}
-              {step.unit}
-            </small>
-          </div>
-        ) : (
-          <>
-            <div className="pf-pattern-reference">
-              <strong>
-                {step.kind === 'map' ? 'Percurso' : step.kind === 'pattern' ? 'Molde' : 'Sequência'}
-              </strong>
-              <span>
-                {step.kind === 'map'
-                  ? step.target.map((i) => nodes[i]).join(' → ')
-                  : step.kind === 'pattern'
-                    ? step.target.map((i) => i + 1).join(' · ')
-                    : step.tiles.join(' → ')}
-              </span>
-            </div>
-            <div className={'pf-points ' + (step.kind === 'pattern' ? 'pf-grid-points' : '')}>
-              {(step.kind === 'order'
-                ? [...step.tiles.keys()].reverse()
-                : Array.from({ length: 9 }, (_, i) => i)
-              ).map((i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-pressed={points.includes(i)}
-                  disabled={disabled || busy || (step.kind !== 'pattern' && points.includes(i))}
-                  onClick={() => toggle(i)}
-                >
-                  {step.kind === 'map' ? nodes[i] : step.kind === 'order' ? step.tiles[i] : i + 1}
-                  {points.includes(i) && <Check size={14} />}
-                </button>
-              ))}
-            </div>
-            <button
-              className="pf-reset"
-              disabled={disabled || busy || !points.length}
-              onClick={() => setPoints([])}
-            >
-              Recomeçar esta etapa
-            </button>
-          </>
-        )}
-      </div>
-      <div className="pf-work-actions">
-        <span>
-          {matches ? (
-            <>
-              <Check size={16} /> Ajuste pronto
-            </>
-          ) : (
-            'Siga a referência em dourado'
-          )}
-        </span>
-        <button
-          className="button pf-primary"
-          disabled={disabled || busy || !matches}
-          onClick={() => submit(input)}
-        >
-          {busy ? 'Registrando…' : 'Confirmar etapa'}
-          <ArrowRight size={16} />
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function MaterialDelivery({
   rooms,
-  onChanged,
 }: {
   rooms: ProfessionState['rooms'];
   onChanged: () => Promise<void>;
 }) {
-  const [room, setRoom] = useState(rooms[0]?.id ?? ''),
-    [people, setPeople] = useState<{ id: string; name: string; player_name: string }[]>([]),
-    [recipient, setRecipient] = useState(''),
-    [material, setMaterial] = useState(materialItemId('hide')),
-    [quantity, setQuantity] = useState(1),
-    [reason, setReason] = useState(''),
-    [busy, setBusy] = useState(false),
-    [notice, setNotice] = useState('');
-  const request = useRef<string | null>(null);
-  useEffect(() => {
-    let active = true;
-    setRecipient('');
-    void api<typeof people>('/professions/rooms/' + room + '/characters')
-      .then((rows) => {
-        if (active) {
-          setPeople(rows);
-          setRecipient(rows[0]?.id ?? '');
-        }
-      })
-      .catch((e) => {
-        if (active) setNotice(e.message);
-      });
-    return () => {
-      active = false;
-    };
-  }, [room]);
-  async function deliver() {
-    if (busy) return;
-    setBusy(true);
-    setNotice('');
-    request.current ??= crypto.randomUUID();
-    try {
-      await post('/professions/material-grants', {
-        room_id: room,
-        character_id: recipient,
-        material_id: material,
-        quantity,
-        reason,
-        request_id: request.current,
-      });
-      request.current = null;
-      setReason('');
-      setNotice('Material entregue à mochila e registrado na mesa.');
-      await onChanged();
-    } catch (e) {
-      setNotice((e as Error).message);
-    } finally {
-      setBusy(false);
-    }
-  }
-  const edit = () => {
-    request.current = null;
-  };
+  const [room, setRoom] = useState(rooms[0]?.id ?? '');
   return (
-    <section className="pf-delivery" aria-label="Entregas de mesa">
-      <div className="pf-kicker">
-        <Users size={16} /> MESTRE DA MESA
-      </div>
-      <h2>O que a aventura trouxe?</h2>
-      <p>Registre os materiais obtidos pelos personagens nas mesas que você conduz.</p>
-      <div className="pf-delivery-fields">
-        <label>
-          Mesa
-          <select
-            value={room}
-            onChange={(e) => {
-              setRoom(e.target.value);
-              edit();
-            }}
-            disabled={busy}
-          >
-            {rooms.map((r) => (
-              <option key={r.id} value={r.id}>
-                {r.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Personagem participante
-          <select
-            value={recipient}
-            onChange={(e) => {
-              setRecipient(e.target.value);
-              edit();
-            }}
-            disabled={busy}
-          >
-            {people.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.name} · {p.player_name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Material
-          <select
-            value={material}
-            onChange={(e) => {
-              setMaterial(e.target.value);
-              edit();
-            }}
-            disabled={busy}
-          >
-            {professionMaterials.map(([id, name]) => (
-              <option key={id} value={materialItemId(id)}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Quantidade
-          <input
-            type="number"
-            min="1"
-            max="99"
-            value={quantity}
-            onChange={(e) => {
-              setQuantity(e.target.valueAsNumber);
-              edit();
-            }}
-            disabled={busy}
-          />
-        </label>
-        <label className="pf-delivery-reason">
-          Origem na aventura
-          <textarea
-            value={reason}
-            maxLength={500}
-            placeholder="Ex.: couro recolhido após a caçada no Vale do Carvalho."
-            onChange={(e) => {
-              setReason(e.target.value);
-              edit();
-            }}
-            disabled={busy}
-          />
-        </label>
-      </div>
+    <section className="pf-delivery">
+      <span className="pf-kicker">MATERIAIS DA AVENTURA</span>
+      <h2>Uma descoberta para cada ofício</h2>
+      <p>
+        No VTT, o mestre vincula a missão ou prepara a mesa temática. Cada jogador inscrito tem um
+        d100, com materiais do seu ofício e nível. Resultados 91–100 podem render o dobro.
+      </p>
+      <p>
+        O resultado fica reservado. A mochila só recebe os materiais quando o mestre registra a
+        conclusão da mesa.
+      </p>
+      <label>
+        Mesa
+        <select value={room} onChange={(e) => setRoom(e.target.value)}>
+          {rooms.map((r) => (
+            <option key={r.id} value={r.id}>
+              {r.name}
+            </option>
+          ))}
+        </select>
+      </label>
       <button
         className="button pf-primary"
-        disabled={
-          busy ||
-          !recipient ||
-          reason.trim().length < 5 ||
-          !Number.isInteger(quantity) ||
-          quantity < 1 ||
-          quantity > 99
-        }
-        onClick={() => void deliver()}
+        disabled={!room}
+        onClick={() => {
+          window.location.hash = 'vtt?room=' + room;
+        }}
       >
-        {busy ? 'Registrando…' : 'Registrar entrega'}
+        Abrir o VTT
       </button>
-      {notice && <p role="status">{notice}</p>}
     </section>
   );
 }
-
 export function Professions({
   character,
   onChanged,
@@ -594,6 +73,7 @@ export function Professions({
   const [state, setState] = useState<ProfessionState>(),
     [selected, setSelected] = useState<string | null>(null),
     [recipeId, setRecipeId] = useState(''),
+    [recipeSearch, setRecipeSearch] = useState(''),
     [query, setQuery] = useState(''),
     [mine, setMine] = useState(false),
     [deliveries, setDeliveries] = useState(false),
@@ -646,13 +126,17 @@ export function Professions({
   const active = state?.projects.find((p) => !p.claimed_at);
   const current = active?.profession_id === selected ? active : undefined;
   const recipe =
-    current?.recipe ?? profession?.recipes.find((r) => r.id === recipeId) ?? profession?.recipes[0];
+    (current?.recipe.id === recipeId ? current.recipe : undefined) ??
+    profession?.recipes.find((r) => r.id === recipeId) ??
+    current?.recipe ??
+    profession?.recipes[0];
   const recipeUnlocked =
     unlocked && (administrator || craftingProgress.level >= (recipe?.required_level ?? 1));
   const now = state ? Date.parse(state.server_time) + Math.max(0, tick - received) : tick;
   function open(p: Profession) {
     setSelected(p.id);
-    setRecipeId(p.recipes[0].id);
+    setRecipeId(active?.profession_id === p.id ? active.recipe_id : p.recipes[0].id);
+    setRecipeSearch('');
     setDeliveries(false);
     setError('');
     setNotice('');
@@ -665,8 +149,8 @@ export function Professions({
     }
     return value;
   }
-  async function act(kind: 'start' | 'step' | 'collect', input?: WorkshopInput) {
-    if (locked.current || !character || !profession || !recipe) return;
+  async function act(kind: 'start' | 'assist' | 'collect') {
+    if (locked.current || !character || !profession || !recipe) return false;
     locked.current = true;
     setBusy(true);
     setError('');
@@ -680,11 +164,9 @@ export function Professions({
           recipe_id: recipe.id,
           request_id: key(operation),
         });
-      else if (kind === 'step' && current)
-        await post('/professions/projects/' + current.id + '/steps', {
-          revision: current.revision,
+      else if (kind === 'assist' && current)
+        await post('/professions/projects/' + current.id + '/assist', {
           request_id: key(operation),
-          input,
         });
       else if (kind === 'collect' && current)
         await post('/professions/projects/' + current.id + '/collect', {});
@@ -692,10 +174,12 @@ export function Professions({
       await reload();
       if (kind === 'collect')
         setNotice(`Criação na mochila. +${recipe.experience ?? 20} EXP em ${profession.name}.`);
-      if (kind !== 'step') void onChanged().catch(() => {});
+      if (kind !== 'assist') void onChanged().catch(() => {});
+      return true;
     } catch (e) {
       setError((e as Error).message);
       await reload().catch(() => {});
+      return false;
     } finally {
       locked.current = false;
       setBusy(false);
@@ -864,46 +348,84 @@ export function Professions({
                 <span className="pf-kicker">LIVRO DA OFICINA</span>
                 <h2>O que vamos criar?</h2>
                 <p>{profession.description}</p>
-                {profession.recipes.map((r) => {
-                  const item = state?.inventory.find((i) => i.id === r.output.item_id);
-                  return (
-                    <button
-                      key={r.id}
-                      className={'pf-recipe ' + (recipe?.id === r.id ? 'is-selected' : '')}
-                      onClick={() => setRecipeId(r.id)}
-                      disabled={!!current}
-                      aria-pressed={recipe?.id === r.id}
-                    >
-                      <img
-                        className="pf-object-icon"
-                        src={professionItemArtwork(
-                          r.output.item_id,
-                          item?.image_path,
-                          profession.badge,
-                        )}
-                        alt=""
-                      />
-                      <span>
-                        <strong>{r.name}</strong>
-                        <small>
-                          {r.output.quantity > 1 ? r.output.quantity + ' unidades · ' : ''}
-                          {r.hours} h de produção
-                        </small>
-                        <small
-                          className={
-                            'pf-recipe-level ' +
-                            (!administrator && craftingProgress.level < (r.required_level ?? 1)
-                              ? 'is-locked'
-                              : '')
-                          }
+                <label className="pf-recipe-search">
+                  Encontrar uma receita
+                  <input
+                    aria-label="Buscar receitas"
+                    placeholder="Nome do item…"
+                    value={recipeSearch}
+                    onChange={(e) => setRecipeSearch(e.target.value)}
+                  />
+                </label>
+                <div className="pf-recipe-list" aria-label="Lista de receitas">
+                  {profession.recipes
+                    .filter((r) =>
+                      r.name
+                        .normalize('NFD')
+                        .replace(/\p{Diacritic}/gu, '')
+                        .toLocaleLowerCase('pt-BR')
+                        .includes(
+                          recipeSearch
+                            .normalize('NFD')
+                            .replace(/\p{Diacritic}/gu, '')
+                            .toLocaleLowerCase('pt-BR'),
+                        ),
+                    )
+                    .map((r) => {
+                      const item = state?.inventory.find((i) => i.id === r.output.item_id);
+                      return (
+                        <button
+                          key={r.id}
+                          className={'pf-recipe ' + (recipe?.id === r.id ? 'is-selected' : '')}
+                          onClick={() => {
+                            setRecipeId(r.id);
+                            if (innerWidth < 760)
+                              document
+                                .querySelector('.pf-bench')
+                                ?.scrollIntoView({
+                                  behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+                                    ? 'auto'
+                                    : 'smooth',
+                                  block: 'start',
+                                });
+                          }}
+                          disabled={busy}
+                          aria-pressed={recipe?.id === r.id}
                         >
-                          Nível {r.required_level ?? 1} · {r.experience ?? 20} EXP
-                        </small>
-                      </span>
-                      <ArrowRight size={16} />
-                    </button>
-                  );
-                })}
+                          <img
+                            className="pf-object-icon"
+                            src={professionItemArtwork(
+                              r.output.item_id,
+                              item?.image_path,
+                              profession.badge,
+                            )}
+                            alt=""
+                          />
+                          <span>
+                            <strong>{r.name}</strong>
+                            <small>
+                              {r.output.quantity > 1 ? r.output.quantity + ' unidades · ' : ''}
+                              {r.hours} h de produção
+                            </small>
+                            <small
+                              className={
+                                'pf-recipe-level ' +
+                                (!administrator && craftingProgress.level < (r.required_level ?? 1)
+                                  ? 'is-locked'
+                                  : '')
+                              }
+                            >
+                              Nível {r.required_level ?? 1} · {r.experience ?? 20} EXP
+                            </small>
+                          </span>
+                          <ArrowRight size={16} />
+                        </button>
+                      );
+                    })}
+                </div>
+                <small className="pf-recipe-count">
+                  {profession.recipes.length} receitas neste ofício
+                </small>
                 {recipe && (
                   <div className="pf-ingredients">
                     <h3>Materiais da receita</h3>
@@ -960,7 +482,7 @@ export function Professions({
                 )}
               </aside>
               <main className="pf-bench" aria-label="Bancada de criação">
-                {active && !current ? (
+                {active && !current && !recipe ? (
                   <div className="pf-other-job">
                     <Clock3 size={32} />
                     <h2>Seu trabalho continua em outra oficina.</h2>
@@ -974,78 +496,21 @@ export function Professions({
                       Voltar ao trabalho
                     </button>
                   </div>
-                ) : current ? (
-                  <>
-                    <div className="pf-project-title">
-                      <div>
-                        <span className="pf-kicker">TRABALHO EM ANDAMENTO</span>
-                        <h2>{current.recipe.name}</h2>
-                      </div>
-                      <span>
-                        <Clock3 size={16} />
-                        {timeLeft(current.ready_at, now)}
-                      </span>
-                    </div>
-                    <ol className="pf-stepper" aria-label="Etapas do trabalho">
-                      {current.recipe.steps.map((step, i) => (
-                        <li
-                          key={i}
-                          className={
-                            current.step > i ? 'is-done' : current.step === i ? 'is-current' : ''
-                          }
-                        >
-                          {current.step > i ? <Check size={16} /> : <span>{i + 1}</span>}
-                          {step.title}
-                        </li>
-                      ))}
-                    </ol>
-                    {current.step < current.recipe.steps.length ? (
-                      <Workshop
-                        key={current.id + ':' + current.revision}
-                        step={current.recipe.steps[current.step]}
-                        disabled={!unlocked}
-                        busy={busy}
-                        submit={(input) => void act('step', input)}
-                      />
-                    ) : (
-                      <div className="pf-ready">
-                        <img
-                          className="pf-result-icon"
-                          src={professionItemArtwork(
-                            current.recipe.output.item_id,
-                            state?.inventory.find((i) => i.id === current.recipe.output.item_id)
-                              ?.image_path,
-                            profession.badge,
-                          )}
-                          alt=""
-                        />
-                        <span className="pf-kicker">ETAPAS CONCLUÍDAS</span>
-                        <h2>
-                          {Date.parse(current.ready_at) <= now
-                            ? 'Sua criação está pronta.'
-                            : 'Agora, o tempo faz a sua parte.'}
-                        </h2>
-                        <p>
-                          {Date.parse(current.ready_at) <= now
-                            ? 'Recolha o resultado para guardar na mochila.'
-                            : 'O preparo continua mesmo com o site fechado. Volte quando a produção terminar.'}
-                        </p>
-                        <strong className="pf-remaining">{timeLeft(current.ready_at, now)}</strong>
-                        <button
-                          className="button pf-primary"
-                          disabled={busy || !unlocked || Date.parse(current.ready_at) > now}
-                          onClick={() => void act('collect')}
-                        >
-                          <img
-                            className="pf-button-art"
-                            src="/navigation/illustrated-20261020/inventory.webp"
-                            alt=""
-                          />
-                          {busy ? 'Recolhendo…' : 'Recolher criação'}
-                        </button>
-                      </div>
-                    )}
-                  </>
+                ) : current && recipe?.id === current.recipe_id ? (
+                  <ProfessionProduction
+                    key={current.id}
+                    project={current}
+                    profession={profession}
+                    now={now}
+                    busy={busy}
+                    unlocked={unlocked}
+                    itemImage={
+                      state?.inventory.find((i) => i.id === current.recipe.output.item_id)
+                        ?.image_path
+                    }
+                    assist={() => act('assist')}
+                    collect={() => void act('collect')}
+                  />
                 ) : recipe ? (
                   <div className="pf-project-intro">
                     <div className="pf-bench-symbol">
@@ -1060,12 +525,19 @@ export function Professions({
                     </div>
                     <span className="pf-kicker">UMA NOVA CRIAÇÃO</span>
                     <h2>{recipe.name}</h2>
-                    <p>{profession.description}</p>
+                    <ProfessionRecipeDetails
+                      recipe={recipe}
+                      item={state?.inventory.find((i) => i.id === recipe.output.item_id)}
+                    />
                     <div className="pf-preview-stages">
-                      {recipe.steps.map((step, i) => (
-                        <div key={i}>
+                      {[
+                        'Reunir os materiais',
+                        'Deixar a oficina produzir',
+                        'Recolher sua criação',
+                      ].map((name, i) => (
+                        <div key={name}>
                           <span>{i + 1}</span>
-                          <strong>{step.title}</strong>
+                          <strong>{name}</strong>
                         </div>
                       ))}
                     </div>
@@ -1096,13 +568,18 @@ export function Professions({
                         {unlimitedMaterials
                           ? 'Seu acesso de administrador fornece os materiais.'
                           : 'Ao iniciar, os materiais listados serão usados.'}{' '}
-                        O trabalho fica salvo para você continuar depois.
+                        A produção continua automaticamente, mesmo com o site fechado.
                       </p>
                     )}
                     <button
                       className="button pf-primary"
                       disabled={
-                        !recipeUnlocked || !availability(recipe) || busy || !state || !character
+                        !recipeUnlocked ||
+                        !availability(recipe) ||
+                        busy ||
+                        !state ||
+                        !character ||
+                        !!active
                       }
                       onClick={() => void act('start')}
                     >
@@ -1113,6 +590,16 @@ export function Professions({
                       />
                       {busy ? 'Preparando…' : 'Usar materiais e iniciar'}
                     </button>
+                    {active && (
+                      <button
+                        className="button outline"
+                        onClick={() => {
+                          open(professions.find((p) => p.id === active.profession_id)!);
+                        }}
+                      >
+                        Voltar à criação em andamento
+                      </button>
+                    )}
                   </div>
                 ) : null}
               </main>

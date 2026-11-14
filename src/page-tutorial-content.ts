@@ -519,9 +519,9 @@ export const pageTutorials = {
     steps: [
       { title: 'Encontre seu ofício', text: 'Abra uma oficina. A proficiência correspondente na ficha concluída libera a bancada; os demais cenários podem ser visitados para conhecer as receitas.' },
       { title: 'Reúna os materiais', text: 'Confira a quantidade disponível na mochila. O mestre registra os materiais obtidos em mesa. Frascos, tinta, papel e outros insumos podem ser comprados no Empório.' },
-      { title: 'Trabalhe na bancada', text: 'Escolha uma receita e revise o que será consumido. Clique em Usar materiais e iniciar. Faça os ajustes, os encaixes ou o traçado indicados em dourado e confirme cada etapa.' },
-      { title: 'Recolha e evolua', text: 'O preparo continua contando com o site fechado. Após concluir as etapas e o prazo, clique em Recolher criação para receber o item e experiência neste ofício. Há dez níveis; novas receitas são liberadas nos níveis 3, 6 e 10.' },
-      { title: 'Registre os materiais da mesa', text: 'O mestre encontra Entregas de mesa nesta aba. Escolha uma mesa que você conduz, um personagem participante, o material e a quantidade, registre a origem na aventura e confirme a entrega.' },
+      { title: 'Inicie a produção', text: 'Clique em uma receita para ler seus efeitos, bônus, duração e materiais. Use Usar materiais e iniciar para começar. A produção é automática, inclusive com o site fechado. Você pode ajudar uma vez a cada duas horas para reduzir trinta minutos do prazo.' },
+      { title: 'Recolha e evolua', text: 'Quando o prazo terminar, use Recolher criação para receber o item e a experiência do ofício. Há dez níveis, com receitas de equipamentos, poções e preparos que concedem bônus temporários em perícias.' },
+      { title: 'Receba materiais da aventura', text: 'No VTT, abra Materiais da aventura. O mestre vincula a missão ou prepara a mesa temática. Cada jogador inscrito tem um d100 com materiais de sua profissão e nível; 91 a 100 dão o dobro. Os itens só entram na mochila depois do registro de conclusão do mestre.' },
     ],
   },
   guild: {

@@ -1,0 +1,594 @@
+.pf-production {
+  padding: 28px;
+  min-width: 0;
+}
+.pf-production-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+.pf-production-heading h2 {
+  font-size: clamp(23px, 2.5vw, 36px);
+  margin: 8px 0 0;
+  line-height: 1.15;
+}
+.pf-production-heading > img {
+  height: 64px;
+  width: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px #0008);
+}
+.pf-craft-scene {
+  aspect-ratio: 16/10;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #b28a4a45;
+  border-radius: 7px;
+  background: #111918;
+  isolation: isolate;
+}
+.pf-scene-environment {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.23;
+  filter: blur(1px);
+}
+.pf-craft-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(#060a0d42, transparent 45%, #050a10a8);
+  z-index: 4;
+}
+.pf-scene-light {
+  position: absolute;
+  inset: 15% 18%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #b779361f, transparent 72%);
+  opacity: 0.7;
+}
+.pf-scene-bench {
+  position: absolute;
+  width: 80%;
+  height: auto;
+  max-height: 92%;
+  object-fit: contain;
+  left: 10%;
+  bottom: 4%;
+  z-index: 1;
+  filter: drop-shadow(0 16px 15px #0006);
+}
+.pf-scene-tool {
+  position: absolute;
+  left: 38%;
+  top: 12%;
+  width: 30%;
+  height: auto;
+  z-index: 3;
+  transform-origin: 14% 90%;
+  transform: rotate(-24deg);
+  filter: drop-shadow(7px 13px 5px #0006);
+  will-change: transform;
+}
+.pf-scene-caption {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #dfd0b3;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 6px #000;
+}
+.pf-working-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c49b5e;
+  box-shadow: 0 0 8px #be8a47;
+}
+.pf-scene-impact {
+  position: absolute;
+  left: 61%;
+  top: 33%;
+  width: 70px;
+  height: 70px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 3;
+  background: radial-gradient(ellipse, #fff0bb, #e5a24855 20%, transparent 67%);
+  mix-blend-mode: screen;
+}
+.pf-scene-particles {
+  position: absolute;
+  left: 61%;
+  top: 33%;
+  z-index: 4;
+  pointer-events: none;
+}
+.pf-scene-particles i {
+  position: absolute;
+  opacity: 0;
+  height: 3px;
+  width: 2px;
+  border-radius: 50%;
+  background: #ffe3a1;
+  box-shadow: 0 0 5px #f5a342;
+}
+.pf-scene-steam {
+  position: absolute;
+  left: 54%;
+  top: 35%;
+  z-index: 2;
+  width: 10%;
+  height: 25%;
+  pointer-events: none;
+}
+.pf-scene-steam i {
+  position: absolute;
+  width: 45px;
+  height: 90px;
+  left: 0;
+  top: -45px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #e4d7ba30, transparent 65%);
+  filter: blur(5px);
+  opacity: 0.25;
+}
+.pf-scene-steam i:nth-child(2) {
+  left: 20px;
+  top: -25px;
+}
+.pf-scene-steam i:nth-child(3) {
+  left: -15px;
+  top: -40px;
+}
+.pf-scene-ink {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.pf-scene-ink path {
+  fill: none;
+  stroke: #3c2b20;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+}
+.pf-craft-scene.is-working .pf-scene-tool {
+  animation: pf-hammer-strike 0.9s cubic-bezier(0.42, 0, 0.8, 1) 6;
+}
+.pf-craft-scene.is-working .pf-scene-impact {
+  animation: pf-hammer-light 0.9s linear 6;
+}
+.pf-craft-scene.is-working .pf-scene-particles i {
+  animation: pf-work-spark 0.9s linear 6;
+  animation-delay: var(--delay);
+}
+.pf-craft-scene.is-working .pf-scene-light {
+  animation: pf-bench-glow 1.8s ease-in-out 3;
+}
+.pf-craft-scene.is-working .pf-scene-steam i {
+  animation: pf-work-steam 1.8s ease-out 3;
+}
+.pf-craft-scene.is-working .pf-scene-steam i:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.pf-craft-scene.is-working .pf-scene-steam i:nth-child(3) {
+  animation-delay: 1s;
+}
+.pf-scene-mixture .pf-scene-tool,
+.pf-scene-cooking .pf-scene-tool {
+  left: 45%;
+  top: 13%;
+  width: 19%;
+  transform-origin: 50% 85%;
+  transform: rotate(12deg);
+}
+.pf-scene-mixture.is-working .pf-scene-tool,
+.pf-scene-cooking.is-working .pf-scene-tool {
+  animation: pf-stir-preparation 1.35s ease-in-out 4;
+}
+.pf-scene-writing .pf-scene-tool {
+  left: 43%;
+  top: 19%;
+  width: 29%;
+  transform-origin: 12% 90%;
+  transform: rotate(6deg);
+}
+.pf-scene-writing.is-working .pf-scene-tool {
+  animation: pf-writing-stroke 1.8s ease-in-out 3;
+}
+.pf-scene-writing.is-working .pf-scene-ink path {
+  animation: pf-ink-appear 5.4s ease-out forwards;
+}
+.pf-scene-wood .pf-scene-tool,
+.pf-scene-stone .pf-scene-tool {
+  left: 39%;
+  top: 13%;
+  width: 24%;
+  transform: rotate(-10deg);
+  transform-origin: 80% 80%;
+}
+.pf-scene-wood.is-working .pf-scene-tool,
+.pf-scene-stone.is-working .pf-scene-tool {
+  animation: pf-carving-cut 0.9s ease-in-out 6;
+}
+.pf-scene-textile .pf-scene-tool {
+  left: 43%;
+  top: 20%;
+  width: 25%;
+  transform: rotate(12deg);
+  transform-origin: 80% 80%;
+}
+.pf-scene-textile.is-working .pf-scene-tool {
+  animation: pf-sewing-stitch 1.35s ease-in-out 4;
+}
+.pf-scene-precision .pf-scene-tool {
+  left: 17%;
+  top: 12%;
+  width: 25%;
+  transform: rotate(12deg);
+}
+.pf-scene-precision.is-working .pf-scene-tool {
+  animation: pf-polishing-file 0.9s ease-in-out 6;
+}
+.pf-scene-kiln.is-working .pf-scene-light {
+  background: radial-gradient(ellipse, #e98a3555, transparent 65%);
+}
+.pf-craft-scene:not(.pf-scene-forge):not(.pf-scene-stone):not(.pf-scene-wood) .pf-scene-impact,
+.pf-craft-scene:not(.pf-scene-forge):not(.pf-scene-stone):not(.pf-scene-wood) .pf-scene-particles {
+  display: none;
+}
+.pf-scene-wood .pf-scene-particles i {
+  height: 5px;
+  width: 3px;
+  background: #ceab77;
+  box-shadow: none;
+}
+.pf-scene-stone .pf-scene-particles i {
+  height: 4px;
+  width: 4px;
+  background: #d5cbb9;
+  box-shadow: none;
+}
+.pf-scene-stone .pf-scene-impact,
+.pf-scene-wood .pf-scene-impact {
+  background: radial-gradient(ellipse, #ead3a755, transparent 65%);
+}
+.pf-production-progress {
+  padding: 22px 0;
+}
+.pf-production-progress > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.pf-production-progress strong {
+  font-size: 17px;
+  color: #e2d5bc;
+}
+.pf-production-progress span {
+  font-size: 13px;
+  color: #c5a56f;
+}
+.pf-production-progress progress {
+  display: block;
+  width: 100%;
+  height: 7px;
+  appearance: none;
+  border: 0;
+  background: #71654d3a;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.pf-production-progress progress::-webkit-progress-bar {
+  background: #71654d3a;
+}
+.pf-production-progress progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #73532c, #d1b078);
+  border-radius: 5px;
+}
+.pf-production-progress progress::-moz-progress-bar {
+  background: #bd985b;
+}
+.pf-production-progress small {
+  display: block;
+  margin-top: 10px;
+  color: #a9a28e;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.pf-optional-work {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: center;
+  border-top: 1px solid #c19a5a28;
+  padding-top: 22px;
+}
+.pf-optional-work h3 {
+  font-size: 23px;
+  margin: 8px 0;
+}
+.pf-optional-work p {
+  font-size: 13px;
+  color: #bbb19d;
+  line-height: 1.7;
+  margin: 0 0 10px;
+  max-width: 45em;
+}
+.pf-optional-work small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #a89d83;
+}
+.pf-optional-work .button {
+  flex-shrink: 0;
+  min-width: 205px;
+  gap: 11px;
+  text-align: left;
+  justify-content: flex-start;
+  padding: 13px 17px;
+}
+.pf-optional-work .button > img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+.pf-optional-work .button span {
+  display: block;
+  font-size: 12px;
+}
+.pf-optional-work .button small {
+  font-size: 10px;
+  margin-top: 4px;
+  color: inherit;
+  opacity: 0.8;
+}
+.pf-production-feedback {
+  min-height: 0;
+  font-size: 12px;
+  color: #d9c191;
+  line-height: 1.6;
+}
+.pf-production-feedback:not(:empty) {
+  padding-top: 16px;
+}
+.pf-assist-history {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 0;
+  font-size: 11px;
+  color: #a69d86;
+}
+.pf-production-collect {
+  width: 100%;
+  gap: 10px;
+}
+.pf-production-collect > img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+@keyframes pf-hammer-strike {
+  0%,
+  12% {
+    transform: rotate(-34deg);
+  }
+  30% {
+    transform: rotate(1deg) translateY(2px);
+  }
+  38% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+  78%,
+  100% {
+    transform: rotate(-34deg);
+  }
+}
+@keyframes pf-hammer-light {
+  0%,
+  27%,
+  47%,
+  100% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  37% {
+    opacity: 0.2;
+  }
+}
+@keyframes pf-work-spark {
+  0%,
+  29% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  31% {
+    opacity: 1;
+  }
+  75%,
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(0.2);
+  }
+}
+@keyframes pf-bench-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes pf-stir-preparation {
+  0%,
+  100% {
+    transform: translate(-12px, -3px) rotate(-9deg);
+  }
+  35% {
+    transform: translate(11px, 4px) rotate(12deg);
+  }
+  70% {
+    transform: translate(5px, -12px) rotate(20deg);
+  }
+}
+@keyframes pf-work-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  35% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(12px, -85px) scale(1.5);
+  }
+}
+@keyframes pf-writing-stroke {
+  0% {
+    transform: translate(-18px, 0) rotate(6deg);
+  }
+  35% {
+    transform: translate(13px, -8px) rotate(12deg);
+  }
+  55% {
+    transform: translate(23px, 4px) rotate(5deg);
+  }
+  75% {
+    transform: translate(5px, 12px) rotate(14deg);
+  }
+  100% {
+    transform: translate(-18px, 0) rotate(6deg);
+  }
+}
+@keyframes pf-ink-appear {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pf-carving-cut {
+  0%,
+  100% {
+    transform: translate(-9px, -9px) rotate(-14deg);
+  }
+  30% {
+    transform: translate(13px, 8px) rotate(-5deg);
+  }
+  55% {
+    transform: translate(13px, 8px) rotate(-5deg);
+  }
+}
+@keyframes pf-sewing-stitch {
+  0%,
+  100% {
+    transform: translate(-8px, -9px) rotate(18deg);
+  }
+  35% {
+    transform: translate(6px, 15px) rotate(-4deg);
+  }
+  65% {
+    transform: translate(15px, -18px) rotate(20deg);
+  }
+}
+@keyframes pf-polishing-file {
+  0%,
+  100% {
+    transform: translate(-9px, -3px) rotate(12deg);
+  }
+  50% {
+    transform: translate(14px, 7px) rotate(12deg);
+  }
+}
+@media (max-width: 1050px) {
+  .pf-optional-work {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .pf-optional-work .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .pf-production {
+    padding: 18px;
+  }
+  .pf-production-heading {
+    gap: 12px;
+  }
+  .pf-production-heading > img {
+    width: 48px;
+    height: 48px;
+  }
+  .pf-scene-caption {
+    font-size: 10px;
+    bottom: 10px;
+    left: 8px;
+    right: 8px;
+  }
+  .pf-craft-scene {
+    aspect-ratio: 1.25;
+  }
+  .pf-scene-bench {
+    width: 96%;
+    left: 2%;
+    bottom: 8%;
+  }
+  .pf-scene-tool {
+    left: 35%;
+    top: 14%;
+    width: 36%;
+  }
+  .pf-production-progress strong {
+    font-size: 15px;
+  }
+  .pf-optional-work h3 {
+    font-size: 22px;
+  }
+  .pf-assist-history {
+    line-height: 1.6;
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-production * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .pf-craft-scene.is-working .pf-scene-light {
+    opacity: 1;
+  }
+  .pf-scene-tool {
+    will-change: auto;
+  }
+}

@@ -1,0 +1,324 @@
+.vtt-material-rewards {
+  color: #d4c8b2;
+  min-width: 0;
+}
+.vtt-material-rewards h3 {
+  font-family: var(--font-heading, Georgia, serif);
+  font-size: 20px;
+  line-height: 1.3;
+  color: #e0d4bb;
+  margin: 10px 0;
+}
+.vtt-material-rewards label {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+  font-size: 12px;
+}
+.vtt-material-rewards select,
+.vtt-material-rewards input,
+.vtt-material-rewards textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.vtt-material-rewards button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid #b28b4a65;
+  background: #b18b4930;
+  color: #e4d5b4;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.vtt-material-rewards button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.vtt-material-rewards small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #a99b80;
+}
+.vtt-material-intro {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.vtt-material-intro > img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+.vtt-material-intro .pf-kicker {
+  font-size: 9px;
+}
+.vtt-material-intro h3 {
+  margin: 6px 0;
+  font-size: 22px;
+}
+.vtt-material-run {
+  border: 1px solid #b48b4b40;
+  padding: 14px;
+  margin: 20px 0;
+  background: #a7772110;
+  border-radius: 5px;
+}
+.vtt-material-run > .pf-kicker {
+  font-size: 9px;
+}
+.vtt-material-run > strong {
+  font-size: 12px;
+  color: #ceb17c;
+}
+.vtt-material-run progress {
+  display: block;
+  width: 100%;
+  height: 5px;
+  accent-color: #bf995c;
+  margin-top: 12px;
+}
+.vtt-material-chances {
+  padding: 12px 0;
+}
+.vtt-material-chances > strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+.vtt-material-chances > div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 11px;
+  padding: 7px 0;
+  border-bottom: 1px solid #ad905822;
+}
+.vtt-material-chances img {
+  height: 28px;
+  width: 28px;
+  object-fit: contain;
+}
+.vtt-material-chances b {
+  color: #cfb177;
+  margin-left: auto;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.vtt-material-chances .vtt-material-empty-chance {
+  padding-top: 10px;
+  border: 0;
+  color: #a99c83;
+}
+.vtt-material-results {
+  margin: 16px 0;
+}
+.vtt-material-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ad905824;
+}
+.vtt-material-die {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #9a805247;
+  border-radius: 7px;
+  color: #9a917d;
+  background: #181c1c;
+}
+.vtt-material-die.has-result {
+  color: #e6c489;
+  border-color: #b48a4a75;
+  background: radial-gradient(ellipse, #59402066, #171b20);
+  font-size: 20px;
+  font-family: Georgia, serif;
+}
+.vtt-material-result > div:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+}
+.vtt-material-result strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.vtt-material-result span {
+  display: block;
+  font-size: 11px;
+  color: #cdbd9d;
+  line-height: 1.5;
+}
+.vtt-material-result > img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.vtt-material-used {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #b48b4b30;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.vtt-material-used svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.vtt-material-conclusion {
+  padding-top: 15px;
+  border-top: 1px solid #b48b4b30;
+  margin-top: 18px;
+}
+.vtt-material-conclusion > p,
+.vtt-material-table-editor p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #b1a58d;
+}
+.vtt-material-enrollment {
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid #ae8b4c35;
+  border-radius: 4px;
+}
+.vtt-material-enrollment legend {
+  font-size: 11px;
+}
+.vtt-material-enrollment > div {
+  padding: 7px 0;
+  border-bottom: 1px solid #ae8b4c1f;
+}
+.vtt-material-enrollment strong {
+  font-size: 12px;
+}
+.vtt-material-enrollment label,
+.vtt-material-enabled {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+.vtt-material-enrollment input[type='checkbox'],
+.vtt-material-enabled input {
+  width: 14px !important;
+  accent-color: #c19b61;
+  flex-shrink: 0;
+}
+.vtt-material-enrollment p {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 12px;
+}
+.vtt-material-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #d1b67f;
+}
+.vtt-material-table-editor {
+  padding: 12px;
+  margin: 17px 0;
+  border: 1px solid #b48b4b35;
+  border-radius: 4px;
+  background: #131b1d55;
+}
+.vtt-material-table-editor summary {
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 1.5;
+}
+.vtt-material-table-editor summary svg {
+  display: inline;
+  vertical-align: middle;
+}
+.vtt-material-odds-row {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) 51px 43px;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 0;
+  border-bottom: 1px solid #ad905822;
+}
+.vtt-material-odds-row > img {
+  height: 26px;
+  width: 26px;
+  object-fit: contain;
+}
+.vtt-material-odds-row > span {
+  font-size: 10px;
+  line-height: 1.4;
+}
+.vtt-material-odds-row label {
+  margin: 0;
+  gap: 3px;
+}
+.vtt-material-odds-row label > span {
+  font-size: 8px;
+  color: #a89b80;
+}
+.vtt-material-odds-row input {
+  padding: 5px !important;
+  font-size: 11px;
+}
+.vtt-material-awaiting {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 18px 0;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #b8aa8f;
+}
+.vtt-material-awaiting svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.vtt-material-error {
+  padding: 10px;
+  border: 1px solid #b86e5a55;
+  background: #4c292122;
+  color: #deaa94;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.vtt-material-notice {
+  padding: 10px;
+  border: 1px solid #b9944f55;
+  background: #5e482122;
+  color: #dcc38f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.vtt-material-history {
+  margin: 22px 0;
+  border-top: 1px solid #b48b4b30;
+  padding-top: 14px;
+}
+.vtt-material-history summary {
+  cursor: pointer;
+  font-size: 12px;
+}
+.vtt-material-history article {
+  padding-top: 15px;
+}
+.vtt-material-history article h3 {
+  font-size: 18px;
+}
+.vtt-material-history .vtt-material-results {
+  margin-top: 6px;
+}
+.vtt-panel-tabs:has(button[aria-label='Materiais da aventura']){display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}.vtt-panel-tabs:has(button[aria-label='Materiais da aventura'])>button{min-width:0;width:100%;box-sizing:border-box;padding:8px 5px}.vtt-material-no-profession p{font-size:12px;line-height:1.7;color:#bdaf94}

@@ -53,6 +53,7 @@ import { applyTokenBlood } from '../shared/vtt-blood.js';
 import { vttCompanionsRouter } from './vtt-companions.js';
 import { vttPrestigeWeaponsRouter } from './vtt-prestige-weapons.js';
 import {vttVehiclesRouter} from './vtt-vehicles.js';
+import {vttProfessionLootRouter} from './vtt-profession-loot.js';
 import { translateMonsterLines } from './vtt-translate.js';
 import { rollFormula } from '../shared/vtt-roll.js';
 import { attackOutcome } from '../shared/vtt-attack.js';
@@ -476,6 +477,7 @@ export function vttRouter() {
     next();
   });
   router.use(vttSheetRouter(room));
+  router.use(vttProfessionLootRouter(room,gm));
   router.use(vttSpellsRouter(room, canSee));
   router.use(vttHotbarRouter(room));
   router.use(vttSoundsRouter(room, gm, state));

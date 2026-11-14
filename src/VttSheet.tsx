@@ -230,7 +230,7 @@ export function VttSheet({
                         }))
                       ).map((s) => (
                         <li key={s.name}>
-                          <button onClick={() => check(s.value, s.name)}>
+                          <button disabled={busy} onClick={() => void action('/skill-check',{skill:s.name,request_id:crypto.randomUUID()})}>
                             <span className={s.trained ? 'trained' : ''}>
                               {s.expert ? '◆' : s.trained ? '●' : '○'}
                             </span>
@@ -248,6 +248,7 @@ export function VttSheet({
                       <p>{d?.languages.join(' · ')}</p>
                     </>,
                   )}
+                  {!!data.profession_buffs?.length&&box('Preparo de ofício ativo',<>{data.profession_buffs.map(buff=><p key={buff.id}><strong>{buff.name}</strong><br/>+{buff.bonus} em {buff.skills.join(' e ')} · até {new Date(buff.expires_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}<br/><small>Um preparo ativo. Usar outro substitui este efeito.</small></p>)}</>)}
                 </div>
                 <div>
                   <div className="vtt-sheet-combat">
