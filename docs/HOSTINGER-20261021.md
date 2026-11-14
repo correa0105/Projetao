@@ -157,7 +157,7 @@ do site e as artes já salvas continuam disponíveis.
 
 Backup inicial posterior a publicacao verificado e rotina diaria instalada em
 `/etc/cron.d/alvorada-database` (03:17 UTC, 00:17 em Sao Paulo). O script mantem
-14 dias de dumps completos em `/opt/alvorada/backups`. Esses dumps ficam na propria
+o backup atual e os dois anteriores, três dumps completos ao todo, em `/opt/alvorada/backups`, conforme solicitação do proprietário em 14/11/2026. Cada cópia mantida passa por leitura integral com `pg_restore` antes de excluir as antigas. A rotina usa lock contra execuções simultâneas e exige pelo menos 2 GiB livres antes de começar (mais quando o tamanho anterior exigir). Falhas preservam os backups completos e retiram somente o arquivo incompleto criado naquela execução. Esses dumps ficam na propria
 VPS; manter tambem copia fora dela. A copia final de migracao ficou preservada neste
 computador, e o plano Hostinger tem snapshots semanais. Certificados e modelos têm volumes próprios;
 as imagens enviadas pelos jogadores estão no PostgreSQL. Preservar código/imagem
@@ -169,8 +169,7 @@ completos avulsos indefinidamente. Na limpeza de 29/10/2026, 66 checkpoints
 `/opt/alvorada/backups/checkpoint-archive-20261029/release-checkpoints.tar.zst`
 (8.135.845.131 bytes). Cada dump foi lido de volta do arquivo e validado por
 SHA-256 antes de retirar a cópia avulsa, liberando 31.065.111.642 bytes.
-Quatorze dumps recentes, diários ou essenciais continuam disponíveis diretamente;
-o backup de contas anterior à limpeza e a cópia final da migração permanecem.
+Por autorização explícita do proprietário em 14/11/2026, as cópias anteriores aos três backups mais recentes, incluindo checkpoints manuais e o consolidado antigo, foram retiradas após validar os dumps mantidos. A retenção de três cópias substitui a política anterior de quatorze dias e as exceções de backups históricos. Arquivos de configuração e manifests de implantação continuam preservados.
 
 O diretório do arquivo consolidado contém `checksums.json`, o SHA-256 do arquivo
 e `result.json`; o tar também inclui `BACKUP-MANIFEST.json`. Para recuperar um
