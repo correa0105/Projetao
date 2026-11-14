@@ -149,7 +149,7 @@ export function Professions({
     }
     return value;
   }
-  async function act(kind: 'start' | 'assist' | 'collect' | 'cancel') {
+  async function act(kind: 'start' | 'assist' | 'strike' | 'collect' | 'cancel') {
     if (locked.current || !character || !profession || !recipe) return false;
     locked.current = true;
     setBusy(true);
@@ -168,6 +168,10 @@ export function Professions({
         await post('/professions/projects/' + current.id + '/assist', {
           request_id: key(operation),
         });
+      else if (kind === 'strike' && current)
+        await post('/professions/projects/' + current.id + '/strike', {
+          request_id: key(operation),
+        });
       else if (kind === 'collect' && current)
         await post('/professions/projects/' + current.id + '/collect', {});
       else if (kind === 'cancel' && current)
@@ -180,7 +184,7 @@ export function Professions({
         setNotice(`Criação na mochila. +${recipe.experience ?? 20} EXP em ${profession.name}.`);
       if (kind === 'cancel')
         setNotice('Produção excluída. A bancada está livre para iniciar outra criação.');
-      if (kind !== 'assist') void onChanged().catch(() => {});
+      if (kind !== 'assist' && kind !== 'strike') void onChanged().catch(() => {});
       return true;
     } catch (e) {
       setError((e as Error).message);
@@ -513,6 +517,7 @@ export function Professions({
                         ?.image_path
                     }
                     assist={() => act('assist')}
+                    strike={() => act('strike')}
                     canCancel={state?.capabilities?.cancel_production === true}
                     cancel={() => act('cancel')}
                     collect={() => void act('collect')}

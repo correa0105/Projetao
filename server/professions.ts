@@ -14,6 +14,8 @@ import { professionBuff, professionBuffDescription } from '../shared/profession-
 import {
   professionAssistCooldownMs,
   professionAssistReductionSeconds,
+  forgeRequiredStrikes,
+  forgeMinimumStrikeIntervalMs,
 } from '../shared/profession-production.js';
 import { deriveSheet, type SheetChoices } from '../shared/character-sheet.js';
 import { purchaseContents } from '../shared/armor-bundles.js';
@@ -151,6 +153,38 @@ async function canCancelProduction(db: DB, user: string) {
       ?.administrador === 1
   );
 }
+async function applyProfessionAssist(
+  db: DB,
+  p: CraftProject,
+  actor: string,
+  requestId: string,
+  now: Date,
+) {
+  const ready = new Date(
+    Math.max(
+      now.getTime(),
+      new Date(p.ready_at).getTime() - professionAssistReductionSeconds * 1000,
+    ),
+  );
+  const seconds = Math.max(
+    1,
+    Math.min(
+      professionAssistReductionSeconds,
+      Math.ceil((new Date(p.ready_at).getTime() - ready.getTime()) / 1000),
+    ),
+  );
+  await db.query(
+    'INSERT INTO profession_project_assists(project_id,request_id,actor_id,previous_ready_at,ready_at,reduced_seconds)VALUES($1,$2,$3,$4,$5,$6)',
+    [p.id, requestId, actor, p.ready_at, ready, seconds],
+  );
+  return (
+    await db.query(
+      'UPDATE profession_projects SET ready_at=$2,last_assisted_at=$3,assist_count=assist_count+1,seconds_saved=seconds_saved+$4,revision=revision+1 WHERE id=$1 RETURNING *',
+      [p.id, ready, now, seconds],
+    )
+  ).rows[0];
+}
+
 export function professionsRouter() {
   const router = Router();
   router.get('/professions', async (req, res) => {
@@ -329,29 +363,58 @@ export function professionsRouter() {
           new Date(p.last_assisted_at).getTime() + professionAssistCooldownMs > now.getTime()
         )
           throw new AppError(409, 'Aguarde duas horas entre as ajudas neste trabalho.');
-        const ready = new Date(
-          Math.max(
-            now.getTime(),
-            new Date(p.ready_at).getTime() - professionAssistReductionSeconds * 1000,
-          ),
-        );
-        const seconds = Math.max(
-          1,
-          Math.min(
-            professionAssistReductionSeconds,
-            Math.ceil((new Date(p.ready_at).getTime() - ready.getTime()) / 1000),
-          ),
-        );
+        if (p.profession_id === 'smithing')
+          throw new AppError(409, 'Complete 10 marteladas na bancada para adiantar a ferraria.');
+        return applyProfessionAssist(db, p, res.locals.user.id, b.request_id, now);
+      }),
+    );
+  });
+  router.post('/professions/projects/:id/strike', async (req, res) => {
+    const id = uuid.parse(req.params.id),
+      b = z.object({ request_id: uuid }).strict().parse(req.body);
+    res.json(
+      await transaction(async (db) => {
+        const p = await project(db, id, res.locals.user.id);
+        if (p.canceled_at) throw new AppError(409, 'Esta produção foi excluída.');
+        if (p.profession_id !== 'smithing')
+          throw new AppError(400, 'Marteladas são usadas na ferraria.');
+        if (
+          (
+            await db.query(
+              'SELECT id FROM profession_project_strikes WHERE project_id=$1 AND request_id=$2',
+              [id, b.request_id],
+            )
+          ).rowCount
+        )
+          return p;
+        const now = (await db.query('SELECT clock_timestamp() AS now')).rows[0].now as Date;
+        if (p.claimed_at || new Date(p.ready_at).getTime() <= now.getTime())
+          throw new AppError(409, 'Esta criação já está pronta para recolher.');
+        if (
+          p.last_assisted_at &&
+          new Date(p.last_assisted_at).getTime() + professionAssistCooldownMs > now.getTime()
+        )
+          throw new AppError(409, 'Aguarde duas horas para iniciar outra série de marteladas.');
+        if (
+          p.last_struck_at &&
+          now.getTime() - new Date(p.last_struck_at).getTime() < forgeMinimumStrikeIntervalMs
+        )
+          throw new AppError(409, 'Aguarde o martelo concluir o golpe antes de bater novamente.');
+        const count = (p.strike_count ?? 0) + 1,
+          completed = count >= forgeRequiredStrikes;
         await db.query(
-          'INSERT INTO profession_project_assists(project_id,request_id,actor_id,previous_ready_at,ready_at,reduced_seconds)VALUES($1,$2,$3,$4,$5,$6)',
-          [id, b.request_id, res.locals.user.id, p.ready_at, ready, seconds],
+          'INSERT INTO profession_project_strikes(project_id,request_id,actor_id,count_after,completed_assist)VALUES($1,$2,$3,$4,$5)',
+          [id, b.request_id, res.locals.user.id, completed ? 0 : count, completed],
         );
-        return (
+        const updated = (
           await db.query(
-            'UPDATE profession_projects SET ready_at=$2,last_assisted_at=$3,assist_count=assist_count+1,seconds_saved=seconds_saved+$4,revision=revision+1 WHERE id=$1 RETURNING *',
-            [id, ready, now, seconds],
+            'UPDATE profession_projects SET strike_count=$2,last_struck_at=$3,revision=revision+1 WHERE id=$1 RETURNING *',
+            [id, completed ? 0 : count, now],
           )
         ).rows[0];
+        return completed
+          ? applyProfessionAssist(db, updated, res.locals.user.id, b.request_id, now)
+          : updated;
       }),
     );
   });

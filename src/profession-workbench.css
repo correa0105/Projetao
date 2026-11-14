@@ -41,6 +41,165 @@
 .pf-tool-cursor img.is-stroking {
   animation: pf-cursor-strike 0.3s ease-out;
 }
+.pf-gesture-strike .pf-tool-cursor,
+.pf-forge-strike {
+  width: clamp(140px, 20vw, 240px);
+  aspect-ratio: 1;
+}
+.pf-gesture-strike .pf-tool-cursor img {
+  transform-origin: 21% 85%;
+  transform: rotate(-12deg);
+  animation: none;
+}
+.pf-forge-strike {
+  position: absolute;
+  z-index: 8;
+  transform: translate(-85%, -42%);
+  pointer-events: none;
+}
+.pf-forge-strike img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transform-origin: 21% 85%;
+  filter: drop-shadow(6px 12px 6px #000b);
+  animation: pf-forge-weighted-strike var(--strike-duration) both;
+}
+.pf-gesture-strike.has-forge-strike .pf-tool-cursor,
+.pf-gesture-strike.has-forge-strike .pf-scene-tool {
+  visibility: hidden;
+}
+.pf-gesture-strike .pf-scene-tool {
+  width: 24%;
+  left: 63%;
+  top: 20%;
+  transform: rotate(22deg);
+  transform-origin: 21% 85%;
+}
+.pf-forge-target {
+  position: absolute;
+  left: var(--pointer-x, 58%);
+  top: var(--pointer-y, 33%);
+  width: 20px;
+  height: 7px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #f0c47e91;
+  border-radius: 50%;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 10px #ed9e3e35;
+}
+.has-tool-cursor .pf-forge-target {
+  opacity: 0.8;
+}
+.pf-gesture-strike .pf-hand-burst b {
+  inset: -43px;
+  background: radial-gradient(circle, #fff9d2dd, #ffb24677 17%, #eb6b201a 42%, transparent 70%);
+  animation: pf-forge-flash 0.25s ease-out both;
+}
+.pf-gesture-strike .pf-hand-effects {
+  z-index: 10;
+}
+.pf-gesture-strike .pf-hand-burst i {
+  height: 2px;
+  width: 9px;
+  border-radius: 100%;
+  background: linear-gradient(90deg, #fff4c8, #ff9b29, transparent);
+  animation: pf-forge-ember 0.6s cubic-bezier(0.12, 0.55, 0.5, 1) both;
+}
+.pf-forge-progress {
+  padding: 18px 0 0;
+}
+.pf-forge-progress > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #ddc799;
+  margin-bottom: 9px;
+}
+.pf-forge-progress progress {
+  display: block;
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #71654d3a;
+}
+.pf-forge-progress progress::-webkit-progress-bar {
+  background: #71654d3a;
+}
+.pf-forge-progress progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #a15b2c, #ebc17c);
+}
+.pf-forge-progress progress::-moz-progress-bar {
+  background: #d5a05c;
+}
+.pf-forge-progress small {
+  display: block;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #b6a78b;
+  margin-top: 8px;
+}
+@keyframes pf-forge-weighted-strike {
+  0% {
+    transform: rotate(-12deg) translateY(0);
+  }
+  24% {
+    transform: rotate(-59deg) translateY(-7px);
+  }
+  34% {
+    transform: rotate(-46deg) translateY(-5px);
+  }
+  43% {
+    transform: rotate(0);
+  }
+  47% {
+    transform: rotate(1deg) scaleY(0.985);
+  }
+  61% {
+    transform: rotate(-18deg);
+  }
+  77% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(-12deg);
+  }
+}
+@keyframes pf-forge-flash {
+  0% {
+    opacity: 1;
+    transform: scale(0.55);
+  }
+  25% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+@keyframes pf-forge-ember {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(var(--turn)) scaleX(0.5);
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), calc(var(--dy) + 25px)) rotate(var(--turn)) scaleX(0.15);
+  }
+}
 .pf-gesture-stir .pf-tool-cursor img.is-stroking {
   animation: pf-cursor-macerate 0.35s ease-in-out;
 }
@@ -216,6 +375,10 @@
   }
 }
 @media (max-width: 600px) {
+  .pf-gesture-strike .pf-tool-cursor,
+  .pf-forge-strike {
+    width: 140px;
+  }
   .pf-scene-writing .pf-hand-drawing {
     clip-path: polygon(24% 31%, 68% 23%, 90% 65%, 30% 80%, 17% 58%);
   }
@@ -230,6 +393,10 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .pf-forge-strike img {
+    animation: none;
+    transform: rotate(0);
+  }
   .pf-hand-burst i {
     display: none;
   }

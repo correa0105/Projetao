@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen",
+  "use_case": "stylized-concept",
+  "prompt": "Use case: stylized-concept\nAsset type: single transparent sprite for an interactive medieval blacksmith hammer cursor, Alvorada Cinzenta dark fantasy RPG workshop.\nPrimary request: one substantial professional blacksmith forging hammer, beautifully painted realistic fantasy game inventory art, strong believable weight and readable silhouette. Broad rectangular forged steel head with a large flat striking face and shorter cross-peen back, thick aged ash wood handle with a small dark leather grip; carefully made physical construction, warm copper edge highlights and cool steel reflections. Not a claw hammer and not a fantasy war weapon. Three quarter side view, all parts visible, no hand. Diagonal orientation: lower grip end near x20% y88%, handle runs toward the head near x72% y27%. Head occupies about 38% of image width, handle about 65% of image height. Keep image centered, entire silhouette with small clear margin on every edge. The lowest striking corner of the steel head must be distinct and easy to align with a hot metal workpiece during a clockwise swing. High detail metal and wooden material texture, clean shaped head with visible flat face, no ornate patterns.\nLighting: warm forge glow on right rim, neutral cool fill, crisp edges and rich material shading.\nBackground: true transparent alpha, no floor, no cast shadow baked outside the tool. No background, no other objects, no sparks, no text, no border, no watermark. Only a single hammer, one head, one handle.",
+  "original": "artwork-archive/profession-hammer-20261114/smith-hammer.png",
+  "display": "public/professions/hammer-20261114/smith-hammer.webp",
+  "hotspot": [
+    85,
+    42
+  ],
+  "grip": [
+    21,
+    85
+  ],
+  "notes": "Cabeça larga de ferraria, alfa transparente. Original e arte anterior preservados.",
+  "original_sha256": "d624fe51a003db4f7c9920a7b41bb0520fed651dab19a66ff8698f56da67c107",
+  "display_sha256": "585e5589e5f5eade40b3c987d29a660e90a53364d3db6cca31709c24ada2fa83"
+}

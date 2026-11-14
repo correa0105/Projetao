@@ -1,5 +1,14 @@
 export const professionAssistCooldownMs = 2 * 60 * 60 * 1000;
 export const professionAssistReductionSeconds = 30 * 60;
+export const forgeRequiredStrikes = 10;
+export const forgeStrikeDurationMs = 720;
+export const forgeStrikeImpactMs = 310;
+export const forgeMinimumStrikeIntervalMs = 500;
+export function professionToolArtwork(tool: string) {
+  return tool === 'smith-hammer'
+    ? '/professions/hammer-20261114/smith-hammer.webp'
+    : '/professions/actions-20261114/' + tool + '.webp';
+}
 export type ProfessionBench =
   'forge' | 'mixture' | 'writing' | 'wood' | 'textile' | 'precision' | 'stone' | 'kiln' | 'cooking';
 export type ProfessionWork = {
@@ -201,8 +210,8 @@ export function professionGesture(id: string): {
       return {
         mode: 'strike',
         tool: 'smith-hammer',
-        hotspot: [72, 25],
-        hint: 'Clique na peça para martelar o metal.',
+        hotspot: [85, 42],
+        hint: 'Clique na peça: 10 marteladas adiantam a forja em 30 minutos.',
       };
     case 'mixture':
       return {

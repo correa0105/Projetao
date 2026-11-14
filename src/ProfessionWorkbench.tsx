@@ -1,7 +1,13 @@
 import { useEffect, useId, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Check } from 'lucide-react';
 import type { Profession } from '../shared/professions';
-import { professionGesture, professionWork } from '../shared/profession-production';
+import {
+  forgeStrikeDurationMs,
+  forgeStrikeImpactMs,
+  professionGesture,
+  professionToolArtwork,
+  professionWork,
+} from '../shared/profession-production';
 import './profession-workbench.css';
 
 type Point = { x: number; y: number };
@@ -13,12 +19,16 @@ export function ProfessionWorkbench({
   ready,
   animating,
   onWork,
+  pending,
+  swingRequest,
 }: {
   profession: Profession;
   enabled: boolean;
   ready: boolean;
   animating: boolean;
   onWork: () => void;
+  pending: boolean;
+  swingRequest: number;
 }) {
   const work = professionWork(profession.id),
     gesture = professionGesture(profession.id),
@@ -28,19 +38,50 @@ export function ProfessionWorkbench({
     pointer = useRef<number | null>(null),
     lastPoint = useRef<Point | null>(null),
     sequence = useRef(0),
-    lastBurst = useRef(0);
+    lastBurst = useRef(0),
+    strikeLock = useRef(false),
+    strikeTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [inside, setInside] = useState(false),
     [pressed, setPressed] = useState(false),
     [strokes, setStrokes] = useState<Stroke[]>([]),
-    [bursts, setBursts] = useState<Burst[]>([]);
+    [bursts, setBursts] = useState<Burst[]>([]),
+    [hammerStrike, setHammerStrike] = useState<Burst | null>(null);
+  useEffect(
+    () => () => {
+      strikeTimers.current.forEach(clearTimeout);
+    },
+    [],
+  );
   useEffect(() => {
     if (!enabled) {
       pointer.current = null;
       drawing.current = null;
       setInside(false);
       setPressed(false);
+      strikeTimers.current.forEach(clearTimeout);
+      strikeLock.current = false;
+      setHammerStrike(null);
     }
   }, [enabled]);
+  useEffect(() => {
+    if (swingRequest > 0) startStrike({ x: 580, y: 205 });
+  }, [swingRequest]);
+  function startStrike(point: Point) {
+    if (!enabled || pending || strikeLock.current) return;
+    strikeLock.current = true;
+    const strike = { ...point, id: ++sequence.current };
+    setHammerStrike(strike);
+    strikeTimers.current = [
+      setTimeout(() => {
+        burst(point);
+        onWork();
+      }, forgeStrikeImpactMs),
+      setTimeout(() => {
+        strikeLock.current = false;
+        setHammerStrike(null);
+      }, forgeStrikeDurationMs),
+    ];
+  }
   function locate(event: PointerEvent<HTMLDivElement>) {
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width,
@@ -66,6 +107,10 @@ export function ProfessionWorkbench({
     setInside(true);
     setPressed(true);
     lastPoint.current = point;
+    if (gesture.mode === 'strike') {
+      startStrike(point);
+      return;
+    }
     if (gesture.mode === 'draw') {
       const id = ++sequence.current;
       drawing.current = id;
@@ -130,6 +175,7 @@ export function ProfessionWorkbench({
           (inside && enabled ? ' has-tool-cursor' : '') +
           (pressed ? ' is-pressing' : '') +
           (animating ? ' is-working' : '') +
+          (hammerStrike ? ' has-forge-strike' : '') +
           (ready ? ' is-finished' : '')
         }
         role={enabled ? 'button' : 'img'}
@@ -163,8 +209,11 @@ export function ProfessionWorkbench({
         onKeyDown={(e) => {
           if (enabled && !e.repeat && (e.key === 'Enter' || e.key === ' ')) {
             e.preventDefault();
-            burst({ x: 570, y: 275 });
-            onWork();
+            if (gesture.mode === 'strike') startStrike({ x: 580, y: 205 });
+            else {
+              burst({ x: 570, y: 275 });
+              onWork();
+            }
           }
         }}
       >
@@ -181,7 +230,7 @@ export function ProfessionWorkbench({
         />
         <img
           className="pf-scene-tool"
-          src={'/professions/actions-20261114/' + gesture.tool + '.webp'}
+          src={professionToolArtwork(gesture.tool)}
           alt=""
           draggable={false}
         />
@@ -250,6 +299,23 @@ export function ProfessionWorkbench({
             </span>
           ))}
         </div>
+        {gesture.mode === 'strike' && <span className="pf-forge-target" aria-hidden="true" />}
+        {hammerStrike && (
+          <div
+            key={hammerStrike.id}
+            className="pf-forge-strike"
+            aria-hidden="true"
+            style={
+              {
+                left: hammerStrike.x / 10 + '%',
+                top: hammerStrike.y / 6.25 + '%',
+                '--strike-duration': forgeStrikeDurationMs + 'ms',
+              } as CSSProperties
+            }
+          >
+            <img src={professionToolArtwork('smith-hammer')} alt="" draggable={false} />
+          </div>
+        )}
         <div
           className="pf-tool-cursor"
           aria-hidden="true"
@@ -264,7 +330,7 @@ export function ProfessionWorkbench({
           <img
             key={bursts.at(-1)?.id ?? 0}
             className={bursts.length ? 'is-stroking' : ''}
-            src={'/professions/actions-20261114/' + gesture.tool + '.webp'}
+            src={professionToolArtwork(gesture.tool)}
             draggable={false}
             alt=""
           />
@@ -277,7 +343,7 @@ export function ProfessionWorkbench({
           ) : (
             <>
               <span className="pf-working-dot" />
-              {pressed || animating
+              {hammerStrike || pressed || animating
                 ? work.working + '…'
                 : enabled
                   ? gesture.hint
@@ -288,7 +354,10 @@ export function ProfessionWorkbench({
       </div>
       {enabled && (
         <p className="pf-workbench-instruction" id={description}>
-          {gesture.hint} No celular, toque ou arraste. Enter ou espaço também registra sua ajuda.
+          {gesture.hint}{' '}
+          {gesture.mode === 'strike'
+            ? 'No celular, toque na peça. Enter ou espaço também dá uma martelada.'
+            : 'No celular, toque ou arraste. Enter ou espaço também registra sua ajuda.'}
         </p>
       )}
     </>

@@ -1005,6 +1005,8 @@ export type CraftProject = {
   last_assisted_at?: string | null;
   assist_count?: number;
   seconds_saved?: number;
+  strike_count?: number;
+  last_struck_at?:string|null;
 };
 export type ProfessionInventoryItem = {
   description?:string;
