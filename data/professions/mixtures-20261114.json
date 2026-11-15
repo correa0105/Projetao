@@ -1,0 +1,24 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "key": "brewery-bench",
+      "original": "artwork-archive/profession-mixtures-20261114/brewery-bench.png",
+      "webp": "public/professions/mixtures-20261114/brewery-bench.webp",
+      "width": 960,
+      "height": 640,
+      "sha256": "51dbcbbfed32515f239b3dbc2b97278aa4d602e8f52c279cc32b41a72d6c3ff6",
+      "originalSha256": "f877f970f04fa6a519a994b18ad8d3735957d8bca080d1475f9e27661c835c6a"
+    },
+    {
+      "key": "brewing-paddle",
+      "original": "artwork-archive/profession-mixtures-20261114/brewing-paddle.png",
+      "webp": "public/professions/mixtures-20261114/brewing-paddle.webp",
+      "width": 512,
+      "height": 341,
+      "sha256": "7f87069dbb8f009551408b62494f558baeb1755421691d72e3b17d246ad1fb20",
+      "originalSha256": "857f5054759d71eec9e43e99625055a61da8cb84599d5178d604456fd8696dd1"
+    }
+  ],
+  "prompts": "artwork-archive/profession-mixtures-20261114/prompts.json"
+}

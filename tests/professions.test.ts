@@ -29,6 +29,7 @@ import {
 import { professionBuffs } from '../shared/profession-buffs';
 import referencePrices from '../shared/profession-reference-prices.json';
 import { isCraftConsumable, craftValueTier } from '../shared/profession-balancing';
+import { correctBreweryPotionProjects } from '../server/profession-recipe-corrections';
 
 test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e entregas em mesa', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[a-f0-9]{32}$/);
@@ -372,10 +373,10 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
       },
     );
     await t.test(
-      'todas as 25 profissões e 618 receitas produzem automaticamente os itens corretos no prazo',
+      'todas as 25 profissões e 611 receitas produzem automaticamente os itens corretos no prazo',
       async () => {
         assert.equal(professions.length, 25);
-        assert.equal(craftRecipes.length, 618);
+        assert.equal(craftRecipes.length, 611);
         await pool.query('UPDATE characters SET sheet_overrides=$2 WHERE id=$1', [
           hero.id,
           JSON.stringify({ proficiencies: professions.flatMap((p) => p.tools) }),
@@ -421,6 +422,142 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
               recipe.id + ': ' + output[i],
             );
         }
+      },
+    );
+    await t.test(
+      'poções pertencem à Alquimia; correção preserva dois trabalhos, materiais e acesso legado',
+      async () => {
+        network = 1400;
+        const brewery = professions.find((p) => p.id === 'brewing')!;
+        assert.equal(brewery.recipes.length, 9);
+        assert(brewery.recipes.every((r) => !r.output.item_id.startsWith('potion-')));
+        for (const id of [
+          'potion-of-growth',
+          'potion-of-giant-strength',
+          'potion-of-heroism',
+          'potion-of-resistance',
+          'potion-of-water-breathing',
+          'potion-of-diminution',
+          'potion-of-vitality',
+        ])
+          assert(
+            craftRecipes.some((r) => r.profession_id === 'alchemy' && r.output.item_id === id),
+            id,
+          );
+        const brewer = await account('Cervejeiro com receita antiga'),
+          c = await createLegacyTestCharacter(brewer.id);
+        await pool.query('UPDATE characters SET sheet_overrides=$2 WHERE id=$1', [
+          c.id,
+          JSON.stringify({ proficiencies: brewery.tools }),
+        ]);
+        await pool.query(
+          'INSERT INTO character_sheets(character_id,choices,rolls,assignment,finalized_at)VALUES($1,$2,$3,$4,now())',
+          [
+            c.id,
+            JSON.stringify(defaultChoices(c.race, c.class)),
+            JSON.stringify(Array.from({ length: 6 }, () => [4, 4, 4, 4])),
+            JSON.stringify([0, 1, 2, 3, 4, 5]),
+          ],
+        );
+        const canonical = craftRecipes.find(
+          (r) => r.profession_id === 'alchemy' && r.output.item_id === 'potion-of-heroism',
+        )!;
+        const legacy = { ...canonical, id: 'brewing-advanced-heroism', profession_id: 'brewing' };
+        const inserted = [];
+        for (const r of [legacy, canonical])
+          inserted.push(
+            (
+              await pool.query(
+                "INSERT INTO profession_projects(character_id,recipe_id,profession_id,recipe,request_id,ready_at,strike_count)VALUES($1,$2,$3,$4,$5,now()+interval '8 hours',8)RETURNING *",
+                [c.id, r.id, r.profession_id, JSON.stringify(r), randomUUID()],
+              )
+            ).rows[0],
+          );
+        const before = await count(c.id, canonical.output.item_id);
+        await correctBreweryPotionProjects(pool);
+        await correctBreweryPotionProjects(pool);
+        const fixed = (
+          await pool.query('SELECT * FROM profession_projects WHERE id=$1', [inserted[0].id])
+        ).rows[0];
+        assert.equal(fixed.profession_id, 'alchemy');
+        assert.equal(fixed.legacy_profession_id, 'brewing');
+        assert.equal(fixed.ready_at.toISOString(), inserted[0].ready_at.toISOString());
+        assert.equal(fixed.strike_count, 8);
+        assert.deepEqual(fixed.recipe.ingredients, legacy.ingredients);
+        assert.equal(fixed.recipe_id, legacy.id);
+        assert.equal(fixed.revision, inserted[0].revision + 1);
+        assert.equal(
+          (
+            await pool.query(
+              'SELECT count(*)::int AS n FROM profession_recipe_corrections WHERE project_id=$1',
+              [fixed.id],
+            )
+          ).rows[0].n,
+          1,
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*)::int AS n FROM profession_projects WHERE character_id=$1 AND profession_id='alchemy' AND claimed_at IS NULL",
+              [c.id],
+            )
+          ).rows[0].n,
+          2,
+        );
+        assert.equal(
+          (
+            await request('/professions/projects/' + fixed.id + '/strike', other, {
+              request_id: randomUUID(),
+            })
+          ).status,
+          404,
+        );
+        const helped = await request('/professions/projects/' + fixed.id + '/strike', brewer, {
+          request_id: randomUUID(),
+        });
+        assert.equal(helped.status, 200, JSON.stringify(helped.data));
+        assert.equal(helped.data.strike_count, 9);
+        assert.equal(
+          (
+            await request('/professions/projects', brewer, {
+              character_id: c.id,
+              recipe_id: canonical.id,
+              request_id: randomUUID(),
+            })
+          ).status,
+          403,
+        );
+        assert.equal(await count(c.id, canonical.output.item_id), before);
+        await pool.query(
+          "UPDATE profession_projects SET ready_at=now()-interval '1 minute' WHERE id=ANY($1::uuid[])",
+          [inserted.map((p) => p.id)],
+        );
+        assert.equal(
+          (await request('/professions/projects/' + fixed.id + '/collect', brewer, {})).status,
+          200,
+        );
+        assert.equal(
+          (await request('/professions/projects/' + fixed.id + '/collect', brewer, {})).status,
+          200,
+        );
+        assert.equal(
+          await count(c.id, canonical.output.item_id),
+          before + canonical.output.quantity,
+        );
+        assert.equal(
+          (await request('/professions/projects/' + inserted[1].id + '/collect', brewer, {}))
+            .status,
+          403,
+        );
+        await pool.query('UPDATE characters SET sheet_overrides=$2 WHERE id=$1', [
+          c.id,
+          JSON.stringify({ proficiencies: professions.find((p) => p.id === 'alchemy')!.tools }),
+        ]);
+        assert.equal(
+          (await request('/professions/projects/' + inserted[1].id + '/collect', brewer, {}))
+            .status,
+          200,
+        );
       },
     );
     await t.test(

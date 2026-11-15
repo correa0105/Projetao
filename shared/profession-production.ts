@@ -20,9 +20,11 @@ export function professionActionMotion(id: string) {
             : { duration: 850, impact: 620, label: 'ajustes' };
 }
 export function professionToolArtwork(tool: string) {
-  return tool === 'smith-hammer'
-    ? '/professions/hammer-20261114/smith-hammer.webp'
-    : '/professions/actions-20261114/' + tool + '.webp';
+  return tool === 'brewing-paddle'
+    ? '/professions/mixtures-20261114/brewing-paddle.webp'
+    : tool === 'smith-hammer'
+      ? '/professions/hammer-20261114/smith-hammer.webp'
+      : '/professions/actions-20261114/' + tool + '.webp';
 }
 export type ProfessionBench =
   'forge' | 'mixture' | 'writing' | 'wood' | 'textile' | 'precision' | 'stone' | 'kiln' | 'cooking';
@@ -57,7 +59,7 @@ const work: Record<string, ProfessionWork> = {
   },
   brewing: {
     bench: 'mixture',
-    tool: 'pestle',
+    tool: 'brewing-paddle',
     action: 'Cuidar da fermentação',
     working: 'Trabalhando no preparo',
     detail: 'Os ingredientes descansam e amadurecem na oficina.',
@@ -231,9 +233,12 @@ export function professionGesture(id: string): {
     case 'mixture':
       return {
         mode: 'stir',
-        tool: 'pestle',
-        hotspot: [74, 76],
-        hint: 'Segure e mova o pilão para macerar e misturar os ingredientes.',
+        tool: w.tool ?? 'pestle',
+        hotspot: id === 'brewing' ? [92, 91] : [74, 76],
+        hint:
+          id === 'brewing'
+            ? 'Mexa o mosto dentro da tina com a pá de cervejeiro.'
+            : 'Segure e mova o pilão para macerar e misturar os ingredientes.',
       };
     case 'cooking':
       return {

@@ -14,6 +14,8 @@ export function expandProfessionCatalog(values: Profession[]) {
   for (const p of values) {
     p.description = professionWork(p.id).detail;
     p.recipes.push(...(rows.filter((r) => r.profession_id === p.id) as CraftRecipe[]));
+    if (p.id === 'brewing')
+      p.recipes = p.recipes.filter((r) => !r.output.item_id.startsWith('potion-'));
     for (const buff of professionBuffs.filter((b) => b.profession === p.id)) {
       const base = [
         ...new Set(

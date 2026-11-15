@@ -7,20 +7,12 @@ import {
   professionToolArtwork,
   professionWork,
 } from '../shared/profession-production';
+import { insideSurface, professionSurface, type WorkPoint } from './profession-work-surfaces';
 import './profession-workbench.css';
+import './profession-contact.css';
 
-type Point = { x: number; y: number };
-type Stroke = { id: number; points: Point[]; demo?: boolean };
-type Burst = Point & { id: number };
-export function ProfessionWorkbench({
-  profession,
-  enabled,
-  ready,
-  animating,
-  onWork,
-  pending,
-  swingRequest,
-}: {
+type Mark = { id: number; points: WorkPoint[] };
+export function ProfessionWorkbench(props: {
   profession: Profession;
   enabled: boolean;
   ready: boolean;
@@ -29,227 +21,326 @@ export function ProfessionWorkbench({
   pending: boolean;
   swingRequest: number;
 }) {
+  const { profession, enabled, ready, pending, swingRequest } = props;
   const work = professionWork(profession.id),
-    gesture = professionGesture(profession.id),
-    description = useId(),
+    gesture = professionGesture(profession.id);
+  const surface = professionSurface(profession.id),
     motion = professionActionMotion(profession.id);
-  const scene = useRef<HTMLDivElement>(null),
-    drawing = useRef<number | null>(null),
-    pointer = useRef<number | null>(null),
-    lastPoint = useRef<Point | null>(null),
-    sequence = useRef(0),
-    lastBurst = useRef(0),
-    drawDistance = useRef(0),
-    strikeLock = useRef(false),
-    strikeTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const [inside, setInside] = useState(false),
-    [pressed, setPressed] = useState(false),
-    [strokes, setStrokes] = useState<Stroke[]>([]),
-    [bursts, setBursts] = useState<Burst[]>([]),
-    [hammerStrike, setHammerStrike] = useState<Burst | null>(null);
-  useEffect(
-    () => () => {
-      strikeTimers.current.forEach(clearTimeout);
-    },
-    [],
-  );
+  const uid = useId().replace(/:/g, ''),
+    description = uid + '-instruction';
+  const board = useRef<SVGSVGElement>(null),
+    frame = useRef(0),
+    sequence = useRef(0);
+  const latest = useRef(props);
+  latest.current = props;
+  const cycle = useRef(false),
+    reduced = useRef(false),
+    angle = useRef(0),
+    activeMark = useRef<number | null>(null);
+  const drag = useRef<null | {
+    id: number;
+    last: WorkPoint;
+    distance: number;
+    angle: number;
+    travel: number;
+    started: number;
+    credited: boolean;
+    outside: boolean;
+  }>(null);
+  const [contact, setContact] = useState<WorkPoint>({ x: surface.x, y: surface.y });
+  const [hover, setHover] = useState(false),
+    [working, setWorking] = useState(false);
+  const [phase, setPhase] = useState(0),
+    [rotation, setRotation] = useState(0);
+  const [marks, setMarks] = useState<Mark[]>([]),
+    [impact, setImpact] = useState<Mark | null>(null);
+  const [strike, setStrike] = useState<(WorkPoint & { id: number }) | null>(null);
+  const bench =
+    profession.id === 'brewing'
+      ? '/professions/mixtures-20261114/brewery-bench.webp'
+      : '/professions/actions-20261114/' + work.bench + '-bench.webp';
+  const duration = surface.liquid ? 1400 : motion.duration;
+  function stop() {
+    cancelAnimationFrame(frame.current);
+    cycle.current = false;
+    drag.current = null;
+    activeMark.current = null;
+    setWorking(false);
+    setStrike(null);
+    setHover(false);
+  }
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
   useEffect(() => {
-    if (!enabled) {
-      pointer.current = null;
-      drawing.current = null;
-      setInside(false);
-      setPressed(false);
-      strikeTimers.current.forEach(clearTimeout);
-      strikeLock.current = false;
-      setHammerStrike(null);
-    }
+    const media = matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => {
+      reduced.current = media.matches;
+    };
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+  useEffect(() => {
+    if (!enabled) stop();
   }, [enabled]);
   useEffect(() => {
-    if (swingRequest > 0)
-      startStrike(
-        gesture.mode === 'strike'
-          ? { x: 580, y: 205 }
-          : gesture.mode === 'draw'
-            ? { x: 500, y: 345 }
-            : { x: 540, y: 300 },
-        true,
-      );
+    if (swingRequest > 0) animate({ x: surface.x, y: surface.y });
   }, [swingRequest]);
-  function startStrike(point: Point, drawDemo = false) {
-    if (!enabled || pending || strikeLock.current) return;
-    strikeLock.current = true;
-    const strike = { ...point, id: ++sequence.current };
-    setHammerStrike(strike);
-    if (gesture.mode === 'draw' && drawDemo) {
+  function locate(e: PointerEvent<HTMLDivElement>) {
+    const b = board.current?.getBoundingClientRect();
+    if (!b?.width || !b.height) return null;
+    const p = {
+      x: ((e.clientX - b.left) * 960) / b.width,
+      y: ((e.clientY - b.top) * 640) / b.height,
+    };
+    if (insideSurface(p, surface)) return p;
+    if (e.pointerType !== 'touch') return null;
+    const touchSurface = {
+      ...surface,
+      rx: Math.max(surface.rx, (22 * 960) / b.width),
+      ry: Math.max(surface.ry, (22 * 640) / b.height),
+    };
+    if (!insideSurface(p, touchSurface)) return null;
+    // A finger may cover a thin blade or small gem; keep the visible contact on the object.
+    const radius = Math.hypot((p.x - surface.x) / surface.rx, (p.y - surface.y) / surface.ry);
+    return {
+      x: surface.x + ((p.x - surface.x) * 0.9) / radius,
+      y: surface.y + ((p.y - surface.y) * 0.9) / radius,
+    };
+  }
+  function mark(p: WorkPoint, fresh = false) {
+    if (surface.liquid || gesture.mode === 'strike') return;
+    if (fresh || activeMark.current === null) {
       const id = ++sequence.current;
-      setStrokes((old) => [
-        ...old.slice(-23),
-        {
-          id,
-          demo: true,
-          points: Array.from({ length: 18 }, (_, i) => ({
-            x: point.x - 45 + i * 5,
-            y: point.y + Math.sin(i * 0.4) * 10,
-          })),
-        },
-      ]);
-    }
-    strikeTimers.current = [
-      setTimeout(() => {
-        burst(point);
-        onWork();
-      }, motion.impact),
-      setTimeout(() => {
-        strikeLock.current = false;
-        setHammerStrike(null);
-      }, motion.duration),
-    ];
-  }
-  function locate(event: PointerEvent<HTMLDivElement>) {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width,
-      y = (event.clientY - bounds.top) / bounds.height;
-    if (x < 0 || x > 1 || y < 0 || y > 1) return null;
-    event.currentTarget.style.setProperty('--pointer-x', `${x * 100}%`);
-    event.currentTarget.style.setProperty('--pointer-y', `${y * 100}%`);
-    return { x: x * 1000, y: y * 625 };
-  }
-  function burst(point: Point) {
-    lastBurst.current = performance.now();
-    const id = ++sequence.current;
-    setBursts((old) => [...old.slice(-7), { ...point, id }]);
-  }
-  function begin(event: PointerEvent<HTMLDivElement>) {
-    if (!enabled || !event.isPrimary || event.button !== 0) return;
-    if (gesture.mode === 'draw' && (pending || strikeLock.current)) return;
-    const point = locate(event);
-    if (!point) return;
-    event.preventDefault();
-    event.currentTarget.focus({ preventScroll: true });
-    pointer.current = event.pointerId;
-    event.currentTarget.setPointerCapture(event.pointerId);
-    setInside(true);
-    setPressed(true);
-    lastPoint.current = point;
-    drawDistance.current = 0;
-    if (gesture.mode !== 'draw') {
-      startStrike(point);
-      return;
-    }
-    if (gesture.mode === 'draw') {
-      const id = ++sequence.current;
-      drawing.current = id;
-      setStrokes((old) => [...old.slice(-23), { id, points: [point] }]);
-    }
-  }
-  function move(event: PointerEvent<HTMLDivElement>) {
-    if (!enabled || !event.isPrimary) return;
-    const point = locate(event);
-    if (!point) {
-      setInside(false);
-      drawing.current = null;
-      lastPoint.current = null;
-      return;
-    }
-    setInside(true);
-    if (pointer.current !== event.pointerId) return;
-    if (
-      lastPoint.current &&
-      Math.hypot(point.x - lastPoint.current.x, point.y - lastPoint.current.y) < 3
-    )
-      return;
-    if (lastPoint.current)
-      drawDistance.current += Math.hypot(
-        point.x - lastPoint.current.x,
-        point.y - lastPoint.current.y,
+      activeMark.current = id;
+      setMarks((old) => [...old.slice(-39), { id, points: [p] }]);
+    } else {
+      const id = activeMark.current;
+      setMarks((old) =>
+        old.map((m) =>
+          m.id === id && m.points.length < 300 ? { ...m, points: [...m.points, p] } : m,
+        ),
       );
-    lastPoint.current = point;
-    if (gesture.mode === 'draw') {
-      if (drawing.current === null) {
-        const id = ++sequence.current;
-        drawing.current = id;
-        setStrokes((old) => [...old.slice(-23), { id, points: [point] }]);
-      } else {
-        const strokeId = drawing.current;
-        setStrokes((old) =>
-          old.map((s) =>
-            s.id === strokeId && s.points.length < 320 ? { ...s, points: [...s.points, point] } : s,
-          ),
-        );
+    }
+  }
+  function credit(p: WorkPoint) {
+    if (!surface.liquid && gesture.mode !== 'strike')
+      setImpact({ id: ++sequence.current, points: [p] });
+    if (latest.current.enabled && !latest.current.pending) latest.current.onWork();
+  }
+  function liquidPose(a: number) {
+    if (reduced.current) {
+      setContact({ x: surface.x, y: surface.y });
+      setRotation(0);
+      angle.current = a;
+      return;
+    }
+    setContact({
+      x: surface.x + Math.cos(a) * surface.rx * 0.55,
+      y: surface.y + Math.sin(a) * surface.ry * 0.55,
+    });
+    setRotation((a * 180) / Math.PI);
+    angle.current = a;
+  }
+  function animate(anchor: WorkPoint) {
+    if (!latest.current.enabled || latest.current.pending || cycle.current) return;
+    cycle.current = true;
+    setWorking(true);
+    activeMark.current = null;
+    const start = performance.now(),
+      initialAngle = angle.current;
+    let flashed = false;
+    if (gesture.mode === 'strike') {
+      setContact(anchor);
+      setStrike({ ...anchor, id: ++sequence.current });
+    }
+    function tick(now: number) {
+      if (!latest.current.enabled) {
+        stop();
+        return;
+      }
+      const t = Math.min(1, (now - start) / duration);
+      setPhase(reduced.current ? 0 : t);
+      if (surface.liquid) liquidPose(initialAngle + t * Math.PI * 2);
+      else if (gesture.mode !== 'strike') {
+        const p = {
+          x: anchor.x + Math.sin(t * Math.PI * 2) * Math.min(surface.rx * 0.35, 34),
+          y:
+            anchor.y +
+            Math.sin(t * Math.PI * (gesture.mode === 'stitch' ? 8 : 2)) *
+              Math.min(surface.ry * 0.3, 9),
+        };
+        if (insideSurface(p, surface)) {
+          if (!reduced.current) setContact(p);
+          mark(p);
+        }
+      }
+      if (gesture.mode === 'strike' && !flashed && now - start >= motion.impact) {
+        flashed = true;
+        setImpact({ id: ++sequence.current, points: [anchor] });
+      }
+      if (t < 1) frame.current = requestAnimationFrame(tick);
+      else {
+        cycle.current = false;
+        setWorking(false);
+        setStrike(null);
+        activeMark.current = null;
+        credit(anchor);
       }
     }
+    frame.current = requestAnimationFrame(tick);
   }
-  function end(event: PointerEvent<HTMLDivElement>) {
-    if (pointer.current !== event.pointerId) return;
-    const donePoint = lastPoint.current,
-      complete =
-        gesture.mode === 'draw' && drawDistance.current >= 20 && event.type !== 'pointercancel';
-    pointer.current = null;
-    drawing.current = null;
-    lastPoint.current = null;
-    setPressed(false);
-    if (event.currentTarget.hasPointerCapture(event.pointerId))
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    if (event.pointerType !== 'mouse') setInside(false);
-    if (complete && donePoint) startStrike(donePoint);
+  function begin(e: PointerEvent<HTMLDivElement>) {
+    if (!enabled || pending || cycle.current || !e.isPrimary || e.button !== 0) return;
+    const p = locate(e);
+    if (!p) return;
+    e.preventDefault();
+    e.currentTarget.focus({ preventScroll: true });
+    if (gesture.mode === 'strike') {
+      setContact(p);
+      animate(p);
+      return;
+    }
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current = {
+      id: e.pointerId,
+      last: p,
+      distance: 0,
+      angle: Math.atan2((p.y - surface.y) / surface.ry, (p.x - surface.x) / surface.rx),
+      travel: 0,
+      started: performance.now(),
+      credited: false,
+      outside: false,
+    };
+    setHover(true);
+    setWorking(true);
+    setContact(p);
+    mark(p, true);
   }
+  function move(e: PointerEvent<HTMLDivElement>) {
+    if (!enabled || cycle.current) return;
+    const p = locate(e);
+    setHover(!!p);
+    const d = drag.current;
+    if (!p) {
+      activeMark.current = null;
+      if (d) {
+        d.distance = 0;
+        d.travel = 0;
+        d.outside = true;
+      }
+      return;
+    }
+    if (!d) {
+      if (!surface.liquid) setContact(p);
+      return;
+    }
+    if (d.id !== e.pointerId) return;
+    if (d.outside) {
+      d.last = p;
+      d.angle = Math.atan2((p.y - surface.y) / surface.ry, (p.x - surface.x) / surface.rx);
+      d.outside = false;
+      d.started = performance.now();
+      return;
+    }
+    const distance = Math.hypot(p.x - d.last.x, p.y - d.last.y);
+    if (distance < 1) return;
+    if (surface.liquid) {
+      const a = Math.atan2((p.y - surface.y) / surface.ry, (p.x - surface.x) / surface.rx);
+      const delta = Math.atan2(Math.sin(a - d.angle), Math.cos(a - d.angle));
+      // Pointer jumps across the bowl do not constitute a stirring cycle.
+      if (
+        Math.abs(delta) < Math.PI / 2 &&
+        Math.hypot((p.x - surface.x) / surface.rx, (p.y - surface.y) / surface.ry) > 0.2
+      ) {
+        d.travel += Math.abs(delta);
+        angle.current += delta;
+        liquidPose(angle.current);
+      }
+      d.angle = a;
+    } else {
+      setContact(p);
+      mark(p);
+      d.distance += distance;
+    }
+    d.last = p;
+    if (
+      (surface.liquid ? d.travel >= Math.PI * 2 : d.distance >= 110) &&
+      performance.now() - d.started >= 900 &&
+      !latest.current.pending
+    ) {
+      credit(p);
+      d.credited = true;
+      d.distance = 0;
+      d.travel = 0;
+      d.started = performance.now();
+      activeMark.current = null;
+    }
+  }
+  function end(e: PointerEvent<HTMLDivElement>) {
+    const d = drag.current;
+    if (!d || d.id !== e.pointerId) return;
+    drag.current = null;
+    activeMark.current = null;
+    setWorking(false);
+    if (e.currentTarget.hasPointerCapture(e.pointerId))
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    if (!d.credited && e.type !== 'pointercancel' && locate(e)) animate(d.last);
+    if (e.pointerType !== 'mouse') setHover(false);
+  }
+  const toolW =
+    gesture.tool === 'brewing-paddle'
+      ? 260
+      : surface.liquid
+        ? 205
+        : gesture.mode === 'strike'
+          ? 255
+          : 160;
+  const toolH = gesture.tool === 'brewing-paddle' ? (toolW * 2) / 3 : toolW;
+  const tilt = surface.liquid
+    ? Math.sin((rotation * Math.PI) / 180) * 9
+    : working && gesture.mode === 'stitch'
+      ? Math.sin(phase * Math.PI * 6) * 8
+      : 0;
+  const hint = surface.liquid
+    ? 'Mexa dentro do recipiente: arraste em círculos ou toque para completar uma mistura.'
+    : gesture.hint + ' Trabalhe diretamente sobre a peça.';
   return (
     <>
       <div
-        ref={scene}
         className={
-          'pf-craft-scene pf-scene-' +
+          'pf-craft-scene pf-contact-scene pf-scene-' +
           work.bench +
           ' pf-gesture-' +
           gesture.mode +
           (enabled ? ' is-interactive' : '') +
-          (inside && enabled ? ' has-tool-cursor' : '') +
-          (pressed ? ' is-pressing' : '') +
-          (animating ? ' is-working' : '') +
-          (hammerStrike
-            ? ' has-tool-action' + (gesture.mode === 'strike' ? ' has-forge-strike' : '')
-            : '') +
-          (ready ? ' is-finished' : '')
+          (hover ? ' is-on-piece' : '') +
+          (working ? ' is-contact-working' : '')
         }
         role={enabled ? 'button' : 'img'}
         tabIndex={enabled ? 0 : undefined}
-        aria-label={
-          enabled ? 'Trabalhar na bancada de ' + profession.name : 'Bancada de ' + profession.name
-        }
-        aria-describedby={enabled ? description : undefined}
-        onPointerEnter={(e) => {
-          if (enabled && e.pointerType === 'mouse') {
-            locate(e);
-            setInside(true);
-          }
-        }}
+        aria-label={'Trabalhar na bancada de ' + profession.name}
+        aria-describedby={description}
         onPointerDown={begin}
         onPointerMove={move}
         onPointerUp={end}
         onPointerCancel={end}
         onLostPointerCapture={() => {
-          pointer.current = null;
-          drawing.current = null;
-          setPressed(false);
+          drag.current = null;
+          activeMark.current = null;
+          if (!cycle.current) setWorking(false);
         }}
-        onPointerLeave={() => setInside(false)}
+        onPointerLeave={() => setHover(false)}
         onBlur={() => {
-          setInside(false);
-          setPressed(false);
-          drawing.current = null;
-          pointer.current = null;
+          if (!cycle.current) {
+            drag.current = null;
+            setWorking(false);
+          }
+          setHover(false);
         }}
         onKeyDown={(e) => {
-          if (enabled && !e.repeat && (e.key === 'Enter' || e.key === ' ')) {
+          if (!e.repeat && (e.key === 'Enter' || e.key === ' ')) {
             e.preventDefault();
-            startStrike(
-              gesture.mode === 'strike'
-                ? { x: 580, y: 205 }
-                : gesture.mode === 'draw'
-                  ? { x: 500, y: 345 }
-                  : { x: 540, y: 300 },
-              true,
-            );
+            animate({ x: surface.x, y: surface.y });
           }
         }}
       >
@@ -257,155 +348,162 @@ export function ProfessionWorkbench({
           className="pf-scene-environment"
           style={{ backgroundImage: `url(${profession.background})` }}
         />
-        <div className="pf-scene-light" />
-        <img
-          className="pf-scene-bench"
-          src={'/professions/actions-20261114/' + work.bench + '-bench.webp'}
-          alt=""
-          draggable={false}
-        />
-        <img
-          className="pf-scene-tool"
-          src={professionToolArtwork(gesture.tool)}
-          alt=""
-          draggable={false}
-        />
-        <div className="pf-scene-impact" />
-        <div className="pf-scene-particles" aria-hidden="true">
-          {Array.from({ length: 18 }, (_, i) => (
-            <i
-              key={i}
-              style={
-                {
-                  '--x': `${Math.cos(i * 2.4) * (55 + i * 5)}px`,
-                  '--y': `${-30 - (i % 5) * 24}px`,
-                  '--delay': `${(i % 6) * 0.035}s`,
-                } as CSSProperties
-              }
-            />
-          ))}
-        </div>
-        {gesture.mode === 'draw' && (
-          <svg
-            className="pf-hand-drawing"
-            viewBox="0 0 1000 625"
-            preserveAspectRatio="none"
-            aria-hidden="true"
+        <svg
+          ref={board}
+          className="pf-contact-board"
+          viewBox="0 0 960 640"
+          aria-hidden="true"
+          data-bench={profession.id}
+        >
+          <defs>
+            <clipPath id={uid + '-surface'}>
+              <ellipse cx={surface.x} cy={surface.y} rx={surface.rx} ry={surface.ry} />
+            </clipPath>
+            <radialGradient id={uid + '-fade'}>
+              <stop offset="75%" stopColor="white" />
+              <stop offset="100%" stopColor="black" />
+            </radialGradient>
+            <mask id={uid + '-liquid'}>
+              <ellipse
+                cx={surface.x}
+                cy={surface.y}
+                rx={surface.rx}
+                ry={surface.ry}
+                fill={'url(#' + uid + '-fade)'}
+              />
+            </mask>
+            <linearGradient id={uid + '-lip-fade'} x1="0" y1="0" x2="0" y2="1">
+              <stop stopColor="black" />
+              <stop offset=".1" stopColor="white" />
+            </linearGradient>
+            <mask id={uid + '-lip'}>
+              <rect
+                x={surface.x - surface.rx - 24}
+                y={surface.y + surface.ry * 0.65}
+                width={surface.rx * 2 + 48}
+                height="190"
+                fill={'url(#' + uid + '-lip-fade)'}
+              />
+            </mask>
+          </defs>
+          <image className="pf-contact-art" href={bench} width="960" height="640" />
+          {surface.liquid && (
+            <g mask={'url(#' + uid + '-liquid)'}>
+              <image
+                className="pf-liquid-texture"
+                href={bench}
+                width="960"
+                height="640"
+                transform={`translate(${surface.x} ${surface.y}) scale(1 ${surface.ry / surface.rx}) rotate(${rotation}) scale(1 ${surface.rx / surface.ry}) translate(${-surface.x} ${-surface.y})`}
+              />
+            </g>
+          )}
+          <g
+            clipPath={'url(#' + uid + '-surface)'}
+            className={
+              'pf-contact-marks pf-marks-' +
+              gesture.mode +
+              (profession.id === 'painting' ? ' is-painting' : '')
+            }
           >
-            {strokes.map((s) => (
+            {marks.map((m) => (
               <path
-                key={s.id}
-                d={
-                  'M' +
-                  s.points.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' L') +
-                  (s.points.length === 1 ? ' l.1,.1' : '')
-                }
-                className={
-                  (profession.id === 'painting' ? 'is-paint' : '') +
-                  (s.demo ? ' pf-demo-stroke' : '')
-                }
+                key={m.id}
+                d={'M' + m.points.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' L')}
               />
             ))}
-          </svg>
-        )}
-        {(work.bench === 'mixture' || work.bench === 'cooking' || work.bench === 'kiln') && (
-          <div className="pf-scene-steam" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </div>
-        )}
-        <div className="pf-hand-effects" aria-hidden="true">
-          {bursts.map((b) => (
-            <span
-              key={b.id}
-              className="pf-hand-burst"
-              style={{ left: `${b.x / 10}%`, top: `${b.y / 6.25}%` }}
+            {impact && !surface.liquid && (
+              <g
+                key={impact.id}
+                className="pf-contact-impact"
+                transform={`translate(${impact.points[0].x} ${impact.points[0].y})`}
+              >
+                {gesture.mode === 'strike' ? (
+                  <>
+                    <ellipse className="pf-metal-glow" rx="48" ry="13" />
+                  </>
+                ) : gesture.mode === 'polish' ? (
+                  <path className="pf-polish-glint" d="M-18 0H18M0-18V18M-9-9L9 9M9-9L-9 9" />
+                ) : gesture.mode === 'carve' ? (
+                  <>
+                    {Array.from({ length: 6 }, (_, i) => (
+                      <path
+                        className="pf-contact-chip"
+                        key={i}
+                        d={`M${i * 6 - 20} 0l8 ${4 + (i % 3)}l-5 3z`}
+                      />
+                    ))}
+                  </>
+                ) : null}
+              </g>
+            )}
+          </g>
+          {impact && gesture.mode === 'strike' && (
+            <g
+              key={'sparks-' + impact.id}
+              className="pf-contact-sparks"
+              transform={`translate(${impact.points[0].x} ${impact.points[0].y})`}
             >
-              <b />
-              {Array.from({ length: gesture.mode === 'draw' ? 0 : 10 }, (_, i) => (
-                <i
+              {Array.from({ length: 12 }, (_, i) => (
+                <path
                   key={i}
-                  style={
-                    {
-                      '--dx': `${Math.cos(i * 2.4) * (20 + i * 5)}px`,
-                      '--dy': `${Math.sin(i * 2.4) * 35 - 20}px`,
-                      '--turn': `${i * 37}deg`,
-                    } as CSSProperties
-                  }
+                  pathLength="100"
+                  d={`M0 0Q${Math.cos(i * 2.4) * 50} ${-25 - i * 3} ${Math.cos(i * 2.4) * 80} ${15 + i * 2}`}
                 />
               ))}
-            </span>
-          ))}
-        </div>
-        {gesture.mode === 'strike' && <span className="pf-forge-target" aria-hidden="true" />}
-        {hammerStrike && (
-          <div
-            key={hammerStrike.id}
-            className={
-              gesture.mode === 'strike'
-                ? 'pf-forge-strike'
-                : 'pf-manual-action pf-work-' + gesture.mode
-            }
-            aria-hidden="true"
-            style={
-              {
-                left: hammerStrike.x / 10 + '%',
-                top: hammerStrike.y / 6.25 + '%',
-                '--strike-duration': motion.duration + 'ms',
-                '--hotspot-x': gesture.hotspot[0] + '%',
-                '--hotspot-y': gesture.hotspot[1] + '%',
-              } as CSSProperties
-            }
-          >
-            <img src={professionToolArtwork(gesture.tool)} alt="" draggable={false} />
-          </div>
-        )}
-        {hammerStrike && gesture.mode !== 'strike' && (
-          <div
-            className={'pf-action-surface pf-surface-' + gesture.mode}
-            aria-hidden="true"
-            style={
-              {
-                left: hammerStrike.x / 10 + '%',
-                top: hammerStrike.y / 6.25 + '%',
-                '--action-duration': motion.duration + 'ms',
-              } as CSSProperties
-            }
-          >
-            <i />
-            <i />
-            <i />
-            <svg viewBox="0 0 100 40">
-              <path
-                d={
-                  gesture.mode === 'stitch'
-                    ? 'M10 24L24 18L29 26L43 20L48 27L62 21L67 28L81 22'
-                    : 'M10 28Q35 9 52 23T90 17'
-                }
-              />
-            </svg>
-          </div>
-        )}
-        <div
-          className="pf-tool-cursor"
-          aria-hidden="true"
-          data-tool={gesture.tool}
-          style={
-            {
-              '--hotspot-x': gesture.hotspot[0] + '%',
-              '--hotspot-y': gesture.hotspot[1] + '%',
-            } as CSSProperties
-          }
-        >
-          <img
-            key={bursts.at(-1)?.id ?? 0}
-            className={bursts.length ? 'is-stroking' : ''}
-            src={professionToolArtwork(gesture.tool)}
-            draggable={false}
-            alt=""
+            </g>
+          )}
+          <ellipse
+            className="pf-contact-zone"
+            data-work-zone="true"
+            cx={surface.x}
+            cy={surface.y}
+            rx={surface.rx}
+            ry={surface.ry}
           />
-        </div>
+          {gesture.mode !== 'strike' && (
+            <g
+              className="pf-contact-tool"
+              data-tool={gesture.tool}
+              transform={`translate(${contact.x} ${contact.y}) rotate(${tilt})`}
+            >
+              <ellipse className="pf-tool-contact-shadow" rx={surface.liquid ? 16 : 8} ry="3" />
+              <image
+                href={professionToolArtwork(gesture.tool)}
+                x={(-toolW * gesture.hotspot[0]) / 100}
+                y={(-toolH * gesture.hotspot[1]) / 100}
+                width={toolW}
+                height={toolH}
+              />
+            </g>
+          )}
+          {surface.liquid && (
+            <image
+              className="pf-container-lip"
+              href={bench}
+              width="960"
+              height="640"
+              mask={'url(#' + uid + '-lip)'}
+            />
+          )}
+          {gesture.mode === 'strike' && (
+            <foreignObject
+              x={contact.x - 255 * 0.85}
+              y={contact.y - 255 * 0.42}
+              width="255"
+              height="255"
+              overflow="visible"
+            >
+              <div
+                key={strike?.id ?? 'rest'}
+                className={strike ? 'pf-contact-hammer is-striking' : 'pf-contact-hammer'}
+                style={{ '--strike-duration': motion.duration + 'ms' } as CSSProperties}
+              >
+                <img src={professionToolArtwork(gesture.tool)} alt="" draggable={false} />
+              </div>
+            </foreignObject>
+          )}
+        </svg>
         <span className="pf-scene-caption">
           {ready ? (
             <>
@@ -414,10 +512,12 @@ export function ProfessionWorkbench({
           ) : (
             <>
               <span className="pf-working-dot" />
-              {hammerStrike || pressed || animating
+              {working
                 ? work.working + '…'
                 : enabled
-                  ? gesture.hint
+                  ? surface.liquid
+                    ? 'Trabalhe os ingredientes dentro do recipiente'
+                    : 'Toque ou arraste sobre a peça para trabalhar'
                   : 'Sua oficina está trabalhando'}
             </>
           )}
@@ -425,10 +525,7 @@ export function ProfessionWorkbench({
       </div>
       {enabled && (
         <p className="pf-workbench-instruction" id={description}>
-          {gesture.hint}{' '}
-          {gesture.mode === 'strike'
-            ? 'No celular, toque na peça. Enter ou espaço também dá uma martelada.'
-            : 'No celular, toque ou arraste. Enter ou espaço também registra sua ajuda.'}
+          {hint} Enter ou espaço completa uma ação. Dez ações reduzem até 30 minutos.
         </p>
       )}
     </>

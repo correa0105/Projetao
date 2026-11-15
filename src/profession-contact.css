@@ -1,0 +1,160 @@
+.pf-contact-board {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  bottom: 4%;
+  overflow: visible;
+  z-index: 2;
+  filter: drop-shadow(0 16px 15px #0006);
+}
+.pf-contact-scene.is-on-piece {
+  cursor: crosshair;
+}
+.pf-contact-scene.pf-gesture-stir.is-on-piece {
+  cursor: grab;
+}
+.pf-contact-scene.pf-gesture-stir.is-contact-working {
+  cursor: grabbing;
+}
+.pf-contact-scene:not(.pf-gesture-stir).is-on-piece {
+  cursor: none;
+}
+.pf-contact-zone {
+  fill: transparent;
+  stroke: #e3bc7d;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 7;
+  opacity: 0;
+}
+.pf-contact-scene:focus-visible .pf-contact-zone {
+  opacity: 0.6;
+}
+.pf-contact-tool {
+  filter: drop-shadow(3px 5px 3px #0007);
+}
+.pf-tool-contact-shadow {
+  fill: #20170c;
+  opacity: 0.35;
+}
+.pf-contact-scene:not(.pf-gesture-stir):not(.is-on-piece):not(.is-contact-working)
+  .pf-contact-tool {
+  opacity: 0.8;
+}
+.pf-contact-marks path {
+  fill: none;
+  stroke: #473021;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pf-contact-marks.is-painting path {
+  stroke: #49647b;
+  stroke-width: 8;
+  opacity: 0.65;
+}
+.pf-scene-kiln .pf-contact-marks.pf-marks-draw path {
+  stroke: #527f99;
+  stroke-width: 4;
+  opacity: 0.7;
+}
+.pf-contact-marks.pf-marks-stitch path {
+  stroke: #dbbd82;
+  stroke-width: 2.5;
+  stroke-dasharray: 4 5;
+  filter: drop-shadow(0 1px 1px #25170b);
+}
+.pf-contact-marks.pf-marks-carve path {
+  stroke: #452b19;
+  stroke-width: 3;
+  filter: drop-shadow(0 1.5px 0.3px #d9ba83);
+}
+.pf-scene-stone .pf-contact-marks.pf-marks-carve path {
+  stroke: #4f504d;
+  filter: drop-shadow(0 1px 0.3px #ddd6bf);
+}
+.pf-contact-marks.pf-marks-polish > path {
+  stroke: #f4e1b6;
+  stroke-width: 1;
+  opacity: 0.25;
+}
+.pf-contact-impact {
+  animation: pf-contact-settle 0.7s ease-out both;
+}
+.pf-contact-sparks path {
+  fill: none;
+  stroke: #ffcc6a;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 4 100;
+  animation: pf-contact-spark-flight 0.6s ease-out both;
+}
+@keyframes pf-contact-spark-flight {
+  from {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+}
+.pf-contact-marks .pf-metal-glow {
+  fill: #ffb335;
+  opacity: 0.6;
+  filter: blur(5px);
+}
+.pf-contact-marks path.pf-contact-spark {
+  stroke: #ffdf86;
+  stroke-width: 2;
+}
+.pf-contact-marks path.pf-polish-glint {
+  stroke: #fff0c9;
+  stroke-width: 2;
+}
+.pf-contact-marks path.pf-contact-chip {
+  fill: #bf9761;
+  stroke: #694a2a;
+  stroke-width: 0.6;
+}
+.pf-contact-hammer {
+  width: 255px;
+  height: 255px;
+}
+.pf-contact-hammer img {
+  width: 100%;
+  height: 100%;
+  transform-origin: 21% 85%;
+  filter: drop-shadow(6px 12px 6px #0009);
+}
+.pf-contact-hammer.is-striking img {
+  animation: pf-forge-weighted-strike var(--strike-duration) both;
+}
+@keyframes pf-contact-settle {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@media (max-width: 640px) {
+  .pf-contact-board {
+    width: 96%;
+    left: 2%;
+    bottom: 8%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-contact-sparks {
+    display: none;
+  }
+  .pf-contact-hammer.is-striking img {
+    animation: none;
+  }
+  .pf-contact-impact {
+    animation-duration: 0.1s;
+  }
+  .pf-liquid-texture {
+    visibility: hidden;
+  }
+}

@@ -24,14 +24,18 @@ const supports: [string, string, string[], string][] = [
   ['glassblowing', 'Lente de observação', ['Percepção'], 'craft-gem-amulet'],
   ['jewelry', 'Medalhão de presença', ['Persuasão'], 'craft-ring'],
   ['cobbling', 'Palmilhas de equilíbrio', ['Acrobacia'], 'craft-lined-boots'],
-  ['brewing', 'Tônico do vigor', ['Atletismo'], 'craft-malt-extract'],
+  ['brewing', 'Cerveja revigorante', ['Atletismo'], 'craft-ale'],
 ];
 export const professionBuffs: ProfessionBuff[] = supports.flatMap(
   ([profession, name, skills, art]) =>
     [3, 6, 10].map((level, i) => ({
       id: `craft-support-${profession}-${level}`,
       profession,
-      name: name + [' · refinado', ' · superior', ' · obra-prima'][i],
+      name:
+        name +
+        [profession === 'brewing' ? ' · refinada' : ' · refinado', ' · superior', ' · obra-prima'][
+          i
+        ],
       level,
       bonus: i + 1,
       minutes: [30, 60, 90][i],

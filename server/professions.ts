@@ -143,7 +143,11 @@ async function project(db: DB, id: string, user: string, requireTraining = true)
   const actor = await character(db, row.character_id, user, true);
   const p = (await db.query('SELECT * FROM profession_projects WHERE id=$1 FOR UPDATE', [id]))
     .rows[0] as CraftProject;
-  if (requireTraining) requireProfession(p.profession_id, actor.proficiencies, actor.unlimited);
+  if (requireTraining) {
+    const previous = professions.find((value) => value.id === p.legacy_profession_id);
+    const legacyAllowed = !!previous && professionUnlocked(previous, actor.proficiencies);
+    requireProfession(p.profession_id, actor.proficiencies, actor.unlimited || legacyAllowed);
+  }
   return p;
 }
 async function canCancelProduction(db: DB, user: string) {

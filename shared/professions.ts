@@ -1002,6 +1002,7 @@ export type CraftProject = {
   created_at: string;
   claimed_at: string | null;
   canceled_at?: string | null;
+  legacy_profession_id?: string | null;
   last_assisted_at?: string | null;
   assist_count?: number;
   seconds_saved?: number;

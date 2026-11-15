@@ -13,6 +13,7 @@ import { thematicEquipmentImage, approvedThematicEquipmentImages } from '../shar
 import { withdrawnWeaponOffer, withdrawnBookOffer } from '../shared/shop-availability.js';
 import { seedProfessionCatalog } from './professions.js';
 import {synchronizeCatalogMechanics} from './catalog-item-mechanics.js';
+import { correctBreweryPotionProjects } from './profession-recipe-corrections.js';
 
 export async function seed() {
   const catalog = JSON.parse(await readFile(resolve('data/shop-export/loja.json'), 'utf8'));
@@ -183,6 +184,7 @@ export async function seed() {
     await seedClothingPieces(client);
     await seedProfessionCatalog(client);
     await synchronizeCatalogMechanics(client);
+    await correctBreweryPotionProjects(client);
     const entries = [
       [
         'dominios-da-alvorada',

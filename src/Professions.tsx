@@ -127,12 +127,19 @@ export function Professions({
   const unlimitedMaterials = state?.capabilities?.unlimited_materials === true;
   const hasProfession = (p: Profession) =>
     administrator || professionUnlocked(p, state?.proficiencies ?? []);
-  const unlocked = !!profession && hasProfession(profession);
+
   const craftingProgress =
     state?.progress?.find((p) => p.profession_id === selected) ?? professionProgress();
   const activeProjects = state?.projects.filter((p) => !p.claimed_at && !p.canceled_at) ?? [];
   const active = activeProjects[0];
-  const current = activeProjects.find((p) => p.profession_id === selected);
+  const current =
+    activeProjects.find((p) => p.profession_id === selected && p.recipe_id === recipeId) ??
+    activeProjects.find((p) => p.profession_id === selected);
+  const legacyProfession = professions.find((p) => p.id === current?.legacy_profession_id);
+  const unlocked =
+    !!profession &&
+    (hasProfession(profession) ||
+      (!!legacyProfession && professionUnlocked(legacyProfession, state?.proficiencies ?? [])));
   const recipe =
     (current?.recipe.id === recipeId ? current.recipe : undefined) ??
     profession?.recipes.find((r) => r.id === recipeId) ??
@@ -141,10 +148,12 @@ export function Professions({
   const recipeUnlocked =
     unlocked && (administrator || craftingProgress.level >= (recipe?.required_level ?? 1));
   const now = state ? Date.parse(state.server_time) + Math.max(0, tick - received) : tick;
-  function open(p: Profession) {
+  function open(p: Profession, job?: CraftProject) {
     setSelected(p.id);
     setRecipeId(
-      activeProjects.find((job) => job.profession_id === p.id)?.recipe_id ?? p.recipes[0].id,
+      job?.recipe_id ??
+        activeProjects.find((job) => job.profession_id === p.id)?.recipe_id ??
+        p.recipes[0].id,
     );
     setRecipeSearch('');
     setDeliveries(false);
@@ -323,7 +332,11 @@ export function Professions({
                   <Check size={17} />
                   <span>
                     <strong>Bancada liberada</strong> ·{' '}
-                    {administrator ? 'acesso de administrador' : 'proficiência confirmada na ficha'}
+                    {administrator
+                      ? 'acesso de administrador'
+                      : hasProfession(profession)
+                        ? 'proficiência confirmada na ficha'
+                        : 'conclusão da produção já iniciada'}
                   </span>
                 </>
               ) : (
@@ -375,7 +388,12 @@ export function Professions({
                 <button
                   key={job.id}
                   className="pf-active-banner"
-                  onClick={() => open(professions.find((p) => p.id === job.profession_id)!)}
+                  onClick={() =>
+                    open(
+                      professions.find((p) => p.id === job.profession_id)!,
+                      job,
+                    )
+                  }
                 >
                   <Clock3 size={20} />
                   <span>
@@ -488,6 +506,12 @@ export function Professions({
                           valem para novas produções.
                         </p>
                       )}
+                    {current?.legacy_profession_id && (
+                      <p className="pf-start-note">
+                        Receita corrigida para Alquimia. Materiais, prazo e progresso desta produção
+                        foram preservados.
+                      </p>
+                    )}
                     {recipe.ingredients.map((i) => {
                       const item = state?.inventory.find((v) => v.id === i.item_id),
                         table = professionMaterialIds.has(i.item_id),
@@ -692,7 +716,12 @@ export function Professions({
                 <button
                   key={job.id}
                   className="pf-active-banner"
-                  onClick={() => open(professions.find((p) => p.id === job.profession_id)!)}
+                  onClick={() =>
+                    open(
+                      professions.find((p) => p.id === job.profession_id)!,
+                      job,
+                    )
+                  }
                 >
                   <Clock3 size={20} />
                   <span>

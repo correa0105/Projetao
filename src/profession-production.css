@@ -577,7 +577,7 @@
 }
 @media (max-width: 600px) {
   .pf-production {
-    padding: 18px;
+    padding: 0;
   }
   .pf-production-heading {
     gap: 12px;

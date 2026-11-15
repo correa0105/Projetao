@@ -367,6 +367,9 @@
   gap: 24px;
   align-items: start;
 }
+.pf-studio-grid > * {
+  min-width: 0;
+}
 .pf-recipe-shelf,
 .pf-bench,
 .pf-history,
@@ -956,7 +959,7 @@
     height: 32px;
   }
   .pf-studio-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .pf-recipe-shelf {
     padding: 19px 17px;
