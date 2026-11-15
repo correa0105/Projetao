@@ -1,0 +1,28 @@
+.pf-dose-ripple {
+  fill: none;
+  stroke: #d6a9cf;
+  stroke-width: 1.2;
+}
+.pf-poison-drop {
+  fill: #bd6ac0;
+  stroke: #f0c5e9;
+  stroke-width: 0.6;
+  filter: drop-shadow(0 1px 1px #29132f);
+}
+.pf-technique-copy .pf-contact-marks > path {
+  stroke: #35271e;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.pf-gesture-draw .pf-contact-tool {
+  filter: drop-shadow(1px 2px 1px #0006);
+}
+.pf-technique-dose .pf-contact-tool {
+  filter: drop-shadow(2px 3px 2px #0005);
+}
+.pf-hot-glass {
+  filter: drop-shadow(0 0 8px #ff8f252e);
+}
+.pf-blowpipe {
+  filter: drop-shadow(0 3px 2px #0007);
+}

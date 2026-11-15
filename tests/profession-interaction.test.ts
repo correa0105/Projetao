@@ -1,3 +1,4 @@
+import { professionMaterialPoints } from './fixtures/profession-material-points';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
@@ -5,10 +6,12 @@ import { professions } from '../shared/professions';
 import { professionTechnique, professionTechniques } from '../shared/profession-techniques';
 import {
   professionToolArtwork,
+  professionBenchArtwork,
   forgeMinimumStrikeIntervalMs,
 } from '../shared/profession-production';
 import {
   insideSurface,
+  acquireSurface,
   professionSurface,
   professionView,
   projectOnSurface,
@@ -22,6 +25,7 @@ test('as 25 profissões possuem técnicas distintas, artes disponíveis e cadên
     const t = professionTechnique(p.id);
     assert(t.duration >= forgeMinimumStrikeIntervalMs, p.id);
     await access('public' + professionToolArtwork(t.tool));
+    await access('public' + professionBenchArtwork(p.id));
   }
   const art = JSON.parse(await readFile('data/professions/techniques-20261115.json', 'utf8'));
   assert.equal(art.assets.filter((a: any) => a.kind === 'bench').length, 5);
@@ -56,20 +60,37 @@ test('trajetórias distintas mantêm o contato na superfície inclusive junto à
   }
   assert.equal(signatures.size, 25);
 });
-test('a sola inclinada usa a mesma geometria no contato e na projeção', () => {
-  const s = professionSurface('cobbling'),
-    a = (s.angle * Math.PI) / 180;
-  assert(
-    insideSurface({ x: s.x + Math.cos(a) * s.rx * 0.8, y: s.y + Math.sin(a) * s.rx * 0.8 }, s),
+test('o contato alcança extremidades e cantos reais das 25 peças sem deslocar o ponteiro', () => {
+  assert.deepEqual(
+    Object.keys(professionMaterialPoints).sort(),
+    professions.map((p) => p.id).sort(),
   );
-  assert(!insideSurface({ x: s.x, y: s.y + s.ry * 3 }, s));
+  for (const p of professions) {
+    const s = professionSurface(p.id);
+    for (const [x, y] of professionMaterialPoints[p.id]) {
+      const point = { x, y };
+      assert(insideSurface(point, s), p.id + ' ' + x + ',' + y);
+      assert.deepEqual(projectOnSurface(point, s), point, p.id);
+      assert.deepEqual(acquireSurface(point, s, 25), point, p.id);
+    }
+  }
+});
+test('a margem facilita adquirir a borda e recusa pontos longe da peça', () => {
+  const s = professionSurface('brewing');
+  assert.deepEqual(acquireSurface({ x: 696, y: 238 }, s, 25), { x: 686, y: 238 });
+  assert.equal(acquireSurface({ x: 750, y: 238 }, s, 25), null);
   for (const p of [
     { x: 0, y: 0 },
     { x: 960, y: 640 },
-    { x: 440, y: 380 },
   ])
-    assert(insideSurface(projectOnSurface(p, s), s));
+    assert(
+      insideSurface(
+        projectOnSurface(p, professionSurface('cobbling')),
+        professionSurface('cobbling'),
+      ),
+    );
 });
+
 test('a máscara aceita as duas faces e mantém a ferramenta fora das aberturas', () => {
   const s = professionSurface('disguise');
   assert(insideSurface({ x: 365, y: 335 }, s));
@@ -77,5 +98,14 @@ test('a máscara aceita as duas faces e mantém a ferramenta fora das aberturas'
   for (const h of s.holes) {
     assert(!insideSurface(h, s));
     assert(insideSurface(projectOnSurface(h, s), s));
+  }
+});
+
+test('o traço da pena tolera o primeiro quadro anterior ao relógio inicial e o fim do ciclo', () => {
+  const s = professionSurface('forgery');
+  for (const t of [-0.01, 0, 0.001, 0.999, 1, 1.01]) {
+    const p = techniquePose('copy', t, s, s, 3);
+    assert(Object.values(p).every(Number.isFinite));
+    assert(insideSurface(p, s));
   }
 });

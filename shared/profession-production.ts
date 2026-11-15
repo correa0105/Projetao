@@ -1,4 +1,8 @@
-import { professionTechnique, specializedProfessionTools } from './profession-techniques';
+import {
+  professionTechnique,
+  specializedProfessionTools,
+  specializedProfessionBenches,
+} from './profession-techniques';
 export const professionAssistCooldownMs = 2 * 60 * 60 * 1000;
 export const professionAssistReductionSeconds = 30 * 60;
 export const forgeRequiredStrikes = 10;
@@ -18,13 +22,17 @@ export function professionActionMotion(id: string) {
   };
 }
 export function professionToolArtwork(tool: string) {
-  return specializedProfessionTools.has(tool)
-    ? '/professions/techniques-20261115/' + tool + '.webp'
-    : tool === 'brewing-paddle'
-      ? '/professions/mixtures-20261114/brewing-paddle.webp'
-      : tool === 'smith-hammer'
-        ? '/professions/hammer-20261114/smith-hammer.webp'
-        : '/professions/actions-20261114/' + tool + '.webp';
+  return tool === 'poison-dropper'
+    ? '/professions/workshop-fixes-20261115/poison-dropper-empty.webp'
+    : tool === 'glass-blowpipe'
+      ? '/professions/workshop-fixes-20261115/glass-blowpipe.webp'
+      : specializedProfessionTools.has(tool)
+        ? '/professions/techniques-20261115/' + tool + '.webp'
+        : tool === 'brewing-paddle'
+          ? '/professions/mixtures-20261114/brewing-paddle.webp'
+          : tool === 'smith-hammer'
+            ? '/professions/hammer-20261114/smith-hammer.webp'
+            : '/professions/actions-20261114/' + tool + '.webp';
 }
 export type ProfessionBench =
   'forge' | 'mixture' | 'writing' | 'wood' | 'textile' | 'precision' | 'stone' | 'kiln' | 'cooking';
@@ -225,4 +233,13 @@ export function nextProfessionAssist(project: { last_assisted_at?: string | null
   return project.last_assisted_at
     ? Date.parse(project.last_assisted_at) + professionAssistCooldownMs
     : 0;
+}
+
+export function professionBenchArtwork(id: string) {
+  if (id === 'poison') return '/professions/workshop-fixes-20261115/poison-bench.webp';
+  if (id === 'glassblowing') return '/professions/workshop-fixes-20261115/glass-bench.webp';
+  if (specializedProfessionBenches.has(id))
+    return '/professions/techniques-20261115/' + id + '-bench.webp';
+  if (id === 'brewing') return '/professions/mixtures-20261114/brewery-bench.webp';
+  return '/professions/actions-20261114/' + professionWork(id).bench + '-bench.webp';
 }

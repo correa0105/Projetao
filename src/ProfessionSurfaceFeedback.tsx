@@ -34,15 +34,6 @@ export function ProfessionSurfaceFeedback({
         </g>
       )
     );
-  if (technique === 'dose')
-    return (
-      working && (
-        <g className="pf-dose-response">
-          <ellipse cx={s.x} cy={s.y} rx={6 + phase * 38} ry={2 + phase * 10} />
-          <circle cx={s.x} cy={s.y - 22 * (1 - phase)} r={2 + phase * 2} />
-        </g>
-      )
-    );
   if (technique === 'gear')
     return (
       <g

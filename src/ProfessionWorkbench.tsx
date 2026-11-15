@@ -3,24 +3,28 @@ import { Check } from 'lucide-react';
 import type { Profession } from '../shared/professions';
 import {
   professionActionMotion,
+  professionBenchArtwork,
   professionGesture,
   professionToolArtwork,
   professionWork,
 } from '../shared/profession-production';
-import { professionTechnique, specializedProfessionBenches } from '../shared/profession-techniques';
+import { professionTechnique } from '../shared/profession-techniques';
 import {
-  insideSurface,
+  acquireSurface,
+  surfacePath,
   professionSurface,
   professionView,
-  projectOnSurface,
   type WorkPoint,
 } from './profession-work-surfaces';
 import { techniquePose } from './profession-motion';
 import { ProfessionSurfaceFeedback } from './ProfessionSurfaceFeedback';
 import { ProfessionMortarContents, ProfessionMortarFront } from './ProfessionMortarContents';
+import { ProfessionLiquidWork, ProfessionPoisonDrop } from './ProfessionLiquidWork';
+import { ProfessionGlasswork } from './ProfessionGlasswork';
 import './profession-workbench.css';
 import './profession-contact.css';
 import './profession-techniques.css';
+import './profession-full-control.css';
 
 type Mark = { id: number; points: WorkPoint[] };
 type Drag = {
@@ -32,6 +36,7 @@ type Drag = {
   started: number;
   credited: boolean;
   automated: boolean;
+  outside: boolean;
 };
 export function ProfessionWorkbench(props: {
   profession: Profession;
@@ -50,7 +55,9 @@ export function ProfessionWorkbench(props: {
   const surface = professionSurface(profession.id),
     motion = professionActionMotion(profession.id),
     view = professionView(profession.id);
-  const mortar = work.bench === 'mixture' && profession.id !== 'brewing';
+  const mortar = ['alchemy', 'herbalism'].includes(profession.id);
+  const liquidWork = ['brewing', 'poison', 'cooking'].includes(profession.id),
+    glasswork = profession.id === 'glassblowing';
   const uid = useId().replace(/[^a-z0-9_-]/gi, ''),
     description = uid + '-instruction';
   const board = useRef<SVGSVGElement>(null),
@@ -61,6 +68,7 @@ export function ProfessionWorkbench(props: {
   latest.current = props;
   const initialCount = useRef(props.completedActions ?? 0);
   const rotationValue = useRef(0);
+  const followedPoint = useRef<WorkPoint | null>(null);
   const cycle = useRef(false),
     reduced = useRef(false),
     activeMark = useRef<number | null>(null),
@@ -72,15 +80,11 @@ export function ProfessionWorkbench(props: {
     [phase, setPhase] = useState(0);
   const [rotation, setRotation] = useState(0),
     [tilt, setTilt] = useState(0),
-    [lift, setLift] = useState(0);
+    [lift, setLift] = useState(technique.id === 'dose' ? -32 : technique.id === 'mash' ? 6 : 0);
   const [marks, setMarks] = useState<Mark[]>([]),
     [impact, setImpact] = useState<Mark | null>(null);
   const [strike, setStrike] = useState<(WorkPoint & { id: number }) | null>(null);
-  const bench = specializedProfessionBenches.has(profession.id)
-    ? '/professions/techniques-20261115/' + profession.id + '-bench.webp'
-    : profession.id === 'brewing'
-      ? '/professions/mixtures-20261114/brewery-bench.webp'
-      : '/professions/actions-20261114/' + work.bench + '-bench.webp';
+  const bench = professionBenchArtwork(profession.id);
   function clearHold() {
     if (hold.current) clearTimeout(hold.current);
     hold.current = null;
@@ -93,7 +97,7 @@ export function ProfessionWorkbench(props: {
     activeMark.current = null;
     setWorking(false);
     setStrike(null);
-    setLift(0);
+    setLift(technique.id === 'dose' ? -32 : technique.id === 'mash' ? 6 : 0);
     setHover(false);
     setPhase(0);
   }
@@ -127,8 +131,7 @@ export function ProfessionWorkbench(props: {
       scale = Math.hypot(matrix.a, matrix.b);
     // Generous acquisition zone on both mouse and touch; the tool stays on the actual material.
     const padding = (e.pointerType === 'touch' ? 36 : 25) / scale;
-    const hit = { ...surface, rx: surface.rx + padding, ry: surface.ry + padding };
-    return insideSurface(p, hit) ? projectOnSurface(p, surface) : null;
+    return acquireSurface(p, surface, padding);
   }
   function scale() {
     const m = board.current?.getScreenCTM();
@@ -184,6 +187,7 @@ export function ProfessionWorkbench(props: {
       step = initialCount.current + localStep.current,
       initialRotation = rotationValue.current;
     let flashed = false;
+    followedPoint.current = null;
     if (gesture.mode === 'strike') {
       setContact(anchor);
       setStrike({ ...anchor, id: ++sequence.current });
@@ -193,11 +197,15 @@ export function ProfessionWorkbench(props: {
         stop();
         return;
       }
-      const t = Math.min(1, (now - start) / duration);
+      const t = Math.max(0, Math.min(1, (now - start) / duration));
       let point = anchor;
       setPhase(t);
       if (gesture.mode !== 'strike' && !settle) {
-        const pose = techniquePose(technique.id, t, anchor, surface, step);
+        const pose = techniquePose(technique.id, t, followedPoint.current ?? anchor, surface, step);
+        if (followedPoint.current) {
+          pose.x = followedPoint.current.x;
+          pose.y = followedPoint.current.y;
+        }
         point = pose;
         if (!reduced.current) {
           setContact(pose);
@@ -220,7 +228,7 @@ export function ProfessionWorkbench(props: {
         cycle.current = false;
         setWorking(false);
         setStrike(null);
-        setLift(0);
+        setLift(technique.id === 'dose' ? -32 : technique.id === 'mash' ? 6 : 0);
         activeMark.current = null;
         credit(anchor, false);
         if (repeat && drag.current) {
@@ -240,9 +248,16 @@ export function ProfessionWorkbench(props: {
     frame.current = requestAnimationFrame(tick);
   }
   function begin(e: PointerEvent<HTMLDivElement>) {
-    if (!enabled || pending || cycle.current || !e.isPrimary || e.button !== 0) return;
+    if (!enabled || pending || !e.isPrimary || e.button !== 0) return;
     const p = locate(e);
     if (!p) return;
+    if (cycle.current) {
+      if (gesture.mode === 'strike') return;
+      cancelAnimationFrame(frame.current);
+      clearHold();
+      cycle.current = false;
+      setStrike(null);
+    }
     e.preventDefault();
     e.currentTarget.focus({ preventScroll: true });
     if (gesture.mode === 'strike') {
@@ -260,10 +275,12 @@ export function ProfessionWorkbench(props: {
       started: performance.now(),
       credited: false,
       automated: false,
+      outside: false,
     };
     setHover(true);
     setWorking(true);
     setContact(p);
+    setLift(technique.id === 'dose' ? -32 : technique.id === 'mash' ? 6 : 0);
     setPhase(0);
     mark(p, true);
     hold.current = setTimeout(() => {
@@ -279,19 +296,46 @@ export function ProfessionWorkbench(props: {
     const p = locate(e);
     setHover(!!p);
     const d = drag.current;
-    if (!p) return;
-    if (cycle.current) {
-      if (d?.id === e.pointerId) d.last = p;
+    if (!p) {
+      if (d) {
+        d.outside = true;
+        d.distance = 0;
+        d.travel = 0;
+        clearHold();
+        cancelAnimationFrame(frame.current);
+        cycle.current = false;
+        setWorking(false);
+        setPhase(0);
+      }
+      activeMark.current = null;
       return;
     }
     if (!d) {
-      if (!surface.liquid) setContact(p);
+      if (cycle.current && gesture.mode !== 'strike') {
+        followedPoint.current = p;
+        setContact(p);
+      } else if (!cycle.current) setContact(p);
       return;
     }
     if (d.id !== e.pointerId) return;
+    if (d.outside) {
+      d.last = p;
+      d.outside = false;
+      d.started = performance.now();
+      setWorking(true);
+      setContact(p);
+      return;
+    }
     const distance = Math.hypot(p.x - d.last.x, p.y - d.last.y);
-    if (distance < 1) return;
+    if (distance * scale() < 2) return;
+    if (cycle.current) {
+      cancelAnimationFrame(frame.current);
+      cycle.current = false;
+      setStrike(null);
+      setWorking(true);
+    }
     clearHold();
+    followedPoint.current = null;
     d.automated = false;
     const a = Math.atan2((p.y - surface.y) / surface.ry, (p.x - surface.x) / surface.rx),
       delta = Math.atan2(Math.sin(a - d.angle), Math.cos(a - d.angle));
@@ -303,15 +347,12 @@ export function ProfessionWorkbench(props: {
       progress = circular ? Math.max(d.travel / Math.PI, d.distance / 95) : d.distance / 75;
     setContact(p);
     setTilt(technique.id === 'weave' ? 0 : Math.sin(progress * Math.PI) * 9);
-    setLift(0);
+    setLift(technique.id === 'dose' ? -32 : technique.id === 'mash' ? 6 : 0);
     setPhase(Math.min(1, progress));
-    if (surface.liquid)
+    if (surface.liquid || glasswork)
       rotateMaterial(
-        technique.id === 'grind'
-          ? Math.sin(progress * 5) * 12
-          : technique.id === 'dose'
-            ? 0
-            : progress * 95,
+        rotationValue.current +
+          distance * scale() * (glasswork ? 1.6 : technique.id === 'dose' ? 0.12 : 0.3),
       );
     mark(p);
     if (progress >= 1 && performance.now() - d.started >= 650 && !latest.current.pending) {
@@ -359,7 +400,9 @@ export function ProfessionWorkbench(props: {
   const toolH = gesture.tool === 'brewing-paddle' ? (toolW * 2) / 3 : toolW;
   const hint =
     technique.hint +
-    (gesture.mode === 'strike' ? '' : ' Um toque executa uma ação; segurar repete o gesto.');
+    (gesture.mode === 'strike'
+      ? ''
+      : ' Arraste para controlar a ferramenta; pressione sem mover para repetir.');
   return (
     <>
       <div
@@ -374,6 +417,7 @@ export function ProfessionWorkbench(props: {
           (hover ? ' is-on-piece' : '') +
           (working ? ' is-contact-working' : '')
         }
+        style={hover && glasswork ? { cursor: working ? 'grabbing' : 'grab' } : undefined}
         role={enabled ? 'button' : 'img'}
         tabIndex={enabled ? 0 : undefined}
         aria-label={'Trabalhar na bancada de ' + profession.name}
@@ -426,14 +470,7 @@ export function ProfessionWorkbench(props: {
               width="960"
               height="640"
             >
-              <ellipse
-                cx={surface.x}
-                cy={surface.y}
-                rx={surface.rx}
-                ry={surface.ry}
-                fill="white"
-                transform={`rotate(${surface.angle} ${surface.x} ${surface.y})`}
-              />
+              <path d={surfacePath(surface)} fill="white" />
               {surface.holes.map((h, i) => (
                 <ellipse key={i} cx={h.x} cy={h.y} rx={h.rx} ry={h.ry} fill="black" />
               ))}
@@ -467,24 +504,6 @@ export function ProfessionWorkbench(props: {
             </mask>
           </defs>
           <image className="pf-contact-art" href={bench} width="960" height="640" />
-          <path
-            className="pf-technique-guide"
-            style={mortar ? { opacity: 0 } : undefined}
-            mask={'url(#' + uid + '-surface)'}
-            d={
-              'M' +
-              Array.from({ length: 36 }, (_, i) => {
-                const p = techniquePose(
-                  technique.id,
-                  i / 35,
-                  { x: surface.x, y: surface.y },
-                  surface,
-                  0,
-                );
-                return p.x + ',' + p.y;
-              }).join(' L')
-            }
-          />
           {mortar ? (
             <ProfessionMortarContents
               id={uid}
@@ -494,6 +513,18 @@ export function ProfessionWorkbench(props: {
               travel={
                 rotation * (technique.id === 'swirl' ? 1 / 12 : technique.id === 'dose' ? 2 : 1)
               }
+            />
+          ) : liquidWork ? (
+            <ProfessionLiquidWork
+              id={uid}
+              bench={bench}
+              surface={surface}
+              contact={contact}
+              travel={rotation}
+              phase={phase}
+              working={working}
+              reduced={reduced.current}
+              kind={profession.id}
             />
           ) : (
             surface.liquid && (
@@ -570,17 +601,13 @@ export function ProfessionWorkbench(props: {
               ))}
             </g>
           )}
-          <ellipse
+          <path
             className="pf-contact-zone"
-            style={mortar ? { opacity: 0 } : undefined}
+            style={{ opacity: 0 }}
             data-work-zone="true"
-            cx={surface.x}
-            cy={surface.y}
-            rx={surface.rx}
-            ry={surface.ry}
-            transform={`rotate(${surface.angle} ${surface.x} ${surface.y})`}
+            d={surfacePath(surface)}
           />
-          {gesture.mode !== 'strike' && (
+          {gesture.mode !== 'strike' && !glasswork && (
             <g
               className="pf-contact-tool"
               data-tool={gesture.tool}
@@ -596,8 +623,53 @@ export function ProfessionWorkbench(props: {
               />
             </g>
           )}
+          {glasswork && (
+            <ProfessionGlasswork
+              id={uid}
+              rotation={rotation}
+              contact={contact}
+              working={working}
+              reduced={reduced.current}
+            />
+          )}
+          {profession.id === 'poison' && (
+            <ProfessionPoisonDrop
+              contact={contact}
+              phase={phase}
+              working={working}
+              reduced={reduced.current}
+              tipLift={lift}
+            />
+          )}
+          {profession.id === 'brewing' && (
+            <ProfessionLiquidWork
+              id={uid}
+              bench={bench}
+              surface={surface}
+              contact={contact}
+              travel={rotation}
+              phase={phase}
+              working={working}
+              reduced={reduced.current}
+              kind={profession.id}
+              part="submerge"
+            />
+          )}
           {mortar ? (
             <ProfessionMortarFront id={uid} bench={bench} />
+          ) : liquidWork ? (
+            <ProfessionLiquidWork
+              id={uid}
+              bench={bench}
+              surface={surface}
+              contact={contact}
+              travel={rotation}
+              phase={phase}
+              working={working}
+              reduced={reduced.current}
+              kind={profession.id}
+              part="front"
+            />
           ) : (
             surface.liquid && (
               <image

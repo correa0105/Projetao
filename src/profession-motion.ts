@@ -5,6 +5,29 @@ import {
 } from './profession-work-surfaces';
 type Surface = ReturnType<typeof professionSurface>;
 export type ToolPose = WorkPoint & { tilt: number; lift: number; rotation: number };
+// Traço cursivo contínuo, com laçadas e hastes, em vez de uma onda repetida.
+const copyCurves = [
+  [0, 0, 12, -12, 14, -28, 6, -24],
+  [6, -24, -1, -20, 2, 4, 11, 0],
+  [11, 0, 17, -10, 26, -11, 25, -2],
+  [25, -2, 24, 7, 14, 4, 16, -4],
+  [16, -4, 19, -12, 27, -8, 28, -2],
+  [28, -2, 32, 0, 32, -10, 36, -10],
+  [36, -10, 41, -11, 35, -3, 42, 0],
+  [42, 0, 49, -2, 54, -12, 47, -9],
+  [47, -9, 38, -6, 46, 8, 56, 0],
+];
+function copyPoint(t: number) {
+  t = Math.max(0, Math.min(1, t));
+  const at = Math.min(copyCurves.length - 1, Math.floor(t * copyCurves.length)),
+    u = t === 1 ? 1 : t * copyCurves.length - at,
+    v = 1 - u,
+    c = copyCurves[at];
+  return {
+    x: v ** 3 * c[0] + 3 * v ** 2 * u * c[2] + 3 * v * u ** 2 * c[4] + u ** 3 * c[6],
+    y: v ** 3 * c[1] + 3 * v ** 2 * u * c[3] + 3 * v * u ** 2 * c[5] + u ** 3 * c[7],
+  };
+}
 export function techniquePose(
   id: string,
   t: number,
@@ -35,14 +58,15 @@ export function techniquePose(
       rotation = t * 24;
       break;
     case 'dose':
-      lift = -Math.sin(Math.PI * t) * 35;
-      tilt = -5 + Math.sin(Math.PI * t) * 8;
+      lift = -32;
+      tilt = Math.sin(Math.PI * t) * 2;
       rotation = t * 8;
       break;
     case 'mash':
-      x = s.x + Math.sin(u) * s.rx * 0.73;
-      y = s.y + Math.sin(u * 2) * s.ry * 0.27;
-      tilt = Math.sin(u) * 14;
+      x = a.x + Math.sin(u) * Math.min(s.rx * 0.5, 100);
+      y = a.y + Math.sin(u * 2) * s.ry * 0.18;
+      lift = 6 + Math.sin(Math.PI * t) * 5;
+      tilt = Math.sin(u) * 8;
       rotation = Math.sin(u) * 22;
       break;
     case 'scoop':
@@ -57,6 +81,13 @@ export function techniquePose(
       y = a.y + Math.sin(t * 8 + step) * 15;
       tilt = -10;
       break;
+    case 'copy': {
+      const p = copyPoint(t);
+      x = a.x - 55 + (step % 2) * 66 + p.x;
+      y = a.y + Math.floor((step % 8) / 2) * 20 + p.y;
+      tilt = -5 + Math.sin(t * 16) * 3;
+      break;
+    }
     case 'letter':
       x = a.x + (t - 0.5) * 95;
       y = a.y + Math.sin(t * 32) * 9;
@@ -145,9 +176,7 @@ export function techniquePose(
       tilt = t * 18 - 9;
       break;
     case 'glass':
-      x = a.x + Math.sin(u) * s.rx * 0.45;
-      y = a.y + (t - 0.5) * s.ry * 0.9;
-      tilt = Math.cos(u) * 18;
+      rotation = t * 180;
       break;
   }
   return { ...projectOnSurface({ x, y }, s), tilt, lift, rotation };

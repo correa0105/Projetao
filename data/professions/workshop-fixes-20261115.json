@@ -1,0 +1,60 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "key": "poison-bench",
+      "kind": "bench",
+      "prompt": "Use case: stylized-concept. One premium dark fantasy medieval poison maker workbench sprite on true transparent alpha, landscape 3:2 composition. A finely crafted aged oak tray table with copper and brass fittings; at center an OPEN WIDE LOW GLASS MIXING DISH / shallow glass beaker, with dark plum violet liquid inside. The full elliptical liquid surface must be clearly visible, broad and unobstructed, centered around x52% y45%, width about 35% of image and height about 12%. A transparent thick glass front wall with copper rim/support below the liquid surface. Poison maker's apparatus: small corked amber and violet vials to sides, precise copper retort at back left, dried fantasy flowers tied at rear, tidy ivory cloth and tiny brass balance to right. Clearly poison extraction and controlled dosing, NO mortar, NO pestle, NO herbs floating in a stone bowl, NO modern laboratory, NO skull warning logo, NO hand or tool covering central dish. Realistic painted high quality RPG item art, warm amber highlights and cool charcoal shadows, convincing glass/copper/wood. Entire workstation fully visible with transparent margins. No ground or environment, no text, no watermark.",
+      "original": "artwork-archive/workshop-fixes-20261115/poison-bench.png",
+      "webp": "public/professions/workshop-fixes-20261115/poison-bench.webp",
+      "width": 960,
+      "height": 640,
+      "sha256": "e5469c9fde78480153d306a3b0d3148681a75e2b5cdccc49bb9791ba8feb1f44",
+      "originalSha256": "2bdace0078f93c805fd9662f05714ac23e539e3887d3da9f05685525bd523e02"
+    },
+    {
+      "key": "poison-dropper-empty",
+      "kind": "tool",
+      "prompt": "Use case: stylized-concept. One isolated precision fantasy alchemist's GLASS DROPPER, square sprite with real transparent alpha. Dark worn leather squeeze bulb with delicate brass collar at upper left x20% y20%, long slender hollow clear glass tube angled diagonally downward toward lower right. Empty dry pointed glass nozzle tip at x85% y85%, clearly visible clean narrow opening. Absolutely NO detached droplet, NO liquid bead stuck on the end, NO falling liquid, NO hand or other objects. A trace of deep plum liquid inside the upper glass tube is fine, but the tip is dry so a separate animated drop can be added by the game. Premium realistic painted medieval fantasy RPG inventory style, rich warm copper edge light, cool fill, physically convincing materials, all edges within frame, transparent margins. No background or text.",
+      "original": "artwork-archive/workshop-fixes-20261115/poison-dropper-empty.png",
+      "webp": "public/professions/workshop-fixes-20261115/poison-dropper-empty.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "7f3db99f694e252eadf469a1acc04e20b41736de22da0b20271299a46374fdf1",
+      "originalSha256": "92c4783b17f336e711a647a6841114318c1976c2491e7e08f5e4579b1a34bc5f"
+    },
+    {
+      "key": "glass-bench",
+      "kind": "bench",
+      "prompt": "Use case: stylized-concept. Transparent landscape 3:2 sprite for a premium medieval fantasy GLASSBLOWER'S workbench, elevated three-quarter view. Worn stone and iron worktable, small beautifully made brick furnace with glowing orange interior at rear-left, graphite shaping blocks, brass shears, glass rods bundled at right, small crucible and raw glass chunks near edges. IMPORTANT: central foreground is an EMPTY charcoal graphite forming support / open work area, centered x58% y48%, width about 40% height 20%, reserved for a separately animated glowing glass vessel. No finished decorative vases, no pottery bowl, no wooden lathe, no file on a bottle, no fixed blowpipe or fixed central workpiece. The working area should allow a separate horizontal blowpipe coming from the left. Entire station isolated with transparent alpha and all objects fully visible; no environment or ground. Rich realistic painted dark fantasy RPG art, warm furnace reflections and cool shadows, convincing worn materials. No people, hands, text or watermark.",
+      "original": "artwork-archive/workshop-fixes-20261115/glass-bench.png",
+      "webp": "public/professions/workshop-fixes-20261115/glass-bench.webp",
+      "width": 960,
+      "height": 640,
+      "sha256": "0333927dac62b9619db223f94934a667f43f20eb5a985ab885de27d3727ab49d",
+      "originalSha256": "fdd913a07119c3f4b955200407c567f09b98d910bf6bac680787e2be4b12baad"
+    },
+    {
+      "key": "hot-glass",
+      "kind": "piece",
+      "prompt": "Use case: stylized-concept. One isolated unfinished glowing hot glass vessel being formed, transparent alpha, landscape 3:2 sprite. Horizontal orientation: small narrow OPEN neck points LEFT at x20% y50%, joining a round elongated hollow bulb centered x65% y50%, broad body extends to x87% y53%. The empty neck is ready to attach to the right end of a separate metal blowpipe; do NOT include the blowpipe or a handle. Orange amber molten glass body with convincing translucent hot glass shell, bright yellow-orange at hottest edge, darker warm amber middle, subtle swirled surface texture and clear specular highlights, premium realistic painted medieval fantasy RPG art. No liquid pouring, no sparks, no flames attached, no environment, no ground shadow, no stand, no hands, no text. Fully visible on true transparent alpha with ample clear margins.",
+      "original": "artwork-archive/workshop-fixes-20261115/hot-glass.png",
+      "webp": "public/professions/workshop-fixes-20261115/hot-glass.webp",
+      "width": 512,
+      "height": 341,
+      "sha256": "5f0ff9a510348ef688f1afea30a3a836c38a815faa7058d49b0faa74874af8a5",
+      "originalSha256": "87a3642f177e685f1a4055b8087a2d92b565f5dd3c3c269b8e8078fa205c3f30"
+    },
+    {
+      "key": "glass-blowpipe",
+      "kind": "tool",
+      "prompt": "Use case: stylized-concept. One isolated long straight medieval glassblower's metal BLOWPIPE on transparent alpha, landscape 3:2 sprite. It lies HORIZONTALLY from a dark wood and leather grip/mouthpiece near x8% y50% to a fine circular open metal tip at x94% y50%. Long slender straight hollow iron pipe with tiny brass bands and warm copper reflections, same horizontal centerline throughout. NO attached glass or molten blob, no hooked end, no tool head, not a weapon, not a hammer, no file, no hand. A separate glowing glass object will attach at the rightmost open tip. Beautiful realistic painted dark fantasy RPG inventory quality, cool steel and warm edge light. Full object contained in frame with transparent margin, no ground or environment, no text.",
+      "original": "artwork-archive/workshop-fixes-20261115/glass-blowpipe.png",
+      "webp": "public/professions/workshop-fixes-20261115/glass-blowpipe.webp",
+      "width": 512,
+      "height": 341,
+      "sha256": "2887dddfc6238de505bd5e615a4d6941e2614b3a61342906895a665852e55eaa",
+      "originalSha256": "690f4d35dd22f31b2d9dba34c21222f193bae4af2f77d597cd9d7f43502ede21"
+    }
+  ]
+}
