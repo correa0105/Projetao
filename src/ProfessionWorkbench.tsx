@@ -17,6 +17,7 @@ import {
 } from './profession-work-surfaces';
 import { techniquePose } from './profession-motion';
 import { ProfessionSurfaceFeedback } from './ProfessionSurfaceFeedback';
+import { ProfessionMortarContents, ProfessionMortarFront } from './ProfessionMortarContents';
 import './profession-workbench.css';
 import './profession-contact.css';
 import './profession-techniques.css';
@@ -49,6 +50,7 @@ export function ProfessionWorkbench(props: {
   const surface = professionSurface(profession.id),
     motion = professionActionMotion(profession.id),
     view = professionView(profession.id);
+  const mortar = work.bench === 'mixture' && profession.id !== 'brewing';
   const uid = useId().replace(/[^a-z0-9_-]/gi, ''),
     description = uid + '-instruction';
   const board = useRef<SVGSVGElement>(null),
@@ -467,6 +469,7 @@ export function ProfessionWorkbench(props: {
           <image className="pf-contact-art" href={bench} width="960" height="640" />
           <path
             className="pf-technique-guide"
+            style={mortar ? { opacity: 0 } : undefined}
             mask={'url(#' + uid + '-surface)'}
             d={
               'M' +
@@ -482,16 +485,28 @@ export function ProfessionWorkbench(props: {
               }).join(' L')
             }
           />
-          {surface.liquid && (
-            <g mask={'url(#' + uid + '-liquid)'}>
-              <image
-                className="pf-liquid-texture"
-                href={bench}
-                width="960"
-                height="640"
-                transform={`translate(${surface.x} ${surface.y}) scale(1 ${surface.ry / surface.rx}) rotate(${rotation}) scale(1 ${surface.rx / surface.ry}) translate(${-surface.x} ${-surface.y})`}
-              />
-            </g>
+          {mortar ? (
+            <ProfessionMortarContents
+              id={uid}
+              bench={bench}
+              phase={phase}
+              reduced={reduced.current}
+              travel={
+                rotation * (technique.id === 'swirl' ? 1 / 12 : technique.id === 'dose' ? 2 : 1)
+              }
+            />
+          ) : (
+            surface.liquid && (
+              <g mask={'url(#' + uid + '-liquid)'}>
+                <image
+                  className="pf-liquid-texture"
+                  href={bench}
+                  width="960"
+                  height="640"
+                  transform={`translate(${surface.x} ${surface.y}) scale(1 ${surface.ry / surface.rx}) rotate(${rotation}) scale(1 ${surface.rx / surface.ry}) translate(${-surface.x} ${-surface.y})`}
+                />
+              </g>
+            )
           )}
           <g
             mask={'url(#' + uid + '-surface)'}
@@ -557,6 +572,7 @@ export function ProfessionWorkbench(props: {
           )}
           <ellipse
             className="pf-contact-zone"
+            style={mortar ? { opacity: 0 } : undefined}
             data-work-zone="true"
             cx={surface.x}
             cy={surface.y}
@@ -580,14 +596,18 @@ export function ProfessionWorkbench(props: {
               />
             </g>
           )}
-          {surface.liquid && (
-            <image
-              className="pf-container-lip"
-              href={bench}
-              width="960"
-              height="640"
-              mask={'url(#' + uid + '-lip)'}
-            />
+          {mortar ? (
+            <ProfessionMortarFront id={uid} bench={bench} />
+          ) : (
+            surface.liquid && (
+              <image
+                className="pf-container-lip"
+                href={bench}
+                width="960"
+                height="640"
+                mask={'url(#' + uid + '-lip)'}
+              />
+            )
           )}
           {gesture.mode === 'strike' && (
             <foreignObject
