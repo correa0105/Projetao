@@ -1,0 +1,162 @@
+.pf-contact-board {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: auto;
+}
+.pf-contact-scene .pf-technique-guide {
+  fill: none;
+  stroke: #f0d49c;
+  stroke-width: 1.2;
+  stroke-dasharray: 3 7;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+.pf-contact-scene.is-on-piece:not(.is-contact-working) .pf-technique-guide,
+.pf-contact-scene:focus-visible .pf-technique-guide {
+  opacity: 0.32;
+}
+.pf-contact-scene.is-on-piece .pf-contact-zone {
+  opacity: 0.2;
+  stroke-dasharray: none;
+  stroke: #d4b17a;
+  filter: drop-shadow(0 0 5px #d6b16b);
+}
+.pf-contact-scene .pf-scene-caption {
+  font-size: clamp(10px, 1.05vw, 13px);
+  bottom: 12px;
+}
+.pf-gesture-status {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 28px;
+  color: #bca984;
+  font-size: 11px;
+  margin-top: 8px;
+}
+.pf-gesture-status span {
+  flex: 1;
+  min-width: 0;
+}
+.pf-gesture-status progress {
+  width: 95px;
+  height: 4px;
+  accent-color: #c5a069;
+  opacity: 0.35;
+}
+.pf-gesture-status[data-active='true'] progress {
+  opacity: 1;
+}
+.pf-technique-weave .pf-contact-marks > path {
+  stroke: #e6d0a5;
+  stroke-width: 3;
+  stroke-dasharray: 2 1;
+  filter: drop-shadow(0 1px 1px #19232e);
+}
+.pf-technique-sole .pf-contact-marks > path {
+  stroke: #e5c894;
+  stroke-dasharray: 3 5;
+  stroke-width: 2;
+}
+.pf-technique-letter .pf-contact-marks > path {
+  stroke: #34281f;
+  stroke-width: 2.7;
+}
+.pf-technique-route .pf-contact-marks > path {
+  stroke: #49372b;
+  stroke-width: 2.1;
+}
+.pf-technique-plane .pf-contact-marks > path {
+  stroke: #c7985e;
+  stroke-width: 4;
+  opacity: 0.5;
+}
+.pf-technique-mask .pf-contact-marks > path {
+  stroke: #81606f;
+  stroke-width: 12;
+  opacity: 0.3;
+  filter: blur(2px);
+}
+.pf-contact-marks .pf-lute-strings path {
+  stroke: #d9bd76;
+  stroke-width: 1;
+  opacity: 0.3;
+}
+.pf-contact-marks .pf-lute-strings.is-vibrating path {
+  opacity: 0.85;
+  filter: drop-shadow(0 0 2px #e8be66);
+}
+.pf-contact-marks .pf-wax-impression ellipse:first-child {
+  fill: #713127;
+  stroke: #b67745;
+  stroke-width: 2;
+  filter: drop-shadow(1px 2px 1px #261207);
+}
+.pf-contact-marks .pf-wax-impression ellipse:nth-child(2),
+.pf-contact-marks .pf-wax-impression path {
+  fill: none;
+  stroke: #c18a62;
+  stroke-width: 1.2;
+}
+.pf-contact-marks .pf-dose-response ellipse {
+  fill: none;
+  stroke: #a3b780;
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+.pf-contact-marks .pf-dose-response circle {
+  fill: #ced494;
+  stroke: #536439;
+  stroke-width: 0.5;
+}
+.pf-contact-marks .pf-gear-response path {
+  stroke: #d7aa62;
+  stroke-width: 3;
+  opacity: 0.7;
+}
+.pf-contact-marks .pf-lock-pin path {
+  stroke: #e2bd77;
+  stroke-width: 3;
+  filter: drop-shadow(1px 1px 1px #352011);
+}
+.pf-contact-marks .pf-glass-reflection {
+  stroke: #d1e5ed;
+  stroke-width: 5;
+  opacity: 0.55;
+  filter: blur(1px);
+}
+.pf-contact-marks .pf-bearing-rose path,
+.pf-contact-marks .pf-bearing-rose circle {
+  stroke: #70604d;
+  stroke-width: 1;
+  fill: none;
+  opacity: 0.45;
+}
+.pf-contact-marks .pf-board-engraving path {
+  stroke: #724524;
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 0 #d8b678);
+}
+@media (max-width: 640px) {
+  .pf-gesture-status {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .pf-gesture-status progress {
+    width: 65px;
+  }
+  .pf-contact-scene .pf-scene-caption {
+    font-size: 10px;
+    bottom: 8px;
+  }
+  .pf-workbench-instruction {
+    line-height: 1.7;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-contact-scene .pf-technique-guide {
+    transition: none;
+  }
+}

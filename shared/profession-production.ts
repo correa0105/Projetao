@@ -1,3 +1,4 @@
+import { professionTechnique, specializedProfessionTools } from './profession-techniques';
 export const professionAssistCooldownMs = 2 * 60 * 60 * 1000;
 export const professionAssistReductionSeconds = 30 * 60;
 export const forgeRequiredStrikes = 10;
@@ -6,25 +7,24 @@ export const forgeStrikeImpactMs = 310;
 export const forgeMinimumStrikeIntervalMs = 500;
 export const professionRequiredActions = 10;
 export function professionActionMotion(id: string) {
-  const mode = professionGesture(id).mode;
-  return mode === 'strike'
-    ? { duration: forgeStrikeDurationMs, impact: forgeStrikeImpactMs, label: 'marteladas' }
-    : mode === 'stir'
-      ? { duration: 1000, impact: 760, label: 'misturas' }
-      : mode === 'draw'
-        ? { duration: 800, impact: 600, label: 'traços' }
-        : mode === 'stitch'
-          ? { duration: 850, impact: 560, label: 'pontos' }
-          : mode === 'carve'
-            ? { duration: 820, impact: 510, label: 'cortes' }
-            : { duration: 850, impact: 620, label: 'ajustes' };
+  const t = professionTechnique(id);
+  return {
+    duration: t.duration,
+    impact:
+      id === 'smithing'
+        ? forgeStrikeImpactMs
+        : Math.round(t.duration * (t.id === 'seal' ? 0.5 : 0.65)),
+    label: t.label,
+  };
 }
 export function professionToolArtwork(tool: string) {
-  return tool === 'brewing-paddle'
-    ? '/professions/mixtures-20261114/brewing-paddle.webp'
-    : tool === 'smith-hammer'
-      ? '/professions/hammer-20261114/smith-hammer.webp'
-      : '/professions/actions-20261114/' + tool + '.webp';
+  return specializedProfessionTools.has(tool)
+    ? '/professions/techniques-20261115/' + tool + '.webp'
+    : tool === 'brewing-paddle'
+      ? '/professions/mixtures-20261114/brewing-paddle.webp'
+      : tool === 'smith-hammer'
+        ? '/professions/hammer-20261114/smith-hammer.webp'
+        : '/professions/actions-20261114/' + tool + '.webp';
 }
 export type ProfessionBench =
   'forge' | 'mixture' | 'writing' | 'wood' | 'textile' | 'precision' | 'stone' | 'kiln' | 'cooking';
@@ -213,87 +213,13 @@ const work: Record<string, ProfessionWork> = {
   },
 };
 export function professionWork(id: string) {
-  return work[id] ?? work.smithing;
+  const base = work[id] ?? work.smithing,
+    t = professionTechnique(id);
+  return { ...base, tool: t.tool, action: t.action, working: t.working };
 }
-export function professionGesture(id: string): {
-  mode: 'strike' | 'stir' | 'draw' | 'carve' | 'stitch' | 'polish';
-  tool: string;
-  hotspot: [number, number];
-  hint: string;
-} {
-  const w = professionWork(id);
-  switch (w.bench) {
-    case 'forge':
-      return {
-        mode: 'strike',
-        tool: 'smith-hammer',
-        hotspot: [85, 42],
-        hint: 'Clique na peça: 10 marteladas adiantam a forja em 30 minutos.',
-      };
-    case 'mixture':
-      return {
-        mode: 'stir',
-        tool: w.tool ?? 'pestle',
-        hotspot: id === 'brewing' ? [92, 91] : [74, 76],
-        hint:
-          id === 'brewing'
-            ? 'Mexa o mosto dentro da tina com a pá de cervejeiro.'
-            : 'Segure e mova o pilão para macerar e misturar os ingredientes.',
-      };
-    case 'cooking':
-      return {
-        mode: 'stir',
-        tool: 'ladle',
-        hotspot: [72, 75],
-        hint: 'Segure e mova a concha para mexer o preparo.',
-      };
-    case 'writing':
-      return {
-        mode: 'draw',
-        tool: w.tool ?? 'quill',
-        hotspot: w.tool === 'brush' ? [7, 95] : [7, 94],
-        hint:
-          id === 'painting'
-            ? 'Segure e arraste o pincel para pintar.'
-            : 'Segure e arraste a pena para desenhar no pergaminho.',
-      };
-    case 'textile':
-      return {
-        mode: 'stitch',
-        tool: 'sewing-needle',
-        hotspot: [15, 85],
-        hint: 'Clique ou arraste a agulha para costurar o acabamento.',
-      };
-    case 'wood':
-    case 'stone':
-      return {
-        mode: 'carve',
-        tool: 'carving-chisel',
-        hotspot: [88, 93],
-        hint: 'Clique ou arraste o formão para talhar os detalhes.',
-      };
-    case 'precision':
-      return {
-        mode: 'polish',
-        tool: 'fine-file',
-        hotspot: [94, 94],
-        hint: 'Segure e mova a lima para polir e ajustar a peça.',
-      };
-    case 'kiln':
-      return id === 'pottery'
-        ? {
-            mode: 'draw',
-            tool: 'brush',
-            hotspot: [7, 95],
-            hint: 'Segure e arraste o pincel para aplicar o esmalte à cerâmica.',
-          }
-        : {
-            mode: 'polish',
-            tool: 'fine-file',
-            hotspot: [94, 94],
-            hint: 'Segure e mova a ferramenta para dar acabamento ao vidro.',
-          };
-  }
+export function professionGesture(id: string) {
+  const t = professionTechnique(id);
+  return { mode: t.mode, tool: t.tool, hotspot: t.hotspot, hint: t.hint };
 }
 export function nextProfessionAssist(project: { last_assisted_at?: string | null }) {
   return project.last_assisted_at

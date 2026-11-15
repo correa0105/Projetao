@@ -95,6 +95,7 @@ export function ProfessionProduction({
         animating={animating}
         pending={busy}
         swingRequest={swingRequest}
+        completedActions={project.strike_count ?? 0}
         onWork={() => void hammer()}
       />
       {!ready && (
