@@ -1,0 +1,2242 @@
+{
+  "dagger": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "manacles": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "ring-of-invisibility": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-protection": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-regeneration": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "antitoxin": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "shortbow": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "longbow": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "hunting-trap": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "leather-armor": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "plate-armor": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "bucket": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "tent": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "chest": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "bag-of-holding": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "quarterstaff": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "boots-of-elvenkind": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "lock": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "staff-of-the-magi": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "waterskin": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "blanket": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "hempen-rope-50-feet": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "chain": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "chain-mail": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "studded-leather": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "shield": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "ball-bearings": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "greatsword": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "longsword": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "caltrops": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "alchemists-fire": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "acid": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "grappling-hook": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "glass-bottle": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "healers-kit": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "climbers-kit": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "hooded-lantern": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "book": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "cloak-of-displacement": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "cloak-of-protection": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "backpack": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "goggles-of-night": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "crowbar": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "breastplate": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "spell-scroll-cantrip": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "potion-of-growth": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Poções"
+  },
+  "potion-of-healing": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Poções"
+  },
+  "potion-of-climbing": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Poções"
+  },
+  "potion-of-heroism": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Poções"
+  },
+  "potion-of-flying": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Poções"
+  },
+  "rations": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "rapier": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "bedroll": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "bell": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "cosmetic-cape": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-gloves": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-boots": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "club": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "greatclub": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "handaxe": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "javelin": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "light-hammer": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "mace": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "sickle": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "spear": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "dart": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "light-crossbow": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "sling": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "battleaxe": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "flail": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "glaive": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "greataxe": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "halberd": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "lance": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "maul": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "morningstar": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "pike": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "scimitar": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "shortsword": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "trident": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "warhammer": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "war-pick": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "whip": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "blowgun": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "hand-crossbow": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "heavy-crossbow": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "musket": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "pistol": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armas"
+  },
+  "padded-armor": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "hide-armor": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "chain-shirt": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "scale-mail": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "half-plate-armor": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "ring-mail": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "splint-armor": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Armaduras"
+  },
+  "alchemists-supplies": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "brewers-supplies": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "calligraphers-supplies": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "carpenters-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "cartographers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "cobblers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "cooks-utensils": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "glassblowers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "jewelers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "leatherworkers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "masons-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "painters-supplies": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "potters-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "smiths-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "tinkers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "weavers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "woodcarvers-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "disguise-kit": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "forgery-kit": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "gaming-dice": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "dragonchess-set": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "playing-card-set": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "three-dragon-ante-set": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "herbalism-kit": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "bagpipes": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "drum": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "dulcimer": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "flute": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "horn": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "lute": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "lyre": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "pan-flute": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "shawm": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "viol": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "navigators-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "poisoners-kit": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "thieves-tools": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Ferramentas e instrumentos"
+  },
+  "arcane-focus-crystal": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "arcane-focus-orb": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "barrel": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "block-and-tackle": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "map-scroll-case": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "fine-clothes": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "travelers-clothes": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "costume": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "druidic-focus-staff": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "druidic-focus-yew-wand": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "flask": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "holy-symbol-amulet": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "holy-symbol-emblem": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "holy-symbol-reliquary": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "holy-water": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Itens mundanos"
+  },
+  "ink": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Itens mundanos"
+  },
+  "ink-pen": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "jug": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "ladder": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "lamp": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "bullseye-lantern": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "magnifying-glass": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "map": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "mirror": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "net": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "paper": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Itens mundanos"
+  },
+  "parchment": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Itens mundanos"
+  },
+  "perfume": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Itens mundanos"
+  },
+  "basic-poison": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "pole": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "iron-pot": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "pouch": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "quiver": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "portable-ram": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "robe": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "sack": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "spell-scroll-level-1": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "spyglass": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "vial": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "saddle-military": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "saddle-riding": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Itens mundanos"
+  },
+  "ale-mug": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "bread-loaf": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "cheese-wedge": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "wine-common": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "wine-fine": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "meal-squalid": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "meal-poor": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "meal-modest": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "meal-comfortable": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "meal-wealthy": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "meal-aristocratic": {
+    "rarity": "",
+    "consumable": true,
+    "category": "Comida e bebida"
+  },
+  "amulet-of-health": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "amulet-of-proof-against-detection-and-location": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "amulet-of-the-planes": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "bag-of-beans": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "bag-of-devouring": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "bag-of-tricks": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "bead-of-nourishment": {
+    "rarity": "common",
+    "consumable": true,
+    "category": "Mágicos comuns"
+  },
+  "boots-of-levitation": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "boots-of-speed": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "boots-of-striding-and-springing": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "boots-of-the-winterlands": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "bowl-of-commanding-water-elementals": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "bracers-of-archery": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "bracers-of-defense": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "brazier-of-commanding-fire-elementals": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "broom-of-flying": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "chime-of-opening": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "cloak-of-arachnida": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "cloak-of-elvenkind": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "cloak-of-invisibility": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "cloak-of-the-bat": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "cloak-of-the-manta-ray": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "dagger-of-venom": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "decanter-of-endless-water": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "deck-of-illusions": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "dust-of-disappearance": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Mágicos incomuns"
+  },
+  "dust-of-dryness": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Mágicos incomuns"
+  },
+  "dust-of-sneezing-and-choking": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Mágicos incomuns"
+  },
+  "eyes-of-minute-seeing": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "eyes-of-the-eagle": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "flame-tongue": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "folding-boat": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "frost-brand": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "gem-of-seeing": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "gloves-of-missile-snaring": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "gloves-of-swimming-and-climbing": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "gloves-of-thievery": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "hat-of-disguise": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "hat-of-many-spells": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "lantern-of-revealing": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "marvelous-pigments": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "necklace-of-adaptation": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "necklace-of-fireballs": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "necklace-of-prayer-beads": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "oil-of-etherealness": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "oil-of-sharpness": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "oil-of-slipperiness": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "periapt-of-health": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "periapt-of-proof-against-poison": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "periapt-of-wound-closure": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "pipes-of-haunting": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "pipes-of-the-sewers": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "potion-of-animal-friendship": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-clairvoyance": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-diminution": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-gaseous-form": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-giant-strength": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-invisibility": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-invulnerability": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-longevity": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-mind-reading": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-poison": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-speed": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-vitality": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-water-breathing": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "ring-of-animal-influence": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-djinni-summoning": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-elemental-command": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-evasion": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-feather-falling": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-free-action": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-jumping": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "ring-of-mind-shielding": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "ring-of-resistance": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-shooting-stars": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "ring-of-spell-storing": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-spell-turning": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-swimming": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "ring-of-telekinesis": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "ring-of-the-ram": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-three-wishes": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-warmth": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "ring-of-water-walking": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "ring-of-x-ray-vision": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "robe-of-eyes": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "robe-of-scintillating-colors": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "robe-of-stars": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "robe-of-the-archmagi": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "robe-of-useful-items": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "rope-of-climbing": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "staff-of-charming": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "staff-of-fire": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "staff-of-frost": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "staff-of-healing": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "staff-of-power": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "staff-of-striking": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "staff-of-swarming-insects": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "staff-of-the-python": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "staff-of-the-woodlands": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "staff-of-thunder-and-lightning": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "staff-of-withering": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "stone-of-controlling-earth-elementals": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "stone-of-good-luck-luckstone": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "wand-of-binding": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "wand-of-enemy-detection": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "wand-of-fear": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "wand-of-fireballs": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "wand-of-lightning-bolts": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "wand-of-magic-detection": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "wand-of-magic-missiles": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "wand-of-paralysis": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "wand-of-polymorph": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "wand-of-secrets": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "wand-of-the-war-mage": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "wand-of-web": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "wand-of-wonder": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "adamantine-armor-chain-shirt": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "adamantine-armor-scale-mail": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "adamantine-armor-breastplate": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "adamantine-armor-half-plate-armor": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "adamantine-armor-chain-mail": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-armor-leather-armor-plus-1": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-armor-leather-armor-plus-2": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "magic-armor-leather-armor-plus-3": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "magic-armor-studded-leather-plus-1": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-armor-studded-leather-plus-2": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "magic-armor-studded-leather-plus-3": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "mithral-armor-chain-shirt": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "mithral-armor-scale-mail": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "mithral-armor-breastplate": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "mithral-armor-half-plate-armor": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "mithral-armor-chain-mail": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-longsword-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-dagger-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-dagger-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-handaxe-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-handaxe-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-sickle-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-sickle-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-spear-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-spear-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-battleaxe-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-battleaxe-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-flail-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-flail-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-glaive-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-glaive-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-greataxe-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-greataxe-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-greatsword-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-greatsword-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-halberd-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-halberd-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-maul-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-maul-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-morningstar-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-morningstar-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-pike-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-pike-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-rapier-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-rapier-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-scimitar-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-scimitar-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-shortsword-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-shortsword-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-trident-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-trident-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-warhammer-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-warhammer-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "magic-weapon-war-pick-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "magic-weapon-war-pick-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "potion-of-giant-strength-frost-stone": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-giant-strength-fire": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-giant-strength-cloud": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-giant-strength-storm": {
+    "rarity": "legendary",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-healing-greater": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-healing-superior": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-healing-supreme": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "spell-scroll-level-2": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Mágicos incomuns"
+  },
+  "spell-scroll-level-3": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Mágicos incomuns"
+  },
+  "spell-scroll-level-4": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Mágicos raros"
+  },
+  "spell-scroll-level-5": {
+    "rarity": "rare",
+    "consumable": true,
+    "category": "Mágicos raros"
+  },
+  "spell-scroll-level-6": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Mágicos muito raros"
+  },
+  "spell-scroll-level-7": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Mágicos muito raros"
+  },
+  "spell-scroll-level-8": {
+    "rarity": "very rare",
+    "consumable": true,
+    "category": "Mágicos muito raros"
+  },
+  "spell-scroll-level-9": {
+    "rarity": "legendary",
+    "consumable": true,
+    "category": "Mágicos lendários"
+  },
+  "wand-of-the-war-mage-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "wand-of-the-war-mage-plus-3": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "potion-of-resistance-cold": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-fire": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-force": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-lightning": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-necrotic": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-poison": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-psychic": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-radiant": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-resistance-thunder": {
+    "rarity": "uncommon",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "bag-of-tricks-rust": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "bag-of-tricks-tan": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "robe-of-the-archmagi-gray": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "robe-of-the-archmagi-black": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-resistance-cold": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-fire": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-force": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-lightning": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-necrotic": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-poison": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-psychic": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-radiant": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-resistance-thunder": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "ring-of-elemental-command-earth": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-elemental-command-fire": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "ring-of-elemental-command-water": {
+    "rarity": "legendary",
+    "consumable": false,
+    "category": "Mágicos lendários"
+  },
+  "cosmetic-cape-embroidered": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-cape-rain": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-cape-velvet": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-necklace-garnet": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-gloves-suede": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-gloves-lace": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-gloves-velvet": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-boots-riding": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-boots-fur": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-boots-court": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-linen": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-cotton": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-travel": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-wool": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-linen-forest": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-linen-blue": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-linen-wine": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-linen-charcoal": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-cotton-ivory": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-cotton-blue": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-cotton-wine": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-shirt-cotton-charcoal": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-travel-forest": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-travel-blue": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-travel-wine": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-travel-charcoal": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-wool-ivory": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-wool-forest": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-wool-blue": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "cosmetic-trousers-wool-wine": {
+    "rarity": "",
+    "consumable": false,
+    "category": "Cosméticos"
+  },
+  "amulet-of-the-devout-plus-1": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  },
+  "amulet-of-the-devout-plus-2": {
+    "rarity": "rare",
+    "consumable": false,
+    "category": "Mágicos raros"
+  },
+  "amulet-of-the-devout-plus-3": {
+    "rarity": "very rare",
+    "consumable": false,
+    "category": "Mágicos muito raros"
+  },
+  "boots-of-false-tracks": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "cloak-of-billowing": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "cloak-of-many-fashions": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "clockwork-amulet": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "hat-of-vermin": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "hat-of-wizardry": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "potion-of-comprehension": {
+    "rarity": "common",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "potion-of-watchful-rest": {
+    "rarity": "common",
+    "consumable": true,
+    "category": "Poções"
+  },
+  "staff-of-adornment": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "staff-of-birdcalls": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "staff-of-flowers": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "wand-of-conducting": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "wand-of-pyrotechnics": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "wand-of-scowls": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "wand-of-smiles": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "wand-sheath": {
+    "rarity": "common",
+    "consumable": false,
+    "category": "Mágicos comuns"
+  },
+  "staff-of-warning": {
+    "rarity": "uncommon",
+    "consumable": false,
+    "category": "Mágicos incomuns"
+  }
+}

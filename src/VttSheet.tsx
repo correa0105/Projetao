@@ -528,7 +528,7 @@ export function VttSheet({
                               </small>
                               <details>
                                 <summary>Descrição</summary>
-                                <p>{i.description}</p>
+                                <p className="vtt-item-mechanics">{i.description}</p>
                               </details>
                             </div>
                             {i.consumable && (

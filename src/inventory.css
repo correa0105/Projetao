@@ -641,3 +641,4 @@
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+.loot-item-mechanics{white-space:pre-line;max-height:260px;overflow:auto;scrollbar-width:thin;line-height:1.7}

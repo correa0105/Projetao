@@ -132,3 +132,9 @@ concorrência/saldo/idempotência, ownership e seed preservando histórico.
 --browser testa a vitrine em 1755/768/390/320 px, carta de House, 20 cosméticos,
 fala própria, áudio real por item, mute e compra mundana com débito correto.
 Testes sempre usam PostgreSQL descartável; nunca o banco dos jogadores.
+
+## Descrições técnicas e adamante
+
+As armas exibem as regras completas da variante, com dados de dano base e adicionais, tipos, resistências, bônus, ativação, cargas, limites e sintonia. A fonte SRD usa o conjunto licenciado e fixado de `data/shop-item-rules.json`; os outros livros usam os resumos originais completos e seus fatos numéricos. `server/catalog-item-mechanics.ts` mantém a mesma descrição no catálogo, oficina, mochila, VTT e consulta detalhada, sem alterar preço, estoque ou compras. A Língua Flamejante informa os 2d6 de fogo adicionais, ação bônus, luz e condições para apagar as chamas; a Marca de Gelo informa 1d6 de frio adicional e resistência a dano de fogo.
+
+Por decisão do proprietário, a armadura de adamante usa regra da casa: somente o primeiro acerto crítico sofrido no dia da aventura vira acerto normal. O ataque continua causando seu dano normal. Os demais críticos funcionam normalmente; a proteção se renova no próximo amanhecer. O uso é compartilhado por personagem entre peças e modelos, sem recarga por troca de armadura. Peças avulsas não concedem proteções independentes. A referência original SRD é preservada; o aplicativo identifica expressamente esta alteração como regra da casa. Efeitos condicionais e usos durante a aventura seguem a resolução e o controle da mesa.

@@ -169,7 +169,7 @@ function InventorySlot({
         <span className="loot-category">{item.category}</span>
         <h3>{displayName}</h3>
         <p className="loot-original">{item.original_name}</p>
-        <p>{item.description}</p>
+        <p className="loot-item-mechanics">{item.description}</p>
         <dl>
           <div>
             <dt>Quantidade</dt>

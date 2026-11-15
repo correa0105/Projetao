@@ -432,3 +432,4 @@
   .shop-showcase { grid-template-columns: 167.706px minmax(0, 1fr); }
   :root .app-shell[data-page='shop'] .shop-shelves button { font-size: 13px; }
 }
+.shop-rules-description{white-space:pre-line;max-height:230px;overflow:auto;scrollbar-width:thin;padding-right:7px;line-height:1.7}

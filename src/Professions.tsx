@@ -8,6 +8,7 @@ import {
   type Profession,
   type CraftRecipe,
   type ProfessionState,
+  type CraftProject,
 } from '../shared/professions';
 import type { Character, Page } from './types';
 import './professions.css';
@@ -91,7 +92,13 @@ export function Professions({
       '/professions' + (character ? '?character_id=' + character.id : ''),
     );
     if (gen === generation.current) {
-      setState(data);
+      setState((previous) => ({
+        ...data,
+        projects: data.projects.map((p) => {
+          const old = previous?.projects.find((x) => x.id === p.id);
+          return old && old.revision > p.revision ? old : p;
+        }),
+      }));
       setReceived(Date.now());
     }
     return data;
@@ -123,8 +130,9 @@ export function Professions({
   const unlocked = !!profession && hasProfession(profession);
   const craftingProgress =
     state?.progress?.find((p) => p.profession_id === selected) ?? professionProgress();
-  const active = state?.projects.find((p) => !p.claimed_at && !p.canceled_at);
-  const current = active?.profession_id === selected ? active : undefined;
+  const activeProjects = state?.projects.filter((p) => !p.claimed_at && !p.canceled_at) ?? [];
+  const active = activeProjects[0];
+  const current = activeProjects.find((p) => p.profession_id === selected);
   const recipe =
     (current?.recipe.id === recipeId ? current.recipe : undefined) ??
     profession?.recipes.find((r) => r.id === recipeId) ??
@@ -135,7 +143,9 @@ export function Professions({
   const now = state ? Date.parse(state.server_time) + Math.max(0, tick - received) : tick;
   function open(p: Profession) {
     setSelected(p.id);
-    setRecipeId(active?.profession_id === p.id ? active.recipe_id : p.recipes[0].id);
+    setRecipeId(
+      activeProjects.find((job) => job.profession_id === p.id)?.recipe_id ?? p.recipes[0].id,
+    );
     setRecipeSearch('');
     setDeliveries(false);
     setError('');
@@ -168,18 +178,24 @@ export function Professions({
         await post('/professions/projects/' + current.id + '/assist', {
           request_id: key(operation),
         });
-      else if (kind === 'strike' && current)
-        await post('/professions/projects/' + current.id + '/strike', {
-          request_id: key(operation),
-        });
-      else if (kind === 'collect' && current)
+      else if (kind === 'strike' && current) {
+        const updated = await post<CraftProject>(
+          '/professions/projects/' + current.id + '/strike',
+          { request_id: key(operation) },
+        );
+        setState((state) =>
+          state
+            ? { ...state, projects: state.projects.map((p) => (p.id === updated.id ? updated : p)) }
+            : state,
+        );
+      } else if (kind === 'collect' && current)
         await post('/professions/projects/' + current.id + '/collect', {});
       else if (kind === 'cancel' && current)
         await post('/professions/projects/' + current.id + '/cancel', {
           request_id: key(operation),
         });
       requestKeys.current.delete(operation);
-      await reload();
+      if (kind !== 'strike') await reload();
       if (kind === 'collect')
         setNotice(`Criação na mochila. +${recipe.experience ?? 20} EXP em ${profession.name}.`);
       if (kind === 'cancel')
@@ -353,6 +369,26 @@ export function Professions({
               />
               <small>Conclua criações para ganhar experiência neste ofício.</small>
             </div>
+            <section className="pf-active-productions" aria-label="Profissões em produção">
+              <strong>{activeProjects.length} / 2 profissões em produção</strong>
+              {activeProjects.map((job) => (
+                <button
+                  key={job.id}
+                  className="pf-active-banner"
+                  onClick={() => open(professions.find((p) => p.id === job.profession_id)!)}
+                >
+                  <Clock3 size={20} />
+                  <span>
+                    <strong>
+                      {professions.find((p) => p.id === job.profession_id)?.name} ·{' '}
+                      {job.recipe.name}
+                    </strong>
+                    <small>{timeLeft(job.ready_at, now)}</small>
+                  </span>
+                  <ArrowRight size={18} />
+                </button>
+              ))}
+            </section>
             <div className="pf-studio-grid">
               <aside className="pf-recipe-shelf" aria-label="Receitas da profissão">
                 <span className="pf-kicker">LIVRO DA OFICINA</span>
@@ -442,6 +478,16 @@ export function Professions({
                         ? 'Materiais ilimitados na sua bancada.'
                         : 'Estas quantidades serão consumidas ao iniciar.'}
                     </p>
+                    {current &&
+                      JSON.stringify(current.recipe.ingredients) !==
+                        JSON.stringify(
+                          profession.recipes.find((r) => r.id === current.recipe_id)?.ingredients,
+                        ) && (
+                        <p className="pf-start-note">
+                          Esta produção usa os materiais registrados ao iniciar. Os custos revisados
+                          valem para novas produções.
+                        </p>
+                      )}
                     {recipe.ingredients.map((i) => {
                       const item = state?.inventory.find((v) => v.id === i.item_id),
                         table = professionMaterialIds.has(i.item_id),
@@ -497,6 +543,12 @@ export function Professions({
                     <p>
                       {active.recipe.name} · {timeLeft(active.ready_at, now)}
                     </p>
+                    {!current && activeProjects.length >= 2 && (
+                      <p className="pf-start-note">
+                        As duas vagas estão ocupadas. Recolha uma criação concluída para iniciar
+                        outra profissão.
+                      </p>
+                    )}
                     <button
                       className="button pf-primary"
                       onClick={() => open(professions.find((p) => p.id === active.profession_id)!)}
@@ -516,7 +568,6 @@ export function Professions({
                       state?.inventory.find((i) => i.id === current.recipe.output.item_id)
                         ?.image_path
                     }
-                    assist={() => act('assist')}
                     strike={() => act('strike')}
                     canCancel={state?.capabilities?.cancel_production === true}
                     cancel={() => act('cancel')}
@@ -590,7 +641,8 @@ export function Professions({
                         busy ||
                         !state ||
                         !character ||
-                        !!active
+                        !!current ||
+                        activeProjects.length >= 2
                       }
                       onClick={() => void act('start')}
                     >
@@ -601,11 +653,11 @@ export function Professions({
                       />
                       {busy ? 'Preparando…' : 'Usar materiais e iniciar'}
                     </button>
-                    {active && (
+                    {!!current && (
                       <button
                         className="button outline"
                         onClick={() => {
-                          open(professions.find((p) => p.id === active.profession_id)!);
+                          open(professions.find((p) => p.id === current!.profession_id)!);
                         }}
                       >
                         Voltar à criação em andamento
@@ -634,19 +686,26 @@ export function Professions({
           </>
         ) : (
           <>
-            {active && (
-              <button
-                className="pf-active-banner"
-                onClick={() => open(professions.find((p) => p.id === active.profession_id)!)}
-              >
-                <Clock3 size={23} />
-                <span>
-                  <strong>Continuar: {active.recipe.name}</strong>
-                  <small>{timeLeft(active.ready_at, now)}</small>
-                </span>
-                <ArrowRight size={20} />
-              </button>
-            )}
+            <section className="pf-active-productions" aria-label="Profissões em produção">
+              <strong>{activeProjects.length} / 2 profissões em produção</strong>
+              {activeProjects.map((job) => (
+                <button
+                  key={job.id}
+                  className="pf-active-banner"
+                  onClick={() => open(professions.find((p) => p.id === job.profession_id)!)}
+                >
+                  <Clock3 size={20} />
+                  <span>
+                    <strong>
+                      {professions.find((p) => p.id === job.profession_id)?.name} ·{' '}
+                      {job.recipe.name}
+                    </strong>
+                    <small>{timeLeft(job.ready_at, now)}</small>
+                  </span>
+                  <ArrowRight size={18} />
+                </button>
+              ))}
+            </section>
             <div className="pf-catalog-toolbar">
               <label className="pf-search">
                 <Search size={18} />

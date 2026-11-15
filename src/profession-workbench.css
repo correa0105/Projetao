@@ -308,6 +308,254 @@
   color: #b6a78b;
   margin: 10px 0 0;
 }
+.pf-craft-scene.has-tool-action .pf-tool-cursor,
+.pf-craft-scene.has-tool-action .pf-scene-tool {
+  visibility: hidden;
+}
+.pf-manual-action {
+  position: absolute;
+  width: clamp(110px, 16vw, 190px);
+  aspect-ratio: 1;
+  transform: translate(calc(-1 * var(--hotspot-x)), calc(-1 * var(--hotspot-y)));
+  z-index: 8;
+  pointer-events: none;
+}
+.pf-manual-action img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(5px 10px 5px #0008);
+  animation-duration: var(--strike-duration);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+.pf-work-stir img {
+  transform-origin: 26% 25%;
+  animation-name: pf-manual-stir;
+}
+.pf-work-carve img {
+  transform-origin: 20% 20%;
+  animation-name: pf-manual-carve;
+}
+.pf-work-stitch img {
+  transform-origin: 78% 22%;
+  animation-name: pf-manual-stitch;
+}
+.pf-work-polish img {
+  transform-origin: 20% 20%;
+  animation-name: pf-manual-polish;
+}
+.pf-work-draw img {
+  transform-origin: 12% 88%;
+  animation-name: pf-manual-write;
+}
+.pf-action-surface {
+  position: absolute;
+  width: 130px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  pointer-events: none;
+}
+.pf-action-surface svg {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.pf-action-surface path {
+  fill: none;
+  stroke: #ddc493;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+  animation: pf-surface-thread var(--action-duration) ease-out both;
+}
+.pf-surface-stitch svg,
+.pf-surface-carve svg {
+  display: block;
+}
+.pf-surface-carve path {
+  stroke: #c7a169;
+  stroke-width: 2.5;
+  opacity: 0.7;
+}
+.pf-surface-stir i {
+  position: absolute;
+  inset: 8px 20px;
+  border: 1px solid #c9ba7888;
+  border-top: 2px solid #e6cd95aa;
+  border-radius: 50%;
+  animation: pf-surface-swirl var(--action-duration) ease-in-out both;
+}
+.pf-surface-stir i:nth-child(2) {
+  inset: 15px 34px;
+  animation-delay: 80ms;
+  border-color: #9aab7180;
+}
+.pf-surface-stir i:nth-child(3) {
+  inset: 23px 49px;
+  animation-delay: 140ms;
+  border-color: #d0d38e80;
+}
+.pf-surface-polish i {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 2px;
+  height: 27px;
+  background: linear-gradient(transparent, #fff4cf, transparent);
+  animation: pf-surface-glint var(--action-duration) ease-out both;
+}
+.pf-surface-polish i:nth-child(2) {
+  transform: rotate(90deg);
+}
+.pf-demo-stroke {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: pf-surface-thread 0.8s ease-in-out forwards;
+}
+.pf-active-productions {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 24px;
+  min-width: 0;
+}
+.pf-active-productions > strong {
+  font-size: 12px;
+  color: #c4b18c;
+  letter-spacing: 0.04em;
+}
+.pf-active-productions .pf-active-banner {
+  margin: 0;
+  min-width: 0;
+  text-align: left;
+}
+.pf-active-productions .pf-active-banner span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@keyframes pf-manual-stir {
+  0% {
+    transform: translate(0, -8px) rotate(-10deg);
+  }
+  25% {
+    transform: translate(12px, 2px) rotate(7deg);
+  }
+  50% {
+    transform: translate(2px, 10px) rotate(15deg);
+  }
+  75% {
+    transform: translate(-12px, 0) rotate(-2deg);
+  }
+  100% {
+    transform: translate(0, -8px) rotate(-10deg);
+  }
+}
+@keyframes pf-manual-carve {
+  0% {
+    transform: translate(12px, -14px) rotate(6deg);
+  }
+  22% {
+    transform: translate(6px, -8px) rotate(0);
+  }
+  62% {
+    transform: translate(-18px, 8px) rotate(-8deg);
+  }
+  78% {
+    transform: translate(-17px, 6px) rotate(-10deg);
+  }
+  100% {
+    transform: translate(8px, -14px) rotate(4deg);
+  }
+}
+@keyframes pf-manual-stitch {
+  0% {
+    transform: translate(6px, -13px) rotate(8deg);
+  }
+  38% {
+    transform: translate(-5px, 8px) rotate(-8deg);
+  }
+  57% {
+    transform: translate(-6px, 8px) rotate(-10deg);
+  }
+  76% {
+    transform: translate(10px, -16px) rotate(10deg);
+  }
+  100% {
+    transform: translate(6px, -13px) rotate(8deg);
+  }
+}
+@keyframes pf-manual-polish {
+  0%,
+  100% {
+    transform: translate(10px, -4px) rotate(5deg);
+  }
+  28% {
+    transform: translate(-15px, 6px) rotate(-5deg);
+  }
+  55% {
+    transform: translate(12px, -5px) rotate(5deg);
+  }
+  80% {
+    transform: translate(-12px, 5px) rotate(-4deg);
+  }
+}
+@keyframes pf-manual-write {
+  0% {
+    transform: translate(-15px, 2px) rotate(-6deg);
+  }
+  35% {
+    transform: translate(5px, -5px) rotate(1deg);
+  }
+  70% {
+    transform: translate(17px, 4px) rotate(-3deg);
+  }
+  100% {
+    transform: translate(12px, -10px) rotate(4deg);
+  }
+}
+@keyframes pf-surface-thread {
+  0%,
+  25% {
+    stroke-dashoffset: 130;
+    opacity: 0.3;
+  }
+  85%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+@keyframes pf-surface-swirl {
+  0% {
+    transform: rotate(-15deg) scale(0.7);
+    opacity: 0.15;
+  }
+  35% {
+    opacity: 0.8;
+  }
+  80% {
+    transform: rotate(170deg) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(210deg) scale(1.25);
+    opacity: 0;
+  }
+}
+@keyframes pf-surface-glint {
+  0%,
+  45%,
+  100% {
+    opacity: 0;
+  }
+  72% {
+    opacity: 1;
+  }
+}
 @keyframes pf-cursor-strike {
   0% {
     transform: translateY(-9px) rotate(-35deg);
@@ -375,6 +623,13 @@
   }
 }
 @media (max-width: 600px) {
+  .pf-manual-action {
+    width: 115px;
+  }
+  .pf-action-surface {
+    width: 85px;
+    height: 42px;
+  }
   .pf-gesture-strike .pf-tool-cursor,
   .pf-forge-strike {
     width: 140px;
@@ -393,6 +648,14 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .pf-manual-action img,
+  .pf-action-surface * {
+    animation: none !important;
+  }
+  .pf-demo-stroke {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
   .pf-forge-strike img {
     animation: none;
     transform: rotate(0);

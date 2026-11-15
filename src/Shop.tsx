@@ -845,7 +845,7 @@ export function Shop({
                           )}
                         </div>
                       )}
-                      <p>
+                      <p className="shop-rules-description" tabIndex={0}>
                         {chosen
                           ? item.description
                           : clothing ? 'Escolha a cor para ver a peça e adicionar ao carrinho.'

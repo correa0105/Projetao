@@ -28,6 +28,7 @@ import {
 } from '../shared/profession-loot';
 import { professionBuffs } from '../shared/profession-buffs';
 import referencePrices from '../shared/profession-reference-prices.json';
+import { isCraftConsumable, craftValueTier } from '../shared/profession-balancing';
 
 test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e entregas em mesa', async (t) => {
   assert.match(new URL(process.env.DATABASE_URL!).pathname, /^\/alvorada_test_[a-f0-9]{32}$/);
@@ -361,13 +362,13 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
               )
             ).rows[0].experience,
           ),
-          135,
+          100 + (advanced.experience ?? 20),
         );
         const progress = (
           await request('/professions?character_id=' + hero.id, owner)
         ).data.progress.find((v: any) => v.profession_id === 'herbalism');
         assert.equal(progress.level, 3);
-        assert.equal(progress.experience, 135);
+        assert.equal(progress.experience, 100 + (advanced.experience ?? 20));
       },
     );
     await t.test(
@@ -435,12 +436,26 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         assert.equal(start.status, 200);
         let p = start.data;
         assert.equal(p.step, 0);
-        const path = '/professions/projects/' + p.id + '/assist';
+        const path = '/professions/projects/' + p.id + '/strike';
         assert.equal((await request(path, other, { request_id: randomUUID() })).status, 404);
         assert.equal(
           (await request(path, owner, { request_id: randomUUID(), minutes: 900 })).status,
           400,
         );
+        async function prepareNine() {
+          for (let i = 0; i < 9; i++) {
+            await pool.query(
+              "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
+              [p.id],
+            );
+            assert.equal((await request(path, owner, { request_id: randomUUID() })).status, 200);
+          }
+          await pool.query(
+            "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
+            [p.id],
+          );
+        }
+        await prepareNine();
         const keys = [randomUUID(), randomUUID()];
         const results = await Promise.all(
           keys.map((request_id) => request(path, owner, { request_id })),
@@ -465,6 +480,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           "UPDATE profession_projects SET last_assisted_at=clock_timestamp()-interval '2 hours' WHERE id=$1",
           [p.id],
         );
+        await prepareNine();
         const second = await request(path, owner, { request_id: randomUUID() });
         assert.equal(second.status, 200);
         assert.equal(second.data.assist_count, 2);
@@ -477,6 +493,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           "UPDATE profession_projects SET ready_at=clock_timestamp()+interval '10 minutes',last_assisted_at=clock_timestamp()-interval '2 hours' WHERE id=$1",
           [p.id],
         );
+        await prepareNine();
         const finish = await request(path, owner, { request_id: randomUUID() });
         assert.equal(finish.status, 200);
         assert.equal(finish.data.step, 0);
@@ -570,7 +587,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           otherHero = await createLegacyTestCharacter(another.id),
           scopedHero = await createLegacyTestCharacter(scoped.id);
         const target = craftRecipes.find(
-          (r) => r.profession_id === 'smithing' && r.required_level === 10,
+          (r) => r.profession_id === 'smithing' && (r.required_level ?? 1) >= 6,
         )!;
         const b = { character_id: c.id, recipe_id: target.id, request_id: randomUUID() };
         assert.equal((await request('/professions/projects', admin, b)).status, 403);
@@ -930,7 +947,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
               request_id: randomUUID(),
             })
           ).status,
-          400,
+          200,
         );
         assert.equal(
           (
@@ -938,8 +955,115 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
               request_id: randomUUID(),
             })
           ).status,
+          409,
+        );
+      },
+    );
+    await t.test(
+      'duas profissões simultâneas: limite concorrente e uma vaga por ofício',
+      async () => {
+        network = 9000;
+        const a = await account('Duas bancadas');
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [a.id]);
+        await pool.query(
+          "INSERT INTO profession_administrator_access(user_id,enabled,granted_by,reason)VALUES($1,true,$1,'Teste')",
+          [a.id],
+        );
+        const c = await createLegacyTestCharacter(a.id),
+          recipes = ['smithing', 'alchemy', 'cartography'].map((p) =>
+            craftRecipes.find((r) => r.profession_id === p)!,
+          );
+        const results = await Promise.all(
+          recipes.map((r) =>
+            request('/professions/projects', a, {
+              character_id: c.id,
+              recipe_id: r.id,
+              request_id: randomUUID(),
+            }),
+          ),
+        );
+        assert.deepEqual(results.map((r) => r.status).sort(), [200, 200, 409]);
+        const active = (await request('/professions?character_id=' + c.id, a)).data.projects.filter(
+          (p: any) => !p.claimed_at,
+        );
+        assert.equal(active.length, 2);
+        assert.equal(new Set(active.map((p: any) => p.profession_id)).size, 2);
+        assert.equal(
+          (
+            await request('/professions/projects', a, {
+              character_id: c.id,
+              recipe_id: active[0].recipe_id,
+              request_id: randomUUID(),
+            })
+          ).status,
+          409,
+        );
+        assert.equal(
+          (
+            await request('/professions/projects/' + active[0].id + '/cancel', a, {
+              request_id: randomUUID(),
+            })
+          ).status,
           200,
         );
+        const blocked = recipes[results.findIndex((r) => r.status === 409)];
+        assert.equal(
+          (
+            await request('/professions/projects', a, {
+              character_id: c.id,
+              recipe_id: blocked.id,
+              request_id: randomUUID(),
+            })
+          ).status,
+          200,
+        );
+      },
+    );
+    await t.test(
+      'todas as profissões exigem dez ações e têm ajuda independente por projeto',
+      async () => {
+        const a = await account('Todas as ferramentas');
+        await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [a.id]);
+        await pool.query(
+          "INSERT INTO profession_administrator_access(user_id,enabled,granted_by,reason)VALUES($1,true,$1,'Teste')",
+          [a.id],
+        );
+        const c = await createLegacyTestCharacter(a.id);
+        for (const profession of professions) {
+          network++;
+          const recipe = profession.recipes.find((r) => r.hours >= 1)!;
+          const started = await request('/professions/projects', a, {
+            character_id: c.id,
+            recipe_id: recipe.id,
+            request_id: randomUUID(),
+          });
+          assert.equal(started.status, 200, profession.id);
+          const p = started.data,
+            path = '/professions/projects/' + p.id;
+          assert.equal(
+            (await request(path + '/assist', a, { request_id: randomUUID() })).status,
+            409,
+          );
+          for (let i = 1; i <= 10; i++) {
+            await pool.query(
+              "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
+              [p.id],
+            );
+            const hit = await request(path + '/strike', a, { request_id: randomUUID() });
+            assert.equal(hit.status, 200, profession.id);
+            assert.equal(hit.data.strike_count, i === 10 ? 0 : i);
+            assert.equal(hit.data.assist_count, i === 10 ? 1 : 0);
+            assert.equal(
+              Date.parse(p.ready_at) - Date.parse(hit.data.ready_at),
+              i === 10 ? 1800000 : 0,
+            );
+          }
+          assert.equal(
+            (await request(path + '/strike', a, { request_id: randomUUID() })).status,
+            409,
+          );
+          await request(path + '/cancel', a, { request_id: randomUUID() });
+        }
       },
     );
     await t.test(
@@ -1062,13 +1186,35 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         }
       }
       for (const r of craftRecipes) {
-        const price = (referencePrices as Record<string, number>)[r.output.item_id] ?? 0;
-        if (price >= 1000000) {
-          assert.equal(r.required_level, 10);
-          assert(r.ingredients.some((i) => i.item_id === materialItemId('masterwork-core')));
+        const consumable = isCraftConsumable(r.output.item_id),
+          tier = craftValueTier(r),
+          total = r.ingredients.reduce((n, i) => n + i.quantity, 0);
+        assert(total <= (consumable ? 6 : 12), r.id + ': quantidade desproporcional ' + total);
+        assert(
+          r.ingredients.every((i) => i.quantity <= 4),
+          r.id,
+        );
+        if (consumable) {
+          assert(
+            !r.ingredients.some((i) =>
+              ['craft-material-masterwork-core', 'craft-material-rare-catalyst'].includes(
+                i.item_id,
+              ),
+            ),
+            r.id,
+          );
+        } else {
+          if (tier >= 3)
+            assert(
+              r.ingredients.some((i) => i.item_id === materialItemId('rare-catalyst')),
+              r.id,
+            );
+          if (tier === 5)
+            assert(
+              r.ingredients.some((i) => i.item_id === materialItemId('masterwork-core')),
+              r.id,
+            );
         }
-        if (price >= 100000)
-          assert(r.ingredients.some((i) => i.item_id === materialItemId('rare-catalyst')));
       }
     });
     await t.test(

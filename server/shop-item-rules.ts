@@ -1,41 +1,9 @@
 import { Router } from 'express';
-import { readFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
 import { z } from 'zod';
 import { houseCatalog } from '../shared/house.js';
 import { pool } from './db.js';
 import { AppError } from './services.js';
-
-type RuleRecord = {
-  name: string;
-  portuguese: string;
-  stats: string;
-  reference_url: string;
-};
-type RulesDataset = {
-  edition: string;
-  records: Record<string, RuleRecord>;
-  items: Record<
-    string,
-    {
-      keys: string[];
-      reference_key: string;
-      variant: string;
-      reference_url?: string;
-      stats_overrides?: Record<string, string>;
-    }
-  >;
-};
-let dataset: Promise<RulesDataset> | undefined;
-function readDataset() {
-  dataset ||= readFile(resolve('data/shop-item-rules.json'), 'utf8')
-    .then((text) => JSON.parse(text) as RulesDataset)
-    .catch(() => {
-      dataset = undefined;
-      throw new AppError(503, 'As explicações dos itens estão temporariamente indisponíveis.');
-    });
-  return dataset;
-}
+import { catalogItemMechanics } from './catalog-item-mechanics.js';
 
 function response(
   title: string,
@@ -84,20 +52,9 @@ export async function getShopItemRules(id: string) {
     [id],
   );
   if (!item) throw new AppError(404, 'Item não encontrado.');
-  if (item.raw_data?.shop_magic_completion === true) {
-    const summary = item.raw_data.rules_summary;
-    if (typeof summary !== 'string' || !summary.trim())
-      throw new AppError(503, 'A explicação deste item está temporariamente indisponível.');
-    return response(
-      item.name,
-      summary,
-      `${item.raw_data.source_book} · resumo original do projeto`,
-      item.source_url,
-      item.source_url,
-      false,
-      item.raw_data.source_edition,
-    );
-  }
+  const mechanics = await catalogItemMechanics(item);
+  if (mechanics)
+    return { ...mechanics, title: item.name, descriptionPortuguese: mechanics.description };
   if (item.source !== 'SRD 5.2.1') {
     const animal =
       item.raw_data?.equipment_target === 'mount' || item.raw_data?.equipment_target === 'pet';
@@ -112,7 +69,11 @@ export async function getShopItemRules(id: string) {
       [
         item.description,
         use,
-        'Este item é conteúdo do projeto. Não concede bônus de combate ou efeito mágico automático.',
+        item.category === 'Armas' ||
+        (Array.isArray(item.raw_data?.equipment_slots) &&
+          item.raw_data.equipment_slots.includes('main_hand'))
+          ? 'Conteúdo do projeto. Os efeitos seguem os valores e condições descritos acima.'
+          : 'Este item é conteúdo do projeto. Não concede bônus de combate ou efeito mágico automático.',
       ]
         .filter(Boolean)
         .join('\n\n'),
@@ -122,35 +83,7 @@ export async function getShopItemRules(id: string) {
       true,
     );
   }
-  const data = await readDataset();
-  const mapping = data.items[id];
-  if (!mapping || mapping.keys.some((key) => !data.records[key]))
-    throw new AppError(503, 'A explicação desta variante está temporariamente indisponível.');
-  const description = mapping.keys
-    .map((key) => {
-      const record = data.records[key];
-      return [
-        record.name.startsWith('Maestria:') ? record.name : '',
-        record.portuguese,
-        mapping.stats_overrides?.[key] ?? record.stats,
-      ]
-        .filter(Boolean)
-        .join('\n\n');
-    })
-    .concat(mapping.variant)
-    .filter(Boolean)
-    .join('\n\n');
-  if (!description)
-    throw new AppError(503, 'A explicação deste item está temporariamente indisponível.');
-  return response(
-    item.name,
-    description,
-    'SRD 5.2.1 · Wizards of the Coast · CC BY 4.0 (tradução do projeto)',
-    'https://www.dndbeyond.com/srd',
-    mapping.reference_url || data.records[mapping.reference_key].reference_url,
-    false,
-    data.edition,
-  );
+  throw new AppError(503, 'A explicação desta variante está temporariamente indisponível.');
 }
 
 export function shopItemRulesRouter() {

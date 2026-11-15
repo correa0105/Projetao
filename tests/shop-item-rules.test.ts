@@ -121,6 +121,76 @@ test('Explicações do Empório: fonte aberta, tradução e variantes reais', as
         assert.match(club.reference_url, /^https:\/\/5e\.tools\/items\.html#/);
       },
     );
+    await t.test(
+      'descrições técnicas de todas as armas preservam dados, efeitos e resistências',
+      async () => {
+        const { catalogItemMechanics } = await import('../server/catalog-item-mechanics');
+        const rows = (
+          await pool.query(
+            "SELECT id,name,description,source,source_url,category,raw_data FROM catalog_items WHERE active AND (category='Armas' OR raw_data->'equipment_slots' ? 'main_hand')",
+          )
+        ).rows;
+        let checked = 0;
+        for (const item of rows) {
+          const full = await catalogItemMechanics(item);
+          if (!full) continue;
+          checked++;
+          assert.equal(item.description, full.description, item.id);
+          const mapping = dataset.items[item.id];
+          if (mapping)
+            for (const key of mapping.keys) {
+              const record = dataset.records[key];
+              for (const die of record.english.match(/\b\d*d\d+\b/gi) ?? [])
+                assert(
+                  item.description.toLowerCase().includes(die.toLowerCase()),
+                  item.id + ': ' + die,
+                );
+            }
+          const f = item.raw_data?.upstream_facts;
+          if (f?.dmg1) assert(item.description.includes(f.dmg1), item.id);
+          if (item.raw_data?.rules_summary)
+            assert(item.description.includes(item.raw_data.rules_summary), item.id);
+        }
+        assert(checked > 1000);
+        const flame = await rules('flame-tongue');
+        for (const value of ['2d6', '1d8', '1d10', '40 pés', 'ação bônus', 'sintonia'])
+          assert(flame.description.includes(value), value);
+        const silver = await rules('silvered-longsword');
+        assert.match(silver.description, /\+1d8/);
+        assert.match(silver.description, /\+1d10/);
+        const silverGreat = await rules('silvered-greatsword');
+        assert.match(silverGreat.description, /\+1d6/);
+        const frost = await rules('frost-brand');
+        assert.match(frost.description, /1d6 de dano de frio adicional/);
+        assert.match(frost.description, /resistência a dano de fogo/);
+      },
+    );
+    await t.test(
+      'adamante é regra da casa: só o primeiro crítico do dia, compartilhado entre modelos e peças',
+      async () => {
+        const rows = (
+          await pool.query(
+            "SELECT id,description FROM catalog_items WHERE id LIKE 'adamantine-armor%' OR raw_data->>'armor_bundle_parent' LIKE 'adamantine-armor%'",
+          )
+        ).rows;
+        assert(rows.length >= 9);
+        for (const item of rows) {
+          assert.match(item.description, /primeiro acerto crítico/, item.id);
+          assert.match(
+            item.description,
+            /críticos seguintes do mesmo dia funcionam normalmente/,
+            item.id,
+          );
+          assert.match(item.description, /limite é por personagem/, item.id);
+          assert.doesNotMatch(item.description, /qualquer ataque crítico contra ti/, item.id);
+        }
+        const armor = await rules('adamantine-armor');
+        assert.equal(armor.house_rule, true);
+        assert.match(armor.source_name, /regra da casa/);
+        assert.match(armor.description, /CA: 18/);
+        assert.match(armor.description, /Força mínima: 15/);
+      },
+    );
     await t.test('poções maior, superior e suprema mostram suas próprias curas', async () => {
       for (const [id, dice] of [
         ['potion-of-healing-greater', '4d4 + 4'],

@@ -2,8 +2,7 @@ import { useEffect, useId, useRef, useState, type CSSProperties, type PointerEve
 import { Check } from 'lucide-react';
 import type { Profession } from '../shared/professions';
 import {
-  forgeStrikeDurationMs,
-  forgeStrikeImpactMs,
+  professionActionMotion,
   professionGesture,
   professionToolArtwork,
   professionWork,
@@ -11,7 +10,7 @@ import {
 import './profession-workbench.css';
 
 type Point = { x: number; y: number };
-type Stroke = { id: number; points: Point[] };
+type Stroke = { id: number; points: Point[]; demo?: boolean };
 type Burst = Point & { id: number };
 export function ProfessionWorkbench({
   profession,
@@ -32,13 +31,15 @@ export function ProfessionWorkbench({
 }) {
   const work = professionWork(profession.id),
     gesture = professionGesture(profession.id),
-    description = useId();
+    description = useId(),
+    motion = professionActionMotion(profession.id);
   const scene = useRef<HTMLDivElement>(null),
     drawing = useRef<number | null>(null),
     pointer = useRef<number | null>(null),
     lastPoint = useRef<Point | null>(null),
     sequence = useRef(0),
     lastBurst = useRef(0),
+    drawDistance = useRef(0),
     strikeLock = useRef(false),
     strikeTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [inside, setInside] = useState(false),
@@ -64,22 +65,44 @@ export function ProfessionWorkbench({
     }
   }, [enabled]);
   useEffect(() => {
-    if (swingRequest > 0) startStrike({ x: 580, y: 205 });
+    if (swingRequest > 0)
+      startStrike(
+        gesture.mode === 'strike'
+          ? { x: 580, y: 205 }
+          : gesture.mode === 'draw'
+            ? { x: 500, y: 345 }
+            : { x: 540, y: 300 },
+        true,
+      );
   }, [swingRequest]);
-  function startStrike(point: Point) {
+  function startStrike(point: Point, drawDemo = false) {
     if (!enabled || pending || strikeLock.current) return;
     strikeLock.current = true;
     const strike = { ...point, id: ++sequence.current };
     setHammerStrike(strike);
+    if (gesture.mode === 'draw' && drawDemo) {
+      const id = ++sequence.current;
+      setStrokes((old) => [
+        ...old.slice(-23),
+        {
+          id,
+          demo: true,
+          points: Array.from({ length: 18 }, (_, i) => ({
+            x: point.x - 45 + i * 5,
+            y: point.y + Math.sin(i * 0.4) * 10,
+          })),
+        },
+      ]);
+    }
     strikeTimers.current = [
       setTimeout(() => {
         burst(point);
         onWork();
-      }, forgeStrikeImpactMs),
+      }, motion.impact),
       setTimeout(() => {
         strikeLock.current = false;
         setHammerStrike(null);
-      }, forgeStrikeDurationMs),
+      }, motion.duration),
     ];
   }
   function locate(event: PointerEvent<HTMLDivElement>) {
@@ -98,6 +121,7 @@ export function ProfessionWorkbench({
   }
   function begin(event: PointerEvent<HTMLDivElement>) {
     if (!enabled || !event.isPrimary || event.button !== 0) return;
+    if (gesture.mode === 'draw' && (pending || strikeLock.current)) return;
     const point = locate(event);
     if (!point) return;
     event.preventDefault();
@@ -107,7 +131,8 @@ export function ProfessionWorkbench({
     setInside(true);
     setPressed(true);
     lastPoint.current = point;
-    if (gesture.mode === 'strike') {
+    drawDistance.current = 0;
+    if (gesture.mode !== 'draw') {
       startStrike(point);
       return;
     }
@@ -116,8 +141,6 @@ export function ProfessionWorkbench({
       drawing.current = id;
       setStrokes((old) => [...old.slice(-23), { id, points: [point] }]);
     }
-    burst(point);
-    onWork();
   }
   function move(event: PointerEvent<HTMLDivElement>) {
     if (!enabled || !event.isPrimary) return;
@@ -135,6 +158,11 @@ export function ProfessionWorkbench({
       Math.hypot(point.x - lastPoint.current.x, point.y - lastPoint.current.y) < 3
     )
       return;
+    if (lastPoint.current)
+      drawDistance.current += Math.hypot(
+        point.x - lastPoint.current.x,
+        point.y - lastPoint.current.y,
+      );
     lastPoint.current = point;
     if (gesture.mode === 'draw') {
       if (drawing.current === null) {
@@ -149,11 +177,13 @@ export function ProfessionWorkbench({
           ),
         );
       }
-    } else if (gesture.mode !== 'strike' && performance.now() - lastBurst.current > 110)
-      burst(point);
+    }
   }
   function end(event: PointerEvent<HTMLDivElement>) {
     if (pointer.current !== event.pointerId) return;
+    const donePoint = lastPoint.current,
+      complete =
+        gesture.mode === 'draw' && drawDistance.current >= 20 && event.type !== 'pointercancel';
     pointer.current = null;
     drawing.current = null;
     lastPoint.current = null;
@@ -161,6 +191,7 @@ export function ProfessionWorkbench({
     if (event.currentTarget.hasPointerCapture(event.pointerId))
       event.currentTarget.releasePointerCapture(event.pointerId);
     if (event.pointerType !== 'mouse') setInside(false);
+    if (complete && donePoint) startStrike(donePoint);
   }
   return (
     <>
@@ -175,7 +206,9 @@ export function ProfessionWorkbench({
           (inside && enabled ? ' has-tool-cursor' : '') +
           (pressed ? ' is-pressing' : '') +
           (animating ? ' is-working' : '') +
-          (hammerStrike ? ' has-forge-strike' : '') +
+          (hammerStrike
+            ? ' has-tool-action' + (gesture.mode === 'strike' ? ' has-forge-strike' : '')
+            : '') +
           (ready ? ' is-finished' : '')
         }
         role={enabled ? 'button' : 'img'}
@@ -209,11 +242,14 @@ export function ProfessionWorkbench({
         onKeyDown={(e) => {
           if (enabled && !e.repeat && (e.key === 'Enter' || e.key === ' ')) {
             e.preventDefault();
-            if (gesture.mode === 'strike') startStrike({ x: 580, y: 205 });
-            else {
-              burst({ x: 570, y: 275 });
-              onWork();
-            }
+            startStrike(
+              gesture.mode === 'strike'
+                ? { x: 580, y: 205 }
+                : gesture.mode === 'draw'
+                  ? { x: 500, y: 345 }
+                  : { x: 540, y: 300 },
+              true,
+            );
           }
         }}
       >
@@ -264,7 +300,10 @@ export function ProfessionWorkbench({
                   s.points.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' L') +
                   (s.points.length === 1 ? ' l.1,.1' : '')
                 }
-                className={profession.id === 'painting' ? 'is-paint' : ''}
+                className={
+                  (profession.id === 'painting' ? 'is-paint' : '') +
+                  (s.demo ? ' pf-demo-stroke' : '')
+                }
               />
             ))}
           </svg>
@@ -303,17 +342,49 @@ export function ProfessionWorkbench({
         {hammerStrike && (
           <div
             key={hammerStrike.id}
-            className="pf-forge-strike"
+            className={
+              gesture.mode === 'strike'
+                ? 'pf-forge-strike'
+                : 'pf-manual-action pf-work-' + gesture.mode
+            }
             aria-hidden="true"
             style={
               {
                 left: hammerStrike.x / 10 + '%',
                 top: hammerStrike.y / 6.25 + '%',
-                '--strike-duration': forgeStrikeDurationMs + 'ms',
+                '--strike-duration': motion.duration + 'ms',
+                '--hotspot-x': gesture.hotspot[0] + '%',
+                '--hotspot-y': gesture.hotspot[1] + '%',
               } as CSSProperties
             }
           >
-            <img src={professionToolArtwork('smith-hammer')} alt="" draggable={false} />
+            <img src={professionToolArtwork(gesture.tool)} alt="" draggable={false} />
+          </div>
+        )}
+        {hammerStrike && gesture.mode !== 'strike' && (
+          <div
+            className={'pf-action-surface pf-surface-' + gesture.mode}
+            aria-hidden="true"
+            style={
+              {
+                left: hammerStrike.x / 10 + '%',
+                top: hammerStrike.y / 6.25 + '%',
+                '--action-duration': motion.duration + 'ms',
+              } as CSSProperties
+            }
+          >
+            <i />
+            <i />
+            <i />
+            <svg viewBox="0 0 100 40">
+              <path
+                d={
+                  gesture.mode === 'stitch'
+                    ? 'M10 24L24 18L29 26L43 20L48 27L62 21L67 28L81 22'
+                    : 'M10 28Q35 9 52 23T90 17'
+                }
+              />
+            </svg>
           </div>
         )}
         <div

@@ -1,26 +1,9 @@
 import type { SheetRecord, deriveSheet } from './character-sheet';
 import type { VttToken } from './vtt';
 import type { EquippedAttack } from './equipped-attacks';
-import expandedConsumables from './emporium-consumables.json';
+import {standardConsumableItems} from './item-consumables';
 import {professionBuffs,type ProfessionBuff} from './profession-buffs';
-export const consumableItems = new Set([
-  ...professionBuffs.map(b=>b.id),
-  ...expandedConsumables,
-  'antitoxin',
-  'acid',
-  'alchemists-fire',
-  'oil',
-  'rations',
-  'torch',
-  'candle',
-  'spell-scroll-cantrip',
-  'potion-of-growth',
-  'potion-of-healing',
-  'potion-of-climbing',
-  'potion-of-heroism',
-  'potion-of-flying',
-  'cigar',
-]);
+export const consumableItems=new Set([...professionBuffs.map(b=>b.id),...standardConsumableItems]);
 export type VttSheetData = {
   profession_buffs?: (ProfessionBuff&{expires_at:string})[];
   character: {

@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check, Clock3, Trash2 } from 'lucide-react';
 import type { CraftProject, Profession } from '../shared/professions';
 import {
-  forgeRequiredStrikes,
+  professionRequiredActions,
+  professionActionMotion,
   nextProfessionAssist,
   professionToolArtwork,
   professionWork,
@@ -21,7 +22,6 @@ export function ProfessionProduction({
   busy,
   unlocked,
   itemImage,
-  assist,
   strike,
   collect,
   canCancel,
@@ -33,7 +33,6 @@ export function ProfessionProduction({
   busy: boolean;
   unlocked: boolean;
   itemImage?: string | null;
-  assist: () => Promise<boolean>;
   strike: () => Promise<boolean>;
   collect: () => void;
   canCancel: boolean;
@@ -43,19 +42,18 @@ export function ProfessionProduction({
     ready = Date.parse(project.ready_at) <= now;
   const next = nextProfessionAssist(project),
     canAssist = unlocked && !ready && next <= now;
-  const [animating, setAnimating] = useState(false),
-    [feedback, setFeedback] = useState(''),
+  const animating = false;
+  const [feedback, setFeedback] = useState(''),
     [confirmCancel, setConfirmCancel] = useState(false),
     [swingRequest, setSwingRequest] = useState(0);
-  const forging = profession.id === 'smithing';
+  const forging = profession.id === 'smithing',
+    motion = professionActionMotion(profession.id);
   const requesting = useRef(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null),
-    mounted = useRef(true);
+  const mounted = useRef(true);
   useEffect(() => {
     mounted.current = true;
     return () => {
       mounted.current = false;
-      if (timer.current) clearTimeout(timer.current);
     };
   }, []);
   const remaining = Math.max(0, Date.parse(project.ready_at) - now);
@@ -63,23 +61,6 @@ export function ProfessionProduction({
     0,
     Math.min(100, 100 * (1 - remaining / (project.recipe.hours * 3600000))),
   );
-  async function help(demo = true) {
-    if (!canAssist || busy || animating || requesting.current) return;
-    requesting.current = true;
-    setFeedback('');
-    let accepted = false;
-    try {
-      accepted = await assist();
-    } finally {
-      requesting.current = false;
-    }
-    if (!mounted.current || !accepted) return;
-    if (demo) setAnimating(true);
-    setFeedback('Ajuda registrada. O prazo foi reduzido em até 30 minutos.');
-    timer.current = setTimeout(() => {
-      if (mounted.current) setAnimating(false);
-    }, 5400);
-  }
   async function hammer() {
     if (!canAssist || busy || requesting.current) return;
     requesting.current = true;
@@ -87,9 +68,9 @@ export function ProfessionProduction({
       const accepted = await strike();
       if (mounted.current && accepted)
         setFeedback(
-          (project.strike_count ?? 0) + 1 >= forgeRequiredStrikes
-            ? 'Dez marteladas concluídas. O prazo foi reduzido em até 30 minutos.'
-            : 'Martelada registrada. Continue trabalhando a peça.',
+          (project.strike_count ?? 0) + 1 >= professionRequiredActions
+            ? 'Dez ações concluídas. O prazo foi reduzido em até 30 minutos.'
+            : 'Ação registrada. Continue trabalhando a criação.',
         );
     } finally {
       requesting.current = false;
@@ -114,26 +95,30 @@ export function ProfessionProduction({
         animating={animating}
         pending={busy}
         swingRequest={swingRequest}
-        onWork={() => (forging ? void hammer() : void help(false))}
+        onWork={() => void hammer()}
       />
-      {forging && !ready && (
-        <div className="pf-forge-progress" role="status" aria-label="Marteladas da forja">
+      {!ready && (
+        <div
+          className="pf-forge-progress"
+          role="status"
+          aria-label={forging ? 'Marteladas da forja' : 'Ações da bancada'}
+        >
           <div>
             <strong>{next > now ? 'Série concluída' : 'Trabalhe a peça'}</strong>
             <span>
-              {next > now ? forgeRequiredStrikes : (project.strike_count ?? 0)} /{' '}
-              {forgeRequiredStrikes} marteladas
+              {next > now ? professionRequiredActions : (project.strike_count ?? 0)} /{' '}
+              {professionRequiredActions} {motion.label}
             </span>
           </div>
           <progress
-            max={forgeRequiredStrikes}
-            value={next > now ? forgeRequiredStrikes : (project.strike_count ?? 0)}
-            aria-label="Marteladas concluídas"
+            max={professionRequiredActions}
+            value={next > now ? professionRequiredActions : (project.strike_count ?? 0)}
+            aria-label="Ações concluídas"
           />
           <small>
             {next > now
               ? 'Próxima série disponível em ' + duration(next - now) + '.'
-              : `Complete ${forgeRequiredStrikes} batidas para reduzir até 30 minutos. Seu progresso fica salvo.`}
+              : `Complete ${professionRequiredActions} ações para reduzir até 30 minutos. Seu progresso fica salvo.`}
           </small>
         </div>
       )}
@@ -165,10 +150,7 @@ export function ProfessionProduction({
             <span className="pf-kicker">UMA AJUDA SUA</span>
             <h3>Adiante o trabalho</h3>
             <p>
-              {work.detail}{' '}
-              {forging
-                ? 'Complete 10 marteladas na peça para reduzir o prazo em até 30 minutos.'
-                : 'Se quiser participar, sua ajuda reduz o prazo em 30 minutos.'}
+              {work.detail} Complete 10 ações da ferramenta para reduzir o prazo em até 30 minutos.
             </p>
             <small>
               <Clock3 size={14} />
@@ -178,7 +160,7 @@ export function ProfessionProduction({
           <button
             className="button pf-primary"
             disabled={busy || animating || !canAssist}
-            onClick={() => (forging ? setSwingRequest((n) => n + 1) : void help())}
+            onClick={() => setSwingRequest((n) => n + 1)}
           >
             {work.tool ? (
               <img src={professionToolArtwork(work.tool)} alt="" />
@@ -200,7 +182,7 @@ export function ProfessionProduction({
                   ? 'Aguarde a próxima ajuda'
                   : forging
                     ? '10 batidas = −30 min de produção'
-                    : '−30 min de produção'}
+                    : '10 ações = −30 min de produção'}
               </small>
             </span>
           </button>

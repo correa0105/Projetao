@@ -1,5 +1,5 @@
 import rows from './profession-expanded-recipes.json';
-import prices from './profession-reference-prices.json';
+import { balanceCraftRecipe } from './profession-balancing';
 import { professionBuffs, professionBuffDescription } from './profession-buffs';
 import type { Profession, CraftRecipe } from './professions';
 import { professionWork } from './profession-production';
@@ -53,26 +53,14 @@ export function expandProfessionCatalog(values: Profession[]) {
         steps: [],
       });
     }
-    for (const r of p.recipes) {
-      const price = (prices as Record<string, number>)[r.output.item_id] ?? 0;
-      const buff = professionBuffs.find((b) => b.id === r.output.item_id);
-      const add = (item_id: string, quantity: number) => {
-        const previous = r.ingredients.find((i) => i.item_id === item_id);
-        if (previous) previous.quantity = Math.max(previous.quantity, quantity);
-        else r.ingredients.push({ item_id, quantity });
-      };
-      if (price >= 100000 || buff?.level === 6 || buff?.level === 10)
-        add('craft-material-rare-catalyst', Math.max(1, Math.min(4, Math.ceil(price / 10000000))));
-      if (price >= 1000000 || buff?.level === 10)
-        add('craft-material-masterwork-core', Math.max(1, Math.min(8, Math.ceil(price / 5000000))));
-      const level = Math.max(
-        r.required_level ?? 1,
-        ...r.ingredients.map((i) => professionMaterialMinimums[i.item_id] ?? 1),
-      );
-      r.required_level = level;
-      if (price >= 1000000) r.hours = Math.max(r.hours, price >= 10000000 ? 168 : 96);
-      else if (price >= 100000) r.hours = Math.max(r.hours, 36);
-    }
+    const common =
+      p.recipes
+        .flatMap((r) => r.ingredients)
+        .find(
+          (i) =>
+            i.item_id.startsWith('craft-material-') && !(i.item_id in professionMaterialMinimums),
+        )?.item_id ?? 'craft-material-herbs';
+    for (const r of p.recipes) balanceCraftRecipe(r, common, professionMaterialMinimums);
     p.recipes.sort(
       (a, b) =>
         (a.required_level ?? 1) - (b.required_level ?? 1) ||

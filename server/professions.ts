@@ -285,17 +285,18 @@ export function professionsRouter() {
             403,
             `Esta receita exige nível ${recipe.required_level} em ${professions.find((p) => p.id === recipe.profession_id)!.name}.`,
           );
-        if (
-          (
-            await db.query(
-              'SELECT 1 FROM profession_projects WHERE character_id=$1 AND claimed_at IS NULL AND canceled_at IS NULL',
-              [b.character_id],
-            )
-          ).rowCount
-        )
+        const working = (
+          await db.query(
+            'SELECT profession_id FROM profession_projects WHERE character_id=$1 AND claimed_at IS NULL AND canceled_at IS NULL',
+            [b.character_id],
+          )
+        ).rows;
+        if (working.some((p) => p.profession_id === recipe.profession_id))
+          throw new AppError(409, 'Esta profissão já tem uma produção em andamento.');
+        if (working.length >= 2)
           throw new AppError(
             409,
-            'Conclua e recolha o trabalho em andamento antes de iniciar outro.',
+            'Você pode manter duas profissões produzindo ao mesmo tempo. Recolha ou encerre uma produção para liberar uma vaga.',
           );
         if (!actor.unlimited)
           for (const i of [...recipe.ingredients].sort((a, b) =>
@@ -363,9 +364,10 @@ export function professionsRouter() {
           new Date(p.last_assisted_at).getTime() + professionAssistCooldownMs > now.getTime()
         )
           throw new AppError(409, 'Aguarde duas horas entre as ajudas neste trabalho.');
-        if (p.profession_id === 'smithing')
-          throw new AppError(409, 'Complete 10 marteladas na bancada para adiantar a ferraria.');
-        return applyProfessionAssist(db, p, res.locals.user.id, b.request_id, now);
+        throw new AppError(
+          409,
+          'Complete 10 ações da ferramenta na bancada para adiantar a produção.',
+        );
       }),
     );
   });
@@ -376,8 +378,6 @@ export function professionsRouter() {
       await transaction(async (db) => {
         const p = await project(db, id, res.locals.user.id);
         if (p.canceled_at) throw new AppError(409, 'Esta produção foi excluída.');
-        if (p.profession_id !== 'smithing')
-          throw new AppError(400, 'Marteladas são usadas na ferraria.');
         if (
           (
             await db.query(
@@ -394,12 +394,18 @@ export function professionsRouter() {
           p.last_assisted_at &&
           new Date(p.last_assisted_at).getTime() + professionAssistCooldownMs > now.getTime()
         )
-          throw new AppError(409, 'Aguarde duas horas para iniciar outra série de marteladas.');
+          throw new AppError(
+            409,
+            'Aguarde duas horas para iniciar outra série de ações nesta bancada.',
+          );
         if (
           p.last_struck_at &&
           now.getTime() - new Date(p.last_struck_at).getTime() < forgeMinimumStrikeIntervalMs
         )
-          throw new AppError(409, 'Aguarde o martelo concluir o golpe antes de bater novamente.');
+          throw new AppError(
+            409,
+            'Aguarde a ferramenta concluir a ação antes de trabalhar novamente.',
+          );
         const count = (p.strike_count ?? 0) + 1,
           completed = count >= forgeRequiredStrikes;
         await db.query(
