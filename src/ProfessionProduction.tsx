@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check, Clock3, Trash2 } from 'lucide-react';
 import type { CraftProject, Profession } from '../shared/professions';
 import {
-  professionRequiredActions,
-  professionActionMotion,
   nextProfessionAssist,
   professionToolArtwork,
   professionWork,
@@ -22,7 +20,7 @@ export function ProfessionProduction({
   busy,
   unlocked,
   itemImage,
-  strike,
+  assist,
   collect,
   canCancel,
   cancel,
@@ -33,7 +31,7 @@ export function ProfessionProduction({
   busy: boolean;
   unlocked: boolean;
   itemImage?: string | null;
-  strike: () => Promise<boolean>;
+  assist: () => Promise<boolean>;
   collect: () => void;
   canCancel: boolean;
   cancel: () => Promise<boolean>;
@@ -42,12 +40,9 @@ export function ProfessionProduction({
     ready = Date.parse(project.ready_at) <= now;
   const next = nextProfessionAssist(project),
     canAssist = unlocked && !ready && next <= now;
-  const animating = false;
+  const animating = !ready && !!project.last_assisted_at;
   const [feedback, setFeedback] = useState(''),
-    [confirmCancel, setConfirmCancel] = useState(false),
-    [swingRequest, setSwingRequest] = useState(0);
-  const forging = profession.id === 'smithing',
-    motion = professionActionMotion(profession.id);
+    [confirmCancel, setConfirmCancel] = useState(false);
   const requesting = useRef(false);
   const mounted = useRef(true);
   useEffect(() => {
@@ -61,17 +56,13 @@ export function ProfessionProduction({
     0,
     Math.min(100, 100 * (1 - remaining / (project.recipe.hours * 3600000))),
   );
-  async function hammer() {
+  async function workDouble() {
     if (!canAssist || busy || requesting.current) return;
     requesting.current = true;
     try {
-      const accepted = await strike();
+      const accepted = await assist();
       if (mounted.current && accepted)
-        setFeedback(
-          (project.strike_count ?? 0) + 1 >= professionRequiredActions
-            ? 'Dez ações concluídas. O prazo foi reduzido em até 30 minutos.'
-            : 'Ação registrada. Continue trabalhando a criação.',
-        );
+        setFeedback('Trabalho adiantado. O prazo foi reduzido em até 30 minutos.');
     } finally {
       requesting.current = false;
     }
@@ -90,39 +81,9 @@ export function ProfessionProduction({
       </div>
       <ProfessionWorkbench
         profession={profession}
-        enabled={unlocked && !ready && !confirmCancel}
         ready={ready}
-        animating={animating}
-        pending={busy}
-        swingRequest={swingRequest}
-        completedActions={project.strike_count ?? 0}
-        onWork={() => void hammer()}
+        animating={animating && !confirmCancel}
       />
-      {!ready && (
-        <div
-          className="pf-forge-progress"
-          role="status"
-          aria-label={forging ? 'Marteladas da forja' : 'Ações da bancada'}
-        >
-          <div>
-            <strong>{next > now ? 'Série concluída' : 'Trabalhe a peça'}</strong>
-            <span>
-              {next > now ? professionRequiredActions : (project.strike_count ?? 0)} /{' '}
-              {professionRequiredActions} {motion.label}
-            </span>
-          </div>
-          <progress
-            max={professionRequiredActions}
-            value={next > now ? professionRequiredActions : (project.strike_count ?? 0)}
-            aria-label="Ações concluídas"
-          />
-          <small>
-            {next > now
-              ? 'Próxima série disponível em ' + duration(next - now) + '.'
-              : `Complete ${professionRequiredActions} ações para reduzir até 30 minutos. Seu progresso fica salvo.`}
-          </small>
-        </div>
-      )}
       <div className="pf-production-progress">
         <div>
           <strong>{ready ? 'Sua criação está pronta.' : duration(remaining) + ' restantes'}</strong>
@@ -138,7 +99,7 @@ export function ProfessionProduction({
       {ready ? (
         <button
           className="button pf-primary pf-production-collect"
-          disabled={busy || !unlocked || animating}
+          disabled={busy || !unlocked}
           onClick={collect}
         >
           <img src="/navigation/illustrated-20261020/inventory.webp" alt="" />
@@ -150,9 +111,7 @@ export function ProfessionProduction({
           <div>
             <span className="pf-kicker">UMA AJUDA SUA</span>
             <h3>Adiante o trabalho</h3>
-            <p>
-              {work.detail} Complete 10 ações da ferramenta para reduzir o prazo em até 30 minutos.
-            </p>
+            <p>{work.detail} Clique em Trabalhar dobrado para reduzir o prazo em até 30 minutos.</p>
             <small>
               <Clock3 size={14} />
               Uma ajuda a cada 2 horas · sem gastar novos materiais
@@ -160,8 +119,8 @@ export function ProfessionProduction({
           </div>
           <button
             className="button pf-primary"
-            disabled={busy || animating || !canAssist}
-            onClick={() => setSwingRequest((n) => n + 1)}
+            disabled={busy || !canAssist || confirmCancel}
+            onClick={() => void workDouble()}
           >
             {work.tool ? (
               <img src={professionToolArtwork(work.tool)} alt="" />
@@ -169,21 +128,9 @@ export function ProfessionProduction({
               <img src={'/sheet/training-badges-20261019/' + profession.badge + '.webp'} alt="" />
             )}
             <span>
-              {animating
-                ? work.working + '…'
-                : busy
-                  ? 'Registrando…'
-                  : next > now
-                    ? 'Disponível em ' + duration(next - now)
-                    : forging
-                      ? 'Dar uma martelada'
-                      : work.action}
+              {busy ? 'Registrando…' : 'Trabalhar dobrado'}
               <small>
-                {next > now
-                  ? 'Aguarde a próxima ajuda'
-                  : forging
-                    ? '10 batidas = −30 min de produção'
-                    : '10 ações = −30 min de produção'}
+                {next > now ? 'Disponível em ' + duration(next - now) : '−30 minutos de produção'}
               </small>
             </span>
           </button>

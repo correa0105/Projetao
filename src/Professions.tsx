@@ -168,7 +168,7 @@ export function Professions({
     }
     return value;
   }
-  async function act(kind: 'start' | 'assist' | 'strike' | 'collect' | 'cancel') {
+  async function act(kind: 'start' | 'assist' | 'collect' | 'cancel') {
     if (locked.current || !character || !profession || !recipe) return false;
     locked.current = true;
     setBusy(true);
@@ -183,13 +183,9 @@ export function Professions({
           recipe_id: recipe.id,
           request_id: key(operation),
         });
-      else if (kind === 'assist' && current)
-        await post('/professions/projects/' + current.id + '/assist', {
-          request_id: key(operation),
-        });
-      else if (kind === 'strike' && current) {
+      else if (kind === 'assist' && current) {
         const updated = await post<CraftProject>(
-          '/professions/projects/' + current.id + '/strike',
+          '/professions/projects/' + current.id + '/assist',
           { request_id: key(operation) },
         );
         setState((state) =>
@@ -204,12 +200,12 @@ export function Professions({
           request_id: key(operation),
         });
       requestKeys.current.delete(operation);
-      if (kind !== 'strike') await reload();
+      if (kind !== 'assist') await reload();
       if (kind === 'collect')
         setNotice(`Criação na mochila. +${recipe.experience ?? 20} EXP em ${profession.name}.`);
       if (kind === 'cancel')
         setNotice('Produção excluída. A bancada está livre para iniciar outra criação.');
-      if (kind !== 'assist' && kind !== 'strike') void onChanged().catch(() => {});
+      if (kind !== 'assist') void onChanged().catch(() => {});
       return true;
     } catch (e) {
       setError((e as Error).message);
@@ -592,7 +588,7 @@ export function Professions({
                       state?.inventory.find((i) => i.id === current.recipe.output.item_id)
                         ?.image_path
                     }
-                    strike={() => act('strike')}
+                    assist={() => act('assist')}
                     canCancel={state?.capabilities?.cancel_production === true}
                     cancel={() => act('cancel')}
                     collect={() => void act('collect')}

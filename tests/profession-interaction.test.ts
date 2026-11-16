@@ -4,11 +4,7 @@ import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 import { professions } from '../shared/professions';
 import { professionTechnique, professionTechniques } from '../shared/profession-techniques';
-import {
-  professionToolArtwork,
-  professionBenchArtwork,
-  forgeMinimumStrikeIntervalMs,
-} from '../shared/profession-production';
+import { professionToolArtwork, professionBenchArtwork } from '../shared/profession-production';
 import {
   insideSurface,
   acquireSurface,
@@ -18,12 +14,12 @@ import {
 } from '../src/profession-work-surfaces';
 import { techniquePose } from '../src/profession-motion';
 
-test('as 25 profissões possuem técnicas distintas, artes disponíveis e cadência compatível', async () => {
+test('as 25 profissões possuem técnicas distintas, artes disponíveis e duração válida', async () => {
   assert.deepEqual(Object.keys(professionTechniques).sort(), professions.map((p) => p.id).sort());
   assert.equal(new Set(professions.map((p) => professionTechnique(p.id).id)).size, 25);
   for (const p of professions) {
     const t = professionTechnique(p.id);
-    assert(t.duration >= forgeMinimumStrikeIntervalMs, p.id);
+    assert(t.duration >= 500, p.id);
     await access('public' + professionToolArtwork(t.tool));
     await access('public' + professionBenchArtwork(p.id));
   }
@@ -60,7 +56,7 @@ test('trajetórias distintas mantêm o contato na superfície inclusive junto à
   }
   assert.equal(signatures.size, 25);
 });
-test('o contato alcança extremidades e cantos reais das 25 peças sem deslocar o ponteiro', () => {
+test('os contornos incluem extremidades e cantos reais das 25 peças', () => {
   assert.deepEqual(
     Object.keys(professionMaterialPoints).sort(),
     professions.map((p) => p.id).sort(),

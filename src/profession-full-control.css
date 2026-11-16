@@ -26,3 +26,8 @@
 .pf-blowpipe {
   filter: drop-shadow(0 3px 2px #0007);
 }
+
+.pf-contact-scene.pf-passive-workbench,
+.pf-contact-scene.pf-passive-workbench.is-contact-working {
+  cursor: default;
+}

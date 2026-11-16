@@ -506,17 +506,18 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         );
         assert.equal(
           (
-            await request('/professions/projects/' + fixed.id + '/strike', other, {
+            await request('/professions/projects/' + fixed.id + '/assist', other, {
               request_id: randomUUID(),
             })
           ).status,
           404,
         );
-        const helped = await request('/professions/projects/' + fixed.id + '/strike', brewer, {
+        const helped = await request('/professions/projects/' + fixed.id + '/assist', brewer, {
           request_id: randomUUID(),
         });
         assert.equal(helped.status, 200, JSON.stringify(helped.data));
-        assert.equal(helped.data.strike_count, 9);
+        assert.equal(helped.data.strike_count, 0);
+        assert.equal(helped.data.assist_count, 1);
         assert.equal(
           (
             await request('/professions/projects', brewer, {
@@ -573,26 +574,12 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         assert.equal(start.status, 200);
         let p = start.data;
         assert.equal(p.step, 0);
-        const path = '/professions/projects/' + p.id + '/strike';
+        const path = '/professions/projects/' + p.id + '/assist';
         assert.equal((await request(path, other, { request_id: randomUUID() })).status, 404);
         assert.equal(
           (await request(path, owner, { request_id: randomUUID(), minutes: 900 })).status,
           400,
         );
-        async function prepareNine() {
-          for (let i = 0; i < 9; i++) {
-            await pool.query(
-              "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
-              [p.id],
-            );
-            assert.equal((await request(path, owner, { request_id: randomUUID() })).status, 200);
-          }
-          await pool.query(
-            "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
-            [p.id],
-          );
-        }
-        await prepareNine();
         const keys = [randomUUID(), randomUUID()];
         const results = await Promise.all(
           keys.map((request_id) => request(path, owner, { request_id })),
@@ -617,7 +604,6 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           "UPDATE profession_projects SET last_assisted_at=clock_timestamp()-interval '2 hours' WHERE id=$1",
           [p.id],
         );
-        await prepareNine();
         const second = await request(path, owner, { request_id: randomUUID() });
         assert.equal(second.status, 200);
         assert.equal(second.data.assist_count, 2);
@@ -630,7 +616,6 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           "UPDATE profession_projects SET ready_at=clock_timestamp()+interval '10 minutes',last_assisted_at=clock_timestamp()-interval '2 hours' WHERE id=$1",
           [p.id],
         );
-        await prepareNine();
         const finish = await request(path, owner, { request_id: randomUUID() });
         assert.equal(finish.status, 200);
         assert.equal(finish.data.step, 0);
@@ -941,10 +926,10 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
       },
     );
     await t.test(
-      'ferraria exige dez marteladas persistidas e só a décima reduz o prazo uma vez',
+      'Trabalhar dobrado usa um clique, preserva a auditoria antiga e impede descontos duplicados',
       async () => {
         network = 8000;
-        const admin = await account('Ferreiro de teste');
+        const admin = await account('Trabalho dobrado de teste');
         await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [admin.id]);
         await pool.query(
           "INSERT INTO profession_administrator_access(user_id,enabled,granted_by,reason)VALUES($1,true,$1,'Teste descartável')",
@@ -952,81 +937,62 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         );
         const c = await createLegacyTestCharacter(admin.id),
           r = craftRecipes.find((r) => r.profession_id === 'smithing')!;
-        const start = await request('/professions/projects', admin, {
+        const started = await request('/professions/projects', admin, {
           character_id: c.id,
           recipe_id: r.id,
           request_id: randomUUID(),
         });
-        assert.equal(start.status, 200);
-        const p = start.data,
+        assert.equal(started.status, 200);
+        const p = started.data,
           path = '/professions/projects/' + p.id;
         assert.equal(
-          (await request(path + '/strike', undefined, { request_id: randomUUID() })).status,
+          (await request(path + '/assist', undefined, { request_id: randomUUID() })).status,
           401,
         );
         assert.equal(
-          (await request(path + '/strike', owner, { request_id: randomUUID() })).status,
+          (await request(path + '/assist', owner, { request_id: randomUUID() })).status,
           404,
         );
         assert.equal(
-          (await request(path + '/strike', admin, { request_id: randomUUID(), hits: 10 })).status,
+          (await request(path + '/assist', admin, { request_id: randomUUID(), minutes: 900 }))
+            .status,
           400,
+        );
+        await pool.query(
+          'UPDATE profession_projects SET strike_count=8,last_struck_at=now() WHERE id=$1',
+          [p.id],
+        );
+        await pool.query(
+          'INSERT INTO profession_project_strikes(project_id,request_id,actor_id,count_after,completed_assist)VALUES($1,$2,$3,8,false)',
+          [p.id, randomUUID(), admin.id],
+        );
+        assert.equal(
+          (await request(path + '/strike', admin, { request_id: randomUUID() })).status,
+          409,
+        );
+        const keys = [randomUUID(), randomUUID()],
+          results = await Promise.all(
+            keys.map((request_id) => request(path + '/assist', admin, { request_id })),
+          );
+        assert.deepEqual(results.map((x) => x.status).sort(), [200, 409]);
+        const ix = results.findIndex((x) => x.status === 200),
+          done = results[ix].data;
+        assert.equal(done.strike_count, 0);
+        assert.equal(done.assist_count, 1);
+        assert.equal(done.seconds_saved, 1800);
+        assert.equal(Date.parse(p.ready_at) - Date.parse(done.ready_at), 1800000);
+        assert(done.last_assisted_at);
+        assert.equal(
+          (await request(path + '/assist', admin, { request_id: keys[ix] })).data.assist_count,
+          1,
         );
         assert.equal(
           (await request(path + '/assist', admin, { request_id: randomUUID() })).status,
           409,
         );
-        let firstKey = '';
-        for (let i = 1; i <= 9; i++) {
-          await pool.query(
-            "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
-            [p.id],
-          );
-          const key = randomUUID();
-          if (i === 1) firstKey = key;
-          const hit = await request(path + '/strike', admin, { request_id: key });
-          assert.equal(hit.status, 200, JSON.stringify(hit.data));
-          assert.equal(hit.data.strike_count, i);
-          assert.equal(hit.data.assist_count, 0);
-          assert.equal(Date.parse(hit.data.ready_at), Date.parse(p.ready_at));
-          assert.equal(hit.data.last_assisted_at, null);
-          if (i === 1) {
-            assert.equal(
-              (await request(path + '/strike', admin, { request_id: randomUUID() })).status,
-              409,
-            );
-            assert.equal(
-              (await request(path + '/strike', admin, { request_id: key })).data.strike_count,
-              1,
-            );
-          }
-        }
         assert.equal(
-          (await request('/professions?character_id=' + c.id, admin)).data.projects[0].strike_count,
-          9,
-        );
-        await pool.query(
-          "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
-          [p.id],
-        );
-        const keys = [randomUUID(), randomUUID()],
-          last = await Promise.all(
-            keys.map((request_id) => request(path + '/strike', admin, { request_id })),
-          );
-        assert.deepEqual(last.map((x) => x.status).sort(), [200, 409]);
-        const ix = last.findIndex((x) => x.status === 200),
-          done = last[ix].data;
-        assert.equal(done.strike_count, 0);
-        assert.equal(done.assist_count, 1);
-        assert.equal(Date.parse(p.ready_at) - Date.parse(done.ready_at), 1800000);
-        assert(done.last_assisted_at);
-        assert.equal(
-          (await request(path + '/strike', admin, { request_id: keys[ix] })).data.assist_count,
+          (await request('/professions?character_id=' + c.id, admin)).data.projects[0].assist_count,
           1,
-        );
-        assert.equal(
-          (await request(path + '/strike', admin, { request_id: randomUUID() })).status,
-          409,
         );
         assert.equal(
           (
@@ -1035,7 +1001,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
               [p.id],
             )
           ).rows[0].n,
-          10,
+          1,
         );
         assert.equal(
           (
@@ -1057,41 +1023,18 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
         );
         for (const id of purchaseContents(r.output.item_id)) assert.equal(await count(c.id, id), 0);
         await pool.query(
-          "UPDATE profession_projects SET last_assisted_at=clock_timestamp()-interval '2 hours',last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
+          "UPDATE profession_projects SET last_assisted_at=clock_timestamp()-interval '2 hours' WHERE id=$1",
           [p.id],
         );
-        const again = await request(path + '/strike', admin, { request_id: randomUUID() });
+        const again = await request(path + '/assist', admin, { request_id: randomUUID() });
         assert.equal(again.status, 200);
-        assert.equal(again.data.strike_count, 1);
-        assert.equal(again.data.assist_count, 1);
+        assert.equal(again.data.assist_count, 2);
         assert.equal(
           (await request(path + '/cancel', admin, { request_id: randomUUID() })).status,
           200,
         );
         assert.equal(
-          (await request(path + '/strike', admin, { request_id: randomUUID() })).status,
-          409,
-        );
-        const another = await request('/professions/projects', admin, {
-          character_id: c.id,
-          recipe_id: recipe.id,
-          request_id: randomUUID(),
-        });
-        assert.equal(another.status, 200);
-        assert.equal(
-          (
-            await request('/professions/projects/' + another.data.id + '/strike', admin, {
-              request_id: randomUUID(),
-            })
-          ).status,
-          200,
-        );
-        assert.equal(
-          (
-            await request('/professions/projects/' + another.data.id + '/assist', admin, {
-              request_id: randomUUID(),
-            })
-          ).status,
+          (await request(path + '/assist', admin, { request_id: randomUUID() })).status,
           409,
         );
       },
@@ -1157,7 +1100,7 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
       },
     );
     await t.test(
-      'todas as profissões exigem dez ações e têm ajuda independente por projeto',
+      'todas as profissões têm Trabalhar dobrado com um clique e intervalo por projeto',
       async () => {
         const a = await account('Todas as ferramentas');
         await pool.query('UPDATE "user" SET administrador=1 WHERE id=$1', [a.id]);
@@ -1177,24 +1120,14 @@ test('oficinas: posse, proficiência, materiais reais, etapas, tempo, reenvios e
           assert.equal(started.status, 200, profession.id);
           const p = started.data,
             path = '/professions/projects/' + p.id;
+          const help = await request(path + '/assist', a, { request_id: randomUUID() });
+          assert.equal(help.status, 200, profession.id);
+          assert.equal(help.data.assist_count, 1);
+          assert.equal(Date.parse(p.ready_at) - Date.parse(help.data.ready_at), 1800000);
           assert.equal(
             (await request(path + '/assist', a, { request_id: randomUUID() })).status,
             409,
           );
-          for (let i = 1; i <= 10; i++) {
-            await pool.query(
-              "UPDATE profession_projects SET last_struck_at=clock_timestamp()-interval '1 second' WHERE id=$1",
-              [p.id],
-            );
-            const hit = await request(path + '/strike', a, { request_id: randomUUID() });
-            assert.equal(hit.status, 200, profession.id);
-            assert.equal(hit.data.strike_count, i === 10 ? 0 : i);
-            assert.equal(hit.data.assist_count, i === 10 ? 1 : 0);
-            assert.equal(
-              Date.parse(p.ready_at) - Date.parse(hit.data.ready_at),
-              i === 10 ? 1800000 : 0,
-            );
-          }
           assert.equal(
             (await request(path + '/strike', a, { request_id: randomUUID() })).status,
             409,

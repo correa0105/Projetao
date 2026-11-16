@@ -5,11 +5,8 @@ import {
 } from './profession-techniques';
 export const professionAssistCooldownMs = 2 * 60 * 60 * 1000;
 export const professionAssistReductionSeconds = 30 * 60;
-export const forgeRequiredStrikes = 10;
 export const forgeStrikeDurationMs = 720;
 export const forgeStrikeImpactMs = 310;
-export const forgeMinimumStrikeIntervalMs = 500;
-export const professionRequiredActions = 10;
 export function professionActionMotion(id: string) {
   const t = professionTechnique(id);
   return {
