@@ -122,12 +122,12 @@ export function ProfessionLiquidWork(p: Props) {
         data-material-travel={travel}
       >
         {image}
-        {kind === 'poison' && working && !p.reduced && phase > 0.64 && (
+        {kind === 'poison' && working && !p.reduced && phase > 0.5 && (
           <ellipse
             className="pf-dose-ripple"
             cx={contact.x}
             cy={contact.y}
-            rx={4 + (phase - 0.64) * 75}
+            rx={4 + (phase - 0.5) * 75}
             ry={1 + (phase - 0.64) * 17}
             opacity={(1 - phase) * 1.7}
           />
@@ -149,8 +149,8 @@ export function ProfessionPoisonDrop({
   reduced: boolean;
   tipLift: number;
 }) {
-  const t = Math.max(0, Math.min(1, (phase - 0.2) / 0.46));
-  if (!working || reduced || phase < 0.2 || phase > 0.66) return null;
+  const t = Math.max(0, Math.min(1, (phase - 0.38) / 0.12));
+  if (!working || reduced || phase < 0.38 || phase > 0.5) return null;
   return (
     <ellipse
       className="pf-poison-drop"

@@ -15,7 +15,14 @@ import {
   professionView,
   type WorkPoint,
 } from './profession-work-surfaces';
-import { techniquePose } from './profession-motion';
+import {
+  professionCyclePose,
+  professionRecoveryMs,
+  professionApproachMs,
+  professionApproachPose,
+} from './profession-cycle';
+import { ProfessionClockwork } from './ProfessionClockwork';
+import { ProfessionWorkpieceDetails, ProfessionMaterialDebris } from './ProfessionWorkpieceDetails';
 import { ProfessionSurfaceFeedback } from './ProfessionSurfaceFeedback';
 import { ProfessionMortarContents, ProfessionMortarFront } from './ProfessionMortarContents';
 import { ProfessionLiquidWork, ProfessionPoisonDrop } from './ProfessionLiquidWork';
@@ -24,6 +31,7 @@ import './profession-workbench.css';
 import './profession-contact.css';
 import './profession-techniques.css';
 import './profession-full-control.css';
+import './profession-material-motion.css';
 type Mark = { id: number; points: WorkPoint[] };
 type SceneFrame = {
   contact: WorkPoint;
@@ -53,7 +61,8 @@ export function ProfessionWorkbench({
     view = professionView(profession.id);
   const mortar = ['alchemy', 'herbalism'].includes(profession.id),
     liquidWork = ['brewing', 'poison', 'cooking'].includes(profession.id),
-    glasswork = profession.id === 'glassblowing';
+    glasswork = profession.id === 'glassblowing',
+    clockwork = profession.id === 'tinkering';
   const uid = useId().replace(/[^a-z0-9_-]/gi, ''),
     bench = professionBenchArtwork(profession.id);
   const idle = (): SceneFrame => ({
@@ -89,9 +98,11 @@ export function ProfessionWorkbench({
       cycleIndex = -1,
       impactIndex = -1,
       baseRotation = 0,
-      lastRotation = 0;
+      lastRotation = 0,
+      strokeSequence = 0,
+      lastTouching = false;
     const start = performance.now(),
-      period = motion.duration + 700,
+      period = motion.duration + professionRecoveryMs,
       anchor = { x: surface.x, y: surface.y };
     const leavesTrail = ![
       'hammer',
@@ -101,7 +112,6 @@ export function ProfessionWorkbench({
       'mash',
       'scoop',
       'pluck',
-      'piece',
       'facet',
       'gear',
       'pick',
@@ -111,7 +121,14 @@ export function ProfessionWorkbench({
       raf = requestAnimationFrame(tick);
       if (now - lastFrame < 32) return;
       lastFrame = now;
-      const elapsed = Math.max(0, now - start),
+      const raw = Math.max(0, now - start),
+        approach = technique.id === 'hammer' ? 0 : professionApproachMs;
+      if (raw < approach) {
+        const pose = professionApproachPose(technique.id, raw / approach, anchor, surface);
+        setScene({ ...idle(), contact: pose, tilt: pose.tilt, lift: pose.lift });
+        return;
+      }
+      const elapsed = Math.max(0, raw - approach),
         step = Math.floor(elapsed / period),
         time = elapsed - step * period,
         active = time < motion.duration,
@@ -121,18 +138,23 @@ export function ProfessionWorkbench({
         cycleIndex = step;
         baseRotation = lastRotation;
       }
-      const pose = techniquePose(technique.id, t, anchor, surface, step);
+      const pose = professionCyclePose(technique.id, time, motion.duration, anchor, surface, step);
       lastRotation = baseRotation + pose.rotation;
       const hit = active && time >= motion.impact && impactIndex !== step;
       if (hit) impactIndex = step;
+      const touching = active && pose.lift >= -3,
+        strokeStart = fresh || (!lastTouching && touching);
+      if (strokeStart && touching) strokeSequence++;
+      const strokeId = strokeSequence;
+      lastTouching = touching;
       setScene((old) => {
         let marks = old.marks;
-        if (leavesTrail && active) {
+        if (leavesTrail && touching) {
           const p = { x: pose.x, y: pose.y };
-          marks = fresh
-            ? [...marks.slice(-23), { id: step, points: [p] }]
+          marks = strokeStart
+            ? [...marks.slice(-23), { id: strokeId, points: [p] }]
             : marks.map((m) =>
-                m.id === step ? { ...m, points: [...m.points, p].slice(-160) } : m,
+                m.id === strokeId ? { ...m, points: [...m.points, p].slice(-160) } : m,
               );
         }
         return {
@@ -151,20 +173,23 @@ export function ProfessionWorkbench({
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [profession.id, animating, ready, reducedMotion]);
-  const toolW =
-    gesture.tool === 'brewing-paddle'
-      ? 240
-      : gesture.tool === 'lute-plectrum'
-        ? 75
-        : gesture.tool === 'weaving-shuttle'
-          ? 175
-          : gesture.tool === 'woodworking-plane'
-            ? 185
-            : surface.liquid
+  const toolW = ['jewelry', 'leatherwork', 'cobbling', 'games'].includes(profession.id)
+    ? 96
+    : profession.id === 'thieves-tools'
+      ? 110
+      : gesture.tool === 'brewing-paddle'
+        ? 240
+        : gesture.tool === 'lute-plectrum'
+          ? 75
+          : gesture.tool === 'weaving-shuttle'
+            ? 175
+            : gesture.tool === 'woodworking-plane'
               ? 185
-              : gesture.mode === 'strike'
-                ? 255
-                : 155;
+              : surface.liquid
+                ? 185
+                : gesture.mode === 'strike'
+                  ? 255
+                  : 155;
   const toolH = gesture.tool === 'brewing-paddle' ? (toolW * 2) / 3 : toolW;
   return (
     <div
@@ -240,6 +265,13 @@ export function ProfessionWorkbench({
           </mask>
         </defs>
         <image className="pf-contact-art" href={bench} width="960" height="640" />
+        <ProfessionWorkpieceDetails
+          id={uid}
+          profession={profession.id}
+          bench={bench}
+          phase={phase}
+          working={working}
+        />
         {mortar ? (
           <ProfessionMortarContents
             id={uid}
@@ -296,29 +328,13 @@ export function ProfessionWorkbench({
               d={'M' + m.points.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' L')}
             />
           ))}
-          {impact && !surface.liquid && (
+          {impact && gesture.mode === 'strike' && (
             <g
               key={impact.id}
               className="pf-contact-impact"
               transform={`translate(${impact.points[0].x} ${impact.points[0].y})`}
             >
-              {gesture.mode === 'strike' ? (
-                <>
-                  <ellipse className="pf-metal-glow" rx="48" ry="13" />
-                </>
-              ) : gesture.mode === 'polish' ? (
-                <path className="pf-polish-glint" d="M-18 0H18M0-18V18M-9-9L9 9M9-9L-9 9" />
-              ) : gesture.mode === 'carve' ? (
-                <>
-                  {Array.from({ length: 6 }, (_, i) => (
-                    <path
-                      className="pf-contact-chip"
-                      key={i}
-                      d={`M${i * 6 - 20} 0l8 ${4 + (i % 3)}l-5 3z`}
-                    />
-                  ))}
-                </>
-              ) : null}
+              <ellipse className="pf-metal-glow" rx="48" ry="13" />
             </g>
           )}
         </g>
@@ -337,13 +353,18 @@ export function ProfessionWorkbench({
             ))}
           </g>
         )}
-        {gesture.mode !== 'strike' && !glasswork && (
+        <ProfessionMaterialDebris
+          technique={technique.id}
+          contact={contact}
+          phase={phase}
+          working={working && lift >= -3}
+        />
+        {gesture.mode !== 'strike' && !glasswork && !clockwork && (
           <g
             className="pf-contact-tool"
             data-tool={gesture.tool}
             transform={`translate(${contact.x} ${contact.y + lift}) rotate(${tilt})`}
           >
-            <ellipse className="pf-tool-contact-shadow" rx={surface.liquid ? 16 : 8} ry="3" />
             <image
               href={professionToolArtwork(gesture.tool)}
               x={(-toolW * gesture.hotspot[0]) / 100}
@@ -352,6 +373,22 @@ export function ProfessionWorkbench({
               height={toolH}
             />
           </g>
+        )}
+        <ProfessionWorkpieceDetails
+          id={uid}
+          profession={profession.id}
+          bench={bench}
+          phase={phase}
+          working={working}
+          foreground
+        />
+        {clockwork && (
+          <ProfessionClockwork
+            rotation={rotation}
+            phase={phase}
+            working={working}
+            reduced={reducedMotion}
+          />
         )}
         {glasswork && (
           <ProfessionGlasswork

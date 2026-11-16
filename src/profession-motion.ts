@@ -88,11 +88,30 @@ export function techniquePose(
       tilt = -5 + Math.sin(t * 16) * 3;
       break;
     }
-    case 'letter':
-      x = a.x + (t - 0.5) * 95;
-      y = a.y + Math.sin(t * 32) * 9;
-      tilt = 8;
+    case 'letter': {
+      const cx = a.x - 65 + (step % 3) * 62,
+        cy = a.y + Math.floor((step % 9) / 3) * 52;
+      if (t < 0.34) {
+        const p = t / 0.34;
+        x = cx - 18 + 18 * p;
+        y = cy + 20 - 44 * p;
+      } else if (t < 0.68) {
+        const p = (t - 0.34) / 0.34;
+        x = cx + 18 * p;
+        y = cy - 24 + 44 * p;
+      } else if (t < 0.82) {
+        const p = (t - 0.68) / 0.14;
+        x = cx + 18 - 29 * p;
+        y = cy + 20 - 17 * p;
+        lift = -16 * Math.sin(Math.PI * p);
+      } else {
+        const p = (t - 0.82) / 0.18;
+        x = cx - 11 + 22 * p;
+        y = cy + 3;
+      }
+      tilt = -5;
       break;
+    }
     case 'bearing':
       x = a.x + Math.cos(u * 0.65) * rx * 0.55;
       y = a.y + Math.sin(u * 0.65) * ry * 0.8;
@@ -119,29 +138,32 @@ export function techniquePose(
       tilt = t * 12;
       break;
     case 'pluck':
-      x = a.x + Math.sin(Math.PI * t) * 8;
-      y = s.y + (t - 0.5) * s.ry * 1.55;
-      tilt = Math.sin(Math.PI * t) * 16;
+      x = a.x + Math.sin(Math.PI * t) * 3;
+      y = s.y - 20 + t * 44;
+      tilt = Math.sin(Math.PI * t) * 6;
       break;
     case 'piece':
-      lift = -Math.sin(Math.PI * t) * 28;
-      tilt = Math.sin(u) * 15;
+      x = a.x + ((step % 4) - 1.5) * 34 + t * 10;
+      y = a.y + ((Math.floor(step / 4) % 3) - 1) * 30;
+      lift = -Math.max(0, Math.sin(u)) * 3;
+      tilt = -3;
       break;
     case 'saddle':
-      x = a.x + (t - 0.5) * 72;
-      y = a.y + Math.sin(t * Math.PI * 8) * 8;
-      lift = -Math.abs(Math.sin(t * Math.PI * 4)) * 12;
+      y = a.y + (t - 0.5) * 46;
+      x = a.x + (y - a.y) * 0.285;
+      lift = -Math.abs(Math.sin(t * Math.PI * 4)) * 6;
+      tilt = Math.sin(u * 2) * 3;
       break;
     case 'sole':
-      x = a.x + (t - 0.5) * 100;
-      y = a.y + Math.sin(Math.PI * t) * 7 - (x - a.x) * 0.16;
-      lift = -Math.abs(Math.sin(t * Math.PI * 5)) * 10;
+      x = a.x + (t - 0.5) * 44;
+      y = a.y - (x - a.x) * 0.18;
+      lift = -Math.abs(Math.sin(t * Math.PI * 4)) * 6;
       tilt = -12;
       break;
     case 'weave':
       x = s.x + (step % 2 ? -1 : 1) * (t - 0.5) * s.rx * 1.65;
       y = s.y + ((step % 5) - 2) * 12;
-      tilt = step % 2 ? 180 : 0;
+      tilt = Math.sin(Math.PI * t) * -2;
       break;
     case 'mask':
       x = a.x + Math.sin(u) * rx * 0.4;
@@ -149,26 +171,23 @@ export function techniquePose(
       tilt = Math.cos(u) * 15;
       break;
     case 'facet':
-      x = a.x + Math.sin(u * 2) * s.rx * 0.45;
-      y = a.y + Math.cos(u * 2) * s.ry * 0.35;
-      tilt = Math.sin(u) * 12;
+      x = a.x + Math.sin(u * 2) * 3;
+      y = a.y + Math.sin(u * 2) * 1.5;
+      tilt = Math.sin(u) * 2;
       break;
     case 'gear':
-      x = a.x + Math.cos(u) * s.rx * 0.55;
-      y = a.y + Math.sin(u) * s.ry * 0.55;
-      tilt = t * 28;
-      rotation = t * 90;
+      rotation = t * 120;
       break;
     case 'pick':
-      x = a.x + Math.sin(u) * 4;
-      y = a.y - Math.sin(Math.PI * t) * s.ry * 0.6;
-      tilt = -Math.sin(Math.PI * t) * 12;
+      x = a.x;
+      y = a.y;
+      tilt = -5 + Math.sin(u) * 7;
       break;
     case 'chisel':
       x = a.x + Math.sin(u) * 3;
       y = a.y + Math.sin(Math.PI * t) * 5;
-      lift = -Math.max(0, Math.cos(u)) * 22;
-      tilt = Math.sin(u) * 6;
+      lift = -Math.max(0, Math.cos(u * 2)) * 12;
+      tilt = Math.sin(u) * 2;
       break;
     case 'glaze':
       x = a.x + Math.sin((t - 0.5) * Math.PI) * rx * 0.8;

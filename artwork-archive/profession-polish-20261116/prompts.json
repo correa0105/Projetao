@@ -1,0 +1,18 @@
+[
+  {
+    "key": "clockwork-bench",
+    "kind": "bench",
+    "reference": "public/professions/actions-20261114/precision-bench.webp",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached medieval artisan workbench sprite. Preserve the complete original wooden workbench, camera angle, rich realistic fantasy painted materials, transparent outline, vice with ruby ring on left, jewel bowl, blue vial, ornate round brass box, loupe and drawers. In the BLUE VELVET WORK AREA AT RIGHT ONLY: remove BOTH loose brass gears, the entire open copper padlock, keyhole escutcheon, loose bolts and small loose brass parts. Replace those objects with ONE low small rectangular dark aged brass clockwork mounting plate, roughly x63% to89% and y29% to48% of the full image, resting naturally on the same blue velvet. The plate is empty except for TWO tiny vertical brass bearing posts side by side, equally spaced horizontally; no gears, no wheels, no tool, no hand. Large uninterrupted clean velvet surrounds the plate. This is a clean background plate for separately animated gears. Match the original warm copper lighting, blue velvet weave, viewpoint and image framing exactly. No floating parts, no text, no interface, no watermark. Keep real transparent alpha outside the whole bench; do not crop the table."
+  },
+  {
+    "key": "clockwork-gear",
+    "kind": "part",
+    "prompt": "Use case: stylized-concept. One isolated realistic small brass clockwork spur gear sprite on a truly transparent background, square canvas. Perfectly straight orthographic FRONT view looking along its axis, exactly circular, centered, NO isometric tilt, no perspective ellipse. 24 clean evenly spaced practical gear teeth, solid beveled brass outer rim, five curved brass spokes linking to a compact central round hub. Central hub has a tiny dark flat-head screw in its center. All empty spaces BETWEEN spokes and OUTSIDE teeth must be transparent alpha, not dark painted fill. Beautiful worn warm brass with fine machining scratches, subtle dark crevices and restrained highlights, realistic detailed premium medieval fantasy equipment artwork matching a dark copper-and-oak artisan workshop. Shallow physical thickness, elegant believable construction. Single gear occupies 82 percent of image, clean transparent padding. No table, no hands, no tool, no other parts, no glow, no background, no shadow rectangle, no symbols, no text."
+  },
+  {
+    "key": "precision-driver",
+    "kind": "tool",
+    "prompt": "Use case: stylized-concept. One isolated medieval clockmaker's PRECISION FLAT-HEAD SCREWDRIVER sprite, portrait composition, truly transparent alpha. The screwdriver is upright and exactly vertical: small rounded dark walnut finger-turn handle at the TOP, delicate brass ferrule, long very thin polished steel shaft descending straight down to a clearly visible tiny flat blade at the BOTTOM. Blade tip at x50 percent y92 percent. Tool occupies 85 percent of image height and only about 28 percent of width. Fine real materials, subtle worn copper highlights, cool steel edge light, richly painted realistic fantasy RPG game equipment style. This is a tiny precision adjustment tool, not a chisel, not a weapon, not a file, not a wand. Entire tool in frame, generous transparent margins, NO hand, NO object being worked, NO tabletop, NO shadow rectangle, NO lettering or logo."
+  }
+]

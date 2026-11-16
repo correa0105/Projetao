@@ -222,20 +222,20 @@ const anchors: Record<string, [number, number]> = {
   poison: [480, 260],
   brewing: [478, 238],
   cooking: [510, 197],
-  jewelry: [302, 125],
-  tinkering: [680, 216],
-  'thieves-tools': [775, 255],
+  jewelry: [307, 91],
+  tinkering: [724, 229],
+  'thieves-tools': [759, 254],
   pottery: [490, 273],
   glassblowing: [590, 275],
   luthiery: [500, 275],
   weaving: [440, 310],
-  cobbling: [440, 380],
+  cobbling: [340, 419],
   disguise: [480, 325],
   games: [490, 265],
   masonry: [455, 245],
   carpentry: [430, 205],
   woodcarving: [430, 205],
-  leatherwork: [415, 290],
+  leatherwork: [516, 300],
 };
 export function professionSurface(id: string) {
   const polygon = shapes[id] ?? wood,
@@ -319,7 +319,8 @@ export function surfacePath(s: ReturnType<typeof professionSurface>) {
   return 'M' + s.polygon.map((p) => p.x + ',' + p.y).join(' L') + ' Z';
 }
 export function professionView(id: string): [number, number, number, number] {
-  if (id === 'jewelry') return [100, -20, 560, 374];
+  if (id === 'jewelry') return [140, -25, 440, 294];
+  if (id === 'tinkering') return [620, 125, 300, 200];
   if (['tinkering', 'thieves-tools'].includes(id)) return [430, 30, 530, 354];
   if (id === 'glassblowing') return [70, 30, 820, 547];
   if (id === 'poison') return [80, 25, 800, 533];

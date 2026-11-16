@@ -19,17 +19,19 @@ export function professionActionMotion(id: string) {
   };
 }
 export function professionToolArtwork(tool: string) {
-  return tool === 'poison-dropper'
-    ? '/professions/workshop-fixes-20261115/poison-dropper-empty.webp'
-    : tool === 'glass-blowpipe'
-      ? '/professions/workshop-fixes-20261115/glass-blowpipe.webp'
-      : specializedProfessionTools.has(tool)
-        ? '/professions/techniques-20261115/' + tool + '.webp'
-        : tool === 'brewing-paddle'
-          ? '/professions/mixtures-20261114/brewing-paddle.webp'
-          : tool === 'smith-hammer'
-            ? '/professions/hammer-20261114/smith-hammer.webp'
-            : '/professions/actions-20261114/' + tool + '.webp';
+  return tool === 'precision-driver'
+    ? '/professions/polish-20261116/precision-driver.webp'
+    : tool === 'poison-dropper'
+      ? '/professions/workshop-fixes-20261115/poison-dropper-empty.webp'
+      : tool === 'glass-blowpipe'
+        ? '/professions/workshop-fixes-20261115/glass-blowpipe.webp'
+        : specializedProfessionTools.has(tool)
+          ? '/professions/techniques-20261115/' + tool + '.webp'
+          : tool === 'brewing-paddle'
+            ? '/professions/mixtures-20261114/brewing-paddle.webp'
+            : tool === 'smith-hammer'
+              ? '/professions/hammer-20261114/smith-hammer.webp'
+              : '/professions/actions-20261114/' + tool + '.webp';
 }
 export type ProfessionBench =
   'forge' | 'mixture' | 'writing' | 'wood' | 'textile' | 'precision' | 'stone' | 'kiln' | 'cooking';
@@ -233,6 +235,9 @@ export function nextProfessionAssist(project: { last_assisted_at?: string | null
 }
 
 export function professionBenchArtwork(id: string) {
+  if (id === 'tinkering') return '/professions/polish-20261116/clockwork-bench.webp';
+  if (['jewelry', 'thieves-tools'].includes(id))
+    return '/professions/polish-20261116/precision-detail-bench.webp';
   if (id === 'poison') return '/professions/workshop-fixes-20261115/poison-bench.webp';
   if (id === 'glassblowing') return '/professions/workshop-fixes-20261115/glass-bench.webp';
   if (specializedProfessionBenches.has(id))
