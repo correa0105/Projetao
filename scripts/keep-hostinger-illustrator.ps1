@@ -16,6 +16,14 @@ try {
 }
 
 try {
+  # The existing Windows recovery task follows the selected development target.
+  # Switching back to the VPS requires removing this local-only marker and
+  # restarting the task while both image-generation queues are idle.
+  if (Test-Path -LiteralPath (Join-Path $stateDirectory 'localhost-mode.json')) {
+    Write-Output 'Ilustrador em modo localhost; usando o banco do .env local.'
+    & (Join-Path $PSScriptRoot 'keep-illustrator.ps1') -NodePath $NodePath -RetrySeconds $RetrySeconds
+    exit 0
+  }
   $secureSettings = ConvertTo-SecureString ([System.IO.File]::ReadAllText((Resolve-Path -LiteralPath $SettingsFile)))
   try {
     $settingsText = [System.Net.NetworkCredential]::new('', $secureSettings).Password

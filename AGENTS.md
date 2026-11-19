@@ -19,7 +19,7 @@ Este arquivo contém apenas decisões vigentes e acordos permanentes. O pedido a
 - Migrations numeradas em `db/migrations/`: novas e aditivas, sem editar as já aplicadas. Seeds idempotentes preservam preços administrativos, dados e bens legados.
 - Preservar trabalho alheio, backups, artes originais, uploads privados e dados reais. Nunca registrar segredos, cookies ou `.env` no Git/log. Não apagar volumes para reiniciar nem restaurar banco sobre mudanças legítimas.
 - Trabalhar na branch **Welson** e enviar alterações solicitadas e validadas para **origin/Welson**, por autorização contínua. Nunca enviar para main.
-- Publicação autorizada em **https://alvoradacinzenta.com/**, com backup e validação proporcional à mudança. Preservar assets anteriores, dados de jogo e funcionamento do ilustrador. Guia operacional: `docs/HOSTINGER-20261021.md`; materiais privados em `.local` não vão ao release.
+- Por decisão do proprietário em 19/11/2026, desenvolver e atualizar **somente no localhost até finalizar o site**. Não publicar na Hostinger nem sincronizar o banco local de volta à VPS sem novo pedido explícito. A autorização de envio do código para `origin/Welson` continua vigente. Preservar assets anteriores, dados de jogo e funcionamento do ilustrador. Guia operacional: `docs/HOSTINGER-20261021.md`; materiais privados em `.local` não vão ao release.
 - Ilustrador depende deste PC, login Codex, túnel, supervisor e heartbeat. Não desativar recuperação automática nem transferir credenciais pessoais à VPS. Recarregar o worker somente com filas de personagens e companheiros ociosas; inicialização Windows sem janela/flash. Não prometer serviço com o PC desligado.
 
 ## Permissões atuais

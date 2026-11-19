@@ -56,6 +56,13 @@ Referência: [Pgweb](https://github.com/sosedoff/pgweb).
 
 ## Desenvolvimento
 
+A fase atual de desenvolvimento usa somente **http://localhost:5173**, com a
+copia restaurada do servidor, ate o proprietario pedir nova publicacao. Neste PC,
+execute `./scripts/start-localhost.ps1` para abrir o ambiente e
+`./scripts/stop-localhost.ps1` para encerrar frontend e backend sem apagar dados.
+O [guia de hospedagem](docs/HOSTINGER-20261021.md#desenvolvimento-temporario-no-localhost)
+registra o banco local, o backup e a configuracao do ilustrador.
+
 Permissões globais são concedidas explicitamente a uma conta existente:
 
 ```sh

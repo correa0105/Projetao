@@ -20,5 +20,11 @@ export default defineConfig({
     },
   }],
   build: { outDir: 'dist/client' },
-  server: { port: 5173, strictPort: true, proxy: { '/api': 'http://localhost:3000' } },
+  server: {
+    port: 5173,
+    strictPort: true,
+    proxy: { '/api': 'http://localhost:3000' },
+    // Private worker locks and archived assets are not development inputs.
+    watch: { ignored: ['**/.local/**', '**/backups/**', '**/artwork-archive/**'] },
+  },
 });

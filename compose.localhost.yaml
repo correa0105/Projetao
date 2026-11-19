@@ -1,0 +1,6 @@
+# The host-based development backend needs the translator on loopback.
+# Apply only to the translator: do not start the old Docker app for development.
+services:
+  translator:
+    ports:
+      - '127.0.0.1:5000:5000'

@@ -22,8 +22,49 @@ Arquitetura preservada: React/Vite + Express/Node 24 + PostgreSQL 17 e tradutor 
 - Banco migrado com verificacao integral das 146 tabelas: 8.624 linhas, 11 contas e
   21 personagens. Contagens e assinaturas de todas as linhas identicas antes de
   iniciar os servicos. Dumps, segredos e manifests privados ficam fora do Git.
-- Versao local do app e ilustrador antigo parados para evitar duas bases divergentes.
-  O PostgreSQL local e seus volumes foram preservados como retorno e backup.
+- A partir de 19/11/2026, o desenvolvimento continua somente no localhost, por
+  pedido do proprietario, ate finalizar o site. A base publicada foi copiada e
+  restaurada em um banco local separado; a instancia local anterior e seus
+  volumes continuam preservados. Nao enviar as alteracoes locais para a VPS sem
+  novo pedido explicito. A assinatura da Hostinger nao foi alterada nesta migracao.
+
+## Desenvolvimento temporario no localhost
+
+Use `http://localhost:5173` e as mesmas credenciais de conta existentes no site.
+O frontend Vite e o backend Node acompanham as alteracoes do codigo durante o
+desenvolvimento. Ambos ficam no loopback; o banco continua em `localhost:5436`,
+com a copia atual em `alvorada_local_20261119`. O banco antigo
+`alvorada_cinzenta` nao foi sobrescrito. O `.env` aponta para a copia atual;
+a configuracao anterior esta preservada em `.local/env-before-localhost-20261119.env`.
+
+```powershell
+./scripts/start-localhost.ps1
+./scripts/stop-localhost.ps1
+```
+
+O primeiro comando inicia o banco existente, o tradutor e os processos de
+desenvolvimento; nunca restaura ou substitui dados. O segundo encerra frontend
+e backend sem remover bancos, volumes ou backups. Nao iniciar o container antigo
+`alvorada-cinzenta-app` durante esta fase. `compose.localhost.yaml` expoe somente
+o tradutor em `127.0.0.1:5000`, preservando seus modelos existentes.
+
+O arquivo privado `.local/localhost-mode.json` seleciona o destino local do
+ilustrador e registra o local do backup. A tarefa existente do Windows continua
+recuperando o supervisor automaticamente, agora usando o banco do `.env` local,
+sem o tunel da VPS. Qualquer nova troca de destino exige conferir que as duas
+filas estejam ociosas, encerrar o worker anterior e reiniciar o supervisor;
+nao reutilizar um worker conectado ao outro banco. O ilustrador continua
+dependendo do PC ligado e do login Codex.
+
+O backup externo contem dump PostgreSQL completo, codigo-fonte, arte persistida
+separadamente e configuracao privada do servidor. A restauracao local teve
+contagens e assinaturas de todas as 194 tabelas de dados comparadas com o
+servidor; a tabela adicional de heartbeat do ilustrador varia durante a execucao.
+Os 331 arquivos de arte separados tambem foram comparados por SHA-256.
+O pacote contem segredos de configuracao e dados privados: guardar fora do Git.
+As alteracoes futuras no localhost precisam de novos backups locais; nao sao
+sincronizadas automaticamente com a VPS. O dump desta passagem e um ponto de
+recuperacao, nao uma copia continuamente atualizada.
 
 ## Limpeza de contas em 21/10/2026
 
